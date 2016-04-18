@@ -29,7 +29,7 @@ class Landingpage extends CI_Controller {
 		if($app=='true'){
 			if(!empty($categories)){
 				$jsonarray['categories']=$categories;
-				echo json_encode($jsonarray,JSON_FORCE_OBJECT);
+				echo json_encode($jsonarray);
 			}else{
 				echo "No category found";
 			}
