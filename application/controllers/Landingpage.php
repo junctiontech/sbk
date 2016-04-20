@@ -38,4 +38,31 @@ class Landingpage extends CI_Controller {
 			$this->display ('frontend/Landingpage');
 		}
 	}
+	
+	public function product($categorykey=false,$productkey=false)
+	{
+		$app=$this->input->get('app');
+		$jsonarray=array();
+		if(!empty($categorykey)){
+			$query['categoriesUrlKey']=$categorykey;
+		}
+		if(!empty($productkey)){
+			$query['productsUrlKey']=$productkey;
+		}
+		
+		$products=$this->Landingpage_model->get_products($query);
+		
+		
+		if($app=='true'){
+			if(!empty($products)){
+				$jsonarray['products']=$products;
+				echo json_encode($jsonarray);
+			}else{
+				echo "No category found";
+			}
+				
+		}else{
+			$this->display ('frontend/Landingpage');
+		}
+	}
 }

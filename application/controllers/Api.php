@@ -18,36 +18,63 @@ class Api extends CI_Controller {
 	public function flipkart()
 	{
 		$flipkart = new Flipkart(array('affiliateId'=>"rohitthak6", 'token'=>"9575b4e1913c4c11bc0f43b0a175622d",'response_type'=>"json"));
-
 		$home = $flipkart->api_home();
-
-		if($home==false){
+		if($home==false)
+		{
 			echo 'Error: Could not retrieve API homepage';
 			exit();
 		}
-
 		$home = json_decode($home, TRUE);
-		
 		$list = $home['apiGroups']['affiliate']['apiListings'];
-		
 		//echo"<br>";print_r($list);echo"<br>";
+		//echo"<br>";print_r($data);echo"<br>";
+		foreach ($list as $key => $data) 
+		{
+			$categoryarray=array();
+			$categoryarray['categoriesUrlKey']=$key;
+			$categoryarray['categoriesSortOrder']=1;
+			$categoryarray['categoriesStatus']='Active';
+			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v0.1.0']['get'],1);
+			if(!empty($categoryID))
+			{
+				$url = $data['availableVariants']['v0.1.0']['get'];
+				$details = $flipkart->call_url($url);
+				$details = json_decode($details, TRUE);
+				if(!empty($details))
+				{
+					$products = $details['productInfoList'];
+					foreach($products as $product)
+					{
+						$productdata=array();
+						$productdata=array('categoriesID'=>$categoryID,
+						'subCategoriesID'=>0,
+						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['productBaseInfo']['productAttributes']['title']))),
+						'productsSortOrder'=>1,
+						'productsStatus'=>'Active',
+						'productName'=>$product['productBaseInfo']['productAttributes']['title'],
+						'productDescription'=>$product['productBaseInfo']['productAttributes']['productDescription'],
+						'imageSortOrder'=>1,
+						'isDefault'=>'Yes',
+						'imageName'=>array_key_exists('200x200', $product['productBaseInfo']['productAttributes']['imageUrls'])?$product['productBaseInfo']['productAttributes']['imageUrls']['200x200']:'',
+						'imageStatus'=>'Active',
+						'productImageTitle'=>$product['productBaseInfo']['productAttributes']['title'],
+						'productImageAltTag'=>$product['productBaseInfo']['productAttributes']['title'],
+						'currencyID'=>1,
+						'productPrice'=>$product['productBaseInfo']['productAttributes']['sellingPrice']['amount'],
+						'shopID'=>1,
+						'productShopUrl'=>$product['productBaseInfo']['productAttributes']['productUrl'],
+						'productAttributeSortOrder'=>1,
+						'productAttributeStatus'=>'Active',
+						'productAttributehighLight'=>'Yes',
+						'productAttributekey'=>array('color','productBrand'),
+						'productAttributeLable'=>array('Color','Product Brand'),
+						'productAttributeValue'=>array($product['productBaseInfo']['productAttributes']['color'],
+													   $product['productBaseInfo']['productAttributes']['productBrand']));
+						$this->Api_model->insert_product($productdata);
+					}
+				}
+			}
 		
-		foreach ($list as $key => $data) {
-		$categoryarray=array();
-		
-		$categoryarray['categoriesUrlKey']=$key;
-		$categoryarray['categoriesSortOrder']=1;
-		$categoryarray['categoriesStatus']='Active';
-		
-		$this->Api_model->insert_category($categoryarray,$key);
-		echo"<br>";print_r($data);echo"<br>";
-		/* $url = $data['availableVariants']['v0.1.0']['get'];
-
-		$details = $flipkart->call_url($url);
-		$details = json_decode($details, TRUE);
-	
-		$products = $details['productInfoList'];
-		echo"<br>";print_r($products);echo"<br>"; */
 		}
 		
 	}
