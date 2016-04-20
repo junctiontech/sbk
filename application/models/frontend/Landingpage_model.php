@@ -21,7 +21,7 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_products($extraquery=false){
-		$this->db->select('t1.productsID,t8.categoriesID,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
+		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
 		$this->db->from('s4k_products t1');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
 		$this->db->join('s4k_product_attribute t3','t1.productsID=t3.productsID','left');
