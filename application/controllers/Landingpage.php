@@ -43,6 +43,7 @@ class Landingpage extends CI_Controller {
 	{
 		$app=$this->input->get('app');
 		$jsonarray=array();
+		$query='';
 		if(!empty($categorykey)){
 			$query['categoriesUrlKey']=$categorykey;
 		}
