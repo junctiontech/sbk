@@ -1,89 +1,224 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-
-	<style type="text/css">
-
-	::selection { background-color: #E13300; color: white; }
-	::-moz-selection { background-color: #E13300; color: white; }
-
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
-
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
-
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
-
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
-
-	#body {
-		margin: 0 15px 0 15px;
-	}
-
-	p.footer {
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
-	#container {
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
-</head>
-<body>
-
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
-
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-	</div>
-
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+	<div class="header_bottom">
+		<div class="header_bottom_left">
+			<div class="section group">
+				<div class="listview_1_of_2 images_1_of_2">
+					<div class="listimg listimg_2_of_1">
+						 <a href="javascript:;"> <img src="<?=base_url();?>images/pic4.png" alt="" /></a>
+					</div>
+				    <div class="text list_2_of_1">
+						<h2>Iphone</h2>
+						<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>
+						<div class="button"><span><a href="javascript:;">Add to cart</a></span></div>
+				   </div>
+			   </div>			
+				<div class="listview_1_of_2 images_1_of_2">
+					<div class="listimg listimg_2_of_1">
+						  <a href="javascript:;"><img src="<?=base_url();?>images/pic3.png" alt="" / ></a>
+					</div>
+					<div class="text list_2_of_1">
+						  <h2>Sansung</h2>
+						  <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+						  <div class="button"><span><a href="javascript:;">Add to cart</a></span></div>
+					</div>
+				</div>
+			</div>
+			<div class="section group">
+				<div class="listview_1_of_2 images_1_of_2">
+					<div class="listimg listimg_2_of_1">
+						 <a href="javascript:;"> <img src="<?=base_url();?>images/pic3.jpg" alt="" /></a>
+					</div>
+				    <div class="text list_2_of_1">
+						<h2>Acer</h2>
+						<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+						<div class="button"><span><a href="javascript:;">Add to cart</a></span></div>
+				   </div>
+			   </div>			
+				<div class="listview_1_of_2 images_1_of_2">
+					<div class="listimg listimg_2_of_1">
+						  <a href="javascript:;"><img src="<?=base_url();?>images/pic1.png" alt="" /></a>
+					</div>
+					<div class="text list_2_of_1">
+						  <h2>Canon</h2>
+						  <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+						  <div class="button"><span><a href="javascript:;">Add to cart</a></span></div>
+					</div>
+				</div>
+			</div>
+		  <div class="clear"></div>
+		</div>
+			 <div class="header_bottom_right_images">
+		   <!-- FlexSlider -->
+              <section class="slider">
+				  <div class="flexslider">
+					<ul class="slides">
+						<li><img src="<?=base_url();?>images/1.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>images/2.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>images/3.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>images/4.jpg" alt=""/></li>
+				    </ul>
+				  </div>
+	      </section>
+<!-- FlexSlider -->
+	    </div>
+	  <div class="clear"></div>
+  </div>	
 </div>
+ <div class="main">
+    <div class="content">
+    	<div class="content_top">
+    		<div class="heading">
+    		<h3>Feature Products</h3>
+    		</div>
+    		<div class="sort">
+    		<p>Sort by:
+    			<select>
+    				<option>Lowest Price</option>
+    				<option>Highest Price</option>
+    				<option>Lowest Price</option>
+    				<option>Lowest Price</option>
+    				<option>Lowest Price</option>
+    				<option>In Stock</option>  				   				
+    			</select>
+    		</p>
+    		</div>
+    		<div class="show">
+    		<p>Show:
+    			<select>
+    				<option>4</option>
+    				<option>8</option>
+    				<option>12</option>
+    				<option>16</option>
+    				<option>20</option>
+    				<option>In Stock</option>  				   				
+    			</select>
+    		</p>
+    		</div>
+    		<div class="page-no">
+    			<p>Result Pages:<ul>
+    				<li><a href="javascript:;">1</a></li>
+    				<li class="active"><a href="javascript:;">2</a></li>
+    				<li><a href="javascript:;">3</a></li>
+    				<li>[<a href="javascript:;"> Next>>></a >]</li>
+    				</ul></p>
+    		</div>
+    		<div class="clear"></div>
+    	</div>
+	      <div class="section group">
+				<div class="grid_1_of_4 images_1_of_4">
+					 <a href="javascript:;"><img src="<?=base_url();?>images/feature-pic1.png" alt="" /></a>
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					 <p><span class="strike">$528.22</span><span class="price">$505.22</span></p>
+					  <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+				<div class="grid_1_of_4 images_1_of_4">
+					<a href="javascript:;"><img src="<?=base_url();?>images/feature-pic2.jpg" alt="" /></a>
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					 <p><span class="strike">$640.89</span><span class="price">$620.87</span></p>
+				     <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+				<div class="grid_1_of_4 images_1_of_4">
+					<a href="javascript:;"><img src="<?=base_url();?>images/feature-pic3.jpg" alt="" /></a>
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					 <p><span class="strike">$240.66</span><span class="price">$220.97</span></p>
+				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+				<div class="grid_1_of_4 images_1_of_4">
+					<img src="<?=base_url();?>images/feature-pic4.png" alt="" />
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					 <p><span class="strike">$436.22</span><span class="price">$415.54</span></p>
+				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+			</div>
+			<div class="content_bottom">
+    		<div class="heading">
+    		<h3>New Products</h3>
+    		</div>
+    		<div class="sort">
+    		<p>Sort by:
+    			<select>
+    				<option>Lowest Price</option>
+    				<option>Highest Price</option>
+    				<option>Lowest Price</option>
+    				<option>Lowest Price</option>
+    				<option>Lowest Price</option>
+    				<option>In Stock</option>  				   				
+    			</select>
+    		</p>
+    		</div>
+    		<div class="show">
+    		<p>Show:
+    			<select>
+    				<option>4</option>
+    				<option>8</option>
+    				<option>12</option>
+    				<option>16</option>
+    				<option>20</option>
+    				<option>In Stock</option>  				   				
+    			</select>
+    		</p>
+    		</div>
+    		<div class="page-no">
+    			<p>Result Pages:<ul>
+    				<li><a href="javascript:;">1</a></li>
+    				<li class="active"><a href="#">2</a></li>
+    				<li><a href="javascript:;">3</a></li>
+    				<li>[<a href="javascript:;"> Next>>></a >]</li>
+    				</ul></p>
+    		</div>
+    		<div class="clear"></div>
+    	</div>
+			<div class="section group">
+				<div class="grid_1_of_4 images_1_of_4">
+					 <a href="javascript:;"><img src="<?=base_url();?>images/new-pic1.jpg" alt="" /></a>
+					 <div class="discount">
+					 <span class="percentage">40%</span>
+					</div>
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p><span class="strike">$438.99</span><span class="price">$403.66</span></p>
+				     <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+				<div class="grid_1_of_4 images_1_of_4">
+					<a href="javascript:;"><img src="<?=base_url();?>images/new-pic2.jpg" alt="" /></a>
+					 <div class="discount">
+					 <span class="percentage">22%</span>
+					</div>
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p><span class="strike">$667.22</span><span class="price">$621.75</span></p>
+				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span></div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+				<div class="grid_1_of_4 images_1_of_4">
+					<a href="javascript:;"><img src="<?=base_url();?>images/feature-pic2.jpg" alt="" /></a>
+					<div class="discount">
+					 <span class="percentage">55%</span>
+					</div>
+					 <h2>Lorem Ipsum is simply </h2>
+					 <p><span class="strike">$457.22</span><span class="price">$428.02</span></p>
+				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+				<div class="grid_1_of_4 images_1_of_4">
+				 <img src="<?=base_url();?>images/new-pic3.jpg" alt="" />
+				  <div class="discount">
+					 <span class="percentage">66%</span>
+					</div>
+					 <h2>Lorem Ipsum is simply </h2>					 
+					 <p><span class="strike">$643.22</span><span class="price">$457.88</span></p>
+				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+				</div>
+			</div>
+    </div>
+ </div>
+</div>
+   
 
-</body>
-</html>

@@ -14,9 +14,9 @@ class Landingpage extends CI_Controller {
 	}
 
 	public function display($template_file){
-		//$this->parser->parse('header',$this->data);
+		$this->parser->parse('frontend/Header',$this->data);
 		$this->load->view($template_file, $this->data);
-		//$this->parser->parse('footer',$this->data);
+		$this->parser->parse('frontend/Footer',$this->data);
 	}
 	
 	public function index($url=false)
@@ -59,7 +59,7 @@ class Landingpage extends CI_Controller {
 				$jsonarray['products']=$products;
 				echo json_encode($jsonarray);
 			}else{
-				echo "No category found";
+				echo "No product found";
 			}
 				
 		}else{
