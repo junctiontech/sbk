@@ -54,14 +54,13 @@
  </div>
 	<div class="menu">
 	  <ul id="dc_mega-menu-orange" class="dc_mm-orange">
-		 <li><a href="<?=base_url();?>">Home</a></li>
+		
     <li><a href="javascript:;">Products</a>
     <ul>
 	<?php foreach($categories as $category){?>
-      <li><a href="javascript:;"><?=$category->categoryName?></a>
+      <li><a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>"><?=$category->categoryName?></a>
         <ul>
-          <li><a href="javascript:;">Product 1</a></li>
-          <li><a href="javascript:;">Product 2</a></li>
+          
           
         </ul>
       </li>
@@ -72,8 +71,7 @@
     <ul>
       <li><a href="javascript:;">Brand Name 1</a></li>
       <li><a href="javascript:;">Brand Name 2</a></li>
-      <li><a href="javascript:;">Brand Name 3</a></li>
-     
+      
     </ul>
   </li>
   <li><a href="javascript:;">Services</a>
@@ -96,13 +94,12 @@
           <li><a href="javascript:;">Service Detail F</a></li>
         </ul>
       </li>
-      <li><a href="javascript:;">Service 4</a></li>
+      
     </ul>
   </li>
-  <li><a href="javascript:;">About</a></li>
-   <li><a href="javascript:;">Delivery</a></li>
-  <li><a href="javascript:;">FAQS</a></li>
-  <li><a href="javascript:;">Contact</a> </li>
+  <li><a href="javascript:;">Travell</a></li>
+   
+ 
   <div class="clear"></div>
 </ul>
 </div>

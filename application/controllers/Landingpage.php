@@ -63,7 +63,13 @@ class Landingpage extends CI_Controller {
 			}
 				
 		}else{
-			$this->display ('frontend/Landingpage');
+			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+			/* if(!empty($categorykey)){ print_r($categories);
+			if(in_array($categorykey,$categories)){
+			print_r("got it");die;}} */
+			
+			$this->data['products']=$products;
+			$this->display ('frontend/Products');
 		}
 	}
 }
