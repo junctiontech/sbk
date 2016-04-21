@@ -3,7 +3,7 @@
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="javascript:;"> <img src="<?=base_url();?>images/pic4.png" alt="" /></a>
+						 <a href="javascript:;"> <img src="<?=base_url();?>frontend/images/pic4.png" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
 						<h2>Iphone</h2>
@@ -13,7 +13,7 @@
 			   </div>			
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						  <a href="javascript:;"><img src="<?=base_url();?>images/pic3.png" alt="" / ></a>
+						  <a href="javascript:;"><img src="<?=base_url();?>frontend/images/pic3.png" alt="" / ></a>
 					</div>
 					<div class="text list_2_of_1">
 						  <h2>Sansung</h2>
@@ -25,7 +25,7 @@
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="javascript:;"> <img src="<?=base_url();?>images/pic3.jpg" alt="" /></a>
+						 <a href="javascript:;"> <img src="<?=base_url();?>frontend/images/pic3.jpg" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
 						<h2>Acer</h2>
@@ -35,7 +35,7 @@
 			   </div>			
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						  <a href="javascript:;"><img src="<?=base_url();?>images/pic1.png" alt="" /></a>
+						  <a href="javascript:;"><img src="<?=base_url();?>frontend/images/pic1.png" alt="" /></a>
 					</div>
 					<div class="text list_2_of_1">
 						  <h2>Canon</h2>
@@ -51,10 +51,10 @@
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">
-						<li><img src="<?=base_url();?>images/1.jpg" alt=""/></li>
-						<li><img src="<?=base_url();?>images/2.jpg" alt=""/></li>
-						<li><img src="<?=base_url();?>images/3.jpg" alt=""/></li>
-						<li><img src="<?=base_url();?>images/4.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>frontend/images/1.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>frontend/images/2.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>frontend/images/3.jpg" alt=""/></li>
+						<li><img src="<?=base_url();?>frontend/images/4.jpg" alt=""/></li>
 				    </ul>
 				  </div>
 	      </section>
@@ -105,35 +105,35 @@
     	</div>
 	      <div class="section group">
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="javascript:;"><img src="<?=base_url();?>images/feature-pic1.png" alt="" /></a>
+					 <a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic1.png" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 					 <p><span class="strike">$528.22</span><span class="price">$505.22</span></p>
-					  <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>images/feature-pic2.jpg" alt="" /></a>
+					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic2.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 					 <p><span class="strike">$640.89</span><span class="price">$620.87</span></p>
-				     <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>images/feature-pic3.jpg" alt="" /></a>
+					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic3.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 					 <p><span class="strike">$240.66</span><span class="price">$220.97</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<img src="<?=base_url();?>images/feature-pic4.png" alt="" />
+					<img src="<?=base_url();?>frontend/images/feature-pic4.png" alt="" />
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
 					 <p><span class="strike">$436.22</span><span class="price">$415.54</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 			</div>
@@ -177,43 +177,43 @@
     	</div>
 			<div class="section group">
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="javascript:;"><img src="<?=base_url();?>images/new-pic1.jpg" alt="" /></a>
+					 <a href="javascript:;"><img src="<?=base_url();?>frontend/images/new-pic1.jpg" alt="" /></a>
 					 <div class="discount">
 					 <span class="percentage">40%</span>
 					</div>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p><span class="strike">$438.99</span><span class="price">$403.66</span></p>
-				     <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>images/new-pic2.jpg" alt="" /></a>
+					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/new-pic2.jpg" alt="" /></a>
 					 <div class="discount">
 					 <span class="percentage">22%</span>
 					</div>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p><span class="strike">$667.22</span><span class="price">$621.75</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span></div>
+				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span></div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>images/feature-pic2.jpg" alt="" /></a>
+					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic2.jpg" alt="" /></a>
 					<div class="discount">
 					 <span class="percentage">55%</span>
 					</div>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <p><span class="strike">$457.22</span><span class="price">$428.02</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="<?=base_url();?>images/new-pic3.jpg" alt="" />
+				 <img src="<?=base_url();?>frontend/images/new-pic3.jpg" alt="" />
 				  <div class="discount">
 					 <span class="percentage">66%</span>
 					</div>
 					 <h2>Lorem Ipsum is simply </h2>					 
 					 <p><span class="strike">$643.22</span><span class="price">$457.88</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
+				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to Cart</a></span> </div>
 				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
 				</div>
 			</div>
