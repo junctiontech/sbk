@@ -23,7 +23,7 @@ class Landingpage extends CI_Controller {
 	{
 		$app=$this->input->get('app');
 		$jsonarray=array();
-		$categories=$this->Landingpage_model->get_categories();
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 		
 		
 		if($app=='true'){

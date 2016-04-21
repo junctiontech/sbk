@@ -152,97 +152,15 @@
 		 <li><a href="<?=base_url();?>">Home</a></li>
     <li><a href="javascript:;">Products</a>
     <ul>
-      <li><a href="javascript:;">Mobile Phones</a>
+	<?php foreach($categories as $category){?>
+      <li><a href="javascript:;"><?=$category->categoryName?></a>
         <ul>
           <li><a href="javascript:;">Product 1</a></li>
           <li><a href="javascript:;">Product 2</a></li>
           
         </ul>
       </li>
-      <li><a href="javascript:;">Desktop</a>
-        <ul>
-          <li><a href="javascript:;">Product 1</a></li>
-          <li><a href="javascript:;">Product 2</a></li>
-          </ul>
-      </li>
-      <li><a href="javascript:;">Laptop</a>
-        <ul>
-          <li><a href="javascript:;">Product 10</a></li>
-          <li><a href="javascript:;">Product 11</a></li>
-          <li><a href="javascript:;">Product 12</a></li>
-          <li><a href="javascript:;">Product 13</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;">Accessories</a>
-        <ul>
-          <li><a href="javascript:;">Product 14</a></li>
-          <li><a href="javascript:;">Product 15</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;">Software</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Sports & Fitness</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Footwear</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Jewellery</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Clothing</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Home Decor & Kitchen</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Beauty & Healthcare</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
-       <li><a href="javascript:;">Toys, Kids & Babies</a>
-        <ul>
-          <li><a href="javascript:;">Product 16</a></li>
-          <li><a href="javascript:;">Product 17</a></li>
-          <li><a href="javascript:;">Product 18</a></li>
-          <li><a href="javascript:;">Product 19</a></li>
-        </ul>
-      </li>
+	<?php } ?>
     </ul>
   </li>
   <li><a href="javascript:;">Top Brands</a>
