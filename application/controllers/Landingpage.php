@@ -69,7 +69,11 @@ class Landingpage extends CI_Controller {
 			print_r("got it");die;}} */
 			
 			$this->data['products']=$products;
+			if(!empty($productkey)){
+				$this->display ('frontend/ProductDetail');
+			}else{
 			$this->display ('frontend/Products');
+			}
 		}
 	}
 }

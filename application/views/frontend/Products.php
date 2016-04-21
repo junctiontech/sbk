@@ -2,8 +2,11 @@
  <div class="main">
     <div class="content">
     	<div class="content_top">
+		<div class="back-links">
+    		<p><a href="<?=base_url();?>">Home</a> </p>
+    	    </div>
     		<div class="heading">
-    		<h3>Feature Price List</h3>
+    		<h3> Price List</h3>
     		</div>
     		<div class="sort">
     		<p>Sort by:
