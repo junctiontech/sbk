@@ -83,18 +83,9 @@
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul>
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports & Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor & Kitchen</a></li>
-				       <li><a href="#">Beauty & Healthcare</a></li>
-				       <li><a href="#">Toys, Kids & Babies</a></li>
+					<?php foreach($categories as $category){?>
+				      <li><a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>"><?=$category->categoryName?></a></li>
+				     <?php } ?>
     				</ul>
     				<div class="subscribe">
     					<h2>Newsletters Signup</h2>

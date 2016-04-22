@@ -601,10 +601,11 @@ p.note{
 	margin-left: 0; 
 } 
 .images_1_of_4 {
-	width: 20.8%;
+	width: 18.8%;
 	padding:1.5%;
 	text-align:center;
 	position:relative; 
+	height:400px;
 }
 .images_1_of_4  img{
 	max-width:100%;
