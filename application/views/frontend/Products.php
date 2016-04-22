@@ -3,7 +3,7 @@
     <div class="content">
     	<div class="content_top">
 		<div class="back-links">
-    		<p><a href="<?=base_url();?>">Home</a> </p>
+    		<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
     	    </div>
     		<div class="heading">
     		<h3> Price List</h3>

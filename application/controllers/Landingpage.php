@@ -42,16 +42,23 @@ class Landingpage extends CI_Controller {
 	public function product($categorykey=false,$productkey=false)
 	{
 		$app=$this->input->get('app');
+		$this->data['searchq']=$searchq=$this->input->Get('q');
 		$jsonarray=array();
-		$query='';
+		$query='';$searchqry='';
+		if($categorykey=='search'){
+			$searchqry['productName']=$searchq;
+		}else{
 		if(!empty($categorykey)){
 			$query['categoriesUrlKey']=$categorykey;
+			$this->data['categorykey']=ucwords(implode(" ",explode("_",$categorykey)));
 		}
 		if(!empty($productkey)){
 			$query['productsUrlKey']=$productkey;
 		}
+	}
 		
-		$products=$this->Landingpage_model->get_products($query);
+		
+		$products=$this->Landingpage_model->get_products($query,$searchqry);
 		
 		
 		if($app=='true'){

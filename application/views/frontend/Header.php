@@ -30,8 +30,9 @@
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box ">
-				    <form>
-				    	<input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
+				    <form action="<?=base_url();?>Landingpage/Product/search" method="get">
+					<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->
+				    	<input type="text" placeholder="Search for Products" Value="<?=isset($searchq)?$searchq:''?>" name="q" ><input type="hidden" name="c" value="all"/><input type="submit" value="SEARCH">
 				    </form>
 			    </div>
 			    <div class="shopping_cart">
