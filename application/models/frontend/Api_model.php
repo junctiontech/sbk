@@ -11,6 +11,9 @@ class Api_model extends CI_Model {
 	
 	public function insert_category($categoryarray=false,$key=false,$categoryShopUrl=false,$shopID=false)
 	{
+		$query=$this->db->get_where('s4k_categories',array('categoriesUrlKey'=>$key));
+		$result=$query->result();
+		if(empty($result)){
 		$this->db->insert('s4k_categories',$categoryarray);
 		if($this->db->insert_id()){
 			$categoryID=$this->db->insert_id();
@@ -18,14 +21,20 @@ class Api_model extends CI_Model {
 			$key1=implode(' ',$key1);
 		$categorydetails=array('categoriesID'=>$categoryID,'languageID'=>$this->languageID,'categoryName'=>ucwords($key1));
 		$this->db->insert('s4k_category_details',$categorydetails);
+		}
+		}else{
+			$categoryID=$result[0]->categoriesID;
+		}
 		$categoryshopdata=array('categoriesID'=>$categoryID,'shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key);
 		$this->db->insert('s4k_category_to_shop',$categoryshopdata);
 		return $categoryID;
-		}
 	}
 
 public function insert_product($productdata=false)
 {
+	$query=$this->db->get_where('s4k_products',array('productsUrlKey'=>$productdata['productsUrlKey']));
+		$result=$query->result();
+		if(empty($result)){
 		$productMasterData=array('categoriesID'=>$productdata['categoriesID'],
 								 'subCategoriesID'=>$productdata['subCategoriesID'],
 								 'productsUrlKey'=>$productdata['productsUrlKey'],
@@ -74,6 +83,23 @@ public function insert_product($productdata=false)
 								'productShopUrl'=>$productdata['productShopUrl']);
 			$this->db->insert('s4k_product_price',$productPrice);
 		}
+		}else{
+			$productID=$result[0]->productsID;
+			$query1=$this->db->get_where('s4k_product_price',array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
+			$result1=$query1->result();
+			if(empty($result1)){
+			$productPrice=array('productsID'=>$productID,
+								'currencyID'=>$productdata['currencyID'],
+								'productPrice'=>$productdata['productPrice'],
+								'shopID'=>$productdata['shopID'],
+								'productShopUrl'=>$productdata['productShopUrl']);
+			$this->db->insert('s4k_product_price',$productPrice);
+			}else{
+				$this->db->where(array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
+				$this->db->update('s4k_product_price',array('productShopUrl'=>$productdata['productShopUrl'],'productPrice'=>$productdata['productPrice']));
+			}
+		}
+		
 	}	
 	
 	
