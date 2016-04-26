@@ -18,34 +18,19 @@
 					<h2><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>
 					<p><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>					
 					<div class="price">
-						<p>Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p>
+						<p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p>
+						<img style="height: 80px;width: 180px;" src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
 					</div>
+					<?php if(!empty($othershopprices)){ ?>
 					<div class="available">
 						<p>Available Options :</p>
 					<ul>
-						<li>Color:
-							<select>
-							<option>Silver</option>
-							<option>Black</option>
-							<option>Dark Black</option>
-							<option>Red</option>
-						</select></li>
-						<li>Size:<select>
-							<option>Large</option>
-							<option>Medium</option>
-							<option>small</option>
-							<option>Large</option>
-							<option>small</option>
-						</select></li>
-						<li>Quality:<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select></li>
+					<?php foreach($othershopprices as $othershopprice){?>
+						<li><img style="height: 100px;width: 180px;" src="<?=base_url();?>frontend/images/<?=$othershopprice->shop_image?>"><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>price:200</li>
+					<?php } ?>
 					</ul>
 					</div>
+					<?php } ?>
 					<div class="share">
 						<p>Share Product :</p>
 						<ul>
@@ -59,7 +44,7 @@
 					<div class="rating">
 						<p>Rating:<img src="<?=base_url();?>frontend/images/rating.png"><span>[3 of 5 Stars]</span></p>
 					</div>
-					<div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
+					
 					<div style="padding-top:9px" class="button"><span><a href="javascript:;">Add to Cart</a></span></div>
 					
 					<div class="clear"></div>

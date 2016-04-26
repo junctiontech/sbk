@@ -22,6 +22,10 @@ class Landingpage_model extends CI_Model {
 	
 	public function get_products($extraquery=false,$searchqry=false){
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
+		if($extraquery){
+			$this->db->select('t9.shop_image,t9.shopID');
+			
+		}
 		$this->db->from('s4k_products t1');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
 		$this->db->join('s4k_product_attribute t3','t1.productsID=t3.productsID','left');
@@ -31,13 +35,29 @@ class Landingpage_model extends CI_Model {
 		$this->db->join('s4k_product_price t7','t1.productsID=t7.productsID','left');
 		$this->db->join('s4k_categories t8','t1.categoriesID=t8.categoriesID','left');
 		if($extraquery){
+			$this->db->join('s4k_shops t9','t7.shopID=t9.shopID','left');
 			$this->db->where($extraquery);
+			$this->db->order_by('productPrice','ASC');
 		}elseif($searchqry){
 			$this->db->like($searchqry);
 		}
+		if(empty($extraquery)){
 		$this->db->order_by('productsSortOrder','ASC');
 		$this->db->order_by('productsUrlKey','ASC');
+		$this->db->order_by('productPrice','ASC');
 		$this->db->group_by('productsUrlKey');
+		}
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function get_shopprices($productID=false,$shopID=false){
+		
+		$this->db->select('t1.productPrice,t1.productShopUrl,t2.shop_image');
+		$this->db->from('s4k_product_price t1');
+		$this->db->join('s4k_shops t2','t1.shopID=t2.shopID');
+		$this->db->where(array('productsID'=>$productID,'t1.shopID !=' =>$shopID));
+		$this->db->order_by('shopSortOrder','ASC');
 		$query=$this->db->get();
 		return $query->result();
 	}

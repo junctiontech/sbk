@@ -25,8 +25,17 @@ class Api_model extends CI_Model {
 		}else{
 			$categoryID=$result[0]->categoriesID;
 		}
-		$categoryshopdata=array('categoriesID'=>$categoryID,'shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key);
+		
+		$query1=$this->db->get_where('s4k_category_to_shop',array('categoriesID'=>$categoryID,'shopID'=>$shopID));
+			$result1=$query1->result();
+			if(empty($result1)){
+			$categoryshopdata=array('categoriesID'=>$categoryID,'shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key);
 		$this->db->insert('s4k_category_to_shop',$categoryshopdata);
+			}else{
+				$this->db->where(array('categoriesID'=>$categoryID,'shopID'=>$shopID));
+				$this->db->update('s4k_category_to_shop',array('categoryShopUrl'=>$categoryShopUrl));
+			}
+		
 		return $categoryID;
 	}
 

@@ -75,6 +75,10 @@ class Landingpage extends CI_Controller {
 			
 			$this->data['products']=$products;
 			if(!empty($productkey)){
+				if(!empty($products)){ $productID=$products[0]->productsID;$shopID=$products[0]->shopID;
+				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
+				}
+				
 				$this->display ('frontend/ProductDetail');
 			}else{
 			$this->display ('frontend/Products');
