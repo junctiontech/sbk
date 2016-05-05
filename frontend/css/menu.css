@@ -39,7 +39,7 @@ ul.dc_mm-orange li a{
 	padding:20px 32px;
 	text-decoration:none;
 	text-shadow:1px 1px 1px #000;
-	text-transform:uppercase;
+	//text-transform:uppercase;
 	font-family:'Doppio One', sans-serif;
 	border-left:2px groove #636363;
 }
@@ -70,7 +70,14 @@ ul.dc_mm-orange li .sub-container{
 	position:absolute;
 	margin-top:10px;
 	box-shadow: 0px 0px 3px rgb(150, 150, 150);	
+	opacity: 0.9;
 }
+
+.staticcs {
+	    background-color: dimgrey;
+   // color: darkturquoise;
+}
+
 ul.dc_mm-orange li .sub{
 	padding:20px 20px 20px 10px;
 }
@@ -118,7 +125,7 @@ ul.dc_mm-orange li .sub li.mega-hdr a.mega-hdr-a{
 	margin-bottom:5px;
 	padding:5px 5px 5px 15px;
 	font-family:Arial, Helvetica, sans-serif;
-	text-transform:uppercase;
+	//text-transform:uppercase;
 }
 ul.dc_mm-orange li .sub li.mega-hdr a.mega-hdr-a:hover{
 	color: #FFF;

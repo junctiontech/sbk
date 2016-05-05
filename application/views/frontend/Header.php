@@ -32,7 +32,7 @@
 			    <div class="search_box ">
 				    <form action="<?=base_url();?>Landingpage/Product/search" method="get">
 					<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->
-				    	<input type="text" placeholder="Search for Products" Value="<?=isset($searchq)?$searchq:''?>" name="q" ><input type="hidden" name="c" value="all"/><input type="submit" value="SEARCH">
+				    	<input type="text" placeholder="Search.. Shop.. Earn" Value="<?=isset($searchq)?$searchq:''?>" name="q" ><input type="hidden" name="c" value="all"/><input type="submit" value="SEARCH">
 				    </form>
 			    </div>
 			    <div class="shopping_cart">
@@ -55,11 +55,19 @@
  </div>
 	<div class="menu">
 	  <ul id="dc_mega-menu-orange" class="dc_mm-orange">
+	
+	<li><a href="javascript:;">Deals</a>
+    
+  </li>
+  
+  <li class="staticcs"><a href="javascript:;">Buy >></a>
+    
+  </li>
 		
     <li><a href="javascript:;">Products</a>
     <ul>
 	<?php foreach($categories as $category){?>
-      <li><a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>"><?=$category->categoryName?></a>
+      <li><a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a>
         <ul>
           
           
@@ -69,38 +77,19 @@
     </ul>
   </li>
   <li><a href="javascript:;">Top Brands</a>
-    <ul>
-      <li><a href="javascript:;">Brand Name 1</a></li>
-      <li><a href="javascript:;">Brand Name 2</a></li>
-      
-    </ul>
+    
   </li>
-  <li><a href="javascript:;">Services</a>
-    <ul>
-      <li><a href="javascript:;">Service 1</a>
-        <ul>
-          <li><a href="javascript:;">Service Detail A</a></li>
-          <li><a href="javascript:;">Service Detail B</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;">Service 2</a>
-        <ul>
-          <li><a href="javascript:;">Service Detail C</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;">Service 3</a>
-        <ul>
-          <li><a href="javascript:;">Service Detail D</a></li>
-          <li><a href="javascript:;">Service Detail E</a></li>
-          <li><a href="javascript:;">Service Detail F</a></li>
-        </ul>
-      </li>
-      
-    </ul>
+  <li><a href="javascript:;">Services (coming soon)</a>
+    
   </li>
-  <li><a href="javascript:;">Travell</a></li>
+  
+  <li class="staticcs"><a href="javascript:;">Book >></a>
+    
+  </li>
+  
+  <li><a href="javascript:;">Flights</a></li>
    
- 
+ <li><a href="javascript:;">Hotels</a></li>
   <div class="clear"></div>
 </ul>
 </div>

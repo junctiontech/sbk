@@ -39,6 +39,8 @@ class Api extends CI_Controller {
 			if(!empty($categoryID))
 			{
 				$url = $data['availableVariants']['v0.1.0']['get'];
+				
+				do{
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
 				if(!empty($details))
@@ -73,7 +75,12 @@ class Api extends CI_Controller {
 													   $product['productBaseInfo']['productAttributes']['productBrand']));
 						$this->Api_model->insert_product($productdata);
 					}
+						$nextUrl = $details['nextUrl'];
+						$url=$nextUrl;
 				}
+				
+				}while(!empty($nextUrl));
+			
 			}
 		
 		}

@@ -39,7 +39,8 @@ class Landingpage_model extends CI_Model {
 			$this->db->where($extraquery);
 			$this->db->order_by('productPrice','ASC');
 		}elseif($searchqry){
-			$this->db->like($searchqry);
+			//.$this->db->like($searchqry);
+			$this->db->where("MATCH (`productName`) AGAINST ('{$searchqry}')");
 		}
 		if(empty($extraquery)){
 		$this->db->order_by('productsSortOrder','ASC');
@@ -47,7 +48,10 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('productPrice','ASC');
 		$this->db->group_by('productsUrlKey');
 		}
+		//$this->db->limit(2000);
+
 		$query=$this->db->get();
+		//echo $this->db->last_query();die;
 		return $query->result();
 	}
 	

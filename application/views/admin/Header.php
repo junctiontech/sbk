@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentallela Alela! | </title>
+    <title>Searchb4kharch</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -48,7 +48,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="<?=base_url();?>admin" class="site_title"><img src="<?=base_url();?>admin/images/searchb4kharch.png" alt="" /> </a>
+                        <a href="<?=base_url();?>admin" class="site_title">Searchb4kharch<!-- <img src="<?=base_url();?>admin/images/searchb4kharch.png" alt="" />--> </a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -70,17 +70,23 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
-                            <h3>General</h3>
+                            
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-th"></i>Categories<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="index.html">Dashboard</a>
-                                        </li>
-                                       
+                                        <li><a href="javascript:;">View category</a></li>
+                                        <li><a href="javascript:;">Create category</a></li>
+										<li><a href="javascript:;">Map category</a></li>
                                     </ul>
                                 </li>
                                 
-                                
+                                <li><a><i class="fa fa-list"></i>Product<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?=base_url();?>Product">View product</a></li>
+                                        <li><a href="<?=base_url();?>Product/Addproduct">Create product</a></li>
+										<li><a href="<?=base_url();?>Product/MappProduct">Map product</a></li>
+                                    </ul>
+                                </li>
                                 
                                
                             </ul>
@@ -106,21 +112,13 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="images/img.jpg" alt="">John Doe
+                                    <img src="<?=base_url();?>admin/images/img.jpg" alt="">hello admin
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="javascript:;">  Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">Help</a>
-                                    </li>
+                                    
+                                    
+                                    
                                     <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
@@ -132,55 +130,15 @@
                                     <span class="badge bg-green">6</span>
                                 </a>
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                                    
+                                    
                                     <li>
                                         <a>
                                             <span class="image">
                                         <img src="<?=base_url();?>admin/images/img.jpg" alt="Profile Image" />
                                     </span>
                                             <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where... 
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="<?=base_url();?>admin/images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where... 
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="<?=base_url();?>admin/images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                        Film festivals used to be do-or-die moments for movie makers. They were where... 
-                                    </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image">
-                                        <img src="<?=base_url();?>admin/images/img.jpg" alt="Profile Image" />
-                                    </span>
-                                            <span>
-                                        <span>John Smith</span>
+                                        <span>hello admin</span>
                                             <span class="time">3 mins ago</span>
                                             </span>
                                             <span class="message">
