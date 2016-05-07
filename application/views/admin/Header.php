@@ -72,7 +72,7 @@
                         <div class="menu_section">
                             
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-th"></i>Categories<span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-th"></i>Manage categories<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="javascript:;">View category</a></li>
                                         <li><a href="javascript:;">Create category</a></li>
@@ -80,11 +80,34 @@
                                     </ul>
                                 </li>
                                 
-                                <li><a><i class="fa fa-list"></i>Product<span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-list"></i>Manage product<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?=base_url();?>Product">View product</a></li>
                                         <li><a href="<?=base_url();?>Product/Addproduct">Create product</a></li>
 										<li><a href="<?=base_url();?>Product/MappProduct">Map product</a></li>
+                                    </ul>
+                                </li>
+								
+								 <li><a><i class="fa fa-list"></i>Landing page setting<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a><i class="fa fa-list"></i>Featured product<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu" style="display: none">
+											  <li><a href="<?=base_url();?>Product">Settings</a></li>
+											</ul>
+										</li>
+										
+										<li><a><i class="fa fa-list"></i>New product<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu" style="display: none">
+											  <li><a href="<?=base_url();?>Product">Settings</a></li>
+											</ul>
+										</li>
+										
+										<li><a><i class="fa fa-list"></i>LHS product<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu" style="display: none">
+											  <li><a href="<?=base_url();?>Product">Settings</a></li>
+											</ul>
+										</li>
+                                        
                                     </ul>
                                 </li>
                                 

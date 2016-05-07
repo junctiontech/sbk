@@ -45,7 +45,7 @@
 						<p>Rating:<img src="<?=base_url();?>frontend/images/rating.png"><span>[3 of 5 Stars]</span></p>
 					</div>
 					
-					<div style="padding-top:9px" class="button"><span><a href="javascript:;">Add to Cart</a></span></div>
+					<div style="padding-top:9px" class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
 					
 					<div class="clear"></div>
 				</div>

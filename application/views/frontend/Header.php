@@ -39,7 +39,7 @@
 					<div class="cart">
 						<a href="javascript:;" title="View my shopping cart" rel="nofollow">
 							<strong class="opencart"> </strong>
-								<span class="cart_title">Cart</span>
+								<span class="cart_title">wishlist</span>
 									
 							</a>
 						</div>
