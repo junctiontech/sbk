@@ -59,11 +59,16 @@ class Landingpage extends CI_Controller {
 		$app=$this->input->get('app');
 		$jsonarray=array();
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
-		
-		
+		$this->data['featureproduct']=$featureproduct=$this->Landingpage_model->get_inventory_data("feature_product");
+		$this->data['newproduct']=$newproduct=$this->Landingpage_model->get_inventory_data("new_product");
+		$this->data['lshproduct']=$lshproduct=$this->Landingpage_model->get_inventory_data("lhs_landing_page");
+		/* echo"<br>";print_r($categories);echo"<br>";echo"<br>";print_r($featureproduct);echo"<br>";echo"<br>";print_r($lshproduct);die; */
 		if($app=='true'){
 			if(!empty($categories)){
 				$jsonarray['categories']=$categories;
+				$jsonarray['featureproduct']=$featureproduct;
+				$jsonarray['newproduct']=$newproduct;
+				$jsonarray['lshproduct']=$lshproduct;
 				echo json_encode($jsonarray);
 			}else{
 				echo "No category found";

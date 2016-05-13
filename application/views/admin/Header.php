@@ -21,6 +21,8 @@
     <link href="<?=base_url();?>admin/css/custom.css" rel="stylesheet">
     <link href="<?=base_url();?>admin/css/icheck/flat/green.css" rel="stylesheet">
 
+	<!-- select2 -->
+    <link href="<?=base_url();?>admin/css/select/select2.min.css" rel="stylesheet">
 
     <script src="<?=base_url();?>admin/js/jquery.min.js"></script>
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/sb4k.png">
@@ -82,32 +84,17 @@
                                 
                                 <li><a><i class="fa fa-list"></i>Manage product<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?=base_url();?>Product">View product</a></li>
-                                        <li><a href="<?=base_url();?>Product/Addproduct">Create product</a></li>
-										<li><a href="<?=base_url();?>Product/MappProduct">Map product</a></li>
+                                        <li><a href="<?=base_url();?>Product.html">View product</a></li>
+                                        <li><a href="<?=base_url();?>Product/Addproduct.html">Create product</a></li>
+										<li><a href="<?=base_url();?>Product/MappProduct.html">Map product</a></li>
                                     </ul>
                                 </li>
 								
-								 <li><a><i class="fa fa-list"></i>Landing page setting<span class="fa fa-chevron-down"></span></a>
+								 <li><a><i class="fa fa-list"></i>Manage inventory<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a><i class="fa fa-list"></i>Featured product<span class="fa fa-chevron-down"></span></a>
-											<ul class="nav child_menu" style="display: none">
-											  <li><a href="<?=base_url();?>Product">Settings</a></li>
-											</ul>
-										</li>
+                                        <li><a href="<?=base_url();?>Inventory.html">Inventory consumption</a></li>
+                                        <li><a href="<?=base_url();?>Inventory/Createinventory.html">Create inventory</a></li>
 										
-										<li><a><i class="fa fa-list"></i>New product<span class="fa fa-chevron-down"></span></a>
-											<ul class="nav child_menu" style="display: none">
-											  <li><a href="<?=base_url();?>Product">Settings</a></li>
-											</ul>
-										</li>
-										
-										<li><a><i class="fa fa-list"></i>LHS product<span class="fa fa-chevron-down"></span></a>
-											<ul class="nav child_menu" style="display: none">
-											  <li><a href="<?=base_url();?>Product">Settings</a></li>
-											</ul>
-										</li>
-                                        
                                     </ul>
                                 </li>
                                 

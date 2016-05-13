@@ -20,6 +20,27 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function get_inventory_data($where=false){
+		$this->db->select('productImage,categoriesUrlKey,productsUrlKey,productName,productDescription,productAttributeLable,productAttributeValue,imageName,productImageTitle,productImageAltTag,productPrice,productShopUrl');
+		$this->db->from('s4k_inventory_consumption t1');
+		$this->db->join('s4k_inventory_master t2','t1.inventoryMasterID=t2.inventoryMasterID','left');
+		$this->db->join('s4k_inventory_type t3','t2.inventoryTypeID=t3.inventoryTypeID','left');
+		$this->db->join('s4k_products t4','t1.productID=t4.productsID','left');
+		$this->db->join('s4k_product_details t5','t4.productsID=t5.productsID','left');
+		$this->db->join('s4k_product_attribute t6','t4.productsID=t6.productsID','left');
+		$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID','left');
+		$this->db->join('s4k_product_images t8','t4.productsID=t8.productsID','left');
+		$this->db->join('s4k_product_image_details t9','t8.productImageID=t9.productImageID','left');
+		$this->db->join('s4k_product_price t10','t4.productsID=t10.productsID','left');
+		$this->db->join('s4k_categories t11','t4.categoriesID=t11.categoriesID','left');
+		$this->db->where(array('inventoryKey'=>$where,'t1.Status'=>'Active'));
+		$this->db->order_by('t1.sortOrder','DESC');
+		$this->db->order_by('t1.createdOn','DESC');
+		$this->db->group_by('productsUrlKey');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 	public function get_products($extraquery=false,$searchqry=false){
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){

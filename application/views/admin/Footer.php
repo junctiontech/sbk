@@ -45,6 +45,9 @@
     <!-- moris js -->
     <script src="<?=base_url();?>admin/js/moris/raphael-min.js"></script>
     <script src="<?=base_url();?>admin/js/moris/morris.js"></script>
+	<script src="<?=base_url();?>admin/js/common_functions.js"></script>
+	<!-- select2 -->
+        <script src="<?=base_url();?>admin/js/select/select2.full.js"></script>
     <script>
         $(function () {
             var day_data = [

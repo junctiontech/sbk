@@ -104,38 +104,17 @@
     		<div class="clear"></div>
     	</div>
 	      <div class="section group">
+		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic1.png" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="strike">$528.22</span><span class="price">$505.22</span></p>
-					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+					 <h2><?=$product->productName?> </h2>
+					
+					 <p><span class="price"><?=$product->productPrice?></span></p>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
+				     <div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="strike">$640.89</span><span class="price">$620.87</span></p>
-				     <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="strike">$240.66</span><span class="price">$220.97</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<img src="<?=base_url();?>frontend/images/feature-pic4.png" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="strike">$436.22</span><span class="price">$415.54</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
-				</div>
+				
+		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
 			<div class="content_bottom">
     		<div class="heading">
@@ -176,46 +155,17 @@
     		<div class="clear"></div>
     	</div>
 			<div class="section group">
+		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="javascript:;"><img src="<?=base_url();?>frontend/images/new-pic1.jpg" alt="" /></a>
-					 <div class="discount">
-					 <span class="percentage">40%</span>
-					</div>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="strike">$438.99</span><span class="price">$403.66</span></p>
-				     <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+					 <h2><?=$product->productName?> </h2>
+					
+					 <p><span class="price"><?=$product->productPrice?></span></p>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
+				     <div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/new-pic2.jpg" alt="" /></a>
-					 <div class="discount">
-					 <span class="percentage">22%</span>
-					</div>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="strike">$667.22</span><span class="price">$621.75</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span></div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="javascript:;"><img src="<?=base_url();?>frontend/images/feature-pic2.jpg" alt="" /></a>
-					<div class="discount">
-					 <span class="percentage">55%</span>
-					</div>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="strike">$457.22</span><span class="price">$428.02</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="<?=base_url();?>frontend/images/new-pic3.jpg" alt="" />
-				  <div class="discount">
-					 <span class="percentage">66%</span>
-					</div>
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <p><span class="strike">$643.22</span><span class="price">$457.88</span></p>
-				      <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="javascript:;" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button"><span><a href="javascript:;" class="details">Details</a></span></div>
-				</div>
+				
+		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
     </div>
  </div>
