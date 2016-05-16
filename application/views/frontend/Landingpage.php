@@ -1,5 +1,33 @@
 	<div class="header_bottom">
 		<div class="header_bottom_left">
+		<?php if(!empty($lshproduct)){ ?>
+			<div class="section group">
+				<div class="listview_1_of_2 images_1_of_2">
+					<div class="listimg listimg_2_of_1">
+						 <a href="javascript:;"> <img src="<?=base_url();?>frontend/images/pic4.png" alt="" /></a>
+					</div>
+				    <div class="text list_2_of_1">
+						<h2>Iphone</h2>
+						<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>
+						<div class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
+				   </div>
+			   </div>			
+				
+			</div>
+			<div class="section group">
+				<div class="listview_1_of_2 images_1_of_2">
+					<div class="listimg listimg_2_of_1">
+						 <a href="javascript:;"> <img src="<?=base_url();?>frontend/images/pic3.jpg" alt="" /></a>
+					</div>
+				    <div class="text list_2_of_1">
+						<h2>Acer</h2>
+						<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
+						<div class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
+				   </div>
+			   </div>			
+				
+			</div>
+			<?php }else{?>
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
@@ -44,6 +72,7 @@
 					</div>
 				</div>
 			</div>
+			<?php } ?>
 		  <div class="clear"></div>
 		</div>
 			 <div class="header_bottom_right_images">
