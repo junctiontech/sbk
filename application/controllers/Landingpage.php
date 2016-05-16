@@ -111,11 +111,28 @@ class Landingpage extends CI_Controller {
 		
 		//$products=$this->Landingpage_model->get_products($query,$searchqry);
 		
-		
+		//print_r($products);die;
 		
 		if($app=='true'){
 			if(!empty($products)){
-				$jsonarray['products']=$products;
+				 
+			foreach($products as $product){
+				
+				  
+				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
+				  'productsUrlKey'=>$product->productsUrlKey,
+				  'productName'=>$product->productName,
+				  'productAttributeLable'=>$product->productAttributeLable,
+				  'productAttributeValue'=>$product->productAttributeValue,
+				  'imageName'=>$product->imageName,
+				  'productImageTitle'=>$product->productImageTitle,
+				  'productImageAltTag'=>$product->productImageAltTag,
+				  'productPrice'=>$product->productPrice,
+				  'productShopUrl'=>$product->productShopUrl,
+				 // 'productDescription'=>$product->productDescription
+				 );
+			}
+				$jsonarray['products']=$apparray;
 				echo json_encode($jsonarray);
 			}else{
 				echo "No product found";
