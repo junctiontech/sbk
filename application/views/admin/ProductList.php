@@ -1,108 +1,122 @@
-<div class="">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Product List</h2>
-                                   
-                                    <div class="clearfix"></div>
-                                </div>
 
-                                <div class="x_content">
+<div class="message" style="margin-top:90px">
+<?php  if($this->session->flashdata('message_type')) { ?>
+<div class="row">
+<div class="alert alert-success">
+<strong><?=$this->session->flashdata('message')?></strong> 
+</div>
+</div>
+<?php }?>
+</div>
+                          <div class="well" style="overflow: auto">
+								
+								
+								<form role="form" class="form-horizontal form-label-left" novalidate  method="get" action="<?=base_url();?>product/fetch_product">
+								
+                                <div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Select Category to show product</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<select class="form-control" id="select" class="required" name="categoriesID">
+									  <option value="">Category</option>
+									
+									
+									<?php foreach($category as $categoryshow){?>
+										<option value="<?=isset($categoryshow->categoriesID) ?$categoryshow->categoriesID:''?>"
+										
+										<?php {if(!empty($id[0]->categoryName))
+											{  if($id[0]->categoryName==$categoryshow->categoryName)	
+											{  echo"selected"; }   }?>>
+										
+										<?=isset($categoryshow->categoryName)?$categoryshow->categoryName:''?>
+										</option>
+										<?php }}?>
+									</select>
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-12">
+									<button  id="submit" name="" type="submit" class="btn btn-success">Search</button>
+								</div>
+								
+							</div>
+						
+							</form>
+                          </div>
 
-                                    
-                                    <table class="table table-striped responsive-utilities jambo_table bulk_action">
-                                        <thead>
-                                            <tr class="headings">
-                                                <th>
-                                                    <input type="checkbox" id="check-all" class="flat">
-                                                </th>
-                                                <th class="column-title">Invoice </th>
-                                                <th class="column-title">Invoice Date </th>
-                                                <th class="column-title">Order </th>
-                                                <th class="column-title">Bill to Name </th>
-                                                <th class="column-title">Status </th>
-                                                <th class="column-title">Amount </th>
-                                                <th class="column-title no-link last"><span class="nobr">Action</span>
-                                                </th>
-                                                <th class="bulk-actions" colspan="7">
-                                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                            </th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                                <tr class="even pointer">
-                                    <td class="a-center "><input type="checkbox" class="flat" name="table_records" ></td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 23, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$7.45</td>
-                                    <td class=" last"><a href="#">View</a>
-                                                    </td>
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000039</td>
-                                                <td class=" ">May 23, 2014 11:30:12 PM</td>
-                                                <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                <td class="a-right a-right ">$741.20</td>
-                                                <td class=" last"><a href="#">View</a>
-                                                </td>
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000038</td>
-                                                <td class=" ">May 24, 2014 10:55:33 PM</td>
-                                                <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                                                </td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                <td class="a-right a-right ">$432.26</td>
-                                                <td class=" last"><a href="#">View</a>
-                                                </td>
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000037</td>
-                                                <td class=" ">May 24, 2014 10:52:44 PM</td>
-                                                <td class=" ">121000204</td>
-                                                <td class=" ">Mike Smith</td>
-                                                <td class=" ">Paid</td>
-                                                <td class="a-right a-right ">$333.21</td>
-                                                <td class=" last"><a href="#">View</a>
-                                                </td>
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="flat" name="table_records">
-                                                </td>
-                                                <td class=" ">121000040</td>
-                                                <td class=" ">May 24, 2014 11:47:56 PM </td>
-                                                <td class=" ">121000210</td>
-                                                <td class=" ">John Blank L</td>
-                                                <td class=" ">Paid</td>
-                                                <td class="a-right a-right ">$7.45</td>
-                                                <td class=" last"><a href="#">View</a>
-                                                </td>
-                                            </tr>
-                                            
-                                            </tbody>
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>Product List </h3>
+                        </div>
 
-                                    </table>
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="clearfix"></div>
 
-                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+                                
+                                <div class="x_content">
+
+                                    <div class="row">
+
+                                   <?php if(!empty($products)){?>
+										<?php foreach($products as $products){?>	
+                                        <div class="col-md-55">
+										
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; height:150px; display: block;" src="<?=isset($products->imageName)?$products->imageName:''?>" alt="image" />
+                                                  <div class="mask">
+						
+                                                           <div class="tools tools-bottom">
+                                                           
+                                                            <a href="<?=base_url();?>Product/edit/<?=isset($products->productsID)?$products->productsID:''?>"<i class="fa fa-pencil"></i></a>
+															
+                                                            <a href="<?=base_url();?>Product/delete/<?=isset($products->categoriesID)?$products->categoriesID:''?>/<?=isset($products->productsID)?$products->productsID:''?>"<i class="fa fa-times"></i></a>
+                                                        </div>
+														</div>
+                                                </div>
+                                                <div class="caption">
+                                                    <p><?=isset($products->productName)?$products->productName:''?></p>
+													  <p style="margin-top:10px">Price-<?=isset($products->productPrice)?$products->productPrice:''?></p>
+													  
+													<?php if(($products->productsStatus)=='Active'){?>
+													
+													<div class="col-md-3 col-sm-3 col-xs-12">
+														<a class="btn btn-small btn-danger show-tooltip" href="<?php echo base_url();?>Product/update/<?=isset($products->categoriesID)?$products->categoriesID:''?>/inactive/<?=isset($products->productsID)?$products->productsID:''?>">Inactive</a>
+													</div>
+													
+													<?php }else{ ?>
+													  
+													  <div class="col-md-3 col-sm-3 col-xs-12">
+													<a class="btn btn-small btn-primary show-tooltip" name="status" value="Active" href="<?php echo base_url();?>Product/update/<?=isset($products->categoriesID)?$products->categoriesID:''?>/active/<?=isset($products->productsID)?$products->productsID:''?>">Active</a>
+													</div>
+														 <?php  } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+										<?php }}else{ ?>
+									
+								
+											 <div class="col-sm-12 col-md-6 col-lg-6">
+											 <p>No products available</p>
+											 </div>
+									<?php	}
+									?>							  
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>

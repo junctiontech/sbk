@@ -18,6 +18,7 @@ class Api extends CI_Controller {
 	
 	public function flipkart()
 	{
+
 		$flipkart = new Flipkart(array('affiliateId'=>"rohitthak6", 'token'=>"9575b4e1913c4c11bc0f43b0a175622d",'response_type'=>"json"));
 		$home = $flipkart->api_home();
 		if($home==false)
@@ -73,7 +74,11 @@ class Api extends CI_Controller {
 						'productAttributeLable'=>array('Color','Product Brand'),
 						'productAttributeValue'=>array($product['productBaseInfo']['productAttributes']['color'],
 													   $product['productBaseInfo']['productAttributes']['productBrand']));
-						$this->Api_model->insert_product($productdata);
+													   
+													   
+						$this->Api_model->insert_new_product($productdata);
+							
+							
 					}
 						$nextUrl = $details['nextUrl'];
 						$url=$nextUrl;
@@ -85,9 +90,10 @@ class Api extends CI_Controller {
 		
 		}
 		
+		
 	}
 	
-	public function snapdeal()
+	public function snapdeal($value=false)
 	{
 		$snapdeal = new Snapdeal(array('affiliateId'=>"92451", 'token'=>"7b9f147b667d5c9dbc09288a353528",'response_type'=>"json"));
 		$home = $snapdeal->api_home();
@@ -144,13 +150,26 @@ class Api extends CI_Controller {
 						'productAttributeLable'=>array('Color','Product Brand'),
 						'productAttributeValue'=>array('',
 													   $product['brand']));
+													   
+						if(!empty($value))
+							{
 						$this->Api_model->insert_product($productdata);
+							}
+							else
+							{
+						$this->Api_model->insert_new_product($productdata);		
+							}
 					}
 				}
 			}
 		
 		}
 		
+	}
+	
+	public function api_call()
+	{
+		$this->snapdeal($value='First');
 	}
 			
 }
