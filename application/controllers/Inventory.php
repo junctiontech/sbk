@@ -158,8 +158,8 @@ class Inventory extends CI_Controller {
 						$this->session->set_flashdata('message', $this->config->item("index") . " Inventory Created Successfully!!");
 					}
 				}else{
-						$data=array('maxQuantity'=>$inventoryunit);
-						$where=array('inventoryMasterID'=>$inventoryMasterID,'updatedOn'=>$date);
+						$data=array('maxQuantity'=>$inventoryunit,'updatedOn'=>$date);
+						$where=array('inventoryMasterID'=>$inventoryMasterID);
 						$this->Inventory_model->insert_data('s4k_inventory_master',$data,$where);
 						$this->session->set_flashdata('message_type', 'success');
 						$this->session->set_flashdata('message', $this->config->item("index") . " Inventory Updated Successfully!!");
