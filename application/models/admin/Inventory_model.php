@@ -68,9 +68,13 @@ class Inventory_model extends CI_Model {
 		}
 	}
 	
-	public function get_data($select=false,$table=false,$where=false){
+	public function get_data($select=false,$table=false,$where=false,$extraqry=false){
+		//print_r($extraqry);die;
 		$this->db->select($select);
 		$this->db->from($table);
+		if($extraqry){
+			$this->db->join('s4k_products t2','t1.productID=t2.productsID','left');
+		}
 		if($where){
 			$this->db->where($where);
 		}

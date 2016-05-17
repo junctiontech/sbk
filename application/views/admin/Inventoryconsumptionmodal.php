@@ -4,7 +4,7 @@
                     </div>
 					
 					<form method="post" onsubmit="return(checkvalidation())" action="<?=base_url();?>Inventory/Insertinventryconsumption" class="form-horizontal form-label-left">
-					<input type="hidden" readonly name="inventoryMasterID" value="<?=isset($inventory[0]->inventoryConsumptionID)?$inventory[0]->inventoryConsumptionID:''?>">
+					<input type="hidden" readonly name="inventoryConsumptionID" value="<?=isset($inventory[0]->inventoryConsumptionID)?$inventory[0]->inventoryConsumptionID:''?>">
 <div class="modal-body">
 
 <div class="x_content">
@@ -29,7 +29,7 @@
 						  <select onchange="get_products_by_cat(this.value);fill();" id="categoryid" class="select2_group form-control" name="">
 							<option value="">Select Name</option>
 						   <?php  foreach($categories as $category){?>
-							<option <?php if(!empty($inventory[0]->inventoryMasterID)){ if($inventory[0]->inventoryMasterID==$inventorytype->inventoryMasterID){ echo"selected"; } } ?> value="<?=isset($category->categoriesID)?$category->categoriesID:''?>" ><?=isset($category->categoryName)?$category->categoryName:''?></option>
+							<option <?php if(!empty($inventory[0]->categoriesID)){ if($inventory[0]->categoriesID==$category->categoriesID){ echo"selected"; } } ?> value="<?=isset($category->categoriesID)?$category->categoriesID:''?>" ><?=isset($category->categoryName)?$category->categoryName:''?></option>
 							<?php } ?>
 						  </select>
 						</div>
@@ -40,7 +40,9 @@
                                     <div class="col-md-10 col-sm-10 col-xs-12">
                                     <select onchange="fill();" id="inventoryunit"  name="productID" class="select2_group form-control">
 									<option value=''>Select product</option>
-                                    
+                                    <?php  foreach($products as $product){?>
+							<option <?php if(!empty($inventory[0]->productID)){ if($inventory[0]->productID==$product->productsID){ echo"selected"; } } ?> value="<?=isset($product->productsID)?$product->productsID:''?>" ><?=isset($product->productName)?$product->productName:''?></option>
+							<?php } ?>
                                     </select>
                                     </div>
                     </div>

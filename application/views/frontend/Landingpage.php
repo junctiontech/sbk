@@ -1,33 +1,21 @@
 	<div class="header_bottom">
 		<div class="header_bottom_left">
-		<?php if(!empty($lshproduct)){ ?>
+		<?php if(!empty($lshproduct)){ $i=0; foreach($lshproduct as $lshproducted){ 
+		if($i==0){ ?>
 			<div class="section group">
+		<?php } ?>
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="javascript:;"> <img src="<?=base_url();?>frontend/images/pic4.png" alt="" /></a>
+						 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$lshproducted->categoriesUrlKey?>/<?=$lshproducted->productsUrlKey?>.html"><img src="<?=$lshproducted->imageName?>" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
-						<h2>Iphone</h2>
-						<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>
+						<h2><?=$lshproducted->productName?> </h2>
+						<p><span class="price"><?=$lshproducted->productPrice?></span></p>
 						<div class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
 				   </div>
 			   </div>			
-				
-			</div>
-			<div class="section group">
-				<div class="listview_1_of_2 images_1_of_2">
-					<div class="listimg listimg_2_of_1">
-						 <a href="javascript:;"> <img src="<?=base_url();?>frontend/images/pic3.jpg" alt="" /></a>
-					</div>
-				    <div class="text list_2_of_1">
-						<h2>Acer</h2>
-						<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						<div class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
-				   </div>
-			   </div>			
-				
-			</div>
-			<?php }else{?>
+				<?php  $i++;
+            	if($i>1){ echo"</div>"; $i=0;}	} }else{?>
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
@@ -135,7 +123,7 @@
 	      <div class="section group">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
 					 <h2><?=$product->productName?> </h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
@@ -186,7 +174,7 @@
 			<div class="section group">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
 					 <h2><?=$product->productName?> </h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
