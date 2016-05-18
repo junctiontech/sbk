@@ -124,7 +124,7 @@
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 maindiv">
 				<div class="display_img">
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" style="height:100px;width:100%" alt=""  /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" style="height:100px;width:75%" alt=""  /></a>
 					 </div>
 					  <div class="detail">
 					 <h2><?=$product->productName?> </h2>
