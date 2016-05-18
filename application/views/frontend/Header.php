@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="<?=base_url();?>frontend/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/menu.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="<?=base_url();?>frontend/css/custom.css" rel="stylesheet" type="text/css" media="all"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="<?=base_url();?>frontend/js/script.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/jquery-1.7.2.min.js"></script> 
