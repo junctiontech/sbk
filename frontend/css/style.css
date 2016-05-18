@@ -607,6 +607,13 @@ p.note{
 	position:relative; 
 	height:400px;
 }
+.similar_images_1_of_4 {
+	width: 70.8%;
+	padding:1.5%;
+	text-align:center;
+	position:relative; 
+	height:400px;
+}
 .images_1_of_4  img{
 	max-width:100%;
 }
