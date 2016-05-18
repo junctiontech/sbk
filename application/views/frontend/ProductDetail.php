@@ -74,7 +74,7 @@
 					<div class="section group">
 		   <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
 				<div class="grid_1_of_4 similar_images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>"style="height:250px;width:75%" alt="" /></a>
 					 <h2><?=$similarproducted->productName?> </h2>
 					
 					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>
