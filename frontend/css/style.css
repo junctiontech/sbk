@@ -608,11 +608,20 @@ p.note{
 	height:400px;
 }
 .similar_images_1_of_4 {
-	width: 70.8%;
+	width: 50.8%;
 	padding:1.5%;
 	text-align:center;
 	position:relative; 
 	height:400px;
+}
+.similar_images_1_of_4 .button a.cart-button{
+	padding:7px 5px 7px 38px; 
+}
+.similar_images_1_of_4 .button{
+	margin-top:.3em;
+	line-height:1.9em;
+	float:left;
+	width:49%;
 }
 .images_1_of_4  img{
 	max-width:100%;
