@@ -118,7 +118,6 @@ class Landingpage extends CI_Controller {
 				 
 			foreach($products as $product){
 				
-				  
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'productName'=>$product->productName,
@@ -144,8 +143,14 @@ class Landingpage extends CI_Controller {
 			
 			$this->data['products']=$products;
 			if(!empty($productkey)){
-				if(!empty($products)){ $productID=$products[0]->productsID;$shopID=$products[0]->shopID;
+				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
+				$searchquery1="categoriesUrlKey: $categorykey";
+				//$searchquery1.="AND productName: $productName";
+				$searchquery1.="AND productsUrlKey: $productkey";
+				$index = Zend_Search_Lucene::open($this->search_index);
+				Zend_Search_Lucene::setResultSetLimit(5);
+				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
 				}
 				
 				$this->display ('frontend/ProductDetail');

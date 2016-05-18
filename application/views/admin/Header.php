@@ -74,11 +74,12 @@
                         <div class="menu_section">
                             
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-th"></i>Manage categories<span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-th"></i>Categories<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="javascript:;">View category</a></li>
-                                        <li><a href="javascript:;">Create category</a></li>
-										<li><a href="javascript:;">Map category</a></li>
+                                        <li><a href="<?=base_url();?>Categories">View category</a></li>
+                                        <li><a href="<?=base_url () ;?>Categories/AddCategories">Create category</a></li>
+										<li><a href="<?=base_url () ; ?>Categories/MapCategories">Map category</a></li>
+										<li><a href="<?=base_url(); ?>Categories/Brand">Brand</a></li>
                                     </ul>
                                 </li>
                                 
@@ -97,7 +98,12 @@
 										
                                     </ul>
                                 </li>
-                                
+                                <li><a><i class="fa fa-list"></i>Shop<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?=base_url();?>Setting">View Shop</a></li>
+
+                                    </ul>
+                                </li>
                                
                             </ul>
                         </div>

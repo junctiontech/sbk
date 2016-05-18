@@ -66,12 +66,22 @@
 	    </div>				
 	</div>
 				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
-					<ul>
-					<?php foreach($categories as $category){?>
-				      <li><a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>"><?=$category->categoryName?></a></li>
-				     <?php } ?>
-    				</ul>
+					<h2>Similar Product</h2>
+					
+					<div class="section group">
+		   <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
+				<div class="grid_1_of_4 images_1_of_4">
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
+					 <h2><?=$similarproducted->productName?> </h2>
+					
+					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
+				     
+				</div>
+				<div class="clear"></div>
+		  <?php } }else{ echo"No product Found!!";}?>
+			</div>
+    				
     				<div class="subscribe">
     					<h2>Newsletters Signup</h2>
     						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
