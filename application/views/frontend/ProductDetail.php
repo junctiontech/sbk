@@ -4,33 +4,37 @@
     	<div class="content_top">
     		<div class="back-links">
     		<p><a href="<?=base_url();?>">Home</a> >> <a href="./"><?=isset($categorykey)?$categorykey:''?> </a></p>
+			
     	    </div>
     		
     		
     		<div class="clear"></div>
+			<h2 style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>
     	</div>
     	<div class="section group">
-				<div class="cont-desc span_1_of_2">				
-					<div class="grid images_3_of_2">
-						<img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>" />
+				<div class="cont-desc span_1_of_2 ">	
+								
+					<div class="grid images_3_of_2 pro_img">
+					
+						<img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"style="height:250px;width:75%" />
 					</div>
 				<div class="desc span_3_of_2">
-					<h2><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>
-					<p><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>					
-					<div class="price">
-						<p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p>
-						<img style="height: 80px;width: 180px;" src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
-					</div>
+					
+						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
+						
 					<?php if(!empty($othershopprices)){ ?>
 					<div class="available">
 						<p>Available Options :</p>
 					<ul>
 					<?php foreach($othershopprices as $othershopprice){?>
-						<li><img style="height: 100px;width: 180px;" src="<?=base_url();?>frontend/images/<?=$othershopprice->shop_image?>"><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>price:200</li>
+						<li><img src="<?=base_url();?>frontend/images/<?=$othershopprice->shop_image?>"><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>price:200</li>
 					<?php } ?>
 					</ul>
 					</div>
 					<?php } ?>
+					
+					<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	
+			
 					<div class="share">
 						<p>Share Product :</p>
 						<ul>
@@ -45,10 +49,9 @@
 						<p>Rating:<img src="<?=base_url();?>frontend/images/rating.png"><span>[3 of 5 Stars]</span></p>
 					</div>
 					
-					<div style="padding-top:9px" class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
-					
 					<div class="clear"></div>
 				</div>
+				<div style="padding-top:45px" class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
 				
 			</div>
 			
