@@ -43,22 +43,114 @@
     		<div class="clear"></div>
     	</div>
 	      <div class="section group">
-		   <?php if(!empty($products)){ foreach($products as $product){?>
-				<div class="grid_1_of_4 images_1_of_4 ">
-			
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
-					
-					
-					 <h2><?=$product->productName?> </h2>
+		  <div class="filter_panel">
+		  <h3>Refine Your Search</h3>
+		  <hr>
+		  <div class="Price">
+		  <h3> Price</h3>
 
+		  </div>
+		   <div class="checkbox chk">
+					<label>
+						<input type="checkbox" value="">Rs 5000-Rs 10000
+					</label>
+					<label>
+						<input type="checkbox" value=""> Rs 10000-Rs 20000
+					</label>
+					<label>
+						<input type="checkbox" value=""> Rs 20000-Rs 30000
+					</label>
+					<label>
+						<input type="checkbox" value=""> Rs 30000-Rs 50000
+					</label>
+					<label>
+						<input type="checkbox" value=""> Rs 50000-Rs 75000
+					</label>
+					<label>
+						<input type="checkbox" value=""> Rs 75000-Rs 100000
+					</label>
+					
+					</div>
+			<hr>
+			<div class="price">
+			<h3>Brand</h3>
+			<div class="chk">
+			<input type="text" name="brand" placeholder="Brand">
+			</div>
+			</div>
+			<hr>
+		<div class="Price">
+		  <h3> Type</h3>
+
+		  </div>
+		   <div class="checkbox chk">
+					<label>
+						<input type="checkbox" value="">LED
+					</label>
+					<label>
+						<input type="checkbox" value=""> PLASMA
+					</label>
+					<label>
+						<input type="checkbox" value=""> OLED
+					</label>
+				
+					
+					</div>
+		  
+		  	<div class="Price">
+		  <h3> Features</h3>
+
+		  </div>
+		   <div class="checkbox chk">
+					<label>
+						<input type="checkbox" value="">3D
+					</label>
+					<label>
+						<input type="checkbox" value=""> SMART
+					</label>
+					<label>
+						<input type="checkbox" value=""> CURVED
+					</label>
+				
+					
+					</div>
+		 
+		  	<div class="Price">
+		  <h3> Display</h3>
+
+		  </div>
+		   <div class="checkbox chk">
+					<label>
+						<input type="checkbox" value="">HD
+					</label>
+					<label>
+						<input type="checkbox" value="">FULL HD
+					</label>
+					<label>
+						<input type="checkbox" value=""> 4K ultra HD
+					</label>
+				
+					
+					</div>
+</div>
+		  <div class="product_panel">
+		   <?php if(!empty($products)){ foreach($products as $product){?>
+				<div class="grid_1_of_4 images_1_of_4">
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+					 <h2><?=$product->productName?> </h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
-					
-					  <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>">Details</a></span></div>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to Cart</a></span> </div>
+				     <div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
+					 <div class="checkbox">
+					<label>
+						<input type="checkbox" value=""> Add to Compare
+					</label>
+					</div>
 				</div>
 				
 		  <?php } }else{ echo"No product Found!!";}?>
+			</div>
 			</div>
 			
 			
