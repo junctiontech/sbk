@@ -3,6 +3,7 @@
 <title>Searchb4kharch</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="<?=base_url();?>admin/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=base_url();?>frontend/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/menu.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/frontend.css" rel="stylesheet" type="text/css" media="all"/>
