@@ -155,7 +155,7 @@ class Product extends CI_Controller {
 	public function MappProduct($url=false)
 	{
 		$this->data['category']=$this->Product_model->get_categories();
-		$this->display ('admin/MappProduct');
+		$this->display ('admin/Mappproduct');
 		
 	}
 	

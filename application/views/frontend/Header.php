@@ -3,8 +3,10 @@
 <title>Searchb4kharch</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="<?=base_url();?>admin/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=base_url();?>frontend/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/menu.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="<?=base_url();?>frontend/css/frontend.css" rel="stylesheet" type="text/css" media="all"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="<?=base_url();?>frontend/js/script.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/jquery-1.7.2.min.js"></script> 
@@ -45,9 +47,8 @@
 						</div>
 			      </div>
 	   
-			
-		   <div class="login">
-		   	   <span><a href="javascript:;"><img src="<?=base_url();?>frontend/images/login.png" alt="" title="login"/></a></span>
+			 <div class="login">
+		   	   <span><a href="<?=base_url();?>Login" style="color:black">SignUp/Login</a></span>
 		   </div>
 		 <div class="clear"></div>
 	 </div>

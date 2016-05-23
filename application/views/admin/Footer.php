@@ -34,6 +34,7 @@
 
     <script src="<?=base_url();?>admin/js/custom.js"></script>
 
+    <script src="<?=base_url();?>admin/js/sbk.js"></script>
     <!-- image cropping -->
     <script src="<?=base_url();?>admin/js/cropping/cropper.min.js"></script>
     <script src="<?=base_url();?>admin/js/cropping/main.js"></script>
