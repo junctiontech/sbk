@@ -9,7 +9,7 @@ class Setting extends CI_Controller
 			$this->data[]="";
 			$this->data['url'] = base_url();	
 			if (!$this->session->userdata('searchb4kharchadmin')){ $this->session->set_flashdata('category_error_login', " Your Session Is Expired!! Please Login Again. "); redirect("admin");}
-			$this->userinfo=$this->session->userdata('searchb4kharchadmin');
+			$this->userinfo=$this->data['userinfo']=$this->session->userdata('searchb4kharchadmin');
 			$this->load->model('admin/Setting_Model');
 		}
 			public function display($template_file)

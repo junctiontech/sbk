@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller {
 		$timezone = "Asia/Calcutta";
 		if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
 		if (!$this->session->userdata('searchb4kharchadmin')){ $this->session->set_flashdata('category_error_login', " Your Session Is Expired!! Please Login Again. "); redirect("admin");}
-		$this->userinfo=$this->session->userdata('searchb4kharchadmin');
+		$this->userinfo=$this->data['userinfo']=$this->session->userdata('searchb4kharchadmin');
 		//$this->load->model('frontend/Landingpage_model');
 	}
 
