@@ -46,7 +46,7 @@
 		   <?php if(!empty($products)){ foreach($products as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 			
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" style="height:150px;width:100%" alt="" /></a>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
 					
 					
 					 <h2><?=$product->productName?> </h2>
@@ -55,7 +55,7 @@
 					 <p><span class="price"><?=$product->productPrice?></span></p>
 					
 					  <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" >Details</a></span></div>
+				     <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>">Details</a></span></div>
 				</div>
 				
 		  <?php } }else{ echo"No product Found!!";}?>
