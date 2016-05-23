@@ -127,7 +127,7 @@
 						<input type="checkbox" value="">FULL HD
 					</label>
 					<label>
-						<input type="checkbox" value=""> 4K ultra HD
+						<input type="checkbox" value="1"> 4K ultra HD
 					</label>
 				
 					
