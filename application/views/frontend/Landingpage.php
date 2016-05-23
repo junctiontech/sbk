@@ -122,16 +122,16 @@
     	</div>
 	      <div class="section group">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4 maindiv">
-				<div class="display_img">
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" style="height:100px;width:75%" alt=""  /></a>
-					 </div>
-					  <div class="detail">
+				<div class="grid_1_of_4 images_1_of_4 ">
+				
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+				
+
 					 <h2><?=$product->productName?> </h2>
-						</div>
-					 <p><span class="price"><?=$product->productPrice?></span></p>
-					  <div class="button" style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
-				     <div class="button" style="width:100%"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
+					
+					 <p><span class=""><?=$product->productPrice?></span></p>
+					  <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
+				     <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" >Details</a></span></div>
 				</div>
 				
 		  <?php } }else{ echo"No product Found!!";}?>
@@ -176,17 +176,16 @@
     	</div>
 			<div class="section group">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4 maindiv">
-					<div class="display_img">
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" style="height:100px;width:100%" alt="" /></a>
-					 </div>
-					 <div class="detail">
+				<div class="grid_1_of_4 images_1_of_4 ">
+					
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
+				
 					 <h2><?=$product->productName?> </h2>
-					</div>
-					 <p><span class="price"><?=$product->productPrice?></span></p>
+					
+					 <p><span class=""><?=$product->productPrice?></span></p>
 					 
-					  <div class="button"style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?> " class="cart-button">Add to wishlist</a></span> </div>
-				     <div class="button" style="width:100%"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?> " class="cart-button">Add to wishlist</a></span> </div>
+				     <div class="button" style="width:100%"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>">Details</a></span></div>
 				
 				</div>
 				
