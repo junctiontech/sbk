@@ -46,9 +46,8 @@
 						</div>
 			      </div>
 	   
-			
-		   <div class="login">
-		   	   <span><a href="javascript:;"><img src="<?=base_url();?>frontend/images/login.png" alt="" title="login"/></a></span>
+			 <div class="login">
+		   	   <span><a href="<?=base_url();?>Login" style="color:black">SignUp/Login</a></span>
 		   </div>
 		 <div class="clear"></div>
 	 </div>

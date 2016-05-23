@@ -1,0 +1,181 @@
+.maindiv{
+	
+	max-height:400px;
+	width:180px;
+}
+.maindiv  h2 {
+	color: #CC3636;
+	font-family: 'Monda', sans-serif;
+	font-size:10px;
+	font-weight : normal;
+}
+.maindiv  p {
+	font-size:14px;
+	padding:0.4em 0;
+	color: #333;	
+}
+
+.detail{
+	max-height:80px;
+	width:100%;
+}
+.display_img{
+	height:150px;
+	width:100%;
+}
+
+.maindiv_pro{
+	max-height:350px;
+	max-width:150px;
+}
+.maindiv_pro  h2 {
+	color: #CC3636;
+	font-family: 'Monda', sans-serif;
+	font-size:12px;
+	font-weight : normal;
+
+}
+.maindiv_pro p {
+	font-size:14px;
+	padding:0.4em 0;
+	color: #333;	
+}
+.detail_pro{
+	max-height:100px;
+	width:100%;
+	margin-top:5px;
+}
+.display_img_pro{
+	max-height:150px;
+	width:100%;
+}
+.price{
+	margin-top:5px;
+}
+.pro_img{
+	margin-top:30px;
+}
+.span_3_of_2 .button{
+	float:left;
+}
+.share{
+	margin-top:30px;
+}
+.similar_images_1_of_4 {
+	width: 70.8%;
+	padding:1.5%;
+	text-align:center;
+	position:relative; 
+	height:400px;
+}
+.similar_images_1_of_4 .button a.cart-button{
+	padding:7px 5px 7px 38px; 
+}
+.similar_images_1_of_4 .button{
+	margin-top:.3em;
+	line-height:1.9em;
+	float:left;
+	width:49%;
+}
+.similar_images_1_of_4  h2 {
+	color: #CC3636;
+	font-family: 'Monda', sans-serif;
+	font-size:14px;
+	font-weight : normal;
+}
+
+.similar_images_1_of_4 p {
+	font-size:14px;
+	padding:0.4em 0;
+	color: #333;	
+}
+.loginpanel{
+	height:500px;
+	background-color:white;
+}
+ .first_label h3{
+	font-size:22px;
+	font-family:Times New Roman;
+	margin-top:40px;
+	margin-bottom:10px;
+}
+.form-log{
+	display:block;
+	width:100%;
+	height:50px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.42857143;
+	background-color:#fff;
+	background-image:none;
+	border:1px solid #DDE2E8;
+	border-radius:4px;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition:border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s
+
+}
+.form-input{
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:10px;
+}
+.main{
+	
+	background-color:#f1f1f1;
+}
+.login_button{
+	color:white; background-color:black;border-color:black;margin-left:10px;
+}
+.signup_button{
+	color:white; background-color:black;border-color:black;}
+.social{
+	margin-left:30px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.lg_button{
+margin-top:30px;
+}
+.lg_button p{
+font-size:15px;
+margin-top:12px;
+}
+.center{
+margin-top:60px;
+font-family:tahoma;
+}
+.sign{
+margin-top:60px;
+}
+.signup_form{
+background-color:#f1f1f1;
+}
+.form_content{
+	
+background-color:white;
+height:600px;
+
+}
+.sign_up{
+margin-top:50px;
+	}
+	
+.form_content ul{
+margin-top:10px;
+font-size:19px;
+		
+	}
+.form_content li{
+	margin-top:10px;
+	margin-bottom:10px;
+	list-style:none;
+	font-size:14px;
+	color:grey;
+}
+.form_content p{
+	font-size:20px;
+	margin-top:80px;
+	text-align:center;
+	color:Purple;
+}
