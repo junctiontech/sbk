@@ -48,6 +48,7 @@
     <script src="<?=base_url();?>admin/js/moris/morris.js"></script>
 	<script src="<?=base_url();?>admin/js/common_functions.js"></script>
 	<script src="<?=base_url();?>admin/js/categories.js"></script>
+	<script src="<?=base_url();?>admin/js/sbk.js"></script>
 	<!-- select2 -->
         <script src="<?=base_url();?>admin/js/select/select2.full.js"></script>
     <script>

@@ -12,7 +12,23 @@
        <input  class="form-control col-md-6 col-xs-12"  name="brandName" type="text" required="required" value="<?php echo isset($brand[0]->brandName)?$brand[0]->brandName:'';?> ">
      </div>
   </div>
-  
+  <div class="item form-group">
+   <label class="control-label col-md-2 col-sm-10 col-xs-12">Category Name</label>
+   <div class="col-md-8 col-sm-4 col-xs-12">
+<select class="form-control" name="categoriesID">
+<option value=" ">Choose option</option>
+<?php foreach($brand_name as $data) {?>
+<option value="<?=$data->categoriesID ; ?>" <?php if (!empty($brand[0]->categoriesID)){
+	if ($brand[0]->categoriesID == $data->categoriesID)
+	{
+		echo 'selected';
+	}
+}?>><?=$data->categoryName; ?></option>
+<?php } ?>
+ </select>
+</div>
+</div>
+  </div>  
   <div class="item form-group">
    <label class="control-label col-md-2 col-sm-10 col-xs-12">Brand Key<span class="required">*</span></label>
     <div class="col-md-8 col-sm-4 col-xs-12">
@@ -59,6 +75,10 @@
 <button type="submit" class="btn btn-primary">Save</button>
 </div>
 </form>
-
-					
-		
+<script>
+$(document).on('hidden.bs.modal', function (e) {
+		var target = $(e.target);
+        target.removeData('bs.modal')
+              .find(".modal-content").html('');
+    });
+</script>

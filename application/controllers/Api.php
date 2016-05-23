@@ -40,15 +40,19 @@ class Api extends CI_Controller {
 			if(!empty($categoryID))
 			{
 				$url = $data['availableVariants']['v0.1.0']['get'];
-				
+				$i=1;
+				echo $key;echo"<br>";
 				do{
+					echo $i;echo"<br>";
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
 				if(!empty($details))
 				{
+					
 					$products = $details['productInfoList'];
+					
 					foreach($products as $product)
-					{
+					{ 
 						$productdata=array();
 						$productdata=array('categoriesID'=>$categoryID,
 						'subCategoriesID'=>0,
@@ -83,7 +87,8 @@ class Api extends CI_Controller {
 						$nextUrl = $details['nextUrl'];
 						$url=$nextUrl;
 				}
-				
+				/* if($i==2){ echo $nextUrl;die; }*/
+				$i++; 
 				}while(!empty($nextUrl));
 			
 			}
@@ -117,10 +122,15 @@ class Api extends CI_Controller {
 			if(!empty($categoryID))
 			{
 				$url = $data['listingVersions']['v1']['get'];
+				$i=1;
+				echo $key;echo"<br>";
+				do{
+					echo $i;echo"<br>";
 				$details = $snapdeal->call_url($url);
 				$details = json_decode($details, TRUE);
 				if(!empty($details))
 				{
+					echo $product['title'];echo"<br>";
 					$products = $details['products'];
 					
 					foreach($products as $product)
@@ -160,7 +170,13 @@ class Api extends CI_Controller {
 						$this->Api_model->insert_new_product($productdata);		
 							}
 					}
+					
+					$nextUrl = $details['nextUrl'];
+					$url=$nextUrl;
+					
 				}
+				$i++;
+				}while(!empty($nextUrl));
 			}
 		
 		}

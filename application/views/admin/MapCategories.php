@@ -54,7 +54,7 @@
 												<?php if(!empty($min)){ foreach($min as $rt) { ?>
 													<option value="<?=$rt->categoryToShopID?>" <?php if(!empty($categoriestoshopID)){
 														if($categoriestoshopID==$rt->categoryToShopID){ echo"selected";}
-													}?>><?=$rt->categoryKey ;?></option>
+													}?>><?=$rt->categoryUrl ;?></option>
 												<?php } } ?>
 												</select>
                                             </div>
@@ -73,10 +73,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>										
-								<?php foreach($fetch as $data){ ?>
+								<?php foreach($tablefetch as $data){ ?>
                                             <tr class="even pointer">
 											  <td class=" " ><?php echo $data->categoryName ;?></td>
-											   <td class=" " ><?php echo $data->categoryKey ; ?></td>
+											   <td class=" " ><?php echo $data->categoryUrl ; ?></td>
 											   <td class=" "><?php echo $data->shopName ; ?></td>
 												<td class=" "><a href="<?=base_url();?>Categories/MapCategories/<?php echo $data->categoryToShopID; ?>">Edit</a></td>
 											</tr>

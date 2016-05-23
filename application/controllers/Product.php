@@ -9,7 +9,8 @@ class Product extends CI_Controller {
 		$this->data['url'] = base_url();
 		$timezone = "Asia/Calcutta";
 		if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
-		$this->userinfo=$this->session->userdata('searchb4kharch');
+		if (!$this->session->userdata('searchb4kharchadmin')){ $this->session->set_flashdata('category_error_login', " Your Session Is Expired!! Please Login Again. "); redirect("admin");}
+		$this->userinfo=$this->data['userinfo']=$this->session->userdata('searchb4kharchadmin');
 		$this->load->model('admin/Product_model');
 		$this->languageID='1';
 
@@ -68,7 +69,7 @@ class Product extends CI_Controller {
 	public function edit($productid=false)
 	{
 		$this->data['updatedata']=$this->Product_model->get_product_update($productid);
-		print_r($this->data['updatedata']);die;
+		//print_r($this->data['updatedata']);die;
 		$this->display ('admin/Addproduct');
 	}
 	public function insert_product()

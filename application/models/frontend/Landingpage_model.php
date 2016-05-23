@@ -9,6 +9,16 @@ class Landingpage_model extends CI_Model {
 		$this->languageID   = 1;
 	}
 	
+	public function get_topbrand(){
+		$this->db->select('t1.categoriesID,brandName,brandKey,categoriesUrlKey');
+		$this->db->from('s4k_brand t1');
+		$this->db->join('s4k_categories t2','t1.categoriesID=t2.categoriesID','left');
+		$this->db->where(array('brandStatus'=>'Active'));
+		$this->db->order_by('brandSortOrder','ASC');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 	public function get_categories(){
 		$this->db->select('t1.categoriesID,categoriesUrlKey,categoryName');
 		$this->db->from('s4k_categories t1');
@@ -41,7 +51,7 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
-	public function get_products($extraquery=false,$searchqry=false){
+	public function get_products($extraquery=false,$searchqry=false,$where=false){
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
@@ -62,6 +72,9 @@ class Landingpage_model extends CI_Model {
 		}elseif($searchqry){
 			//.$this->db->like($searchqry);
 			$this->db->where("MATCH (`productName`) AGAINST ('{$searchqry}')");
+		}
+		if($where){
+			$this->db->where($where);
 		}
 		if(empty($extraquery)){
 		$this->db->order_by('productsSortOrder','ASC');
