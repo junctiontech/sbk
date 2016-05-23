@@ -7,7 +7,9 @@ class Categories extends CI_Controller
 		{
 			parent::__construct();		
 			$this->data[]="";
-			$this->data['url'] = base_url();	
+			$this->data['url'] = base_url();
+			if (!$this->session->userdata('searchb4kharchadmin')){ $this->session->set_flashdata('category_error_login', " Your Session Is Expired!! Please Login Again. "); redirect("admin");}
+			$this->userinfo=$this->session->userdata('searchb4kharchadmin');
 			$this->load->model('admin/Categories_model');
 		}	
 		public function display($template_file)
@@ -82,7 +84,7 @@ class Categories extends CI_Controller
 			$ar='';
 			$table = 's4k_category_details';
 			$this->data['categories']= $this->Categories_model->Categories_name($table);
-			$this->data['fetch'] = $this->Categories_model->Fatch_mapcategories();
+			$this->data['tablefetch'] = $this->Categories_model->Fatch_mapcategories();
 			if (!empty($categoriestoshopID))
 			{ 		$this->data['categoriestoshopID']=$categoriestoshopID;
 					$categoriestoshopID = array ('categoryToShopID'=>$categoriestoshopID);
@@ -105,7 +107,7 @@ class Categories extends CI_Controller
 			{
 				foreach($category as $ct)
 				{
-					echo "<option value ='".$ct->categoryToShopID."')>".$ct->categoryKey."</option>";
+					echo "<option value ='".$ct->categoryToShopID."')>".$ct->categoryUrl."</option>";
 				}
 			}
 			else
@@ -146,6 +148,9 @@ class Categories extends CI_Controller
 			$table = 's4k_brand';
 			$this->data['brand']= $this->Categories_model->Brand_fatch($table, $brandID);
 		}
+			$table= 's4k_category_details';
+			$this->data['brand_name'] = $this->Categories_model->load_category($table);
+			
 			$this->load->view('admin/Addbrand', $this->data);
 		}
 		public function brand_Add ()
@@ -153,6 +158,7 @@ class Categories extends CI_Controller
 			$brandID = $this->input->POST('brandID');
 			$data = array (
 							'brandName' => $this->input->post('brandName'),
+							'categoriesID' => $this->input->post('categoriesID'),
 							'brandKey' => $this->input->post('brandKey'),
 							'brandStatus' => $this->input->post('brandStatus'),
 							'brandSortOrder' => $this->input->post('brandSortOrder')
@@ -184,4 +190,3 @@ class Categories extends CI_Controller
 		}
 	
 }
-

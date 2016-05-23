@@ -55,7 +55,7 @@ class Categories_model extends CI_Model {
 	}
 	public function Categories_Shop ($table, $categoriesID)
 	{		
-		$this->db->where("MATCH (`categoryKey`) AGAINST ('{$categoriesID}')");
+		$this->db->where("MATCH (`categoryUrl`) AGAINST ('{$categoriesID}')");
 		$where = ['categoriesID' => ''];
 		$this->db->where($where);
 		$category= $this->db->get($table);
@@ -68,18 +68,18 @@ class Categories_model extends CI_Model {
 	}
 	public function Fatch_mapcategories()
 	 {
-		 $this->db->select('t1.categoryToShopID, t1.categoryKey, t2.categoryName, t3.shopName');
+		 $this->db->select('t1.categoryToShopID, t1.categoryUrl`, t2.categoryName, t3.shopName');
 		 $this->db->from('s4k_category_to_shop  t1');
 		 $this->db->join('s4k_category_details t2','t1.categoriesID=t2.categoriesID', 'left');
 		 $this->db->join('s4k_shops t3', 't1.shopID=t3.shopID','left');
 		 $where = array('t1.categoriesID !=' => '' );
 		 $this->db->where($where);
-		 $fetch = $this->db->get();
-		 return $fetch->result();
+		 $tablefetch = $this->db->get();
+		 return $tablefetch->result();
 	}
 	 public function map_fatch($categoriesID)
 	{
-		$this->db->select('t1.categoryToShopID,t1.categoryKey, t2.categoriesID,categoryName');
+		$this->db->select('t1.categoryToShopID,t1.categoryUrl, t2.categoriesID,categoryName');
 		$this->db->from('s4k_category_to_shop t1');
 		$this->db->join('s4k_category_details t2','t1.categoriesID=t2.categoriesID','left');
 		$this->db->where ($categoriesID);
@@ -89,9 +89,9 @@ class Categories_model extends CI_Model {
 	
 	public function map_category($data5)
 	{   
-		$this->db->select('t1.categoryToShopID, t1.categoriesID,categoryKey');
+		$this->db->select('t1.categoryToShopID, t1.categoriesID,categoryUrl');
 		$this->db->from('s4k_category_to_shop t1');
-		$this->db->where("MATCH (`categoryKey`) AGAINST ('{$data5}')");
+		$this->db->where("MATCH (`categoryUrl`) AGAINST ('{$data5}')");
 		$where = array ('categoriesID' => '' );
 		$this->db->where($where);
 		$min = $this->db->get();
@@ -128,12 +128,9 @@ class Categories_model extends CI_Model {
 		$this->db->where($brandID);
 		$this->db->update($table, $data);
 	}
-}
-
-
-
-
-
-
-
-
+	public function load_category($table)
+	{
+		$brand_name = $this->db->get($table);
+		return $brand_name->result();
+	}
+} 

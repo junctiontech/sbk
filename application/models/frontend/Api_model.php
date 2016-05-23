@@ -11,7 +11,7 @@ class Api_model extends CI_Model {
 	
 	public function insert_category($categoryarray=false,$key=false,$categoryShopUrl=false,$shopID=false)
 	{
-		$query=$this->db->get_where('s4k_categories',array('categoriesUrlKey'=>$key));
+		/* $query=$this->db->get_where('s4k_categories',array('categoriesUrlKey'=>$key));
 		$result=$query->result();
 		if(empty($result)){
 		$this->db->insert('s4k_categories',$categoryarray);
@@ -24,15 +24,18 @@ class Api_model extends CI_Model {
 		}
 		}else{
 			$categoryID=$result[0]->categoriesID;
-		}
-		
-		$query1=$this->db->get_where('s4k_category_to_shop',array('categoriesID'=>$categoryID,'shopID'=>$shopID));
+		} */
+		$key1=explode('_',$key);
+		$key1=implode(' ',$key1);
+		$categoryID='';
+		$query1=$this->db->get_where('s4k_category_to_shop',array('categoryKey'=>$key,'shopID'=>$shopID));
 			$result1=$query1->result();
 			if(empty($result1)){
-			$categoryshopdata=array('categoriesID'=>$categoryID,'shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key);
+			$categoryshopdata=array('categoriesID'=>'','shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key,'categoryUrl'=>$key1);
 		$this->db->insert('s4k_category_to_shop',$categoryshopdata);
 			}else{
-				$this->db->where(array('categoriesID'=>$categoryID,'shopID'=>$shopID));
+				$categoryID=$result1[0]->categoriesID;
+				$this->db->where(array('categoryKey'=>$key,'shopID'=>$shopID));
 				$this->db->update('s4k_category_to_shop',array('categoryShopUrl'=>$categoryShopUrl));
 			}
 		

@@ -77,7 +77,16 @@
     </ul>
   </li>
   <li><a href="javascript:;">Top Brands</a>
-    
+    <ul>
+	<?php foreach($topbrands as $topbrand){?>
+      <li><a href="<?=base_url();?>Landingpage/Product/<?=$topbrand->categoriesUrlKey?>/<?=$topbrand->brandKey?>.html?b=b"><?=ucwords($topbrand->brandName)?></a>
+        <ul>
+          
+          
+        </ul>
+      </li>
+	<?php } ?>
+    </ul>
   </li>
   <li><a href="javascript:;">Services (coming soon)</a>
     

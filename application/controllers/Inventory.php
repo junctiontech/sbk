@@ -9,7 +9,8 @@ class Inventory extends CI_Controller {
 		$this->data['url'] = base_url();
 		$timezone = "Asia/Calcutta";
 		if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
-		$this->userinfo=$this->session->userdata('searchb4kharch');
+		if (!$this->session->userdata('searchb4kharchadmin')){ $this->session->set_flashdata('category_error_login', " Your Session Is Expired!! Please Login Again. "); redirect("admin");}
+		$this->userinfo=$this->session->userdata('searchb4kharchadmin');
 		$this->load->model('admin/Inventory_model');
 	}
 

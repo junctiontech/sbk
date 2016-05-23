@@ -59,6 +59,7 @@ class Landingpage extends CI_Controller {
 		$app=$this->input->get('app');
 		$jsonarray=array();
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 		$this->data['featureproduct']=$featureproduct=$this->Landingpage_model->get_inventory_data("feature_product");
 		$this->data['newproduct']=$newproduct=$this->Landingpage_model->get_inventory_data("new_product");
 		$this->data['lshproduct']=$lshproduct=$this->Landingpage_model->get_inventory_data("lhs_landing_page");
@@ -69,6 +70,7 @@ class Landingpage extends CI_Controller {
 				$jsonarray['featureproduct']=$featureproduct;
 				$jsonarray['newproduct']=$newproduct;
 				$jsonarray['lshproduct']=$lshproduct;
+				$jsonarray['topbrand']=$topbrand;
 				echo json_encode($jsonarray);
 			}else{
 				echo "No category found";
@@ -84,6 +86,8 @@ class Landingpage extends CI_Controller {
 	{
 		$app=$this->input->get('app');
 		$this->data['searchq']=$searchq=$this->input->Get('q');
+		$b=$this->input->Get('b');
+		
 		$jsonarray=array();
 		$query='';$searchqry='';
 		if($categorykey=='search'){
@@ -91,6 +95,18 @@ class Landingpage extends CI_Controller {
 			$index = Zend_Search_Lucene::open($this->search_index);
 			$products = $index->find($searchquery);
 			//$searchqry['productName']=$searchq;
+		}elseif(!empty($b)){
+			$productName=array();
+			if($productkey){
+			$productName=explode("_",$productkey);
+			}
+			/*$searchquery2="categoriesUrlKey: $categorykey";
+			$searchquery2.="AND productName: $productName[0]";
+			$index = Zend_Search_Lucene::open($this->search_index);
+			$products = $index->find($searchquery2);*/
+			$where=array('categoriesUrlKey like'=>$categorykey);
+			$searchqry=isset($productName[0])?$productName[0]:'';
+			$products=$this->Landingpage_model->get_products($query,$searchqry,$where);
 		}else{
 		if(!empty($categorykey)){
 			$searchquery="categoriesUrlKey: $categorykey";
@@ -99,7 +115,6 @@ class Landingpage extends CI_Controller {
 		}
 		if(!empty($productkey)){
 			$searchquery.="and productsUrlKey: $productkey";
-			
 			$query['productsUrlKey']=$productkey;
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{
@@ -139,10 +154,10 @@ class Landingpage extends CI_Controller {
 				
 		}else{
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
-			
+			$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 			
 			$this->data['products']=$products;
-			if(!empty($productkey)){
+			if(!empty($productkey) && empty($b)){
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
 				$searchquery1="categoriesUrlKey: $categorykey";

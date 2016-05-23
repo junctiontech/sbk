@@ -128,14 +128,14 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<?=base_url();?>admin/images/img.jpg" alt="">hello admin
+                                    <img <?php if(!empty($userinfo['userProfileImage'])){ ?> src="<?=base_url();?>admin/adminimage/<?=$userinfo['userProfileImage']?>" <?php }else{ ?> src="<?=base_url();?>admin/images/img.jpg" <?php } ?>alt="">hello <?php  if(!empty($userinfo['userFirstName'])){ echo ucwords($userinfo['userFirstName']);}?>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
                                     
                                     
                                     
-                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <li><a href="<?=base_url();?>Admin/Logout.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
                             </li>

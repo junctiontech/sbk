@@ -31,7 +31,7 @@ class Product_model extends CI_Model {
 		$this->db->join('s4k_category_details t9','t9.categoriesID=t8.categoriesID');
 		$this->db->where(array('t8.categoriesID'=>$category));
 		$this->db->group_by('productName');
-		$this->db->limit(20);	
+		//$this->db->limit(20);	
 		$query=$this->db->get();
 		return $query->result();		
 	}
