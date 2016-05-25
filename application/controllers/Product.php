@@ -190,7 +190,7 @@ class Product extends CI_Controller {
 	$this->data['id']=$this->Product_model->selected_categories($_POST['categoriesID']);
 
 	$FetchName=$this->data['Fetch_ProductName']=$this->Product_model->fetch_productname($_POST['productName']);
-	
+
 	$this->data['category']=$this->Product_model->get_categories();
 	$map_product=$this->data['mappedproduct']=$this->Product_model->map_product($_POST['categoriesID'],$_POST['productName'],$FetchName[0]->productName);
 	

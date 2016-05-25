@@ -104,6 +104,17 @@
 
                                     </ul>
                                 </li>
+								<li><a><i class="fa fa-list"></i>Sub Category<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href ="<?=base_url();?>Subcategories">SubCategory</a></li>
+										<li><a href ="<?=base_url();?>Subcategories/Addsubcategory">Add Sub Categories</a></li>
+                                    </ul>
+                                </li>
+								<li><a><i class="fa fa-list"></i>User Wishlist<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href ="<?=base_url();?>Userwishlist">User Wishlist</a></li>						
+                                    </ul>
+                                </li>
                                
                             </ul>
                         </div>
