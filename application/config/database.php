@@ -67,7 +67,7 @@ $password="bitnami";
 $username="root";	
 }
 if($_SERVER['HTTP_HOST']=="www.searchb4kharch.com"){
-	$password="bitnami";
+	$password="initial1$";
 	$username="root";
 }
 $active_group = 'default';
