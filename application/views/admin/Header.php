@@ -50,7 +50,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="<?=base_url();?>admin" class="site_title">Searchb4kharch<!-- <img src="<?=base_url();?>admin/images/searchb4kharch.png" alt="" />--> </a>
+                        <a href="<?=base_url();?>Dashboard" class="site_title">Searchb4kharch<!-- <img src="<?=base_url();?>admin/images/searchb4kharch.png" alt="" />--> </a>
                     </div>
                     <div class="clearfix"></div>
 

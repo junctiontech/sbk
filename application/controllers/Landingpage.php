@@ -9,11 +9,20 @@ class Landingpage extends CI_Controller {
 		$this->data['url'] = base_url();
 		$timezone = "Asia/Calcutta";
 		if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
-		$this->userinfo=$this->session->userdata('searchb4kharch');
+		$this->userinfos=$this->data['userinfos']=$this->session->userdata('searchb4kharch');
 		$this->load->model('frontend/Landingpage_model');
 		$this->search_index = APPPATH . 'search/index';
 		$this->load->library('zend');
 		$this->zend->load('Zend/Search/Lucene');
+		if($this->userinfos){
+		$this->load->model('frontend/User_model');
+		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
+		$this->data['whislist']=count($wishlist);
+		foreach($wishlist as $wishlists){
+		$this->data['whislistproduct'][]=$wishlists->productID;
+		}
+		
+		}
 	}
 	
 	function reindex()
@@ -24,6 +33,7 @@ class Landingpage extends CI_Controller {
 		{
 			
 		$doc = new Zend_Search_Lucene_Document();
+			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productsID', $article->productsID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productName', $article->productName));
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('productDescription',$article->productDescription));

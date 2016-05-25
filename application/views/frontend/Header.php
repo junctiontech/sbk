@@ -39,17 +39,33 @@
 			    </div>
 			    <div class="shopping_cart">
 					<div class="cart">
-						<a href="javascript:;" title="View my shopping cart" rel="nofollow">
+					<?php if(!empty($userinfos)){ ?>
+						<a href="<?=base_url();?>User/Mywishlist.html" title="View my shopping cart" rel="nofollow">
+							<strong class="opencart"> </strong>
+							
+								<span class="cart_title">wishlist <?=isset($whislist)?$whislist:'0'?></span>
+							</a>
+					<?php }else{ ?>
+					<a href="<?=base_url();?>Login.html" title="View my shopping cart" rel="nofollow">
 							<strong class="opencart"> </strong>
 								<span class="cart_title">wishlist</span>
-									
 							</a>
+					<?php } ?>
 						</div>
 			      </div>
 	   
 			 <div class="login">
-		   	   <span><a href="<?=base_url();?>Login" style="color:black">SignUp/Login</a></span>
+			 <?php if(!empty($userinfos)){ ?>
+		   	   <span><a href="<?=base_url();?>User/Dashboard.html" style="color:black">Hi <?=isset($userinfos['userFirstName'])?$userinfos['userFirstName']:''?></a></span>
+			 <?php }else{ ?>
+			 <span><a href="<?=base_url();?>Login.html" style="color:black">SignUp/Login</a></span>
+			 <?php } ?>
 		   </div>
+		    <?php if(!empty($userinfos)){ ?>
+		   <div class="login">
+			<span><a href="<?=base_url();?>Login/Logout.html" style="color:black">Logout</a></span>
+			</div>
+			 <?php } ?>
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>

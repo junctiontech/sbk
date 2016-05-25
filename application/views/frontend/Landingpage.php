@@ -11,7 +11,11 @@
 				    <div class="text list_2_of_1">
 						<h2><?=$lshproducted->productName?> </h2>
 						<p><span class="price"><?=$lshproducted->productPrice?></span></p>
-						<div class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
+						<?php if(!empty($userinfos)){ if(in_array($lshproducted->productsID,$whislistproduct)==false){?>
+						<div class="button"><span><a href="<?=base_url();?>User/AddToWishList/<?=$lshproducted->productsID?>.html">Add to wishlists</a></span></div>
+						<?php } }else{ ?>
+						<div class="button"><span><a href="<?=base_url();?>Login.html?return=true">Add to wishlists</a></span></div>
+						<?php } ?>
 				   </div>
 			   </div>			
 				<?php  $i++;
@@ -130,7 +134,13 @@
 					 <h2><?=$product->productName?> </h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
-					  <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
+					  <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
+					  <?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
+					  <?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
+					  <?php } ?>
+					  </span> </div>
 				     <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" >Details</a></span></div>
 				</div>
 				
@@ -184,7 +194,13 @@
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 
-					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?> " class="cart-button">Add to wishlist</a></span> </div>
+					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
+					  <?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
+					  <?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
+					  <?php } ?>
+					  </span> </div>
 				     <div class="button" style="width:100%"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>">Details</a></span></div>
 				
 				</div>

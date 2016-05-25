@@ -66,6 +66,10 @@ if($_SERVER['HTTP_HOST']=="junctiondev.cloudapp.net"){
 $password="bitnami";
 $username="root";	
 }
+if($_SERVER['HTTP_HOST']=="www.searchb4kharch.com"){
+	$password="bitnami";
+	$username="root";
+}
 $active_group = 'default';
 $query_builder = TRUE;
 

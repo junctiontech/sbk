@@ -17,7 +17,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = '/sbk/';
+
+if($_SERVER['HTTP_HOST']=="localhost"){
+	$port=$_SERVER['SERVER_PORT'];
+$config['base_url']	= "http://localhost/sbk/";
+}
+if($_SERVER['HTTP_HOST']=="junctiondev.cloudapp.net"){
+$config['base_url']	= 'http://junctiondev.cloudapp.net/sbk/';	
+}
+if($_SERVER['HTTP_HOST']=="www.searchb4kharch.com/"){
+$config['base_url']	= 'www.searchb4kharch.com/';	
+}
 
 /*
 |--------------------------------------------------------------------------

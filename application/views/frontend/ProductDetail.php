@@ -51,7 +51,11 @@
 					
 					<div class="clear"></div>
 				</div>
-				<div style="padding-top:45px" class="button"><span><a href="javascript:;">Add to wishlists</a></span></div>
+				<div style="padding-top:45px" class="button"><span><?php if(!empty($userinfos)){ if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($products[0]->productsID)?$products[0]->productsID:''?>.html" class="cart-button">Add to wishlists</a>
+				<?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
+					  <?php } ?></span></div>
 				
 			</div>
 			
@@ -78,7 +82,11 @@
 					 <h2><?=$similarproducted->productName?> </h2>
 					
 					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>
-					  <div class="button" style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>" class="cart-button">Add to wishlists</a></span> </div>
+					  <div class="button" style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><?php if(!empty($userinfos)){ if(in_array(isset($similarproducted->productsID)?$similarproducted->productsID:'',$whislistproduct)==false){ ?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($similarproducted->productsID)?$similarproducted->productsID:''?>.html" class="cart-button">Add to wishlists</a>
+					  <?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
+					  <?php } ?></span> </div>
 				     
 				</div>
 				<div class="clear"></div>
