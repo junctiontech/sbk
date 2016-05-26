@@ -10,7 +10,7 @@ class Setting extends CI_Controller
 			$this->data['url'] = base_url();	
 			if (!$this->session->userdata('searchb4kharchadmin')){ $this->session->set_flashdata('category_error_login', " Your Session Is Expired!! Please Login Again. "); redirect("admin");}
 			$this->userinfo=$this->data['userinfo']=$this->session->userdata('searchb4kharchadmin');
-			$this->load->model('admin/Setting_Model');
+			$this->load->model('admin/Setting_model');
 		}
 			public function display($template_file)
 			{
@@ -21,7 +21,7 @@ class Setting extends CI_Controller
 			public function index ()
 			{
 				$table =' s4k_shops';
-				$this->data['shop']= $this->Setting_Model->get_shop($table);
+				$this->data['shop']= $this->Setting_model->get_shop($table);
 				$this->display('admin/Shoplist', $this->data);
 			}	
 			public function shop_Add()
@@ -84,7 +84,7 @@ class Setting extends CI_Controller
 										}	
 							}
 							$shopID = array('shopID' => $shopID);
-							$this->Setting_Model->Update_Shop($table, $data, $shopID);
+							$this->Setting_model->Update_Shop($table, $data, $shopID);
 							$this->session->set_flashdata('message_type', 'success');
 							$this->session->set_flashdata('message', $this->config->item("Setting") . " You Have Successfully Update Shop this Record!!");
 							redirect ('Setting');
@@ -92,7 +92,7 @@ class Setting extends CI_Controller
 						else
 						{
 							($data['shop_image'] = $shop_image);
-							$this->Setting_Model->Add_Shop($table, $data);
+							$this->Setting_model->Add_Shop($table, $data);
 							$this->session->set_flashdata('message_type', 'success');
 							$this->session->set_flashdata('message', $this->config->item("Setting") . " You Have Successfully Add New Shop this Record!!");
 							redirect ('Setting');
@@ -105,7 +105,7 @@ class Setting extends CI_Controller
 				if (file_exists ( $originalPath )) {
 					unlink ($originalPath );					
 				}
-				$this->Setting_Model->Dlt_shop($table, $shopID, $shop_image);
+				$this->Setting_model->Dlt_shop($table, $shopID, $shop_image);
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("Setting") . " You Have Successfully Delete Shop this Record!!");
 				redirect ('Setting');
@@ -117,14 +117,14 @@ class Setting extends CI_Controller
 				$shopID = array ('shopID'=> $shopID);
 				$this->data['shopID'] = $shopID;
 				$table='s4k_shops';
-				$this->data['shopdata'] = $this->Setting_Model->Shopdata_fatch($table,$shopID);				
+				$this->data['shopdata'] = $this->Setting_model->Shopdata_fatch($table,$shopID);				
 			}
 			$this->load->view('admin/Addshop', $this->data);
 		}
 		public function Apiinfo ()
 		{ 
 			$table = 'sbk_other_api_info';
-			$this->data['tableapi'] = $this->Setting_Model->get_tableapi($table);
+			$this->data['tableapi'] = $this->Setting_model->get_tableapi($table);
 			$this->display('admin/Apiinfo', $this->data);
 		}
 		public function Addapi ($apiID = false)
@@ -133,7 +133,7 @@ class Setting extends CI_Controller
 			{
 				$apiID = array ('apiID' => $apiID);				
 				$table = 'sbk_other_api_info';
-				$this->data['fatch'] = $this->Setting_Model->updatefatch($table, $apiID);
+				$this->data['fatch'] = $this->Setting_model->updatefatch($table, $apiID);
 			}			
 			$this->load->view('admin/Addapi', $this->data);
 		}
@@ -150,14 +150,14 @@ class Setting extends CI_Controller
 			if (!empty($apiID))
 			{
 				$apiID = array ('apiID' => $apiID);
-				$this->Setting_Model->Update_api($table, $data, $apiID);
+				$this->Setting_model->Update_api($table, $data, $apiID);
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("Setting") . " You Have Successfully Update Api this Record!!");
 				redirect ('Setting/Apiinfo');
 			}
 			else
 			{
-				$this->Setting_Model->Insert_api($table, $data);
+				$this->Setting_model->Insert_api($table, $data);
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("Setting") . " You Have Successfully Add New Api this Record!!");
 				redirect ('Setting/Apiinfo');
@@ -166,7 +166,7 @@ class Setting extends CI_Controller
 		public function Delete_api ($apiID)
 		{			
 			$table ='sbk_other_api_info';
-			$this->Setting_Model->api_delete($table, $apiID);
+			$this->Setting_model->api_delete($table, $apiID);
 			$this->session->set_flashdata('message_type', 'success');
 			$this->session->set_flashdata('message', $this->config->item("Setting") . " You Have Successfully Delete Api this Record!!");
 			redirect ('Setting/Apiinfo');

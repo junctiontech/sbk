@@ -8,7 +8,7 @@ class Subcategories extends CI_Controller
 			parent::__construct();		
 			$this->data[]="";
 			$this->data['url'] = base_url();	
-			$this->load->model('admin/Subcategories_Model');
+			$this->load->model('admin/Subcategories_model');
 		}
 		public function display($template_file)
 		{
@@ -18,24 +18,24 @@ class Subcategories extends CI_Controller
 		}
 		public function index()
 		{
-			$this->data['sub'] = $this->Subcategories_Model->get_subcategory();
+			$this->data['sub'] = $this->Subcategories_model->get_subcategory();
 			$this->display('admin/subcategory', $this->data);
 		}
 		
 		public function Addsubcategory ($subCategoriesID = false)
 		{ 
 			$table = 's4k_category_details';
-			$this->data['category']= $this->Subcategories_Model->fatchcategory($table); 
+			$this->data['category']= $this->Subcategories_model->fatchcategory($table); 
 			if (!empty($subCategoriesID))
 			{
 				$this->data['subCategoriesID']=$subCategoriesID ;
 				$sub= array ('t1.subCategoriesID'=>$subCategoriesID);
-				$value= $this->data['query']=$this->Subcategories_Model->fatchUpdate($sub);
+				$value= $this->data['query']=$this->Subcategories_model->fatchUpdate($sub);
 				$data = array('subCategoriesID' => 0);
-				$this->Subcategories_Model->updateSubcetegory('s4k_category_to_shop', $data, $subCategoriesID);
+				$this->Subcategories_model->updateSubcetegory('s4k_category_to_shop', $data, $subCategoriesID);
 				if(!empty($value)){
 					$ar= $value[0]->categoryName;
-					$this->data['Data']=$this->Subcategories_Model->fatchCategoryUrl($ar);
+					$this->data['Data']=$this->Subcategories_model->fatchCategoryUrl($ar);
 				}				
 			}
 			$this->display('admin/Addsubcategory',$this->data);
@@ -63,14 +63,14 @@ class Subcategories extends CI_Controller
 			if (!empty($subCategoriesID))
 			{
 				$subCategoriesID = array ('subCategoriesID'=>$subCategoriesID);
-				$this->Subcategories_Model->updatecategory($table, $table2, $data, $data2, $categoryToShopIDs, $subCategoriesID);
+				$this->Subcategories_model->updatecategory($table, $table2, $data, $data2, $categoryToShopIDs, $subCategoriesID);
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("Subcategories") . " You Have Successfully Update  Sub Categories this Record!!");
 				redirect ('Subcategories');
 			}
 			else
 			{
-				$this->Subcategories_Model->addcategory($table, $table2, $data, $data2, $categoryToShopIDs);
+				$this->Subcategories_model->addcategory($table, $table2, $data, $data2, $categoryToShopIDs);
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("Subcategories") . " You Have Successfully Add New Sub Categories this Record!!");
 				redirect ('Subcategories/Addsubcategory');
@@ -78,7 +78,7 @@ class Subcategories extends CI_Controller
 		}			
 			public function DltSubcategories ($subCategoriesID)
 			{
-				$this->Subcategories_Model->delete_subcategories($subCategoriesID);
+				$this->Subcategories_model->delete_subcategories($subCategoriesID);
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("Subcategories") . " You Have Successfully Delete Sub Categories this Record!!");
 				redirect ('Subcategories');
@@ -87,7 +87,7 @@ class Subcategories extends CI_Controller
 			{
 				$categoriesID = $this->input->POST('categoriesID');
 				$table ='s4k_category_to_shop';
-				$value = $this->Subcategories_Model->shop_tabledata($table, $categoriesID);
+				$value = $this->Subcategories_model->shop_tabledata($table, $categoriesID);
 				if(!empty($value))
 				{
 					foreach($value as $ct)

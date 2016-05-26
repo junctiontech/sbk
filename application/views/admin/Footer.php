@@ -48,7 +48,7 @@
     <script src="<?=base_url();?>admin/js/moris/morris.js"></script>
 	<script src="<?=base_url();?>admin/js/datatables/js/jquery.dataTables.js"></script>
 	<script src="<?=base_url();?>admin/js/common_functions.js"></script>
-	<script src="<?=base_url();?>admin/js/categories.js"></script>
+	<script src="<?=base_url();?>admin/js/Categories.js"></script>
 	<script src="<?=base_url ();?>admin/js/Subcategories.js"></script>
 	<script src="<?=base_url();?>admin/js/sbk.js"></script>
 	<!-- select2 -->
