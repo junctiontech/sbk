@@ -130,9 +130,9 @@ class Api extends CI_Controller {
 				$details = json_decode($details, TRUE);
 				if(!empty($details))
 				{
-					echo $product['title'];echo"<br>";
-					$products = $details['products'];
 					
+					$products = $details['products'];
+					echo $product['title'];echo"<br>";
 					foreach($products as $product)
 					{
 						$productdata=array();
