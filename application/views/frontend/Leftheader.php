@@ -15,8 +15,8 @@
 <a href="<?=base_url();?>Login/personal_info"><img src="<?=base_url();?>frontend/images/button_my_account (1).png" style="margin-bottom:10px;"></a>
 
 
-<ul>ORDERS</ul>
-<li>Myorders</li>
+<ul>Wishlist</ul>
+<li>My Wishlist</li>
 <hr>
 <ul>SETTINGS</ul>
 <li>Personal Information</li>
