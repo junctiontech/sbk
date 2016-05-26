@@ -12,8 +12,11 @@ class User extends CI_Controller {
 		$this->userinfos=$this->data['userinfos']=$this->session->userdata('searchb4kharch');
 		$this->load->model('frontend/Login_model');
 		$this->load->model('frontend/User_model');
+		$this->load->model('frontend/Landingpage_model');
 		$this->load->library('form_validation');
 		$this->data['base_url']=base_url();
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
 		$this->data['whislist']=count($wishlist);
 		foreach($wishlist as $wishlists){
