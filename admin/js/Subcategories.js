@@ -1,4 +1,4 @@
-var base_url = 'www.searchb4kharch.com/'; 
+var base_url = 'http://www.searchb4kharch.com/'; 
 
 
 function Get_categoryurl()

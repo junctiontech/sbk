@@ -1,5 +1,5 @@
 //var base_url="http://"+window.location.hostname+':'+location.port+"/sbk/";
-var base_url = 'www.searchb4kharch.com/'; 
+var base_url = 'http://www.searchb4kharch.com/'; 
 function get_products_by_cat(categoryID)
 { 
 	$.ajax({
