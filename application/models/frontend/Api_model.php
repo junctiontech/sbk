@@ -27,11 +27,11 @@ class Api_model extends CI_Model {
 		} */
 		$key1=explode('_',$key);
 		$key1=implode(' ',$key1);
-		$categoryID='';
+		$categoryID=0;
 		$query1=$this->db->get_where('s4k_category_to_shop',array('categoryKey'=>$key,'shopID'=>$shopID));
 			$result1=$query1->result();
 			if(empty($result1)){
-			$categoryshopdata=array('categoriesID'=>'','shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key,'categoryUrl'=>$key1);
+			$categoryshopdata=array('categoriesID'=>$categoryID,'shopID'=>$shopID,'categoryShopUrl'=>$categoryShopUrl,'categoryKey'=>$key,'categoryUrl'=>$key1);
 		$this->db->insert('s4k_category_to_shop',$categoryshopdata);
 			}else{
 				$categoryID=$result1[0]->categoriesID;
