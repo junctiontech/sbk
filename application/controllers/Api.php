@@ -160,7 +160,7 @@ class Api extends CI_Controller {
 						'productAttributeLable'=>array('Color','Product Brand'),
 						'productAttributeValue'=>array('',
 													   $product['brand']));
-													   
+										 			   
 						if(!empty($value))
 							{
 						$this->Api_model->insert_product($productdata);
