@@ -2,7 +2,7 @@
 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> </button>
 <h4 class="modal-title" id="myModalLabel">Add Inventory</h4>
 </div>
-<form method="post"  action="<?=base_url ();?>/Categories/brand_Add" class="form-horizontal form-label-left">
+<form method="post"  action="<?=base_url ();?>Categories/brand_Add" class="form-horizontal form-label-left">
 <?php  if(!empty($brandID)){?>
 <input type="hidden" name="brandID" value="<?php echo isset($brand[0]->brandID)?$brand[0]->brandID:'';?>">
 <?php }?>
