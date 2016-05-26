@@ -96,6 +96,7 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->where(array('t1.productsID !='=>$product));
 		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
+		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
 		$query=$this->db->get();
 		
 		return $query->result();
@@ -123,6 +124,18 @@ class Product_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result();
 		
+	}
+	public function fetch_productmapped($product)
+	{
+		$this->db->select('t1.childProductID,t2.productName,t3.imageName, t4.productPrice');
+		$this->db->from('s4k_product_mapping t1');
+		$this->db->join('s4k_products_map t2','t2.productsID=t1.parentProductID');
+		$this->db->join('s4k_product_images_map t3','t3.productsID=t1.parentProductID');
+		$this->db->join('s4k_product_price_map t4','t4.productsID=t1.parentProductID');
+		$this->db->where(array('t1.parentProductID'=>$product));
+		$this->db->where(array('t1.childProductID'=>'t2.productsID'));
+		$query=$this->db->get();
+		return $query->result();
 	}
 	public function selected_categories($category){
 		$this->db->select('t1.categoriesID,t2.categoryName');
