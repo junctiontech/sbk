@@ -195,14 +195,14 @@ class Product extends CI_Controller {
 	$map_product=$this->data['mappedproduct']=$this->Product_model->map_product($_POST['categoriesID'],$_POST['productName'],$FetchName[0]->productName);
 	
 
-	$this->display ('admin/MappProduct');
+	$this->display ('admin/Mappproduct');
 	}
 	
 	else{
 		$this->session->set_flashdata('message_type', 'success');        
         $this->session->set_flashdata('message', $this->config->item("map_product").' Select category and product');
 		$this->data['category']=$this->Product_model->get_categories();
-		$this->display ('admin/MappProduct');
+		$this->display ('admin/Mappproduct');
 	}
 	}
 	
