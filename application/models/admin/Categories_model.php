@@ -59,6 +59,7 @@ class Categories_model extends CI_Model {
 		$where = ['categoriesID' => '', 'subCategoriesID' => ''];
 		$this->db->where($where);
 		$category= $this->db->get($table);
+		echo $this->db->last_query();die;
 		return $category->result();
 	}
 	public function Update_Map($table, $data, $categoryToShopID)
