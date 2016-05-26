@@ -33,4 +33,30 @@ class Setting_Model extends CI_Model {
 		$shopdata = $this->db->get($table);
 		return $shopdata->result();
 	}
+	public function Insert_api ($table, $data)
+	{
+		$this->db->insert($table, $data);
+	}
+	public function Update_api($table, $data, $apiID)
+	{
+		$this->db->where($apiID);
+		$this->db->update($table, $data);
+	}
+	public function get_tableapi($table)
+	{
+		$tableapi = $this->db->get($table);
+		return $tableapi->result();
+	}
+	public function updatefatch($table, $apiID)
+	{
+		$this->db->where($apiID);
+		$fatch = $this->db->get($table);
+		return $fatch->result();
+	}
+	public function api_delete ($table, $apiID)
+	{
+		$where = array ('apiID' => $apiID);
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
 }

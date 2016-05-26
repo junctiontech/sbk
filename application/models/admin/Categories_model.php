@@ -56,7 +56,7 @@ class Categories_model extends CI_Model {
 	public function Categories_Shop ($table, $categoriesID)
 	{		
 		$this->db->where("MATCH (`categoryUrl`) AGAINST ('{$categoriesID}')");
-		$where = ['categoriesID' => ''];
+		$where = ['categoriesID' => '', 'subCategoriesID' => ''];
 		$this->db->where($where);
 		$category= $this->db->get($table);
 		return $category->result();
@@ -92,7 +92,7 @@ class Categories_model extends CI_Model {
 		$this->db->select('t1.categoryToShopID, t1.categoriesID,categoryUrl');
 		$this->db->from('s4k_category_to_shop t1');
 		$this->db->where("MATCH (`categoryUrl`) AGAINST ('{$data5}')");
-		$where = array ('categoriesID' => '' );
+		$where = array ('categoriesID' => '', 'subCategoriesID' =>'' );
 		$this->db->where($where);
 		$min = $this->db->get();
 		return $min->result();

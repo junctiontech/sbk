@@ -101,7 +101,7 @@
                                 <li><a><i class="fa fa-list"></i>Shop<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?=base_url();?>Setting">View Shop</a></li>
-
+										<li><a href="<?=base_url();?>setting/Apiinfo">Api Info</a></li>
                                     </ul>
                                 </li>
 								<li><a><i class="fa fa-list"></i>Sub Category<span class="fa fa-chevron-down"></span></a>
