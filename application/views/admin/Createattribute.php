@@ -1,4 +1,12 @@
-
+<div class="message" style="margin-top:90px">
+<?php  if($this->session->flashdata('message_type')) { ?>
+<div class="row">
+<div class="alert alert-success">
+<strong><?=$this->session->flashdata('message')?></strong> 
+</div>
+</div>
+<?php }?>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function(){

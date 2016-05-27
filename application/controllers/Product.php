@@ -242,6 +242,9 @@ class Product extends CI_Controller {
 		$attributedata=array('categoriesID'=>$this->input->post('categoriesID'),
 							'productAttributeLable'=>$attribute);
 		$this->db->insert('s4k_categories_to_attribute',$attributedata);
+		$this->session->set_flashdata('message_type', 'success');        
+        $this->session->set_flashdata('message', $this->config->item("mapped_product").' Your attributes are created');
+		redirect('product/create_attribute');
 		}
 		}
 		$this->data['category']=$this->Product_model->get_categories();
