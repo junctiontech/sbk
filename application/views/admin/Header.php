@@ -89,6 +89,7 @@
                                         <li><a href="<?=base_url();?>Product.html">View product</a></li>
                                         <li><a href="<?=base_url();?>Product/Addproduct.html">Create product</a></li>
 										<li><a href="<?=base_url();?>Product/MappProduct.html">Map product</a></li>
+										<li><a href="<?=base_url();?>Product/create_attribute">Create Attribute</a></li>
                                     </ul>
                                 </li>
 								
