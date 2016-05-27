@@ -17,6 +17,7 @@
     <link href="<?=base_url();?>admin/fonts/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=base_url();?>admin/css/animate.min.css" rel="stylesheet">
 	<link href="<?=base_url();?>admin/css/sbk.css" rel="stylesheet">
+    
     <!-- Custom styling plus plugins -->
     <link href="<?=base_url();?>admin/css/custom.css" rel="stylesheet">
     <link href="<?=base_url();?>admin/css/icheck/flat/green.css" rel="stylesheet">
@@ -88,6 +89,7 @@
                                         <li><a href="<?=base_url();?>Product.html">View product</a></li>
                                         <li><a href="<?=base_url();?>Product/Addproduct.html">Create product</a></li>
 										<li><a href="<?=base_url();?>Product/MappProduct.html">Map product</a></li>
+										<li><a href="<?=base_url();?>Product/create_attribute">Create Attribute</a></li>
                                     </ul>
                                 </li>
 								

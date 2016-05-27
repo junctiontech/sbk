@@ -186,43 +186,42 @@ class Landingpage extends CI_Controller {
 		}
 	}
 	
-	
 	public function fetchdata_compare_product($productid=false)
 	
-	{ 
+	{
 	
-	$productid=$this->input->post('productid');
+		$productid=$this->input->post('productid');
 		$product=$this->Landingpage_model->fetchdata_compare_product($productid);
 	
-			if(!empty($product))
+		if(!empty($product))
+		{
+			foreach($product as $productname)
+	
 			{
-				foreach($product as $productname)
-				
-				{		
-						$pro_id=($productname->productsID);
-						$pro_name=($productname->productName);
-				
-						echo "<input name=\"$pro_id\" value=\"$pro_name\">";
-				}
-			}				
-		
+				$pro_id=($productname->productsID);
+				$pro_name=($productname->productName);
+	
+				echo "<input name=\"$pro_id\" value=\"$pro_name\">";
+			}
+		}
+	
 	}
 	
 	public function compare()
 	{	$product=$this->input->post();
-
-		foreach($product as $key=>$products)
-		{
-			$productID[]=$key;
-			//print_r($productID);die;
-		}
-		$compareproduct=implode(',',$productID);
-
-
-		$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
-			
-		$this->parser->parse('frontend/Header',$this->data);
-		$this->parser->parse('frontend/Compare',$this->data);
-		$this->parser->parse('frontend/Footer',$this->data);
+	
+	foreach($product as $key=>$products)
+	{
+		$productID[]=$key;
+		//print_r($productID);die;
+	}
+	$compareproduct=implode(',',$productID);
+	
+	
+	$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
+		
+	$this->parser->parse('frontend/Header',$this->data);
+	$this->parser->parse('frontend/Compare',$this->data);
+	$this->parser->parse('frontend/Footer',$this->data);
 	}
 }
