@@ -232,4 +232,19 @@ class Product extends CI_Controller {
         $this->session->set_flashdata('message', $this->config->item("mapped_product").' Your products are mapped');
 		redirect('product/MappProduct');
 	}
+	public function create_attribute()
+	{
+		$productattribute=$this->input->post('field_name');
+		
+		if(!empty($productattribute)){
+		foreach($productattribute as $attribute)
+		{
+		$attributedata=array('categoriesID'=>$this->input->post('categoriesID'),
+							'productAttributeLable'=>$attribute);
+		$this->db->insert('s4k_categories_to_attribute',$attributedata);
+		}
+		}
+		$this->data['category']=$this->Product_model->get_categories();
+		$this->display ('admin/Createattribute');
+	}
 }
