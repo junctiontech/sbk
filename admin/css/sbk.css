@@ -1,0 +1,16 @@
+.thumbnail .image{
+	height:150px !important;
+}
+.thumbnail{
+	height:300px !important;
+}
+.caption {
+	height:150px !important;
+}
+.view .mask, .view .content {
+	height:100%;
+}
+
+.field_wrapper div{ margin-bottom:10px;}
+.add_button{ margin-top:20px; margin-left:10px;vertical-align: text-bottom; }
+.remove_button{ margin-top:20px; margin-left:10px;vertical-align: text-bottom; }
