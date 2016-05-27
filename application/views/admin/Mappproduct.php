@@ -39,9 +39,9 @@
 				<?php { 
 				if(!empty($Fetch_ProductName))
 				{
-				foreach($Fetch_ProductName as $Fetch_ProductName) 	
+				foreach($Fetch_ProductName as $Fetch_ProductMap) 	
 				{?>
-					<option value="<?=isset($Fetch_ProductName->productsID) ?$Fetch_ProductName->productsID:''?>"><?=isset($Fetch_ProductName->productName)?$Fetch_ProductName->productName:''?>				
+					<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?>				
 					</option>
 					
 				<?php }}}?>
@@ -87,7 +87,8 @@
         </script>
 		
 		
-		    <div class="">
+		
+				   
                     <div class="page-title">
                         <div class="title_left">
                             <h3>Product List </h3>
@@ -95,10 +96,54 @@
 
 
                     </div>
-                    <div class="clearfix"></div>
+                 
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Category Name</h2>
+                                 	
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+								    <div class="row">
+									
+                                   <?php if(!empty($fetch_productmapped)){?>
+										<?php foreach($fetch_productmapped as $fetch_product){?>	
+                                        <div class="col-md-6">
+										
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; height:150px; display: block;" src="<?=isset($fetch_product->imageName)?$fetch_product->imageName:''?>" alt="image" />
+
+                                                </div>
+                                                <div class="caption">
+                                                    <p><?=isset($fetch_product->productName)?$fetch_product->productName:''?></p>
+													  <p style="margin-top:10px">Price-<?=isset($fetch_product->productPrice)?$fetch_product->productPrice:''?></p>
+												
+												<!--<div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="<?=isset($products->productsID)?$products->productsID:''?>" name="mapped_value[]"> Select to Mapp Product </input>
+                                                    </label>
+                                                </div>-->
+													
+                                                </div>
+                                            </div>
+                                        </div>
+								   <?php }} ?>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                
+                
+                 
+                        <div class="col-md-6">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Category Name</h2>
@@ -116,7 +161,7 @@
 
                                    <?php if(!empty($mappedproduct)){?>
 										<?php foreach($mappedproduct as $products){?>	
-                                        <div class="col-md-55">
+                                        <div class="col-md-6">
 										
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
@@ -144,6 +189,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
 				</form>
