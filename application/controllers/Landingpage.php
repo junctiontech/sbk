@@ -18,6 +18,7 @@ class Landingpage extends CI_Controller {
 		$this->load->model('frontend/User_model');
 		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
 		$this->data['whislist']=count($wishlist);
+		$this->data['whislistproduct']='';
 		foreach($wishlist as $wishlists){
 		$this->data['whislistproduct'][]=$wishlists->productID;
 		}

@@ -66,7 +66,7 @@ if($_SERVER['HTTP_HOST']=="junctiondev.cloudapp.net"){
 $password="bitnami";
 $username="root";	
 }
-if($_SERVER['HTTP_HOST']=="www.searchb4kharch.com"){
+if($_SERVER['HTTP_HOST']=="searchb4kharch.com"){
 	$password="initial1$";
 	$username="root";
 }
