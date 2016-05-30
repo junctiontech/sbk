@@ -123,6 +123,23 @@ class Landingpage_model extends CI_Model {
 		return $qry->result();
 	}
 	
+	public function get_filters($categoriesUrlKey){
+		$this->db->select('t2.categoriesID,filterGroupID,groupName,filterType');
+		$this->db->from('s4k_filter_group t1');
+		$this->db->join('s4k_categories t2','t2.categoriesID=t1.categoryID','left');
+		$this->db->where(array('categoriesUrlKey'=>$categoriesUrlKey));
+		$this->db->order_by('t1.sortOrder','ASC');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	public function get_grpatt($filterGroupID)
+	{
+		$this->db->select('*');
+		$this->db->from('s4k_filter_group_to_attribute t1');
+		$this->db->where(array('t1.filterGroupID'=>$filterGroupID));
+		$query=$this->db->get();
+		return $query->result();
+	}
 }
 
 ?>

@@ -166,7 +166,9 @@ class Landingpage extends CI_Controller {
 		}else{
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
-			
+			if($categorykey !='' && $categorykey !='search'){
+				$this->data['filters']=$this->Landingpage_model->get_filters($categorykey);
+			}
 			$this->data['products']=$products;
 			if(!empty($productkey) && empty($b)){
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;

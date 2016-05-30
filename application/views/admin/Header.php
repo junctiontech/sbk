@@ -77,10 +77,11 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-th"></i>Categories<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?=base_url();?>Categories">View category</a></li>
-                                        <li><a href="<?=base_url () ;?>Categories/AddCategories">Create category</a></li>
-										<li><a href="<?=base_url () ; ?>Categories/MapCategories">Map category</a></li>
-										<li><a href="<?=base_url(); ?>Categories/Brand">Brand</a></li>
+                                        <li><a href="<?=base_url();?>Categories.html">View category</a></li>
+                                        <li><a href="<?=base_url () ;?>Categories/AddCategories.html">Create category</a></li>
+										<li><a href="<?=base_url () ; ?>Categories/MapCategories.html">Map category</a></li>
+										<li><a href="<?=base_url(); ?>Categories/Brand.html">Brand</a></li>
+										<li><a href="<?=base_url(); ?>Categories/Filter.html">Create & view filter</a></li>
                                     </ul>
                                 </li>
                                 

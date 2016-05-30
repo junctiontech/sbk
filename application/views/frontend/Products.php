@@ -81,92 +81,28 @@
 		  <div class="filter_panel">
 		  <h3>Refine Your Search</h3>
 		  <hr>
+		  <?php if(!empty($filters)){  foreach($filters as $filter){ ?>
 		  <div class="Price">
-		  <h3> Price</h3>
+		  <h3> <?=isset($filter->groupName)?$filter->groupName:''?></h3>
 
 		  </div>
+		  <?php if($filter->filterGroupID){
+				$filteratt=$this->Landingpage_model->get_grpatt($filter->filterGroupID);
+				if($filteratt){ ?>
 		   <div class="checkbox chk">
+		   <?php foreach($filteratt as $filteratts){ ?>
 					<label>
-						<input type="checkbox" value=""> Rs 5000-Rs 10000
+						<input type="checkbox" name="<?=isset($filteratts->name)?$filteratts->name:''?>" value="<?=isset($filteratts->value)?$filteratts->value:''?>"> <?=isset($filteratts->lable)?$filteratts->lable:''?>
 					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 10000-Rs 20000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 20000-Rs 30000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 30000-Rs 50000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 50000-Rs 75000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 75000-Rs 100000
-					</label>
-					
+		   <?php } ?>
 					</div>
-			<hr>
-			<div class="price">
-			<h3>Brand</h3>
-			<div class="chk">
-			<input type="text" name="brand" placeholder="Brand">
-			</div>
-			</div>
-			<hr>
-		<div class="Price">
-		  <h3> Type</h3>
-
-		  </div>
-		   <div class="checkbox chk">
-					<label>
-						<input type="checkbox" value="">LED
-					</label>
-					<label>
-						<input type="checkbox" value=""> PLASMA
-					</label>
-					<label>
-						<input type="checkbox" value=""> OLED
-					</label>
-				
-					
-					</div>
-		  
-		  	<div class="Price">
-		  <h3> Features</h3>
-
-		  </div>
-		   <div class="checkbox chk">
-					<label>
-						<input type="checkbox" value="">3D
-					</label>
-					<label>
-						<input type="checkbox" value=""> SMART
-					</label>
-					<label>
-						<input type="checkbox" value=""> CURVED
-					</label>
-				
-					
-					</div>
-		 
-		  	<div class="Price">
-		  <h3> Display</h3>
-
-		  </div>
-		   <div class="checkbox chk">
-					<label>
-						<input type="checkbox" value="">HD
-					</label>
-					<label>
-						<input type="checkbox" value="">FULL HD
-					</label>
-					<label>
-						<input type="checkbox" value=""> 4K ultra HD
-					</label>
-				
-					
-					</div>
+		  <?php }}else{ ?>
+		  <p>No Attribute Define For This Filter</p>
+		  <?php } ?>
+			<hr> 
+		  <?php } }else{ ?>
+		  <p>No Filter Found For This Category</p>
+		  <?php } ?>
 </div>
 		  <div class="product_panel">
 		   <?php if(!empty($products)){ foreach($products as $product){?>
