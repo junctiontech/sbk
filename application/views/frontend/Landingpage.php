@@ -1,5 +1,4 @@
-	<div class="header_bottom">
-		<div class="header_bottom_left">
+<div class="header_bottom_left">
 		<?php if(!empty($lshproduct)){ $i=0; foreach($lshproduct as $lshproducted){ 
 		if($i==0){ ?>
 			<div class="section group">
@@ -34,6 +33,7 @@
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
 						  <a href="javascript:;"><img src="<?=base_url();?>frontend/images/pic3.png" alt="" / ></a>
+						  
 					</div>
 					<div class="text list_2_of_1">
 						  <h2>Sansung</h2>
@@ -84,6 +84,10 @@
 	  <div class="clear"></div>
   </div>	
 </div>
+	<!-- Javascript Ad Tag: 534 -->
+<div id="vcm5342k0LkS"></div>
+<script src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=js&divid=vcm5342k0LkS" type="text/javascript"></script>
+<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="1500" height="90"></iframe></noscript><div class="header_bottom">
  <div class="main">
     <div class="content">
     	<div class="content_top">
@@ -146,6 +150,8 @@
 				
 		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
+			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
+	
 			<div class="content_bottom">
     		<div class="heading">
     		<h3>New Products</h3>
@@ -211,4 +217,12 @@
  </div>
 </div>
    
+
+<!-- Javascript Ad Tag: 1862 -->
+<div id="vcm1862d7dBsn"></div>
+<script src="http://tracking.vcommission.com/aff_ad?campaign_id=1862&aff_id=48478&format=javascript&format=js&divid=vcm1862d7dBsn" type="text/javascript"></script>
+<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1862&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="1000" height="90"></iframe></noscript>
+<!-- // End Ad Tag -->
+<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
+		
 
