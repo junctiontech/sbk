@@ -1,57 +1,4 @@
-.maindiv{
-	
-	max-height:400px;
-	width:180px;
-}
-.maindiv  h2 {
-	color: #CC3636;
-	font-family: 'Monda', sans-serif;
-	font-size:10px;
-	font-weight : normal;
-}
-.maindiv  p {
-	font-size:14px;
-	padding:0.4em 0;
-	color: #333;	
-}
 
-.detail{
-	max-height:80px;
-	width:100%;
-}
-.display_img{
-	height:150px;
-	width:100%;
-}
-
-.maindiv_pro{
-	max-height:350px;
-	max-width:150px;
-}
-.maindiv_pro  h2 {
-	color: #CC3636;
-	font-family: 'Monda', sans-serif;
-	font-size:12px;
-	font-weight : normal;
-
-}
-.maindiv_pro p {
-	font-size:14px;
-	padding:0.4em 0;
-	color: #333;	
-}
-.detail_pro{
-	max-height:100px;
-	width:100%;
-	margin-top:5px;
-}
-.display_img_pro{
-	max-height:150px;
-	width:100%;
-}
-.price{
-	margin-top:5px;
-}
 .pro_img{
 	margin-top:30px;
 }
@@ -154,7 +101,8 @@ background-color:#f1f1f1;
 .form_content{
 	
 background-color:white;
-height:600px;
+height:auto;
+
 
 }
 .sign_up{
@@ -166,7 +114,7 @@ margin-top:10px;
 font-size:19px;
 		
 	}
-.form_content1 li{
+.form_content li{
 	margin-top:10px;
 	margin-bottom:10px;
 	list-style:none;
@@ -176,8 +124,10 @@ font-size:19px;
 .form_content p{
 	font-size:20px;
 	margin-top:80px;
+	margin-top: 29px;
 	text-align:center;
 	color:Purple;
+	padding-bottom: 36px;
 }
 .filter_panel{
 	width:20%;
@@ -200,34 +150,12 @@ font-size:19px;
 .product_panel{
 	width:80%;
 	float:right;
-
 	}
-.filter_panel h3
-{
+.filter_panel h3{
 		margin-top:30px;
 		margin-left:20px;
 	}
-.chk{
+	.chk{
 		margin-left:20px;
 		margin-top:10px;
 	}
-.compare_product 
-{	margin-top:10px;
-	margin-bottom:10px;
-	display:none;
-	height:120px;
-	background-color:black;
-	color:red;
-}
-.description p{
-	font-size:13px;
-	font-family:times new roman;
-}
-.comparetable{
-	margin-top:-45px;
-}
-
-.textval{
-	margin-top:40px;
-	
-}

@@ -1,4 +1,3 @@
-<body>
 <div class="row">
 <div class="col-sm-12 col-md-12 col-xs-12 main">
 <div class="col-sm-2 col-md-2 col-xs-2 "></div>
@@ -16,14 +15,11 @@
 
 
 <ul>Wishlist</ul>
-<li>My Wishlist</li>
+<li><a href="<?=base_url();?>User/Mywishlist">My Wishlist</a></li>
 <hr>
 <ul>SETTINGS</ul>
-<li>Personal Information</li>
-<li>Change Password</li>
-<li>Addresses</li>
-<li>Profile Settings</li>
-<li>Deactivate Account</li>
+<li><a href="<?=base_url();?>User/PersonalInformation">Personal Information</a></li>
+<li><a href="<?=base_url();?>User/Changepassword">Change Password</a></li>
+<li><a href="<?=base_url();?>User/DeactiveteAccount">Deactivate Account</a></li>
 <hr>
-
 </div>

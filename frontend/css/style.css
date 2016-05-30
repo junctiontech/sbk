@@ -74,6 +74,7 @@ body{
 	outline:none;
 	margin:0;
 	height: 82px;
+	text-align: center;
 }
 .search_box input[type="submit"]{
 	border:none;
@@ -94,7 +95,7 @@ body{
 	transition: all .9s;
 	position:absolute;
 	right:0;
-	top:0;
+	top:0;	
 	height: 82px;
 	border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;

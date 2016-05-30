@@ -80,9 +80,9 @@
 						
                                                            <div class="tools tools-bottom">
                                                            
-                                                            <a href="<?=base_url();?>Product/edit/<?=isset($products->productsID)?$products->productsID:''?>"<i class="fa fa-pencil"></i></a>
+                                                            <a href="<?=base_url();?>Product/edit/<?=isset($products->productsID)?$products->productsID:''?>"><i class="fa fa-pencil"></i></a>
 															
-                                                            <a href="<?=base_url();?>Product/delete/<?=isset($products->categoriesID)?$products->categoriesID:''?>/<?=isset($products->productsID)?$products->productsID:''?>"<i class="fa fa-times"></i></a>
+                                                            <a href="<?=base_url();?>Product/delete/<?=isset($products->categoriesID)?$products->categoriesID:''?>/<?=isset($products->productsID)?$products->productsID:''?>"><i class="fa fa-times"></i></a>
                                                         </div>
 														</div>
                                                 </div>

@@ -14,6 +14,8 @@
 <script type="text/javascript" src="<?=base_url();?>frontend/js/move-top.js"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/easing.js"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/nav-hover.js"></script>
+<script type="text/javascript" src="<?=base_url();?>frontend/js/jquery.inputmask.js"></script>
+<script type="text/javascript" src="<?=base_url();?>frontend/js/validator.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/sb4k.png">
