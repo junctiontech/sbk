@@ -367,13 +367,13 @@ class Login extends CI_Controller {
 				);
 					echo json_encode(array('code'=>200,'message'=>'Successfully login'));
 				}else{
-					echo json_encode(array('code'=>500,'message'=>'Error'));
+					echo json_encode(array('code'=>500,'message'=>'Invalid username or password!!'));
 				}
 		}else{
-				echo json_encode(array('code'=>500,'message'=>'Error'));
+				echo json_encode(array('code'=>500,'message'=>'All fields are mendatory!!'));
 			}
 		}else{
-				echo json_encode(array('code'=>500,'message'=>'Error'));
+				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
 		}
 	}
 	
