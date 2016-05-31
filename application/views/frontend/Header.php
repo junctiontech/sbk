@@ -76,7 +76,16 @@
 	  <ul id="dc_mega-menu-orange" class="dc_mm-orange">
 	
 	<li><a href="javascript:;">Deals</a>
-    
+    <ul>
+	<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
+      <li><a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
+        <ul>
+          
+          
+        </ul>
+      </li>
+	<?php } }?>
+    </ul>
   </li>
   
   <li class="staticcs"><a href="javascript:;">Buy >></a>

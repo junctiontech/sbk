@@ -74,6 +74,9 @@ class Landingpage extends CI_Controller {
 		$this->data['featureproduct']=$featureproduct=$this->Landingpage_model->get_inventory_data("feature_product");
 		$this->data['newproduct']=$newproduct=$this->Landingpage_model->get_inventory_data("new_product");
 		$this->data['lshproduct']=$lshproduct=$this->Landingpage_model->get_inventory_data("lhs_landing_page");
+		$this->data['deals']=$deals=$this->Landingpage_model->get_deals();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+		//print_r($deals);die;
 		/* echo"<br>";print_r($categories);echo"<br>";echo"<br>";print_r($featureproduct);echo"<br>";echo"<br>";print_r($lshproduct);die; */
 		if($app=='true'){
 			if(!empty($categories)){
@@ -226,4 +229,16 @@ class Landingpage extends CI_Controller {
 	$this->parser->parse('frontend/Compare',$this->data);
 	$this->parser->parse('frontend/Footer',$this->data);
 	}
+	
+	public function Deals($category=false)
+	{	
+		if($category){
+		$category=str_replace('_',' ',$category);
+		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
+		$this->parser->parse('frontend/Header',$this->data);
+		$this->parser->parse('frontend/Deals',$this->data);
+		$this->parser->parse('frontend/Footer',$this->data);
+		}
+	}
+	
 }

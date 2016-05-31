@@ -72,10 +72,26 @@
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">
-						<li><img src="<?=base_url();?>frontend/images/1.jpg" alt=""/></li>
-						<li><img src="<?=base_url();?>frontend/images/2.jpg" alt=""/></li>
-						<li><img src="<?=base_url();?>frontend/images/3.jpg" alt=""/></li>
-						<li><img src="<?=base_url();?>frontend/images/4.jpg" alt=""/></li>
+					<?php if(!empty($deals)){ foreach($deals as $deal){ ?>
+						<li>
+						<div class="listview_1_of_2 images_1_of_2" style="
+    width: 606px;
+    float: left;
+    display: block;
+">
+						 <a href="<?=$deal->link?>" target="_blank">
+					<div class="listimg listimg_2_of_1">
+						 <img src="<?=$deal->url?>" alt="" />
+					</div>
+					<div class="text list_2_of_1">
+						  <h2><?=$deal->offer_name?></h2>
+						  <p><h2><?=$deal->coupon_code?></h2></br>
+						  <?=$deal->coupon_title?></p>
+					</div>
+					</a>
+					</div>
+				</li>
+					<?php } } ?>	
 				    </ul>
 				  </div>
 	      </section>

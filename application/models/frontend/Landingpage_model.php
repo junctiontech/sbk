@@ -140,6 +140,35 @@ class Landingpage_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result();
 	}
+	
+	public function get_deals(){
+		$this->db->select('t1.offer_name,coupon_title,coupon_description,coupon_code,link,url');
+		$this->db->from('s4k_deals t1');
+		$this->db->join('s4k_deals_banner t2','t1.dealID=t2.dealID','left');
+		$this->db->where(array('t1.Status'=>'Active'));
+		$this->db->limit(40);
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function get_dealsgategory(){
+		$this->db->select('t1.category');
+		$this->db->from('s4k_deals t1');
+		$this->db->where(array('t1.Status'=>'Active','category !='=>''));
+		$this->db->group_by('category');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function get_deals_by_category($category){
+		$this->db->select('t1.offer_name,coupon_title,coupon_description,coupon_code,link,url');
+		$this->db->from('s4k_deals t1');
+		$this->db->join('s4k_deals_banner t2','t1.dealID=t2.dealID','left');
+		$this->db->where(array('t1.Status'=>'Active','category'=>$category));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 }
 
 ?>
