@@ -350,8 +350,8 @@ class Login extends CI_Controller {
 
 	public function app_login()
 	{ 
-		$sb4k_login_info=$this->input->post('sb4k_login_info');
-		print_r($sb4k_login_info);die;
+		//$sb4k_login_info=$this->input->post('sb4k_login_info');
+		print_r($_POST);die;
 		if($sb4k_login_info){
 			$sb4k_login_info=json_decode($sb4k_login_info,true);
 			$useremail=$sb4k_login_info['emailId'];
