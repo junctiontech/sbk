@@ -132,6 +132,12 @@
 				
 		  <?php } }else{ echo"No product Found!!";}?>
 		  <a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=95080" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_Upto40PLUSExtra30OffOnPurchaseOfRs1299_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=95080&aff_id=48478&url_id=2442" width="1" height="1" />
+		  <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=88882&file_id=79365" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79365&aff_id=48478&file_id=88882" width="1" height="1" />
+		  <!-- Javascript Ad Tag: 534 -->
+<div id="vcm534aHsffu"></div>
+<script src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=js&divid=vcm534aHsffu" type="text/javascript"></script>
+<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="728" height="90"></iframe></noscript>
+<!-- // End Ad Tag -->
 			</div>
 			</div>
 			

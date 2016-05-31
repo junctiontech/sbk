@@ -70,7 +70,8 @@
 				<input type="text" value="" />
 			</div>
 			<div class="button"><span><a href="javascript:;">Add Tags</a></span></div>
-	    </div>				
+	    </div>	
+<a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=88882&file_id=79365" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79365&aff_id=48478&file_id=88882" width="1" height="1" />		
 	</div>
 				<div class="rightsidebar span_3_of_1">
 					<h2>Similar Product</h2>
@@ -91,6 +92,8 @@
 				</div>
 				<div class="clear"></div>
 		  <?php } }else{ echo"No product Found!!";}?>
+		  
+		  <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=79367&file_id=79367" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_300x250.jpg" width="300" height="250" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79367&aff_id=48478&file_id=79367" width="1" height="1" />
 			</div>
     				
     				<div class="subscribe">
