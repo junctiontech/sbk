@@ -16,6 +16,7 @@ class Login extends CI_Controller {
 		$this->data['base_url']=base_url();
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		// Include the google api php libraries
 		include_once APPPATH."libraries/google-api-php-client/Google_Client.php";
 		include_once APPPATH."libraries/google-api-php-client/contrib/Google_Oauth2Service.php";
@@ -115,7 +116,7 @@ class Login extends CI_Controller {
 				'userLastName'=>$userProfile['family_name'],
 				'userEmail'=>$userProfile['email'],
 				'userPassword'=>'',
-				'userGender'=>$userProfile['gender'],
+				'userGender'=>isset($userProfile['gender'])?$userProfile['gender']:'',
 				'userDOB'=>'',
 				'userMobileNo'=>'',
 				'userProfileImage'=>$userProfile['picture']

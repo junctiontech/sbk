@@ -113,11 +113,12 @@
 					 <h2><?=$product->productName?> </h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
-					 <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /> <?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){?>
+					 <!--<div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /> <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
 					  <?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
-					  <?php } ?></span> </div><div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
+					  <?php } */ ?></span> </div>
+					  <div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>-->
 					 <div class="checkbox">
 					<label>
 						<input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)"> Add to Compare
