@@ -74,12 +74,22 @@ class User extends CI_Controller {
 	}	
 	public function PersonalInformation()
 	{
-		$userID=$this->userinfos['userID'];		
-		$this->data['personal']=$this->User_model->PersonalInformation($userID);		
-		$this->parser->parse('frontend/Header',$this->data);		
-		$this->parser->parse('frontend/Leftheader',$this->data);
-		$this->parser->parse('frontend/PersonalInformation', $this->data);
-		$this->parser->parse('frontend/Footer',$this->data);
+		$user_id=$this->input->post('user_id');
+		if(!empty($user_id)){
+			$userID=$user_id;	
+		}else{
+			$userID=$this->userinfos['userID'];	
+		}
+			
+				$this->data['personal']=$personal=$this->User_model->PersonalInformation($userID);
+			if(!empty($user_id)){
+				echo json_encode($personal);
+			}else{				
+				$this->parser->parse('frontend/Header',$this->data);		
+				$this->parser->parse('frontend/Leftheader',$this->data);
+				$this->parser->parse('frontend/PersonalInformation', $this->data);
+				$this->parser->parse('frontend/Footer',$this->data);
+			}
 	}
 	public function userprofileupdate ()
 	{		

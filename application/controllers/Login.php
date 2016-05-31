@@ -304,7 +304,7 @@ class Login extends CI_Controller {
 			$id=$this->Login_model->insert('s4k_user',$data);
 			if(!empty($id)){
 				if($app==true){
-					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!!'));
+					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!!','user_id'=>$id));
 				}else{
 				$where=array('userID'=>$id);
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
@@ -384,7 +384,7 @@ class Login extends CI_Controller {
 					'userFirstName' => $userinfo[0]->userFirstName,
 					'userProfileImage' => $userinfo[0]->userProfileImage
 				);
-					echo json_encode(array('code'=>200,'message'=>'Successfully login'));
+					echo json_encode(array('code'=>200,'message'=>'Successfully login','user_id'=>$userinfo[0]->userID));
 				}else{
 					echo json_encode(array('code'=>500,'message'=>'Invalid username or password!!'));
 				}
