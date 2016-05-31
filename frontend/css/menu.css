@@ -113,6 +113,7 @@ ul.dc_mm-orange li .sub a{
 	padding:7px 10px;
 	text-decoration:none;
 	text-shadow:none;
+	
 }
 ul.dc_mm-orange li .sub li.mega-hdr a.mega-hdr-a{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70389c',endColorstr='#602d8d');
@@ -126,6 +127,7 @@ ul.dc_mm-orange li .sub li.mega-hdr a.mega-hdr-a{
 	padding:5px 5px 5px 15px;
 	font-family:Arial, Helvetica, sans-serif;
 	//text-transform:uppercase;
+	height: 25px !important;
 }
 ul.dc_mm-orange li .sub li.mega-hdr a.mega-hdr-a:hover{
 	color: #FFF;
