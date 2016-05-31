@@ -600,6 +600,7 @@ p.note{
 }
 .grid_1_of_4:first-child { 
 	margin-left: 0; 
+	    
 } 
 .images_1_of_4 {
 	width: 18.8%;
@@ -607,6 +608,7 @@ p.note{
 	text-align:center;
 	position:relative; 
 	height:400px;
+	margin-right: 13px;
 }
 
 .images_1_of_4  img{
