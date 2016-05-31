@@ -281,8 +281,9 @@ class Login extends CI_Controller {
 	}
 	
 	public function insert_user_info()
-	{
-		if($this->input->post('submit')){
+	{	
+		$app=$this->input->get('app');
+		if($this->input->post('submit') || $app==true){
 			$userFirstName=$this->input->post('userFirstName');
 			$userLastName=$this->input->post('userLastName');
 			$userEmail=$this->input->post('userEmail');
@@ -302,6 +303,9 @@ class Login extends CI_Controller {
 				);
 			$id=$this->Login_model->insert('s4k_user',$data);
 			if(!empty($id)){
+				if($app==true){
+					echo json_decode(array('code'=>200,'message'=>'Signup Successfully!!'));
+				}else{
 				$where=array('userID'=>$id);
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
 				if(!empty($userinfo)){
@@ -319,21 +323,36 @@ class Login extends CI_Controller {
 				redirect('User/Dashboard');
 				
 			}else{
+				if($app==true){
+					echo json_decode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
+				}else{
 				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
 				redirect('Login/signup');
+				}
 			} 
-			
+				}
 		}else{
+				if($app==true){
+					echo json_decode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
+				}else{
 				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
 				redirect('Login/signup');
+				}
 			} 
 		}else{
+				if($app==true){
+					echo json_decode(array('code'=>500,'message'=>'All fields are mandatory!! Please Try Again.'));
+				}else{
 				$this->session->set_flashdata('category_error_login', " All fields are mandatory!! Please Try Again. ");
-				redirect('Login/signup');
+				redirect('Login/signup');}
 			}
 		}else{
+			if($app==true){
+					echo json_decode(array('code'=>500,'message'=>'Invalid request!! Please Try Again.'));
+				}else{
 			$this->session->set_flashdata('category_error_login', " Invalid request!! Please Try Again. ");
 			redirect('Login/signup');
+				}
 		}
 	}	
 	/* Logout function start................................................................................... */
