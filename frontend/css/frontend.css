@@ -159,3 +159,26 @@ font-size:19px;
 		margin-left:20px;
 		margin-top:10px;
 	}
+
+
+	
+	.deal_1_of_3
+{
+	width: 31%;
+	padding: 1.5%;
+	text-align: center;
+	position: relative;
+	height:450px;
+	margin-right:10px;
+}
+.deal
+{
+	font-size: 14px !important;
+	margin-top: 20px !important;
+	height:auto !important;
+}
+.deal_coupon
+{
+	margin-top:auto !important;
+	font-size:14px !important;
+}
