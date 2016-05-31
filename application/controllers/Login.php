@@ -348,4 +348,33 @@ class Login extends CI_Controller {
 
 	/* Logout function start................................................................................... */
 
+	public function app_login()
+	{ 
+		$sb4k_login_info=$this->input->post('sb4k_login_info');
+		if($sb4k_login_info){
+			$sb4k_login_info=json_decode($sb4k_login_info,true);
+			$useremail=$sb4k_login_info['emailId'];
+			$password=$sb4k_login_info['password'];
+			if(!empty($useremail) && !empty($password)){
+				$where=array('userEmail'=>$useremail,'userPassword'=>md5($password),'Status'=>'Active');
+				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				if(!empty($userinfo)){
+					$sbk = array(
+					'userID' => $userinfo[0]->userID,
+					'userTypeID' => $userinfo[0]->userTypeID,
+					'userFirstName' => $userinfo[0]->userFirstName,
+					'userProfileImage' => $userinfo[0]->userProfileImage
+				);
+					echo json_encode(array('code'=>200,'message'=>'Successfully login'));
+				}else{
+					echo json_encode(array('code'=>500,'message'=>'Error'));
+				}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'Error'));
+			}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'Error'));
+		}
+	}
+	
 }
