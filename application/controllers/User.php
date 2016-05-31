@@ -85,11 +85,13 @@ class User extends CI_Controller {
 				$this->data['personal']=$personal=$this->User_model->PersonalInformation($userID);
 			if(!empty($user_id)){
 				echo json_encode($personal);
-			}else{				
+			}else{
+				if($this->input->get('app')!=true){
 				$this->parser->parse('frontend/Header',$this->data);		
 				$this->parser->parse('frontend/Leftheader',$this->data);
 				$this->parser->parse('frontend/PersonalInformation', $this->data);
 				$this->parser->parse('frontend/Footer',$this->data);
+				}
 			}
 	}
 	public function userprofileupdate ()
