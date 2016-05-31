@@ -85,6 +85,8 @@ class Landingpage extends CI_Controller {
 				$jsonarray['newproduct']=$newproduct;
 				$jsonarray['lshproduct']=$lshproduct;
 				$jsonarray['topbrand']=$topbrand;
+				$jsonarray['deals']=$deals;
+				$jsonarray['dealsgategorys']=$dealsgategorys;
 				echo json_encode($jsonarray);
 			}else{
 				echo "No category found";
