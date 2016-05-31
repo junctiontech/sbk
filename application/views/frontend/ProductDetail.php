@@ -82,11 +82,11 @@
 					 <h2><?=$similarproducted->productName?> </h2>
 					
 					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>
-					  <div class="button" style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><?php if(!empty($userinfos)){ if(in_array(isset($similarproducted->productsID)?$similarproducted->productsID:'',$whislistproduct)==false){ ?>
+					 <!-- <div class="button" style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><?php /*if(!empty($userinfos)){ if(in_array(isset($similarproducted->productsID)?$similarproducted->productsID:'',$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($similarproducted->productsID)?$similarproducted->productsID:''?>.html" class="cart-button">Add to wishlists</a>
 					  <?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
-					  <?php } ?></span> </div>
+					  <?php } */?></span> </div>-->
 				     
 				</div>
 				<div class="clear"></div>
