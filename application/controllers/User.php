@@ -16,7 +16,8 @@ class User extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->data['base_url']=base_url();
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
-		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+			$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+			$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
 		$this->data['whislist']=count($wishlist);
 		foreach($wishlist as $wishlists){

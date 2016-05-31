@@ -169,6 +169,7 @@ class Landingpage extends CI_Controller {
 		}else{
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+			$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 			if($categorykey !='' && $categorykey !='search'){
 				$this->data['filters']=$this->Landingpage_model->get_filters($categorykey);
 			}
@@ -224,14 +225,18 @@ class Landingpage extends CI_Controller {
 	
 	
 	$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
-		
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 	$this->parser->parse('frontend/Header',$this->data);
 	$this->parser->parse('frontend/Compare',$this->data);
 	$this->parser->parse('frontend/Footer',$this->data);
 	}
 	
 	public function Deals($category=false)
-	{	
+	{	$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		if($category){
 		$category=str_replace('_',' ',$category);
 		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
