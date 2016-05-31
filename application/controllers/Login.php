@@ -377,4 +377,27 @@ class Login extends CI_Controller {
 		}
 	}
 	
+	public function app_forgetpassword()
+	{ 
+		$sb4k_forgot_info=$this->input->post('sb4k_forgot_info');
+		if($sb4k_forgot_info){
+			$sb4k_forgot_info=json_decode($sb4k_forgot_info,true);
+			$useremail=$sb4k_forgot_info['emailId'];
+			if(!empty($useremail)){
+				$where=array('userEmail'=>$useremail,'Status'=>'Active');
+				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				if(!empty($userinfo)){
+
+					echo json_encode(array('code'=>200,'message'=>'Password reset link is send to your email'));
+				}else{
+					echo json_encode(array('code'=>500,'message'=>'Invalid emailId not found'));
+				}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'All fields are mendatory!!'));
+			}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
+		}
+	}
+	
 }
