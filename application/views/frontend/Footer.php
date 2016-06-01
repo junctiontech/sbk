@@ -5,29 +5,21 @@
 						<h4>Information</h4>
 						<ul>
 						<li><a href="javascript:;">About Us</a></li>
-						<li><a href="javascript:;">Customer Service</a></li>
 						<li><a href="javascript:;"><span>Advanced Search</span></a></li>
-						<li><a href="javascript:;">Orders and Returns</a></li>
 						<li><a href="javascript:;"><span>Contact Us</span></a></li>
 						</ul>
 					</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<h4>Why buy from us</h4>
-						<ul>
-						<li><a href="javascript:;">About Us</a></li>
-						<li><a href="javascript:;">Customer Service</a></li>
-						<li><a href="javascript:;">Privacy Policy</a></li>
-						<li><a href="javascript:;"><span>Site Map</span></a></li>
-						<li><a href="javascript:;"><span>Search Terms</span></a></li>
-						</ul>
-				</div>
+				
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>My account</h4>
 						<ul>
-							<li><a href="javascript:;">Sign In</a></li>
-							<li><a href="javascript:;">View Cart</a></li>
-							<li><a href="javascript:;">My Wishlist</a></li>
-							<li><a href="javascript:;">Track My Order</a></li>
+							<?php if(!empty($userinfos)){ ?>
+							<li><a href="<?=base_url();?>User/Dashboard.html">Dashboard</a></li>
+							<li><a href="<?=base_url();?>User/Mywishlist.html">My Wishlist</a></li>
+							<?php }else{ ?>
+							<li><a href="<?=base_url();?>Login.html">Sign In</a></li>
+							<li><a href="<?=base_url();?>Login.html">My Wishlist</a></li>
+								<?php } ?>
 							<li><a href="javascript:;">Help</a></li>
 						</ul>
 				</div>
@@ -35,7 +27,7 @@
 					<h4>Contact</h4>
 						<ul>
 							<li><span>8817507639</span></li>
-							<li><span>8817507639</span></li>
+							<li><span>9644201541</span></li>
 						</ul>
 						<div class="social-icons">
 							<h4>Follow Us</h4>

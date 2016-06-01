@@ -44,7 +44,11 @@ class Api_model extends CI_Model {
 
 public function insert_product($productdata=false)
 {
-	$query=$this->db->get_where('s4k_products',array('productsUrlKey'=>$productdata['productsUrlKey']));
+			$this->db->select('t1.productsID');
+			$this->db->from('s4k_products t1');
+			$this->db->join('s4k_product_price t2','t1.productsID=t2.productsID','left');
+			$this->db->where(array('productsUrlKey'=>$productdata['productsUrlKey'],'shopID'=>$productdata['shopID']));
+			$query=$this->db->get();
 		$result=$query->result();
 		if(empty($result)){
 		$productMasterData=array('categoriesID'=>$productdata['categoriesID'],

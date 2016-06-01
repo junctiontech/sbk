@@ -134,7 +134,9 @@ class Api extends CI_Controller {
 					$products = $details['products'];
 					
 					foreach($products as $product)
-					{ echo $product['title'];echo"<br>";
+					{ print_r($product['subCategoryName']);echo"<br>";
+						if($product['subCategoryName']=='Mobile Phones'){
+						echo $product['title'];echo"<br>";
 						$productdata=array();
 						$productdata=array('categoriesID'=>$categoryID,
 						'subCategoriesID'=>0,
@@ -169,6 +171,7 @@ class Api extends CI_Controller {
 							{
 						$this->Api_model->insert_new_product($productdata);		
 							}
+					}
 					}
 					
 					$nextUrl = $details['nextUrl'];

@@ -27,7 +27,7 @@
 						<p>Available Options :</p>
 					<ul>
 					<?php foreach($othershopprices as $othershopprice){?>
-						<li><img src="<?=base_url();?>frontend/images/<?=$othershopprice->shop_image?>"><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>price:200</li>
+						<li><img src="<?=base_url();?>frontend/images/<?=$othershopprice->shop_image?>"><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>price:<?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></li>
 					<?php } ?>
 					</ul>
 					</div>

@@ -33,7 +33,7 @@ class Landingpage extends CI_Controller {
 		foreach ($query as $article)
 		{
 			
-		$doc = new Zend_Search_Lucene_Document();
+			$doc = new Zend_Search_Lucene_Document();
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productsID', $article->productsID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productName', $article->productName));
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
@@ -76,7 +76,7 @@ class Landingpage extends CI_Controller {
 		$this->data['lshproduct']=$lshproduct=$this->Landingpage_model->get_inventory_data("lhs_landing_page");
 		$this->data['deals']=$deals=$this->Landingpage_model->get_deals();
 		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
-		//print_r($deals);die;
+		//print_r($dealsgategorys);die;
 		/* echo"<br>";print_r($categories);echo"<br>";echo"<br>";print_r($featureproduct);echo"<br>";echo"<br>";print_r($lshproduct);die; */
 		if($app=='true'){
 			if(!empty($categories)){
@@ -195,7 +195,6 @@ class Landingpage extends CI_Controller {
 	}
 	
 	public function fetchdata_compare_product($productid=false)
-	
 	{
 	
 		$productid=$this->input->post('productid');
@@ -236,15 +235,21 @@ class Landingpage extends CI_Controller {
 	}
 	
 	public function Deals($category=false)
-	{	$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+	{	
+		$app=$this->input->get('app');
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		if($category){
 		$category=str_replace('_',' ',$category);
 		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
+		if($app=='true'){
+			echo json_encode($data);
+		}else{
 		$this->parser->parse('frontend/Header',$this->data);
 		$this->parser->parse('frontend/Deals',$this->data);
 		$this->parser->parse('frontend/Footer',$this->data);
+		}
 		}
 	}
 	
