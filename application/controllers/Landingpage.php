@@ -135,6 +135,9 @@ class Landingpage extends CI_Controller {
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{
 			$index = Zend_Search_Lucene::open($this->search_index);
+			if($app=='true'){
+						Zend_Search_Lucene::setResultSetLimit(500);
+						}
 			$products = $index->find($searchquery);
 		}
 	}

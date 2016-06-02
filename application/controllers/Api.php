@@ -52,7 +52,7 @@ class Api extends CI_Controller {
 					$products = $details['productInfoList'];
 					
 					foreach($products as $product)
-					{ echo $product['title'];echo"<br>";
+					{ echo $product['productBaseInfo']['productAttributes']['title'];echo"<br>";
 						$productdata=array();
 						$productdata=array('categoriesID'=>$categoryID,
 						'subCategoriesID'=>0,

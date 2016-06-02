@@ -35,13 +35,13 @@ class Landingpage_model extends CI_Model {
 		$this->db->from('s4k_inventory_consumption t1');
 		$this->db->join('s4k_inventory_master t2','t1.inventoryMasterID=t2.inventoryMasterID','left');
 		$this->db->join('s4k_inventory_type t3','t2.inventoryTypeID=t3.inventoryTypeID','left');
-		$this->db->join('s4k_products t4','t1.productID=t4.productsID','left');
-		$this->db->join('s4k_product_details t5','t4.productsID=t5.productsID','left');
-		$this->db->join('s4k_product_attribute t6','t4.productsID=t6.productsID','left');
-		$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID','left');
-		$this->db->join('s4k_product_images t8','t4.productsID=t8.productsID','left');
-		$this->db->join('s4k_product_image_details t9','t8.productImageID=t9.productImageID','left');
-		$this->db->join('s4k_product_price t10','t4.productsID=t10.productsID','left');
+		$this->db->join('s4k_products_map t4','t1.productID=t4.productsID','left');
+		//$this->db->join('s4k_product_details t5','t4.productsID=t5.productsID','left');
+		$this->db->join('s4k_product_attribute_map t6','t4.productsID=t6.productsID','left');
+		//$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID','left');
+		$this->db->join('s4k_product_images_map t8','t4.productsID=t8.productsID','left');
+		//$this->db->join('s4k_product_image_details t9','t8.productImageID=t9.productImageID','left');
+		$this->db->join('s4k_product_price_map t10','t4.productsID=t10.productsID','left');
 		$this->db->join('s4k_categories t11','t4.categoriesID=t11.categoriesID','left');
 		$this->db->where(array('inventoryKey'=>$where,'t1.Status'=>'Active'));
 		$this->db->order_by('t1.sortOrder','DESC');
@@ -52,18 +52,18 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_products($extraquery=false,$searchqry=false,$where=false){
-		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
+		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	productAttributeLable,productAttributeValue,t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
 			
 		}
-		$this->db->from('s4k_products t1');
-		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
-		$this->db->join('s4k_product_attribute t3','t1.productsID=t3.productsID','left');
-		$this->db->join('s4k_product_attribute_details t4','t3.productAttributeID=t4.productAttributeID','left');
-		$this->db->join('s4k_product_images t5','t1.productsID=t5.productsID','left');
-		$this->db->join('s4k_product_image_details t6','t5.productImageID=t6.productImageID','left');
-		$this->db->join('s4k_product_price t7','t1.productsID=t7.productsID','left');
+		$this->db->from('s4k_products_map t1');
+		//$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
+		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		//$this->db->join('s4k_product_attribute_details t4','t3.productAttributeID=t4.productAttributeID','left');
+		$this->db->join('s4k_product_images_map t5','t1.productsID=t5.productsID','left');
+		//$this->db->join('s4k_product_image_details t6','t5.productImageID=t6.productImageID','left');
+		$this->db->join('s4k_product_price_map t7','t1.productsID=t7.productsID','left');
 		$this->db->join('s4k_categories t8','t1.categoriesID=t8.categoriesID','left');
 		if($extraquery){
 			$this->db->join('s4k_shops t9','t7.shopID=t9.shopID','left');
