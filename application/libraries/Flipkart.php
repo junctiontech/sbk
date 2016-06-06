@@ -25,7 +25,7 @@ class Flipkart
         return $this->sendRequest($url);
     }
 
-    private function sendRequest($url, $timeout=30){
+    private function sendRequest($url, $timeout=''){
     	
     	if (function_exists('curl_init') && function_exists('curl_setopt')){
 	       

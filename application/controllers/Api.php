@@ -12,13 +12,14 @@ class Api extends CI_Controller {
 		$this->userinfo=$this->session->userdata('searchb4kharch');
 		$this->load->library('Flipkart');
 		$this->load->library('Snapdeal');
+		$this->load->library('Amazon_api');
 		$this->load->model('frontend/Api_model');
 	}
 
 	
-	public function flipkart()
+	public function flipkart($value=false)
 	{
-
+	
 		$flipkart = new Flipkart(array('affiliateId'=>"rohitthak6", 'token'=>"9575b4e1913c4c11bc0f43b0a175622d",'response_type'=>"json"));
 		$home = $flipkart->api_home();
 		if($home==false)
@@ -31,56 +32,65 @@ class Api extends CI_Controller {
 		//echo"<br>";print_r($list);echo"<br>";
 		//echo"<br>";print_r($data);echo"<br>";
 		foreach ($list as $key => $data) 
-		{
+		{	
 			$categoryarray=array();
 			$categoryarray['categoriesUrlKey']=$key;
 			$categoryarray['categoriesSortOrder']=1;
 			$categoryarray['categoriesStatus']='Active';
-			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v0.1.0']['get'],1);
+			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v1.1.0']['get'],1);
 			if(!empty($categoryID))
 			{
-				$url = $data['availableVariants']['v0.1.0']['get'];
+				$url = $data['availableVariants']['v1.1.0']['get'];
 				$i=1;
 				echo $key;echo"<br>";
 				do{
 					echo $i;echo"<br>";
+					
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
+				//print_r($details);die;
 				if(!empty($details))
 				{
 					
 					$products = $details['productInfoList'];
 					
 					foreach($products as $product)
-					{ echo $product['productBaseInfo']['productAttributes']['title'];echo"<br>";
+					{ echo $product['productBaseInfoV1']['title'];echo"<br>";
 						$productdata=array();
+						
+						$shopproductfamily=$product['productBaseInfoV1']['productFamily'];
+						$specificationLists=$product['categorySpecificInfoV1']['specificationList'];
+						
 						$productdata=array('categoriesID'=>$categoryID,
 						'subCategoriesID'=>0,
-						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['productBaseInfo']['productAttributes']['title']))),
+						'productBrand'=>$product['productBaseInfoV1']['productBrand'],
+						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['productBaseInfoV1']['title']))),
 						'productsSortOrder'=>1,
 						'productsStatus'=>'Active',
-						'productName'=>$product['productBaseInfo']['productAttributes']['title'],
-						'productDescription'=>$product['productBaseInfo']['productAttributes']['productDescription'],
+						'productName'=>$product['productBaseInfoV1']['title'],
+						'productDescription'=>$product['productBaseInfoV1']['productDescription'],
 						'imageSortOrder'=>1,
 						'isDefault'=>'Yes',
-						'imageName'=>array_key_exists('200x200', $product['productBaseInfo']['productAttributes']['imageUrls'])?$product['productBaseInfo']['productAttributes']['imageUrls']['200x200']:'',
+						'imageName'=>array_key_exists('200x200', $product['productBaseInfoV1']['imageUrls'])?$product['productBaseInfoV1']['imageUrls']['200x200']:'',
 						'imageStatus'=>'Active',
-						'productImageTitle'=>$product['productBaseInfo']['productAttributes']['title'],
-						'productImageAltTag'=>$product['productBaseInfo']['productAttributes']['title'],
+						'productImageTitle'=>$product['productBaseInfoV1']['title'],
+						'productImageAltTag'=>$product['productBaseInfoV1']['title'],
 						'currencyID'=>1,
-						'productPrice'=>$product['productBaseInfo']['productAttributes']['sellingPrice']['amount'],
+						'productPrice'=>$product['productBaseInfoV1']['flipkartSellingPrice']['amount'],
+						'shopProductID'=>$product['productBaseInfoV1']['productId'],
 						'shopID'=>1,
-						'productShopUrl'=>$product['productBaseInfo']['productAttributes']['productUrl'],
-						'productAttributeSortOrder'=>1,
-						'productAttributeStatus'=>'Active',
-						'productAttributehighLight'=>'Yes',
-						'productAttributekey'=>array('color','productBrand'),
-						'productAttributeLable'=>array('Color','Product Brand'),
-						'productAttributeValue'=>array($product['productBaseInfo']['productAttributes']['color'],
-													   $product['productBaseInfo']['productAttributes']['productBrand']));
+						'productShopUrl'=>$product['productBaseInfoV1']['productUrl']
+						);
 													   
 													   
-						$this->Api_model->insert_new_product($productdata);
+						if(!empty($value))
+							{
+						$this->Api_model->insert_product($productdata,$shopproductfamily,$specificationLists);
+							}
+							else
+							{
+						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
+							}
 							
 							
 					}
@@ -282,7 +292,92 @@ class Api extends CI_Controller {
 	
 	public function api_call()
 	{
-		$this->snapdeal($value='First');
+		$this->flipkart($value='First');
 	}
+	
+	
+	public function amazone()
+	{
+
+		$amazone = new Amazon_api();
+		$home = $amazone->getItemByKeyword("apple iphone 6","Book");
+		if($home==false)
+		{
+			echo 'Error: Could not retrieve API homepage';
+			exit();
+		}
+		$home = json_decode($home, TRUE);
+		print_r($home);die;
+		$list = $home['apiGroups']['affiliate']['apiListings'];
+		//echo"<br>";print_r($list);echo"<br>";
+		//echo"<br>";print_r($data);echo"<br>";
+		foreach ($list as $key => $data) 
+		{
+			$categoryarray=array();
+			$categoryarray['categoriesUrlKey']=$key;
+			$categoryarray['categoriesSortOrder']=1;
+			$categoryarray['categoriesStatus']='Active';
+			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v0.1.0']['get'],1);
+			if(!empty($categoryID))
+			{
+				$url = $data['availableVariants']['v0.1.0']['get'];
+				$i=1;
+				echo $key;echo"<br>";
+				do{
+					echo $i;echo"<br>";
+				$details = $flipkart->call_url($url);
+				$details = json_decode($details, TRUE);
+				if(!empty($details))
+				{
+					
+					$products = $details['productInfoList'];
+					
+					foreach($products as $product)
+					{ echo $product['productBaseInfo']['productAttributes']['title'];echo"<br>";
+						$productdata=array();
+						$productdata=array('categoriesID'=>$categoryID,
+						'subCategoriesID'=>0,
+						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['productBaseInfo']['productAttributes']['title']))),
+						'productsSortOrder'=>1,
+						'productsStatus'=>'Active',
+						'productName'=>$product['productBaseInfo']['productAttributes']['title'],
+						'productDescription'=>$product['productBaseInfo']['productAttributes']['productDescription'],
+						'imageSortOrder'=>1,
+						'isDefault'=>'Yes',
+						'imageName'=>array_key_exists('200x200', $product['productBaseInfo']['productAttributes']['imageUrls'])?$product['productBaseInfo']['productAttributes']['imageUrls']['200x200']:'',
+						'imageStatus'=>'Active',
+						'productImageTitle'=>$product['productBaseInfo']['productAttributes']['title'],
+						'productImageAltTag'=>$product['productBaseInfo']['productAttributes']['title'],
+						'currencyID'=>1,
+						'productPrice'=>$product['productBaseInfo']['productAttributes']['sellingPrice']['amount'],
+						'shopID'=>1,
+						'productShopUrl'=>$product['productBaseInfo']['productAttributes']['productUrl'],
+						'productAttributeSortOrder'=>1,
+						'productAttributeStatus'=>'Active',
+						'productAttributehighLight'=>'Yes',
+						'productAttributekey'=>array('color','productBrand'),
+						'productAttributeLable'=>array('Color','Product Brand'),
+						'productAttributeValue'=>array($product['productBaseInfo']['productAttributes']['color'],
+													   $product['productBaseInfo']['productAttributes']['productBrand']));
+													   
+													   
+						$this->Api_model->insert_new_product($productdata);
+							
+							
+					}
+						$nextUrl = $details['nextUrl'];
+						$url=$nextUrl;
+				}
+				/* if($i==2){ echo $nextUrl;die; }*/
+				$i++; 
+				}while(!empty($nextUrl));
+			
+			}
+		
+		}
+		
+		
+	}
+	
 			
 }
