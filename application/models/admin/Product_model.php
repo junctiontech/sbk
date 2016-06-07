@@ -99,11 +99,12 @@ class Product_model extends CI_Model {
 	}
 	function map_product($category=false,$product=false,$productName=false )
 	{	
-		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice');
+		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
 		$this->db->from('s4k_products t1');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
 		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->where(array('t1.productsID !='=>$product));
 		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
