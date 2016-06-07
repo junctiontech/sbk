@@ -181,7 +181,7 @@ class Landingpage extends CI_Controller {
 			$this->data['products']=$products;
 			if(!empty($productkey) && empty($b)){
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
-				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices(1387,$shopID);
+				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
 				//print_r($this->data['othershopprices']);die;
 				$searchquery1="categoriesUrlKey: $categorykey";
 				//$searchquery1.="AND productName: $productName";
