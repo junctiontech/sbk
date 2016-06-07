@@ -98,6 +98,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->where(array('parentProductID'=>$productID));
 		$this->db->order_by('shopSortOrder','ASC');
 		$query=$this->db->get();
+		echo $this->db->last_query();die;
 		return $query->result();
 	}
 	public function fetchdata_compare_product($productid=false)
