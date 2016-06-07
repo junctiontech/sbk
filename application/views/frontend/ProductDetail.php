@@ -16,8 +16,8 @@
 								
 					<div class="grid images_3_of_2 pro_img">
 					
-						<img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"style="height:250px;width:75%" />
-					</div>
+						<img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+					</div><!--style="height:250px;width:75%"-->
 				<div class="desc span_3_of_2">
 					
 						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
@@ -33,8 +33,8 @@
 					</div>
 					<?php } ?>
 					
-					<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	
-			
+					<!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
+			<div class="clear"></div>
 					<div class="share">
 						<p>Share Product :</p>
 						<ul>
@@ -60,6 +60,54 @@
 			</div>
 			
 			<div class="product-desc">
+			<h2>Product Feature</h2>
+			<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                     <div class="x_content">
+									<table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Mark</td>
+                                            </tr>
+                                         </tbody>
+                                    </table>
+
+                                </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+			</div>
+	    </div>
+			<div class="product-desc">
 			<h2>Product Details</h2>
 			<p><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?>.</p>
 	    </div>
@@ -79,7 +127,7 @@
 					<div class="section group">
 		   <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
 				<div class="grid_1_of_4 similar_images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>"style="height:250px;width:75%" alt="" /></a>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
 					 <h2><?=$similarproducted->productName?> </h2>
 					
 					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>

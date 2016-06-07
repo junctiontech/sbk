@@ -18,7 +18,7 @@
 <script type="text/javascript" src="<?=base_url();?>frontend/js/validator.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
-<link rel="shortcut icon" href="<?=base_url();?>frontend/images/sb4k.png">
+<link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script type="text/javascript">
   $(document).ready(function($){
     $('#dc_mega-menu-orange').dcMegaMenu({rowItems:'4',speed:'fast',effect:'fade'});
@@ -30,7 +30,7 @@
 	<div class="header">
 		<div class="header_top">
 			<div class="logo">
-				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/searchb4kharch.png" alt="" /></a>
+				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box ">

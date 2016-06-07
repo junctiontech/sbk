@@ -170,6 +170,14 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function get_attribute_by_category($category){
+		$this->db->select('t1.offer_name,coupon_title,coupon_description,coupon_code,link,url,coupon_expiry,added');
+		$this->db->from('s4k_deals t1');
+		$this->db->join('s4k_deals_banner t2','t1.dealID=t2.dealID','left');
+		$this->db->where(array('t1.Status'=>'Active','category'=>$category));
+		$query=$this->db->get();
+		return $query->result();
+	}
 }
 
 ?>

@@ -72,8 +72,7 @@
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">
-					<li>
-					<div data-SDID="1099040783"  data-identifier="SnapdealAffiliateAds" data-height="250" data-width="300" ></div><script async id="snap_zxcvbnhg" src="https://affiliate-ads.snapdeal.com/affiliate/js/snapdealAffiliate.js"></script></li>
+					
 					<?php if(!empty($deals)){ foreach($deals as $deal){ ?>
 						<li>
 						<div class="listview_1_of_2 images_1_of_2" style="
