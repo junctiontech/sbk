@@ -80,6 +80,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('productsSortOrder','ASC');
 		$this->db->order_by('productsUrlKey','ASC');
 		$this->db->order_by('productPrice','ASC');
+		$this->db->group_by('productsID');
 		}
 		//$this->db->limit(2000);
 
