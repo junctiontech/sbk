@@ -30,7 +30,7 @@
 	<div class="header">
 		<div class="header_top">
 			<div class="logo">
-				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png" alt="" /></a>
+				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/SEARCHB4KHARCH1.png" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box ">
