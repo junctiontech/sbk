@@ -23,14 +23,13 @@
 						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
 						
 					<?php if(!empty($othershopprices)){ ?>
-					<div class="available">
-						<p>Available Options :</p>
-					<ul>
-					<?php foreach($othershopprices as $othershopprice){?>
-						<li><img src="<?=base_url();?>frontend/images/<?=$othershopprice->shop_image?>"><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>price:<?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></li>
+					
+					<?php foreach($othershopprices as $othershopprice){ ?>
+						
+					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>
+					
 					<?php } ?>
-					</ul>
-					</div>
+					
 					<?php } ?>
 					
 					<!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
