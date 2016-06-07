@@ -19,14 +19,14 @@
 						<img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 					</div><!--style="height:250px;width:75%"-->
 				<div class="desc span_3_of_2">
-					<div class="col-md-6 col-sm-6 col-xs-6">
-						<div class="col-md-2 col-sm-2 col-xs-2">
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<div class="col-md-5 col-sm-5 col-xs-5">
 						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
 						</div>
 					<?php if(!empty($othershopprices)){ ?>
 					
 					<?php foreach($othershopprices as $othershopprice){ ?>
-							<div class="col-md-2 col-sm-2 col-xs-2">
+							<div class="col-md-5 col-sm-5 col-xs-5">
 					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>
 					</div>
 					<?php } ?>
