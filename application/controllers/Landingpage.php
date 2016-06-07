@@ -188,6 +188,7 @@ class Landingpage extends CI_Controller {
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
+				$this->data['attributegroups']=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
 				}
 				
 				$this->display ('frontend/ProductDetail');

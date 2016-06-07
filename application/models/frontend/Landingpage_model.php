@@ -171,10 +171,17 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_attribute_by_category($category){
-		$this->db->select('t1.offer_name,coupon_title,coupon_description,coupon_code,link,url,coupon_expiry,added');
-		$this->db->from('s4k_deals t1');
-		$this->db->join('s4k_deals_banner t2','t1.dealID=t2.dealID','left');
-		$this->db->where(array('t1.Status'=>'Active','category'=>$category));
+		$this->db->select('t1.productAttributeLable,t1.AttributeID');
+		$this->db->from('s4k_categories_to_attribute t1');
+		$this->db->where(array('categoriesID'=>$category));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function get_attribute_by_product($AttributeID,$productsID=false){
+		$this->db->select('t1.productAttributeLable,t1.productAttributeValue');
+		$this->db->from('s4k_product_attribute_map t1');
+		$this->db->where(array('AttributeID'=>$AttributeID,'productsID'=>$productsID));
 		$query=$this->db->get();
 		return $query->result();
 	}
