@@ -119,5 +119,6 @@
 								});
 							  </script>
 							    <script src="<?=base_url();?>frontend/js/sb4k.js"></script>
+								<script src="<?=base_url();?>frontend/js/Filter_product.js"></script>
 </body>
 </html>

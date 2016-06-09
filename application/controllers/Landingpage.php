@@ -257,5 +257,67 @@ class Landingpage extends CI_Controller {
 		}
 		}
 	}
+	public function Filter_product ()
+	{	
+		$str =$this->input->post('data');
+		$query='';$where='';$searchqry='';$where1='';		
+		if(!empty($str))
+		{
+			foreach($str as $data)
+			{
+				$arr = explode('-', $data);
+				if(!empty($arr[0] == 'productPrice'))
+				{
+					$a = $arr[1];									
+				}
+				elseif(!empty($arr[0]))
+				{
+					$b=$arr[1];	
+					$c[]=$b;					
+				}				
+			}
+				
+		if(!empty($c))
+		{
+			$d = implode("','", $c);
+		}
+		if(!empty($a))
+		{
+			if (!empty($d))
+			{ 		
+				$where1 =("productPrice BETWEEN {$a} AND productAttributeValue IN ('$d')");					
+			} 
+			else 
+			{
+				$where1 =("productPrice BETWEEN {$a}");
+			}						
+		}
+		elseif(!empty($c))
+		{
+			$d= implode(' ',$c);
+			$where =("MATCH (`productAttributeValue`) AGAINST ('{$d}')");		 
+		} 
+		$filterprodect = $this->Landingpage_model->get_products($query, $searchqry, $where, $where1);
+		}
+		if (!empty($filterprodect))
+		{
+			foreach ($filterprodect as $filter)
+			{				
+				echo"<div class=\"grid_1_of_4 images_1_of_4\">
+					 <a href=\"".$filter->categoriesUrlKey."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
+					 <h2>".$filter->productName."</h2>
+					 <p><span class=\"price\">".$filter->productPrice."</span></p>					 
+					 <div class=\"checkbox\">
+					<label>
+						<input type=\"checkbox\" value=\"<".$filter->productsID.">\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
+					</label>
+					</div>
+				</div>"; 				
+			}
+		} 
+		else{
+			echo "NO Product Found ";
+		}
+	}
 	
 }
