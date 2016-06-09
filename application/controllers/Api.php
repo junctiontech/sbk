@@ -12,7 +12,8 @@ class Api extends CI_Controller {
 		$this->userinfo=$this->session->userdata('searchb4kharch');
 		$this->load->library('Flipkart');
 		$this->load->library('Snapdeal');
-		$this->load->library('Amazon_api');
+		$this->load->library('Aws_signed_request');
+		$this->load->library('AmazonProductAPI');
 		$this->load->model('frontend/Api_model');
 	}
 
@@ -298,85 +299,94 @@ class Api extends CI_Controller {
 	
 	public function amazone()
 	{
-
-		$amazone = new Amazon_api();
-		$home = $amazone->getItemByKeyword("apple iphone 6","Book");
-		if($home==false)
-		{
-			echo 'Error: Could not retrieve API homepage';
-			exit();
-		}
-		$home = json_decode($home, TRUE);
-		print_r($home);die;
-		$list = $home['apiGroups']['affiliate']['apiListings'];
-		//echo"<br>";print_r($list);echo"<br>";
-		//echo"<br>";print_r($data);echo"<br>";
-		foreach ($list as $key => $data) 
-		{
-			$categoryarray=array();
-			$categoryarray['categoriesUrlKey']=$key;
-			$categoryarray['categoriesSortOrder']=1;
-			$categoryarray['categoriesStatus']='Active';
-			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v0.1.0']['get'],1);
-			if(!empty($categoryID))
+		$obj = new AmazonProductAPI();
+		$productnameforsearchs=$this->Api_model->get_productname();
+		
+		foreach($productnameforsearchs as $productnameforsearch){
+			$productName=$productnameforsearch->productName;
+			$productBrand=$productnameforsearch->productBrand;
+			if(!empty($productName)){
+		$ItemPage='';$i=1;
+		do{
+			try
 			{
-				$url = $data['availableVariants']['v0.1.0']['get'];
-				$i=1;
-				echo $key;echo"<br>";
-				do{
-					echo $i;echo"<br>";
-				$details = $flipkart->call_url($url);
-				$details = json_decode($details, TRUE);
-				if(!empty($details))
-				{
-					
-					$products = $details['productInfoList'];
-					
-					foreach($products as $product)
-					{ echo $product['productBaseInfo']['productAttributes']['title'];echo"<br>";
-						$productdata=array();
-						$productdata=array('categoriesID'=>$categoryID,
-						'subCategoriesID'=>0,
-						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['productBaseInfo']['productAttributes']['title']))),
-						'productsSortOrder'=>1,
-						'productsStatus'=>'Active',
-						'productName'=>$product['productBaseInfo']['productAttributes']['title'],
-						'productDescription'=>$product['productBaseInfo']['productAttributes']['productDescription'],
-						'imageSortOrder'=>1,
-						'isDefault'=>'Yes',
-						'imageName'=>array_key_exists('200x200', $product['productBaseInfo']['productAttributes']['imageUrls'])?$product['productBaseInfo']['productAttributes']['imageUrls']['200x200']:'',
-						'imageStatus'=>'Active',
-						'productImageTitle'=>$product['productBaseInfo']['productAttributes']['title'],
-						'productImageAltTag'=>$product['productBaseInfo']['productAttributes']['title'],
-						'currencyID'=>1,
-						'productPrice'=>$product['productBaseInfo']['productAttributes']['sellingPrice']['amount'],
-						'shopID'=>1,
-						'productShopUrl'=>$product['productBaseInfo']['productAttributes']['productUrl'],
-						'productAttributeSortOrder'=>1,
-						'productAttributeStatus'=>'Active',
-						'productAttributehighLight'=>'Yes',
-						'productAttributekey'=>array('color','productBrand'),
-						'productAttributeLable'=>array('Color','Product Brand'),
-						'productAttributeValue'=>array($product['productBaseInfo']['productAttributes']['color'],
-													   $product['productBaseInfo']['productAttributes']['productBrand']));
-													   
-													   
-						$this->Api_model->insert_new_product($productdata);
-							
-							
-					}
-						$nextUrl = $details['nextUrl'];
-						$url=$nextUrl;
-				}
-				/* if($i==2){ echo $nextUrl;die; }*/
-				$i++; 
-				}while(!empty($nextUrl));
-			
+				$result = $obj->searchProducts("$productBrand $productName",'Electronics',"TITLE",'',7072561011,$ItemPage);
 			}
-		
+			catch(Exception $e)
+			{
+				echo $e->getMessage();
+			}
+			$home = json_decode(json_encode($result),true);
+			//echo"<br>";print_r($home);echo"<br>";die;
+			//echo"<br>";print_r($home['Items']);echo"<br>";die;
+			$lists = $home['Items'];
+			
+			$ItemPage=$i+1;
+			if(!empty($home['Items']['TotalPages'])){
+			$nextUrl = $home['Items']['TotalPages'];
+			}else{ $nextUrl='';}
+			if($i==$nextUrl){ $nextUrl=''; }
+			echo"<br>";echo $i;echo"<br>";
+			
+					if(!empty($lists['Item'])){
+							foreach($lists['Item'] as $list)
+							{		echo"<br>";echo $list['ASIN'];echo"<br>";	
+									echo"<br>";echo $list['ItemAttributes']['Title'];echo"<br>";
+									echo"<br>";print_r($list);echo"<br>";									
+								if(!empty($list['ASIN'])){
+										$ASIN=$list['ASIN'];
+										$productdata = $obj->getItemAttributesByAsin("$ASIN");
+										$productdata=json_decode(json_encode($productdata),true);
+										//echo"<br>";print_r($productdata['Items']);echo"<br>";
+										
+										if(!empty($productdata['Items'])){
+											
+										$productdata1=array();
+								
+								$shopproductfamily=array();//$product['productBaseInfoV1']['productFamily'];
+								$specificationLists=$productdata['Items']['Item']['ItemAttributes'];
+								
+								$productdata1=array('categoriesID'=>1,
+								'subCategoriesID'=>0,
+								'productBrand'=>array_key_exists('Brand', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Brand']:'',
+								'productsUrlKey'=>strtolower(implode("_",explode(" ",array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:''))),
+								'productsSortOrder'=>1,
+								'productsStatus'=>'Active',
+								'productName'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
+								'productDescription'=>'',
+								'imageSortOrder'=>1,
+								'isDefault'=>'Yes',
+								'imageName'=>array_key_exists('SmallImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['SmallImage']['URL']:'',
+								'imageStatus'=>'Active',
+								'productImageTitle'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
+								'productImageAltTag'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
+								'currencyID'=>1,
+								'productPrice'=>array_key_exists('TradeInValue', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['TradeInValue']['Amount']:'',
+								'shopProductID'=>$ASIN,
+								'shopID'=>3,
+								'productShopUrl'=>array_key_exists('DetailPageURL', $productdata['Items']['Item'])?$productdata['Items']['Item']['DetailPageURL']:''
+								);
+															   
+														   
+								if(!empty($value))
+									{
+								$this->Api_model->insert_product($productdata1,$shopproductfamily,$specificationLists);
+									}
+									else
+									{
+								$this->Api_model->insert_new_product($productdata1,$shopproductfamily,$specificationLists);		
+									}
+									
+									
+							
+										}
+								}
+							}
+						}
+					$i++; 
+		}while(!empty($nextUrl));
 		}
-		
-		
+	}
 	}
 	
 			
