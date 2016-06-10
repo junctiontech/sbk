@@ -7,6 +7,7 @@
 <link href="<?=base_url();?>frontend/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/menu.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/frontend.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="<?=base_url();?>frontend/css/custom.css" rel="stylesheet" type="text/css" media="all"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="<?=base_url();?>frontend/js/script.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/jquery-1.7.2.min.js"></script> 
@@ -75,8 +76,8 @@
 	<div class="menu">
 	  <ul id="dc_mega-menu-orange" class="dc_mm-orange">
 	
-	<li><a href="javascript:;">Deals</a>
-    <ul>
+	<li><a href="<?=base_url();?>Landingpage/Deals">Deals</a>
+   <!-- <ul>
 	<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
       <li><a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
         <ul>
@@ -85,7 +86,7 @@
         </ul>
       </li>
 	<?php } }?>
-    </ul>
+    </ul>-->
   </li>
   
   <li class="staticcs"><a href="javascript:;">Buy >></a>

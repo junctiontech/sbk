@@ -51,7 +51,7 @@
 						</div>
                       </div>
                     </div> 
-			  </div>		       
+			  </div><div class="clearfix"></div>		       
 		<script>
 		$(document).on('hidden.bs.modal', function (e) {
 		var target = $(e.target);

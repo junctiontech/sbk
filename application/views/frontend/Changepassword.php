@@ -21,57 +21,57 @@
 <?php }?>
 <!-- Alert section End-->
 <div class="col-sm-6 col-md-6 col-xs-6 form_content">
-<p align="center">Change Password</p>
- <div class="right_col" role="main">
-                <div class="">
-                  <div class="page-title">
-                    <div class="title_left"> </div>
-                    <div class="title_right"> </div>
-                  </div>                  
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="x_panel">
-                        <div class="x_title">
-                          <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                          <form class="form-horizontal form-label-left" method="post" action="<?=base_url ();?>User/updatepssword" >
-                             <div class="item form-group">
-                                            <label for="password" class="control-label col-md-3">Old Password</label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="password" name="pass" data-validate-length="" class="form-control col-md-7 col-xs-12" required="required">
-                                            </div>
-                                        </div>
- <div class="item form-group">
-                                            <label for="password" class="control-label col-md-3">New Password</label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="password" type="password" name="password" data-validate-length="6" class="form-control col-md-7 col-xs-12" required="required">
-                                            </div>
-                                        </div>
- <div class="item form-group">
-                                            <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Confirm Password</label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
-                                            </div>
-                                        </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                              <div class="col-md-6 col-md-offset-5">                                
-                                <button type="submit" class="btn btn-success" >Change Password</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
+  <p align="center">Change Password</p>
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left"> </div>
+        <div class="title_right"> </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <form class="form-horizontal form-label-left" method="post" action="<?=base_url ();?>User/updatepssword" >
+                <div class="item form-group">
+                  <label for="password" class="control-label col-md-3">Old Password</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="password" name="pass" data-validate-length-range="4,30" class="form-control col-md-7 col-xs-12" required="required">
                   </div>
                 </div>
-              </div>
+                <div class="item form-group">
+                  <label for="password" class="control-label col-md-3">New Password</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="password" type="password" name="password" data-validate-length-range="4,30"  class="form-control col-md-7 col-xs-12" required="required">
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Confirm Password</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                  </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                  <div class="col-md-6 col-md-offset-5">
+                    <button type="submit" class="btn btn-success" >Change Password</button>
+                  </div>
+				  
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 </div>
-</body>
- <script>
+<script>
         // initialize the validator function
         validator.message['date'] = 'not a real date';
 

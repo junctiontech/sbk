@@ -11,7 +11,9 @@ if(window.location.hostname=="www.searchb4kharch.com"){
 	var base_url = 'http://www.searchb4kharch.com/'; 
 }
 
-function Filter_product(value){ 					
+function Filter_product(value){ 
+			var categoriesID = document.getElementById("categoriesID").value;
+				
 					var data=[];								
 					$(".count").each(function() {
 					if($(this).prop('checked') == true){
@@ -24,7 +26,7 @@ function Filter_product(value){
 		//filter.push(data);
 	$.ajax({
 				type: "POST",
-				data: {data:data},			
+				data: {data:data,categories:categoriesID },			
 				url : base_url+'Landingpage/Filter_product',				
 			})	
 				 .done(function(msg){

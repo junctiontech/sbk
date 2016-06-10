@@ -103,7 +103,6 @@ class Landingpage extends CI_Controller {
 		$app=$this->input->get('app');
 		$this->data['searchq']=$searchq=$this->input->Get('q');
 		$b=$this->input->Get('b');
-		
 		$jsonarray=array();
 		$query='';$searchqry='';
 		if($categorykey=='search'){
@@ -245,21 +244,23 @@ class Landingpage extends CI_Controller {
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+		$this->data['deals']=$deals=$this->Landingpage_model->get_deals();
 		if($category){
 		$category=str_replace('_',' ',$category);
 		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
 		if($app=='true'){
 			echo json_encode($data);
-		}else{
+		}		 
+		}
 		$this->parser->parse('frontend/Header',$this->data);
 		$this->parser->parse('frontend/Deals',$this->data);
 		$this->parser->parse('frontend/Footer',$this->data);
-		}
-		}
+		//$this->display('frontend/Deals', $this->data);
 	}
 	public function Filter_product ()
 	{	
 		$str =$this->input->post('data');
+		$id = $this->input->post('categories');
 		$query='';$where='';$searchqry='';$where1='';		
 		if(!empty($str))
 		{
@@ -285,17 +286,17 @@ class Landingpage extends CI_Controller {
 		{
 			if (!empty($d))
 			{ 		
-				$where1 =("productPrice BETWEEN {$a} AND productAttributeValue IN ('$d')");					
+				$where1 =("productPrice BETWEEN {$a} AND productAttributeValue IN ('$d') AND t8.categoriesID IN('$id')");					
 			} 
 			else 
 			{
-				$where1 =("productPrice BETWEEN {$a}");
+				$where1 =("productPrice BETWEEN {$a} AND t8.categoriesID IN('$id')");
 			}						
 		}
 		elseif(!empty($c))
 		{
 			$d= implode(' ',$c);
-			$where =("MATCH (`productAttributeValue`) AGAINST ('{$d}')");		 
+			$where =("MATCH (`productAttributeValue`) AGAINST ('{$d}') AND t8.categoriesID IN('$id')");		 
 		} 
 		$filterprodect = $this->Landingpage_model->get_products($query, $searchqry, $where, $where1);
 		}

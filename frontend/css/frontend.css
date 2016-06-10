@@ -158,18 +158,16 @@ font-size:19px;
 	.chk{
 		margin-left:20px;
 		margin-top:10px;
-	}
-
-
-	
-	.deal_1_of_3
+	}	
+.deal_1_of_3
 {
 	width: 31%;
 	padding: 1.5%;
 	text-align: center;
 	position: relative;
 	height:450px;
-	margin-right:10px;
+	margin-right:10px;	
+	margin-left: 1%;
 }
 .deal
 {
@@ -182,3 +180,42 @@ font-size:19px;
 	margin-top:auto !important;
 	font-size:14px !important;
 }
+.Deal_panel{
+	width:80%;
+	float:left;
+	margin-top:3%;
+	padding-left: 2.6%;
+	}
+.Deal_filter{
+	width:20%;
+	float:left;
+	margin-top: 50px;
+	padding-left: 10px;
+	box-shadow: 0px 0px 3px rgb(150, 150, 150);
+}
+.deal_htr{
+	border-top: 1px solid #dfe1e8;
+	padding:12px;
+}
+.to_do{
+    background: #fff;
+   -webkit-border-radius: 3px; 
+   -moz-border-radius: 3px; 
+    border-radius: 0px;
+    position: relative;
+    padding: 7px;
+    margin-bottom:1px;
+    list-style: none;
+}
+a:hover{
+	color:red;
+}
+.alerts_js{
+	padding: 0px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	font-size:15px;
+	color:red;
+}
+

@@ -80,7 +80,7 @@
 	      <div class="section group">
 		  <div class="filter_panel">
 		  <h3>Refine Your Search</h3>
-		  <hr>
+				<hr>
 		  <?php if(!empty($filters)){  foreach($filters as $filter){ ?>
 		  <div class="Price">
 		  <h3> <?=isset($filter->groupName)?$filter->groupName:''?></h3>
@@ -92,6 +92,7 @@
 		   <div class="checkbox chk">
 		   <?php foreach($filteratt as $filteratts){ ?>
 					<label>
+						<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">
 						<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>"> <?=isset($filteratts->lable)?$filteratts->lable:''?>
 					</label>
 		   <?php } ?>

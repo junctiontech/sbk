@@ -166,7 +166,7 @@ var validator = (function($){
 		// Date is validated in European format (day,month,year)
 		date : function(a){
 			var day, A = a.split(/[-./]/g), i;
-			// if there is native HTML5 support:
+			// if there is native html5 support:
 			if( field[0].valueAsNumber )
 				return true;
 
@@ -228,26 +228,26 @@ var validator = (function($){
 		if( !text || !field || !field.length )
 			return false;
 
-		// check if not already marked as a 'bad' record and add the 'alert' object.
-		// if already is marked as 'bad', then make sure the text is set again because i might change depending on validation
+		// check if not already marked as a 'error' record and add the 'alert' object.
+		// if already is marked as 'error', then make sure the text is set again because i might change depending on validation
 		var item = field.parents('.item'),
 			warning;
 			
-		if( item.hasClass('bad') ){
+		if( item.hasClass('error') ){
 			if( defaults.alerts )
-				item.find('.alert').html(text);
+				item.find('.alerts_js').html(text);
 		}
 
 
         else if( defaults.alerts ){
-            warning = $('<div class="alert">').html( text );
+            warning = $('<div class="alerts_js">').html( text );
             item.append( warning );
         }
 		
-        item.removeClass('bad');
+        item.removeClass('error');
 		// a delay so the "alert" could be transitioned via CSS
         setTimeout(function(){
-            item.addClass('bad');
+            item.addClass('error');
         }, 0);
 	};
 	/* un-marks invalid fields
@@ -259,8 +259,8 @@ var validator = (function($){
 		}
 
 		field.parents('.item')
-			 .removeClass('bad')
-			 .find('.alert').remove();
+			 .removeClass('error')
+			 .find('.alerts_js').remove();
 	};
 
 	function testByType(type, value){

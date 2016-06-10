@@ -16,47 +16,45 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
-		<div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Categories List</h2>
-                                    <div class="clearfix"></div>    
-                                </div>
-								<div class="x_content">
-                               <!-- <form class="form-horizontal form-label-left" novalidate method="POST" action="<?=base_url();?>Categories/index" > -->
+	<div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+                <div class="x_title">
+                    <h2>Categories List</h2>
+                        <div class="clearfix"></div>    
+                </div>
+					<div class="x_content">                             
 								<table id="example" class="table table-striped responsive-utilities jambo_table">
 									<thead>
-                                            <tr class="headings">
-                                                <th>
-                                                    <input type="checkbox" class=""  />
-                                                </th>
-												<th>Category Name</th>
-                                                <th>Categories Url Key </th>
-												<th>Categories Status </th>
-                                                <th>Created On</th>
-												<th class=" "><span class="nobr">Action</span></th>
-											</tr>
-                                        </thead>
-                                  <tbody>
+                                        <tr class="headings">
+                                            <th>
+                                                <input type="checkbox" class=""  />
+                                            </th>
+											<th>Category Name</th>
+                                            <th>Categories Url Key </th>
+											<th>Categories Status </th>
+                                            <th>Created On</th>
+											<th class=" "><span class="nobr">Action</span></th>
+										</tr>
+                                    </thead>
+									<tbody>
 										<?php foreach($categories as $data) { ?> 
-                                            <tr class="even pointer">
-											    <td class="a-center ">
-                                                  <input type="checkbox" class="t" <?php echo $data->categoriesID; ?> />
-                                                </td>
-												<td class="a-right a-right "><?php echo $data->categoryName ;?></td>
-                                                <td class=" "><?php echo $data->categoriesUrlKey ; ?></td>
-												<td class=" "><?php echo $data->categoriesStatus ;?></td>
-                                                <td class=" "><?php echo $data->createdOn ; ?></td>
-												<td class=" "><a href="<?=base_url();?>Categories/AddCategories/<?php echo $data->categoriesID; ?>">Edit</a> / <a href="<?=base_url();?>Categories/Dltcategories/<?php echo $data->categoriesID ; ?>">Delete</a></td>
-											</tr>
+                                        <tr class="even pointer">
+											<td class="a-center ">
+                                                <input type="checkbox" class="t" <?php echo $data->categoriesID; ?> />
+                                            </td>
+											<td class="a-right a-right "><?php echo $data->categoryName ;?></td>
+                                            <td class=" "><?php echo $data->categoriesUrlKey ; ?></td>
+											<td class=" "><?php echo $data->categoriesStatus ;?></td>
+                                            <td class=" "><?php echo $data->createdOn ; ?></td>
+											<td class=" "><a href="<?=base_url();?>Categories/AddCategories/<?php echo $data->categoriesID; ?>">Edit</a> / <a href="<?=base_url();?>Categories/Dltcategories/<?php echo $data->categoriesID ; ?>">Delete</a></td>
+										</tr>
 										<?php } ?>                                                                                    
-                                   </tbody>
-                                </table>
-						   <!--   </form> -->
-						</div>
-                      </div>
-                    </div> 
-			  </div>		       
+									</tbody>
+                                </table>						 
+					</div>
+        </div>
+    </div> 
+</div>	<div class="clearfix"></div>	       
 		<script>
 	var asInitVals = new Array();
             $(document).ready(function () {
