@@ -28,6 +28,9 @@ $config['base_url']	= 'http://junctiondev.cloudapp.net/sbk/';
 if($_SERVER['HTTP_HOST']=="www.searchb4kharch.com/"){
 $config['base_url']	= 'www.searchb4kharch.com/';	
 }
+if($_SERVER['HTTP_HOST']=="http://192.168.1.111/sbk/"){
+	$config['base_url']	= 'http://192.168.1.111/sbk/';
+}
 
 /*
 |--------------------------------------------------------------------------
