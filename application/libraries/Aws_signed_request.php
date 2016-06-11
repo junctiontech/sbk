@@ -6,14 +6,14 @@ function  aws_signed_request($region=false,$params=false,$public_key=false,$priv
 {
 
     $method = "GET";
-    $host = "ecs.amazonaws.".$region; 
+    $host = "webservices.amazon.".$region; 
     $uri = "/onca/xml";
     
     
     $params["Service"]          = "AWSECommerceService";
     $params["AWSAccessKeyId"]   = $public_key;
     $params["Timestamp"]        = gmdate("Y-m-d\TH:i:s\Z");
-    $params["Version"]          = "2009-03-31";
+    $params["Version"]          = "2011-08-01";
 
     
     ksort($params);

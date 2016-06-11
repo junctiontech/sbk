@@ -97,7 +97,7 @@
         	print("</pre>");
         	*/
         	$obj = new Aws_signed_request();
-            return $obj->aws_signed_request("com", $parameters, $this->public_key, $this->private_key);
+            return $obj->aws_signed_request("in", $parameters, $this->public_key, $this->private_key);
         }
         
         

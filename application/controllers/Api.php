@@ -310,7 +310,7 @@ class Api extends CI_Controller {
 		do{
 			try
 			{
-				$result = $obj->searchProducts("$productBrand $productName",'Electronics',"TITLE",'',7072561011,$ItemPage);
+				$result = $obj->searchProducts("$productBrand $productName",'Electronics',"TITLE",'',1389432031,$ItemPage);
 			}
 			catch(Exception $e)
 			{
@@ -356,12 +356,12 @@ class Api extends CI_Controller {
 								'productDescription'=>'',
 								'imageSortOrder'=>1,
 								'isDefault'=>'Yes',
-								'imageName'=>array_key_exists('SmallImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['SmallImage']['URL']:'',
+								'imageName'=>array_key_exists('MediumImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['MediumImage']['URL']:'',
 								'imageStatus'=>'Active',
 								'productImageTitle'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
 								'productImageAltTag'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
 								'currencyID'=>1,
-								'productPrice'=>array_key_exists('TradeInValue', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['TradeInValue']['Amount']:'',
+								'productPrice'=>array_key_exists('OfferSummary', $productdata['Items']['Item'])?$productdata['Items']['Item']['OfferSummary']['LowestNewPrice']['Amount']:'',
 								'shopProductID'=>$ASIN,
 								'shopID'=>3,
 								'productShopUrl'=>array_key_exists('DetailPageURL', $productdata['Items']['Item'])?$productdata['Items']['Item']['DetailPageURL']:''
