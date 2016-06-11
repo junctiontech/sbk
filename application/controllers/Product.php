@@ -192,7 +192,7 @@ class Product extends CI_Controller {
 	$FetchName=$this->data['Fetch_ProductName']=$this->Product_model->fetch_productname($_POST['productName']);
 	$Fetchdata=$this->data['fetch_productmapped']=$this->Product_model->fetch_productmapped($_POST['productName']);
 	$this->data['category']=$this->Product_model->get_categories();
-	$map_product=$this->data['mappedproduct']=$this->Product_model->map_product($_POST['categoriesID'],$_POST['productName'],$FetchName[0]->productName);
+	$map_product=$this->data['mappedproduct']=$this->Product_model->map_product1($_POST['categoriesID'],$_POST['productName'],$FetchName[0]->productName);
 	
 
 	$this->display ('admin/Mappproduct');

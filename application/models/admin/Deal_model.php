@@ -1,4 +1,4 @@
- <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Deal_model extends CI_Model {
 	
@@ -18,6 +18,4 @@ class Deal_model extends CI_Model {
 		$this->db->where('dealID',$dealID);
 		$this->db->update('s4k_deals',$data);
 	}
-
-
 }

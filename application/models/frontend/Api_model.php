@@ -177,14 +177,19 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 		
 	}	
 
-public function insert_new_product($productdata=false)
-{
-	$query=$this->db->get_where('s4k_products',array('productsUrlKey'=>$productdata['productsUrlKey']));
+public function insert_new_product($productdata=false,$shopproductfamily=false,$specificationLists=false)
+{	//print_r($productdata);die;	
+			$this->db->select('t1.productsID');
+			$this->db->from('s4k_products t1');
+			$this->db->join('s4k_product_price t2','t1.productsID=t2.productsID','left');
+			$this->db->where(array('shopProductID'=>$productdata['shopProductID'],'shopID'=>$productdata['shopID']));
+			$query=$this->db->get();
 		$result=$query->result();
 		if(empty($result)){
 		$productMasterData=array('categoriesID'=>$productdata['categoriesID'],
 								 'subCategoriesID'=>$productdata['subCategoriesID'],
 								 'productsUrlKey'=>$productdata['productsUrlKey'],
+								 'productBrand'=>$productdata['productBrand'],
 								 'productsSortOrder'=>$productdata['productsSortOrder'],
 								 'productsStatus'=>$productdata['productsStatus']);
 		$this->db->insert('s4k_products',$productMasterData);
@@ -195,22 +200,39 @@ public function insert_new_product($productdata=false)
 									 'productName'=>$productdata['productName'],
 									 'productDescription'=>$productdata['productDescription']);
 			$this->db->insert('s4k_product_details',$productDetailData);
-			$index=0;
-			foreach($productdata['productAttributekey'] as $productAttributekey){
-			$productAttributeData=array('productsID'=>$productID,
-										'productAttributeSortOrder'=>$productdata['productAttributeSortOrder'],
-										'productAttributeStatus'=>$productdata['productAttributeStatus'],
-										'productAttributehighLight'=>$productdata['productAttributehighLight'],
-										'productAttributekey'=>$productAttributekey[$index]);
-			$this->db->insert('s4k_product_attribute',$productAttributeData);
-			$productAttributeID=$this->db->insert_id();
-			$productAttributeDetailData=array('productAttributeID'=>$productAttributeID,
-											  'languageID'=>$this->languageID,
-											  'productAttributeLable'=>$productdata['productAttributeLable'][$index],
-											  'productAttributeValue'=>$productdata['productAttributeValue'][$index]);
-			$this->db->insert('s4k_product_attribute_details',$productAttributeDetailData);
-			$index++;
+			
+			foreach($specificationLists as $key=>$specificationList){
+				if(is_array($specificationList)){
+					foreach($specificationList as $specificationList1){
+					$productAttributeData=array('productsID'=>$productID,
+												'productAttributeSortOrder'=>1,
+												'productAttributeStatus'=>'Active',
+												'productAttributehighLight'=>'Yes',
+												'productAttributekey'=>0);
+					$this->db->insert('s4k_product_attribute',$productAttributeData);
+					$productAttributeID=$this->db->insert_id();
+					$productAttributeDetailData=array('productAttributeID'=>$productAttributeID,
+													  'languageID'=>$this->languageID,
+													  'productAttributeLable'=>$key,
+													  'productAttributeValue'=>is_array($specificationList1)?'':$specificationList1 );
+					$this->db->insert('s4k_product_attribute_details',$productAttributeDetailData);
+					}
+				}else{
+					$productAttributeData=array('productsID'=>$productID,
+												'productAttributeSortOrder'=>1,
+												'productAttributeStatus'=>'Active',
+												'productAttributehighLight'=>'Yes',
+												'productAttributekey'=>0);
+					$this->db->insert('s4k_product_attribute',$productAttributeData);
+					$productAttributeID=$this->db->insert_id();
+					$productAttributeDetailData=array('productAttributeID'=>$productAttributeID,
+													  'languageID'=>$this->languageID,
+													  'productAttributeLable'=>$key,
+													  'productAttributeValue'=>$specificationList);
+					$this->db->insert('s4k_product_attribute_details',$productAttributeDetailData);
+				}
 			}
+			
 			$productImage=array('productsID'=>$productID,
 								'imageSortOrder'=>$productdata['imageSortOrder'],
 								'isDefault'=>$productdata['isDefault'],
@@ -227,6 +249,7 @@ public function insert_new_product($productdata=false)
 								'currencyID'=>$productdata['currencyID'],
 								'productPrice'=>$productdata['productPrice'],
 								'shopID'=>$productdata['shopID'],
+								'shopProductID'=>$productdata['shopProductID'],
 								'productShopUrl'=>$productdata['productShopUrl']);
 			$this->db->insert('s4k_product_price',$productPrice);
 		}
@@ -239,6 +262,7 @@ public function insert_new_product($productdata=false)
 								'currencyID'=>$productdata['currencyID'],
 								'productPrice'=>$productdata['productPrice'],
 								'shopID'=>$productdata['shopID'],
+								'shopProductID'=>$productdata['shopProductID'],
 								'productShopUrl'=>$productdata['productShopUrl']);
 			$this->db->insert('s4k_product_price',$productPrice);
 			}else{
@@ -277,6 +301,17 @@ public function insert_new_product($productdata=false)
 			}else{
 				
 			}
+	}
+	
+	public function get_productname()
+	{
+			$this->db->select('t1.productName,t1.productBrand');
+			$this->db->from('s4k_products_map t1');
+			$this->db->where(array('productsStatus'=>'Active'));
+			$this->db->group_by('productName');
+			$query=$this->db->get();
+			$result=$query->result();
+		return $result;
 	}
 	
 }
