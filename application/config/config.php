@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 | 
 */
-
+print_r($_SERVER['HTTP_HOST']);die;
 if($_SERVER['HTTP_HOST']=="localhost"){
 	$port=$_SERVER['SERVER_PORT'];
 $config['base_url']	= "http://localhost/sbk/";
