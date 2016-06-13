@@ -38,6 +38,7 @@ function  aws_signed_request($region=false,$params=false,$public_key=false,$priv
     
      $request = "http://".$host.$uri."?".$canonicalized_query."&Signature=".$signature;
 	//print_r($request);die;
+	if (function_exists('curl_init') && function_exists('curl_setopt')){
    $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$request);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -55,6 +56,9 @@ function  aws_signed_request($region=false,$params=false,$public_key=false,$priv
         $parsed_xml = @simplexml_load_string($xml_response);
         return ($parsed_xml === False) ? False : $parsed_xml;
     }
+	}else{
+		echo "curl is not found";
+	}
 }
 	}
 ?>
