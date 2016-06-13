@@ -60,7 +60,9 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 								 );
 		$this->db->insert('s4k_products',$productMasterData);
 		$productID=$this->db->insert_id();
+		$sb4kProductID= strtoupper ( bin2hex ( mcrypt_create_iv ( 4, MCRYPT_DEV_RANDOM ) ) );;
 		$productMapData=array('categoriesID'=>$productdata['categoriesID'],
+								 'sb4kProductID'=>$sb4kProductID,
 								 'productsUrlKey'=>$productdata['productsUrlKey'],
 								 'productsSortOrder'=>$productdata['productsSortOrder'],
 								 'productsStatus'=>$productdata['productsStatus'],
