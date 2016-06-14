@@ -22,7 +22,7 @@ if($_SERVER['HTTP_HOST']=="localhost"){
 	$port=$_SERVER['SERVER_PORT'];
 $config['base_url']	= "http://localhost/sbk/";
 }elseif($_SERVER['HTTP_HOST']=="www.searchb4kharch.com"){
-$config['base_url']	= 'www.searchb4kharch.com/';	
+$config['base_url']	= 'http://www.searchb4kharch.com/';	
 }elseif($_SERVER['HTTP_HOST']=="192.168.1.111"){
 	$config['base_url']	= 'http://192.168.1.111/sbk/';
 }
