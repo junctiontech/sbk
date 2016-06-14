@@ -31,6 +31,7 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_inventory_data($where=false){
+		$this->db->distinct();
 		$this->db->select('productImage,categoriesUrlKey,productsUrlKey,t4.productsID,productName,productDescription,productAttributeLable,productAttributeValue,imageName,productImageTitle,productImageAltTag,productPrice,productShopUrl');
 		$this->db->from('s4k_inventory_consumption t1');
 		$this->db->join('s4k_inventory_master t2','t1.inventoryMasterID=t2.inventoryMasterID','left');
@@ -46,8 +47,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->where(array('inventoryKey'=>$where,'t1.Status'=>'Active'));
 		$this->db->order_by('t1.sortOrder','DESC');
 		$this->db->order_by('t1.createdOn','DESC');
-		$this->db->group_by('t4.productsUrlKey');
-		$this->db->group_by('t4.productsID');
+		//$this->db->group_by('t4.productsUrlKey');
 		$query=$this->db->get();
 		return $query->result();
 	}
