@@ -47,6 +47,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('t1.sortOrder','DESC');
 		$this->db->order_by('t1.createdOn','DESC');
 		$this->db->group_by('t4.productsUrlKey');
+		$this->db->group_by('t4.productsID');
 		$query=$this->db->get();
 		return $query->result();
 	}
