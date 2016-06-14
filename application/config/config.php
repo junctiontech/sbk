@@ -26,7 +26,7 @@ $config['base_url']	= 'www.searchb4kharch.com/';
 }elseif($_SERVER['HTTP_HOST']=="192.168.1.111"){
 	$config['base_url']	= 'http://192.168.1.111/sbk/';
 }
-print_r($config['base_url']);die;
+
 /*
 |--------------------------------------------------------------------------
 | Index File
