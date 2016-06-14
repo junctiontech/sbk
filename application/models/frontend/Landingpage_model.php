@@ -31,8 +31,8 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_inventory_data($where=false){
-		$this->db->distinct();
-		$this->db->select('productImage,categoriesUrlKey,productsUrlKey,t4.productsID,productName,productDescription,productAttributeLable,productAttributeValue,imageName,productImageTitle,productImageAltTag,productPrice,productShopUrl');
+		
+		$this->db->select('productImage,categoriesUrlKey,t4.productsUrlKey,t4.productsID,productName,productDescription,productAttributeLable,productAttributeValue,imageName,productImageTitle,productImageAltTag,productPrice,productShopUrl');
 		$this->db->from('s4k_inventory_consumption t1');
 		$this->db->join('s4k_inventory_master t2','t1.inventoryMasterID=t2.inventoryMasterID','left');
 		$this->db->join('s4k_inventory_type t3','t2.inventoryTypeID=t3.inventoryTypeID','left');
@@ -45,9 +45,9 @@ class Landingpage_model extends CI_Model {
 		$this->db->join('s4k_product_price_map t10','t4.productsID=t10.productsID','left');
 		$this->db->join('s4k_categories t11','t4.categoriesID=t11.categoriesID','left');
 		$this->db->where(array('inventoryKey'=>$where,'t1.Status'=>'Active'));
-	//	$this->db->order_by('t1.sortOrder','DESC');
-	//	$this->db->order_by('t1.createdOn','DESC');
-		//$this->db->group_by('t4.productsUrlKey');
+		$this->db->order_by('t1.sortOrder','DESC');
+		$this->db->order_by('t1.createdOn','DESC');
+		$this->db->group_by('t4.productsUrlKey');
 		$query=$this->db->get();
 		return $query->result();
 	}
