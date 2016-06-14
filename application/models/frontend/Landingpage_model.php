@@ -32,7 +32,7 @@ class Landingpage_model extends CI_Model {
 	
 	public function get_inventory_data($where=false){
 		
-		$this->db->select('productImage,t11.categoriesUrlKey,t4.productsUrlKey,t4.productsID,t4.productName,t4.productDescription,t6.productAttributeLable,t6.productAttributeValue,t8.imageName,t8.productImageTitle,t8.productImageAltTag,t10.productPrice,t10.productShopUrl');
+		$this->db->select('t11.categoriesUrlKey,t4.productsUrlKey,t4.productsID,t4.productName,t4.productDescription,t6.productAttributeLable,t6.productAttributeValue,t8.imageName,t8.productImageTitle,t8.productImageAltTag,t10.productPrice,t10.productShopUrl');
 		$this->db->from('s4k_inventory_consumption t1');
 		$this->db->join('s4k_inventory_master t2','t1.inventoryMasterID=t2.inventoryMasterID','left');
 		$this->db->join('s4k_inventory_type t3','t2.inventoryTypeID=t3.inventoryTypeID','left');
