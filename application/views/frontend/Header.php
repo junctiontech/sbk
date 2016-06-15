@@ -26,6 +26,7 @@
   });
 </script>
 <!-- TradeDoubler site verification 2851632 -->  
+<script type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=571c4f18486fb85649a41e251cc0a319f7e77edd"></script>
 </head>
 <body>
   <div class="wrap">
@@ -126,9 +127,9 @@
     
   </li>
   
-  <li><a href="javascript:;">Flights</a></li>
+  <li><a href="<?=base_url();?>Hotel.html">Flights</a></li>
    
- <li><a href="javascript:;">Hotels</a></li>
+ <li><a href="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" target="_blank">Hotels</a></li>
   <div class="clear"></div>
 </ul>
 </div>
