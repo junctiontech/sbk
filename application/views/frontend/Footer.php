@@ -51,6 +51,19 @@
 						
 						
 				</div>
+				<div class="col_1_of_4 span_1_of_4">
+					<h4>Language</h4>
+						<ul>
+							<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
+						</ul>
+						
+						
+				</div>
 			</div>
 			<div class="copy_right">
 				<p>Searchb4kharch © All rights Reseverd | Design by  <a target="_blank" href="http://junctiontech.in">Junctiontech</a> </p>

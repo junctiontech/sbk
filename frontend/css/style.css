@@ -47,8 +47,8 @@ body{
 .logo{
 	float:left;
 	width:20%;
-	padding-left: 33px;
-    padding-right: 58px;
+	//padding-left: 33px;
+   // padding-right: 58px;
 }
 /**** Header Top Right ****/
 .header_top_right{
@@ -86,10 +86,10 @@ body{
 	padding:10px 15px;
 	height: 73px;
 	margin:0;
-	background: -webkit-gradient(linear,left top,left bottom,from(#F79827),to(#F79827));
-	background: -moz-linear-gradient(top,#F79827,#F79827);
-	background: -o-linear-gradient(top,#F79827,#F79827);
-	background: -ms-linear-gradient(top,#F79827,#F79827);
+	background: -webkit-gradient(linear,left top,left bottom,from(#670099),to(#670099));
+	background: -moz-linear-gradient(top,#670099,#670099);
+	background: -o-linear-gradient(top,#670099,#670099);
+	background: -ms-linear-gradient(top,#670099,#670099);
 	-webkit-transition: all .9s;
 	-moz-transition: all .9s;
 	-o-transition: all .9s;
@@ -155,7 +155,7 @@ body{
 	max-height: 400px;
 	width: 95px;
 	z-index: 1;
-	background: #F79827;
+	background: #670099;
 }
 .login{
 	float:left;
@@ -399,14 +399,14 @@ p.note{
     max-height: 400px;
     width:95px;
     z-index:1;
-    background:#F79827;
+    background:#670099;
 }
 .wrapper-dropdown.active .languges{
 	border-bottom: 1px solid rgba(0,0,0,0.2);
     max-height: 400px;
     width:135px;
     z-index:11;
-    background:#F79827;
+    background:#670099;
 }
 
 /**** Header Botttom Left ****/
@@ -501,7 +501,7 @@ p.note{
 		font-size:0.8em;
 		font-family: Arial, "Helvetica Neue", "Helvetica", Tahoma, Verdana, sans-serif;
 		border: 1px solid rgba(0,0,0,0.1);
-        background:#F79827 url(../images/large-button-overlay.png);       
+        background:#670099 url(../images/large-button-overlay.png);       
         color             : #fff;
         text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
 		-moz-border-radius:5px;
@@ -510,7 +510,7 @@ p.note{
 }
 .list_2_of_1 .button a:hover{
 	    border: 1px solid #4D00A0;
-        background:#F79827;
+        background:#670099;
         text-decoration:none; 
 }
 .header_bottom_right_images{
@@ -546,7 +546,7 @@ p.note{
 .heading h3{
 	font-family: 'Monda', sans-serif;
 	font-size:22px;
-	color:#F79827;
+	color:#670099;
 	text-transform:uppercase;
 }
 .sort,.show{
@@ -590,7 +590,7 @@ p.note{
 	padding:5px 5px;
 }
 .page-no li a:hover,.page-no li.active{
-	color:#F79827;
+	color:#670099;
 	text-decoration:underline;
 }
 /**** Grid 1_0f_4 ****/
@@ -686,7 +686,7 @@ p.note{
 		transition: all 0.5s ease;
 }
 .images_1_of_4 .button a:hover{
-     color:#F79827;
+     color:#670099;
      background: #E8E8E8;
 }
 .images_1_of_4 .button span img{
@@ -871,7 +871,7 @@ p.note{
 	color: #333;
 }
 .back-links p a:hover,.back-links p a:active{
-	color:#F79827;
+	color:#670099;
 }
 .image {
 	clear: both;
@@ -1011,7 +1011,7 @@ p.note{
 }
 .product-desc h2,.product-tags h2{
 	padding:8px 20px;
-	background:#F79827;
+	background:#670099;
 	border: 1px solid #EBE8E8;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -1103,7 +1103,7 @@ p.note{
 }
 .span_3_of_1 li a:hover{
 	background: url(../images/drop_arrow-hover.png) no-repeat 5px 11px;
-	color:#F79827; 
+	color:#670099; 
 }
 .span_3_of_2 .button{
 	float:right;
@@ -1247,7 +1247,7 @@ p.note{
 	width:15%;
 }
 .year p{
-	color:#F79827;
+	color:#670099;
 	font-size:0.95em;
 }
 .span_1_of_3  p.history{
@@ -1260,7 +1260,7 @@ p.note{
 .span_1_of_3 .list li a{
 	font-size:0.82em;
 	padding:0.35em 1.2em;
-	color:#F79827;
+	color:#670099;
 	background: url(../images/drop_arrow-hover.png) no-repeat 0px 10px;
 	display:block;
 }
@@ -1303,7 +1303,7 @@ p.note{
 	margin:20px 0 10px 0;
 }
 .questions h4{
-	color:#F79827;
+	color:#670099;
 	font-size: 15px;
 	margin-bottom:5px;
 	font-weight: normal;
