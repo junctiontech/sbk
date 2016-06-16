@@ -128,9 +128,9 @@
     
   </li>
   
-  <li><a href="<?=base_url();?>Hotel.html">Flights</a></li>
+  <li><a href="javascript:;">Flights</a></li>
    
- <li><a href="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" target="_blank">Hotels</a></li>
+ <li><a href="<?=base_url();?>Hotel.html" >Hotels</a></li>
  
   <div class="clear"></div>
 </ul>
