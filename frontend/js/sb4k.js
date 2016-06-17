@@ -16,7 +16,7 @@ if(window.location.hostname=="192.168.1.111"){
 
 
 function compare_product(productid)
-{	alert(base_url);
+{	
 var count=0;
 	$(".chkcount").each(function() {
 			
