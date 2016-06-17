@@ -218,7 +218,36 @@ class Landingpage extends CI_Controller {
 	
 	}
 	
+	
 	public function compare()
+	{	$product=$this->input->post();
+		
+	foreach($product as $key=>$products)
+	{
+		$productID[]=$key;
+		//print_r($productID);die;
+	}
+	
+	if(!empty($productID))
+	{
+	$compareproduct=implode(',',$productID);
+	
+	$compareproductinfo=$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
+	
+	$categoryinfo=($compareproductinfo[0]->categoriesID);
+	
+	$getattribute=$data=$this->data['compareproduct_info']=$this->Landingpage_model->compare_pro_attribute($categoryinfo);
+	$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+	$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+	$this->parser->parse('frontend/Header',$this->data);
+	$this->parser->parse('frontend/Compare',$this->data);
+	$this->parser->parse('frontend/Footer',$this->data);
+	}
+	else{
+		 redirect($_SERVER['HTTP_REFERER']);
+	}
+	} 
+	/* public function compare()
 	{	$product=$this->input->post();
 	
 	foreach($product as $key=>$products)
@@ -236,7 +265,7 @@ class Landingpage extends CI_Controller {
 	$this->parser->parse('frontend/Header',$this->data);
 	$this->parser->parse('frontend/Compare',$this->data);
 	$this->parser->parse('frontend/Footer',$this->data);
-	}
+	} */
 	
 	public function Deals($category=false)
 	{	

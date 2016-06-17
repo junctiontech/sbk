@@ -2,190 +2,82 @@
  <div class="main">
     <div class="content">
     	<div class="content_top">
-		<div class="back-links">
-    		<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
+			<div class="back-links">
+				<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
     	    </div>
     		<div class="heading">
-    		<h3> Compare </h3>
+				<h3> Compare </h3>
     		</div>
     		
     		<div class="clear"></div>
     	</div>
-		
-		    <div class="section group">
-		
-		  <div class="product_panel">
-		   <?php if(!empty($compareproduct)){ foreach($compareproduct as $product){?>
-		   
-				<div class="grid_1_of_4 images_1_of_4 ">
-					 <img src="<?=$product->imageName?>" alt="" /></img>
-					 <h2><?=$product->productName?> </h2>
-					
-					 <p><span class="price"><?=$product->productPrice?></span></p>
-
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-lg-2" style="margin-top:350px">
+				<div class="x_content">
+							<?php 
+							 if(!empty($compareproduct_info)){ foreach($compareproduct_info as $compareinfo ){?>
+                             <table class="table ">
+                                    
+                              <tbody>
+                                  <tr>
+									<td style="background-color:#ededed"><?=isset ($compareinfo->productAttributeLable) ?$compareinfo->productAttributeLable:''?></td>
+								  </tr>
+							  </tbody>
+							  </table>
+							 <?php  }}?>                       
+                               
+				</div>
 			</div>
-		   <?php } }?>
-				</div>	
-
-				 <?php { $attribute=$this->Landingpage_model->attribute($product->productsID);?>
-				<?php foreach($attribute as $productattribute){?>
-				<!--<table class="table table-striped">
-	
-								<tbody>
-										<tr>
-				<td><?= isset ($productattribute->productAttributeLable) ?$productattribute->productAttributeLable:''?></td>
-				<td><?= isset ($productattribute->productAttributeValue) ?$productattribute->productAttributeValue:''?></td>
 				
-			</tr>
-			
-		</tbody>
-	</table>-->
-
-		
-
-	
-			
-<!--
-                            <div class="x_panel comparetable">
-                                <div class="x_title">
-                                    
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-								<?php if(!empty($attribute)){ foreach($attribute as $productattribute){?>
-                                    <table class="table table-striped">
-                                    
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"><?= isset ($productattribute->productAttributeLable) ?$productattribute->productAttributeLable:''?></th>
-                                                <td><?= isset ($productattribute->productAttributeValue) ?$productattribute->productAttributeValue:''?></td>
-                                                
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-								<?php  }}?>
-                                </div>
-                            </div>
-                        </div>-->
-			
-			
-			
-			</div>
-			
-			
-    </div>
- </div>
-</div>
-=======
-</div>
- <div class="main">
-    <div class="content">
-    	<div class="content_top">
-		<div class="back-links">
-    		<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
-    	    </div>
-    		<div class="heading">
-    		<h3> Compare </h3>
-    		</div>
-    		
-    		<div class="clear"></div>
-    	</div>
-		
-		    <div class="section group">
-		
-		  <div class="product_panel">
-		   <?php if(!empty($compareproduct)){ foreach($compareproduct as $product){?>
-		   
-				<div class="grid_1_of_4 images_1_of_4 ">
-					 <img src="<?=$product->imageName?>" alt="" /></img>
-					 <h2><?=$product->productName?> </h2>
-					
-					 <p><span class="price"><?=$product->productPrice?></span></p>
-
-			</div>
-		
-			
-
-				 <?php { $attribute=$this->Landingpage_model->attribute($product->productsID);?>
-				<?php foreach($attribute as $productattribute){?>
-				<!--<table class="table table-striped">
-	
-								<tbody>
-										<tr>
-				<td><?= isset ($productattribute->productAttributeLable) ?$productattribute->productAttributeLable:''?></td>
-				<td><?= isset ($productattribute->productAttributeValue) ?$productattribute->productAttributeValue:''?></td>
+			<div class="col-md-9 col-sm-9 col-lg-9 " >
+					<?php if(!empty($compareproduct)){ foreach($compareproduct as $product){ ?>
+						<div class="col-md-2 col-sm-2 col-lg-2 " >
+							<div class="comparegrid_1_of_4 compareimages_1_of_4 ">
+								<img src="<?=$product->imageName?>" alt="" /></img>
+							<div class="compare_product_name">
+								<p><?=$product->productName?> </p>
+							</div>
+							<div class="compare_product_price">
+								<p><span class="price"><?=$product->productPrice?></span></p>
+							</div>
+							</div>
+				  <?php	$categoryinfo=($product->categoriesID);
+						$compareproduct=($product->productsID); 
 				
-			</tr>
-			
-		</tbody>
-	</table>-->
-
-		   <?php } }}}?>
-
-	</div>		
-			
-<!--
-                            <div class="x_panel comparetable">
-                                <div class="x_title">
+					$product_attributeinfo=$this->Landingpage_model->product_attribute($compareproduct,$categoryinfo)?>
+							
+					<table class="table " style="width:170px; ">
                                     
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-								<?php if(!empty($attribute)){ foreach($attribute as $productattribute){?>
-                                    <table class="table table-striped">
-                                    
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"><?= isset ($productattribute->productAttributeLable) ?$productattribute->productAttributeLable:''?></th>
-                                                <td><?= isset ($productattribute->productAttributeValue) ?$productattribute->productAttributeValue:''?></td>
-                                                
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-								<?php  }}?>
-                                </div>
-                            </div>
-                        </div>-->
-			
-			
-			
-			</div>
-			
-			
-    </div>
- </div>
+							<tbody>
+                            <?php foreach($compareproduct_info as $data1){ ?>
+							<tr>
+							<?php
+							
+							 $keys=(array_keys(array_column($product_attributeinfo, 'AttributeID'), $data1->AttributeID));
+							
+							if($keys || $keys==0){
+							
+							$keys = array_search($data1->AttributeID, array_column($product_attributeinfo , 'AttributeID'));
+							
+							?> 			
+				 
+							<td><?= isset ($product_attributeinfo[$keys]['productAttributeValue']) ?$product_attributeinfo[$keys]['productAttributeValue']:''?></td>
+											
+							<?php }else{ ?>
+							<td style="background-color:white"> NO</td>
+							<?php } ?>
+							</tr>
+							<?php } ?>
+		  
+							</tbody>
+					</table>
+				  
+				  
+				  
+						</div>
+				  <?php }}?>
+			</div>		
+		</div>	 
+	</div>
 </div>
->>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
    

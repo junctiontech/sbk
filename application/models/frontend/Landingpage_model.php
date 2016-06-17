@@ -115,10 +115,9 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	function comparepro($compareproduct=false)
-	{
-			
-		$qry=$this->db->query("SELECT `t1`.`productsID`, `t1`.`productName`, `t1`.`productDescription`, `t3`.`imageName`, `t4`.`productPrice` FROM 	`s4k_products_map` `t1` JOIN `s4k_product_images_map` `t3` ON `t3`.`productsID`=`t1`.`productsID` JOIN `s4k_product_price_map` `t4` ON `t4`.`productsID`=`t1`.`productsID` WHERE `t1`.`productsID` IN($compareproduct)");
-		return $qry->result();
+	{	
+ $qry=$this->db->query("SELECT `t1`.`productsID`, `t1`.`categoriesID`,`t1`.`productName`,  `t3`.`imageName`, `t4`.`productPrice` FROM 	`s4k_products_map` `t1` JOIN `s4k_product_images_map` `t3` ON `t3`.`productsID`=`t1`.`productsID` JOIN `s4k_product_price_map` `t4` ON `t4`.`productsID`=`t1`.`productsID` WHERE `t1`.`productsID` IN($compareproduct)");
+		return $qry->result(); 
 	}
 	
 	function attribute($compareproduct=false)
