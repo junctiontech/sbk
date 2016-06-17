@@ -7,6 +7,7 @@
 <link href="<?=base_url();?>frontend/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/menu.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/frontend.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="<?=base_url();?>frontend/css/custom.css" rel="stylesheet" type="text/css" media="all"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="<?=base_url();?>frontend/js/script.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/jquery-1.7.2.min.js"></script> 
@@ -14,21 +15,26 @@
 <script type="text/javascript" src="<?=base_url();?>frontend/js/move-top.js"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/easing.js"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/nav-hover.js"></script>
+<script type="text/javascript" src="<?=base_url();?>frontend/js/jquery.inputmask.js"></script>
+<script type="text/javascript" src="<?=base_url();?>frontend/js/validator.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
-<link rel="shortcut icon" href="<?=base_url();?>frontend/images/sb4k.png">
+<link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script type="text/javascript">
   $(document).ready(function($){
     $('#dc_mega-menu-orange').dcMegaMenu({rowItems:'4',speed:'fast',effect:'fade'});
   });
 </script>
+<!-- TradeDoubler site verification 2851632 -->  
+<script type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=571c4f18486fb85649a41e251cc0a319f7e77edd"></script>
 </head>
 <body>
+
   <div class="wrap">
 	<div class="header">
 		<div class="header_top">
 			<div class="logo">
-				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/searchb4kharch.png" alt="" /></a>
+				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/pngtransparent (2).png" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box ">
@@ -73,8 +79,17 @@
 	<div class="menu">
 	  <ul id="dc_mega-menu-orange" class="dc_mm-orange">
 	
-	<li><a href="javascript:;">Deals</a>
-    
+	<li><a href="<?=base_url();?>Landingpage/Deals">Deals</a>
+   <!-- <ul>
+	<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
+      <li><a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
+        <ul>
+          
+          
+        </ul>
+      </li>
+	<?php } }?>
+    </ul>-->
   </li>
   
   <li class="staticcs"><a href="javascript:;">Buy >></a>
@@ -115,7 +130,8 @@
   
   <li><a href="javascript:;">Flights</a></li>
    
- <li><a href="javascript:;">Hotels</a></li>
+ <li><a href="<?=base_url();?>Hotel.html" >Hotels</a></li>
+ 
   <div class="clear"></div>
 </ul>
 </div>

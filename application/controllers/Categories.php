@@ -188,5 +188,64 @@ class Categories extends CI_Controller
 			$this->session->set_flashdata('message', $this->config->item("Categories") . " You Have Successfully Delete Brand this Record!!");
 			redirect ('Categories/Brand');
 		}
+		
+		public function Filter($url=false)
+	{
+		$categoriesID=$this->data['categoriesID']=$this->input->post('categoriesID');
+		if(!empty($categoriesID)){
+			$this->data['catfilters']=$this->Categories_model->get_catfilter($categoriesID);
+		}
+		$this->data['category']=$this->Categories_model->get_categorydata();
+		$this->display ('admin/Createfilter');
+	}
+	
+	public function createfiltermodel($filtergroupID=false)
+	{
+		if(!empty($filtergroupID)){
+			$this->data['filtergroupdata']=$this->Categories_model->get_catfilter($categoriesID);
+		}
+		$this->data['categories']=$this->Categories_model->get_categorydata();
+		$this->load->view('admin/createfiltermodel', $this->data);
+	}
+	
+	public function insertfilter()
+	{
+		if($this->input->post('submit')){
+			$categoryID=$this->input->post('categoryid');
+			$groupname=$this->input->post('groupname');
+			$sortoder=$this->input->post('sortoder');
+			$filterStatus=$this->input->post('status');
+			$filterType=$this->input->post('filtertype');
+			$lable=$this->input->post('lable');
+			$name=$this->input->post('name');
+			$value=$this->input->post('value');
+			$filterGroupID=$this->input->post('filterGroupID');
+			
+			if(!empty($categoryID) && !empty($groupname) && !empty($filterType) && !empty($lable) && !empty($name) && !empty($value)){
+				if(!empty($filterGroupID)){
+					$where=array('filterGroupID'=>$filterGroupID);
+					$data1=array('categoryID'=>$categoryID,'groupName'=>$groupname,'sortOrder'=>$sortoder,'filterStatus'=>$filterStatus,'filterType'=>$filterType);
+					$this->Categories_model->insert_catfilter($data1,$name,$lable,$value,$where);
+					$this->session->set_flashdata('message_type', 'success');
+					$this->session->set_flashdata('message', $this->config->item("index") . " Filter Updated Successfully!!");
+				}else{
+					$data1=array('categoryID'=>$categoryID,'groupName'=>$groupname,'sortOrder'=>$sortoder,'filterStatus'=>$filterStatus,'filterType'=>$filterType);
+					$this->Categories_model->insert_catfilter($data1,$name,$lable,$value);
+					$this->session->set_flashdata('message_type', 'success');
+					$this->session->set_flashdata('message', $this->config->item("index") . " Filter Created Successfully!!");
+				}
+				
+			}else{
+				$this->session->set_flashdata('message_type', 'error');
+				$this->session->set_flashdata('message', $this->config->item("index") . " All Fields Are Mendatory!!");
+			}
+			
+		}else{
+			$this->session->set_flashdata('message_type', 'error');
+			$this->session->set_flashdata('message', $this->config->item("index") . " Invalid Request!!");
+		}
+		
+		redirect('Categories/Filter');
+	}
 	
 }

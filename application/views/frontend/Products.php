@@ -80,103 +80,46 @@
 	      <div class="section group">
 		  <div class="filter_panel">
 		  <h3>Refine Your Search</h3>
-		  <hr>
+				<hr>
+		  <?php if(!empty($filters)){  foreach($filters as $filter){ ?>
 		  <div class="Price">
-		  <h3> Price</h3>
+		  <h3> <?=isset($filter->groupName)?$filter->groupName:''?></h3>
 
 		  </div>
+		  <?php if($filter->filterGroupID){
+				$filteratt=$this->Landingpage_model->get_grpatt($filter->filterGroupID);
+				if($filteratt){ ?>
 		   <div class="checkbox chk">
+		   <?php foreach($filteratt as $filteratts){ ?>
 					<label>
-						<input type="checkbox" value=""> Rs 5000-Rs 10000
+						<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">
+						<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>"> <?=isset($filteratts->lable)?$filteratts->lable:''?>
 					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 10000-Rs 20000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 20000-Rs 30000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 30000-Rs 50000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 50000-Rs 75000
-					</label>
-					<label>
-						<input type="checkbox" value=""> Rs 75000-Rs 100000
-					</label>
-					
+		   <?php } ?>
 					</div>
-			<hr>
-			<div class="price">
-			<h3>Brand</h3>
-			<div class="chk">
-			<input type="text" name="brand" placeholder="Brand">
-			</div>
-			</div>
-			<hr>
-		<div class="Price">
-		  <h3> Type</h3>
-
-		  </div>
-		   <div class="checkbox chk">
-					<label>
-						<input type="checkbox" value="">LED
-					</label>
-					<label>
-						<input type="checkbox" value=""> PLASMA
-					</label>
-					<label>
-						<input type="checkbox" value=""> OLED
-					</label>
-				
-					
-					</div>
+		  <?php }}else{ ?>
+		  <p>No Attribute Define For This Filter</p>
+		  <?php } ?>
+			<hr> 
+		  <?php } }else{ ?>
+		  <p>No Filter Found For This Category</p>
+		  <?php } ?>
+		  		  <a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=95080" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_Upto40PLUSExtra30OffOnPurchaseOfRs1299_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=95080&aff_id=48478&url_id=2442" width="1" height="1" />
 		  
-		  	<div class="Price">
-		  <h3> Features</h3>
-
-		  </div>
-		   <div class="checkbox chk">
-					<label>
-						<input type="checkbox" value="">3D
-					</label>
-					<label>
-						<input type="checkbox" value=""> SMART
-					</label>
-					<label>
-						<input type="checkbox" value=""> CURVED
-					</label>
-				
-					
-					</div>
-		 
-		  	<div class="Price">
-		  <h3> Display</h3>
-
-		  </div>
-		   <div class="checkbox chk">
-					<label>
-						<input type="checkbox" value="">HD
-					</label>
-					<label>
-						<input type="checkbox" value="">FULL HD
-					</label>
-					<label>
-						<input type="checkbox" value=""> 4K ultra HD
-					</label>
-				
-					
-					</div>
 </div>
-		  <div class="product_panel">
+		  <div class="product_panel" id="mySelect">
 		   <?php if(!empty($products)){ foreach($products as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
 					 <h2><?=$product->productName?> </h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
-					  <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="cart-button">Add to Cart</a></span> </div>
-				     <div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>
+					 <!--<div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /> <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
+					  <?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
+					  <?php } */ ?></span> </div>
+					  <div class="button"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" class="details">Details</a></span></div>-->
 					 <div class="checkbox">
 					<label>
 						<input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)"> Add to Compare
@@ -189,6 +132,13 @@
 				</div> -->
 				
 		  <?php } }else{ echo"No product Found!!";}?>
+		  <a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=95080" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_Upto40PLUSExtra30OffOnPurchaseOfRs1299_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=95080&aff_id=48478&url_id=2442" width="1" height="1" />
+		  <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=88882&file_id=79365" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79365&aff_id=48478&file_id=88882" width="1" height="1" />
+		  <!-- Javascript Ad Tag: 534 -->
+<div id="vcm534aHsffu"></div>
+<script src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=js&divid=vcm534aHsffu" type="text/javascript"></script>
+<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="728" height="90"></iframe></noscript>
+<!-- // End Ad Tag -->
 			</div>
 			</div>
 			

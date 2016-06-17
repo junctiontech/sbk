@@ -18,7 +18,7 @@ class Landingpage extends CI_Controller {
 		$this->load->model('frontend/User_model');
 		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
 		$this->data['whislist']=count($wishlist);
-		$this->data['whislistproduct']='';
+		$this->data['whislistproduct']=array();
 		foreach($wishlist as $wishlists){
 		$this->data['whislistproduct'][]=$wishlists->productID;
 		}
@@ -33,7 +33,7 @@ class Landingpage extends CI_Controller {
 		foreach ($query as $article)
 		{
 			
-		$doc = new Zend_Search_Lucene_Document();
+			$doc = new Zend_Search_Lucene_Document();
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productsID', $article->productsID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productName', $article->productName));
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
@@ -74,6 +74,9 @@ class Landingpage extends CI_Controller {
 		$this->data['featureproduct']=$featureproduct=$this->Landingpage_model->get_inventory_data("feature_product");
 		$this->data['newproduct']=$newproduct=$this->Landingpage_model->get_inventory_data("new_product");
 		$this->data['lshproduct']=$lshproduct=$this->Landingpage_model->get_inventory_data("lhs_landing_page");
+		$this->data['deals']=$deals=$this->Landingpage_model->get_deals();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+		//print_r($dealsgategorys);die;
 		/* echo"<br>";print_r($categories);echo"<br>";echo"<br>";print_r($featureproduct);echo"<br>";echo"<br>";print_r($lshproduct);die; */
 		if($app=='true'){
 			if(!empty($categories)){
@@ -82,6 +85,8 @@ class Landingpage extends CI_Controller {
 				$jsonarray['newproduct']=$newproduct;
 				$jsonarray['lshproduct']=$lshproduct;
 				$jsonarray['topbrand']=$topbrand;
+				$jsonarray['deals']=$deals;
+				$jsonarray['dealsgategorys']=$dealsgategorys;
 				echo json_encode($jsonarray);
 			}else{
 				echo "No category found";
@@ -98,7 +103,6 @@ class Landingpage extends CI_Controller {
 		$app=$this->input->get('app');
 		$this->data['searchq']=$searchq=$this->input->Get('q');
 		$b=$this->input->Get('b');
-		
 		$jsonarray=array();
 		$query='';$searchqry='';
 		if($categorykey=='search'){
@@ -130,6 +134,9 @@ class Landingpage extends CI_Controller {
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{
 			$index = Zend_Search_Lucene::open($this->search_index);
+			/*if($app=='true'){
+						Zend_Search_Lucene::setResultSetLimit(500);
+						}*/
 			$products = $index->find($searchquery);
 		}
 	}
@@ -166,17 +173,22 @@ class Landingpage extends CI_Controller {
 		}else{
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
-			
+			$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+			if($categorykey !='' && $categorykey !='search'){
+				$this->data['filters']=$this->Landingpage_model->get_filters($categorykey);
+			}
 			$this->data['products']=$products;
 			if(!empty($productkey) && empty($b)){
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
+				//print_r($this->data['othershopprices']);die;
 				$searchquery1="categoriesUrlKey: $categorykey";
 				//$searchquery1.="AND productName: $productName";
 				$searchquery1.="AND productsUrlKey: $productkey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
+				$this->data['attributegroups']=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
 				}
 				
 				$this->display ('frontend/ProductDetail');
@@ -187,7 +199,6 @@ class Landingpage extends CI_Controller {
 	}
 	
 	public function fetchdata_compare_product($productid=false)
-	
 	{
 	
 		$productid=$this->input->post('productid');
@@ -219,9 +230,95 @@ class Landingpage extends CI_Controller {
 	
 	
 	$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
-		
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 	$this->parser->parse('frontend/Header',$this->data);
 	$this->parser->parse('frontend/Compare',$this->data);
 	$this->parser->parse('frontend/Footer',$this->data);
 	}
+	
+	public function Deals($category=false)
+	{	
+		$app=$this->input->get('app');
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+		$this->data['deals']=$deals=$this->Landingpage_model->get_deals();
+		if($category){
+		$category=str_replace('_',' ',$category);
+		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
+		if($app=='true'){
+			echo json_encode($data);
+		}		 
+		}
+		$this->parser->parse('frontend/Header',$this->data);
+		$this->parser->parse('frontend/Deals',$this->data);
+		$this->parser->parse('frontend/Footer',$this->data);
+		//$this->display('frontend/Deals', $this->data);
+	}
+	public function Filter_product ()
+	{	
+		$str =$this->input->post('data');
+		$id = $this->input->post('categories');
+		$query='';$where='';$searchqry='';$where1='';		
+		if(!empty($str))
+		{
+			foreach($str as $data)
+			{
+				$arr = explode('-', $data);
+				if(!empty($arr[0] == 'productPrice'))
+				{
+					$a = $arr[1];									
+				}
+				elseif(!empty($arr[0]))
+				{
+					$b=$arr[1];	
+					$c[]=$b;					
+				}				
+			}
+				
+		if(!empty($c))
+		{
+			$d = implode("','", $c);
+		}
+		if(!empty($a))
+		{
+			if (!empty($d))
+			{ 		
+				$where1 =("productPrice BETWEEN {$a} AND productAttributeValue IN ('$d') AND t8.categoriesID IN('$id')");					
+			} 
+			else 
+			{
+				$where1 =("productPrice BETWEEN {$a} AND t8.categoriesID IN('$id')");
+			}						
+		}
+		elseif(!empty($c))
+		{
+			$d= implode(' ',$c);
+			$where =("MATCH (`productAttributeValue`) AGAINST ('{$d}') AND t8.categoriesID IN('$id')");		 
+		} 
+		$filterprodect = $this->Landingpage_model->get_products($query, $searchqry, $where, $where1);
+		}
+		if (!empty($filterprodect))
+		{
+			foreach ($filterprodect as $filter)
+			{				
+				echo"<div class=\"grid_1_of_4 images_1_of_4\">
+					 <a href=\"".$filter->categoriesUrlKey."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
+					 <h2>".$filter->productName."</h2>
+					 <p><span class=\"price\">".$filter->productPrice."</span></p>					 
+					 <div class=\"checkbox\">
+					<label>
+						<input type=\"checkbox\" value=\"<".$filter->productsID.">\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
+					</label>
+					</div>
+				</div>"; 				
+			}
+		} 
+		else{
+			echo "NO Product Found ";
+		}
+	}
+	
 }

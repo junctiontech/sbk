@@ -133,4 +133,48 @@ class Categories_model extends CI_Model {
 		$brand_name = $this->db->get($table);
 		return $brand_name->result();
 	}
+	
+	public function get_categorydata()
+	{
+		$this->db->select('t1.categoriesID,t2.categoryName');
+		$this->db->from('s4k_categories t1');
+		$this->db->join('s4k_category_details t2','t1.categoriesID=t2.categoriesID', 'left');
+		$this->db->where(array('categoriesStatus'=>'Active'));
+		$query=$this->db->get();
+		return $query->result();
+	}
+//	(select * from `s4k_filter_group_to_attribute` where `filterGroupID`=t1.filterGroupID) as grwpatt
+	public function get_catfilter($categoriesID)
+	{
+		$this->db->select('t1.filterGroupID,groupName,t1.categoryID,t3.categoryName,sortOrder,filterStatus,	filterType');
+		$this->db->from('s4k_filter_group t1');
+		$this->db->join('s4k_categories t2','t1.categoryID=t2.categoriesID','left');
+		$this->db->join('s4k_category_details t3','t2.categoriesID=t3.categoriesID', 'left');
+		$this->db->where(array('t1.categoryID'=>$categoriesID));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	public function get_grpatt($filterGroupID)
+	{
+		$this->db->select('*');
+		$this->db->from('s4k_filter_group_to_attribute t1');
+		$this->db->where(array('t1.filterGroupID'=>$filterGroupID));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	public function insert_catfilter($data1=false,$name=false,$lable=false,$value=false,$where=false)
+	{
+		if($where){
+			
+		}else{
+			$this->db->insert('s4k_filter_group',$data1);
+			$filterGroupID=$this->db->insert_id();
+			if(!empty($filterGroupID) && !empty($name) && !empty($lable) && !empty($value)){
+				foreach($name as $key=>$names){
+					$attributeinfo=array('lable'=>isset($lable[$key])?$lable[$key]:'','name'=>isset($names)?$names:'','value'=>isset($value[$key])?$value[$key]:'','filterGroupID'=>$filterGroupID);
+					$this->db->insert('s4k_filter_group_to_attribute',$attributeinfo);
+				}
+			}
+		}
+	}
 } 

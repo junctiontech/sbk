@@ -74,6 +74,10 @@ if($_SERVER['HTTP_HOST']=="www.searchb4kharch.com"){
 	$password="initial1$";
 	$username="root";
 }
+if($_SERVER['HTTP_HOST']=="192.168.1.111"){
+	$password="initial1$";
+	$username="root";
+}
 $active_group = 'default';
 $query_builder = TRUE;
 

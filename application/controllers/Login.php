@@ -16,6 +16,7 @@ class Login extends CI_Controller {
 		$this->data['base_url']=base_url();
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		// Include the google api php libraries
 		include_once APPPATH."libraries/google-api-php-client/Google_Client.php";
 		include_once APPPATH."libraries/google-api-php-client/contrib/Google_Oauth2Service.php";
@@ -115,7 +116,7 @@ class Login extends CI_Controller {
 				'userLastName'=>$userProfile['family_name'],
 				'userEmail'=>$userProfile['email'],
 				'userPassword'=>'',
-				'userGender'=>$userProfile['gender'],
+				'userGender'=>isset($userProfile['gender'])?$userProfile['gender']:'',
 				'userDOB'=>'',
 				'userMobileNo'=>'',
 				'userProfileImage'=>$userProfile['picture']
@@ -280,8 +281,9 @@ class Login extends CI_Controller {
 	}
 	
 	public function insert_user_info()
-	{
-		if($this->input->post('submit')){
+	{	
+		$app=$this->input->get('app');
+		if($this->input->post('submit') || $app==true){
 			$userFirstName=$this->input->post('userFirstName');
 			$userLastName=$this->input->post('userLastName');
 			$userEmail=$this->input->post('userEmail');
@@ -301,6 +303,9 @@ class Login extends CI_Controller {
 				);
 			$id=$this->Login_model->insert('s4k_user',$data);
 			if(!empty($id)){
+				if($app==true){
+					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!!','user_id'=>$id));
+				}else{
 				$where=array('userID'=>$id);
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
 				if(!empty($userinfo)){
@@ -318,21 +323,36 @@ class Login extends CI_Controller {
 				redirect('User/Dashboard');
 				
 			}else{
+				if($app==true){
+					echo json_encode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
+				}else{
 				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
 				redirect('Login/signup');
+				}
 			} 
-			
+				}
 		}else{
+				if($app==true){
+					echo json_encode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
+				}else{
 				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
 				redirect('Login/signup');
+				}
 			} 
 		}else{
+				if($app==true){
+					echo json_encode(array('code'=>500,'message'=>'All fields are mandatory!! Please Try Again.'));
+				}else{
 				$this->session->set_flashdata('category_error_login', " All fields are mandatory!! Please Try Again. ");
-				redirect('Login/signup');
+				redirect('Login/signup');}
 			}
 		}else{
+			if($app==true){
+					echo json_encode(array('code'=>500,'message'=>'Invalid request!! Please Try Again.'));
+				}else{
 			$this->session->set_flashdata('category_error_login', " Invalid request!! Please Try Again. ");
 			redirect('Login/signup');
+				}
 		}
 	}	
 	/* Logout function start................................................................................... */
@@ -347,4 +367,56 @@ class Login extends CI_Controller {
 
 	/* Logout function start................................................................................... */
 
+	public function app_login()
+	{ 
+		$sb4k_login_info=$this->input->post('sb4k_login_info');
+		if($sb4k_login_info){
+			$sb4k_login_info=json_decode($sb4k_login_info,true);
+			$useremail=$sb4k_login_info['emailId'];
+			$password=$sb4k_login_info['password'];
+			if(!empty($useremail) && !empty($password)){
+				$where=array('userEmail'=>$useremail,'userPassword'=>md5($password),'Status'=>'Active');
+				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				if(!empty($userinfo)){
+					$sbk = array(
+					'userID' => $userinfo[0]->userID,
+					'userTypeID' => $userinfo[0]->userTypeID,
+					'userFirstName' => $userinfo[0]->userFirstName,
+					'userProfileImage' => $userinfo[0]->userProfileImage
+				);
+					echo json_encode(array('code'=>200,'message'=>'Successfully login','user_id'=>$userinfo[0]->userID));
+				}else{
+					echo json_encode(array('code'=>500,'message'=>'Invalid username or password!!'));
+				}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'All fields are mendatory!!'));
+			}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
+		}
+	}
+	
+	public function app_forgetpassword()
+	{ 
+		$sb4k_forgot_info=$this->input->post('sb4k_forgot_info');
+		if($sb4k_forgot_info){
+			$sb4k_forgot_info=json_decode($sb4k_forgot_info,true);
+			$useremail=$sb4k_forgot_info['emailId'];
+			if(!empty($useremail)){
+				$where=array('userEmail'=>$useremail,'Status'=>'Active');
+				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				if(!empty($userinfo)){
+
+					echo json_encode(array('code'=>200,'message'=>'Password reset link is send to your email'));
+				}else{
+					echo json_encode(array('code'=>500,'message'=>'Invalid emailId not found'));
+				}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'All fields are mendatory!!'));
+			}
+		}else{
+				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
+		}
+	}
+	
 }

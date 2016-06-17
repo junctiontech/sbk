@@ -50,6 +50,7 @@
 	<script src="<?=base_url();?>admin/js/common_functions.js"></script>
 	<script src="<?=base_url();?>admin/js/Categories.js"></script>
 	<script src="<?=base_url ();?>admin/js/Subcategories.js"></script>
+	<script src="<?=base_url ();?>admin/js/validator/validator.js"></script>
 	<script src="<?=base_url();?>admin/js/sbk.js"></script>
 	<!-- select2 -->
         <script src="<?=base_url();?>admin/js/select/select2.full.js"></script>

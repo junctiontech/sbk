@@ -47,6 +47,8 @@ body{
 .logo{
 	float:left;
 	width:20%;
+	//padding-left: 33px;
+   // padding-right: 58px;
 }
 /**** Header Top Right ****/
 .header_top_right{
@@ -74,6 +76,7 @@ body{
 	outline:none;
 	margin:0;
 	height: 82px;
+	text-align: center;
 }
 .search_box input[type="submit"]{
 	border:none;
@@ -83,10 +86,10 @@ body{
 	padding:10px 15px;
 	height: 73px;
 	margin:0;
-	background: -webkit-gradient(linear,left top,left bottom,from(#70389C),to(#602D8D));
-	background: -moz-linear-gradient(top,#70389C,#602D8D);
-	background: -o-linear-gradient(top,#70389C,#602D8D);
-	background: -ms-linear-gradient(top,#70389C,#602D8D);
+	background: -webkit-gradient(linear,left top,left bottom,from(#670099),to(#670099));
+	background: -moz-linear-gradient(top,#670099,#670099);
+	background: -o-linear-gradient(top,#670099,#670099);
+	background: -ms-linear-gradient(top,#670099,#670099);
 	-webkit-transition: all .9s;
 	-moz-transition: all .9s;
 	-o-transition: all .9s;
@@ -94,7 +97,7 @@ body{
 	transition: all .9s;
 	position:absolute;
 	right:0;
-	top:0;
+	top:0;	
 	height: 82px;
 	border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
@@ -152,7 +155,7 @@ body{
 	max-height: 400px;
 	width: 95px;
 	z-index: 1;
-	background: #70389C;
+	background: #670099;
 }
 .login{
 	float:left;
@@ -396,14 +399,14 @@ p.note{
     max-height: 400px;
     width:95px;
     z-index:1;
-    background:#70389C;
+    background:#670099;
 }
 .wrapper-dropdown.active .languges{
 	border-bottom: 1px solid rgba(0,0,0,0.2);
     max-height: 400px;
     width:135px;
     z-index:11;
-    background:#70389C;
+    background:#670099;
 }
 
 /**** Header Botttom Left ****/
@@ -498,7 +501,7 @@ p.note{
 		font-size:0.8em;
 		font-family: Arial, "Helvetica Neue", "Helvetica", Tahoma, Verdana, sans-serif;
 		border: 1px solid rgba(0,0,0,0.1);
-        background:#602D8D url(../images/large-button-overlay.png);       
+        background:#670099 url(../images/large-button-overlay.png);       
         color             : #fff;
         text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
 		-moz-border-radius:5px;
@@ -507,7 +510,7 @@ p.note{
 }
 .list_2_of_1 .button a:hover{
 	    border: 1px solid #4D00A0;
-        background:#70389C;
+        background:#670099;
         text-decoration:none; 
 }
 .header_bottom_right_images{
@@ -543,7 +546,7 @@ p.note{
 .heading h3{
 	font-family: 'Monda', sans-serif;
 	font-size:22px;
-	color:#602D8D;
+	color:#670099;
 	text-transform:uppercase;
 }
 .sort,.show{
@@ -587,7 +590,7 @@ p.note{
 	padding:5px 5px;
 }
 .page-no li a:hover,.page-no li.active{
-	color:#602D8D;
+	color:#670099;
 	text-decoration:underline;
 }
 /**** Grid 1_0f_4 ****/
@@ -599,6 +602,7 @@ p.note{
 }
 .grid_1_of_4:first-child { 
 	margin-left: 0; 
+	    
 } 
 .images_1_of_4 {
 	width: 18.8%;
@@ -606,6 +610,7 @@ p.note{
 	text-align:center;
 	position:relative; 
 	height:400px;
+	margin-right: 13px;
 }
 
 .images_1_of_4  img{
@@ -681,7 +686,7 @@ p.note{
 		transition: all 0.5s ease;
 }
 .images_1_of_4 .button a:hover{
-     color:#70389C;
+     color:#670099;
      background: #E8E8E8;
 }
 .images_1_of_4 .button span img{
@@ -866,7 +871,7 @@ p.note{
 	color: #333;
 }
 .back-links p a:hover,.back-links p a:active{
-	color:#70389C;
+	color:#670099;
 }
 .image {
 	clear: both;
@@ -1006,7 +1011,7 @@ p.note{
 }
 .product-desc h2,.product-tags h2{
 	padding:8px 20px;
-	background:#602D8D;
+	background:#670099;
 	border: 1px solid #EBE8E8;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -1098,7 +1103,7 @@ p.note{
 }
 .span_3_of_1 li a:hover{
 	background: url(../images/drop_arrow-hover.png) no-repeat 5px 11px;
-	color:#602D8D; 
+	color:#670099; 
 }
 .span_3_of_2 .button{
 	float:right;
@@ -1107,7 +1112,7 @@ p.note{
 }
 .span_3_of_2 .button a{
 		padding:12px 20px;
-		font-size:1em;
+		font-size:0.9em;
 		font-weight:bold;
 		font-family: Arial, "Helvetica Neue", "Helvetica", Tahoma, Verdana, sans-serif;
 		border: 1px solid rgba(0,0,0,0.1);
@@ -1242,7 +1247,7 @@ p.note{
 	width:15%;
 }
 .year p{
-	color:#70389C;
+	color:#670099;
 	font-size:0.95em;
 }
 .span_1_of_3  p.history{
@@ -1255,7 +1260,7 @@ p.note{
 .span_1_of_3 .list li a{
 	font-size:0.82em;
 	padding:0.35em 1.2em;
-	color:#602D8D;
+	color:#670099;
 	background: url(../images/drop_arrow-hover.png) no-repeat 0px 10px;
 	display:block;
 }
@@ -1298,7 +1303,7 @@ p.note{
 	margin:20px 0 10px 0;
 }
 .questions h4{
-	color:#70389C;
+	color:#670099;
 	font-size: 15px;
 	margin-bottom:5px;
 	font-weight: normal;

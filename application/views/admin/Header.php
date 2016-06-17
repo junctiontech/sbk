@@ -77,10 +77,11 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-th"></i>Categories<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href="<?=base_url();?>Categories">View category</a></li>
-                                        <li><a href="<?=base_url () ;?>Categories/AddCategories">Create category</a></li>
-										<li><a href="<?=base_url () ; ?>Categories/MapCategories">Map category</a></li>
-										<li><a href="<?=base_url(); ?>Categories/Brand">Brand</a></li>
+                                        <li><a href="<?=base_url();?>Categories.html">View category</a></li>
+                                        <li><a href="<?=base_url () ;?>Categories/AddCategories.html">Create category</a></li>
+										<li><a href="<?=base_url () ; ?>Categories/MapCategories.html">Map category</a></li>
+										<li><a href="<?=base_url(); ?>Categories/Brand.html">Brand</a></li>
+										<li><a href="<?=base_url(); ?>Categories/Filter.html">Create & view filter</a></li>
                                     </ul>
                                 </li>
                                 
@@ -115,6 +116,29 @@
 								<li><a><i class="fa fa-list"></i>User Wishlist<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href ="<?=base_url();?>Userwishlist">User Wishlist</a></li>						
+                                    </ul>
+                                </li>
+								<li><a><i class="fa fa-list"></i>Manage Hotel<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href ="<?=base_url ();?>Hotels" >View Hotel</a></li>
+										<li><a href ="<?=base_url ();?>Hotels/Addhotel" >Create Hotel</a></li>
+                                    </ul>
+                                </li>
+								<li><a><i class="fa fa-list"></i>Manage Flight<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?=base_url ();?>Flights">View Flights</a></li>						
+                                    </ul>
+                                </li>
+								<li><a><i class="fa fa-list"></i>Manage Gift<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?=base_url () ;?>Gifts">View Gifts</a></li>
+										<li><a href="<?=base_url () ;?>Gifts/Addgift">Create Gifts</a></li>	
+                                    </ul>
+                                </li>
+								<li><a><i class="fa fa-list"></i>Manage Deal<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="<?=base_url () ;?>Deals">View Deal</a></li>	
+										<!-- <li><a href="<?=base_url () ;?>Deals/Adddeal">Create Deal</a></li> -->
                                     </ul>
                                 </li>
                                

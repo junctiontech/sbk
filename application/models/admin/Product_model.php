@@ -99,19 +99,58 @@ class Product_model extends CI_Model {
 	}
 	function map_product($category=false,$product=false,$productName=false )
 	{	
-		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice');
+		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
 		$this->db->from('s4k_products t1');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
 		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->where(array('t1.productsID !='=>$product));
 		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
 		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
-		$query=$this->db->get();		
+		$query=$this->db->get();	//echo $this->db->last_query();die;	
 		return $query->result();
 		
 	}
+	
+	function map_product1($category=false,$product=false,$productName=false )
+	{	
+		$query1=$this->db->query("select productAttributeLable,productAttributeValue from s4k_product_attribute_map where productsID=$product and productAttributeLable in ('Model ID','Model Name')");
+		//echo $this->db->last_query();die;
+		$query2=$query1->result_array();
+		$query4='';//array();
+		foreach($query2 as $query3){
+			$query4=$query3['productAttributeValue'];
+		}
+		//$query5=implode(' ',$query4);
+		//print_r($query4);die;
+		$this->db->distinct();
+		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
+		$this->db->from('s4k_products t1');
+		
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
+		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
+		$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
+		$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
+		
+		$this->db->where(array('t1.categoriesID'=>$category));
+		//$this->db->where(array('t4.productPrice !='=>0.00));
+		$this->db->where(array('t5.shopID !='=>1));
+		//$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
+		//$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
+		//$this->db->where_in('t7.productAttributeValue',$query4);
+		//$this->db->where('t7.productAttributeLable','Model');
+		$this->db->where(array('t7.productAttributeLable'=>'Model','t7.productAttributeValue like'=>"%$query4%"));
+		//$this->db->order_by('productName','ASC');
+		//$this->db->group_by('productName');
+		$query=$this->db->get();	//echo $this->db->last_query();die;	
+		return $query->result();
+		
+	}
+	
 	public function get_shop()
 	{
 		$this->db->select('shopName, shopID');

@@ -171,6 +171,7 @@
                                                 <div class="caption">
                                                     <p><?=isset($products->productName)?$products->productName:''?></p>
 													  <p style="margin-top:10px">Price-<?=isset($products->productPrice)?$products->productPrice:''?></p>
+													  <p style="margin-top:10px">Shop-<?=isset($products->shopName)?$products->shopName:''?></p>
 												
 												<div class="checkbox">
                                                     <label>
