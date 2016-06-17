@@ -10,21 +10,21 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	var maxField = 10; //Input fields increment limitation
-	var addButton = $('.add_button'); //Add button selector
-	var wrapper = $('.field_wrapper'); //Input field wrapper
-	var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field"><img src="<?=base_url();?>admin/images/remove-icon.png" style="margin-top:20px"/></a></div>'; //New input field html 
-	var x = 1; //Initial field counter is 1
-	$(addButton).click(function(){ //Once add button is clicked
-		if(x < maxField){ //Check maximum number of input fields
-			x++; //Increment field counter
-			$(wrapper).append(fieldHTML); // Add field html
+	var maxField = 10; 
+	var addButton = $('.add_button'); 
+	var wrapper = $('.field_wrapper'); 
+	var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field"><img src="<?=base_url();?>admin/images/remove-icon.png" style="margin-top:20px"/></a></div>';
+	var x = 1; 
+	$(addButton).click(function(){ 
+		if(x < maxField){ 
+			x++;
+			$(wrapper).append(fieldHTML); 
 		}
 	});
-	$(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
+	$(wrapper).on('click', '.remove_button', function(e){ 
 		e.preventDefault();
-		$(this).parent('div').remove(); //Remove field html
-		x--; //Decrement field counter
+		$(this).parent('div').remove(); 
+		x--; 
 	});
 });
 </script>

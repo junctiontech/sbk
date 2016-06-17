@@ -247,25 +247,7 @@ class Landingpage extends CI_Controller {
 		 redirect($_SERVER['HTTP_REFERER']);
 	}
 	} 
-	/* public function compare()
-	{	$product=$this->input->post();
 	
-	foreach($product as $key=>$products)
-	{
-		$productID[]=$key;
-		//print_r($productID);die;
-	}
-	$compareproduct=implode(',',$productID);
-	
-	
-	$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
-		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
-		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
-		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
-	$this->parser->parse('frontend/Header',$this->data);
-	$this->parser->parse('frontend/Compare',$this->data);
-	$this->parser->parse('frontend/Footer',$this->data);
-	} */
 	
 	public function Deals($category=false)
 	{	

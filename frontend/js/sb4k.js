@@ -10,9 +10,13 @@ if(window.location.hostname=="searchb4kharch.com"){
 if(window.location.hostname=="www.searchb4kharch.com"){
 	var base_url = 'http://www.searchb4kharch.com/'; 
 }
+if(window.location.hostname=="192.168.1.111"){
+	var base_url = 'http://192.168.1.111/sbk/'; 
+}
+
 
 function compare_product(productid)
-{	
+{	alert(base_url);
 var count=0;
 	$(".chkcount").each(function() {
 			
