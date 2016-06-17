@@ -199,7 +199,13 @@ function compare_pro_attribute($categoryinfo=false)
 		
 		
 	}
+	function product_attribute($compareproduct=false,$categoryinfo=false){
 	
+
+	$qry=$this->db->query(	"SELECT `productAttributeValue`, `AttributeID` FROM `s4k_product_to_attributes` WHERE `productID` IN($compareproduct) and `categoriesID`=$categoryinfo");
+	
+	return $qry->result_array();  
+}
 	
 }
 
