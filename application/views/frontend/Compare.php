@@ -24,8 +24,8 @@
 					 <p><span class="price"><?=$product->productPrice?></span></p>
 
 			</div>
-		
-			
+		   <?php } }?>
+				</div>	
 
 				 <?php { $attribute=$this->Landingpage_model->attribute($product->productsID);?>
 				<?php foreach($attribute as $productattribute){?>
@@ -41,9 +41,9 @@
 		</tbody>
 	</table>-->
 
-		   <?php } }}}?>
+		
 
-	</div>		
+	
 			
 <!--
                             <div class="x_panel comparetable">
