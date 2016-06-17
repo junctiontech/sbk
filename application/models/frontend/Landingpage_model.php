@@ -188,6 +188,19 @@ class Landingpage_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result();
 	}
+function compare_pro_attribute($categoryinfo=false)
+	{
+	
+		$this->db->select('t1.productAttributeLable,t1.AttributeID');
+		$this->db->from('s4k_categories_to_attribute t1');
+		$this->db->where(array('t1.categoriesID'=>$categoryinfo));
+		$query=$this->db->get();
+		return $query->result();
+		
+		
+	}
+	
+	
 }
 
 ?>
