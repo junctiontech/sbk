@@ -21,6 +21,7 @@ class Product extends CI_Controller {
 		$this->load->view($template_file, $this->data);
 		$this->parser->parse('admin/Footer',$this->data);
 	}
+
 	
 	public function index()
 	{
