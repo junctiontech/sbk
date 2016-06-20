@@ -50,7 +50,15 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 			$this->db->where(array('shopProductID'=>$productdata['shopProductID'],'shopID'=>$productdata['shopID']));
 			$query=$this->db->get();
 		$result=$query->result();
-		if(empty($result)){
+		
+		$this->db->select('t1.productsID');
+			$this->db->from('s4k_products_map t1');
+			$this->db->join('s4k_product_price_map t2','t1.productsID=t2.productsID','left');
+			$this->db->where(array('shopProductID'=>$productdata['shopProductID'],'shopID'=>$productdata['shopID']));
+			$query=$this->db->get();
+		$resultmap=$query->result();
+		
+		if(empty($result) && empty($resultmap)){
 		$productMasterData=array('categoriesID'=>$productdata['categoriesID'],
 								 'subCategoriesID'=>$productdata['subCategoriesID'],
 								 'productsUrlKey'=>$productdata['productsUrlKey'],
@@ -161,6 +169,7 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 		}
 		}else{
 			$productID=$result[0]->productsID;
+			$mapproductID=$resultmap[0]->productsID;
 			$query1=$this->db->get_where('s4k_product_price',array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
 			$result1=$query1->result();
 			if(empty($result1)){
@@ -171,9 +180,18 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 								'shopProductID'=>$productdata['shopProductID'],
 								'productShopUrl'=>$productdata['productShopUrl']);
 			$this->db->insert('s4k_product_price',$productPrice);
+			
+			$productMapPrice=array('productsID'=>$mapproductID,
+								'productPrice'=>$productdata['productPrice'],
+								'shopID'=>$productdata['shopID'],
+								'shopProductID'=>$productdata['shopProductID'],
+								'productShopUrl'=>$productdata['productShopUrl']);
+			$this->db->insert('s4k_product_price_map',$productMapPrice);
 			}else{
 				$this->db->where(array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
 				$this->db->update('s4k_product_price',array('productShopUrl'=>$productdata['productShopUrl'],'productPrice'=>$productdata['productPrice']));
+				$this->db->where(array('productsID'=>$mapproductID,'shopID'=>$productdata['shopID']));
+				$this->db->update('s4k_product_price_map',array('productShopUrl'=>$productdata['productShopUrl'],'productPrice'=>$productdata['productPrice']));
 			}
 		}
 		
