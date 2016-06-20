@@ -5,7 +5,8 @@
 						<h4>Information</h4>
 						<ul>
 						<li><a href="javascript:;">About Us</a></li>
-						<li><a href="javascript:;"><span>Advanced Search</span></a></li>
+						<li><a href="javascript:;"><span>Services (coming soon)</span></a></li>
+						<li><a href="javascript:;"><span>Advanced Search</span></a></li>						
 						<li><a href="javascript:;"><span>Contact Us</span></a></li>
 						</ul>
 					</div>
@@ -21,7 +22,7 @@
 							<li><a href="<?=base_url();?>Login.html">My Wishlist</a></li>
 								<?php } ?>
 							<li><a href="javascript:;">Help</a></li>
-						</ul>
+						</ul> 
 				</div>
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Contact</h4>

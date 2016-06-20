@@ -103,7 +103,7 @@ body{
     border-bottom-right-radius: 9px;
 }
 .search_box input[type="submit"]:hover{
-	background:#444;
+	background:#fe0000;
 }
 .shopping_cart{
 	float:left;
@@ -709,7 +709,7 @@ p.note{
 	background: -webkit-linear-gradient(top,  #414045 55%,#2f2e33 100%); 
 	background: -o-linear-gradient(top,  #414045 55%,#2f2e33 100%); 
 	background: -ms-linear-gradient(top,  #414045 55%,#2f2e33 100%); 
-	background: linear-gradient(to bottom,  #414045 55%,#2f2e33 100%); 
+	background: linear-gradient(to bottom,  #660099 55%,#660099 100%); 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#414045', endColorstr='#2f2e33',GradientType=0 );
 	box-shadow: inset 0px 1px 8px #222;
 }

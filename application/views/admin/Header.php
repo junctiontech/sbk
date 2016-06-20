@@ -138,7 +138,8 @@
 								<li><a><i class="fa fa-list"></i>Manage Deal<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?=base_url () ;?>Deals">View Deal</a></li>	
-										<!-- <li><a href="<?=base_url () ;?>Deals/Adddeal">Create Deal</a></li> -->
+										 <li><a href="<?=base_url () ;?>Deals/Inventorydeal">Inventory Deal Consumption</a></li>
+										<li><a href="<?=base_url();?>Deals/Inventorydealview">Create Inventory Deal</a></li>
                                     </ul>
                                 </li>
                                

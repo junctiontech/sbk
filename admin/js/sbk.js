@@ -10,11 +10,14 @@ if(window.location.hostname=="searchb4kharch.com"){
 if(window.location.hostname=="www.searchb4kharch.com"){
 	var base_url = 'http://www.searchb4kharch.com/'; 
 }
+if(window.location.hostname=="192.168.1.111"){
+	var base_url = 'http://192.168.1.111/sbk/'; 
+}
 function search_product(productval)
 
 { 
 	var category = document.getElementById('select').value;
-	var product =productval;//$('.select2-search__field').value;
+	var product =productval;
 	
 	if(product !==''  && category !=='')
 	{
@@ -42,6 +45,38 @@ $(document).ready(function(){
 				});
 });
 
+function chooseattribute(x){
+	
+	if (typeof x =='undefined'){
+	var id=0;
+	
+	}
+	else {
+		id=x;
+
+	}
+
+	var category= document.getElementById('select').value;
+		if( category !=='' )
+	{ 
+    $.ajax({
+    type: "POST",
+    url: base_url+'Product/chooseattribute',
+  	data:{categoriesID:category},
+
+    cache: false,
+    success: function(html)
+    { //alert(html);
+    $("#productAttributeLabel"+id).html(html);
+    }
+    });
+	
+}
+
+return false;  	  
+
+}
+
 function selectAll(source)
 
 {  alert('hi');die;
@@ -67,34 +102,6 @@ function addInput(divName){
           counter++;
      }
 }
- $(document).ready(function(){
-    var next = 1;
-    $(".add-more").click(function(e){
-        e.preventDefault();
-        var addto = "#field" + next;
-        var addRemove = "#field" + (next);
-        next = next + 1;
-        var newIn = '<div class="col-md-3"></div><div class="col-md-3 col-sm-3 col-xs-12" ><input autocomplete="off" class="form-control col-md-5 col-xs-12"  name="productAttributeLabel[]" type="text" placeholder="Label" required="required"  data-items="8"/></div><div class="col-md-3 col-sm-3 col-xs-12"  ><input autocomplete="off" class="form-control col-md-5 col-xs-12"  name="productAttributeValue[]" type="text" placeholder="value" required="required"  data-items="8"/></div>';
-        var newInput = $(newIn);
-		
-        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-        var removeButton = $(removeBtn);
-        $(addto).after(newInput);
-        $(addRemove).after(removeButton);
-        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-        $("#count").val(next);  
-        
-		
-            $('.remove-me').click(function(e){
-                e.preventDefault();
-                var fieldNum = this.id.charAt(this.id.length-1);
-                var fieldID = "#field" + fieldNum;
-                $(this).remove();
-                $(fieldID).remove();
-            });
-    });
-	
- });
+
 
  
-

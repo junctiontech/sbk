@@ -4,14 +4,14 @@ ul.dc_mm-orange,ul.dc_mm-orange li{
 	list-style:none;
 }
 ul.dc_mm-orange{
-	background: #414045; 
-	background: -moz-linear-gradient(top,  #414045 55%, #2f2e33 100%); 
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(55%,#414045), color-stop(100%,#2f2e33));
-	background: -webkit-linear-gradient(top,  #414045 55%,#2f2e33 100%); 
-	background: -o-linear-gradient(top,  #414045 55%,#2f2e33 100%); 
-	background: -ms-linear-gradient(top,  #414045 55%,#2f2e33 100%); 
-	background: linear-gradient(to bottom,  #414045 55%,#2f2e33 100%); 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#414045', endColorstr='#2f2e33',GradientType=0 );
+	background: #670099; 
+	background: -moz-linear-gradient(top,  #670099 55%, #2f2e33 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(55%,#670099), color-stop(100%,#2f2e33));
+	background: -webkit-linear-gradient(top,  #670099 55%,#2f2e33 100%); 
+	background: -o-linear-gradient(top,  #670099 55%,#2f2e33 100%); 
+	background: -ms-linear-gradient(top,  #670099 55%,#2f2e33 100%); 
+	background: linear-gradient(to bottom,  #670099 55%,#700f9f 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#670099', endColorstr='#700f9f',GradientType=0 );
 	font:normal 13px Arial,sans-serif;
 	padding:0;
 	position:relative;
@@ -56,12 +56,12 @@ ul.dc_mm-orange li a .dc-mega-icon{
 	width:8px;
 }
 ul.dc_mm-orange li.mega-hover a,ul.dc_mm-orange li a:hover{
-	color: #FFF;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#670099',endColorstr='#670099');
-	background: -webkit-gradient(linear,left top,left bottom,from(#670099),to(#670099));
-	background: -moz-linear-gradient(top,#670099,#670099);
-	background: -o-linear-gradient(top,#670099,#670099);
-	background: -ms-linear-gradient(top,#670099,#670099);
+	color:#FFF;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe0000',endColorstr='#fe0000');
+	background: -webkit-gradient(linear,left top,left bottom,from(#fe0000),to(#fe0000));
+	background: -moz-linear-gradient(top,#fe0000,#fe0000);
+	background: -o-linear-gradient(top,#fe0000,#fe0000);
+	background: -ms-linear-gradient(top,#fe0000,#fe0000);
 }
 ul.dc_mm-orange li .sub-container{
 	background:#F0F0F0;
@@ -74,7 +74,7 @@ ul.dc_mm-orange li .sub-container{
 }
 
 .staticcs {
-	    background-color: dimgrey;
+	    background-color:#670099;
    // color: darkturquoise;
 }
 

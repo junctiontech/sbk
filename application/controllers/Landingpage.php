@@ -21,7 +21,9 @@ class Landingpage extends CI_Controller {
 		$this->data['whislistproduct']=array();
 		foreach($wishlist as $wishlists){
 		$this->data['whislistproduct'][]=$wishlists->productID;
+
 		}
+
 		}
 	}
 	
@@ -205,25 +207,42 @@ class Landingpage extends CI_Controller {
 	
 	}
 	
-public function compare()
-	{	$product=$this->input->post();
+
 	
+	public function compare()
+
+	{	$product=$this->input->post();
+		
 	foreach($product as $key=>$products)
 	{
 		$productID[]=$key;
 		//print_r($productID);die;
 	}
+	
+	if(!empty($productID))
+	{
 	$compareproduct=implode(',',$productID);
 	
+	$compareproductinfo=$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
 	
-	$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
-		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
-		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
-		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+	$categoryinfo=($compareproductinfo[0]->categoriesID);
+	//print_r($compareproduct); //die;
+	$getattribute=$data=$this->data['compareproduct_info']=$this->Landingpage_model->compare_pro_attribute($compareproduct);
+	
+	
+	//print_r($getattribute);
+	$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+	$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+	$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 	$this->parser->parse('frontend/Header',$this->data);
 	$this->parser->parse('frontend/Compare',$this->data);
 	$this->parser->parse('frontend/Footer',$this->data);
 	}
+	else{
+		 redirect($_SERVER['HTTP_REFERER']);
+	}
+	} 
+	
 	
 	public function Deals($category=false)
 	{	
@@ -232,6 +251,8 @@ public function compare()
 		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		$this->data['deals']=$deals=$this->Landingpage_model->get_deals();
+		$this->data['feature_deal']=$this->Landingpage_model->get_invetory_deal_data("feature_deal");
+		$this->data['new_deal']=$this->Landingpage_model->get_invetory_deal_data("New_deal");
 		if($category){
 		$category=str_replace('_',' ',$category);
 		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
@@ -261,10 +282,9 @@ public function compare()
 				elseif(!empty($arr[0]))
 				{
 					$b=$arr[1];	
-					$c[]=$b;					
+					$c[]=$b;
 				}				
-			}
-				
+			}				
 		if(!empty($c))
 		{
 			$d = implode("','", $c);
@@ -280,11 +300,12 @@ public function compare()
 				$where1 =("productPrice BETWEEN {$a} AND t8.categoriesID IN('$id')");
 			}						
 		}
-		elseif(!empty($c))
+		elseif(!empty($d))
 		{
-			$d= implode(' ',$c);
-			$where =("MATCH (`productAttributeValue`) AGAINST ('{$d}') AND t8.categoriesID IN('$id')");		 
+			//$d= implode(' ',$c);
+			$where =("(`productAttributeValue`) IN ('{$d}') AND t8.categoriesID IN('$id')");		 
 		} 
+		//print_r($where); die;
 		$filterprodect = $this->Landingpage_model->get_products($query, $searchqry, $where, $where1);
 		}
 		if (!empty($filterprodect))

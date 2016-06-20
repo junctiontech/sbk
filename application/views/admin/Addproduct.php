@@ -35,7 +35,7 @@
 							  <div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Category<span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control" id="select" class="required" name="categoriesID">
+									<select class="form-control" id="select" class="required" onchange="chooseattribute()" name="categoriesID">
 									  <option value="">Choose option</option>
 									
 									<?php foreach($category as $categoryshow){?>
@@ -91,34 +91,25 @@
 								</div>
 							</div>
 							
-							<div class="item form-group">
-								<input type="hidden" name="count" value="1" />
-								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Product Attribute Label <span class="required">*</span>
-							</label>
-						
-							<div id="field1">
-								<div class="col-md-3 col-sm-3 col-xs-12" >
-					
-									<input autocomplete="off" class="form-control col-md-5 col-xs-12" id="field" name="productAttributeLabel[]" type="text" placeholder="Label" required="required"  data-items="8"/>
-									
-							
-								</div>
-								
-								<div class="col-md-3 col-sm-3 col-xs-12" >
-					
-									<input autocomplete="off" class="form-control col-md-5 col-xs-12" id="field" name="productAttributeValue[]" type="text" placeholder="value" required="required"  data-items="8"/>
-							
-								</div>
-								
-								</div>
-						
-								<div class="col-md-3 col-sm-3 col-xs-12" id="field">
-								<button id="b1" class="btn add-more" type="button">+</button>
-								</div>
-							</div>
-							
-
-							
+							<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-3">Product Attribute Label <span id=""  aria-hidden="true"></span></label>
+                                    <div class="col-md-9 col-sm-9 col-xs-9 field_wrapper">
+										<div>
+										<div class="col-md-3 col-sm-3 col-xs-3">
+										<select class="form-control" id="productAttributeLabel0" class="required"  name="productAttributeLabel[]">
+												<option value="">Choose option</option>
+										</select>
+										</div>
+										
+										<div class="col-md-3 col-sm-3 col-xs-3">
+										<input type="text" class="form-control" placeholder="Value"  name="productAttributeValue[]" value=""/>
+										</div>
+										<a href="javascript:void(0);" class="add_button" title="Add field"><img src="<?=base_url();?>admin/images/add-icon.png" /></a>
+										</div>
+                                    </div>
+                                   </div>
+								   
+			
 							
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Product image <span class="required">*</span>
@@ -209,7 +200,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="Shop_url">Product Shop Url<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="occupation" type="text" name="productShopUrl" required="required" Placeholder="Product shop url" class=" form-control col-md-7 col-xs-12">
+									<input id="" type="text" name="productShopUrl" required="required" Placeholder="Product shop url" class=" form-control col-md-7 col-xs-12">
 								</div>
 							</div>
 							
@@ -220,6 +211,7 @@
 									<button  id="submit" name="submit" type="submit" class="btn btn-success">Submit</button>
 								</div>
 							</div>
+
 						
 						</form>
 
@@ -229,7 +221,43 @@
 		</div>
 	</div>
 
+<script type="text/javascript">
+var next=1;
+$(document).ready(function(){
+	
+	var maxField = 10; 
+	var addButton = $('.add_button'); 
+	var wrapper = $('.field_wrapper'); 
 
+	
+	var x=0;
+	$(document).on('click', '.add_button', function() { 
+	 var fieldHTML ='<div><div class="col-md-3 col-sm-3 col-xs-3"><select class="form-control" id="productAttributeLabel'+next+'" class="required"  name="productAttributeLabel[]"></select></div><div class="col-md-3 col-sm-3 col-xs-3"><input type="text" class="form-control" placeholder="Value"  name="productAttributeValue[]" value=""/></div><a href="javascript:void(0);" class="remove_button" title="Remove field"><img src="<?=base_url();?>admin/images/remove-icon.png" style="margin-top:20px"/></a></div>';
+				if(x < maxField){ 
+			x++; 
+		
+		next=next++;
+		
+			$('.field_wrapper').append(fieldHTML); 
+	
+			}
+			
+		chooseattribute(x);	
+			
+		});
+		
+	
+	$(document).on('click', '.remove_button', function(e){ 
+		e.preventDefault();
+		$(this).parent('div').remove(); 
+		x--; 
+	});
+	
+});
+
+</script>
+
+	
 
 	
         

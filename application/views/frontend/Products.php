@@ -43,7 +43,7 @@
     		<div class="heading">
     		<h3> Price List</h3>
     		</div>
-    		<div class="sort">
+    <!--		<div class="sort">
     		<p>Sort by:
     			<select>
     				<option>Lowest Price</option>
@@ -66,7 +66,7 @@
     				<option>In Stock</option>  				   				
     			</select>
     		</p>
-    		</div>
+    		</div>-->
     		<div class="page-no">
     			<p>Result Pages:<ul>
     				<li><a href="#">1</a></li>

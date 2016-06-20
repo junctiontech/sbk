@@ -21,6 +21,7 @@ class Product extends CI_Controller {
 		$this->load->view($template_file, $this->data);
 		$this->parser->parse('admin/Footer',$this->data);
 	}
+
 	
 	public function index()
 	{
@@ -76,6 +77,7 @@ class Product extends CI_Controller {
 	
 {
 	
+	
 	$query=$this->db->get_where('s4k_products_map',array('productsUrlKey'=>$this->input->post('productsUrlKey')));
 		$result=$query->result();
 		if(empty($result)){
@@ -87,21 +89,26 @@ class Product extends CI_Controller {
 								 'productName'=>$this->input->post('productName'),
 								 'productDescription'=>$this->input->post('productDescription'));
 		$this->db->insert('s4k_products_map',$productMapData);
+
 		if($this->db->insert_id()){
 			$productID=$this->db->insert_id();
-		
+			
 			$productattributelabel=$this->input->post('productAttributeLabel');
+			
 			
 			$productattributevalue=$this->input->post('productAttributeValue');
 			
 			
 			$index=0;
 			foreach($productattributelabel as $productattributelabel1){
-
-			$productAttributeData=array('productsID'=>$productID,
-										'productAttributeLable'=>$productattributelabel1,
+				
+			$productAttributeData=array(
+										'productID'=>$productID,
+										'categoriesID'=>$this->input->post('categoriesID'),
+										'attributeID'=>$productattributelabel1,
 										'productAttributeValue'=>$productattributevalue[$index]);
-			$this->db->insert('s4k_product_attribute_map',$productAttributeData);
+				
+			$this->db->insert('s4k_product_to_attributes',$productAttributeData);
 			$index++;
 			}
 			
@@ -142,6 +149,28 @@ class Product extends CI_Controller {
 			redirect('product/Addproduct');
 
 	}	
+public function chooseattribute()
+	
+	{	$categoriesID=$this->input->post('categoriesID');
+
+		
+		if(!empty($categoriesID))
+		{
+		$productattribute=$this->data['attribute']=$this->Product_model->get_attribute($categoriesID);
+
+		foreach($productattribute as $attribute)
+		{	
+			$category=($attribute->categoriesID);
+			$product_attribute=($attribute->productAttributeLable);
+			$product_attributeid=($attribute->AttributeID);
+				echo "<option value=\"$product_attributeid\">$product_attribute </option> ";
+		}
+		}
+		else{
+			echo "<option value=\"No attribute found\">No attribute found </option> ";
+		}
+	}
+	
 	
 	
 	public function Addproduct($url=false)

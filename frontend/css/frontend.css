@@ -197,7 +197,7 @@ font-size:19px;
 	border-top: 1px solid #dfe1e8;
 	padding:12px;
 }
-.to_do{
+.to_do a{
     background: #fff;
    -webkit-border-radius: 3px; 
    -moz-border-radius: 3px; 
@@ -206,6 +206,7 @@ font-size:19px;
     padding: 7px;
     margin-bottom:1px;
     list-style: none;
+	color:black;
 }
 a:hover{
 	color:red;
@@ -219,3 +220,82 @@ a:hover{
 	color:red;
 }
 
+.chk{
+		margin-left:20px;
+		margin-top:10px;
+	}
+.compare_product 
+{	margin-top:10px;
+	margin-bottom:10px;
+	display:none;
+	height:120px;
+	background-color:black;
+	color:red;
+}
+.description p{
+	font-size:13px;
+	font-family:times new roman;
+}
+.comparetable{
+	margin-top:100px;
+}
+
+.textval{
+	margin-top:40px;
+	
+}
+.side_panel{
+	width:20%;
+	float:left;
+	margin-top:450px;
+}
+
+.table{
+	margin-bottom:0px;
+}
+.middle_panel{
+	width:75%;
+}
+
+
+.compareimages_1_of_4 {
+    width: 100%;
+    padding: 1.5%;
+    text-align: center;
+    position: relative;
+    float:right;
+}
+
+.comparegrid_1_of_4 {
+    display: block;
+    float: right;
+    margin: 1% 0 0.5% 0.1%;
+    box-shadow: 0px 0px 3px rgb(150, 150, 150);
+	margin-top:30px;
+	margin-bottom:40px;
+}
+.compare_product_name{
+	height:60px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.compare_product_name p{
+	font-size:20px;
+	color:red;
+	font-family:times new roman;
+}
+
+.compare_product_price {
+	color:red;
+	font-size:20px;
+	font-family:times new roman;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+p.heddine{
+	white-space: nowrap; 
+	width: 200px;
+	overflow: hidden; 
+	text-overflow: clip;
+	
+}
