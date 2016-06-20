@@ -92,22 +92,16 @@
     </ul>-->
   </li>
   
-  <li class="staticcs"><a href="javascript:;">Buy >></a>
+ <!-- <li class="staticcs"><a href="javascript:;">Buy >></a>
     
+  </li>	-->
+<?php foreach($categories as $category){?>  
+    <li>   
+	
+      <a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a>        
+  
   </li>
-		
-    <li><a href="javascript:;">Products</a>
-    <ul>
-	<?php foreach($categories as $category){?>
-      <li><a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a>
-        <ul>
-          
-          
-        </ul>
-      </li>
-	<?php } ?>
-    </ul>
-  </li>
+  	<?php } ?>
  <!-- <li><a href="javascript:;">Top Brands</a>
     <ul>
 	<?php foreach($topbrands as $topbrand){?>
@@ -120,9 +114,9 @@
 	<?php } ?>
     </ul>
   </li>-->  
-  <li class="staticcs"><a href="javascript:;">Book >></a>
+ <!-- <li class="staticcs"><a href="javascript:;">Book >></a>
     
-  </li>
+  </li>-->
   
   <li><a href="javascript:;">Flights</a></li>
    

@@ -1,4 +1,4 @@
-<div class="header_bottom_left">
+<!--<div class="header_bottom_left">
 		<?php if(!empty($lshproduct)){ $i=0; foreach($lshproduct as $lshproducted){ 
 		if($i==0){ ?>
 			<div class="section group">
@@ -66,7 +66,7 @@
 			</div>
 			<?php } ?>
 		  <div class="clear"></div>
-		</div>
+		</div> -->
 			 <div class="header_bottom_right_images">
 		   <!-- FlexSlider -->
               <section class="slider">
@@ -95,10 +95,17 @@
 					<?php } } ?>	
 				    </ul>
 				  </div>
-	      </section>
+	      </section> <div class="clear"></div>
 <!-- FlexSlider -->
 	    </div>
-	  <div class="clear"></div>
+	 
+	 <div class="header_bottom_right_images">
+	 <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
+	 
+	 
+	 
+	  </div><div class="clear"></div>
+	  
   </div>	
 </div>
 	<!-- Javascript Ad Tag: 534 -->
@@ -107,6 +114,38 @@
 <noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="1500" height="90"></iframe></noscript><div class="header_bottom">
  <div class="main">
     <div class="content">
+	<div class="content_top">
+    		<div class="heading">
+    		<h3>Top Products</h3>
+    		</div>    	
+    		<div class="clear"></div>
+    	</div>
+		<div class="section group">
+		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
+				<div class="grid_1_of_4 images_1_of_4 ">
+				
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+				
+
+					 <h2><?=$product->productName?> </h2>
+					
+					 <p><span class=""><?=$product->productPrice?></span></p>
+					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
+					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
+					  <?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
+					  <?php }*/ ?>
+					  </span> </div>-->
+				   <!--  <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" >Details</a></span></div>-->
+				</div>
+				
+		  <?php } }else{ echo"No product Found!!";}?>
+			</div>
+		
+		
+		
+		
     	<div class="content_top">
     		<div class="heading">
     		<h3>Feature Products</h3>
