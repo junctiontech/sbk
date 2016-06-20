@@ -23,8 +23,8 @@ if($_SERVER['HTTP_HOST']=="localhost"){
 $config['base_url']	= "http://localhost/sbk/";
 }elseif($_SERVER['HTTP_HOST']=="www.searchb4kharch.com"){
 $config['base_url']	= 'http://www.searchb4kharch.com/';	
-}elseif($_SERVER['HTTP_HOST']=="192.168.1.111"){
-	$config['base_url']	= 'http://192.168.1.111/sbk/';
+}elseif($_SERVER['HTTP_HOST']=="192.168.1.151"){
+	$config['base_url']	= 'http://192.168.1.151/sbk/';
 }
 
 /*

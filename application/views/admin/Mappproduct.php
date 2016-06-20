@@ -41,7 +41,7 @@
 				{
 				foreach($Fetch_ProductName as $Fetch_ProductMap) 	
 				{?>
-					<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?>				
+					<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> <?=isset($Fetch_ProductMap->attr)?$Fetch_ProductMap->attr:''?>				
 					</option>
 					
 				<?php }}}?>

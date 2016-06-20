@@ -121,10 +121,10 @@ class Product_model extends CI_Model {
 		$query2=$query1->result_array();
 		$query4='';//array();
 		foreach($query2 as $query3){
-			$query4=$query3['productAttributeValue'];
+			$query4[]=$query3['productAttributeValue'];
 		}
-		//$query5=implode(' ',$query4);
-		//print_r($query4);die;
+		//$query5=implode(',',$query4);
+		//print_r($query5);die;
 		$this->db->distinct();
 		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
 		$this->db->from('s4k_products t1');
@@ -140,10 +140,10 @@ class Product_model extends CI_Model {
 		//$this->db->where(array('t4.productPrice !='=>0.00));
 		$this->db->where(array('t5.shopID !='=>1));
 		//$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
-		//$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
-		//$this->db->where_in('t7.productAttributeValue',$query4);
-		//$this->db->where('t7.productAttributeLable','Model');
-		$this->db->where(array('t7.productAttributeLable'=>'Model','t7.productAttributeValue like'=>"%$query4%"));
+		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
+		$this->db->where_in('t7.productAttributeValue',$query4);
+		$this->db->where('t7.productAttributeLable','Model');
+		//$this->db->where(array('t7.productAttributeLable'=>'Model','t7.productAttributeValue like'=>"%$query4%"));
 		//$this->db->order_by('productName','ASC');
 		//$this->db->group_by('productName');
 		$query=$this->db->get();	//echo $this->db->last_query();die;	
@@ -166,10 +166,13 @@ class Product_model extends CI_Model {
 	}
 	public function search_product($category=false,$product=false )
 	{	
-		$this->db->select('t1.productsID,t1.productName');
+		$this->db->select('t1.productsID,t1.productName,GROUP_CONCAT(t2.productAttributeValue SEPARATOR ",") as attr');
 		$this->db->from('s4k_products_map t1');
+		$this->db->join('s4k_product_attribute_map t2','t1.productsID=t2.productsID','left');
+		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->like(array('productName'=>$product));
+		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();
 		return $query->result();
 		
@@ -184,13 +187,17 @@ class Product_model extends CI_Model {
 	}
 	public function fetch_productname($product)
 	{
-		$this->db->select('t1.productsID,t1.productName,t2.categoriesID');
+		$this->db->select('t1.productsID,t1.productName,t2.categoriesID,,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr');
 		$this->db->from('s4k_product_details t1');
 		$this->db->join('s4k_products t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
 		$this->db->where(array('t1.productsID'=>$product));
+		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();
 		return $query->result();
 	}
+	
 	function delete($table1=false,$table2=false,$table3=false,$table4=false,$filter=false)
 	{
 		$this->db->delete($table1,$filter);	

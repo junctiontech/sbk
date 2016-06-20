@@ -183,9 +183,9 @@
                                 "ItemId"        => $asin_code,
                                 "ResponseGroup" => AmazonProductAPI::RESPONSE_GROUP_MEDIUM);
                                 
-            $xml_response = $this->queryAmazon($parameters);
+            return $xml_response = $this->queryAmazon($parameters);
             
-            return $this->verifyXmlResponse($xml_response);
+           // return $this->verifyXmlResponse($xml_response);
         }
         
 		public function getItemByAsinNode($asin_code)
@@ -408,7 +408,7 @@
          }
         
         
-        
+         
     	/**
          * Return details of a product searched by DVD title and director
          * 

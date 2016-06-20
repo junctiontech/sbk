@@ -5,10 +5,10 @@
 		<?php } ?>
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$lshproducted->categoriesUrlKey?>/<?=$lshproducted->productsUrlKey?>.html"><img src="<?=$lshproducted->imageName?>" alt="" /></a>
+						 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$lshproducted->categoriesUrlKey?>/<?=$lshproducted->sb4kProductID?>/<?=$lshproducted->productsUrlKey?>.html"><img src="<?=$lshproducted->imageName?>" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
-						<h2><?=$lshproducted->productName?> </h2>
+						<h2><?=$lshproducted->productName?> <?=$lshproducted->attr?></h2>
 						<p><span class="price"><?=$lshproducted->productPrice?></span></p>
 						<?php /*if(!empty($userinfos)){ if(in_array($lshproducted->productsID,$whislistproduct)==false){?>
 						<!-- <div class="button"><span><a href="<?=base_url();?>User/AddToWishList/<?=$lshproducted->productsID?>.html">Add to wishlists</a></span></div> -->
@@ -149,10 +149,10 @@
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 				
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				
 
-					 <h2><?=$product->productName?> </h2>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
@@ -211,9 +211,9 @@
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 					
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
 				
-					 <h2><?=$product->productName?> </h2>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 

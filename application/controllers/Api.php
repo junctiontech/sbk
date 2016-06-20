@@ -59,6 +59,7 @@ class Api extends CI_Controller {
 					{ echo $product['productBaseInfoV1']['title'];echo"<br>";
 						$productdata=array();
 						
+						if($product['productBaseInfoV1']['productBrand']=='Apple' || $product['productBaseInfoV1']['productBrand']=='apple'){
 						$shopproductfamily=$product['productBaseInfoV1']['productFamily'];
 						$specificationLists=$product['categorySpecificInfoV1']['specificationList'];
 						
@@ -93,7 +94,7 @@ class Api extends CI_Controller {
 						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
 							
-							
+					}	
 					}
 						$nextUrl = $details['nextUrl'];
 						$url=$nextUrl;
@@ -301,23 +302,29 @@ class Api extends CI_Controller {
 	{
 		$obj = new AmazonProductAPI();
 		$productnameforsearchs=$this->Api_model->get_productname();
-		
+		$j=1;
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
+			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
+		
 		do{
-			try
-			{
+			//try
+			//{
 				$result = $obj->searchProducts("$productBrand $productName",'Electronics',"TITLE",'',1389432031,$ItemPage);
-			}
-			catch(Exception $e)
+			//}
+			/* catch(Exception $e)
 			{
 				echo $e->getMessage();
-			}
+			} */
+			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
-			//echo"<br>";print_r($home);echo"<br>";die;
+			echo"<br>";print_r($home);echo"<br>";
+			if(!empty($home)){
+			
+			
 			//echo"<br>";print_r($home['Items']);echo"<br>";die;
 			$lists = $home['Items'];
 			
@@ -335,7 +342,7 @@ class Api extends CI_Controller {
 									echo"<br>";print_r($list);echo"<br>";									
 								if(!empty($list['ASIN'])){
 										$ASIN=$list['ASIN'];
-										$productdata = $obj->getItemAttributesByAsin("$ASIN");
+										$productdata = $obj->getItemByAsin("$ASIN");
 										$productdata=json_decode(json_encode($productdata),true);
 										//echo"<br>";print_r($productdata['Items']);echo"<br>";
 										
@@ -356,7 +363,7 @@ class Api extends CI_Controller {
 								'productDescription'=>'',
 								'imageSortOrder'=>1,
 								'isDefault'=>'Yes',
-								'imageName'=>array_key_exists('MediumImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['MediumImage']['URL']:'',
+								'imageName'=>array_key_exists('LargeImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['LargeImage']['URL']:'',
 								'imageStatus'=>'Active',
 								'productImageTitle'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
 								'productImageAltTag'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
@@ -383,10 +390,11 @@ class Api extends CI_Controller {
 								}
 							}
 						}
+		}
 					$i++; 
 		}while(!empty($nextUrl));
 		}
-	}
+$j++;	}
 	}
 	
 			
