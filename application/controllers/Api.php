@@ -306,6 +306,7 @@ class Api extends CI_Controller {
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
+			$categoryid=$productnameforsearch->categoriesID;
 			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
@@ -353,7 +354,7 @@ class Api extends CI_Controller {
 								$shopproductfamily=array();//$product['productBaseInfoV1']['productFamily'];
 								$specificationLists=$productdata['Items']['Item']['ItemAttributes'];
 								
-								$productdata1=array('categoriesID'=>1,
+								$productdata1=array('categoriesID'=>$categoryid,
 								'subCategoriesID'=>0,
 								'productBrand'=>array_key_exists('Brand', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Brand']:'',
 								'productsUrlKey'=>strtolower(implode("_",explode(" ",array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:''))),
