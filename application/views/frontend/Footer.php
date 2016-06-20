@@ -22,7 +22,7 @@
 							<li><a href="<?=base_url();?>Login.html">My Wishlist</a></li>
 								<?php } ?>
 							<li><a href="javascript:;">Help</a></li>
-						</ul>
+						</ul> 
 				</div>
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Contact</h4>
