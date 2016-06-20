@@ -29,3 +29,20 @@ function Categories_Map()
 		
 		return false;
 }
+function Deal_category()
+{  
+				var value=	$("#dealIDs option:selected").text();
+				//alert(value);
+	$.ajax({
+				type: "POST",
+				data: {dealID: value },				
+				url : base_url+'Deals/Get_data_bycategory',				
+			})	
+				.done(function(msg){
+					//alert(msg);
+					$('#mydropdown').html(msg);
+					// $("#mydropdown").prop("disabled", false);
+					return false;	
+				});		
+		return false;
+}

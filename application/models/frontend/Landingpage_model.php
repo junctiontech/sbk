@@ -189,22 +189,28 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 function compare_pro_attribute($categoryinfo=false)
-	{
-		$this->db->select('t1.productAttributeLable,t1.AttributeID');
-		$this->db->from('s4k_categories_to_attribute t1');
-		$this->db->where(array('t1.categoriesID'=>$categoryinfo));
-		$query=$this->db->get();
+	{	
+		$query=$this->db->query("SELECT DISTINCT `t1`.`productAttributeLable` FROM `s4k_product_attribute_map` `t1` WHERE `t1`.`productsID` IN($categoryinfo)");
 		return $query->result();
-		
-		
 	}
-	function product_attribute($compareproduct=false,$categoryinfo=false){
+	function product_attribute($compareproduct=false){	
 	
-
-	$qry=$this->db->query(	"SELECT `productAttributeValue`, `AttributeID` FROM `s4k_product_to_attributes` WHERE `productID` IN($compareproduct) and `categoriesID`=$categoryinfo");
-	
+	$qry=$this->db->query("SELECT `t1`.`productAttributeValue`, `t1`.`productAttributeLable` FROM `s4k_product_attribute_map` `t1` WHERE `t1`.`productsID` ='$compareproduct'");	 
 	return $qry->result_array();  
 }
+	public function get_invetory_deal_data($where)
+	{
+		$this->db->select('t4.offer_name,coupon_title,coupon_description,coupon_code,link,url,coupon_expiry,added');
+		$this->db->from('s4k_inventorydeals_consumption t1');
+		$this->db->join('s4k_inventorydeals_master t2','t1.dealMasterID=t2.dealMasterID','left');
+		$this->db->join('s4k_inventorydeals_type t3','t2.dealTypeID=t3.dealTypeID','left');
+		$this->db->join('s4k_deals t4','t1.dealID=t4.dealID','left');
+		$this->db->join('s4k_deals_banner t5','t4.dealID=t5.dealID','left');
+		$this->db->where(array('inventoryDealKey'=>$where,'t1.Status'=>'Active'));
+		$query=$this->db->get();
+		//print_r($this->db->last_query()); die;
+		return $query->result();
+	}
 	
 }
 

@@ -53,8 +53,52 @@
 				  </div>
 	      </section>
 <!-- FlexSlider -->
-	    </div>
-
+	    
+ <div class="main">
+    <div class="content">
+    	<div class="content_top">
+    		<div class="heading">
+    		<h3>Feature Deals</h3>
+    		</div>    		
+    		<div class="clear"></div>
+    	</div>
+	      <div class="section group">
+		    <?php if(!empty($feature_deal)){ foreach($feature_deal as $deal){?>
+				<div class="grid_1_of_4 deal_1_of_3">
+					<div><img src="<?=$deal->url;?>" alt="" /> </div>
+					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
+					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>							 
+					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
+					<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small>    <Small>added : <?=$deal->added;?></small></div>
+					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
+				</div>				
+		  <?php } }else{ echo"No Deals Found!!";}?>
+			</div>
+			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
+	
+			<div class="content_bottom">
+    		<div class="heading">
+    		<h3>New Deals</h3>
+    		</div>
+    		
+    		<div class="clear"></div>
+    	</div>
+			<div class="section group">
+		   <?php if(!empty($new_deal)){ foreach($new_deal as $deal){?>
+				<div class="grid_1_of_4 deal_1_of_3">
+					<div><img src="<?=$deal->url;?>" alt="" /> </div>
+					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
+					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>							 
+					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
+					<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small>    <Small>added : <?=$deal->added;?></small></div>
+					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
+				</div>	
+				
+		  <?php } }else{ echo"No Deals Found!!";}?>
+			</div>
+    </div>
+ </div>
+</div>
 		  <?php }?>
 			</div>	
 <div class="clear"></div>

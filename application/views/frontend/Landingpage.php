@@ -111,7 +111,7 @@
     		<div class="heading">
     		<h3>Feature Products</h3>
     		</div>
-    		<div class="sort">
+    	<!--	<div class="sort">
     		<p>Sort by:
     			<select>
     				<option>Lowest Price</option>
@@ -142,7 +142,7 @@
     				<li><a href="javascript:;">3</a></li>
     				<li>[<a href="javascript:;"> Next>>></a >]</li>
     				</ul></p>
-    		</div>
+    		</div>-->
     		<div class="clear"></div>
     	</div>
 	      <div class="section group">
@@ -173,7 +173,7 @@
     		<div class="heading">
     		<h3>New Products</h3>
     		</div>
-    		<div class="sort">
+    	<!--	<div class="sort">
     		<p>Sort by:
     			<select>
     				<option>Lowest Price</option>
@@ -204,7 +204,7 @@
     				<li><a href="javascript:;">3</a></li>
     				<li>[<a href="javascript:;"> Next>>></a >]</li>
     				</ul></p>
-    		</div>
+    		</div>-->
     		<div class="clear"></div>
     	</div>
 			<div class="section group">

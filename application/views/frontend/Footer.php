@@ -6,6 +6,7 @@
 						<ul>
 						<li><a href="javascript:;">About Us</a></li>
 						<li><a href="javascript:;"><span>Advanced Search</span></a></li>
+						<li><a href="javascript:;">Services (coming soon)</a></li>
 						<li><a href="javascript:;"><span>Contact Us</span></a></li>
 						</ul>
 					</div>

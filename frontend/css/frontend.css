@@ -197,7 +197,7 @@ font-size:19px;
 	border-top: 1px solid #dfe1e8;
 	padding:12px;
 }
-.to_do{
+.to_do a{
     background: #fff;
    -webkit-border-radius: 3px; 
    -moz-border-radius: 3px; 
@@ -206,6 +206,7 @@ font-size:19px;
     padding: 7px;
     margin-bottom:1px;
     list-style: none;
+	color:black;
 }
 a:hover{
 	color:red;
@@ -290,4 +291,11 @@ a:hover{
 	font-family:times new roman;
 	margin-top:10px;
 	margin-bottom:10px;
+}
+p.heddine{
+	white-space: nowrap; 
+	width: 200px;
+	overflow: hidden; 
+	text-overflow: clip;
+	
 }
