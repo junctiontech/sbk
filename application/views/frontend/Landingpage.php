@@ -124,10 +124,10 @@
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 				
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				
 
-					 <h2><?=$product->productName?> </h2>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
