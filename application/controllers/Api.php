@@ -300,14 +300,16 @@ class Api extends CI_Controller {
 	
 	public function amazone()
 	{
+		$categoryIDs=$this->Api_model->get_categoryID();
+		foreach($categoryIDs as $categoryID){
 		$obj = new AmazonProductAPI();
-		$productnameforsearchs=$this->Api_model->get_productname();
+		$productnameforsearchs=$this->Api_model->get_productname($categoryID);
 		$j=1;
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
-			$categoryid=$productnameforsearch->categoriesID;
-			print_r($categoryid);die;
+			$categoryid=$categoryID;
+			
 			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
@@ -397,6 +399,7 @@ class Api extends CI_Controller {
 		}while(!empty($nextUrl));
 		}
 $j++;	}
+	}
 	}
 	
 			

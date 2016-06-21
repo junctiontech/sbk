@@ -323,12 +323,22 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 			}
 	}
 	
-	public function get_productname()
+	public function get_productname($categoryID)
 	{
 			$this->db->select('t1.productName,t1.productBrand');
 			$this->db->from('s4k_products_map t1');
-			$this->db->where(array('productsStatus'=>'Active'));
+			$this->db->where(array('productsStatus'=>'Active','categoriesID'=>$categoryID));
 			$this->db->group_by('productName');
+			$query=$this->db->get();
+			$result=$query->result();
+		return $result;
+	}
+	
+	public function get_categoryID()
+	{
+			$this->db->select('t1.categoriesID');
+			$this->db->from('s4k_categories t1');
+			$this->db->where(array('categoriesStatus'=>'Active'));
 			$query=$this->db->get();
 			$result=$query->result();
 		return $result;
