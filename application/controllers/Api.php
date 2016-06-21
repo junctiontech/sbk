@@ -307,6 +307,7 @@ class Api extends CI_Controller {
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
 			$categoryid=$productnameforsearch->categoriesID;
+			print_r($categoryid);die;
 			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
