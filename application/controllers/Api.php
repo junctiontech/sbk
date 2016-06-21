@@ -302,8 +302,9 @@ class Api extends CI_Controller {
 	{
 		$categoryIDs=$this->Api_model->get_categoryID();
 		foreach($categoryIDs as $categoryID){
+			
 		$obj = new AmazonProductAPI();
-		$productnameforsearchs=$this->Api_model->get_productname($categoryID);
+		$productnameforsearchs=$this->Api_model->get_productname($categoryID->categoriesID);
 		$j=1;
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
