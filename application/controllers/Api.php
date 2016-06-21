@@ -309,7 +309,7 @@ class Api extends CI_Controller {
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
-			$categoryid=$categoryID;
+			$categoryid=$categoryID->categoriesID;
 			
 			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
