@@ -76,7 +76,7 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 								 'productsSortOrder'=>$productdata['productsSortOrder'],
 								 'productBrand'=>$productdata['productBrand'],
 								 'productsStatus'=>$productdata['productsStatus'],
-								 'liveStatus'='Yes'
+								 'liveStatus'=>'Yes'
 								 );
 		$this->db->insert('s4k_products',$productMasterData);
 		$productID=$this->db->insert_id();
