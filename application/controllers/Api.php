@@ -40,10 +40,11 @@ class Api extends CI_Controller {
 			$categoryarray['categoriesSortOrder']=1;
 			$categoryarray['categoriesStatus']='Active';
 			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v1.1.0']['get'],1);
-			$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>1);
-			$apiLogID=$this->Api_model->insert_api_log($logData);
+			
 			if(!empty($categoryID))
-			{
+			{	
+				$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>1);
+				$apiLogID=$this->Api_model->insert_api_log($logData);
 				$url = $data['availableVariants']['v1.1.0']['get'];
 				$i=1;
 				//echo $key;echo"<br>";
@@ -136,10 +137,11 @@ class Api extends CI_Controller {
 			$categoryarray['categoriesStatus']='Active';
 			
 			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['listingVersions']['v1']['get'],2);
-			$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>2);
-			$apiLogID=$this->Api_model->insert_api_log($logData);
+			
 			if(!empty($categoryID))
 			{
+				$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>2);
+				$apiLogID=$this->Api_model->insert_api_log($logData);
 				$url = $data['listingVersions']['v1']['get'];
 				$i=1;
 				echo $key;echo"<br>";
