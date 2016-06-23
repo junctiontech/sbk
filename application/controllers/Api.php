@@ -60,7 +60,7 @@ class Api extends CI_Controller {
 					
 					foreach($products as $product)
 					{
-						$logDataUpdate=array('productCount'=>+1);$where=array('apiLogID'=>$apiLogID);
+						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 						//echo $product['productBaseInfoV1']['title'];echo"<br>";
 						$productdata=array();

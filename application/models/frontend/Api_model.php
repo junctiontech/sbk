@@ -49,7 +49,9 @@ class Api_model extends CI_Model {
 					return $this->db->insert_id();
 			}else{
 					$this->db->where($where);
-					$this->db->update('s4k_api_log',$logdata);
+					$this->db->set('productCount',$logdata, FALSE);
+					$this->db->update('s4k_api_log');
+					echo $this->db->last_query();
 			}
 	}
 	
