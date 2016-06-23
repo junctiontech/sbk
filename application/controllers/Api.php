@@ -156,7 +156,7 @@ class Api extends CI_Controller {
 					
 					foreach($products as $product)
 					{ 
-						$logDataUpdate=array('productCount'=>+1);$where=array('apiLogID'=>$apiLogID);
+						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 					//print_r($product['subCategoryName']);echo"<br>";
 						if($product['subCategoryName']=='Mobile Phones'){
@@ -371,7 +371,7 @@ class Api extends CI_Controller {
 								$shopproductfamily=array();//$product['productBaseInfoV1']['productFamily'];
 								$specificationLists=$productdata['Items']['Item']['ItemAttributes'];
 								
-								$logDataUpdate=array('productCount'=>+1);$where=array('apiLogID'=>$apiLogID);
+								$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 								$this->Api_model->insert_api_log($logDataUpdate,$where);
 								
 								$productdata1=array('categoriesID'=>$categoryid,
