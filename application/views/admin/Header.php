@@ -26,6 +26,23 @@
     <link href="<?=base_url();?>admin/css/select/select2.min.css" rel="stylesheet">
 
     <script src="<?=base_url();?>admin/js/jquery.min.js"></script>
+	<style type="text/css">
+          
+	 .loading-indicator { 
+					position: fixed; 
+					left: 0; 
+					top: 0; 
+					z-index: 999; 
+					width: 100%; 
+					height: 100%; 
+					overflow: visible; 
+					background: url('<?=base_url();?>frontend/images/loader1.gif') no-repeat center center;
+					
+					}   
+					.left_col {overflow:inherit !important; cursor:auto !important;}
+					.sidebar-footer {display:none !important;}
+					
+        </style>
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/sb4k.png">
     <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -41,7 +58,7 @@
 
 
 <body class="nav-md">
-
+<div style="display: none;" id="loader" class="loading-indicator"></div>
     <div class="container body">
 
 
@@ -88,6 +105,7 @@
                                 <li><a><i class="fa fa-list"></i>Manage product<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?=base_url();?>Product.html">View product</a></li>
+										<li><a href="<?=base_url();?>Product/Viewproductbyfilter.html">Move and view product</a></li>
                                         <li><a href="<?=base_url();?>Product/Addproduct.html">Create product</a></li>
 										<li><a href="<?=base_url();?>Product/MappProduct.html">Map product</a></li>
 										<li><a href="<?=base_url();?>Product/create_attribute">Create Attribute</a></li>

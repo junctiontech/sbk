@@ -11,10 +11,9 @@ if(window.location.hostname=="www.searchb4kharch.com"){
 	var base_url = 'http://www.searchb4kharch.com/'; 
 }
 if(window.location.hostname=="192.168.1.111"){
-	var base_url = 'http://192.168.1.111/sbk/'; 
+	var base_url = 'http://192.168.1.151/sbk/'; 
 }
 function search_product(productval)
-
 { 
 	var category = document.getElementById('select').value;
 	var product =productval;
@@ -37,6 +36,172 @@ function search_product(productval)
 
 }
 
+function getproductimage(productID)
+{ 
+		$("#loader").fadeIn();
+		var productID =productID;
+		if(productID !=='')
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/getproductimage",
+				data:{productID:productID},
+
+				cache: false,
+				success: function(html)
+				{
+				$("#showimage").html(html);
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function getProductToMapp(productID)
+{ 
+		$("#loader").fadeIn();
+		var productID =document.getElementById('productName').value;
+		var categoriesID=document.getElementById('select').value;
+		if(productID !=='' && categoriesID !='')
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/getProductToMapp",
+				data:{productID:productID,categoriesID:categoriesID},
+
+				cache: false,
+				success: function(html)
+				{
+				$("#unmappedproduct").html(html);
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function getMappedProduct(productID)
+{ 
+		$("#loader").fadeIn();
+		var productID =document.getElementById('productName').value;
+		if(productID !=='' )
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/getMappedProduct",
+				data:{productID:productID},
+
+				cache: false,
+				success: function(html)
+				{
+				$("#mappedproduct").html(html);
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function mappit(childproductID)
+{ 
+		$("#loader").fadeIn();
+		var childproductID =childproductID;
+		var productID=document.getElementById('productName').value;
+		if(productID !==''  && childproductID !='')
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/mappit",
+				data:{productID:productID,childproductID:childproductID},
+
+				cache: false,
+				success: function(html)
+				{
+					if(html=='success'){
+						getProductToMapp();
+						getMappedProduct();
+					}else{
+						alert(html);
+					}
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function unmappit(mappedproductID,productID)
+{ 
+		$("#loader").fadeIn();
+		var mappedproductID =mappedproductID;
+		if(mappedproductID !=='' )
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/unmappit",
+				data:{mappedproductID:mappedproductID,productID:productID},
+
+				cache: false,
+				success: function(html)
+				{
+					if(html=='success'){
+						getProductToMapp();
+						getMappedProduct();
+					}else{
+						alert(html);
+					}
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function inactiveproduct(productID)
+{ 
+		$("#loader").fadeIn();
+		var productID =productID;
+		if(productID !=='' )
+		{
+			$.ajax({
+				type: "GET",
+				url: base_url+"Product/inactiveproduct/Inactive/"+productID,
+				//data:{productID:productID},
+
+				cache: false,
+				success: function(html)
+				{
+					if(html=='success'){
+						getProductToMapp();
+						getMappedProduct();
+					}else{
+						alert(html);
+					}
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
 
 $(document).ready(function(){
 	  

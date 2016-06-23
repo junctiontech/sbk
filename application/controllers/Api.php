@@ -20,7 +20,7 @@ class Api extends CI_Controller {
 	
 	public function flipkart($value=false)
 	{
-	
+		echo"<br>";echo"script start";echo"<br>";
 		$flipkart = new Flipkart(array('affiliateId'=>"rohitthak6", 'token'=>"9575b4e1913c4c11bc0f43b0a175622d",'response_type'=>"json"));
 		$home = $flipkart->api_home();
 		if($home==false)
@@ -35,31 +35,36 @@ class Api extends CI_Controller {
 		foreach ($list as $key => $data) 
 		{	
 			$categoryarray=array();
+			$apiLogID='';
 			$categoryarray['categoriesUrlKey']=$key;
 			$categoryarray['categoriesSortOrder']=1;
 			$categoryarray['categoriesStatus']='Active';
 			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v1.1.0']['get'],1);
+			$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>1);
+			$apiLogID=$this->Api_model->insert_api_log($logData);
 			if(!empty($categoryID))
 			{
 				$url = $data['availableVariants']['v1.1.0']['get'];
 				$i=1;
-				echo $key;echo"<br>";
+				//echo $key;echo"<br>";
 				do{
-					echo $i;echo"<br>";
+					//echo $i;echo"<br>";
 					
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
 				//print_r($details);die;
 				if(!empty($details))
 				{
-					
 					$products = $details['productInfoList'];
 					
 					foreach($products as $product)
-					{ echo $product['productBaseInfoV1']['title'];echo"<br>";
+					{
+						$logDataUpdate=array('productCount'=>+1);$where=array('apiLogID'=>$apiLogID);
+						$this->Api_model->insert_api_log($logDataUpdate,$where);
+						//echo $product['productBaseInfoV1']['title'];echo"<br>";
 						$productdata=array();
 						
-						if($product['productBaseInfoV1']['productBrand']=='Apple' || $product['productBaseInfoV1']['productBrand']=='apple'){
+						//if($product['productBaseInfoV1']['productBrand']=='Apple' || $product['productBaseInfoV1']['productBrand']=='apple'){
 						$shopproductfamily=$product['productBaseInfoV1']['productFamily'];
 						$specificationLists=$product['categorySpecificInfoV1']['specificationList'];
 						
@@ -94,7 +99,7 @@ class Api extends CI_Controller {
 						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
 							
-					}	
+					//}	
 					}
 						$nextUrl = $details['nextUrl'];
 						$url=$nextUrl;
@@ -106,7 +111,7 @@ class Api extends CI_Controller {
 			}
 		
 		}
-		
+		echo"<br>";echo"script end";echo"<br>";
 		
 	}
 	
@@ -131,6 +136,8 @@ class Api extends CI_Controller {
 			$categoryarray['categoriesStatus']='Active';
 			
 			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['listingVersions']['v1']['get'],2);
+			$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>2);
+			$apiLogID=$this->Api_model->insert_api_log($logData);
 			if(!empty($categoryID))
 			{
 				$url = $data['listingVersions']['v1']['get'];
@@ -146,7 +153,10 @@ class Api extends CI_Controller {
 					$products = $details['products'];
 					
 					foreach($products as $product)
-					{ print_r($product['subCategoryName']);echo"<br>";
+					{ 
+						$logDataUpdate=array('productCount'=>+1);$where=array('apiLogID'=>$apiLogID);
+						$this->Api_model->insert_api_log($logDataUpdate,$where);
+					//print_r($product['subCategoryName']);echo"<br>";
 						if($product['subCategoryName']=='Mobile Phones'){
 						echo $product['title'];echo"<br>";
 						$productdata=array();
@@ -302,7 +312,8 @@ class Api extends CI_Controller {
 	{
 		$categoryIDs=$this->Api_model->get_categoryID();
 		foreach($categoryIDs as $categoryID){
-			
+			$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+			$apiLogID=$this->Api_model->insert_api_log($logData);
 		$obj = new AmazonProductAPI();
 		$productnameforsearchs=$this->Api_model->get_productname($categoryID->categoriesID);
 		$j=1;
@@ -357,6 +368,9 @@ class Api extends CI_Controller {
 								
 								$shopproductfamily=array();//$product['productBaseInfoV1']['productFamily'];
 								$specificationLists=$productdata['Items']['Item']['ItemAttributes'];
+								
+								$logDataUpdate=array('productCount'=>+1);$where=array('apiLogID'=>$apiLogID);
+								$this->Api_model->insert_api_log($logDataUpdate,$where);
 								
 								$productdata1=array('categoriesID'=>$categoryid,
 								'subCategoriesID'=>0,

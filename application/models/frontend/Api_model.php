@@ -42,8 +42,19 @@ class Api_model extends CI_Model {
 		return $categoryID;
 	}
 
+	public function insert_api_log($logdata=false,$where=false)
+	{
+		if(empty($where)){
+					$this->db->insert('s4k_api_log',$logdata);
+					return $this->db->insert_id();
+			}else{
+					$this->db->where($where);
+					$this->db->update('s4k_api_log',$logdata);
+			}
+	}
+	
 public function insert_product($productdata=false,$shopproductfamily=false,$specificationLists=false)
-{	//print_r($shopproductfamily);die;
+{	
 			$this->db->select('t1.productsID');
 			$this->db->from('s4k_products t1');
 			$this->db->join('s4k_product_price t2','t1.productsID=t2.productsID','left');
@@ -64,7 +75,8 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 								 'productsUrlKey'=>$productdata['productsUrlKey'],
 								 'productsSortOrder'=>$productdata['productsSortOrder'],
 								 'productBrand'=>$productdata['productBrand'],
-								 'productsStatus'=>$productdata['productsStatus']
+								 'productsStatus'=>$productdata['productsStatus'],
+								 'liveStatus'='Yes'
 								 );
 		$this->db->insert('s4k_products',$productMasterData);
 		$productID=$this->db->insert_id();

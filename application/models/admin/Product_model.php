@@ -20,6 +20,8 @@ class Product_model extends CI_Model {
 		return $query->result();
 	}
 	
+	
+	
 	public function fetch_product($category=false)
 	{
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,t9.categoryName,productsUrlKey,t1.productsStatus,t1.productName,t1.productDescription,t3.	productAttributeLable,t3.productAttributeValue,t5.imageName,t5.productImageTitle,t5.productImageAltTag,t7.productPrice,t7.productShopUrl');
@@ -33,22 +35,27 @@ class Product_model extends CI_Model {
 		$this->db->group_by('productName');
 		//$this->db->limit(20);	
 		$query=$this->db->get();
+		
 		return $query->result();		
 	}
 	
 	public function fetch_productmapped($product)
 	{
-		$this->db->select('t1.childProductID,t2.productName,t3.imageName, t4.productPrice');
-		$this->db->from('s4k_product_mapping t1');
-		$this->db->join('s4k_products_map t2','t2.productsID=t1.parentProductID');
-		$this->db->join('s4k_product_images_map t3','t3.productsID=t1.parentProductID');
-		$this->db->join('s4k_product_price_map t4','t4.productsID=t1.parentProductID');
-		$this->db->where(array('t1.parentProductID'=>$product));
-		$this->db->where(array('t1.childProductID'=>'t2.productsID'));
-		$query=$this->db->get();
+		$this->db->select('t6.productMappingID,t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
+		$this->db->from('s4k_product_mapping t6');
+		$this->db->join('s4k_products t1','t6.childProductID=t1.productsID');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
+		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
+		$this->db->where(array('t6.parentProductID'=>$product));
+		$query=$this->db->get();	
 		return $query->result();
 	}
 	
+	public function delete_data($table=false,$where=false){
+		$this->db->delete($table,$where);
+	}
 	/* public function get_products($extraquery=false,$searchqry=false){
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
@@ -143,6 +150,9 @@ class Product_model extends CI_Model {
 		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
 		$this->db->where_in('t7.productAttributeValue',$query4);
 		$this->db->where('t7.productAttributeLable','Model');
+		$this->db->where('t1.productsStatus','Active');
+		$this->db->where('t1.liveStatus','No');
+		$this->db->where('t1.mapp','Unmapped');
 		//$this->db->where(array('t7.productAttributeLable'=>'Model','t7.productAttributeValue like'=>"%$query4%"));
 		//$this->db->order_by('productName','ASC');
 		//$this->db->group_by('productName');
@@ -150,6 +160,106 @@ class Product_model extends CI_Model {
 		return $query->result();
 		
 	}
+	
+	function get_product_by_filter($where=false )
+	{	
+		$this->db->select('t1.productsID,t1.categoriesID,t2.productName,t3.imageName,t4.productPrice,shopName,productsStatus,mapp,liveStatus');
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
+		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
+		//$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
+		//$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
+		$this->db->where($where);
+		$query=$this->db->get();		
+		return $query->result();
+	}
+	
+	function get_product_full_data($where=false )
+	{	
+		$this->db->select('t1.productsID,t1.categoriesID,t1.subCategoriesID,t1.productBrand,t1.productsUrlKey,t1.productsSortOrder,t1.productsStatus,t2.productDescription,t2.productName,t3.imageName,t3.imageSortOrder,t3.isDefault,t3.imageStatus,t6.productImageTitle,t6.productImageAltTag,t4.productPrice,t4.currencyID,t4.shopProductID,t4.shopID,t4.productShopUrl');
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
+		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_product_image_details t6','t3.productImageID=t6.productImageID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
+		$this->db->where($where);
+		$query=$this->db->get();		
+		return $query->result();
+	}
+	
+	function get_product_attribute($where=false )
+	{	
+		$this->db->select('productAttributeLable,productAttributeValue');
+		$this->db->from('s4k_product_attribute t1');
+		$this->db->join('s4k_product_attribute_details t2','t1.productAttributeID=t2.productAttributeID');
+		$this->db->where($where);
+		$query=$this->db->get();		
+		return $query->result();
+	}
+	
+	public function insert_mapp_it($productdata=false,$shopproductfamily=false,$specificationLists=false)
+{	
+		if(!empty($productdata) && !empty($specificationLists)){
+		$sb4kProductID= strtoupper ( bin2hex ( mcrypt_create_iv ( 4, MCRYPT_DEV_RANDOM ) ) );;
+		$productMapData=array('categoriesID'=>$productdata['categoriesID'],
+								 'sb4kProductID'=>$sb4kProductID,
+								 'productsUrlKey'=>$productdata['productsUrlKey'],
+								 'productsSortOrder'=>$productdata['productsSortOrder'],
+								 'productsStatus'=>$productdata['productsStatus'],
+								 'productName'=>$productdata['productName'],
+								 'productBrand'=>$productdata['productBrand'],
+								 'productDescription'=>$productdata['productDescription']);
+		$this->db->insert('s4k_products_map',$productMapData);
+		if($this->db->insert_id()){
+			$productID=$this->db->insert_id();
+			
+			foreach($specificationLists as $specificationList){
+							$productAttributeLable='';$productAttributeValue='';
+							$attributelable=$specificationList->productAttributeLable;
+							$productAttributeLable=$specificationList->productAttributeLable;$productAttributeValue=$specificationList->productAttributeValue;
+							$this->db->select('t1.AttributeID');
+							$this->db->from('s4k_categories_to_attribute t1');
+							$this->db->like(array('productAttributeLable'=>$attributelable));
+							$query1=$this->db->get();
+							$categoryattribute=$query1->result();
+							if(!empty($categoryattribute[0]->AttributeID)){
+								$AttributeID=$categoryattribute[0]->AttributeID;
+							}else{
+								$categoryattributedata=array('categoriesID'=>$productdata['categoriesID'],'productAttributeLable'=>$attributelable);
+								$this->db->insert('s4k_categories_to_attribute',$categoryattributedata);
+								$AttributeID=$this->db->insert_id();
+							}
+							
+							$productAttributeMapDetail=array('productsID'=>$productID,
+															 'AttributeID'=>$AttributeID,
+															  'productAttributeLable'=>$productAttributeLable,
+															  'productAttributeValue'=>$productAttributeValue);
+							$this->db->insert('s4k_product_attribute_map',$productAttributeMapDetail);
+							
+						}
+			
+			$productMapImage=array('productsID'=>$productID,
+								'isDefault'=>$productdata['isDefault'],
+								'imageName'=>$productdata['imageName'],
+								'imageStatus'=>$productdata['imageStatus'],
+								'productImageTitle'=>$productdata['productImageTitle'],
+								'productImageAltTag'=>$productdata['productImageAltTag']);
+			$this->db->insert('s4k_product_images_map',$productMapImage);
+
+			$productMapPrice=array('productsID'=>$productID,
+								'productPrice'=>$productdata['productPrice'],
+								'shopID'=>$productdata['shopID'],
+								'shopProductID'=>$productdata['shopProductID'],
+								'productShopUrl'=>$productdata['productShopUrl']);
+			$this->db->insert('s4k_product_price_map',$productMapPrice);
+			
+		}
+		}
+		
+	}	
 	
 	public function get_shop()
 	{
@@ -187,10 +297,13 @@ class Product_model extends CI_Model {
 	}
 	public function fetch_productname($product)
 	{
-		$this->db->select('t1.productsID,t1.productName,t2.categoriesID,,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr');
+		$this->db->select('t1.productsID,t1.productName,t2.categoriesID,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr  , t4.imageName,t5.productPrice,shopName');
 		$this->db->from('s4k_product_details t1');
 		$this->db->join('s4k_products t2','t1.productsID=t2.productsID');
 		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		$this->db->join('s4k_product_images t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_product_price t5','t1.productsID=t5.productsID');
+		$this->db->join('s4k_shops t6','t5.shopID=t6.shopID');
 		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
 		$this->db->where(array('t1.productsID'=>$product));
 		$this->db->group_by('t1.productsID');
