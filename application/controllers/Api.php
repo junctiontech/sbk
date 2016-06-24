@@ -153,6 +153,7 @@ class Api extends CI_Controller {
 				if(!empty($check_entry)){
 											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
 											$this->Api_model->insert_api_log($logDataUpdate,$where);
+											$apiLogID=$check_entry[0]->apiLogID;
 										}
 				$url = $data['availableVariants']['v1.1.0']['get'];
 				$i=1;
@@ -428,8 +429,22 @@ class Api extends CI_Controller {
 	{
 		$categoryIDs=$this->Api_model->get_categoryID();
 		foreach($categoryIDs as $categoryID){
-			$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
-			$apiLogID=$this->Api_model->insert_api_log($logData);
+			//$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+			//$apiLogID=$this->Api_model->insert_api_log($logData);
+			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
+				
+				if(empty($check_entry)){ 
+										$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+										$apiLogID=$this->Api_model->insert_api_log($logData); 
+										}
+										
+				$apiLogData=$this->Api_model->get_api_log_data($categoryID,3);
+				if(!empty($apiLogData)){
+				if(!empty($check_entry)){
+											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
+											$this->Api_model->insert_api_log($logDataUpdate,$where);
+											$apiLogID=$check_entry[0]->apiLogID;
+										}
 		$obj = new AmazonProductAPI();
 		$productnameforsearchs=$this->Api_model->get_productname($categoryID->categoriesID);
 		$j=1;
@@ -530,6 +545,12 @@ class Api extends CI_Controller {
 		}while(!empty($nextUrl));
 		}
 $j++;	}
+				if(!empty($lists['Item'])){
+				$logDataUpdate=array('status'=>'completed');$where=array('apiLogID'=>$apiLogID);
+				$this->Api_model->update_data($logDataUpdate,$where);
+				}
+				}
+///,,,,,,,,,,,,
 	}
 	}
 	
