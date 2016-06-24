@@ -54,6 +54,12 @@ class Api_model extends CI_Model {
 			}
 	}
 	
+	public function update_data($logdata=false,$where=false)
+	{
+					$this->db->where($where);
+					$this->db->update('s4k_api_log',$logdata);
+	}
+	
 public function insert_product($productdata=false,$shopproductfamily=false,$specificationLists=false)
 {	
 			$this->db->select('t1.productsID');
@@ -357,6 +363,29 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 		return $result;
 	}
 	
+	public function check_api_log_entry($where=false)
+	{
+			$this->db->select('t1.apiLogID');
+			$this->db->from('s4k_api_log t1');
+			$this->db->where($where);
+			$query=$this->db->get();
+			$result=$query->result();
+			return $result;
+	} 
+	
+	 public function get_api_log_data($categoryID=false,$shopID=false)
+	{
+			$query=$this->db->query(" SELECT *
+								   FROM s4k_api_log
+								   WHERE `lastUpdate` < DATE_SUB(NOW() , INTERVAL 15 MINUTE)    
+								   AND `status` = 'uncompleted'
+								   AND `categoryID` = $categoryID
+								   AND `shopID`= $shopID
+								   LIMIT 1
+									");
+			$result=$query->result();
+			return $result;
+	} 
 }
 
 ?>
