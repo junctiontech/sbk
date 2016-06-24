@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+define('DISABLE_WP_CRON', true);
 class Api extends CI_Controller {
 	
 	function __construct() {
