@@ -40,20 +40,21 @@
 	<div class="header">
 	<div class="menu">
 		<ul id="dc_mega-menu-orange" class="dc_mm-orange">	
-			<li><a href="<?=base_url();?>">Home</a></li>
-			<li><a href=" "><p class="notify"></p></a></li>
+			<li><a href="<?=base_url();?>"><i class="fa fa-home"></i></a></li>
+			<li> <a href=" "><i class="fa fa-bell"></i></a>
+                                             </li>
 			<li><a href=" ">Searcheela#123456</a></li>
 <div class="heder_right">
 <ul id="dc_mega-menu-orange" class="dc_mm-orange">			
 			<li><a href=" "><p class="android"></p></a></li> 
 			
-			<li>			
+			<li>		
 			<?php if(!empty($userinfos)){ ?>
-						<a href="<?=base_url();?>User/Mywishlist.html" title="View my shopping cart" rel="nofollow"><span class="shopping_cart"><?=isset($whislist)?$whislist:'0'?>
+						<a href="<?=base_url();?>User/Mywishlist.html" title="View my shopping cart" rel="nofollow"><span class="fa fa-shopping-cart"> <?=isset($whislist)?$whislist:'0'?>
 							</a>
 					<?php }else{ ?>
 					<a href="<?=base_url();?>Login.html" title="View my shopping cart" rel="nofollow">							 
-								<span class="shopping_cart"></span>
+								<span class="fa fa-shopping-cart"></span>
 							</a>
 					<?php } ?>				
 					</li> 
