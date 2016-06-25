@@ -29,6 +29,7 @@ class Landingpage extends CI_Controller {
 	
 	function reindex()
 	{
+		ini_set('max_execution_time', 0); 
 		$index = Zend_Search_Lucene::create($this->search_index);
 		$categories = $this->Landingpage_model->get_categoryID();
 		foreach($categories as $category){
