@@ -18,9 +18,9 @@ class Api extends CI_Controller {
 	}
 
 	
-	public function flipkart($value=false)
+	/* public function flipkart($value=false)
 	{
-	
+		echo"<br>";echo"script start";echo"<br>";
 		$flipkart = new Flipkart(array('affiliateId'=>"rohitthak6", 'token'=>"9575b4e1913c4c11bc0f43b0a175622d",'response_type'=>"json"));
 		$home = $flipkart->api_home();
 		if($home==false)
@@ -35,30 +35,37 @@ class Api extends CI_Controller {
 		foreach ($list as $key => $data) 
 		{	
 			$categoryarray=array();
+			$apiLogID='';
 			$categoryarray['categoriesUrlKey']=$key;
 			$categoryarray['categoriesSortOrder']=1;
 			$categoryarray['categoriesStatus']='Active';
 			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v1.1.0']['get'],1);
+			
 			if(!empty($categoryID))
-			{
+			{	
+				$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>1);
+				$apiLogID=$this->Api_model->insert_api_log($logData);
 				$url = $data['availableVariants']['v1.1.0']['get'];
 				$i=1;
-				echo $key;echo"<br>";
+				//echo $key;echo"<br>";
 				do{
-					echo $i;echo"<br>";
+					//echo $i;echo"<br>";
 					
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
 				//print_r($details);die;
 				if(!empty($details))
 				{
-					
 					$products = $details['productInfoList'];
 					
 					foreach($products as $product)
-					{ echo $product['productBaseInfoV1']['title'];echo"<br>";
+					{
+						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
+						$this->Api_model->insert_api_log($logDataUpdate,$where);
+						//echo $product['productBaseInfoV1']['title'];echo"<br>";
 						$productdata=array();
 						
+						//if($product['productBaseInfoV1']['productBrand']=='Apple' || $product['productBaseInfoV1']['productBrand']=='apple'){
 						$shopproductfamily=$product['productBaseInfoV1']['productFamily'];
 						$specificationLists=$product['categorySpecificInfoV1']['specificationList'];
 						
@@ -93,7 +100,117 @@ class Api extends CI_Controller {
 						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
 							
+					//}	
+					}
+						$nextUrl = $details['nextUrl'];
+						$url=$nextUrl;
+				}
+				///* if($i==2){ echo $nextUrl;die; }
+				$i++; 
+				}while(!empty($nextUrl));
+			
+			}
+		
+		}
+		echo"<br>";echo"script end";echo"<br>";
+		
+	}
+	 */
+	 
+	 public function flipkart($value=false)
+	{
+		echo"<br>";echo"script start";echo"<br>";
+		$flipkart = new Flipkart(array('affiliateId'=>"rohitthak6", 'token'=>"9575b4e1913c4c11bc0f43b0a175622d",'response_type'=>"json"));
+		$home = $flipkart->api_home();
+		if($home==false)
+		{
+			echo 'Error: Could not retrieve API homepage';
+			exit();
+		}
+		$home = json_decode($home, TRUE);
+		$list = $home['apiGroups']['affiliate']['apiListings'];
+		foreach ($list as $key => $data) 
+		{	
+			$categoryarray=array();
+			$apiLogID='';
+			$categoryarray['categoriesUrlKey']=$key;
+			$categoryarray['categoriesSortOrder']=1;
+			$categoryarray['categoriesStatus']='Active';
+			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['availableVariants']['v1.1.0']['get'],1);
+			
+			//.......................
+			if(!empty($categoryID))
+			{	
+				$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID,'shopID'=>1));
+				
+				if(empty($check_entry)){ 
+										$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>1);
+										$apiLogID=$this->Api_model->insert_api_log($logData); 
+										}
+										
+				$apiLogData=$this->Api_model->get_api_log_data($categoryID,1);
+				if(!empty($apiLogData)){
+				if(!empty($check_entry)){
+											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
+											$this->Api_model->insert_api_log($logDataUpdate,$where);
+											$apiLogID=$check_entry[0]->apiLogID;
+										}
+				$url = $data['availableVariants']['v1.1.0']['get'];
+				$i=1;
+				//echo $key;echo"<br>";
+				do{
+					//echo $i;echo"<br>";
+					
+				$details = $flipkart->call_url($url);
+				$details = json_decode($details, TRUE);
+				//print_r($details);die;
+				if(!empty($details))
+				{
+					$products = $details['productInfoList'];
+					
+					foreach($products as $product)
+					{
+						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
+						$this->Api_model->insert_api_log($logDataUpdate,$where);
+						//echo $product['productBaseInfoV1']['title'];echo"<br>";
+						$productdata=array();
+						
+						//if($product['productBaseInfoV1']['productBrand']=='Apple' || $product['productBaseInfoV1']['productBrand']=='apple'){
+						$shopproductfamily=$product['productBaseInfoV1']['productFamily'];
+						$specificationLists=$product['categorySpecificInfoV1']['specificationList'];
+						
+						$productdata=array('categoriesID'=>$categoryID,
+						'subCategoriesID'=>0,
+						'productBrand'=>$product['productBaseInfoV1']['productBrand'],
+						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['productBaseInfoV1']['title']))),
+						'productsSortOrder'=>1,
+						'productsStatus'=>'Active',
+						'productName'=>$product['productBaseInfoV1']['title'],
+						'productDescription'=>$product['productBaseInfoV1']['productDescription'],
+						'imageSortOrder'=>1,
+						'isDefault'=>'Yes',
+						'imageName'=>array_key_exists('200x200', $product['productBaseInfoV1']['imageUrls'])?$product['productBaseInfoV1']['imageUrls']['200x200']:'',
+						'imageStatus'=>'Active',
+						'productImageTitle'=>$product['productBaseInfoV1']['title'],
+						'productImageAltTag'=>$product['productBaseInfoV1']['title'],
+						'currencyID'=>1,
+						'productPrice'=>$product['productBaseInfoV1']['flipkartSellingPrice']['amount'],
+						'shopProductID'=>$product['productBaseInfoV1']['productId'],
+						'shopID'=>1,
+						'productShopUrl'=>$product['productBaseInfoV1']['productUrl']
+						);
+													   
+													   
+						if(!empty($value))
+							{
+						$this->Api_model->insert_product($productdata,$shopproductfamily,$specificationLists);
+							}
+							else
+							{
+						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
+							}
 							
+					//}	
 					}
 						$nextUrl = $details['nextUrl'];
 						$url=$nextUrl;
@@ -101,11 +218,16 @@ class Api extends CI_Controller {
 				/* if($i==2){ echo $nextUrl;die; }*/
 				$i++; 
 				}while(!empty($nextUrl));
-			
+				
+				if(!empty($products)){
+				$logDataUpdate=array('status'=>'completed');$where=array('apiLogID'=>$apiLogID);
+				$this->Api_model->update_data($logDataUpdate,$where);
+				}
 			}
-		
+			}
+			//..............
 		}
-		
+		echo"<br>";echo"script end";echo"<br>";
 		
 	}
 	
@@ -130,8 +252,11 @@ class Api extends CI_Controller {
 			$categoryarray['categoriesStatus']='Active';
 			
 			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['listingVersions']['v1']['get'],2);
+			
 			if(!empty($categoryID))
 			{
+				$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>2);
+				$apiLogID=$this->Api_model->insert_api_log($logData);
 				$url = $data['listingVersions']['v1']['get'];
 				$i=1;
 				echo $key;echo"<br>";
@@ -145,7 +270,10 @@ class Api extends CI_Controller {
 					$products = $details['products'];
 					
 					foreach($products as $product)
-					{ print_r($product['subCategoryName']);echo"<br>";
+					{ 
+						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
+						$this->Api_model->insert_api_log($logDataUpdate,$where);
+					//print_r($product['subCategoryName']);echo"<br>";
 						if($product['subCategoryName']=='Mobile Phones'){
 						echo $product['title'];echo"<br>";
 						$productdata=array();
@@ -299,25 +427,51 @@ class Api extends CI_Controller {
 	
 	public function amazone()
 	{
+		$categoryIDs=$this->Api_model->get_categoryID();
+		foreach($categoryIDs as $categoryID){
+			//$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+			//$apiLogID=$this->Api_model->insert_api_log($logData);
+			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
+				
+				if(empty($check_entry)){ 
+										$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+										$apiLogID=$this->Api_model->insert_api_log($logData); 
+										}
+										
+				$apiLogData=$this->Api_model->get_api_log_data($categoryID->categoriesID,3);
+				if(!empty($apiLogData)){
+				if(!empty($check_entry)){
+											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
+											$this->Api_model->insert_api_log($logDataUpdate,$where);
+											$apiLogID=$check_entry[0]->apiLogID;
+										}
 		$obj = new AmazonProductAPI();
-		$productnameforsearchs=$this->Api_model->get_productname();
-		
+		$productnameforsearchs=$this->Api_model->get_productname($categoryID->categoriesID);
+		$j=1;
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
+			$categoryid=$categoryID->categoriesID;
+			
+			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
+		
 		do{
-			try
-			{
+			//try
+			//{
 				$result = $obj->searchProducts("$productBrand $productName",'Electronics',"TITLE",'',1389432031,$ItemPage);
-			}
-			catch(Exception $e)
+			//}
+			/* catch(Exception $e)
 			{
 				echo $e->getMessage();
-			}
+			} */
+			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
-			//echo"<br>";print_r($home);echo"<br>";die;
+			echo"<br>";print_r($home);echo"<br>";
+			if(!empty($home)){
+			
+			
 			//echo"<br>";print_r($home['Items']);echo"<br>";die;
 			$lists = $home['Items'];
 			
@@ -335,7 +489,7 @@ class Api extends CI_Controller {
 									echo"<br>";print_r($list);echo"<br>";									
 								if(!empty($list['ASIN'])){
 										$ASIN=$list['ASIN'];
-										$productdata = $obj->getItemAttributesByAsin("$ASIN");
+										$productdata = $obj->getItemByAsin("$ASIN");
 										$productdata=json_decode(json_encode($productdata),true);
 										//echo"<br>";print_r($productdata['Items']);echo"<br>";
 										
@@ -346,7 +500,10 @@ class Api extends CI_Controller {
 								$shopproductfamily=array();//$product['productBaseInfoV1']['productFamily'];
 								$specificationLists=$productdata['Items']['Item']['ItemAttributes'];
 								
-								$productdata1=array('categoriesID'=>1,
+								$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
+								$this->Api_model->insert_api_log($logDataUpdate,$where);
+								
+								$productdata1=array('categoriesID'=>$categoryid,
 								'subCategoriesID'=>0,
 								'productBrand'=>array_key_exists('Brand', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Brand']:'',
 								'productsUrlKey'=>strtolower(implode("_",explode(" ",array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:''))),
@@ -356,7 +513,7 @@ class Api extends CI_Controller {
 								'productDescription'=>'',
 								'imageSortOrder'=>1,
 								'isDefault'=>'Yes',
-								'imageName'=>array_key_exists('MediumImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['MediumImage']['URL']:'',
+								'imageName'=>array_key_exists('LargeImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['LargeImage']['URL']:'',
 								'imageStatus'=>'Active',
 								'productImageTitle'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
 								'productImageAltTag'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
@@ -383,9 +540,17 @@ class Api extends CI_Controller {
 								}
 							}
 						}
+		}
 					$i++; 
 		}while(!empty($nextUrl));
 		}
+$j++;	}
+				if(!empty($lists['Item'])){
+				$logDataUpdate=array('status'=>'completed');$where=array('apiLogID'=>$apiLogID);
+				$this->Api_model->update_data($logDataUpdate,$where);
+				}
+				}
+///,,,,,,,,,,,,
 	}
 	}
 	

@@ -23,7 +23,8 @@
 					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
 				</div>			
 		  <?php } } else { ?>
-<div class="Deal_panel">	 
+		  <div class="clear"></div>
+<div class="Deal_panel" style="margin-top:0px;">	 
 		   <!-- FlexSlider -->
               <section class="slider">
 				  <div class="flexslider">

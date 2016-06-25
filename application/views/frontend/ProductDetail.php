@@ -27,7 +27,7 @@
 					
 					<?php foreach($othershopprices as $othershopprice){ ?>
 							<div class="col-md-5 col-sm-5 col-xs-5">
-					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>
+					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>
 					</div>
 					<?php } ?>
 					
@@ -127,7 +127,7 @@
 					<div class="section group">
 		   <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
 				<div class="grid_1_of_4 similar_images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
 					 <h2><?=$similarproducted->productName?> </h2>
 					
 					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>

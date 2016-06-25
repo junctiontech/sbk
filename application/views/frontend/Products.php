@@ -110,8 +110,8 @@
 		  <div class="product_panel" id="mySelect">
 		   <?php if(!empty($products)){ foreach($products as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
-					 <h2><?=$product->productName?> </h2>
+					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
 					 <!--<div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /> <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){?>
@@ -137,8 +137,9 @@
 		  <!-- Javascript Ad Tag: 534 -->
 <div id="vcm534aHsffu"></div>
 <script src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=js&divid=vcm534aHsffu" type="text/javascript"></script>
-<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="728" height="90"></iframe></noscript>
+<iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=534&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="728" height="90"></iframe>
 <!-- // End Ad Tag -->
+
 			</div>
 			</div>
 			

@@ -5,10 +5,10 @@
 		<?php } ?>
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$lshproducted->categoriesUrlKey?>/<?=$lshproducted->productsUrlKey?>.html"><img src="<?=$lshproducted->imageName?>" alt="" /></a>
+						 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$lshproducted->categoriesUrlKey?>/<?=$lshproducted->sb4kProductID?>/<?=$lshproducted->productsUrlKey?>.html"><img src="<?=$lshproducted->imageName?>" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
-						<h2><?=$lshproducted->productName?> </h2>
+						<h2><?=$lshproducted->productName?> <?=$lshproducted->attr?></h2>
 						<p><span class="price"><?=$lshproducted->productPrice?></span></p>
 						<?php /*if(!empty($userinfos)){ if(in_array($lshproducted->productsID,$whislistproduct)==false){?>
 						<!-- <div class="button"><span><a href="<?=base_url();?>User/AddToWishList/<?=$lshproducted->productsID?>.html">Add to wishlists</a></span></div> -->
@@ -116,13 +116,13 @@
         <div id="myTabContent" class="tab-content">
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 			
-		   <div class="hotal">
+		   <div class=" ">
 		   <form method="post" class="form-horizontal form-label-left">
-              <div style="padding-bottom: 25px;">
+              <div class="hotel"style="padding-bottom: 25px;">
                 <h2>Search Hotal</h2>
               </div>
               <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12">Where?</label>
+                <label class="col-md-3 col-sm-3 col-xs-12 hotel">Where?</label>
              
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <input type="text" class="form-control" value=" ">
@@ -130,7 +130,7 @@
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
 			  
-                <div class="col-md-5">Check In
+                <div class="col-md-5"><p class="hotel">Check In</p>
                   <fieldset>
                     <div class="control-group">
                       <div class="controls">
@@ -142,7 +142,7 @@
                     </div>
                   </fieldset>
                 </div>
-				                <div class="col-md-5"> Check Out
+				                <div class="col-md-5"><p class="hotel">Check Out</p>
                          <fieldset>
                                                 <div class="control-group">
                       <div class="controls">
@@ -157,13 +157,13 @@
 </div>	   
 
  <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="col-md-4">Guests
+                <div class="col-md-4"><p class="hotel">Guests</p>
                   
                     <div class="control-group">
                       <div class="controls">
                         <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                         <div class="col-md-10 col-sm-4 col-xs-12">
-<select class="form-control select_color" name="Status">
+                  
+<select class="form-control" name="Status">
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -185,14 +185,14 @@
 
   .
 
-</div>
- <div class="col-md-4">Rooms
+ 
+ <div class="col-md-4"><p class="hotel">Rooms</p>
                   
                     <div class="control-group">
                       <div class="controls">
                         <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                         <div class="col-md-10 col-sm-4 col-xs-12">
-<select class="form-control select_color" name="Status">
+
+<select class="form-control" name="Status">
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -221,7 +221,7 @@
               <button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
             
 			</form>
-			</div>
+			 
           </div>
           <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
             <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip</p>
@@ -252,10 +252,10 @@
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 				
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				
 
-					 <h2><?=$product->productName?> </h2>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
@@ -316,10 +316,10 @@
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 				
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				
 
-					 <h2><?=$product->productName?> </h2>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
@@ -378,9 +378,9 @@
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 					
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
+					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
 				
-					 <h2><?=$product->productName?> </h2>
+					 <h2><?=$product->productName?> <?=$product->attr?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 

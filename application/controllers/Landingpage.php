@@ -21,25 +21,28 @@ class Landingpage extends CI_Controller {
 		$this->data['whislistproduct']=array();
 		foreach($wishlist as $wishlists){
 		$this->data['whislistproduct'][]=$wishlists->productID;
-		}		
+
+		}
+
 		}
 	}
 	
 	function reindex()
 	{
 		$index = Zend_Search_Lucene::create($this->search_index);
-		$query = $this->Landingpage_model->get_products();
+		$query = $this->Landingpage_model->get_products_search();
 		foreach ($query as $article)
 		{
 			
 			$doc = new Zend_Search_Lucene_Document();
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productsID', $article->productsID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productName', $article->productName));
+			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('sb4kProductID', $article->sb4kProductID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('productDescription',$article->productDescription));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productsUrlKey',$article->productsUrlKey));
-			$doc->addField(Zend_Search_Lucene_Field::Text('productAttributeLable',$article->productAttributeLable));
-			$doc->addField(Zend_Search_Lucene_Field::Text('productAttributeValue',$article->productAttributeValue));
+			 $doc->addField(Zend_Search_Lucene_Field::Text('attr',$article->attr));
+			/*$doc->addField(Zend_Search_Lucene_Field::Text('productAttributeValue',$article->productAttributeValue)); */
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('imageName',$article->imageName));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productImageTitle',$article->productImageTitle));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productImageAltTag',$article->productImageAltTag));
@@ -97,7 +100,7 @@ class Landingpage extends CI_Controller {
 		}
 	}
 	
-	public function product($categorykey=false,$productkey=false)
+	public function product($categorykey=false,$sbkProductID=false,$productkey=false)
 	{
 		$app=$this->input->get('app');
 		$this->data['searchq']=$searchq=$this->input->Get('q');
@@ -108,19 +111,15 @@ class Landingpage extends CI_Controller {
 			$searchquery=$searchq;
 			$index = Zend_Search_Lucene::open($this->search_index);
 			$products = $index->find($searchquery);
-			//$searchqry['productName']=$searchq;
 		}elseif(!empty($b)){
 			$productName=array();
-			if($productkey){
-			$productName=explode("_",$productkey);
+			if($sbkProductID){
+			$productName=explode("_",$sbkProductID);
 			}
-			/*$searchquery2="categoriesUrlKey: $categorykey";
-			$searchquery2.="AND productName: $productName[0]";
-			$index = Zend_Search_Lucene::open($this->search_index);
-			$products = $index->find($searchquery2);*/
 			$where=array('categoriesUrlKey like'=>$categorykey);
 			$searchqry=isset($productName[0])?$productName[0]:'';
 			$products=$this->Landingpage_model->get_products($query,$searchqry,$where);
+			
 		}else{
 		if(!empty($categorykey)){
 			$searchquery="categoriesUrlKey: $categorykey";
@@ -129,21 +128,14 @@ class Landingpage extends CI_Controller {
 		}
 		if(!empty($productkey)){
 			$searchquery.="and productsUrlKey: $productkey";
-			$query['productsUrlKey']=$productkey;
+			$query['sb4kProductID']=$sbkProductID;
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{
 			$index = Zend_Search_Lucene::open($this->search_index);
-			/*if($app=='true'){
-						Zend_Search_Lucene::setResultSetLimit(500);
-						}*/
 			$products = $index->find($searchquery);
 		}
 	}
 		
-		
-		//$products=$this->Landingpage_model->get_products($query,$searchqry);
-		
-		//print_r($products);die;
 		
 		if($app=='true'){
 			if(!empty($products)){
@@ -152,6 +144,7 @@ class Landingpage extends CI_Controller {
 				
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
+				  'sb4kProductID'=>$product->sb4kProductID,
 				  'productName'=>$product->productName,
 				  'productAttributeLable'=>$product->productAttributeLable,
 				  'productAttributeValue'=>$product->productAttributeValue,
@@ -160,8 +153,7 @@ class Landingpage extends CI_Controller {
 				  'productImageAltTag'=>$product->productImageAltTag,
 				  'productPrice'=>$product->productPrice,
 				  'productShopUrl'=>$product->productShopUrl,
-				 // 'productDescription'=>$product->productDescription
-				 );
+				  );
 			}
 				$jsonarray['products']=$apparray;
 				echo json_encode($jsonarray);
@@ -180,9 +172,7 @@ class Landingpage extends CI_Controller {
 			if(!empty($productkey) && empty($b)){
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
-				//print_r($this->data['othershopprices']);die;
 				$searchquery1="categoriesUrlKey: $categorykey";
-				//$searchquery1.="AND productName: $productName";
 				$searchquery1.="AND productsUrlKey: $productkey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
@@ -217,8 +207,10 @@ class Landingpage extends CI_Controller {
 	
 	}
 	
+
 	
 	public function compare()
+
 	{	$product=$this->input->post();
 		
 	foreach($product as $key=>$products)
@@ -327,7 +319,7 @@ class Landingpage extends CI_Controller {
 					 <p><span class=\"price\">".$filter->productPrice."</span></p>					 
 					 <div class=\"checkbox\">
 					<label>
-						<input type=\"checkbox\" value=\"<".$filter->productsID.">\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
+						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
 					</label>
 					</div>
 				</div>"; 				

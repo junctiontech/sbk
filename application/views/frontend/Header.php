@@ -6,7 +6,7 @@
 <link href="<?=base_url();?>admin/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?=base_url();?>admin/fonts/css/font-awesome.min.css" rel="stylesheet">
 <link href="<?=base_url();?>admin/css/animate.min.css" rel="stylesheet">
-<link href="<?=base_url();?>admin/css/custom.css" rel="stylesheet">
+<!--<link href="<?=base_url();?>admin/css/custom.css" rel="stylesheet">-->
 <link href="<?=base_url();?>frontend/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/menu.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="<?=base_url();?>frontend/css/frontend.css" rel="stylesheet" type="text/css" media="all"/>

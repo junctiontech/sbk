@@ -42,21 +42,48 @@ class Api_model extends CI_Model {
 		return $categoryID;
 	}
 
+	public function insert_api_log($logdata=false,$where=false)
+	{
+		if(empty($where)){
+					$this->db->insert('s4k_api_log',$logdata);
+					return $this->db->insert_id();
+			}else{
+					$this->db->where($where);
+					$this->db->set('productCount',$logdata, FALSE);
+					$this->db->update('s4k_api_log');
+			}
+	}
+	
+	public function update_data($logdata=false,$where=false)
+	{
+					$this->db->where($where);
+					$this->db->update('s4k_api_log',$logdata);
+	}
+	
 public function insert_product($productdata=false,$shopproductfamily=false,$specificationLists=false)
-{	//print_r($shopproductfamily);die;
+{	
 			$this->db->select('t1.productsID');
 			$this->db->from('s4k_products t1');
 			$this->db->join('s4k_product_price t2','t1.productsID=t2.productsID','left');
 			$this->db->where(array('shopProductID'=>$productdata['shopProductID'],'shopID'=>$productdata['shopID']));
 			$query=$this->db->get();
 		$result=$query->result();
-		if(empty($result)){
+		
+		$this->db->select('t1.productsID');
+			$this->db->from('s4k_products_map t1');
+			$this->db->join('s4k_product_price_map t2','t1.productsID=t2.productsID','left');
+			$this->db->where(array('shopProductID'=>$productdata['shopProductID'],'shopID'=>$productdata['shopID']));
+			$query=$this->db->get();
+		$resultmap=$query->result();
+		
+		if(empty($result) && empty($resultmap)){
 		$productMasterData=array('categoriesID'=>$productdata['categoriesID'],
 								 'subCategoriesID'=>$productdata['subCategoriesID'],
 								 'productsUrlKey'=>$productdata['productsUrlKey'],
 								 'productsSortOrder'=>$productdata['productsSortOrder'],
 								 'productBrand'=>$productdata['productBrand'],
-								 'productsStatus'=>$productdata['productsStatus']
+								 'productsStatus'=>$productdata['productsStatus'],
+								 'liveStatus'=>'Yes'
 								 );
 		$this->db->insert('s4k_products',$productMasterData);
 		$productID=$this->db->insert_id();
@@ -161,6 +188,7 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 		}
 		}else{
 			$productID=$result[0]->productsID;
+			$mapproductID=$resultmap[0]->productsID;
 			$query1=$this->db->get_where('s4k_product_price',array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
 			$result1=$query1->result();
 			if(empty($result1)){
@@ -171,9 +199,18 @@ public function insert_product($productdata=false,$shopproductfamily=false,$spec
 								'shopProductID'=>$productdata['shopProductID'],
 								'productShopUrl'=>$productdata['productShopUrl']);
 			$this->db->insert('s4k_product_price',$productPrice);
+			
+			$productMapPrice=array('productsID'=>$mapproductID,
+								'productPrice'=>$productdata['productPrice'],
+								'shopID'=>$productdata['shopID'],
+								'shopProductID'=>$productdata['shopProductID'],
+								'productShopUrl'=>$productdata['productShopUrl']);
+			$this->db->insert('s4k_product_price_map',$productMapPrice);
 			}else{
 				$this->db->where(array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
 				$this->db->update('s4k_product_price',array('productShopUrl'=>$productdata['productShopUrl'],'productPrice'=>$productdata['productPrice']));
+				$this->db->where(array('productsID'=>$mapproductID,'shopID'=>$productdata['shopID']));
+				$this->db->update('s4k_product_price_map',array('productShopUrl'=>$productdata['productShopUrl'],'productPrice'=>$productdata['productPrice']));
 			}
 		}
 		
@@ -305,17 +342,50 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 			}
 	}
 	
-	public function get_productname()
+	public function get_productname($categoryID)
 	{
 			$this->db->select('t1.productName,t1.productBrand');
 			$this->db->from('s4k_products_map t1');
-			$this->db->where(array('productsStatus'=>'Active'));
+			$this->db->where(array('productsStatus'=>'Active','categoriesID'=>$categoryID));
 			$this->db->group_by('productName');
 			$query=$this->db->get();
 			$result=$query->result();
 		return $result;
 	}
 	
+	public function get_categoryID()
+	{
+			$this->db->select('t1.categoriesID');
+			$this->db->from('s4k_categories t1');
+			$this->db->where(array('categoriesStatus'=>'Active'));
+			$query=$this->db->get();
+			$result=$query->result();
+		return $result;
+	}
+	
+	public function check_api_log_entry($where=false)
+	{
+			$this->db->select('t1.apiLogID');
+			$this->db->from('s4k_api_log t1');
+			$this->db->where($where);
+			$query=$this->db->get();
+			$result=$query->result();
+			return $result;
+	} 
+	
+	 public function get_api_log_data($categoryID=false,$shopID=false)
+	{
+			$query=$this->db->query(" SELECT *
+								   FROM s4k_api_log
+								   WHERE `lastUpdate` < DATE_SUB(NOW() , INTERVAL 15 MINUTE)    
+								   AND `status` = 'uncompleted'
+								   AND `categoryID` = $categoryID
+								   AND `shopID`= $shopID
+								   LIMIT 1
+									");
+			$result=$query->result();
+			return $result;
+	} 
 }
 
 ?>
