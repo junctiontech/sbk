@@ -102,7 +102,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->group_by('productsID');
 		}
 		if(empty($categoriesID)){
-			$this->db->limit(2000);
+			$this->db->limit(1000);
 		}
 		
 
