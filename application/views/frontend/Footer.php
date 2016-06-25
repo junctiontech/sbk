@@ -134,5 +134,7 @@ function googleTranslateElementInit() {
 							  </script>
 							    <script src="<?=base_url();?>frontend/js/sb4k.js"></script>
 								<script src="<?=base_url();?>frontend/js/Filter_product.js"></script>
+								<script  src="<?=base_url();?>admin/js/moment.min2.js"></script>
+								<script  src="<?=base_url();?>admin/js/datepicker/daterangepicker.js"></script>
 </body>
 </html>

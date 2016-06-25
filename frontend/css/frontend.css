@@ -264,6 +264,7 @@ a:hover{
     text-align: center;
     position: relative;
     float:right;
+	
 }
 
 .comparegrid_1_of_4 {
@@ -273,6 +274,7 @@ a:hover{
     box-shadow: 0px 0px 3px rgb(150, 150, 150);
 	margin-top:30px;
 	margin-bottom:40px;
+	height: 324px!important;
 }
 .compare_product_name{
 	height:60px;
@@ -298,4 +300,56 @@ p.heddine{
 	overflow: hidden; 
 	text-overflow: clip;
 	
+}
+.heder_right{
+	float:right
+}
+.android{
+	margin: -7px -6px 0px -5px;
+    padding: 0;
+    width: 28px;
+    height: 25px;
+    background: #699a1c url(../images/sprite.png) no-repeat -540px -100px;
+    float: left;
+    border: 1px solid #fff;
+    border-radius: 80px;
+    text-indent: -9999px;
+    display: inline-block;
+    transition: all 700ms ease-out 0s;
+}
+.notify{
+		margin: -7px -6px 0px -5px;
+    padding: 0;
+    width: 28px;
+    height: 27px;
+    background: #660099 url(../images/notify.png) no-repeat;
+    float: left;
+    border: 1px solid #fff;
+    border-radius: 80px;
+    text-indent: -9999px;
+    display: inline-block;
+    transition: all 700ms ease-out 0s;
+}
+.hotel_panal {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+    background: #660099 url(../images/hotel_panal.jpg) no-repeat;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    opacity: 1;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.hotal{
+	    color: #fff;
+}
+.select_color{
+	color:black;
 }
