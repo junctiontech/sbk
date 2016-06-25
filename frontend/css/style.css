@@ -31,6 +31,7 @@ img{max-width:100%;}
 body{
 	font-family:Arial, Helvetica, sans-serif;
 	background:url(../images/body_bg3.jpg);
+	top: 240px !important;
 }
 .wrap{
 	/*width:78%;*/
@@ -40,6 +41,11 @@ body{
 }
 .header{
 	background:#FFF;
+	position: fixed;
+    top: 0;
+	width: 100%;
+    z-index: 999;
+	overflow:auto; 
 }
 .header_top{
 	padding:20px 0;
@@ -107,10 +113,12 @@ body{
 }
 .shopping_cart{
 	float:left;
-	width: 122px;
+	width: 50px;
 	position:relative;
-	margin-left:15px;
+	margin-top:-12px;
+	height:30px;
 	padding: 0 0 0 46px;
+	padding-bottom: 2px;
 	background: url(../images/header_cart.png) 0 0 no-repeat;
 	z-index: 99;
 	-webkit-box-sizing: border-box;
@@ -514,7 +522,7 @@ p.note{
         text-decoration:none; 
 }
 .header_bottom_right_images{
-	float:left;
+	float:right;
 	width:49%;
 	margin-left:1%;
 	padding-top: 15px;

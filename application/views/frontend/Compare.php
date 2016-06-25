@@ -13,7 +13,7 @@
     		
     	</div>
 		<div class="row">
-			<div class="col-md-2 col-sm-2 col-lg-2" style="margin-top:394px;font-size:13px; margin-right:-47px">
+			<div class="col-md-2 col-sm-2 col-lg-2" style="margin-top:394px;font-size:13px; margin-right:-19px">
 				<div class="x_content">
 							<?php 
 							 if(!empty($compareproduct_info)){ 
@@ -23,7 +23,16 @@
                                     
                               <tbody>
                                   <tr>
-									<td style="background-color:#ededed"><?=isset ($compareinfo->productAttributeLable) ?$compareinfo->productAttributeLable:''?></td>
+									<td style="background-color:#ededed"><P class="heddine"><?php 
+									
+									if(!empty($compareinfo->productAttributeLable)){
+									echo isset($compareinfo->productAttributeLable)?$compareinfo->productAttributeLable:'';	
+									}
+									else{
+										echo "Other";
+									}
+									
+									?></P></td>
 								  </tr>
 							  </tbody>
 							  </table>
@@ -46,7 +55,8 @@
 				  <?php	//$categoryinfo=($product->categoriesID);
 						$compareproduct=($product->productsID); 
 				
-					$product_attributeinfo=$this->Landingpage_model->product_attribute($compareproduct);//print_r($product_attributeinfo);  ?>
+					$product_attributeinfo=$this->Landingpage_model->product_attribute($compareproduct);					
+					?>
 							
 					<table class="table table-bordered" style="width:246px; font-size:13px;">
                                     
@@ -63,8 +73,8 @@
 							
 							?> 			
 				 
-							<td><P class="heddine"><?= isset ($product_attributeinfo[$keys]['productAttributeValue']) ?$product_attributeinfo[$keys]['productAttributeValue']:''?><p></td>
-											
+							<td><P class="heddine"><?= strip_tags (isset($product_attributeinfo[$keys]['productAttributeValue'])?$product_attributeinfo[$keys]['productAttributeValue']:'');?><p></td>
+									
 							<?php }else{ ?>
 							<td style="background-color:white"> NO</td>
 							<?php } ?>
@@ -84,3 +94,4 @@
 	</div>
 </div>
    
+

@@ -225,9 +225,10 @@ class Landingpage extends CI_Controller {
 	
 	$compareproductinfo=$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
 	
-	$categoryinfo=($compareproductinfo[0]->categoriesID);
+	//$categoryinfo=($compareproductinfo[0]->categoriesID);
 	//print_r($compareproduct); //die;
 	$getattribute=$data=$this->data['compareproduct_info']=$this->Landingpage_model->compare_pro_attribute($compareproduct);
+	
 	
 	
 	//print_r($getattribute);
@@ -318,7 +319,7 @@ class Landingpage extends CI_Controller {
 					 <p><span class=\"price\">".$filter->productPrice."</span></p>					 
 					 <div class=\"checkbox\">
 					<label>
-						<input type=\"checkbox\" value=\"<".$filter->productsID.">\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
+						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
 					</label>
 					</div>
 				</div>"; 				
@@ -328,5 +329,11 @@ class Landingpage extends CI_Controller {
 			echo "NO Product Found ";
 		}
 	}
-	
+	function Flights()
+	{
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+			$this->parser->parse('frontend/Header',$this->data);
+	$this->parser->parse('frontend/Flights',$this->data);
+	$this->parser->parse('frontend/Footer',$this->data);
+	}
 }

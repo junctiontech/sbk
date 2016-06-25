@@ -360,7 +360,7 @@ dark,
 .navbar-nav>li>a,
 .navbar-brand,
 .navbar-nav>li>a {
-    color: #fff !important;
+    color: #000000 !important;
 }
 
 .navbar-brand,
@@ -369,7 +369,7 @@ dark,
 }
 
 body {
-    color: #73879C;
+    color: #000000;
     background: #2A3F54;
     /*#ECF0F1; #FCFCFC*/
     
@@ -587,7 +587,7 @@ h3,
 }
 
 a {
-    color: #5A738E;
+    color: #blue;
     text-decoration: none;
 }
 
@@ -4730,7 +4730,7 @@ ul.project_files li a i {
     font-style: italic;
     font-size: 12px;
     position: relative;
-    color: #fff;
+    color: # ;
     padding: 10px 20px 20px;
     text-align: center
 }
