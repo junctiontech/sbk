@@ -32,7 +32,7 @@ class Landingpage_model extends CI_Model {
 	
 	public function get_inventory_data($where=false){
 		
-		$this->db->select('t11.categoriesUrlKey,t4.productsUrlKey,t4.sb4kProductID,t4.productsID,t4.productName,t4.productDescription,t6.productAttributeLable,t6.productAttributeValue,t8.imageName,t8.productImageTitle,t8.productImageAltTag,t10.productPrice,t10.productShopUrl,GROUP_CONCAT(t6.productAttributeValue SEPARATOR ",") as attr');
+		$this->db->select('t11.categoriesUrlKey,t4.productsUrlKey,t4.sb4kProductID,t4.productsID,t4.productName,t4.productDescription,t6.productAttributeLable,t6.productAttributeValue,t8.imageName,t8.productImageTitle,t8.productImageAltTag,t10.productPrice,t10.productShopUrl');
 		$this->db->from('s4k_inventory_consumption t1');
 		$this->db->join('s4k_inventory_master t2','t1.inventoryMasterID=t2.inventoryMasterID','left');
 		$this->db->join('s4k_inventory_type t3','t2.inventoryTypeID=t3.inventoryTypeID','left');
@@ -46,7 +46,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->join('s4k_categories t11','t4.categoriesID=t11.categoriesID','left');
 		
 		$this->db->where(array('inventoryKey'=>$where,'t1.Status'=>'Active'));
-		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
+		//$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
 		$this->db->order_by('t1.sortOrder','DESC');
 		$this->db->order_by('t1.createdOn','DESC');
 		$this->db->group_by('t4.productsID');
@@ -55,14 +55,14 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_products_search($extraquery=false,$searchqry=false,$where=false,$where1=false){
-		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr');
+		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
 			
 		}
 		$this->db->from('s4k_products_map t1');
 		//$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
-		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		//$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
 		//$this->db->join('s4k_product_attribute_details t4','t3.productAttributeID=t4.productAttributeID','left');
 		$this->db->join('s4k_product_images_map t5','t1.productsID=t5.productsID','left');
 		//$this->db->join('s4k_product_image_details t6','t5.productImageID=t6.productImageID','left');
@@ -76,7 +76,7 @@ class Landingpage_model extends CI_Model {
 			//.$this->db->like($searchqry);
 			$this->db->like("productBrand",$searchqry);
 		}
-		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
+		//$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
 		if($where){
 			$this->db->where($where);
 		}elseif($where1){

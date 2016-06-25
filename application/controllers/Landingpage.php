@@ -41,7 +41,7 @@ class Landingpage extends CI_Controller {
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('productDescription',$article->productDescription));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productsUrlKey',$article->productsUrlKey));
-			 $doc->addField(Zend_Search_Lucene_Field::Text('attr',$article->attr));
+			 $doc->addField(Zend_Search_Lucene_Field::Text('attr',''));//$article->attr
 			/*$doc->addField(Zend_Search_Lucene_Field::Text('productAttributeValue',$article->productAttributeValue)); */
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('imageName',$article->imageName));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productImageTitle',$article->productImageTitle));

@@ -8,7 +8,7 @@
 						 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$lshproducted->categoriesUrlKey?>/<?=$lshproducted->sb4kProductID?>/<?=$lshproducted->productsUrlKey?>.html"><img src="<?=$lshproducted->imageName?>" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
-						<h2><?=$lshproducted->productName?> <?=$lshproducted->attr?></h2>
+						<h2><?=$lshproducted->productName?> <?=isset($lshproducted->attr)?$lshproducted->attr:''?></h2>
 						<p><span class="price"><?=$lshproducted->productPrice?></span></p>
 						<?php /*if(!empty($userinfos)){ if(in_array($lshproducted->productsID,$whislistproduct)==false){?>
 						<!-- <div class="button"><span><a href="<?=base_url();?>User/AddToWishList/<?=$lshproducted->productsID?>.html">Add to wishlists</a></span></div> -->
@@ -127,7 +127,7 @@
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				
 
-					 <h2><?=$product->productName?> <?=$product->attr?></h2>
+					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
@@ -191,7 +191,7 @@
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				
 
-					 <h2><?=$product->productName?> <?=$product->attr?></h2>
+					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
@@ -252,7 +252,7 @@
 					
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
 				
-					 <h2><?=$product->productName?> <?=$product->attr?></h2>
+					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
 					 <p><span class=""><?=$product->productPrice?></span></p>
 					 

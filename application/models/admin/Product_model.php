@@ -146,7 +146,7 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category));
 		//$this->db->where(array('t4.productPrice !='=>0.00));
 		$this->db->where(array('t5.shopID !='=>1));
-		//$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
+		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
 		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
 		$this->db->where_in('t7.productAttributeValue',$query4);
 		$this->db->where('t7.productAttributeLable','Model');
@@ -297,6 +297,21 @@ class Product_model extends CI_Model {
 	}
 	public function fetch_productname($product)
 	{
+		$this->db->select('t1.productsID,t1.productName,t1.categoriesID,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr  , t4.imageName,t5.productPrice,shopName');
+		$this->db->from('s4k_products_map t1');
+		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		$this->db->join('s4k_product_images_map t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_product_price_map t5','t1.productsID=t5.productsID');
+		$this->db->join('s4k_shops t6','t5.shopID=t6.shopID');
+		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
+		$this->db->where(array('t1.productsID'=>$product));
+		$this->db->group_by('t1.productsID');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	/* public function fetch_productname($product)
+	{
 		$this->db->select('t1.productsID,t1.productName,t2.categoriesID,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr  , t4.imageName,t5.productPrice,shopName');
 		$this->db->from('s4k_product_details t1');
 		$this->db->join('s4k_products t2','t1.productsID=t2.productsID');
@@ -309,7 +324,7 @@ class Product_model extends CI_Model {
 		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();
 		return $query->result();
-	}
+	} */
 	
 	function delete($table1=false,$table2=false,$table3=false,$table4=false,$filter=false)
 	{
