@@ -258,8 +258,20 @@ class Api extends CI_Controller {
 			
 			if(!empty($categoryID))
 			{
-				$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>2);
-				$apiLogID=$this->Api_model->insert_api_log($logData);
+				$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID,'shopID'=>2));
+				
+				if(empty($check_entry)){ 
+										$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>2);
+										$apiLogID=$this->Api_model->insert_api_log($logData); 
+										}
+										
+				$apiLogData=$this->Api_model->get_api_log_data($categoryID,2);
+				if(!empty($apiLogData)){
+				if(!empty($check_entry)){
+											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
+											$this->Api_model->insert_api_log($logDataUpdate,$where);
+											$apiLogID=$check_entry[0]->apiLogID;
+										}
 				$url = $data['listingVersions']['v1']['get'];
 				$i=1;
 				echo $key;echo"<br>";
@@ -274,6 +286,8 @@ class Api extends CI_Controller {
 					
 					foreach($products as $product)
 					{ 
+						$shopproductfamily=array();
+						$specificationLists=array();
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 					//print_r($product['subCategoryName']);echo"<br>";
@@ -282,6 +296,7 @@ class Api extends CI_Controller {
 						$productdata=array();
 						$productdata=array('categoriesID'=>$categoryID,
 						'subCategoriesID'=>0,
+						'productBrand'=>$product['brand'],
 						'productsUrlKey'=>strtolower(implode("_",explode(" ",$product['title']))),
 						'productsSortOrder'=>1,
 						'productsStatus'=>'Active',
@@ -297,21 +312,16 @@ class Api extends CI_Controller {
 						'productPrice'=>$product['offerPrice'],
 						'shopID'=>2,
 						'productShopUrl'=>$product['link'],
-						'productAttributeSortOrder'=>1,
-						'productAttributeStatus'=>'Active',
-						'productAttributehighLight'=>'Yes',
-						'productAttributekey'=>array('color','productBrand'),
-						'productAttributeLable'=>array('Color','Product Brand'),
-						'productAttributeValue'=>array('',
-													   $product['brand']));
+						'shopProductID'=>$product['id']
+						);
 										 			   
 						if(!empty($value))
 							{
-						$this->Api_model->insert_product($productdata);
+						$this->Api_model->insert_product($productdata,$shopproductfamily,$specificationLists);
 							}
 							else
 							{
-						$this->Api_model->insert_new_product($productdata);		
+						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
 					}
 					}
@@ -322,6 +332,15 @@ class Api extends CI_Controller {
 				}
 				$i++;
 				}while(!empty($nextUrl));
+				if(!empty($products)){
+				$logDataUpdate=array('status'=>'completed');$where=array('apiLogID'=>$apiLogID);
+				$this->Api_model->update_data($logDataUpdate,$where);
+				}
+			}else{
+				echo"already running";
+				exit();
+			}
+				//.................
 			}
 		
 		}

@@ -122,7 +122,7 @@ class Product_model extends CI_Model {
 	}
 	
 	function map_product1($category=false,$product=false,$productName=false )
-	{	
+	{
 		$query1=$this->db->query("select productAttributeLable,productAttributeValue from s4k_product_attribute_map where productsID=$product and productAttributeLable in ('Model ID','Model Name')");
 		//echo $this->db->last_query();die;
 		$query2=$query1->result_array();
@@ -148,8 +148,8 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t5.shopID !='=>1));
 		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
 		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
-		$this->db->where_in('t7.productAttributeValue',$query4);
-		$this->db->where('t7.productAttributeLable','Model');
+		//$this->db->where_in('t7.productAttributeValue',$query4);
+		//$this->db->where('t7.productAttributeLable','Model');
 		$this->db->where('t1.productsStatus','Active');
 		$this->db->where('t1.liveStatus','No');
 		$this->db->where('t1.mapp','Unmapped');
