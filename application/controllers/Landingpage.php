@@ -34,7 +34,7 @@ class Landingpage extends CI_Controller {
 		foreach($categories as $category){
 			
 		$query = $this->Landingpage_model->get_products_search('','','','',array('t1.categoriesID'=>$category->categoriesID));
-		print_r($category->categoriesID);die;
+		
 		foreach ($query as $article)
 		{
 			
