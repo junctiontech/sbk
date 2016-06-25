@@ -92,7 +92,7 @@ class Landingpage_model extends CI_Model {
 		}elseif($where1){
 			$this->db->where($where1);
 		}
-		if(empty($categoriesID)){
+		if(!empty($categoriesID)){
 			$this->db->where($categoriesID);
 		}
 		if(empty($extraquery)){
@@ -101,13 +101,11 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('productPrice','ASC');
 		$this->db->group_by('productsID');
 		}
-		if(empty($categoriesID)){
-			$this->db->limit(500);
-		}
+		
 		
 
 		$query=$this->db->get();
-		echo $this->db->last_query();die;
+		//echo $this->db->last_query();die;
 		return $query->result();
 	}
 	
