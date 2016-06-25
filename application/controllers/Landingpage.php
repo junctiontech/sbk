@@ -32,6 +32,7 @@ class Landingpage extends CI_Controller {
 		$index = Zend_Search_Lucene::create($this->search_index);
 		$categories = $this->Landingpage_model->get_categoryID();
 		foreach($categories as $category){
+			print_r($category->categoriesID);die;
 		$query = $this->Landingpage_model->get_products_search('','','','',array('t1.categoriesID'=>$category->categoriesID));
 		foreach ($query as $article)
 		{
