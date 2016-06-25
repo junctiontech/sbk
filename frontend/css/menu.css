@@ -36,7 +36,7 @@ ul.dc_mm-orange li a{
 	display:block;
 	float:left;
 	font-size:12px;
-	padding:15px 15px;
+	padding:15px 11px;
 	text-decoration:none;
 	text-shadow:1px 1px 1px #000;
 	//text-transform:uppercase;
@@ -227,3 +227,4 @@ ul.dc_mm-orange li .sub-container.non-mega li a:hover{
 		display:none;
 	}	
  }
+ 
