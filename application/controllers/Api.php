@@ -434,11 +434,11 @@ class Api extends CI_Controller {
 			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
 				
 				if(empty($check_entry)){ 
-										$logData=array('categoryID'=>$categoryID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+										$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
 										$apiLogID=$this->Api_model->insert_api_log($logData); 
 										}
 										
-				$apiLogData=$this->Api_model->get_api_log_data($categoryID,3);
+				$apiLogData=$this->Api_model->get_api_log_data($categoryID->categoriesID,3);
 				if(!empty($apiLogData)){
 				if(!empty($check_entry)){
 											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
