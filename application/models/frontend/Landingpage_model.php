@@ -30,6 +30,16 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function get_categoryID()
+	{
+			$this->db->select('t1.categoriesID');
+			$this->db->from('s4k_categories t1');
+			$this->db->where(array('categoriesStatus'=>'Active'));
+			$query=$this->db->get();
+			$result=$query->result();
+		return $result;
+	}
+	
 	public function get_inventory_data($where=false){
 		
 		$this->db->select('t11.categoriesUrlKey,t4.productsUrlKey,t4.sb4kProductID,t4.productsID,t4.productName,t4.productDescription,t6.productAttributeLable,t6.productAttributeValue,t8.imageName,t8.productImageTitle,t8.productImageAltTag,t10.productPrice,t10.productShopUrl');
@@ -54,7 +64,7 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
-	public function get_products_search($extraquery=false,$searchqry=false,$where=false,$where1=false){
+	public function get_products_search($extraquery=false,$searchqry=false,$where=false,$where1=false,$categoriesID=false){
 		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
@@ -81,6 +91,9 @@ class Landingpage_model extends CI_Model {
 			$this->db->where($where);
 		}elseif($where1){
 			$this->db->where($where1);
+		}
+		if(empty($categoriesID)){
+			$this->db->where($categoriesID);
 		}
 		if(empty($extraquery)){
 		$this->db->order_by('productsSortOrder','ASC');

@@ -30,7 +30,9 @@ class Landingpage extends CI_Controller {
 	function reindex()
 	{
 		$index = Zend_Search_Lucene::create($this->search_index);
-		$query = $this->Landingpage_model->get_products_search();
+		$categories = $this->Landingpage_model->get_categoryID();
+		foreach($categories as $category){
+		$query = $this->Landingpage_model->get_products_search('','','','',array('t1.categoriesID'=>$category->categoriesID));
 		foreach ($query as $article)
 		{
 			
@@ -50,6 +52,7 @@ class Landingpage extends CI_Controller {
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productShopUrl',$article->productShopUrl));
 			$index->addDocument($doc);
 		echo 'Added ' . $article->productName . ' to index.<br />';
+		}
 		}
 		$index->optimize();
 	}
