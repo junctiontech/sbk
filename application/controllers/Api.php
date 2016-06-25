@@ -223,6 +223,9 @@ class Api extends CI_Controller {
 				$logDataUpdate=array('status'=>'completed');$where=array('apiLogID'=>$apiLogID);
 				$this->Api_model->update_data($logDataUpdate,$where);
 				}
+			}else{
+				echo"already running";
+				exit();
 			}
 			}
 			//..............
@@ -549,7 +552,10 @@ $j++;	}
 				$logDataUpdate=array('status'=>'completed');$where=array('apiLogID'=>$apiLogID);
 				$this->Api_model->update_data($logDataUpdate,$where);
 				}
-				}
+				}else{
+				
+				exit();
+			}
 ///,,,,,,,,,,,,
 	}
 	}
