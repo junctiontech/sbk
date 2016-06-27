@@ -132,7 +132,7 @@ class Product_model extends CI_Model {
 		}
 		//$query5=implode(',',$query4);
 		//print_r($query5);die;
-		$this->db->distinct();
+		//$this->db->distinct();
 		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
 		$this->db->from('s4k_products t1');
 		
@@ -140,13 +140,13 @@ class Product_model extends CI_Model {
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
 		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
 		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
-		$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
-		$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
-		
+		//$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
+		//$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
+		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
 		$this->db->where(array('t1.categoriesID'=>$category));
 		//$this->db->where(array('t4.productPrice !='=>0.00));
 		$this->db->where(array('t5.shopID !='=>1));
-		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
+		
 		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
 		//$this->db->where_in('t7.productAttributeValue',$query4);
 		//$this->db->where('t7.productAttributeLable','Model');
