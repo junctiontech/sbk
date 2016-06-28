@@ -157,13 +157,11 @@ class Api extends CI_Controller {
 										}
 				$url = $data['availableVariants']['v1.1.0']['get'];
 				$i=1;
-				//echo $key;echo"<br>";
+				
 				do{
-					//echo $i;echo"<br>";
 					
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
-				//print_r($details);die;
 				if(!empty($details))
 				{
 					$products = $details['productInfoList'];
@@ -172,10 +170,8 @@ class Api extends CI_Controller {
 					{
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
-						//echo $product['productBaseInfoV1']['title'];echo"<br>";
 						$productdata=array();
 						
-						//if($product['productBaseInfoV1']['productBrand']=='Apple' || $product['productBaseInfoV1']['productBrand']=='apple'){
 						$shopproductfamily=$product['productBaseInfoV1']['productFamily'];
 						$specificationLists=$product['categorySpecificInfoV1']['specificationList'];
 						
@@ -200,7 +196,6 @@ class Api extends CI_Controller {
 						'productShopUrl'=>$product['productBaseInfoV1']['productUrl']
 						);
 													   
-													   
 						if(!empty($value))
 							{
 						$this->Api_model->insert_product($productdata,$shopproductfamily,$specificationLists);
@@ -210,12 +205,10 @@ class Api extends CI_Controller {
 						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
 							
-					//}	
 					}
 						$nextUrl = $details['nextUrl'];
 						$url=$nextUrl;
 				}
-				/* if($i==2){ echo $nextUrl;die; }*/
 				$i++; 
 				}while(!empty($nextUrl));
 				
