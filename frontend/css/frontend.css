@@ -352,6 +352,42 @@ p.heddine{
 	    color: #fff;
 		
 }
-.select_color{
-	color:black;
+.flight {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+    background:url(../images/airlian.jpg) no-repeat;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    opacity: 1;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.sc_hotel{
+	margin-top:10px;
+box-shadow: 0px 0px 3px rgb(150, 150, 150);
+}
+.hc_sri_result_promotedDeal {
+    background: #fff;
+    border: 2px solid #EEEEEE;
+   
+/*     margin-top: 15px;
+    padding: 8px 5px 0; */
+    text-align: center;/*
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; */
+    box-sizing: border-box;
+  /*   position: absolute; */
+    right: 0;
+    /* min-height: 180px; */
+}
+.hote_table{
+	width:100%;
+	border-bottom:1px solid transparent;
 }

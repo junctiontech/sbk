@@ -116,8 +116,9 @@
         <div id="myTabContent" class="tab-content">
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 			
-		   <div class=" ">
+
 		   <form method="post" class="form-horizontal form-label-left">
+		   		   <div class=" ">
               <div class="hotel"style="padding-bottom: 25px;">
                 <h2>Search Hotal</h2>
               </div>
@@ -215,16 +216,104 @@
   .
 
 </div>
-</div>
+
 				
 				 
               <button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
-            
+            	 </div>
 			</form>
-			 
+		
           </div>
           <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip</p>
+             <form method="post" class="form-horizontal form-label-left">
+		   		   <div class=" ">
+              <div class="hotel"style="padding-bottom: 25px;">
+                <h2>Search Flights</h2>
+              </div>
+			  <div class="form-group hotel">
+			  <div class="col-md-5">
+			  <input type="radio" class="flat" name="radio"/> One Way
+			  
+			  </div>
+			  <div class="col-md-5">
+			  <input type="radio" class="flat" name="radio"/> Round Trip 
+			  </div>
+			  </div>
+              <div class="form-group">
+                <label class="col-md-1 col-sm-1 col-xs-12 hotel">From</label>
+             
+                <div class="col-md-5 col-sm-5 col-xs-12">
+                  <input type="text" class="form-control" value=" ">
+                </div>
+				 <label class="col-md-1 col-sm-1 col-xs-12 hotel">To</label>
+				                 <div class="col-md-5 col-sm-5 col-xs-12">
+                  <input type="text" class="form-control" value=" ">
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+			  
+                <div class="col-md-5"><span class="hotel">Departure</span>
+                  <fieldset>
+                    <div class="control-group">
+                      <div class="controls">
+                        <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                          <input type="text" class="form-control has-feedback-left" id="single_cal3" placeholder="Departure Date" aria-describedby="inputSuccess2Status">
+                          <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> 
+						  <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+				                <div class="col-md-5"><p class="hotel"> Return</p>
+                         <fieldset>
+                                                <div class="control-group">
+                      <div class="controls">
+                        <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                          <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="Return Date" aria-describedby="inputSuccess2Status">
+                          <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> 
+						  <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
+                      </div>
+                                                </div>
+                                            </fieldset>
+                                        </div> 
+</div>	   
+
+ <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-6"><p class="hotel">Class</p>
+                  
+                    <div class="control-group">
+                      <div class="controls">
+                        <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                  
+<select class="form-control" name="Status">
+ <option value="1">Economy</option>
+ <option value="2">Premium Economy</option>
+ <option value="3">Business</option> 
+ </select>
+</div>
+                      </div>
+                    </div>
+                   
+                </div>
+
+
+
+  .
+
+ 
+
+
+
+
+  .
+
+</div>
+
+				
+				 
+              <button type="submit" style="width:100%;margin-top: 0px;" class="btn btn-success">Search</button>
+            	 </div>
+			</form>
           </div>         
         </div>
       </div>
@@ -408,7 +497,7 @@
 <noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1862&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="1000" height="90"></iframe></noscript>
 <!-- // End Ad Tag -->
 <a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
-	</div>	
+
 
 <script>
         $(document).ready(function () {
@@ -579,13 +668,13 @@
             });
             $('#single_cal3').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_3"
+                calender_style: "picker_1"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal4').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_4"
+                calender_style: "picker_1"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
