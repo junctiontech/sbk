@@ -267,9 +267,9 @@ class Api extends CI_Controller {
 										}
 				$url = $data['listingVersions']['v1']['get'];
 				$i=1;
-				echo $key;echo"<br>";
+				
 				do{
-					echo $i;echo"<br>";
+					
 				$details = $snapdeal->call_url($url);
 				$details = json_decode($details, TRUE);
 				if(!empty($details))
