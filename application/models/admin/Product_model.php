@@ -22,7 +22,7 @@ class Product_model extends CI_Model {
 	
 	
 	
-	public function fetch_product($category=false)
+	public function fetch_product($category=false,$limit=false,$page=false)
 	{
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,t9.categoryName,productsUrlKey,t1.productsStatus,t1.productName,t1.productDescription,t3.	productAttributeLable,t3.productAttributeValue,t5.imageName,t5.productImageTitle,t5.productImageAltTag,t7.productPrice,t7.productShopUrl');
 		$this->db->from('s4k_products_map t1');
@@ -32,10 +32,19 @@ class Product_model extends CI_Model {
 		$this->db->join('s4k_categories t8','t1.categoriesID=t8.categoriesID');
 		$this->db->join('s4k_category_details t9','t9.categoriesID=t8.categoriesID');
 		$this->db->where(array('t8.categoriesID'=>$category));
-		$this->db->group_by('productName');
-		//$this->db->limit(20);	
+		$this->db->group_by('sb4kProductID');
+		$this->db->limit($limit,$page);	
 		$query=$this->db->get();
-		
+		//echo $this->db->last_query();die;
+		return $query->result();		
+	}
+	
+	public function getcounttotalrecord($category=false)
+	{
+		$this->db->select('count(productsID) as total');
+		$this->db->from('s4k_products_map');
+		$this->db->where(array('categoriesID'=>$category));
+		$query=$this->db->get();
 		return $query->result();		
 	}
 	
@@ -161,7 +170,7 @@ class Product_model extends CI_Model {
 		
 	}
 	
-	function get_product_by_filter($where=false )
+	function get_product_by_filter($where=false,$limit=false,$page=false )
 	{	
 		$this->db->select('t1.productsID,t1.categoriesID,t2.productName,t3.imageName,t4.productPrice,shopName,productsStatus,mapp,liveStatus');
 		$this->db->from('s4k_products t1');
@@ -172,7 +181,19 @@ class Product_model extends CI_Model {
 		//$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
 		//$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
 		$this->db->where($where);
+		$this->db->limit($limit,$page);
 		$query=$this->db->get();		
+		return $query->result();
+	}
+	
+	function gettotalrecorddownloaded($where=false )
+	{	
+		$this->db->select('count(t1.productsID) as total');
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
+		$this->db->where($where);
+		$query=$this->db->get();	
 		return $query->result();
 	}
 	

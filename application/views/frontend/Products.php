@@ -68,12 +68,7 @@
     		</p>
     		</div>-->
     		<div class="page-no">
-    			<p>Result Pages:<ul>
-    				<li><a href="#">1</a></li>
-    				<li class="active"><a href="#">2</a></li>
-    				<li><a href="#">3</a></li>
-    				<li>[<a href="#"> Next>>></a >]</li>
-    				</ul></p>
+    			<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p>
     		</div>
     		<div class="clear"></div>
     	</div>
@@ -111,7 +106,7 @@
 		   <?php if(!empty($products)){ foreach($products as $product){?>
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
-					 <h2><?=$product->productName?> <?=$product->attr?></h2>
+					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
 					 <p><span class="price"><?=$product->productPrice?></span></p>
 					 <!--<div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /> <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){?>

@@ -13,7 +13,6 @@ class Product extends CI_Controller {
 		$this->userinfo=$this->data['userinfo']=$this->session->userdata('searchb4kharchadmin');
 		$this->load->model('admin/Product_model');
 		$this->languageID='1';
-
 	}
 
 	public function display($template_file){
@@ -31,26 +30,64 @@ class Product extends CI_Controller {
 	}
 	
 	public function fetch_product()
-	{	if(!empty($_GET['categoriesID'])){
+	{	
+		$page=$this->input->get('page');
 		
-		$product=$this->data['products']=$this->Product_model->fetch_product($_GET['categoriesID']);
-	
-		$this->data['category']=$this->Product_model->get_categories();
-		
-		$this->display ('admin/ProductList');
-	}
-	else{
-		$this->data['category']=$this->Product_model->get_categories();
-		$this->session->set_flashdata('message_type', 'success');        
-        $this->session->set_flashdata('message', $this->config->item("fetch_product").' Select category');
-		$this->display ('admin/ProductList');
-	}
+		if(!empty($_GET['categoriesID'])){
+			$this->data['categoriesID']=$_GET['categoriesID'];
+			$limit = 50;
+			$config['per_page'] = $limit;
+			$config['page_query_string'] = TRUE;
+			$config['query_string_segment'] = 'page';
+			$config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+			$config['full_tag_close'] = '</ul>';
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = '<li>';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li ><a class="active" >';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['base_url'] = base_url() . "Product/fetch_product?categoriesID=".$_GET['categoriesID'];
+			$totalrecord=$this->Product_model->getcounttotalrecord($_GET['categoriesID']);
+			$config['total_rows'] =$totalrecord[0]->total;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
+			$product=$this->data['products']=$this->Product_model->fetch_product($_GET['categoriesID'],$limit,$page);
+			$this->data['category']=$this->Product_model->get_categories();
+			$this->display ('admin/ProductList');
+		}
+		else{
+			$this->data['category']=$this->Product_model->get_categories();
+			$this->session->set_flashdata('message_type', 'success');        
+			$this->session->set_flashdata('message', $this->config->item("fetch_product").' Select category');
+			$this->display ('admin/ProductList');
+		}
 	}
 	
 	public function Viewproductbyfilter()
 	{	
+		$page=$this->input->get('page');
 		$get_data=$this->input->get();
+		$filters='';
 		if(!empty($get_data)){
+			foreach($get_data as $key=>$value){
+				if($key !='page'){
+				$filters.="$key=$value";
+				$filters.="&";
+				}
+			}
+			$filters=rtrim($filters,"&");
+			
 			$this->data['categoriesID']=$categoriesID=$get_data['categoriesID'];
 			$this->data['shopID']=$shopID=$get_data['shopID'];
 			$this->data['productStatus']=$productStatus=$get_data['productStatus'];
@@ -62,7 +99,36 @@ class Product extends CI_Controller {
 			if($productStatus){ $where['productsStatus']=$productStatus; }
 			if($liveStatus){ $where['liveStatus']=$liveStatus; }
 			if($mapp){ $where['mapp']=$mapp; }
-			$product=$this->data['products']=$this->Product_model->get_product_by_filter($where);
+			
+			$limit = 50;
+			$config['per_page'] = $limit;
+			$config['page_query_string'] = TRUE;
+			$config['query_string_segment'] = 'page';
+			$config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+			$config['full_tag_close'] = '</ul>';
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = '<li>';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li ><a class="active" >';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['base_url'] = base_url() . "Product/Viewproductbyfilter?".$filters;
+			$totalrecord=$this->Product_model->gettotalrecorddownloaded($where);
+			$config['total_rows'] =$totalrecord[0]->total;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
+			
+			$product=$this->data['products']=$this->Product_model->get_product_by_filter($where,$limit,$page);
 			$this->data['category']=$this->Product_model->get_categories();
 			$this->data['shops']=$this->Product_model->get_shop();
 			$this->display ('admin/Viewproductbyfilter');

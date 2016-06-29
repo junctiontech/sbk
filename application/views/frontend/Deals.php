@@ -1,4 +1,9 @@
-<div class="Deal_filter">				
+<div class="clear"></div>
+<div class="page-no">
+    		<?php if(!empty($totalresult)){ ?>	<p>Total Result:<?php echo isset($totalresult)?$totalresult:''; ?> </p><?php } if(!empty($pagination)){ ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
+    		</div>
+<div class="Deal_filter">	
+		
     <div class="to_do">		
 					<div style="font-weight: bold; padding: 10px;">Top Deals</div>
                         <?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>

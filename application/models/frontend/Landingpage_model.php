@@ -109,7 +109,7 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
-	public function get_products($extraquery=false,$searchqry=false,$where=false,$where1=false){
+	public function get_products($extraquery=false,$searchqry=false,$where=false,$where1=false,$limit=false,$page=false){
 		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	productAttributeLable,productAttributeValue,t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
@@ -142,10 +142,21 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('productPrice','ASC');
 		$this->db->group_by('productsUrlKey');
 		}
-		//$this->db->limit(2000);
-
+		if($limit){
+		$this->db->limit($limit,$page);
+		}
 		$query=$this->db->get();
 		//echo $this->db->last_query();die;
+		return $query->result();
+	}
+	
+	public function getcountproduct($where=false)
+	{
+		$this->db->select('count(t1.productsID) as total');
+		$this->db->from('s4k_products_map t1');
+		$this->db->join('s4k_categories t8','t1.categoriesID=t8.categoriesID','left');
+		$this->db->where($where);
+		$query=$this->db->get();
 		return $query->result();
 	}
 	
@@ -224,10 +235,19 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
-	public function get_deals_by_category($category){
+	public function get_deals_by_category($category,$limit,$page=false){
 		$this->db->select('t1.offer_name,coupon_title,coupon_description,coupon_code,link,url,coupon_expiry,added');
 		$this->db->from('s4k_deals t1');
 		$this->db->join('s4k_deals_banner t2','t1.dealID=t2.dealID','left');
+		$this->db->where(array('t1.Status'=>'Active','category'=>$category));
+		$this->db->limit($limit,$page);
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function get_deals_counttotal($category){
+		$this->db->select('count(t1.dealID) as total');
+		$this->db->from('s4k_deals t1');
 		$this->db->where(array('t1.Status'=>'Active','category'=>$category));
 		$query=$this->db->get();
 		return $query->result();

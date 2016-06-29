@@ -14,6 +14,8 @@ class Landingpage extends CI_Controller {
 		$this->search_index = APPPATH . 'search/index';
 		$this->load->library('zend');
 		$this->zend->load('Zend/Search/Lucene');
+		$this->zend->load('Zend/Paginator');
+		$this->zend->load('Zend/View/Helper/PaginationControl');
 		if($this->userinfos){
 		$this->load->model('frontend/User_model');
 		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
@@ -113,10 +115,60 @@ class Landingpage extends CI_Controller {
 		$b=$this->input->Get('b');
 		$jsonarray=array();
 		$query='';$searchqry='';
+		
+		$get_data=$this->input->get();
+		$filters='';$page=$this->input->get('page');
+		if($page){
+			$filters="";
+		}
+		/* if(!empty($get_data)){
+			foreach($get_data as $key=>$value){
+				if($key !='page'){
+				$filters.="$key=$value";
+				$filters.="&";
+				}
+			}
+		} */
+		
+			$limit = 82;
+			$config['per_page'] = $limit;
+			$config['page_query_string'] = TRUE;
+			$config['query_string_segment'] = 'page';
+			$config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+			$config['full_tag_close'] = '</ul>';
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = '<li>';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li ><a class="active" >';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['base_url'] = base_url() . "Landingpage/product/".$categorykey.'.html';
+			
+		
 		if($categorykey=='search'){
 			$searchquery=$searchq;
 			$index = Zend_Search_Lucene::open($this->search_index);
+			$totalrecord = count($index->find($searchquery));
 			$products = $index->find($searchquery);
+			//$paginator = Zend_Paginator::factory($products);
+			//$paginator->setCurrentPageNumber($page);
+			//$products=$paginator->setItemCountPerPage($limit);
+			//Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+			//echo $this->PaginationControl->paginationControl($this->paginator,'sliding','controls.phtml',array('route' => 'album'));
+			$config['total_rows'] =$totalrecord;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
+			
 		}elseif(!empty($b)){
 			$productName=array();
 			if($sbkProductID){
@@ -137,8 +189,15 @@ class Landingpage extends CI_Controller {
 			$query['sb4kProductID']=$sbkProductID;
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{
-			$index = Zend_Search_Lucene::open($this->search_index);
-			$products = $index->find($searchquery);
+			//$index = Zend_Search_Lucene::open($this->search_index);
+			//$products = $index->find($searchquery);
+			$where=array('categoriesUrlKey like'=>$categorykey);
+			$products=$this->Landingpage_model->get_products('','',$where,'',$limit,$page);
+			$total=$this->Landingpage_model->getcountproduct($where);
+			$this->data['totalresult']=$total[0]->total;
+			$config['total_rows'] =$total[0]->total;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
 		}
 	}
 		
@@ -262,7 +321,52 @@ class Landingpage extends CI_Controller {
 		$this->data['new_deal']=$this->Landingpage_model->get_invetory_deal_data("New_deal");
 		if($category){
 		$category=str_replace('_',' ',$category);
-		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category);
+		
+		$get_data=$this->input->get();
+		$filters='';$page=$this->input->get('page');
+		if($page){
+			$filters="";
+		}
+		/* if(!empty($get_data)){
+			foreach($get_data as $key=>$value){
+				if($key !='page'){
+				$filters.="$key=$value";
+				$filters.="&";
+				}
+			}
+		} */
+		
+			$limit = 50;
+			$config['per_page'] = $limit;
+			$config['page_query_string'] = TRUE;
+			$config['query_string_segment'] = 'page';
+			$config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+			$config['full_tag_close'] = '</ul>';
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = '<li>';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li ><a class="active" >';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['base_url'] = base_url() . "Landingpage/Deals/".$category.'.html';
+			
+			$total=$this->Landingpage_model->get_deals_counttotal($category);
+			$this->data['totalresult']=$total[0]->total;
+			$config['total_rows'] =$total[0]->total;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
+			
+		$data=$this->data['dealsdata']=$this->Landingpage_model->get_deals_by_category($category,$limit,$page);
 		if($app=='true'){
 			echo json_encode($data);
 		}		 

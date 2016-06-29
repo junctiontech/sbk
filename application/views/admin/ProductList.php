@@ -23,8 +23,8 @@
 									<?php foreach($category as $categoryshow){?>
 										<option value="<?=isset($categoryshow->categoriesID) ?$categoryshow->categoriesID:''?>"
 										
-										<?php {if(!empty($id[0]->categoryName))
-											{  if($id[0]->categoryName==$categoryshow->categoryName)	
+										<?php {if(!empty($categoriesID))
+											{  if($categoriesID==$categoryshow->categoriesID)	
 											{  echo"selected"; }   }?>>
 										
 										<?=isset($categoryshow->categoryName)?$categoryshow->categoryName:''?>
@@ -46,8 +46,24 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>Product List </h3>
+							
                         </div>
-
+	
+						 <div class="title_right">
+                           <div class="dypagination">
+               
+										<?php echo isset($pagination)?$pagination:'';?>
+										<style>
+										.dypagination{margin:10px;text-align:right}
+										.dypagination ul{}
+										.dypagination ul li{text-align:center;list-style:none;list-style-image:none;margin-right:4px;display:inline-block}
+										.dypagination ul li a{display:inline-block;background:#DDDDDD;padding:6px 9px;color:#666;font-size:13px;text-decoration:none}
+										.dypagination ul li a.active{background:#670099;color:#FFF}				
+										.dypagination ul li:last-child{margin-right:0}               
+										
+										</style>
+									   </div>
+                        </div>
                         
                     </div>
                     <div class="clearfix"></div>
@@ -95,8 +111,24 @@
 														 <?php  } ?>
                                                 </div>
                                             </div>
+											
                                         </div>
-										<?php }}else{ ?>
+										
+										<?php }?>
+										<div class="dypagination">
+               
+										<?php echo isset($pagination)?$pagination:'';?>
+										<style>
+										.dypagination{margin:10px;text-align:right}
+										.dypagination ul{}
+										.dypagination ul li{text-align:center;list-style:none;list-style-image:none;margin-right:4px;display:inline-block}
+										.dypagination ul li a{display:inline-block;background:#DDDDDD;padding:6px 9px;color:#666;font-size:13px;text-decoration:none}
+										.dypagination ul li a.active{background:#670099;color:#FFF}				
+										.dypagination ul li:last-child{margin-right:0}               
+										
+										</style>
+									   </div>
+										<?php }else{ ?>
 									
 								
 											 <div class="col-sm-12 col-md-6 col-lg-6">
