@@ -166,7 +166,12 @@ class Product extends CI_Controller {
 			$categoriesID=$this->input->get('categoriesID');
 			$data=array('productsStatus'=>$status);
 			$filter=array('ProductsID'=>$id);
-			$this->Product_model->update('s4k_products',$data,$filter);	
+			$productshopdata=$this->Product_model->get_data('s4k_product_price',$filter);
+			if(!empty($productshopdata)){			
+			$updatefilter=array('shopProductID'=>$productshopdata[0]->shopProductID,'shopID'=>$productshopdata[0]->shopID);
+			$this->Product_model->update('s4k_product_status',$data,$updatefilter);	
+			}
+			//$this->Product_model->update('s4k_products',$data,$filter);	
 			if(!empty($categoriesID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
 	}
 	
@@ -198,7 +203,7 @@ class Product extends CI_Controller {
 								);
 								$productattribute=$this->Product_model->get_product_attribute(array('productsID'=>$productID));
 								$this->Product_model->insert_mapp_it($productdata1,'',$productattribute);
-								$this->Product_model->update('s4k_products',array('liveStatus'=>'Yes'),array('productsID'=>$productID));
+								$this->Product_model->update('s4k_product_status',array('liveStatus'=>'Yes'),array('shopProductID'=>$productdata[0]->shopProductID,'shopID'=>$productdata[0]->shopID));
 				}
 			}
 			if(!empty($categoriesID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }
@@ -211,12 +216,12 @@ class Product extends CI_Controller {
 		//print_r($this->data['updatedata']);die;
 		$this->display ('admin/Addproduct');
 	}
+	
 	public function insert_product()
+	{
 	
-{
 	
-	
-	$query=$this->db->get_where('s4k_products_map',array('productsUrlKey'=>$this->input->post('productsUrlKey')));
+		$query=$this->db->get_where('s4k_products_map',array('productsUrlKey'=>$this->input->post('productsUrlKey')));
 		$result=$query->result();
 		if(empty($result)){
 			
@@ -287,8 +292,8 @@ class Product extends CI_Controller {
 			redirect('product/Addproduct');
 
 	}	
-public function chooseattribute()
-	
+
+	public function chooseattribute()
 	{	$categoriesID=$this->input->post('categoriesID');
 
 		
@@ -308,8 +313,6 @@ public function chooseattribute()
 			echo "<option value=\"No attribute found\">No attribute found </option> ";
 		}
 	}
-	
-	
 	
 	public function Addproduct($url=false)
 	{
@@ -343,7 +346,7 @@ public function chooseattribute()
 		foreach($check_product as $check_product)
 		{ $id=($check_product->productsID);
 			$name=($check_product->productName);
-			$attribute=($check_product->attr);
+			$attribute='';//($check_product->attr);
 			if($i==1){ $select="selected";}else{ $select='';}
 	
 	echo "<option  value=\"$id\">$name $attribute</option> ";
@@ -393,7 +396,7 @@ public function chooseattribute()
 						echo"<p>$FetchName->productName</p>";
 						echo"<p style=\"margin-top:10px\">Price-$FetchName->productPrice</p>";
 						echo"<p style=\"margin-top:10px\">Shop-$FetchName->shopName</p>";
-						echo"<p style=\"margin-top:10px\">$FetchName->attr</p>";
+					//	echo"<p style=\"margin-top:10px\">$FetchName->attr</p>";
 					echo'</div>';
 				}	
 			}else{
@@ -490,7 +493,14 @@ public function chooseattribute()
 				
 			$data=array('parentProductID'=>$parentProductID,'childProductID'=>$childproductID);
 			$this->db->insert('s4k_product_mapping',$data);	
-			$this->Product_model->update('s4k_products',array('mapp'=>'Mapped'),array('productsID'=>$childproductID));
+			
+			$filter=array('ProductsID'=>$childproductID);
+			$productshopdata=$this->Product_model->get_data('s4k_product_price',$filter);
+			if(!empty($productshopdata)){			
+			$updatefilter=array('shopProductID'=>$productshopdata[0]->shopProductID,'shopID'=>$productshopdata[0]->shopID);
+			$this->Product_model->update('s4k_product_status',array('mapp'=>'Mapped'),$updatefilter);	
+			}
+			//$this->Product_model->update('s4k_products',array('mapp'=>'Mapped'),array('productsID'=>$childproductID));
 			echo"success";
 		}else{
 			echo"error Parent product or child product is missing. please try again!!";
@@ -505,8 +515,14 @@ public function chooseattribute()
 		if(!empty($mappedproductID) && !empty($productID)){ 
 				
 			$where=array('productMappingID'=>$mappedproductID);
-			$this->Product_model->delete_data('s4k_product_mapping',$where);	
-			$this->Product_model->update('s4k_products',array('mapp'=>'Unmapped'),array('productsID'=>$productID));
+			$this->Product_model->delete_data('s4k_product_mapping',$where);
+			$filter=array('ProductsID'=>$productID);
+			$productshopdata=$this->Product_model->get_data('s4k_product_price',$filter);
+			if(!empty($productshopdata)){			
+			$updatefilter=array('shopProductID'=>$productshopdata[0]->shopProductID,'shopID'=>$productshopdata[0]->shopID);
+			$this->Product_model->update('s4k_product_status',array('mapp'=>'Unmapped'),$updatefilter);	
+			}
+			//$this->Product_model->update('s4k_products',array('mapp'=>'Unmapped'),array('productsID'=>$productID));
 			echo"success";
 		}else{
 			echo"Unable to unmapped!!";
@@ -540,6 +556,7 @@ public function chooseattribute()
         $this->session->set_flashdata('message', $this->config->item("mapped_product").' Your products are mapped');
 		redirect('product/MappProduct');
 	} */
+	
 	public function create_attribute()
 	{
 		$productattribute=$this->input->post('field_name');
