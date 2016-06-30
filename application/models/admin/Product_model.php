@@ -52,12 +52,13 @@ class Product_model extends CI_Model {
 	{
 		$this->db->select('t6.productMappingID,t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
 		$this->db->from('s4k_product_mapping t6');
-		$this->db->join('s4k_products t1','t6.childProductID=t1.productsID');
+		$this->db->join('s4k_product_price t4','t6.childProductID=t4.shopProductID and t4.shopID=t6.childShopID');
+		$this->db->join('s4k_products t1','t4.productsID=t1.productsID');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
-		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
 		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
-		$this->db->where(array('t6.parentProductID'=>$product));
+		$this->db->join('s4k_product_price_map t7','t7.shopID=t6.parentShopID and t7.shopProductID=t6.parentProductID');
+		$this->db->where(array('t7.productsID'=>$product));
 		$query=$this->db->get();	
 		return $query->result();
 	}
@@ -151,7 +152,7 @@ class Product_model extends CI_Model {
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
 		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
 		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
-		$this->db->join('s4k_product_status t6','t4.shopID=t6.shopID,t6.shopProductID=t4.shopProductID');
+		$this->db->join('s4k_product_status t6','t4.shopID=t6.shopID and t6.shopProductID=t4.shopProductID');
 		//$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
 		//$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
 		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
@@ -159,12 +160,12 @@ class Product_model extends CI_Model {
 		//$this->db->where(array('t4.productPrice !='=>0.00));
 		$this->db->where(array('t5.shopID !='=>1));
 		
-		$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
+		//$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
 		//$this->db->where_in('t7.productAttributeValue',$query4);
 		//$this->db->where('t7.productAttributeLable','Model');
-		$this->db->where('t1.productsStatus','Active');
-		$this->db->where('t1.liveStatus','No');
-		$this->db->where('t1.mapp','Unmapped');
+		$this->db->where('t6.productsStatus','Active');
+		$this->db->where('t6.liveStatus','No');
+		$this->db->where('t6.mapp','Unmapped');
 		//$this->db->where(array('t7.productAttributeLable'=>'Model','t7.productAttributeValue like'=>"%$query4%"));
 		//$this->db->order_by('productName','ASC');
 		//$this->db->group_by('productName');

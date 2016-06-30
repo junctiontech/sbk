@@ -491,15 +491,19 @@ class Product extends CI_Controller {
 	
 		if(!empty($parentProductID && $childproductID )){ 
 				
-			$data=array('parentProductID'=>$parentProductID,'childProductID'=>$childproductID);
-			$this->db->insert('s4k_product_mapping',$data);	
-			
 			$filter=array('ProductsID'=>$childproductID);
 			$productshopdata=$this->Product_model->get_data('s4k_product_price',$filter);
-			if(!empty($productshopdata)){			
-			$updatefilter=array('shopProductID'=>$productshopdata[0]->shopProductID,'shopID'=>$productshopdata[0]->shopID);
-			$this->Product_model->update('s4k_product_status',array('mapp'=>'Mapped'),$updatefilter);	
+			
+			$parentfilter=array('ProductsID'=>$parentProductID);
+			$parentproductshopdata=$this->Product_model->get_data('s4k_product_price_map',$parentfilter);
+			
+			if(!empty($productshopdata) && !empty($parentproductshopdata)){	
+				$data=array('parentProductID'=>$parentproductshopdata[0]->shopProductID,'childProductID'=>$productshopdata[0]->shopProductID,'parentShopID'=>$parentproductshopdata[0]->shopID,'childShopID'=>$productshopdata[0]->shopID);
+				$this->db->insert('s4k_product_mapping',$data);	
+				$updatefilter=array('shopProductID'=>$productshopdata[0]->shopProductID,'shopID'=>$productshopdata[0]->shopID);
+				$this->Product_model->update('s4k_product_status',array('mapp'=>'Mapped'),$updatefilter);	
 			}
+			
 			//$this->Product_model->update('s4k_products',array('mapp'=>'Mapped'),array('productsID'=>$childproductID));
 			echo"success";
 		}else{
