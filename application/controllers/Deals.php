@@ -12,6 +12,7 @@ class Deals extends CI_Controller {
 		}
 	
 	public function display($template_file){
+		print_r($template_file);die;
 		$this->parser->parse('admin/Header',$this->data);
 		$this->load->view($template_file, $this->data);
 		$this->parser->parse('admin/Footer',$this->data);
@@ -84,7 +85,7 @@ class Deals extends CI_Controller {
 	public function Inventorydeal()
 	{
 		$this->data['newdeals']=$this->Deal_model->get_newdeal();				
-		$this->display('admin/inventorydeal', $this->data);
+		$this->display('admin/Inventorydeal', $this->data);
 	}
 	public function AddInventorydeal ($dealConsumptionID=false)
 	{
