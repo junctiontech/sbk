@@ -12,7 +12,6 @@ class Deals extends CI_Controller {
 		}
 	
 	public function display($template_file){
-		print_r($template_file);die;
 		$this->parser->parse('admin/Header',$this->data);
 		$this->load->view($template_file, $this->data);
 		$this->parser->parse('admin/Footer',$this->data);
