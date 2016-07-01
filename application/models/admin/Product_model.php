@@ -135,13 +135,13 @@ class Product_model extends CI_Model {
 	
 	function map_product1($category=false,$product=false,$productName=false )
 	{
-		$query1=$this->db->query("select productAttributeLable,productAttributeValue from s4k_product_attribute_map where productsID=$product and productAttributeLable in ('Model ID','Model Name')");
+		/* $query1=$this->db->query("select productAttributeLable,productAttributeValue from s4k_product_attribute_map where productsID=$product and productAttributeLable in ('Model ID','Model Name')");
 		//echo $this->db->last_query();die;
 		$query2=$query1->result_array();
 		$query4='';//array();
 		foreach($query2 as $query3){
 			$query4[]=$query3['productAttributeValue'];
-		}
+		} */
 		//$query5=implode(',',$query4);
 		//print_r($query5);die;
 		//$this->db->distinct();

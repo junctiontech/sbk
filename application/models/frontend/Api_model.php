@@ -367,8 +367,9 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 	
 	public function get_categoryID()
 	{
-			$this->db->select('t1.categoriesID,t1.categoryName');
+			$this->db->select('t1.categoriesID,t2.categoryName');
 			$this->db->from('s4k_categories t1');
+			$this->db->join('s4k_category_details t2','t1.categoriesID=t2.categoriesID');
 			$this->db->where(array('categoriesStatus'=>'Active'));
 			$query=$this->db->get();
 			$result=$query->result();
