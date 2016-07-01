@@ -475,7 +475,31 @@ class Api extends CI_Controller {
 		do{
 			//try
 			//{
-				$result = $obj->searchProducts("$productBrand $productName",'Electronics',"TITLE",'',1389432031,$ItemPage);
+				$searchindex='';$brosweNode='';
+				if($categoryID->categoryName=='Mobiles'){
+					$searchindex='Electronics';$brosweNode='1389432031';
+				}elseif($categoryID->categoryName=='Laptops'){
+					$searchindex='Electronics';$brosweNode='1375424031';
+				}elseif($categoryID->categoryName=='TVs'){
+					$searchindex='Electronics';$brosweNode='1389396031';
+				}elseif($categoryID->categoryName=='Appliances'){
+					$searchindex='Home & Kitchen';$brosweNode='';
+				}elseif($categoryID->categoryName=='Air conditioners'){
+					$searchindex='Home & Kitchen';$brosweNode='3474656031';
+				}elseif($categoryID->categoryName=='Apparels'){
+					$searchindex='Clothing & Accessories';$brosweNode='';
+				}elseif($categoryID->categoryName=='Health & Fitness'){
+					$searchindex='Health & Personal Care';$brosweNode='';
+				}elseif($categoryID->categoryName=='Small Appliances'){
+					$searchindex='All Categories';$brosweNode='';
+				}elseif($categoryID->categoryName=='Audio Video'){
+					$searchindex='Electronics';$brosweNode='1389375031';
+				}elseif($categoryID->categoryName=='Baby Care Products'){
+					$searchindex='Baby';$brosweNode='1953111031';
+				}elseif($categoryID->categoryName=='Accessories'){
+					$searchindex='All Categories';$brosweNode='';
+				}
+				$result = $obj->searchProducts("$productBrand $productName","$searchindex","TITLE",'',"$brosweNode",$ItemPage);
 			//}
 			/* catch(Exception $e)
 			{
