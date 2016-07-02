@@ -1,17 +1,4 @@
-<!--<div class="header_bottom_left"> 
-<!-- <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
-<script src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN"></script> 
-		<iframe style="height: 1100px;
-    width: 1249px;" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN">
-  <p>Your browser does not support iframes.</p>
-</iframe>
-		  <div class="clear"></div>
-		</div>
-			
-	  <div class="clear"></div>
-  </div>	
-</div>-->
-	<div class="clear"></div>
+<div class="clear"></div>
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="hotel_panal">
@@ -20,13 +7,39 @@
               <div class="hotel"style="padding-bottom: 25px;">
                 <h2>Search Hotal</h2>
               </div>
+			  
               <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 hotel">Where?</label>
-             
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <input type="text" class="form-control" value=" ">
+                <label class="col-md-3 col-sm-3 col-xs-12 hotel">Where</label>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+                  <select  class="select3_group form-control" name="where" >
+					<option value="" >Where</option>
+					<span id="placeID"></span>
+						<?php { 
+						if(!empty($Fetch_ProductName))
+						{
+						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
+						{?>
+							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
+							
+						<?php }}}?>
+					</select>
                 </div>
               </div>
+			  
+			  <script>
+            $(document).ready(function () {
+                $(".select2_single").select2({
+                    placeholder: "Select a state",
+                    allowClear: true
+                });
+                $(".select3_group").select2({});
+                $(".select2_multiple").select2({
+                    maximumSelectionLength: 4,
+                    placeholder: "With Max Selection limit 4",
+                    allowClear: true
+                });
+            });
+        </script>
 <div class="form-group">
 <label class="col-md-5 col-sm-5 col-xs-12 hotel">Check In</label>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -169,4 +182,29 @@
 		 function enableButton2() {
             document.getElementById("button2").disabled = false;
         }
+		
+		function getplaceID(placekey)
+{ 
+	var placekey =placekey;
+	if(placekey !=='')
+	{
+    $.ajax({
+    type: "POST",
+    url: "http://partners.api.skyscanner.net/apiservices/autosuggest/v1.0/IN/INR/en-GB/?query=bhopal&apiKey=se891278314094529612719886766340",
+  	cache: false,
+    success: function(html)
+    { alert(html);
+    $("#placeID").html(html);
+    }
+    });
+}return false;  	  
+}
+		
+		
+		$(document).ready(function(){
+	  
+				$(document).on('keyup', '.select2-search__field', function() {
+				getplaceID(this.value);
+				});
+		});
     </script>

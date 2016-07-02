@@ -217,8 +217,8 @@ class Api extends CI_Controller {
 				$this->Api_model->update_data($logDataUpdate,$where);
 				}
 			}else{
-				echo"already running";
-				exit();
+				//echo"already running";
+				//exit();
 			}
 			}
 			//..............
@@ -330,8 +330,8 @@ class Api extends CI_Controller {
 				$this->Api_model->update_data($logDataUpdate,$where);
 				}
 			}else{
-				echo"already running";
-				exit();
+				//echo"already running";
+				//exit();
 			}
 				//.................
 			}
@@ -590,7 +590,7 @@ $j++;	}
 				}
 				}else{
 				
-				exit();
+			//	exit();
 			}
 ///,,,,,,,,,,,,
 	}

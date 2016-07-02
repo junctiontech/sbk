@@ -22,6 +22,7 @@
 <script type="text/javascript" src="<?=base_url();?>frontend/js/nav-hover.js"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/jquery.inputmask.js"></script>
 <script type="text/javascript" src="<?=base_url();?>frontend/js/validator.js"></script>
+<link href="<?=base_url();?>admin/css/select/select2.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
@@ -32,7 +33,6 @@
   });
 </script>
 <!-- TradeDoubler site verification 2851632 -->  
-<script type="text/javascript" src="http://classic.avantlink.com/affiliate_app_confirm.php?mode=js&authResponse=571c4f18486fb85649a41e251cc0a319f7e77edd"></script>
 </head>
 <body>
 
