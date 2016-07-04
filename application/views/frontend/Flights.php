@@ -2,7 +2,7 @@
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="flight">
- <form method="get" action="<?=base_url();?>Flights.html" class="form-horizontal form-label-left">
+ <form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="form-horizontal form-label-left">
 <div class="">
 <div class="hotel"style="padding-bottom: 25px;">
 <h2>Search Flights</h2>
@@ -74,9 +74,10 @@
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Class </label>
 <div class="col-md-9 col-sm-9 col-xs-12">
 <select class="form-control" name="class">
-<option value="1">Economy</option>
-<option value="2">Premium Economy</option>
-<option value="3">Business</option>
+<option value="Economy*">Economy</option>
+<option value="PremiumEconomy">Premium Economy</option>
+<option value="Business">Business</option>
+<option value="First">First</option>
 </select>
 </div>
 </div>
@@ -231,13 +232,11 @@ function toID(placekey)
 		
 		$(document).ready(function(){
 	  
-				$(document).on('keyup', '.select2-search__field', function() {
-					alert("1");
+				$(document).on('keyup', '.select3_group,.select2-search__field', function() {
 				fromID(this.value);
 				});
 				
 				$(document).on('keyup', '.select2_single,.select2-search__field', function() {
-					alert("2");
 				toID(this.value);
 				});
 		});

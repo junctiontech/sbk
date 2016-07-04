@@ -208,7 +208,7 @@ class Landingpage extends CI_Controller {
 			foreach($products as $product){
 				
 				$attributegroups=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
-			
+				$productFeatures='';
 				foreach($attributegroups as $attributegroup){ 
 				$attributebyproducts=$this->Landingpage_model->get_attribute_by_product($attributegroup->AttributeID,$products[0]->productsID); 
 					if(!empty($attributebyproducts)){
@@ -491,9 +491,9 @@ class Landingpage extends CI_Controller {
 	}
 	function Flights()
 	{
-		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->parser->parse('frontend/Header',$this->data);
-	$this->parser->parse('frontend/Flights',$this->data);
-	$this->parser->parse('frontend/Footer',$this->data);
+			$this->parser->parse('frontend/Flights',$this->data);
+			$this->parser->parse('frontend/Footer',$this->data);
 	}
 }
