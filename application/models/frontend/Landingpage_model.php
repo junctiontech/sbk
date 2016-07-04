@@ -110,14 +110,14 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_products($extraquery=false,$searchqry=false,$where=false,$where1=false,$limit=false,$page=false){
-		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	productAttributeLable,productAttributeValue,t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
+		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');//productAttributeLable,productAttributeValue,
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
 			
 		}
 		$this->db->from('s4k_products_map t1');
 		//$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
-		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		//$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
 		//$this->db->join('s4k_product_attribute_details t4','t3.productAttributeID=t4.productAttributeID','left');
 		$this->db->join('s4k_product_images_map t5','t1.productsID=t5.productsID','left');
 		//$this->db->join('s4k_product_image_details t6','t5.productImageID=t6.productImageID','left');

@@ -207,20 +207,49 @@ class Landingpage extends CI_Controller {
 				 
 			foreach($products as $product){
 				
+				$attributegroups=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
+			
+				foreach($attributegroups as $attributegroup){ 
+				$attributebyproducts=$this->Landingpage_model->get_attribute_by_product($attributegroup->AttributeID,$products[0]->productsID); 
+					if(!empty($attributebyproducts)){
+						$valuearray='';
+						foreach($attributebyproducts as $attributebyproduct){
+							$valuearray[]=array('lable'=>$attributebyproduct->productAttributeLable,'value'=>$attributebyproduct->productAttributeValue);
+						}
+							$productFeatures[]=array('lable'=>$attributegroup->productAttributeLable,'value'=>$valuearray);		
+					}
+				}
+				
+				$moreprice='';
+				
+				$othershopprices=$this->Landingpage_model->get_shopprices($products[0]->productsID,$products[0]->shopID);
+				
+				if(!empty($othershopprices)){
+					foreach($othershopprices as $othershopprice){
+						$moreprice[]=array('shop_image'=>$othershopprice->shop_image,'productPrice'=>$othershopprice->productPrice,'productShopUrl'=>$othershopprice->productShopUrl);
+					}
+				}
+				
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
 				  'productName'=>$product->productName,
-				  'productAttributeLable'=>$product->productAttributeLable,
-				  'productAttributeValue'=>$product->productAttributeValue,
+				  //'productAttributeLable'=>$product->productAttributeLable,
+				 // 'productAttributeValue'=>$product->productAttributeValue,
 				  'imageName'=>$product->imageName,
 				  'productImageTitle'=>$product->productImageTitle,
 				  'productImageAltTag'=>$product->productImageAltTag,
 				  'productPrice'=>$product->productPrice,
 				  'productShopUrl'=>$product->productShopUrl,
+				  'shop_image'=>$product->shop_image,
+				  'productFeatures'=>$productFeatures,
+				  'morePrices'=>$moreprice
 				  );
 			}
-				$jsonarray['products']=$apparray;
+			
+			
+			$jsonarray['products']=$apparray;
+				
 				echo json_encode($jsonarray);
 			}else{
 				echo "No product found";

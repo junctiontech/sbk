@@ -36,23 +36,6 @@ function search_product(productval)
 
 }
 
-function getplaceID(placekey)
-{ 
-	var placekey =placekey;
-	if(placekey !=='')
-	{
-    $.ajax({
-    type: "GET",
-    url: "http://partners.api.skyscanner.net/apiservices/autosuggest/v1.0/IN/INR/en-GB/?query=bhopalKey=se891278314094529612719886766340",
-  	cache: false,
-    success: function(html)
-    { alert(html);
-    $("#placeID").html(html);
-    }
-    });
-}return false;  	  
-}
-
 function getproductimage(productID)
 { 
 		$("#loader").fadeIn();

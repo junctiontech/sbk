@@ -33,7 +33,7 @@ class Hotel extends CI_Controller {
 		$this->parser->parse('frontend/Footer',$this->data);
 	}
 	
-	public function index($url=false)
+	public function index()
 	{
 		$app=$this->input->get('app');
 		$jsonarray=array();
@@ -46,6 +46,44 @@ class Hotel extends CI_Controller {
 		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		//print_r($dealsgategorys);die;
 		/* echo"<br>";print_r($categories);echo"<br>";echo"<br>";print_r($featureproduct);echo"<br>";echo"<br>";print_r($lshproduct);die; */
+		
+		if($this->input->get())
+		{
+			$where=$this->input->get('where');
+			$checkIn=$this->input->get('checkIn');
+			$checkOut=$this->input->get('checkOut');
+			$noOfGuests=$this->input->get('noOfGuests');
+			$noOfRoom=$this->input->get('noOfRoom');
+			
+			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/IN/INR/en-GB/$where/$checkIn/$checkOut/$noOfGuests/$noOfRoom?apiKey=prtl6749387986743898559646983194"),true);
+			
+			
+			if(!empty($jsonData['urls']['hotel_details'])){
+				$hotelsDetailUrl=$jsonData['urls']['hotel_details'];
+			}
+			
+			if(!empty($jsonData['hotels'])){
+				
+				$hotelsID='';
+				
+				foreach($jsonData['hotels'] as $hotel)
+				{ 
+					$hotelsID[]=$hotel['hotel_id'];
+					
+				}
+			}
+			
+			if(!empty($hotelsDetailUrl) && !empty($hotelsID)){
+				
+				$hotelsID=implode(",",$hotelsID);
+				$getHotelsDetail = json_decode(file_get_contents("http://partners.api.skyscanner.net$hotelsDetailUrl&hotelIds=$hotelsID"),true);
+				$this->data['getHotelsDetail']=$getHotelsDetail;
+				
+			}
+			
+		}
+		
+		
 		if($app=='true'){
 			if(!empty($categories)){
 				$jsonarray['categories']=$categories;
@@ -59,13 +97,68 @@ class Hotel extends CI_Controller {
 			}else{
 				echo "No category found";
 			}
-				
 		}else{
-			
 			$this->display ('frontend/Hotel');
 		}
 	}
 	
+	public function getplaceID()
+	{
+		if($this->input->post())
+		{
+			$placekey=$this->input->post('placekey');
+			
+			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/autosuggest/v2/IN/INR/en-GB/$placekey?apiKey=se891278314094529612719886766340"),true);
+
+			if(!empty($jsonData['results'])){
+				echo "<option  value=\"\">where</option> ";
+				foreach($jsonData['results'] as $place)
+				{ 
+					$placeID='';$placeName='';
+					$placeID=$place['individual_id'];$placeName=$place['display_name'];
+					echo "<option  value=\"$placeID\">$placeName</option> ";
+				}
+			}
+		}
+	}
 	
+	public function gethotels()
+	{
+		if($this->input->get())
+		{
+			$where=$this->input->get('where');
+			$checkIn=$this->input->get('checkIn');
+			$checkOut=$this->input->get('checkOut');
+			$noOfGuests=$this->input->get('noOfGuests');
+			$noOfRoom=$this->input->get('noOfRoom');
+			
+			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/IN/INR/en-GB/$where/$checkIn/$checkOut/$noOfGuests/$noOfRoom?apiKey=prtl6749387986743898559646983194"),true);
+			
+			
+			if(!empty($jsonData['urls']['hotel_details'])){
+				$hotelsDetailUrl=$jsonData['urls']['hotel_details'];
+			}
+			
+			if(!empty($jsonData['hotels'])){
+				
+				$hotelsID='';
+				
+				foreach($jsonData['hotels'] as $hotel)
+				{ 
+					$hotelsID[]=$hotel['hotel_id'];
+					
+				}
+			}
+			
+			if(!empty($hotelsDetailUrl) && !empty($hotelsID)){
+				
+				$hotelsID=implode(",",$hotelsID);
+				$getHotelsDetail = json_decode(file_get_contents("http://partners.api.skyscanner.net$hotelsDetailUrl&hotelIds=$hotelsID"),true);
+				$this->data['getHotelsDetail']=$getHotelsDetail;
+				
+			}
+			
+		}
+	}
 	
 }

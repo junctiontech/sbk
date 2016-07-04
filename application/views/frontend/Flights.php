@@ -2,33 +2,46 @@
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="flight">
- <form method="post" class="form-horizontal form-label-left">
+ <form method="get" action="<?=base_url();?>Flights.html" class="form-horizontal form-label-left">
 <div class="">
 <div class="hotel"style="padding-bottom: 25px;">
 <h2>Search Flights</h2>
 </div>
-<div class="col-md-12">
-<div class="form-group hotel">
-<div class="col-md-5">
-<input type="radio" class="flat" name="radio"/>
-One Way </div>
-<div class="col-md-5">
-<input type="radio" class="flat" name="radio"/>
-Round Trip </div>
-</div>
-</div>
-<div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 hotel">From </label>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" class="form-control" value=" ">
-</div>
-</div>
-<div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 hotel">To</label>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<input type="text" class="form-control" value=" ">
-</div>
-</div>
+
+			<div class="form-group">
+                <label class="col-md-3 col-sm-3 col-xs-12 hotel">From</label>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+                  <select id="fromID" class="select3_group form-control" name="from" >
+					<option value="" >From</option>
+						<?php { 
+						if(!empty($Fetch_ProductName))
+						{
+						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
+						{?>
+							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
+							
+						<?php }}}?>
+					</select>
+                </div>
+              </div>
+
+			<div class="form-group">
+                <label class="col-md-3 col-sm-3 col-xs-12 hotel">To</label>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+                  <select id="toID" class="select2_single form-control" name="to" >
+					<option value="" >To</option>
+						<?php { 
+						if(!empty($Fetch_ProductName))
+						{
+						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
+						{?>
+							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
+							
+						<?php }}}?>
+					</select>
+                </div>
+              </div>
+
 <div class="form-group">
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Departure</label>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -36,7 +49,7 @@ Round Trip </div>
 <div class="control-group">
 <div class="controls">
 <div class="col-md-12 xdisplay_inputx form-group has-feedback">
-<input type="text" class="form-control has-feedback-left" id="single_cal3" placeholder="Departure Date" aria-describedby="inputSuccess2Status">
+<input type="text" class="form-control has-feedback-left" id="single_cal3" name="departure" placeholder="Departure Date" aria-describedby="inputSuccess2Status">
 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
 </div>
 </div>
@@ -50,7 +63,7 @@ Round Trip </div>
 <div class="control-group">
 <div class="controls">
 <div class="col-md-12 xdisplay_inputx form-group has-feedback">
-<input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="Return Date" aria-describedby="inputSuccess2Status">
+<input type="text" class="form-control has-feedback-left" id="single_cal4" name="return" placeholder="Return Date" aria-describedby="inputSuccess2Status">
 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
 </div>
 </div>
@@ -60,10 +73,27 @@ Round Trip </div>
 <div class="form-group">
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Class </label>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<select class="form-control" name="Status">
+<select class="form-control" name="class">
 <option value="1">Economy</option>
 <option value="2">Premium Economy</option>
 <option value="3">Business</option>
+</select>
+</div>
+</div>
+
+<div class="form-group">
+<label class="col-md-2 col-sm-2 col-xs-12 hotel">Adults </label>
+<div class="col-md-9 col-sm-9 col-xs-12">
+<select class="form-control" name="class">
+<option select value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+
 </select>
 </div>
 </div>
@@ -96,30 +126,47 @@ Round Trip </div>
 </div> 
 </div>
 </div><div class="clear"></div>
+  <script>
+            $(document).ready(function () {
+                $(".select2_single").select2({
+                    allowClear: true
+                });
+                $(".select3_group").select2({});
+                $(".select2_multiple").select2({
+                    maximumSelectionLength: 4,
+                    placeholder: "With Max Selection limit 4",
+                    allowClear: true
+                });
+            });
+        </script>
 <script>
         	
         $(document).ready(function () {
             $('#single_cal1').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal2').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal3').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal4').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
@@ -142,4 +189,56 @@ Round Trip </div>
 		 function enableButton2() {
             document.getElementById("button2").disabled = false;
         }
+		
+		function fromID(placekey)
+{ 
+	var placekey =placekey;
+	if(placekey !=='')
+	{
+		$.ajax({
+		type: "POST",
+		url: base_url+"Flights/getplaceID",
+		data:{placekey:placekey},
+		cache: false,
+		success: function(html)
+		{ // alert(html);
+		$("#fromID").html(html);
+		}
+		});
+	}
+	return false;  	  
+}
+
+function toID(placekey)
+{ 
+	var placekey =placekey;
+	if(placekey !=='')
+	{
+		$.ajax({
+		type: "POST",
+		url: base_url+"Flights/getplaceID",
+		data:{placekey:placekey},
+		cache: false,
+		success: function(html)
+		{ // alert(html);
+		$("#toID").html(html);
+		}
+		});
+	}
+	return false;  	  
+}
+		
+		
+		$(document).ready(function(){
+	  
+				$(document).on('keyup', '.select2-search__field', function() {
+					alert("1");
+				fromID(this.value);
+				});
+				
+				$(document).on('keyup', '.select2_single,.select2-search__field', function() {
+					alert("2");
+				toID(this.value);
+				});
+		});
     </script>

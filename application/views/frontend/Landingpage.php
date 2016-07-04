@@ -117,18 +117,43 @@
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 			
 
-		   <form method="post" class="form-horizontal form-label-left">
+		   <form method="get" action="<?=base_url();?>Hotel.html" class="form-horizontal form-label-left">
 		   		   <div class=" ">
               <div class="hotel"style="padding-bottom: 25px;">
                 <h2>Search Hotal</h2>
               </div>
               <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 hotel">Where?</label>
-             
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <input type="text" class="form-control" value=" ">
+                <label class="col-md-3 col-sm-3 col-xs-12 hotel">Where</label>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+                  <select id="placeID" class="select3_group form-control" name="where" >
+					<option value="" >Where</option>
+						<?php { 
+						if(!empty($Fetch_ProductName))
+						{
+						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
+						{?>
+							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
+							
+						<?php }}}?>
+					</select>
                 </div>
               </div>
+			  
+			  <script>
+            $(document).ready(function () {
+                $(".select2_single").select2({
+                    placeholder: "Select a state",
+                    allowClear: true
+                });
+                $(".select3_group").select2({});
+                $(".select2_multiple").select2({
+                    maximumSelectionLength: 4,
+                    placeholder: "With Max Selection limit 4",
+                    allowClear: true
+                });
+            });
+        </script>
+		
               <div class="col-md-12 col-sm-12 col-xs-12">
 			  
                 <div class="col-md-5"><p class="hotel">Check In</p>
@@ -136,7 +161,7 @@
                     <div class="control-group">
                       <div class="controls">
                         <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                          <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="Check In" aria-describedby="inputSuccess2Status">
+                          <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="Check In" aria-describedby="inputSuccess2Status" name="checkIn">
                           <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> 
 						  <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
                       </div>
@@ -148,7 +173,7 @@
                                                 <div class="control-group">
                       <div class="controls">
                         <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                          <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="Check Out" aria-describedby="inputSuccess2Status">
+                          <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="Check Out" aria-describedby="inputSuccess2Status" name="checkOut">
                           <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> 
 						  <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
                       </div>
@@ -164,7 +189,7 @@
                       <div class="controls">
                         <div class="col-md-11 xdisplay_inputx form-group has-feedback">
                   
-<select class="form-control" name="Status">
+<select class="form-control" name="noOfGuests">
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -193,7 +218,7 @@
                       <div class="controls">
                         <div class="col-md-11 xdisplay_inputx form-group has-feedback">
 
-<select class="form-control" name="Status">
+<select class="form-control" name="noOfRoom">
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -656,25 +681,29 @@
         $(document).ready(function () {
             $('#single_cal1').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal2').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal3').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
             $('#single_cal4').daterangepicker({
                 singleDatePicker: true,
-                calender_style: "picker_1"
+                calender_style: "picker_1",
+				format: "YYYY-MM-DD"
             }, function (start, end, label) {
                 console.log(start.toISOString(), end.toISOString(), label);
             });
@@ -694,4 +723,32 @@
                 console.log(start.toISOString(), end.toISOString(), label);
             });
         });
+		
+		
+		function getplaceID(placekey)
+{ 
+	var placekey =placekey;
+	if(placekey !=='')
+	{
+		$.ajax({
+		type: "POST",
+		url: base_url+"Hotel/getplaceID",
+		data:{placekey:placekey},
+		cache: false,
+		success: function(html)
+		{ // alert(html);
+		$("#placeID").html(html);
+		}
+		});
+	}
+	return false;  	  
+}
+		
+		
+		$(document).ready(function(){
+	  
+				$(document).on('keyup', '.select2-search__field', function() {
+				getplaceID(this.value);
+				});
+		});
     </script> 

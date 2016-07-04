@@ -17,6 +17,27 @@ class Flights extends CI_Controller {
 		$this->load->view($template_file, $this->data);
 		$this->parser->parse('admin/Footer',$this->data);
 	}
+	
+	public function getplaceID()
+	{
+		if($this->input->post())
+		{
+			$placekey=$this->input->post('placekey');
+			
+			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/autosuggest/v1.0/IN/INR/en-GB/?query=$placekey&apiKey=se891278314094529612719886766340"),true);
+
+			if(!empty($jsonData['Places'])){
+				echo "<option  value=\"\">where</option> ";
+				foreach($jsonData['Places'] as $place)
+				{ 
+					$placeID='';$placeName='';
+					$placeID=$place['PlaceId'];$placeName=$place['PlaceName'];
+					echo "<option  value=\"$placeID\">$placeName</option> ";
+				}
+			}
+		}
+	}
+	
 	public function index ()
 	{
 		$this->display('admin/Viewfight', $this->data);
