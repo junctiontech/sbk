@@ -247,8 +247,29 @@ class Landingpage extends CI_Controller {
 				  );
 			}
 			
-			
+				$searchquery1="categoriesUrlKey: $categorykey";
+				$searchquery1.="AND productsUrlKey: $productkey";
+				$index = Zend_Search_Lucene::open($this->search_index);
+				Zend_Search_Lucene::setResultSetLimit(5);
+				$similarproductDatas= $index->find($searchquery1,'score',SORT_DESC);
+				$similarproduct='';
+				foreach($similarproductDatas as $similarproductData){
+					$similarproduct[]=array ('categoriesUrlKey'=>$similarproductData->categoriesUrlKey,
+				  'productsUrlKey'=>$similarproductData->productsUrlKey,
+				  'sb4kProductID'=>$similarproductData->sb4kProductID,
+				  'productName'=>$similarproductData->productName,
+				  //'productAttributeLable'=>$product->productAttributeLable,
+				 // 'productAttributeValue'=>$product->productAttributeValue,
+				  'imageName'=>$similarproductData->imageName,
+				  'productImageTitle'=>$similarproductData->productImageTitle,
+				  'productImageAltTag'=>$similarproductData->productImageAltTag,
+				  'productPrice'=>$similarproductData->productPrice,
+				  'productShopUrl'=>$similarproductData->productShopUrl,
+				  
+				  );
+				}
 			$jsonarray['products']=$apparray;
+			$jsonarray['similarproduct']=$similarproduct;
 				
 				echo json_encode($jsonarray);
 			}else{
