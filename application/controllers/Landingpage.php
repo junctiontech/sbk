@@ -222,6 +222,7 @@ class Landingpage extends CI_Controller {
 				
 				$moreprice='';
 				
+				if(!empty($products[0]->productsID) && !empty($products[0]->shopID)){
 				$othershopprices=$this->Landingpage_model->get_shopprices($products[0]->productsID,$products[0]->shopID);
 				
 				if(!empty($othershopprices)){
@@ -229,7 +230,7 @@ class Landingpage extends CI_Controller {
 						$moreprice[]=array('shop_image'=>$othershopprice->shop_image,'productPrice'=>$othershopprice->productPrice,'productShopUrl'=>$othershopprice->productShopUrl);
 					}
 				}
-				
+				}
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
@@ -490,7 +491,46 @@ class Landingpage extends CI_Controller {
 		}
 	}
 	function Flights()
-	{
+	{	
+			if($this->input->get())
+		{
+			$from=$this->input->get('from');
+			$to=$this->input->get('to');
+			$departure=$this->input->get('departure');
+			$return=$this->input->get('return');
+			$class=$this->input->get('class');
+			$adults=$this->input->get('adults');
+			
+			//$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/IN/INR/en-GB/$where/$checkIn/$checkOut/$noOfGuests/$noOfRoom?apiKey=prtl6749387986743898559646983194"),true);
+			
+			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/pricing/v1.0/IN/INR/en-GB?apiKey=se388177191712562214854946236057&originplace=$from&destinationplace=$to&outbounddate=$departure&adults=$adults"),true);
+			
+			print_r($jsonData);die;
+			if(!empty($jsonData['urls']['hotel_details'])){
+				$hotelsDetailUrl=$jsonData['urls']['hotel_details'];
+			}
+			
+			if(!empty($jsonData['hotels'])){
+				
+				$hotelsID='';
+				
+				foreach($jsonData['hotels'] as $hotel)
+				{ 
+					$hotelsID[]=$hotel['hotel_id'];
+					
+				}
+			}
+			
+			if(!empty($hotelsDetailUrl) && !empty($hotelsID)){
+				
+				$hotelsID=implode(",",$hotelsID);
+				$getHotelsDetail = json_decode(file_get_contents("http://partners.api.skyscanner.net$hotelsDetailUrl&hotelIds=$hotelsID"),true);
+				$this->data['getHotelsDetail']=$getHotelsDetail;
+				
+			}
+			
+		}
+			
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->parser->parse('frontend/Header',$this->data);
 			$this->parser->parse('frontend/Flights',$this->data);

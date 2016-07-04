@@ -85,7 +85,7 @@
 <div class="form-group">
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Adults </label>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<select class="form-control" name="class">
+<select class="form-control" name="adults">
 <option select value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
