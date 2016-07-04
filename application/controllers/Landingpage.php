@@ -242,9 +242,7 @@ class Landingpage extends CI_Controller {
 				  'productImageAltTag'=>$product->productImageAltTag,
 				  'productPrice'=>$product->productPrice,
 				  'productShopUrl'=>$product->productShopUrl,
-				  if(!empty($products[0]->productsID) && !empty($products[0]->shopID)){
-				  'shop_image'=>$product->shop_image,
-				  }
+				  'shop_image'=>isset($product->shop_image)?$product->shop_image:'',
 				  'productFeatures'=>$productFeatures,
 				  'morePrices'=>$moreprice
 				  );
