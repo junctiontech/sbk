@@ -231,7 +231,7 @@ class Landingpage extends CI_Controller {
 					}
 				}
 				}
-				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productShopUrl,'productShopUrl'=>$product->productShopUrl);
+				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productPrice,'productShopUrl'=>$product->productShopUrl);
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
