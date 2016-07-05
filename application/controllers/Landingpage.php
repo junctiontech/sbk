@@ -231,6 +231,7 @@ class Landingpage extends CI_Controller {
 					}
 				}
 				}
+				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productShopUrl,'productShopUrl'=>$product->productShopUrl);
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
@@ -427,6 +428,7 @@ class Landingpage extends CI_Controller {
 		$this->parser->parse('frontend/Footer',$this->data);
 		//$this->display('frontend/Deals', $this->data);
 	}
+	
 	public function Filter_product ()
 	{	
 		$str =$this->input->post('data');
@@ -490,9 +492,10 @@ class Landingpage extends CI_Controller {
 			echo "NO Product Found ";
 		}
 	}
+	
 	function Flights()
 	{	
-			if($this->input->get())
+		if($this->input->get())
 		{
 			$from=$this->input->get('from');
 			$to=$this->input->get('to');
@@ -501,32 +504,32 @@ class Landingpage extends CI_Controller {
 			$class=$this->input->get('class');
 			$adults=$this->input->get('adults');
 			
-			//$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/IN/INR/en-GB/$where/$checkIn/$checkOut/$noOfGuests/$noOfRoom?apiKey=prtl6749387986743898559646983194"),true);
+			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se388177191712562214854946236057';
+			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class );
 			
-			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/pricing/v1.0/IN/INR/en-GB?apiKey=se388177191712562214854946236057&originplace=$from&destinationplace=$to&outbounddate=$departure&adults=$adults"),true);
+			$options = array(
+				'http' => array(
+					'header'  => "Content-type: application/x-www-form-urlencoded",
+					'method'  => 'POST',
+					'accept'=>'application/json',
+					'content' => http_build_query($data)
+				)
+			);
+			$context  = stream_context_create($options);
+			$result = file_get_contents($url, false, $context); 
+			//print_r(explode(' ',$http_response_header[4]));die;
 			
-			print_r($jsonData);die;
-			if(!empty($jsonData['urls']['hotel_details'])){
-				$hotelsDetailUrl=$jsonData['urls']['hotel_details'];
-			}
-			
-			if(!empty($jsonData['hotels'])){
-				
-				$hotelsID='';
-				
-				foreach($jsonData['hotels'] as $hotel)
-				{ 
-					$hotelsID[]=$hotel['hotel_id'];
-					
+			if(!empty($http_response_header[4])){
+				$location=explode(' ',$http_response_header[4]);
+				if(!empty($location[1])){
+					$flightsDetailUrl=$location[1];
 				}
 			}
 			
-			if(!empty($hotelsDetailUrl) && !empty($hotelsID)){
+			if(!empty($flightsDetailUrl)){
 				
-				$hotelsID=implode(",",$hotelsID);
-				$getHotelsDetail = json_decode(file_get_contents("http://partners.api.skyscanner.net$hotelsDetailUrl&hotelIds=$hotelsID"),true);
-				$this->data['getHotelsDetail']=$getHotelsDetail;
-				
+				$getFlightsDetail = file_get_contents("$flightsDetailUrl?apiKey=se388177191712562214854946236057");
+				print_r($getFlightsDetail);die;
 			}
 			
 		}

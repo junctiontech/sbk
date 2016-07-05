@@ -74,7 +74,7 @@
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Class </label>
 <div class="col-md-9 col-sm-9 col-xs-12">
 <select class="form-control" name="class">
-<option value="Economy*">Economy</option>
+<option value="Economy">Economy</option>
 <option value="PremiumEconomy">Premium Economy</option>
 <option value="Business">Business</option>
 <option value="First">First</option>
