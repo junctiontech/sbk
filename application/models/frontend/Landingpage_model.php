@@ -20,7 +20,7 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_categories(){
-		$this->db->select('t1.categoriesID,categoriesUrlKey,categoryName');
+		$this->db->select('t1.categoriesID,categoriesUrlKey,categoryName,categoryImage');
 		$this->db->from('s4k_categories t1');
 		$this->db->join('s4k_category_details t2','t1.categoriesID=t2.categoriesID','left');
 		$this->db->where(array('categoriesStatus'=>'Active','languageID'=>$this->languageID));

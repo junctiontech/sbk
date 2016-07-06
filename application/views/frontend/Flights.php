@@ -103,29 +103,31 @@
 </form>
 </div>
 </div>
+<?php foreach($flightFinalArray as $flightFinalArrays){?>
 <div class="col-md-8 col-sm-8 col-xs-12"> 
-<div class="col-md-2 sc_hotel"><img style="width: 111px; height: 111px;" src="<?=base_url();?>frontend/images/preview-img3.jpg"></div>
-<div class="col-md-10 sc_hotel"><h2><a href="#">flight Name </a><small>Star</small></h2>
-<div><p>Hotel Address</p></div>
+<div class="col-md-2 sc_hotel"><img style="width: 111px; height: 111px;" src="<?=$flightFinalArrays['flight'][0]['ImageUrl']?>"></div>
+<div class="col-md-10 sc_hotel"><h2><a href="#"><?=$flightFinalArrays['flight'][0]['Name']?> </a></h2>
+
 <div class="col-md-8  ">
 <table style="width:100%">
 <tr>
-<td><a href="#"><p>roms</p><p>rooms</p></a></td>
-<td style="text-align:right"><p>4000</p><small>1 rooms left</small></td>
+<td><a href="#">from</a></td>
+<td style="text-align:right"><?=$flightFinalArrays['OriginStation']['Name']?></td>
 </tr>
 <tr>
-<td><a href="#"><p>roms</p><p>rooms</p></a></td>
-<td style="text-align:right"><p>4000</p><small>1 rooms left</small></td>
+<td><a href="#"><p>to</p></a></td>
+<td style="text-align:right"><?=$flightFinalArrays['DestinationStation']['Name']?></td>
 </tr>
 </table>
 </div>
 <div class="col-md-4 hc_sri_result_promotedDeal"><p class="price">4500</P>
 <small>for time</small><br>
-<button type="submit" class="btn btn-success">View Hotel</button>
+<button type="submit" class="btn btn-success">View deals</button>
 </div>
 <div class="clear"></div>
 </div> 
 </div>
+<?php } ?>
 </div><div class="clear"></div>
   <script>
             $(document).ready(function () {

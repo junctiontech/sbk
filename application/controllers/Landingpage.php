@@ -503,7 +503,7 @@ class Landingpage extends CI_Controller {
 			$return=$this->input->get('return');
 			$class=$this->input->get('class');
 			$adults=$this->input->get('adults');
-			
+			$flightFinalArray=array();
 			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se388177191712562214854946236057';
 			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class );
 			
@@ -517,7 +517,6 @@ class Landingpage extends CI_Controller {
 			);
 			$context  = stream_context_create($options);
 			$result = file_get_contents($url, false, $context); 
-			//print_r(explode(' ',$http_response_header[4]));die;
 			
 			if(!empty($http_response_header[4])){
 				$location=explode(' ',$http_response_header[4]);
@@ -528,12 +527,113 @@ class Landingpage extends CI_Controller {
 			
 			if(!empty($flightsDetailUrl)){
 				
-				$getFlightsDetail = file_get_contents("$flightsDetailUrl?apiKey=se388177191712562214854946236057");
-				print_r($getFlightsDetail);die;
+				$getFlightsDetail = json_decode(file_get_contents("$flightsDetailUrl?apiKey=se388177191712562214854946236057"),true);
+				//print_r($getFlightsDetail['Legs']);die;
+				if(!empty($getFlightsDetail['Legs'])){
+					foreach($getFlightsDetail['Legs'] as $leg){
+						
+						$flight=$OriginStation=$DestinationStation=$Departure=$Arrival=$Duration=$Stops=$Directionality=$FlightNumbers=$Segments='';
+						
+						foreach($leg['Carriers'] as $flights){
+							
+							$flightkeys = array_search($flights, array_column($getFlightsDetail['Carriers'], 'Id'));
+							
+											
+
+							$flight[]=array('Name'=>$getFlightsDetail['Carriers'][$flightkeys]['Name'],
+											'ImageUrl'=>$getFlightsDetail['Carriers'][$flightkeys]['ImageUrl'],
+											'Code'=>$getFlightsDetail['Carriers'][$flightkeys]['Code'],
+											'DisplayCode'=>$getFlightsDetail['Carriers'][$flightkeys]['DisplayCode']);
+						}
+						
+						if(!empty($leg['OriginStation'])){
+							
+							$originstationkeys = array_search($leg['OriginStation'], array_column($getFlightsDetail['Places'], 'Id'));
+							$OriginStation=array('Name'=>$getFlightsDetail['Places'][$originstationkeys]['Name'],'Code'=>$getFlightsDetail['Places'][$originstationkeys]['Code']);
+						}
+						
+						if(!empty($leg['DestinationStation'])){
+							
+							$destinationkeys = array_search($leg['DestinationStation'], array_column($getFlightsDetail['Places'], 'Id'));
+							$DestinationStation=array('Name'=>$getFlightsDetail['Places'][$destinationkeys]['Name'],'Code'=>$getFlightsDetail['Places'][$destinationkeys]['Code']);
+						}
+						
+						if(!empty($leg['Departure']) && !empty($leg['Arrival'])){
+							
+							$depar=explode('T',$leg['Departure']);
+							
+							$arrive=explode('T',$leg['Arrival']);
+							
+							$Departure=$depar[0]." ".$depar[1];$Arrival=$arrive[0]." ".$arrive[1];
+							
+							$datetime1 = date_create($arrive[1]);
+							$datetime2 = date_create($depar[1]);
+							$interval = date_diff($datetime1, $datetime2);
+							$Duration=$interval->format('%h Hours %i Minute %s Seconds');
+							
+						}
+						
+						if(!empty($leg['Stops'])){
+							
+							foreach($leg['Stops'] as $Stop){
+								
+								$stopkeys = array_search($Stop, array_column($getFlightsDetail['Places'], 'Id'));
+								$stopName[]=array('Name'=>$getFlightsDetail['Places'][$stopkeys]['Name'],'Code'=>$getFlightsDetail['Places'][$stopkeys]['Code']);
+								
+							}
+							$Stops=array('stopNo'=>count($leg['Stops']),'stopName'=>$stopName);
+						}else{
+							$Stops=0;
+						}
+						
+						if(!empty($leg['Directionality'])){
+							$Directionality=$leg['Directionality'];
+						}
+						
+						if(!empty($leg['FlightNumbers'])){
+							
+							foreach($leg['FlightNumbers'] as $FlightNumbers){
+								
+									$FlightNumbers[]=array('FlightNumber'$FlightNumbers['FlightNumber'],'CarrierId'=>$FlightNumbers['CarrierId']);
+							}
+						}
+						
+						if(!empty($leg['SegmentIds'])){
+							
+							foreach($leg['SegmentIds'] as $SegmentId){
+								
+								$segmentkeys = array_search($SegmentId, array_column($getFlightsDetail['Segments'], 'Id'));
+								
+								$flightkeys = array_search($getFlightsDetail['Segments'][$segmentkeys]['Carrier'], array_column($getFlightsDetail['Carriers'], 'Id'));
+							
+								$Carrier=array('Name'=>$getFlightsDetail['Carriers'][$flightkeys]['Name'],
+											'ImageUrl'=>$getFlightsDetail['Carriers'][$flightkeys]['ImageUrl'],
+											'Code'=>$getFlightsDetail['Carriers'][$flightkeys]['Code'],
+											'DisplayCode'=>$getFlightsDetail['Carriers'][$flightkeys]['DisplayCode']);
+								
+								$Segments[]=array('OriginStation'=>,
+												  'DestinationStation'=>,]
+												  'Departure'=>'',
+												  'Arrival'=>,
+												  'Carrier'=>$Carrier,
+												  'Duration'=>$getFlightsDetail['Segments'][$segmentkeys]['Duration'],
+												  'FlightNumber'=>$getFlightsDetail['Segments'][$segmentkeys]['FlightNumber'],
+												  'Directionality'=>$getFlightsDetail['Segments'][$segmentkeys]['Directionality']);
+							}
+							
+						}
+						
+						$flightFinalArray[]=array('flight'=>$flight,'OriginStation'=>$OriginStation,'DestinationStation'=>$DestinationStation,'Departure'=>$Departure,
+												  'Arrival'=>$Arrival,'Duration'=>$Duration,'Stops'=>$Stops,'Directionality'=>$Directionality,
+												  'FlightNumbers'=>$FlightNumbers,'Segments'=$Segments);
+					}
+					
+					
+				}
 			}
 			
 		}
-			
+			$this->data['flightFinalArray']=$flightFinalArray;
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->parser->parse('frontend/Header',$this->data);
 			$this->parser->parse('frontend/Flights',$this->data);
