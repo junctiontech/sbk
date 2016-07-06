@@ -594,7 +594,7 @@ class Landingpage extends CI_Controller {
 							
 							foreach($leg['FlightNumbers'] as $FlightNumbers){
 								
-									$FlightNumbers[]=array('FlightNumber'$FlightNumbers['FlightNumber'],'CarrierId'=>$FlightNumbers['CarrierId']);
+									$FlightNumbers[]=array('FlightNumber'=>$FlightNumbers['FlightNumber'],'CarrierId'=>$FlightNumbers['CarrierId']);
 							}
 						}
 						
@@ -611,10 +611,10 @@ class Landingpage extends CI_Controller {
 											'Code'=>$getFlightsDetail['Carriers'][$flightkeys]['Code'],
 											'DisplayCode'=>$getFlightsDetail['Carriers'][$flightkeys]['DisplayCode']);
 								
-								$Segments[]=array('OriginStation'=>,
-												  'DestinationStation'=>,]
+								$Segments[]=array('OriginStation'=>'',
+												  'DestinationStation'=>'',
 												  'Departure'=>'',
-												  'Arrival'=>,
+												  'Arrival'=>'',
 												  'Carrier'=>$Carrier,
 												  'Duration'=>$getFlightsDetail['Segments'][$segmentkeys]['Duration'],
 												  'FlightNumber'=>$getFlightsDetail['Segments'][$segmentkeys]['FlightNumber'],
@@ -625,7 +625,7 @@ class Landingpage extends CI_Controller {
 						
 						$flightFinalArray[]=array('flight'=>$flight,'OriginStation'=>$OriginStation,'DestinationStation'=>$DestinationStation,'Departure'=>$Departure,
 												  'Arrival'=>$Arrival,'Duration'=>$Duration,'Stops'=>$Stops,'Directionality'=>$Directionality,
-												  'FlightNumbers'=>$FlightNumbers,'Segments'=$Segments);
+												  'FlightNumbers'=>$FlightNumbers,'Segments'=>$Segments);
 					}
 					
 					
