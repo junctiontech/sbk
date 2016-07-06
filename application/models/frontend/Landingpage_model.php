@@ -65,7 +65,7 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_products_search($extraquery=false,$searchqry=false,$where=false,$where1=false,$categoriesID=false){
-		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
+		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
 			

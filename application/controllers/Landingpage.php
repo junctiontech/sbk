@@ -45,6 +45,7 @@ class Landingpage extends CI_Controller {
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productsID', $article->productsID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productName', $article->productName));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('sb4kProductID', $article->sb4kProductID));
+			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesID',$article->categoriesID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('productDescription',$article->productDescription));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productsUrlKey',$article->productsUrlKey));
@@ -610,18 +611,37 @@ class Landingpage extends CI_Controller {
 											'ImageUrl'=>$getFlightsDetail['Carriers'][$flightkeys]['ImageUrl'],
 											'Code'=>$getFlightsDetail['Carriers'][$flightkeys]['Code'],
 											'DisplayCode'=>$getFlightsDetail['Carriers'][$flightkeys]['DisplayCode']);
+											
+								$deparsegment=explode('T',$getFlightsDetail['Segments'][$segmentkeys]['DepartureDateTime']);
 								
-								$Segments[]=array('OriginStation'=>'',
-												  'DestinationStation'=>'',
-												  'Departure'=>'',
-												  'Arrival'=>'',
+								$arrivesegment=explode('T',$getFlightsDetail['Segments'][$segmentkeys]['ArrivalDateTime']);
+								
+								$Departuresegment=$deparsegment[0]." ".$deparsegment[1];$Arrivalsegment=$arrivesegment[0]." ".$arrivesegment[1];
+								
+								$datetime1 = date_create($arrivesegment[1]);
+								$datetime2 = date_create($deparsegment[1]);
+								$interval = date_diff($datetime1, $datetime2);
+								$Durationsegment=$interval->format('%h Hours %i Minute %s Seconds');
+								
+								$segmentoriginstationkeys = array_search($getFlightsDetail['Segments'][$segmentkeys]['OriginStation'], array_column($getFlightsDetail['Places'], 'Id'));
+								$segmentOriginStation=array('Name'=>$getFlightsDetail['Places'][$segmentoriginstationkeys]['Name'],'Code'=>$getFlightsDetail['Places'][$segmentoriginstationkeys]['Code']);
+								
+								$segmentdestinationstationkeys = array_search($getFlightsDetail['Segments'][$segmentkeys]['DestinationStation'], array_column($getFlightsDetail['Places'], 'Id'));
+								$segmentdestinationStation=array('Name'=>$getFlightsDetail['Places'][$segmentdestinationstationkeys]['Name'],'Code'=>$getFlightsDetail['Places'][$segmentdestinationstationkeys]['Code']);
+							
+								$Segments[]=array('OriginStation'=>$segmentOriginStation,
+												  'DestinationStation'=>$segmentdestinationStation,
+												  'Departure'=>$Departuresegment,
+												  'Arrival'=>$Arrivalsegment,
 												  'Carrier'=>$Carrier,
-												  'Duration'=>$getFlightsDetail['Segments'][$segmentkeys]['Duration'],
+												  'Duration'=>$Durationsegment,
 												  'FlightNumber'=>$getFlightsDetail['Segments'][$segmentkeys]['FlightNumber'],
 												  'Directionality'=>$getFlightsDetail['Segments'][$segmentkeys]['Directionality']);
 							}
 							
 						}
+						
+						
 						
 						$flightFinalArray[]=array('flight'=>$flight,'OriginStation'=>$OriginStation,'DestinationStation'=>$DestinationStation,'Departure'=>$Departure,
 												  'Arrival'=>$Arrival,'Duration'=>$Duration,'Stops'=>$Stops,'Directionality'=>$Directionality,
