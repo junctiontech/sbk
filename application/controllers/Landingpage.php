@@ -496,6 +496,8 @@ class Landingpage extends CI_Controller {
 	
 	function Flights()
 	{	
+		$flightFinalArray=array();
+		$app=$this->input->get('app');
 		if($this->input->get())
 		{
 			$from=$this->input->get('from');
@@ -504,7 +506,7 @@ class Landingpage extends CI_Controller {
 			$return=$this->input->get('return');
 			$class=$this->input->get('class');
 			$adults=$this->input->get('adults');
-			$flightFinalArray=array();
+			
 			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se388177191712562214854946236057';
 			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class );
 			
@@ -529,11 +531,11 @@ class Landingpage extends CI_Controller {
 			if(!empty($flightsDetailUrl)){
 				
 				$getFlightsDetail = json_decode(file_get_contents("$flightsDetailUrl?apiKey=se388177191712562214854946236057"),true);
-				//print_r($getFlightsDetail['Legs']);die;
+			//	print_r($getFlightsDetail['Legs']);die;
 				if(!empty($getFlightsDetail['Legs'])){
 					foreach($getFlightsDetail['Legs'] as $leg){
 						
-						$flight=$OriginStation=$DestinationStation=$Departure=$Arrival=$Duration=$Stops=$Directionality=$FlightNumbers=$Segments='';
+						$flight=$OriginStation=$DestinationStation=$Departure=$Arrival=$Duration=$Stops=$Directionality=$FlightNumbers=$Segments=$priceAndAgent='';
 						
 						foreach($leg['Carriers'] as $flights){
 							
@@ -575,7 +577,7 @@ class Landingpage extends CI_Controller {
 						}
 						
 						if(!empty($leg['Stops'])){
-							
+							$stopName='';
 							foreach($leg['Stops'] as $Stop){
 								
 								$stopkeys = array_search($Stop, array_column($getFlightsDetail['Places'], 'Id'));
@@ -593,9 +595,9 @@ class Landingpage extends CI_Controller {
 						
 						if(!empty($leg['FlightNumbers'])){
 							
-							foreach($leg['FlightNumbers'] as $FlightNumbers){
+							foreach($leg['FlightNumbers'] as $FlightNumber){
 								
-									$FlightNumbers[]=array('FlightNumber'=>$FlightNumbers['FlightNumber'],'CarrierId'=>$FlightNumbers['CarrierId']);
+									$FlightNumbers[]=array('FlightNumber'=>$FlightNumber['FlightNumber'],'CarrierId'=>$FlightNumber['CarrierId']);
 							}
 						}
 						
@@ -641,19 +643,35 @@ class Landingpage extends CI_Controller {
 							
 						}
 						
+						if(!empty($leg['Id'])){
+							
+							$itinerarieskeys = array_search($leg['Id'], array_column($getFlightsDetail['Itineraries'], 'OutboundLegId'));
+							
+							foreach($getFlightsDetail['Itineraries'][$itinerarieskeys]['PricingOptions'] as $PricingOption){
+								
+								$agentkeys = array_search($PricingOption['Agents'][0], array_column($getFlightsDetail['Agents'], 'Id'));
+								
+								$priceAndAgent[]=array('AgentsName'=>$getFlightsDetail['Agents'][$agentkeys]['Name'],'AgentsImage'=>$getFlightsDetail['Agents'][$agentkeys]['ImageUrl'],'Price'=>$PricingOption['Price'],'DeeplinkUrl'=>$PricingOption['DeeplinkUrl']);
+							}
+							
+						}
+						
+						
 						
 						
 						$flightFinalArray[]=array('flight'=>$flight,'OriginStation'=>$OriginStation,'DestinationStation'=>$DestinationStation,'Departure'=>$Departure,
 												  'Arrival'=>$Arrival,'Duration'=>$Duration,'Stops'=>$Stops,'Directionality'=>$Directionality,
-												  'FlightNumbers'=>$FlightNumbers,'Segments'=>$Segments);
+												  'FlightNumbers'=>$FlightNumbers,'Segments'=>$Segments,'priceAndAgent'=>$priceAndAgent);
 					}
-					
-					
 				}
 			}
 			
 		}
+			if($app==true){
+				echo json_encode($flightFinalArray);exit;
+			}else{
 			$this->data['flightFinalArray']=$flightFinalArray;
+			}
 			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
 			$this->parser->parse('frontend/Header',$this->data);
 			$this->parser->parse('frontend/Flights',$this->data);

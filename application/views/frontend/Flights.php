@@ -11,7 +11,7 @@
 			<div class="form-group">
                 <label class="col-md-3 col-sm-3 col-xs-12 hotel">From</label>
 				<div class="col-md-12 col-sm-12 col-xs-12">
-                  <select id="fromID" class="select3_group form-control" name="from" >
+                  <select id="fromID" required class="select3_group form-control" name="from" >
 					<option value="" >From</option>
 						<?php { 
 						if(!empty($Fetch_ProductName))
@@ -28,7 +28,7 @@
 			<div class="form-group">
                 <label class="col-md-3 col-sm-3 col-xs-12 hotel">To</label>
 				<div class="col-md-12 col-sm-12 col-xs-12">
-                  <select id="toID" class="select2_single form-control" name="to" >
+                  <select required id="toID" class="select2_single form-control" name="to" >
 					<option value="" >To</option>
 						<?php { 
 						if(!empty($Fetch_ProductName))
@@ -49,7 +49,7 @@
 <div class="control-group">
 <div class="controls">
 <div class="col-md-12 xdisplay_inputx form-group has-feedback">
-<input type="text" class="form-control has-feedback-left" id="single_cal3" name="departure" placeholder="Departure Date" aria-describedby="inputSuccess2Status">
+<input type="text" required class="form-control has-feedback-left" id="single_cal3" name="departure" placeholder="Departure Date" aria-describedby="inputSuccess2Status">
 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
 </div>
 </div>
@@ -73,7 +73,7 @@
 <div class="form-group">
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Class </label>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<select class="form-control" name="class">
+<select required class="form-control" name="class">
 <option value="Economy">Economy</option>
 <option value="PremiumEconomy">Premium Economy</option>
 <option value="Business">Business</option>
@@ -85,7 +85,7 @@
 <div class="form-group">
 <label class="col-md-2 col-sm-2 col-xs-12 hotel">Adults </label>
 <div class="col-md-9 col-sm-9 col-xs-12">
-<select class="form-control" name="adults">
+<select required class="form-control" name="adults">
 <option select value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
@@ -111,19 +111,36 @@
 <div class="col-md-8  ">
 <table style="width:100%">
 <tr>
-<td><a href="#">from</a></td>
-<td style="text-align:right"><?=$flightFinalArrays['OriginStation']['Name']?></td>
+<td>from</td>
+<td ><?=$flightFinalArrays['OriginStation']['Name']?></td>
+<td ><?=$flightFinalArrays['Departure']?></td>
 </tr>
 <tr>
-<td><a href="#"><p>to</p></a></td>
-<td style="text-align:right"><?=$flightFinalArrays['DestinationStation']['Name']?></td>
+<td>to</td>
+<td ><?=$flightFinalArrays['DestinationStation']['Name']?></td>
+<td ><?=$flightFinalArrays['Arrival']?></td>
+</tr>
+<tr>
+<td>Duration: <?=$flightFinalArrays['Duration']?></td>
+</tr>
+<tr>
+<td>Stops: <?php if(is_array($flightFinalArrays['Stops'])){ echo $flightFinalArrays['Stops']['stopNo']; echo"<br>"; foreach($flightFinalArrays['Stops']['stopName'] as $stopName){ echo$stopName['Name']; echo" ";echo$stopName['Code']; echo" ";} }else{ echo $flightFinalArrays['Stops']; } ?></td>
+</tr>
+<tr>
+<td>Directionality: <?=$flightFinalArrays['Directionality']?></td>
+</tr>
+<tr>
+<td>Flight no: <?=$flightFinalArrays['FlightNumbers'][0]['FlightNumber']?></td>
 </tr>
 </table>
 </div>
-<div class="col-md-4 hc_sri_result_promotedDeal"><p class="price">4500</P>
-<small>for time</small><br>
-<button type="submit" class="btn btn-success">View deals</button>
+<?php foreach($flightFinalArrays['priceAndAgent'] as $priceAndAgent){?>
+<div class="col-md-4 hc_sri_result_promotedDeal"><p class="price">Rs: <?=$priceAndAgent['Price']?></P>
+<small><?=$priceAndAgent['AgentsName']?></small><br>
+<small><image src="<?=$priceAndAgent['AgentsImage']?>"></small><br>
+<a target="_blank" href="<?=$priceAndAgent['DeeplinkUrl']?>" class="btn btn-success">View deals</a>
 </div>
+<?php } ?>
 <div class="clear"></div>
 </div> 
 </div>
@@ -234,12 +251,13 @@ function toID(placekey)
 		
 		$(document).ready(function(){
 	  
-				$(document).on('keyup', '.select3_group,.select2-search__field', function() {
+				$(document).on('keyup', '.select2-search__field', function() {
+					//console.log($(this).closest("select").attr("id"));
 				fromID(this.value);
 				});
 				
-				$(document).on('keyup', '.select2_single,.select2-search__field', function() {
+				 $(document).on('keyup', '.select2_single,.select2-search__field', function() {
 				toID(this.value);
-				});
+				}); 
 		});
     </script>
