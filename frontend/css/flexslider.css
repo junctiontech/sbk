@@ -85,22 +85,26 @@ html[xmlns] .slides {display: block;}
 	.flexslider1 ol.flex-control-nav {bottom: -28px;left: 1em;}
 
 }
+@media screen and (max-width: 980px) {
+.flex-control-nav {left: 0em;}
+.flexslider1 ol.flex-control-nav {bottom: 1px;left: 0em;}
+}
 
 @media screen and (max-width: 768px) {
-	.flex-control-nav {left: 23em;}
-	.flexslider1 ol.flex-control-nav {bottom: -6px;left: 22em;}
+	.flex-control-nav {left: 0em;}
+	.flexslider1 ol.flex-control-nav {bottom: -6px;left: 0em;}
 	}
 @media screen and (max-width: 640px) {
-	.flex-control-nav {left: 18em;}
-.flexslider1 ol.flex-control-nav {bottom: 2px;left: 18em;}
+	.flex-control-nav {left: 0em;}
+.flexslider1 ol.flex-control-nav {bottom: 0px;left: 0em;}
 }
 @media screen and (max-width: 480px) {
-.flex-control-nav {left: 12em;}
-.flexslider1 ol.flex-control-nav {bottom: 1px;left: 12em;}
+.flex-control-nav {left: 0px;}
+.flexslider1 ol.flex-control-nav {bottom: 0px;left: 0px;}
 }
 @media screen and (max-width: 320px) {
-.flex-control-nav {left: 5.5em;}
-.flexslider1 ol.flex-control-nav {bottom: 1px;left: 6em;}
+.flex-control-nav {left: 0em;}
+.flexslider1 ol.flex-control-nav {bottom: 1px;left: 0em;}
 
 
 }

@@ -1,7 +1,8 @@
-</div>
- <div class="main">
-    <div class="content">
-    	<div class="content_top">
+ <div class="page-container">
+	<div class="main-content">
+	 <div class="row">
+	 <div class="col-md-12">
+		<div class="content_top">
     		<div class="back-links">
     		<p><a href="<?=base_url();?>">Home</a> >> <a href="./"><?=isset($categorykey)?$categorykey:''?> </a></p>
 			
@@ -11,16 +12,18 @@
     		<div class="clear"></div>
 			<h2 style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>
     	</div>
-    	<div class="section group">
-				<div class="cont-desc span_1_of_2 ">	
+		</div>
+		</div>
+		    	<div class="row">
+				<div class=" col-md-9 ">	
 								
-					<div class="grid images_3_of_2 pro_img">
+					<div class="col-md-4 grid images_3_of_2 pro_img">
 					
 						<img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 					</div><!--style="height:250px;width:75%"-->
 				<div class="desc span_3_of_2">
 					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="col-md-5 col-sm-5 col-xs-5">
+						<div class="col-md-5 col-sm-5 col-xs-12">
 						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
 						</div>
 					<?php if(!empty($othershopprices)){ ?>
@@ -60,6 +63,7 @@
 					  <?php } ?></span></div>
 				
 			</div>
+		 
 			
 			<div class="product-desc">
 			<h2>Product Feature</h2>
@@ -121,7 +125,8 @@
 	    </div>	
 <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=88882&file_id=79365" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79365&aff_id=48478&file_id=88882" width="1" height="1" />		
 	</div>
-				<div class="rightsidebar span_3_of_1">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="span_3_of_1">
 					<h2>Similar Product</h2>
 					
 					<div class="section group">
@@ -138,16 +143,24 @@
 					  <?php } */?></span> </div>-->
 				     
 				</div>
-				<div class="clear"></div>
+			</div>
 		  <?php } }else{ echo"No product Found!!";}?>
-		  
-		  <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=79367&file_id=79367" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_300x250.jpg" width="300" height="250" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79367&aff_id=48478&file_id=79367" width="1" height="1" />
+		  	<div class="clear"></div>
+			<div class="item">
+		  <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=79367&file_id=79367" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_300x250.jpg" width="235" height="250" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79367&aff_id=48478&file_id=79367" width="1" height="1" />
+			</div>
+			<div class="clear"></div>
 			</div>
     				
     				
       				 
  				</div>
  		</div>
- 	</div>
-	</div>
+		
+ 
+ 
+ 
+ 
+ 
 </div>
+</div><div class="clear"></div>

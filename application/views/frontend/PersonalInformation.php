@@ -20,15 +20,12 @@
 </div>
 <?php }?>
 <!-- Alert section End-->
-<div class="col-sm-6 col-md-6 col-xs-6 form_content">  
+<div class="col-sm-6 col-md-6 col-xs-12 form_content">  
               <p align="center">Personal Information</p>
               <!-- page content -->
               <div class="right_col " role="main">
-                <div class="">
-                  <div class="page-title">
-                    <div class="title_left"> </div>
-                    <div class="title_right"> </div>
-                  </div>                  
+                
+                                  
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <div class="x_panel">
@@ -121,7 +118,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                
               </div>              
               <!-- /page content -->
             </div>
@@ -148,3 +145,4 @@ function readURL(input) {
           
 </div>
 </div>
+</div><div class="clear"></div>

@@ -1,7 +1,7 @@
+ 
 
-
-<div class="col-sm-6 col-md-6 col-xs-6 form_content ">
-<!-- Alert section For Message-->
+<div class="col-sm-6 col-md-6 col-xs-12 form_content ">
+ <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
 		  <div class="alert alert-success alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
@@ -20,8 +20,8 @@
 		 <!-- Alert section End-->
 <p> Welcome to Search Before Kharch</p>
 </div>
-
-</div>	
-</div>	
-</body>	
-		
+ 
+ 
+</div>
+</div>
+</div><div class="clear"></div>

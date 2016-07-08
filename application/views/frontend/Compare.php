@@ -1,7 +1,6 @@
-</div>
- <div class="main">
-    <div class="content">
-    	<div class="content_top">
+<div class="page-container">
+	<div class="main-content">
+ <div class="content_top">
 			<div class="back-links">
 				<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
     	    </div>
@@ -13,7 +12,8 @@
     		
     	</div>
 		<div class="row">
-			<div class="col-md-2 col-sm-2 col-lg-2" style="margin-top:394px;font-size:13px; margin-right:-19px">
+			<div class="col-md-12 col-sm-12- col-xs-12">
+		<div class="col-md-2 col-sm-2 col-xs-2" style="margin-top:394px;font-size:13px; margin-right:-19px">
 				<div class="x_content">
 							<?php 
 							 if(!empty($compareproduct_info)){ 
@@ -40,8 +40,10 @@
 				</div>
 			</div>	
 			
-			<div class="col-md-9 col-sm-9 col-lg-9 " >
-					<?php if(!empty($compareproduct)){ foreach($compareproduct as $product){ ?>
+				
+				
+				<div class="col-md-10 col-sm-10 col-xs-10">
+				<?php if(!empty($compareproduct)){ foreach($compareproduct as $product){ ?>
 						<div class="col-md-3 col-sm-3 col-lg-3 " >
 							<div class="comparegrid_1_of_4 compareimages_1_of_4 ">
 								<img src="<?=$product->imageName?>" alt="" /></img>
@@ -87,11 +89,20 @@
 				  
 				  
 						</div>
-						<?php }}?>
-			</div>
-<div class="clear"></div>			
-		</div>	 
-	</div>
+						<?php }}?>		
+				
+				
+				
+				</div>
+			
+			
+			
+		</div>		
+		</div>
+		
+				 
 </div>
-   
+</div>
+<div class="clear"></div>
+
 

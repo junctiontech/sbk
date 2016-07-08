@@ -15,16 +15,17 @@
 </div>
 <?php }?>
 	 <!-- Alert section End-->
-<div class="col-sm-6 col-md-6 col-xs-6 form_content">
+<div class="col-md-6 col-sm-6 col-xs-12 form_content">
 <div class="" role="main">
-                <div class="">                   
-                    <div class="clearfix"></div>
+                              
+                
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
+             
 <p>My Wishlist</p>
-<table class="table table-striped responsive-utilities jambo_table">
+<div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+							
+								<table cellspacing="0" class="table table-small-font table-bordered table-striped">
 			<thead>
 				<tr class="headings">
 					<th>Product Image</th>
@@ -56,5 +57,6 @@
 </div>
 </div>
 </div>
-</div>
-
+ 
+ 
+<div class="clear"></div>

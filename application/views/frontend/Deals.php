@@ -1,24 +1,22 @@
-<div class="clear"></div>
-<div class="page-no">
+
+<div class="page-container">
+	<div class="main-content">
+	<div class="page-no">
     		<?php if(!empty($totalresult)){ ?>	<p>Total Result:<?php echo isset($totalresult)?$totalresult:''; ?> </p><?php } if(!empty($pagination)){ ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
     		</div>
-<div class="Deal_filter">	
-		
-    <div class="to_do">		
+		<div class="col-md-3 col-sm-3 col-xs-12">
+		    <div class="to_do">		
 					<div style="font-weight: bold; padding: 10px;">Top Deals</div>
                         <?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
 						<div class="deal_htr">
                             <a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
-                        </div>
+                    </div>
 						<?php } } ?>                                        
-     </div>  
-                                         
-            </div>
-<div class="Deal_panel">
-<div class="clear"></div>	 
-	<!--<a href="http://tracking.vcommission.com/aff_c?offer_id=232&aff_id=48478&file_id=94922" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/232/Nykaa_Upto30OffMenStore_160x600.jpg" width="200" height="900" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=232&file_id=94922&aff_id=48478" width="1" height="1" /><div class="product_panel">			
-		-->   
-		   <?php if(!empty($dealsdata)){ foreach($dealsdata as $deal){?>
+			</div> 
+		
+		</div>	
+		<div class="col-md-9 col-sm-9 col-xs-12">
+		 <?php if(!empty($dealsdata)){ foreach($dealsdata as $deal){?>
 				<div class="grid_1_of_4 deal_1_of_3">
 					<div><img src="<?=$deal->url;?>" alt="" /> </div>
 					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
@@ -29,7 +27,7 @@
 				</div>			
 		  <?php } } else { ?>
 		  <div class="clear"></div>
-<div class="Deal_panel" style="margin-top:0px;">	 
+ 
 		   <!-- FlexSlider -->
               <section class="slider">
 				  <div class="flexslider">
@@ -104,15 +102,11 @@
 			</div>
     </div>
  </div>
-</div>
+ 
 		  <?php }?>
-			</div>	
-<div class="clear"></div>
-
-<a href="http://tracking.vcommission.com/aff_c?offer_id=232&aff_id=48478&file_id=93978" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/232/Nykaa_Upto40Off_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=232&file_id=93978&aff_id=48478" width="1" height="1" />
-
-
-
-
-<!-- <a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=95080" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_Upto40PLUSExtra30OffOnPurchaseOfRs1299_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=95080&aff_id=48478&url_id=2442" width="1" height="1" />
-		 -->
+		
+		
+		
+		</div>
+	</div>
+</div><div class="clear"></div>
