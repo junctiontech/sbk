@@ -417,7 +417,7 @@ class Product extends CI_Controller {
 			$FetchNames=$this->Product_model->fetch_productname($productName);
 			if(!empty($FetchNames)){
 				
-				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName);
+				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand);
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
 				echo"<div class=\"col-md-6\">";	

@@ -1,3 +1,11 @@
+<style>
+
+
+.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
+.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #f0f0f0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
+</style>
 <div class="clear"></div>
 <div class="row">
 <div class="col-md-4 col-sm-4 col-xs-12">
@@ -11,34 +19,16 @@
 			<div class="form-group">
                 <label class="col-md-3 col-sm-3 col-xs-12 hotel">From</label>
 				<div class="col-md-12 col-sm-12 col-xs-12">
-                  <select id="fromID" required class="select3_group form-control" name="from" >
-					<option value="" >From</option>
-						<?php { 
-						if(!empty($Fetch_ProductName))
-						{
-						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
-						{?>
-							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
-							
-						<?php }}}?>
-					</select>
+                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here..">
+				  <datalist id="fromdata"></datalist>
                 </div>
               </div>
-
+	 
 			<div class="form-group">
                 <label class="col-md-3 col-sm-3 col-xs-12 hotel">To</label>
 				<div class="col-md-12 col-sm-12 col-xs-12">
-                  <select required id="toID" class="select2_single form-control" name="to" >
-					<option value="" >To</option>
-						<?php { 
-						if(!empty($Fetch_ProductName))
-						{
-						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
-						{?>
-							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
-							
-						<?php }}}?>
-					</select>
+				<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here..">
+				  <datalist id="todata"></datalist>
                 </div>
               </div>
 
@@ -211,53 +201,52 @@
         }
 		
 		function fromID(placekey)
-{ 
-	var placekey =placekey;
-	if(placekey !=='')
-	{
-		$.ajax({
-		type: "POST",
-		url: base_url+"Flights/getplaceID",
-		data:{placekey:placekey},
-		cache: false,
-		success: function(html)
-		{ // alert(html);
-		$("#fromID").html(html);
+		{ 
+			var placekey =placekey;
+			if(placekey !=='')
+			{
+				$.ajax({
+				type: "POST",
+				url: base_url+"Flights/getplaceID",
+				data:{placekey:placekey},
+				cache: false,
+				success: function(html)
+				{ 
+					 $("#fromdata").html(html);
+					
+				}
+				});
+			}
+			return false;  	  
 		}
-		});
-	}
-	return false;  	  
-}
 
-function toID(placekey)
-{ 
-	var placekey =placekey;
-	if(placekey !=='')
-	{
-		$.ajax({
-		type: "POST",
-		url: base_url+"Flights/getplaceID",
-		data:{placekey:placekey},
-		cache: false,
-		success: function(html)
-		{ // alert(html);
-		$("#toID").html(html);
+		function toID(placekey)
+		{ 
+			var placekey =placekey;
+			if(placekey !=='')
+			{
+				$.ajax({
+				type: "POST",
+				url: base_url+"Flights/getplaceID",
+				data:{placekey:placekey},
+				cache: false,
+				success: function(html)
+				{ 
+				$("#todata").html(html);
+				}
+				});
+			}
+			return false;  	  
 		}
-		});
-	}
-	return false;  	  
-}
-		
 		
 		$(document).ready(function(){
 	  
-				$(document).on('keyup', '.select2-search__field', function() {
-					//console.log($(this).closest("select").attr("id"));
+				$(document).on('keyup', '#from', function() {
 				fromID(this.value);
 				});
 				
-				 $(document).on('keyup', '.select2_single,.select2-search__field', function() {
+				$(document).on('keyup', '#to', function() {
 				toID(this.value);
-				}); 
-		});
+				});
+		 })
     </script>

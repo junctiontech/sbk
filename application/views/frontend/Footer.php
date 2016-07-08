@@ -160,11 +160,5 @@ function googleTranslateElementInit() {
 								<script src="<?=base_url();?>frontend/js/xenon-toggles.js"></script>
 								<!-- JavaScripts initializations and stuff -->
 								<script src="<?=base_url();?>frontend/js/xenon-custom.js"></script>
-
-
-
-
- 
-
 </body>
 </html>
