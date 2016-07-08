@@ -133,7 +133,7 @@ class Product_model extends CI_Model {
 		
 	}
 	
-	function map_product1($category=false,$product=false,$productName=false )
+	function map_product1($category=false,$product=false,$productName=false,$productBrand )
 	{
 		/* $query1=$this->db->query("select productAttributeLable,productAttributeValue from s4k_product_attribute_map where productsID=$product and productAttributeLable in ('Model ID','Model Name')");
 		//echo $this->db->last_query();die;
@@ -156,8 +156,7 @@ class Product_model extends CI_Model {
 		//$this->db->join('s4k_product_attribute t6','t1.productsID=t6.productsID');
 		//$this->db->join('s4k_product_attribute_details t7','t6.productAttributeID=t7.productAttributeID');
 		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
-		$this->db->where(array('t1.categoriesID'=>$category));
-		//$this->db->where(array('t4.productPrice !='=>0.00));
+		$this->db->where(array('t1.categoriesID'=>$category,'t1.productBrand'=>$productBrand));
 		$this->db->where(array('t5.shopID !='=>1));
 		
 		//$this->db->where('t1.productsID NOT IN(select childProductID from s4k_product_mapping)');
@@ -338,7 +337,7 @@ class Product_model extends CI_Model {
 	
 	public function fetch_productname($product)
 	{
-		$this->db->select('t1.productsID,t1.productName,t1.categoriesID, t4.imageName,t5.productPrice,shopName');//,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr
+		$this->db->select('t1.productsID,t1.productName,t1.categoriesID,t1.productBrand,t4.imageName,t5.productPrice,shopName');//,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr
 		$this->db->from('s4k_products_map t1');
 		//$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
 		$this->db->join('s4k_product_images_map t4','t1.productsID=t4.productsID');
