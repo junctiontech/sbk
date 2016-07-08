@@ -1,141 +1,112 @@
-<style>
-
-
-.autocomplete-suggestions { border: 1px solid #999; background: #fff; cursor: default; overflow: auto; }
-.autocomplete-suggestion { padding: 10px 5px; font-size: 1.2em; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #f0f0f0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399ff; }
-</style>
-<div class="clear"></div>
-<div class="row">
-<div class="col-md-4 col-sm-4 col-xs-12">
-<div class="flight">
- <form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="form-horizontal form-label-left">
-<div class="">
-<div class="hotel"style="padding-bottom: 25px;">
-<h2>Search Flights</h2>
-</div>
-
-			<div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 hotel">From</label>
-				<div class="col-md-12 col-sm-12 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here..">
+<div class="page-container">
+	<div class="main-content">
+		<div class="row">
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="flight">
+					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="form-horizontal form-label-left">
+						<div class="white"style="padding-bottom: 25px;">
+							<h2>Search Flights</h2>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group white">
+								<div class="col-md-5">
+									<input type="radio" class="flat" name="radio"/>
+									One Way 
+								</div>
+								<div class="col-md-5">
+									<input type="radio" class="flat" name="radio"/>
+									Round Trip
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">From </label>
+							<div class="col-md-9 col-sm-9 col-xs-12">
+								<input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here..">
 				  <datalist id="fromdata"></datalist>
-                </div>
-              </div>
-	 
-			<div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 hotel">To</label>
-				<div class="col-md-12 col-sm-12 col-xs-12">
-				<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here..">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">To</label>
+							<div class="col-md-9 col-sm-9 col-xs-12">
+								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here..">
 				  <datalist id="todata"></datalist>
-                </div>
-              </div>
 
-<div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 hotel">Departure</label>
-<div class="col-md-12 col-sm-12 col-xs-12">
-<fieldset>
-<div class="control-group">
-<div class="controls">
-<div class="col-md-12 xdisplay_inputx form-group has-feedback">
-<input type="text" required class="form-control has-feedback-left" id="single_cal3" name="departure" placeholder="Departure Date" aria-describedby="inputSuccess2Status">
-<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">Departure</label>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="input-group">
+											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date">
+											
+											<div class="input-group-addon">
+												<a href="#"><i class="linecons-calendar"></i></a>
+											</div>
+										</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">Return</label>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="input-group">
+											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
+											
+											<div class="input-group-addon">
+												<a href="#"><i class="linecons-calendar"></i></a>
+											</div>
+										</div>
 </div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">Class </label>
+							<div class="col-md-9 col-sm-9 col-xs-12">
+								<select class="form-control" name="class">
+									<option value="1">Economy</option>
+									<option value="2">Premium Economy</option>
+									<option value="3">Business</option>
+								</select>
+							</div>
+						</div>
+						<button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
+					</form>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<div class="col-md-8 col-sm-6 col-xs-12">
+			<div class="">
+				<div class="hotel_image"><a href="">
+					<!--<?php foreach($hotelDetail['images'] as $key=>$images){ ?>-->
+						<img src="<?=base_url();?>frontend/images/preview-img3.jpg">		
+					<!--<?php break; } ?>-->
+					</a>
+					</div>
+					</div>
+					<div>
+					<span>21:55</span></br>
+					<span>BHO</span>
+					</div>
+					<div><span>1 40 hr</span>
+					<ul><li>----</li></ul>
+					<div><span>Direct</span></div>
+					</div>
+					<div>	<span>21:55</span></br>
+					<span>BHO</span></div>
+					<div>
+					<div><span>14 deals from</span>
+					<div><a><span>₹ 4,479</span></a></div></div>
+					<div>Select</div>
+					</div>
+			
+			</div>
+		</div> 
+	</div>
 </div>
-</fieldset>
-</div>
-</div>
-<div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 hotel">Return</label>
-<div class="col-md-12 col-sm-12 col-xs-12">
-<fieldset>
-<div class="control-group">
-<div class="controls">
-<div class="col-md-12 xdisplay_inputx form-group has-feedback">
-<input type="text" class="form-control has-feedback-left" id="single_cal4" name="return" placeholder="Return Date" aria-describedby="inputSuccess2Status">
-<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status" class="sr-only">(success)</span> </div>
-</div>
-</div>
-</fieldset>
-</div>
-</div>
-<div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 hotel">Class </label>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<select required class="form-control" name="class">
-<option value="Economy">Economy</option>
-<option value="PremiumEconomy">Premium Economy</option>
-<option value="Business">Business</option>
-<option value="First">First</option>
-</select>
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 hotel">Adults </label>
-<div class="col-md-9 col-sm-9 col-xs-12">
-<select required class="form-control" name="adults">
-<option select value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-
-</select>
-</div>
-</div>
-<button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
-</div>
-</form>
-</div>
-</div>
-<?php foreach($flightFinalArray as $flightFinalArrays){?>
-<div class="col-md-8 col-sm-8 col-xs-12"> 
-<div class="col-md-2 sc_hotel"><img style="width: 111px; height: 111px;" src="<?=$flightFinalArrays['flight'][0]['ImageUrl']?>"></div>
-<div class="col-md-10 sc_hotel"><h2><a href="#"><?=$flightFinalArrays['flight'][0]['Name']?> </a></h2>
-
-<div class="col-md-8  ">
-<table style="width:100%">
-<tr>
-<td>from</td>
-<td ><?=$flightFinalArrays['OriginStation']['Name']?></td>
-<td ><?=$flightFinalArrays['Departure']?></td>
-</tr>
-<tr>
-<td>to</td>
-<td ><?=$flightFinalArrays['DestinationStation']['Name']?></td>
-<td ><?=$flightFinalArrays['Arrival']?></td>
-</tr>
-<tr>
-<td>Duration: <?=$flightFinalArrays['Duration']?></td>
-</tr>
-<tr>
-<td>Stops: <?php if(is_array($flightFinalArrays['Stops'])){ echo $flightFinalArrays['Stops']['stopNo']; echo"<br>"; foreach($flightFinalArrays['Stops']['stopName'] as $stopName){ echo$stopName['Name']; echo" ";echo$stopName['Code']; echo" ";} }else{ echo $flightFinalArrays['Stops']; } ?></td>
-</tr>
-<tr>
-<td>Directionality: <?=$flightFinalArrays['Directionality']?></td>
-</tr>
-<tr>
-<td>Flight no: <?=$flightFinalArrays['FlightNumbers'][0]['FlightNumber']?></td>
-</tr>
-</table>
-</div>
-<?php foreach($flightFinalArrays['priceAndAgent'] as $priceAndAgent){?>
-<div class="col-md-4 hc_sri_result_promotedDeal"><p class="price">Rs: <?=$priceAndAgent['Price']?></P>
-<small><?=$priceAndAgent['AgentsName']?></small><br>
-<small><image src="<?=$priceAndAgent['AgentsImage']?>"></small><br>
-<a target="_blank" href="<?=$priceAndAgent['DeeplinkUrl']?>" class="btn btn-success">View deals</a>
-</div>
-<?php } ?>
 <div class="clear"></div>
-</div> 
-</div>
-<?php } ?>
-</div><div class="clear"></div>
   <script>
             $(document).ready(function () {
                 $(".select2_single").select2({
@@ -150,57 +121,7 @@
             });
         </script>
 <script>
-        	
-        $(document).ready(function () {
-            $('#single_cal1').daterangepicker({
-                singleDatePicker: true,
-                calender_style: "picker_1",
-				format: "YYYY-MM-DD"
-            }, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-            $('#single_cal2').daterangepicker({
-                singleDatePicker: true,
-                calender_style: "picker_1",
-				format: "YYYY-MM-DD"
-            }, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-            $('#single_cal3').daterangepicker({
-                singleDatePicker: true,
-                calender_style: "picker_1",
-				format: "YYYY-MM-DD"
-            }, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-            $('#single_cal4').daterangepicker({
-                singleDatePicker: true,
-                calender_style: "picker_1",
-				format: "YYYY-MM-DD"
-            }, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-        });
-
-		
-        $(document).ready(function () {
-            $('#reservation').daterangepicker(null, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-        });
- 
-        $(document).ready(function () {
-            $('#reservation').daterangepicker(null, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
-        });
-		
-		<!-- enable return trip -->
-		 function enableButton2() {
-            document.getElementById("button2").disabled = false;
-        }
-		
-		function fromID(placekey)
+function fromID(placekey)
 		{ 
 			var placekey =placekey;
 			if(placekey !=='')
@@ -250,3 +171,4 @@
 				});
 		 })
     </script>
+

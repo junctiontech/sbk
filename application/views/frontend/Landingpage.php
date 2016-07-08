@@ -50,14 +50,24 @@
                 <label class="col-md-3 col-sm-3 col-xs-12 white">Where?</label>
              
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <input type="text" class="form-control" value=" ">
+                  <select id="placeID" class="select3_group form-control" name="where" >
+					<option value="" >Where</option>
+						<?php { 
+						if(!empty($Fetch_ProductName))
+						{
+						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
+						{?>
+							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
+							
+						<?php }}}?>
+					</select>
                 </div>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
 			  
                 <div class="col-md-6"><p class="white">Check In</p>
                  <div class="input-group">
-											<input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" placeholder="Check In">
+											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -65,8 +75,8 @@
 										</div>
                 </div>
 				                <div class="col-md-6"><p class="white">Check Out</p>
-                         <div class="input-group">
-											<input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" placeholder="Check Out">
+                        <div class="input-group">
+											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -78,7 +88,7 @@
 
  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-6"><p class="white">Guests</p>
-<select class="form-control" name="Status">
+<select class="form-control" name="noOfGuests">
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -97,7 +107,7 @@
                       
                        
 
-<select class="form-control" name="Status">
+<select class="form-control" name="noOfRoom">
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -142,18 +152,20 @@
                 <label class="col-md-2 col-sm-2 col-xs-12  ">From</label>
              
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                  <input type="text" class="form-control" value=" ">
+                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here..">
+				  <datalist id="fromdata"></datalist>
                 </div>
 				 <label class="col-md-1 col-sm-1 col-xs-12  ">To</label>
 				                 <div class="col-md-4 col-sm-4 col-xs-12">
-                  <input type="text" class="form-control" value=" ">
+                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here..">
+				  <datalist id="todata"></datalist>
                 </div>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
 			  
                 <div class="col-md-6"><span class=" ">Departure</span>
                   <div class="input-group">
-											<input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" placeholder="Departure Date">
+											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -162,7 +174,7 @@
                 </div>
 				                <div class="col-md-6"><p class="white"> Return</p>
                          <div class="input-group">
-											<input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" placeholder="Return Date">
+											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -174,17 +186,17 @@
  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-6"><p class="white">Class</p>
                   
-                    <select class="form-control" name="Status">
- <option value="1">Economy</option>
- <option value="2">Premium Economy</option>
- <option value="3">Business</option> 
- </select>
+                    <select class="form-control" name="class">
+									<option value="1">Economy</option>
+									<option value="2">Premium Economy</option>
+									<option value="3">Business</option>
+								</select>
 </div>
 				 </div>
 
 				
 				 
-              <button type="submit" style="width:100%;margin-top: 0px;" class="btn btn-success">Search</button>
+              <button type="submit" style="width:100%;margin-top:20px;" class="btn btn-success">Search</button>
             	
 			</form>
           </div>         
@@ -310,6 +322,97 @@
 <!-- // End Ad Tag -->
 <a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
 
+ <script>
+            $(document).ready(function () {
+                $(".select2_single").select2({
+                    placeholder: "Select a state",
+                    allowClear: true
+                });
+                $(".select3_group").select2({});
+                $(".select2_multiple").select2({
+                    maximumSelectionLength: 4,
+                    placeholder: "With Max Selection limit 4",
+                    allowClear: true
+                });
+            });
+        </script>
 
- 
+ <script>
+function getplaceID(placekey)
+{ 
+	var placekey =placekey;
+	if(placekey !=='')
+	{
+		$.ajax({
+		type: "POST",
+		url: base_url+"Hotel/getplaceID",
+		data:{placekey:placekey},
+		cache: false,
+		success: function(html)
+		{ // alert(html);
+		$("#placeID").html(html);
+		}
+		});
+	}
+	return false;  	  
+}		
+		$(document).ready(function(){
+	  
+				$(document).on('keyup', '.select2-input', function() {
+					
+				getplaceID(this.value);
+				});
+		});
+    </script>
+	<script>
+function fromID(placekey)
+		{ 
+			var placekey =placekey;
+			if(placekey !=='')
+			{
+				$.ajax({
+				type: "POST",
+				url: base_url+"Flights/getplaceID",
+				data:{placekey:placekey},
+				cache: false,
+				success: function(html)
+				{ 
+					 $("#fromdata").html(html);
+					
+				}
+				});
+			}
+			return false;  	  
+		}
+
+		function toID(placekey)
+		{ 
+			var placekey =placekey;
+			if(placekey !=='')
+			{
+				$.ajax({
+				type: "POST",
+				url: base_url+"Flights/getplaceID",
+				data:{placekey:placekey},
+				cache: false,
+				success: function(html)
+				{ 
+				$("#todata").html(html);
+				}
+				});
+			}
+			return false;  	  
+		}
+		
+		$(document).ready(function(){
+	  
+				$(document).on('keyup', '#from', function() {
+				fromID(this.value);
+				});
+				
+				$(document).on('keyup', '#to', function() {
+				toID(this.value);
+				});
+		 })
+    </script>
 	

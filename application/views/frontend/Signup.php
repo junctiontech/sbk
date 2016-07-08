@@ -1,13 +1,6 @@
 <div class="page-container">	
   <div class="main-content"> 
-<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12 signup_form">
-				<div class="x_panel">
-			<div class="col-md-1 col-sm-1 col-lg-1"></div>
-					<div class="col-md-10 col-sm-10 col-xs-10 form_content">
-				
-						<h2 style="font-size:25px;color:purple;margin-left:60px;margin-top:50px">Signup Form</h2>
-						<!-- Alert section For Message-->
+  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
 		  <div class="alert alert-success alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
@@ -24,6 +17,12 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
+<div class="row"> 
+			<div class="col-md-1 col-sm-1"></div>
+					<div class="col-md-10 col-sm-10 col-xs-10 form_content">
+				<div class="panel-body">
+					 <p align="center">Signup Form</p>
+						
 						<form role="form" class="form-horizontal form-label-left sign_up"   method="post" action="<?=base_url();?>Login/insert_user_info">
 						
 							<div class="item form-group">
@@ -76,18 +75,18 @@
 							
 							
 							<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="userDOB">Dob<span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="userDOB">Date Of Birth<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" type="date" name="userDOB" required="required" placeholder="Dob" class=" form-control col-md-7 col-xs-12">
+									<input id="name" type="date" name="userDOB" required="required" placeholder="Date Of Birth" class=" form-control col-md-7 col-xs-12">
 								</div>
 							</div>
 							
 							<div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Mobno<span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Mobile No<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" type="number" name="userMobileNo" required="required" placeholder="Mobno" class=" form-control col-md-7 col-xs-12">
+									<input id="name" type="number" name="userMobileNo" required="required" placeholder="Mobile No" class=" form-control col-md-7 col-xs-12">
 								</div>
 							</div>
 							
@@ -102,10 +101,9 @@
 							</div>
 						
 						</form>
-
+</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-		</div>
+		 <div class="clear"></div>

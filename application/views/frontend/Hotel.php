@@ -5,7 +5,7 @@
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="hotel_panal">
  <form method="get" action="<?=base_url();?>Hotel.html" class="form-horizontal form-label-left">
- <div class=" ">
+ 
               <div class="white"style="padding-bottom: 25px;">
                 <h2>Search Hotal</h2>
               </div>
@@ -107,7 +107,7 @@
 				
 				 
               <button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
-            	 </div>
+            	 
 </form>
 </div>
 </div>
