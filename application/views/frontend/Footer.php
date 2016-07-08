@@ -105,5 +105,6 @@ function googleTranslateElementInit() {
 								<script  src="<?=base_url();?>admin/js/moment.min2.js"></script>
 								<script  src="<?=base_url();?>admin/js/datepicker/daterangepicker.js"></script>
 								<script src="<?=base_url();?>admin/js/select/select2.full.js"></script>
+								<script src="<?=base_url();?>frontend/js/jquery.autocomplete.min.js"></script>
 </body>
 </html>

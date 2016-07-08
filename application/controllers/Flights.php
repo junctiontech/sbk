@@ -27,7 +27,6 @@ class Flights extends CI_Controller {
 			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/autosuggest/v1.0/IN/INR/en-GB/?query=$placekey&apiKey=se891278314094529612719886766340"),true);
 
 			if(!empty($jsonData['Places'])){
-				echo "<option  value=\"\">where</option> ";
 				foreach($jsonData['Places'] as $place)
 				{ 
 					$placeID='';$placeName='';
