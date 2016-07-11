@@ -13,7 +13,7 @@
                 <label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
              
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                <select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="pls. type here.........." >
+                <select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="type here.........." >
 					<option value="" >Where</option>
 						<?php { 
 						if(!empty($Fetch_ProductName))
