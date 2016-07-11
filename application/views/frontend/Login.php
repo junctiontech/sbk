@@ -70,12 +70,8 @@
 							<div class="row">
 
 								<div class="col-md-12 col-sm-12 col-xs-12 form-input">
-
 									<input type="text" class="form-log" id="inputSuccess3" placeholder="Enter Password" name="password">
-
-
 								</div>
-
 							</div>
 
 
@@ -99,11 +95,11 @@
 
 							<div class="sign">
 
-								<p style="margin-left:10px;font-size:15px">New to Search before Kharch?</p>
+								<p style="margin-bottom:10px;font-size:15px">New to Search before Kharch?</p>
 
-								<div class="col-md-6 col-sm-6 col-xs-12 lg_button">
+								<div class="col-md-6 col-sm-6 col-xs-12">
 
-									<a href="<?=base_url();?>Login/signup.html" class="btn btn-primary btn  signup_button" role="button">SIGN UP</a>
+									<a href="<?=base_url();?>Login/signup.html" class="btn btn-success" role="button">SIGN UP</a>
 
 
 								</div>
@@ -143,7 +139,7 @@
 										
 					</div>
 					
-					<p style="margin-left:70px;font-size:15px">Recover your social account</p>
+					<p style="font-size:15px">Recover your social account</p>
 					
 				</div>
 			</div>

@@ -5,7 +5,7 @@
     		<?php if(!empty($totalresult)){ ?>	<p>Total Result:<?php echo isset($totalresult)?$totalresult:''; ?> </p><?php } if(!empty($pagination)){ ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
     		</div>
 		<div class="col-md-3 col-sm-3 col-xs-12">
-		    <div class="to_do">		
+		    <div class="to_do black">		
 					<div style="font-weight: bold; padding: 10px;">Top Deals</div>
                         <?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
 						<div class="deal_htr">

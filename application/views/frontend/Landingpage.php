@@ -31,7 +31,7 @@
 			 
  
  
-  <div class="hotel_panal white">
+  <div style="height:390px" class="hotel_panal white">
    
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -43,35 +43,31 @@
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 			
 
-		   <form method="post" class="form-horizontal form-label-left">
+		   <form method="get" action="<?=base_url();?>Hotel.html" class="form-horizontal form-label-left">
 		   		<h2>Search Hotal</h2>
-             
-              <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 white">Where?</label>
-             
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <select id="placeID" class="select3_group form-control" name="where" >
-					<option value="" >Where</option>
-						<?php { 
-						if(!empty($Fetch_ProductName))
-						{
-						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
-						{?>
-							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
+					<div class="form-group">
+						<label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
+                             <div class="col-md-12 col-sm-12 col-xs-12">
+								<select id="placeID" class="select3_group form-control" name="where" >
+									<option value="" >Where</option>
+										<?php { 
+												if(!empty($Fetch_ProductName))
+													{
+														foreach($Fetch_ProductName as $Fetch_ProductMap) 	
+													{?>
+										<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
 							
-						<?php }}}?>
-					</select>
-                </div>
-              </div>
+										<?php }}}?>
+								</select>
+							</div>
+					</div>
               <div class="col-md-12 col-sm-12 col-xs-12">
-			  
-                <div class="col-md-6"><p class="white">Check In</p>
-                 <div class="input-group">
-											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In">
-											
-											<div class="input-group-addon">
-												<a href="#"><i class="linecons-calendar"></i></a>
-											</div>
+				<div class="col-md-6"><p class="white">Check In</p>
+					<div class="input-group">
+						<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In">
+						<div class="input-group-addon">
+						<a href="#"><i class="linecons-calendar"></i></a>
+					</div>
 										</div>
                 </div>
 				                <div class="col-md-6"><p class="white">Check Out</p>
@@ -128,26 +124,14 @@
 
 				
 				 
-              <button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
+              <button type="submit" style="width:100%;margin-top:20px;" class="btn btn-success">Search</button>
             	 
 			</form>
 		
           </div>
           <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-             <form method="post" class="form-horizontal form-label-left">
-		   		   
-              
-                <h2>Search Flights</h2>
-             
-			  <div class="form-group">
-			  <div class="col-md-5">
-			  <input type="radio" class="flat" name="radio"/> One Way
-			  
-			  </div>
-			  <div class="col-md-5">
-			  <input type="radio" class="flat" name="radio"/> Round Trip 
-			  </div>
-			  </div>
+             <form  method="get" action="<?=base_url();?>Landingpage/Flights.html" class="form-horizontal form-label-left">             
+                <h2>Search Flights</h2>		  
               <div class="form-group">
                 <label class="col-md-2 col-sm-2 col-xs-12  ">From</label>
              
@@ -172,7 +156,7 @@
 											</div>
 										</div>
                 </div>
-				                <div class="col-md-6"><p class="white"> Return</p>
+				            <div class="col-md-6"><p class="white"> Return</p>
                          <div class="input-group">
 											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
 											
@@ -191,6 +175,22 @@
 									<option value="2">Premium Economy</option>
 									<option value="3">Business</option>
 								</select>
+</div>
+<div class="form-group">
+<label class="col-md-2 col-sm-2 col-xs-12 white">Adults </label>
+<div class="col-md-6 col-sm-6 col-xs-12">
+<select required class="form-control" name="adults">
+<option select value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+
+</select>
+</div>
 </div>
 				 </div>
 

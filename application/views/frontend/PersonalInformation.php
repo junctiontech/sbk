@@ -20,20 +20,11 @@
 </div>
 <?php }?>
 <!-- Alert section End-->
-<div class="col-sm-6 col-md-6 col-xs-12 form_content">  
-              <p align="center">Personal Information</p>
+<div class="col-sm-6 col-md-6 col-xs-12 form_content">             
+	<div class="panel-body">
+			 <p align="center">Personal Information</p>
               <!-- page content -->
-              <div class="right_col " role="main">
-                
-                                  
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                      <div class="x_panel">
-                        <div class="x_title">
-                          <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                          <form class="form-horizontal form-label-left" enctype="multipart/form-data" method="POST" action="<?=base_url ();?>User/userprofileupdate" >
+                          <form class="form-horizontal" enctype="multipart/form-data" method="POST" action="<?=base_url ();?>User/userprofileupdate" >
 						<?php if (!empty($personal)){ ?>
 								<input type="hidden" name="userID" value ="<?php echo isset ($personal[0]->userID)?$personal[0]->userID:'';?>" >
 						<?php } ?> 
@@ -42,26 +33,26 @@
 								<input type="hidden" name="oldvalue" value ="<?php echo isset ($personal[0]->userProfileImage)?$personal[0]->userProfileImage:'';?>" >
 						<?php } ?> 
                             <div class="item form-group">
-                              <label class="control-label col-md-3 col-sm-3 col-xs-4">First Name </label>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">First Name </label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input class="form-control col-md-7 col-xs-12" name="userFirstName" type="text" value="<?php echo isset($personal[0]->userFirstName)?$personal[0]->userFirstName:'';?>">
                               </div>
                             </div>
                             <div class="item form-group">
-                              <label class="control-label col-md-3 col-sm-3 col-xs-4">Last Name </label>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Last Name </label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input class="form-control col-md-7 col-xs-12" name="userLastName" type="text" value="<?php echo isset($personal[0]->userLastName)?$personal[0]->userLastName:'';?>">
                               </div>
                             </div>
                              <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-5">Date Of Birth</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="userDOB" value="<?php echo isset($personal[0]->userDOB)?$personal[0]->userDOB:'';?>" class="form-control" data-inputmask="'mask': '99/99/9999'">
                                                 
                                             </div>
                                         </div>
                             <div class="item form-group">
-                              <label class="control-label col-md-3 col-sm-3 col-xs-3">Email </label>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Email </label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="email" name="userEmail" class="form-control col-md-7 col-xs-12" value="<?php echo isset($personal[0]->userEmail)?$personal[0]->userEmail:'';?>">
                               </div>
@@ -73,7 +64,7 @@
                               </div>
                             </div>
                             <div class="item form-group">
-                              <label class="control-label col-md-3 col-sm-3 col-xs-3">Gender </label>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender </label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input type="radio" class="flat" name="userGender" id="genderM" value="Male"
 												<?php if(!empty($personal[0]->userGender))
@@ -95,13 +86,13 @@
                                 Female </div>
                             </div>
                             <div class="item form-group">
-                              <label class="control-label col-md-3 col-sm-3 col-xs-3">Address </label>
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Address </label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                 <textarea  name="userAddress" class="form-control col-md-7 col-xs-12"><?php echo isset ($personal[0]->userAddress)?$personal[0]->userAddress:'';?></textarea>
                               </div>
                             </div>
                            <div class="item form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-5">Profile Image</label>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12">Profile Image</label>
 									<div class="col-md-6 col-sm-6 col-xs-12" align="center" >
 										<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img id="userProfile_Image" src="<?=base_url();?>./uploads/images/userProfileImage/<?=($personal[0]->userProfileImage)?$personal[0]->userProfileImage:'';?>"></div>
 											<input type="file" name="userProfileImage" onchange="readURL(this);" class="form-control col-md-6 col-xs-12" >
@@ -114,14 +105,16 @@
                               </div>
                             </div>
                           </form>
-                        </div>
-                      </div>
+                         
+                     
                     </div>
                   </div>
                 
-              </div>              
+   
+ 
+ 		  
               <!-- /page content -->
-            </div>
+           
  <script>
         $(document).ready(function () {
             $(":input").inputmask();
@@ -141,8 +134,7 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
        }
     }
-    </script>
-          
+    </script>          
 </div>
 </div>
 </div><div class="clear"></div>

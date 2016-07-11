@@ -95,7 +95,7 @@
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-3">
 							
-									<button  id="submit" name="submit" value="submit" type="submit"style="background-color:black; color:white;border-color:black" class="btn btn-success">Signup</button>
+									<button  id="submit" name="submit" value="submit" type="submit" class="btn btn-success">Signup</button>
 									
 								</div>
 							</div>
