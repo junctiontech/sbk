@@ -17,7 +17,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	width:85%;
 	height:82px;
 	border-radius: 10px;
-	margin-top:7px;
+	margin:7px;
 }
 .search_box input[type="text"]{
 	width:85%;
@@ -345,6 +345,9 @@ ol,ul{list-style:none;margin:0;padding:0;}
     list-style: none;
 	color:black;
 	
+}
+.to_do a:hover{
+	color:red;
 }
 .deal_htr{
 	border-top: 1px solid #dfe1e8;
@@ -675,6 +678,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 }
 .lg_button{
 margin-top:30px;
+left:10px
 }
 .lg_button p{
 font-size:15px;
@@ -701,7 +705,6 @@ margin-top:60px;
 font-family:tahoma;
 }
 .social{
-	margin-left:30px;
 	margin-top:10px;
 	margin-bottom:10px;
 }
@@ -981,6 +984,7 @@ margin-top:60px;
 	}
 	.images_1_of_4{
 		width:95%;
+		height:450px;
 		padding:2.5%;
 	}
 	.heading {
@@ -1154,15 +1158,12 @@ font-size:19px;
 	font-size:14px;
 	color:grey;
 }
-a:hover{
-	color:red;
-}
+
 .hotel_panal {
     position: relative;
-    width: 100%;
-	
+    width: 100%;	
     margin-bottom: 10px;
-    padding: .0px 0px;
+	padding:15px 20px;
     display: inline-block;
     background:url(../images/hotel_panal.jpg) no-repeat;
     border: 1px solid #E6E9ED;
@@ -1178,8 +1179,7 @@ a:hover{
 .textval{
 	margin-top:10px;
 	text-align: left;
-	margin-left: 22px;
-	
+	margin-left: 22px;	
 }
 .compareimages_1_of_4 {
     width: 100%;
