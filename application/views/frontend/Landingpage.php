@@ -31,7 +31,7 @@
 			 
  
  
-  <div style="height:390px" class="hotel_panal white">
+  <div style="height:415px" class="hotel_panal white">
    
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -43,12 +43,12 @@
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 			
 
-		   <form method="get" action="<?=base_url();?>Hotel.html" class="form-horizontal form-label-left">
+		   <form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
 		   		<h2>Search Hotal</h2>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
                              <div class="col-md-12 col-sm-12 col-xs-12">
-								<select id="placeID" class="select3_group form-control" name="where" >
+								<select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="Enter Search Where" >
 									<option value="" >Where</option>
 										<?php { 
 												if(!empty($Fetch_ProductName))
@@ -62,17 +62,17 @@
 							</div>
 					</div>
               <div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="col-md-6"><p class="white">Check In</p>
-					<div class="input-group">
-						<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In">
+				<div class="col-md-6 padding form-group"><p class="white">Check In</p>
+					<div class="input-group ">
+						<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
 						<div class="input-group-addon">
 						<a href="#"><i class="linecons-calendar"></i></a>
 					</div>
 										</div>
                 </div>
-				                <div class="col-md-6"><p class="white">Check Out</p>
+				                <div class="col-md-6 padding form-group"><p class="white">Check Out</p>
                         <div class="input-group">
-											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out">
+											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" ">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -130,26 +130,26 @@
 		
           </div>
           <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-             <form  method="get" action="<?=base_url();?>Landingpage/Flights.html" class="form-horizontal form-label-left">             
+             <form  method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">             
                 <h2>Search Flights</h2>		  
               <div class="form-group">
                 <label class="col-md-2 col-sm-2 col-xs-12  ">From</label>
              
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here..">
+                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="fromdata"></datalist>
                 </div>
 				 <label class="col-md-1 col-sm-1 col-xs-12  ">To</label>
 				                 <div class="col-md-4 col-sm-4 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here..">
+                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="todata"></datalist>
                 </div>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
 			  
                 <div class="col-md-6"><span class=" ">Departure</span>
-                  <div class="input-group">
-											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date">
+                  <div class="input-group padding form-group">
+											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" data-message-required=" ">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>

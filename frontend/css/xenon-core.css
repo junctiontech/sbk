@@ -5808,6 +5808,7 @@ form .form-group.has-info .form-control-feedback {
 form .form-group.validate-has-error .form-control {
   border-color: #cc3f44;
   color: #cc3f44;
+  background-color: pink;
 }
 form .form-group.validate-has-error .form-control::-moz-placeholder {
   color: #cc3f44;

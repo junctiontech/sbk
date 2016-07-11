@@ -1356,3 +1356,8 @@ p.heddine{
 	font-size:15px;
 	color:red;
 }
+
+.padding{
+	margin-left: -15px !important;
+	margin-right: 15px !important;
+}

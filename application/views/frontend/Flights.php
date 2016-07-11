@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="flight">
-					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="form-horizontal form-label-left">
+					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white"style="padding-bottom: 25px;">
 							<h2>Search Flights</h2>
 						</div>
@@ -22,14 +22,14 @@
 						<div class="form-group">
 							<label class="col-md-5 col-sm-5 col-xs-12 white">From </label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
-								<input type="text" id="from" list="fromdata" data-validate="required" class="form-control" name="from" placeholder="Type here..">
+								<input type="text" id="from" list="fromdata" name="from" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here..">
 				  <datalist id="fromdata"></datalist>
 							</div>
-						</div>
+						</div>							
 						<div class="form-group">
 							<label class="col-md-5 col-sm-5 col-xs-12 white">To</label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
-								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here..">
+								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here..">
 				  <datalist id="todata"></datalist>
 
 							</div>
@@ -38,7 +38,7 @@
 							<label class="col-md-5 col-sm-5 col-xs-12 white">Departure</label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="input-group">
-											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date">
+											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" class="form-control" data-message-required=" ">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>

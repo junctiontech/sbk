@@ -4,7 +4,7 @@
 		
 <div class="col-md-4 col-sm-4 col-xs-12">
 <div class="hotel_panal">
- <form method="get" action="<?=base_url();?>Hotel.html" class="form-horizontal form-label-left">
+ <form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
  
               <div class="white"style="padding-bottom: 25px;">
                 <h2>Search Hotal</h2>
@@ -13,7 +13,7 @@
                 <label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
              
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                <select id="placeID" class="select3_group form-control" name="where" >
+                <select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="pls. type here.........." >
 					<option value="" >Where</option>
 						<?php { 
 						if(!empty($Fetch_ProductName))
@@ -46,7 +46,7 @@
 <label class="col-md-5 col-sm-5 col-xs-12 white">Check In</label>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="input-group">
-											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In">
+											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -59,7 +59,7 @@
 <label class="col-md-5 col-sm-5 col-xs-12 white">Check Out</label>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="input-group">
-											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out">
+											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" ">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>

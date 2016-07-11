@@ -15,7 +15,7 @@
 		</div>
 		</div>
 		    	<div class="row">
-				<div class=" col-md-9 ">	
+				<div class="col-md-9 col-sm-9 col-xs-12">	
 								
 					<div class="col-md-4 grid images_3_of_2 pro_img">
 					
@@ -125,7 +125,7 @@
 	    </div>	
 <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=88882&file_id=79365" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79365&aff_id=48478&file_id=88882" width="1" height="1" />		
 	</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="span_3_of_1">
 					<h2>Similar Product</h2>
 					
@@ -133,34 +133,22 @@
 		   <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
 				<div class="grid_1_of_4 similar_images_1_of_4">
 					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
-					 <h2><?=$similarproducted->productName?> </h2>
-					
-					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>
-					 <!-- <div class="button" style="width:100%"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" /><?php /*if(!empty($userinfos)){ if(in_array(isset($similarproducted->productsID)?$similarproducted->productsID:'',$whislistproduct)==false){ ?>
-					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($similarproducted->productsID)?$similarproducted->productsID:''?>.html" class="cart-button">Add to wishlists</a>
-					  <?php } }else{ ?>
-					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>
-					  <?php } */?></span> </div>-->
-				     
+					 <h2><?=$similarproducted->productName?> </h2>					
+					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>					     
 				</div>
-			</div>
-		  <?php } }else{ echo"No product Found!!";}?>
-		  	<div class="clear"></div>
-			<div class="item">
+			
+		  <?php } }else{ echo"No product Found!!";}?> 
+						</div> 
+	 <div class="clear"></div>
+			<div class=" col-md-11 col-sm-11 col-xs-11 item">
 		  <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=79367&file_id=79367" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_300x250.jpg" width="235" height="250" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79367&aff_id=48478&file_id=79367" width="1" height="1" />
 			</div>
-			<div class="clear"></div>
-			</div>
+			 
+			</div>	<div class="clear"></div>
     				
     				
       				 
  				</div>
  		</div>
-		
- 
- 
- 
- 
- 
 </div>
 </div><div class="clear"></div>

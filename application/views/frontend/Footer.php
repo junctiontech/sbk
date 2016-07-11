@@ -149,8 +149,9 @@ function googleTranslateElementInit() {
  								<script src="<?=base_url();?>frontend/js/tagsinput/bootstrap-tagsinput.min.js"></script>
  								<script src="<?=base_url();?>frontend/js/typeahead.bundle.js"></script>
 								<script src="<?=base_url();?>frontend/js/handlebars.min.js"></script>
-								<script src="<?=base_url();?>frontend/js/multiselect/js/jquery.multi-select.js"></script>
+								<script src="<?=base_url();?>frontend/js/multiselect/js/jquery.multi-select.js"></script>								 
 								<script src="<?=base_url();?>frontend/js/jquery-validate/jquery.validate.min.js"></script>
+
 
 								<script src="<?=base_url();?>frontend/js/bootstrap.min.js"></script>
 								<script src="<?=base_url();?>frontend/js/TweenMax.min.js"></script>
