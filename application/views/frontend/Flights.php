@@ -22,14 +22,18 @@
 						<div class="form-group">
 							<label class="col-md-5 col-sm-5 col-xs-12 white">From </label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
+
 								<input type="text" id="from" list="fromdata" name="from" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here..">
+
 				  <datalist id="fromdata"></datalist>
 							</div>
 						</div>							
 						<div class="form-group">
 							<label class="col-md-5 col-sm-5 col-xs-12 white">To</label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
+
 								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here..">
+						
 				  <datalist id="todata"></datalist>
 
 							</div>
@@ -72,7 +76,7 @@
 <label class="col-md-5 col-sm-5 col-xs-12 white">Adults </label>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <select required class="form-control" name="adults">
-<option select value="1">1</option>
+<option value="1">1</option>
 <option value="2">2</option>
 <option value="3">3</option>
 <option value="4">4</option>

@@ -31,8 +31,9 @@
 			 
  
  
+
   <div style="height:415px" class="hotel_panal white">
-   
+
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
           <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Search Hotal</a> </li>
@@ -43,13 +44,16 @@
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 			
 
+
 		   <form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
+
 		   		<h2>Search Hotal</h2>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
                              <div class="col-md-12 col-sm-12 col-xs-12">
+
 								<select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="Enter Search Where" >
-									<option value="" >Where</option>
+								<option value="" >Where</option>
 										<?php { 
 												if(!empty($Fetch_ProductName))
 													{
@@ -62,9 +66,11 @@
 							</div>
 					</div>
               <div class="col-md-12 col-sm-12 col-xs-12">
+
 				<div class="col-md-6 padding form-group"><p class="white">Check In</p>
 					<div class="input-group ">
 						<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
+
 						<div class="input-group-addon">
 						<a href="#"><i class="linecons-calendar"></i></a>
 					</div>
@@ -130,7 +136,9 @@
 		
           </div>
           <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+
              <form  method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">             
+
                 <h2>Search Flights</h2>		  
               <div class="form-group">
                 <label class="col-md-2 col-sm-2 col-xs-12  ">From</label>
