@@ -178,10 +178,11 @@
  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-6"><p class="white">Class</p>
                   
-                    <select class="form-control" name="class">
-									<option value="1">Economy</option>
-									<option value="2">Premium Economy</option>
-									<option value="3">Business</option>
+                   <select class="form-control" name="class">
+									<option value="Economy">Economy</option>
+									<option value="premiumEconomy">Premium Economy</option>
+									<option value="Business">Business</option>
+									<option value="First">First</option>
 								</select>
 </div>
 <div class="form-group">

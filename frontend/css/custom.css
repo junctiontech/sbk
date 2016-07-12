@@ -1096,6 +1096,13 @@ margin-top:60px;
 		text-align:left !important;
 		font-size:10px;
 	}
+	.col-xs-0{
+		display:none;
+	}
+	.conten1{
+		text-align:center;
+		font-size:10px;
+	}
 	
 
 }
@@ -1360,4 +1367,127 @@ p.heddine{
 .padding{
 	margin-left: -15px !important;
 	margin-right: 15px !important;
+}
+ul .Stop_line{
+	height: 2px;
+	width: 93%;
+	background-color: #a2a4ac;
+	margin: 5px auto;
+	position: relative;
+	padding: 0;
+}
+.Stop_line{
+content: ' ';
+width: 21px;
+height: 12px;
+background-image:url(../images/s.jpg) no-repeat;
+position: absolute;
+right: -1px;
+top: -5px;
+
+}
+.time{
+	font-size: 12px;	 
+	color: #34363d;
+}
+.airline{
+	width: 100%;
+	float: left;
+	display: block;
+	visibility: visible;
+	margin-top: 4px;
+	position: relative;
+	line-height: 15px;
+	border: 1px solid #EBE8E8;
+	border-radius: 3px;
+}
+.air_linecontener{
+	display: table-cell;
+	vertical-align: middle;
+}
+.airlineprice{
+	vertical-align: middle;
+	text-align: center;
+	color: black;
+}
+.image{
+	height:45px;
+}
+.conten{
+	text-align:center;
+	font-size:10px;
+}
+.right{
+	text-align:right;
+}
+
+.row1{
+	margin-left:-30px;
+	margin-right:-20px;
+}
+.main_panal {
+    position: relative;
+    width: 100%;	
+    margin-bottom: 10px;
+	padding:0px 20px;
+    display:block;
+    background:url(../images/312626779_d479335772_o.jpg) no-repeat;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    opacity: 1;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.hotel_panal1 {
+    position: relative;
+    width: 100%;	
+    margin-bottom: 10px;
+	padding:15px 20px;
+    display: inline-block;
+    background-color: transparent;  
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    opacity: 1;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.flight1{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+	background-color: transparent; 
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    opacity: 1;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.Mainflight {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding:0px 17px;
+    display:block;
+    background:url(../images/maxresdefault.jpg) no-repeat;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    opacity: 1;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    transition: all .2s ease;
 }
