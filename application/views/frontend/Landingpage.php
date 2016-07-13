@@ -2,7 +2,7 @@
 	<div class="main-content">
 		<div class="row">
 								 <!-- FlexSlider -->
-			<div class="col-md-6 col-xs-12">		  
+			<div class="col-md-6 col-sm-6 col-xs-12">		  
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					

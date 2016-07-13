@@ -1294,8 +1294,8 @@ body {
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0% 7%;
-    line-height: 25px;
+    padding: 0 9px;
+    line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
     position: absolute;
@@ -1566,13 +1566,13 @@ body {
 }
 @media screen and (min-width: 767px) and (max-width: 992px) {
   .navbar.horizontal-menu .navbar-inner .navbar-brand {
-    padding: 0% 9%;
+    padding: 0 15px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li {
     line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0% 7%;
+    padding: 0 5px;
     font-size: 11px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a > .badge {
