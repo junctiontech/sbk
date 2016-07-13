@@ -340,19 +340,19 @@ class Product extends CI_Controller {
 		$category=$this->input->post('categoryName');
 		$product=$this->input->post('productName');
 		$check_product=$this->Product_model->search_product($category,$product);
-		//print_r($check_product);die;
-	echo "<option value=\"\" selected>Select</option>";
-	$i=1;
-		foreach($check_product as $check_product)
-		{ $id=($check_product->productsID);
-			$name=($check_product->productName);
-			$attribute='';//($check_product->attr);
-			if($i==1){ $select="selected";}else{ $select='';}
-	
-	echo "<option  value=\"$id\">$name $attribute</option> ";
-	$i++;
-	}
-	}
+		
+		echo "<option value=\"\" selected>Select</option>";
+		$i=1;
+			foreach($check_product as $check_product)
+			{ $id=($check_product->productsID);
+				$name=($check_product->productName);
+				$attribute=isset($check_product->attr)?$check_product->attr:'';
+				if($i==1){ $select="selected";}else{ $select='';}
+		
+		echo "<option  value=\"$id\">$name $attribute</option> ";
+		$i++;
+		}
+		}
 	}
 	
 	public function map_product()
@@ -382,12 +382,14 @@ class Product extends CI_Controller {
 	{
 		
 		$productName=$this->input->post('productID');
+		$categoryID=$this->input->post('categoryID');
 		if(!empty($productName))
 		{
-			$FetchNames=$this->Product_model->fetch_productname($productName);
+			$FetchNames=$this->Product_model->fetch_productname($productName,$categoryID);
 			
 			if(!empty($FetchNames)){
 				foreach($FetchNames as $FetchName){
+					$attr=isset($FetchName->attr)?$FetchName->attr:'';
 				echo'<div class="thumbnail">';
                     echo'<div class="image view view-first">';
                         echo"<img style=\"width: 100%; height:150px; display: block;\" src=$FetchName->imageName alt=\"image\" />";
@@ -396,7 +398,7 @@ class Product extends CI_Controller {
 						echo"<p>$FetchName->productName</p>";
 						echo"<p style=\"margin-top:10px\">Price-$FetchName->productPrice</p>";
 						echo"<p style=\"margin-top:10px\">Shop-$FetchName->shopName</p>";
-					//	echo"<p style=\"margin-top:10px\">$FetchName->attr</p>";
+						echo"<p style=\"margin-top:10px\">$attr</p>";
 					echo'</div>';
 				}	
 			}else{
@@ -417,10 +419,10 @@ class Product extends CI_Controller {
 			$FetchNames=$this->Product_model->fetch_productname($productName);
 			if(!empty($FetchNames)){
 				
-				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand);
+				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
-				echo"<div class=\"col-md-6\">";	
+				echo"<div class=\"col-md-12\">";	
 					echo'<div class="thumbnail">';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
@@ -438,7 +440,92 @@ class Product extends CI_Controller {
 				echo'</div>';
 				}
 				}else{
-					echo"No product found!!";
+					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);
+					if(!empty($map_products1)){
+					foreach($map_products1 as $map_product){
+					echo"<div class=\"col-md-12\">";	
+						echo'<div class="thumbnail">';
+							echo'<div class="image view view-first">';
+								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
+							echo'</div>';
+							echo'<div class="caption">';
+								echo"<p>$map_product->productName</p>";
+								echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
+								echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
+								echo'<div class="col-md-3 col-sm-3 col-xs-12">';
+								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
+								echo'</div>';
+							echo'</div>';	
+						echo'</div>';
+					echo'</div>';
+					}
+					}else{
+						echo"No product found!!";
+					}
+				}
+			}else{
+				echo"No product found!!";
+			}
+		}else{
+			echo"Invalid request!!";
+		}
+	}
+	
+	public function getProductToMappSnapdeal()
+	{
+		
+		$productName=$this->input->post('productID');
+		$categoryID=$this->input->post('categoriesID');
+		if(!empty($productName))
+		{
+			$FetchNames=$this->Product_model->fetch_productname($productName);
+			if(!empty($FetchNames)){
+				
+				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);
+				if(!empty($map_products)){
+				foreach($map_products as $map_product){
+				echo"<div class=\"col-md-12\">";	
+					echo'<div class="thumbnail">';
+						echo'<div class="image view view-first">';
+							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
+						echo'</div>';
+						echo'<div class="caption">';
+							echo"<p>$map_product->productName</p>";
+							echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
+							echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
+							echo'<div class="col-md-3 col-sm-3 col-xs-12">';
+							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
+							echo'</div>';
+						echo'</div>';	
+					echo'</div>';
+				echo'</div>';
+				}
+				}else{
+					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);
+					if(!empty($map_products1)){
+					foreach($map_products1 as $map_product){
+					echo"<div class=\"col-md-12\">";	
+						echo'<div class="thumbnail">';
+							echo'<div class="image view view-first">';
+								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
+							echo'</div>';
+							echo'<div class="caption">';
+								echo"<p>$map_product->productName</p>";
+								echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
+								echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
+								echo'<div class="col-md-3 col-sm-3 col-xs-12">';
+								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
+								echo'</div>';
+							echo'</div>';	
+						echo'</div>';
+					echo'</div>';
+					}
+					}else{
+						echo"No product found!!";
+					}
 				}
 			}else{
 				echo"No product found!!";
@@ -459,7 +546,7 @@ class Product extends CI_Controller {
 			if(!empty($FetchNames)){
 				
 				foreach($FetchNames as $FetchName){
-				echo"<div class=\"col-md-6\">";	
+				echo"<div class=\"col-md-12\">";	
 					echo'<div class="thumbnail">';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$FetchName->imageName alt=\"image\" />";

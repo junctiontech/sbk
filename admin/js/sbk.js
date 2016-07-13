@@ -10,7 +10,7 @@ if(window.location.hostname=="searchb4kharch.com"){
 if(window.location.hostname=="www.searchb4kharch.com"){
 	var base_url = 'http://www.searchb4kharch.com/'; 
 }
-if(window.location.hostname=="192.168.1.111"){
+if(window.location.hostname=="192.168.1.151"){
 	var base_url = 'http://192.168.1.151/sbk/'; 
 }
 function search_product(productval)
@@ -40,12 +40,13 @@ function getproductimage(productID)
 { 
 		$("#loader").fadeIn();
 		var productID =productID;
+		var categoryID = document.getElementById('select').value;
 		if(productID !=='')
 		{
 			$.ajax({
 				type: "POST",
 				url: base_url+"Product/getproductimage",
-				data:{productID:productID},
+				data:{productID:productID,categoryID:categoryID},
 
 				cache: false,
 				success: function(html)
@@ -77,6 +78,32 @@ function getProductToMapp(productID)
 				success: function(html)
 				{
 				$("#unmappedproduct").html(html);
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function getProductToMappSnapdeal(productID)
+{ 
+		$("#loader").fadeIn();
+		var productID =document.getElementById('productName').value;
+		var categoriesID=document.getElementById('select').value;
+		if(productID !=='' && categoriesID !='')
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/getProductToMappSnapdeal",
+				data:{productID:productID,categoriesID:categoriesID},
+
+				cache: false,
+				success: function(html)
+				{
+				$("#unmappedproductsnapdeal").html(html);
 				$("#loader").fadeOut();
 				}
 			});

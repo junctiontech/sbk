@@ -38,12 +38,12 @@ class Hotel extends CI_Controller {
 		$app=$this->input->get('app');
 		$jsonarray=array();
 		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
-		$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+		//$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
 		/* $this->data['featureproduct']=$featureproduct=$this->Landingpage_model->get_inventory_data("feature_product");
 		$this->data['newproduct']=$newproduct=$this->Landingpage_model->get_inventory_data("new_product");
 		$this->data['lshproduct']=$lshproduct=$this->Landingpage_model->get_inventory_data("lhs_landing_page");
 		$this->data['deals']=$deals=$this->Landingpage_model->get_deals(); */
-		$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+		//$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
 		//print_r($dealsgategorys);die;
 		/* echo"<br>";print_r($categories);echo"<br>";echo"<br>";print_r($featureproduct);echo"<br>";echo"<br>";print_r($lshproduct);die; */
 		
@@ -77,6 +77,7 @@ class Hotel extends CI_Controller {
 				
 				$hotelsID=implode(",",$hotelsID);
 				$getHotelsDetail = json_decode(file_get_contents("http://partners.api.skyscanner.net$hotelsDetailUrl&hotelIds=$hotelsID"),true);
+				//print_r($getHotelsDetail);die;
 				$this->data['getHotelsDetail']=$getHotelsDetail;
 				
 			}
@@ -87,18 +88,21 @@ class Hotel extends CI_Controller {
 		if($app=='true'){
 			if(!empty($categories)){
 				$jsonarray['categories']=$categories;
-				$jsonarray['featureproduct']=$featureproduct;
-				$jsonarray['newproduct']=$newproduct;
-				$jsonarray['lshproduct']=$lshproduct;
-				$jsonarray['topbrand']=$topbrand;
-				$jsonarray['deals']=$deals;
-				$jsonarray['dealsgategorys']=$dealsgategorys;
+				//$jsonarray['featureproduct']=$featureproduct;
+				//$jsonarray['newproduct']=$newproduct;
+				//$jsonarray['lshproduct']=$lshproduct;
+				//$jsonarray['topbrand']=$topbrand;
+				$jsonarray['hotels']=$getHotelsDetail;
+				//$jsonarray['deals']=$deals;
+				//$jsonarray['dealsgategorys']=$dealsgategorys;
 				echo json_encode($jsonarray);
 			}else{
 				echo "No category found";
 			}
 		}else{
+			
 			$this->display ('frontend/Hotel');
+				
 		}
 	}
 	
@@ -124,6 +128,7 @@ class Hotel extends CI_Controller {
 	
 	public function gethotels()
 	{
+		$app=$this->input->get('app');
 		if($this->input->get())
 		{
 			$where=$this->input->get('where');
@@ -154,8 +159,11 @@ class Hotel extends CI_Controller {
 				
 				$hotelsID=implode(",",$hotelsID);
 				$getHotelsDetail = json_decode(file_get_contents("http://partners.api.skyscanner.net$hotelsDetailUrl&hotelIds=$hotelsID"),true);
+				if($app=true){
+					echo json_decode($getHotelsDetail);exit;
+				}else{
 				$this->data['getHotelsDetail']=$getHotelsDetail;
-				
+				}
 			}
 			
 		}

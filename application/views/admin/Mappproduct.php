@@ -35,7 +35,7 @@
 			<div class="row" style="margin-top:20px">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Product name </label>
 			<div class="col-md-6 col-sm-6 col-xs-12 content">
-			<select id="productName" class="select2_group form-control" onchange="getproductimage(this.value);getProductToMapp(this.value);getMappedProduct(this.value)" name="productName" >
+			<select id="productName" class="select2_group form-control" onchange="getproductimage(this.value);getProductToMapp(this.value);getMappedProduct(this.value);getProductToMappSnapdeal(this.value)" name="productName" >
 				<option value="" >Select</option>
 				<?php { 
 				if(!empty($Fetch_ProductName))
@@ -110,7 +110,7 @@
 		
 				   
                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Mapped product</h2>
@@ -122,7 +122,7 @@
 									<div id="mappedproduct">
                                    <?php if(!empty($fetch_productmapped)){?>
 										<?php foreach($fetch_productmapped as $fetch_product){?>	
-                                        <div class="col-md-4">
+                                        <div class="col-md-12">
 											<div class="thumbnail">
                                                 <div class="image view view-first">
                                                     <img style="width: 100%; height:150px; display: block;" src="<?=isset($fetch_product->imageName)?$fetch_product->imageName:''?>" alt="image" />
@@ -146,10 +146,10 @@
                 
                 
                  
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Unmapped product</h2>
+                                    <h2>Amazone unmapped product</h2>
                                  	
                                     <div class="clearfix"></div>
                                 </div>
@@ -160,7 +160,51 @@
 
                                    <?php if(!empty($mappedproduct)){?>
 										<?php foreach($mappedproduct as $products){?>	
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
+										
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; height:150px; display: block;" src="<?=isset($products->imageName)?$products->imageName:''?>" alt="image" />
+
+                                                </div>
+                                                <div class="caption">
+                                                    <p><?=isset($products->productName)?$products->productName:''?></p>
+													  <p style="margin-top:10px">Price-<?=isset($products->productPrice)?$products->productPrice:''?></p>
+													  <p style="margin-top:10px">Shop-<?=isset($products->shopName)?$products->shopName:''?></p>
+												
+												<div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="<?=isset($products->productsID)?$products->productsID:''?>" name="mapped_value[]"> Select to Mapp Product </input>
+                                                    </label>
+                                                </div> 
+													
+                                                </div>
+                                            </div>
+                                        </div>
+								   <?php }} ?>
+
+								</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="col-md-4">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Snapdeal unmapped product</h2>
+                                 	
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+								    <div class="row">
+									
+                                <div id="unmappedproductsnapdeal">
+
+                                   <?php if(!empty($mappedproduct)){?>
+										<?php foreach($mappedproduct as $products){?>	
+                                        <div class="col-md-12">
 										
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
