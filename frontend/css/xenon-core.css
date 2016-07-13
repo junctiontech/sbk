@@ -1274,7 +1274,7 @@ body {
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li {
         position: relative;
     z-index: 1;
-    line-height: 30px;
+    line-height: 25px;
     border: 1px solid transparent;
     border-top: 0;
     border-bottom: 0;
@@ -1295,7 +1295,7 @@ body {
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
       padding: 0% 9%;
-    line-height: 30px;
+    line-height: 25px;
     left: 14px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
