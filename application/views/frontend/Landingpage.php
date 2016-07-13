@@ -2,7 +2,7 @@
 	<div class="main-content">
 		<div class="row">
 								 <!-- FlexSlider -->
-			<div class="col-md-6 col-xs-12">		  
+			<div class="col-md-6 col-sm-6 col-xs-12">		  
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					
@@ -36,7 +36,7 @@
 
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Search Hotal</a> </li>
+          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Search Hotel</a> </li>
           <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab"  aria-expanded="false">Flights</a> </li>
 
         </ul>
@@ -47,7 +47,7 @@
 
 		   <form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
 
-		   		<h2>Search Hotal</h2>
+		   		<h2>Search Hotel</h2>
 					<div class="form-group">
 						<label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
                              <div class="col-md-12 col-sm-12 col-xs-12">

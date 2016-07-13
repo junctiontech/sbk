@@ -178,7 +178,7 @@
 							<h2>Search Flights</h2>
 						</div>
 							  
-						<div class="col-md-6 col-sm-2 col-xs-12">
+						<div class="col-md-6 col-sm-6 col-xs-12">
               <div class="form-group">
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
@@ -189,7 +189,7 @@
 							</div>
 							</div>
 						
-						<div class="col-md-6 col-sm-2 col-xs-12">
+						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>

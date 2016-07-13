@@ -9,7 +9,7 @@
  <form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
  
               <div class="white"style="padding-bottom: 25px;">
-                <h2>Search Hotal</h2>
+                <h2>Search Hotel</h2>
               </div>
               <div class="form-group">
                 <label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
@@ -190,7 +190,7 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
 				<form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
 					<div class="white"style="padding-bottom: 25px;">
                 
-						<h2>Search Hotal</h2>
+						<h2>Search Hotel</h2>
              
 					</div>
 					<div class="form-group">
@@ -225,7 +225,7 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
             });
         </script>
 					 
-              <div class="col-md-6">
+              <div class="col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 				
 						<lable class="col-md-4 col-sm-4 col-xs-12 white">Check In</lable>

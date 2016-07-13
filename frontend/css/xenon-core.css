@@ -1274,7 +1274,7 @@ body {
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li {
     position: relative;
     z-index: 1;
-    line-height: 50px;
+    line-height: 40px;
     border: 1px solid transparent;
     border-top: 0;
     border-bottom: 0;
@@ -1294,8 +1294,8 @@ body {
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0 15px;
-    line-height: 50px;
+    padding: 0 9px;
+    line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
     position: absolute;
@@ -1457,7 +1457,7 @@ body {
   display: none;
 }
 .navbar.horizontal-menu .navbar-inner > .nav > li {
-  line-height: 50px;
+  line-height: 40px;
   display: inline-block;
 }
 .navbar.horizontal-menu .navbar-inner > .nav > li i {
@@ -1569,11 +1569,11 @@ body {
     padding: 0 15px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li {
-    line-height: 84px;
+    line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0 10px;
-    font-size: 12px;
+    padding: 0 5px;
+    font-size: 11px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a > .badge {
     display: none;
