@@ -1294,7 +1294,7 @@ body {
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0% 9%;
+    padding: 0% 7%;
     line-height: 25px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
@@ -1572,7 +1572,7 @@ body {
     line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0% 9%;
+    padding: 0% 7%;
     font-size: 11px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a > .badge {
