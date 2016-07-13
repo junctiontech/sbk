@@ -32,7 +32,7 @@
  
  
 
-  <div style="height:415px" class="hotel_panal white">
+  <div  class="hotel_panal white">
 
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
