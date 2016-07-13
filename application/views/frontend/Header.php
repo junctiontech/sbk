@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/xenon-components.css">
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/xenon-skins.css">
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/custom.css">
-
+<link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
 
 

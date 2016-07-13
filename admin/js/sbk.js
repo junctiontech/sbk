@@ -52,7 +52,7 @@ function getproductimage(productID)
 				success: function(html)
 				{
 				$("#showimage").html(html);
-				$("#loader").fadeOut();
+				//$("#loader").fadeOut();
 				}
 			});
 		}else{
@@ -78,7 +78,7 @@ function getProductToMapp(productID)
 				success: function(html)
 				{
 				$("#unmappedproduct").html(html);
-				$("#loader").fadeOut();
+			//	$("#loader").fadeOut();
 				}
 			});
 		}else{
@@ -129,7 +129,7 @@ function getMappedProduct(productID)
 				success: function(html)
 				{
 				$("#mappedproduct").html(html);
-				$("#loader").fadeOut();
+				//$("#loader").fadeOut();
 				}
 			});
 		}else{
