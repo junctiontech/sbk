@@ -8,7 +8,7 @@
 
 				<div class="col-md-2 col-xs-12 col-sm-2"></div>
 
-				<div class="col-md-8">
+				<div class="col-md-8 col-sm-8 col-xs-12">
 
 
 					<form class="form-horizontal form-label-left input_mask" action="<?=base_url()?>Login/Checked_login" method="post">
@@ -70,7 +70,7 @@
 							<div class="row">
 
 								<div class="col-md-12 col-sm-12 col-xs-12 form-input">
-									<input type="text" class="form-log" id="inputSuccess3" placeholder="Enter Password" name="password">
+									<input type="password" class="form-log" id="inputSuccess3" placeholder="Enter Password" name="password">
 								</div>
 							</div>
 
