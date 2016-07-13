@@ -1272,9 +1272,9 @@ body {
     color: #313232;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li {
-    position: relative;
+        position: relative;
     z-index: 1;
-    line-height: 40px;
+    line-height: 30px;
     border: 1px solid transparent;
     border-top: 0;
     border-bottom: 0;
@@ -1294,8 +1294,8 @@ body {
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-     padding: 5% 9%;
-    line-height: 29px;
+      padding: 0% 9%;
+    line-height: 30px;
     left: 14px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
