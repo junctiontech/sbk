@@ -1294,8 +1294,9 @@ body {
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0% 10%;
-   /* line-height: 40px;*/
+     padding: 5% 9%;
+    line-height: 29px;
+    left: 14px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
     position: absolute;
