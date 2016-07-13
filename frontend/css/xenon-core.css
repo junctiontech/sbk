@@ -1294,8 +1294,8 @@ body {
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0 15px;
-    line-height: 50px;
+    padding: 0% 10%;
+    line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {
     position: absolute;
@@ -1569,11 +1569,11 @@ body {
     padding: 0 15px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li {
-    line-height: 84px;
+    line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0 10px;
-    font-size: 12px;
+    padding: 0 6%;
+    font-size: 10px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a > .badge {
     display: none;
