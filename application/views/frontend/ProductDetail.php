@@ -71,27 +71,46 @@
 			
 			<?php foreach($attributegroups as $attributegroup){ 
 			$attributebyproducts=$this->Landingpage_model->get_attribute_by_product($attributegroup->AttributeID,$products[0]->productsID); 
-										if(!empty($attributebyproducts)){ ?>
-			<div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                     <div class="x_content">
-									<table class="table table-striped">
-                                        <tbody>
-                                            <tr style="background-color: rgba(142, 142, 142, 0.24);">
+										if(!empty($attributebyproducts)){ ?>                           
+					<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						 
+						<div class="panel-body">
+							
+							<div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+							
+								<table cellspacing="0" class="table table-small-font table-bordered table-striped">
+									 
+									<tbody>
+										 <tr style="background-color: rgba(142, 142, 142, 0.24);">
                                                 <td><?=$attributegroup->productAttributeLable?></td>
                                             </tr>
-                                         </tbody>
-                                    </table>
 
-                                </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-
-                                    <table class="table table-bordered">
-                                       
-                                        <tbody>
+									</tbody>
+								</table>
+							
+							</div>							
+							
+						</div>
+					
+					</div>
+				</div>
+			</div>
+                        
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						 
+						<div class="panel-body">
+							
+							<div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+							
+								<table cellspacing="0" class="table table-small-font table-bordered table-striped">
+									 
+									<tbody>
 										<?php 
 										foreach($attributebyproducts as $attributebyproduct){?>
                                             <tr>
@@ -99,15 +118,18 @@
                                                 <td><?=$attributebyproduct->productAttributeValue?></td>
                                                 
                                             </tr>
-										<?php }?>
-										
-                                        </tbody>
-                                    </table>
+										<?php }?>	
 
-                                </div>
-                            </div>
-                        </div>
-						
+									</tbody>
+								</table>
+							
+							</div>							
+							
+						</div>
+					
+					</div>
+				</div>
+			</div>
 			<?php } }?>	
 			</div>
 	    </div>

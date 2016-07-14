@@ -3172,7 +3172,7 @@ body.chat-open #chat {
 .panel .panel-body {
   padding: 0;
   padding-top: 20px;
-  color: #979898;
+  color: #000000;
 }
 .panel .panel-body.no-padding {
   padding: 0;
