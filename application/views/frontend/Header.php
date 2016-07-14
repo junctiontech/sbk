@@ -71,7 +71,7 @@
 				
 				<li>					
 					<a href="#">
-						<i class="fa-android"></i>
+						<i class="android"></i>
 					<!--	<span class="badge badge-green">15</span>-->
 					</a>					
 				</li>			
