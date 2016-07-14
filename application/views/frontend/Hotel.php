@@ -17,14 +17,9 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                 <select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="type here.........." >
 					<option value="" >Where</option>
-						<?php { 
-						if(!empty($Fetch_ProductName))
-						{
-						foreach($Fetch_ProductName as $Fetch_ProductMap) 	
-						{?>
-							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
-							
-						<?php }}}?>
+						<?php if(!empty($where)){ ?>
+							<option selected value="<?=isset($where) ?$where:''?>"><?=isset($where)?$where:''?> </option>
+						<?php } ?>
 					</select>
                 </div>
               </div>
@@ -48,7 +43,7 @@
 <label class="col-md-5 col-sm-5 col-xs-12 white">Check In</label>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="input-group">
-											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
+											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" " value="<?=isset($checkin)?$checkin:''?>">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -61,7 +56,7 @@
 <label class="col-md-5 col-sm-5 col-xs-12 white">Check Out</label>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <div class="input-group">
-											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" ">
+											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" " value="<?=isset($checkout)?$checkout:''?>">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -70,38 +65,38 @@
 </div>
 </div>
               <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 white">Guests?</label>
+                <label class="col-md-3 col-sm-3 col-xs-12 white">Guests</label>
              
                 <div class="col-md-12 col-sm-12 col-xs-12">
                  <select class="form-control" name="noOfGuests">
-<option value="1">1</option>
- <option value="2">2</option>
- <option value="3">3</option>
- <option value="4">4</option>
- <option value="5">5</option>
- <option value="6">6</option>
- <option value="7">7</option>
- <option value="8">8</option>
- <option value="9">9</option>
-<option value="10">10</option>
+<option value="1" <?php if(!empty($guests)){ if($guests==1){ echo"selected";} } ?>>1</option>
+ <option value="2" <?php if(!empty($guests)){ if($guests==2){ echo"selected";} } ?>>2</option>
+ <option value="3" <?php if(!empty($guests)){ if($guests==3){ echo"selected";} } ?>>3</option>
+ <option value="4" <?php if(!empty($guests)){ if($guests==4){ echo"selected";} } ?>>4</option>
+ <option value="5" <?php if(!empty($guests)){ if($guests==5){ echo"selected";} } ?>>5</option>
+		<option value="6" <?php if(!empty($guests)){ if($guests==6){ echo"selected";} }?>>6</option>
+ <option value="7" <?php if(!empty($guests)){ if($guests==7){ echo"selected";} } ?>>7</option>
+ <option value="8" <?php if(!empty($guests)){ if($guests==8){ echo"selected";} } ?>>8</option>
+ <option value="9" <?php if(!empty($guests)){ if($guests==9){ echo"selected";} } ?>>9</option>
+<option value="10" <?php if(!empty($guests)){ if($guests==10){ echo"selected";} } ?>>10</option>
 </select>
                 </div>
               </div>
 			     <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 white">Rooms?</label>
+                <label class="col-md-3 col-sm-3 col-xs-12 white">Rooms</label>
              
                 <div class="col-md-12 col-sm-12 col-xs-12">
                  <select class="form-control" name="noOfRoom">
-<option value="1">1</option>
- <option value="2">2</option>
- <option value="3">3</option>
- <option value="4">4</option>
- <option value="5">5</option>
- <option value="6">6</option>
- <option value="7">7</option>
- <option value="8">8</option>
- <option value="9">9</option>
-<option value="10">10</option>
+<option value="1" <?php if(!empty($rooms)){ if($rooms==1){ echo"selected";} } ?>>1</option>
+ <option value="2" <?php if(!empty($rooms)){ if($rooms==2){ echo"selected";} } ?>>2</option>
+ <option value="3" <?php if(!empty($rooms)){ if($rooms==3){ echo"selected";} } ?>>3</option>
+ <option value="4" <?php if(!empty($rooms)){ if($rooms==4){ echo"selected";} } ?>>4</option>
+ <option value="5" <?php if(!empty($rooms)){ if($rooms==5){ echo"selected";} } ?>>5</option>
+ <option value="6"<?php if(!empty($rooms)){ if($rooms==6){ echo"selected";} } ?>>6</option>
+ <option value="7" <?php if(!empty($rooms)){ if($rooms==7){ echo"selected";} } ?>>7</option>
+ <option value="8" <?php if(!empty($rooms)){ if($rooms==8){ echo"selected";} } ?>>8</option>
+ <option value="9"<?php if(!empty($rooms)){ if($rooms==9){ echo"selected";} } ?>>9</option>
+<option value="10" <?php if(!empty($rooms)){ if($rooms==10){ echo"selected"; } } ?>>10</option>
 </select>
                 </div>
               </div>

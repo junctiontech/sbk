@@ -24,7 +24,7 @@
 							<label class="col-md-5 col-sm-5 col-xs-12 white">From </label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 
-								<input type="text" id="from" list="fromdata" name="from" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here..">
+								<input type="text" id="from" list="fromdata" name="from" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($from)?$from:''?>">
 
 				  <datalist id="fromdata"></datalist>
 							</div>
@@ -33,7 +33,7 @@
 							<label class="col-md-5 col-sm-5 col-xs-12 white">To</label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 
-								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here..">
+								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($to)?$to:''?>">
 						
 				  <datalist id="todata"></datalist>
 
@@ -43,7 +43,7 @@
 							<label class="col-md-5 col-sm-5 col-xs-12 white">Departure</label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="input-group">
-											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" class="form-control" data-message-required=" ">
+											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" class="form-control" data-message-required=" " value="<?=isset($departure)?$departure:''?>">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -55,7 +55,7 @@
 							<label class="col-md-5 col-sm-5 col-xs-12 white">Return</label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="input-group">
-											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
+											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -67,10 +67,10 @@
 							<label class="col-md-5 col-sm-5 col-xs-12 white">Class </label>
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<select class="form-control" name="class">
-									<option value="Economy">Economy</option>
-									<option value="premiumEconomy">Premium Economy</option>
-									<option value="Business">Business</option>
-									<option value="First">First</option>
+									<option value="Economy" <?php if(!empty($class)){ if($class=='Economy'){ echo"selected";} } ?>>Economy</option>
+									<option value="premiumEconomy" <?php if(!empty($class)){ if($class=='premiumEconomy'){ echo"selected";} } ?>>Premium Economy</option>
+									<option value="Business" <?php if(!empty($class)){ if($class=='Business'){ echo"selected";} } ?>>Business</option>
+									<option value="First" <?php if(!empty($class)){ if($class=='First'){ echo"selected";} } ?>>First</option>
 								</select>
 							</div>
 						</div>
@@ -78,14 +78,14 @@
 <label class="col-md-5 col-sm-5 col-xs-12 white">Adults </label>
 <div class="col-md-12 col-sm-12 col-xs-12">
 <select required class="form-control" name="adults">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
+<option value="1" <?php if(!empty($adult)){ if($adult==1){ echo"selected";} } ?>>1</option>
+<option value="2" <?php if(!empty($adult)){ if($adult==2){ echo"selected";} } ?>>2</option>
+<option value="3" <?php if(!empty($adult)){ if($adult==3){ echo"selected";} } ?>>3</option>
+<option value="4" <?php if(!empty($adult)){ if($adult==4){ echo"selected";} } ?>>4</option>
+<option value="5" <?php if(!empty($adult)){ if($adult==5){ echo"selected";} } ?>>5</option>
+<option value="6" <?php if(!empty($adult)){ if($adult==6){ echo"selected";} } ?>>6</option>
+<option value="7" <?php if(!empty($adult)){ if($adult==7){ echo"selected";} } ?>>7</option>
+<option value="8" <?php if(!empty($adult)){ if($adult==8){ echo"selected";} } ?>>8</option>
 
 </select>
 </div>

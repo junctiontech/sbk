@@ -42,16 +42,16 @@
    	 					</div>
 						
 				</div>
-				<div class="col_1_of_4 span_1_of_4">
+				<!-- <div class="col_1_of_4 span_1_of_4">
 					<h4>Visitor Counter</h4>
 						<ul class="marker_none">
 							<li><span><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></li>
 							<!--<li><span><img src="http://hitwebcounter.com/counter/counter.php?page=6417236&style=0006&nbdigits=9&type=ip&initCount=100000" title="www.hitwebcounter.com" Alt="searchb4kharch.com"   border="0" ></span></li>
-							<li><span><img src="http://www.e-zeeinternet.com/count.php?page=1148951&style=links&nbdigits=9" alt="searchb4kharch.com" border="0" ></span></li>-->
+							<li><span><img src="http://www.e-zeeinternet.com/count.php?page=1148951&style=links&nbdigits=9" alt="searchb4kharch.com" border="0" ></span></li>
 					 </ul>
 						
 						
-				</div>
+				</div> -->
 				<div class="col_1_of_4 span_1_of_4">
 					<h4>Language</h4>
 						<ul>

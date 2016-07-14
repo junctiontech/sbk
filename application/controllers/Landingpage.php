@@ -185,7 +185,7 @@ class Landingpage extends CI_Controller {
 			$query['categoriesUrlKey']=$categorykey;
 			$this->data['categorykey']=ucwords(implode(" ",explode("_",$categorykey)));
 		}
-		if(!empty($productkey)){
+		if(!empty($sbkProductID)){
 			$searchquery.="and productsUrlKey: $productkey";
 			$query['sb4kProductID']=$sbkProductID;
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
@@ -287,7 +287,8 @@ class Landingpage extends CI_Controller {
 				$this->data['filters']=$this->Landingpage_model->get_filters($categorykey);
 			}
 			$this->data['products']=$products;
-			if(!empty($productkey) && empty($b)){
+			if(!empty($sbkProductID) && empty($b)){
+				$this->data['backurl']=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
 				$searchquery1="categoriesUrlKey: $categorykey";
@@ -500,12 +501,12 @@ class Landingpage extends CI_Controller {
 		$app=$this->input->get('app');
 		if($this->input->get())
 		{
-			$from=$this->input->get('from');
-			$to=$this->input->get('to');
-			$departure=$this->input->get('departure');
-			$return=$this->input->get('return');
-			$class=$this->input->get('class');
-			$adults=$this->input->get('adults');
+			$from=$this->data['from']=$this->input->get('from');
+			$to=$this->data['to']=$this->input->get('to');
+			$departure=$this->data['departure']=$this->input->get('departure');
+			$return=$this->data['return']=$this->input->get('return');
+			$class=$this->data['class']=$this->input->get('class');
+			$adults=$this->data['adult']=$this->input->get('adults');
 			
 			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se388177191712562214854946236057';
 			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class );

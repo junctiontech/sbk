@@ -49,11 +49,11 @@ class Hotel extends CI_Controller {
 		
 		if($this->input->get())
 		{
-			$where=$this->input->get('where');
-			$checkIn=$this->input->get('checkIn');
-			$checkOut=$this->input->get('checkOut');
-			$noOfGuests=$this->input->get('noOfGuests');
-			$noOfRoom=$this->input->get('noOfRoom');
+			$where=$this->data['where']=$this->input->get('where');
+			$checkIn=$this->data['checkin']=$this->input->get('checkIn');
+			$checkOut=$this->data['checkout']=$this->input->get('checkOut');
+			$noOfGuests=$this->data['guests']=$this->input->get('noOfGuests');
+			$noOfRoom=$this->data['rooms']=$this->input->get('noOfRoom');
 			
 			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/liveprices/v2/IN/INR/en-GB/$where/$checkIn/$checkOut/$noOfGuests/$noOfRoom?apiKey=prtl6749387986743898559646983194"),true);
 			
