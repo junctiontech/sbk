@@ -4678,7 +4678,7 @@ label.cbr-inline + .cbr-inline {
   padding: 10px;
   margin-bottom:0px;
 	border-radius:20px;
-	margin-top:10px
+	margin-top:10px;
   background:rgba(73,74,78,0.72);
 }
 .nav.nav-tabs + .tab-content > p:last-child,
