@@ -15,7 +15,7 @@
 						</li>
 					<?php // } } 
 					$i++; } ?>	
-				   
+					  </ul>
 				  </div>
 	      </section> 
 <!-- FlexSlider -->
@@ -35,18 +35,13 @@
         </ul>
         <div id="myTabContent" class="tab-content">
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-			
-<div class="hotel_panal1">
-
 				<form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
-					<div class="white"style="padding-bottom: 25px;">
-                
-						<h2>Search Hotel</h2>
-             
+					<div class="white">                
+						<h2>Search Hotel</h2>             
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
-                             <div class="col-md-12 col-sm-12 col-xs-12">
+						<label class="col-md-2 col-sm-2 col-xs-12 white">Where</label>
+                             <div class="col-md-10 col-sm-10 col-xs-12">
 
 								<select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="Enter Search Where" >
 								<option value="" >Where</option>
@@ -168,11 +163,11 @@
                
 					
 				</form>
-			</div>
+			
 		
           </div>
           <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">	<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
-						<div class="white"style="padding-bottom: 25px;">
+						<div class="white">
 							<h2>Search Flights</h2>
 						</div>
 							  

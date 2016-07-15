@@ -21,8 +21,8 @@
 							</div>
 						</div>-->
 						<div class="form-group">
-							<label class="col-md-5 col-sm-5 col-xs-12 white">From </label>
-							<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">From </label>
+							<div class="col-md-10 col-sm-10 col-xs-12">
 
 								<input type="text" id="from" list="fromdata" name="from" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($from)?$from:''?>">
 
@@ -30,8 +30,8 @@
 							</div>
 						</div>							
 						<div class="form-group">
-							<label class="col-md-5 col-sm-5 col-xs-12 white">To</label>
-							<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">To</label>
+							<div class="col-md-10 col-sm-10 col-xs-12">
 
 								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($to)?$to:''?>">
 						
@@ -40,8 +40,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-5 col-sm-5 col-xs-12 white">Departure</label>
-							<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">Departure</label>
+							<div class="col-md-10 col-sm-10 col-xs-12">
 								<div class="input-group">
 											<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" class="form-control" data-message-required=" " value="<?=isset($departure)?$departure:''?>">
 											
@@ -52,8 +52,8 @@
 							</div>
 						</div>
 					<div class="form-group">
-							<label class="col-md-5 col-sm-5 col-xs-12 white">Return</label>
-							<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">Return</label>
+							<div class="col-md-10 col-sm-10 col-xs-12">
 								<div class="input-group">
 											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
 											
@@ -64,8 +64,8 @@
 </div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-5 col-sm-5 col-xs-12 white">Class </label>
-							<div class="col-md-12 col-sm-12 col-xs-12">
+							<label class="col-md-2 col-sm-2 col-xs-12 white">Class </label>
+							<div class="col-md-10 col-sm-10 col-xs-12">
 								<select class="form-control" name="class">
 									<option value="Economy" <?php if(!empty($class)){ if($class=='Economy'){ echo"selected";} } ?>>Economy</option>
 									<option value="premiumEconomy" <?php if(!empty($class)){ if($class=='premiumEconomy'){ echo"selected";} } ?>>Premium Economy</option>
@@ -75,8 +75,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-<label class="col-md-5 col-sm-5 col-xs-12 white">Adults </label>
-<div class="col-md-12 col-sm-12 col-xs-12">
+<label class="col-md-2 col-sm-2 col-xs-12 white">Adults </label>
+<div class="col-md-10 col-sm-10 col-xs-12">
 <select required class="form-control" name="adults">
 <option value="1" <?php if(!empty($adult)){ if($adult==1){ echo"selected";} } ?>>1</option>
 <option value="2" <?php if(!empty($adult)){ if($adult==2){ echo"selected";} } ?>>2</option>

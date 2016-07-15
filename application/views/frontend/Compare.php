@@ -12,8 +12,31 @@
     		
     	</div>
 		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-10">
+			<?php if(!empty($compareproduct)){ foreach($compareproduct as $product){ ?>
+						<div class="col-md-3 col-sm-3 col-lg-3 " >
+							<div class="comparegrid_1_of_4 compareimages_1_of_4 ">
+								<img src="<?=$product->imageName?>" alt="" />
+							<div class="compare_product_name">
+								<p><?=$product->productName?> </p>
+							</div>
+							<div class="compare_product_price">
+								<p><span class="price"><?=$product->productPrice?></span></p>
+							</div>
+							</div></div><?php } } ?>
+			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			
+			
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-12 col-sm-12- col-xs-12">
-		<div class="col-md-2 col-sm-2 col-xs-2" style="margin-top:394px;font-size:13px; margin-right:-19px">
+		<div class="col-md-2 col-sm-2 col-xs-12" style="font-size:13px;">
 				<div class="x_content">
 							<?php 
 							 if(!empty($compareproduct_info)){ 
@@ -23,7 +46,7 @@
                                     
                               <tbody>
                                   <tr>
-									<td style="background-color:#ededed"><P class="heddine"><?php 
+									<td style="background-color:#ededed"><P  class="heddine" ><?php 
 									
 									if(!empty($compareinfo->productAttributeLable)){
 									echo isset($compareinfo->productAttributeLable)?$compareinfo->productAttributeLable:'';	
@@ -42,18 +65,18 @@
 			
 				
 				
-				<div class="col-md-10 col-sm-10 col-xs-10">
+				<div class="col-md-10 col-sm-10 col-xs-12">
 				<?php if(!empty($compareproduct)){ foreach($compareproduct as $product){ ?>
 						<div class="col-md-3 col-sm-3 col-lg-3 " >
-							<div class="comparegrid_1_of_4 compareimages_1_of_4 ">
-								<img src="<?=$product->imageName?>" alt="" /></img>
+							<!--<div class="comparegrid_1_of_4 compareimages_1_of_4 ">
+								<img src="<?=$product->imageName?>" alt="" />
 							<div class="compare_product_name">
 								<p><?=$product->productName?> </p>
 							</div>
 							<div class="compare_product_price">
 								<p><span class="price"><?=$product->productPrice?></span></p>
 							</div>
-							</div>
+							</div>-->
 				  <?php	//$categoryinfo=($product->categoriesID);
 						$compareproduct=($product->productsID); 
 				

@@ -12,9 +12,9 @@
                 <h2>Search Hotel</h2>
               </div>
               <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
+                <label class="col-md-2 col-sm-2 col-xs-12 white">Where</label>
              
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-10 col-sm-10 col-xs-12">
                 <select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="type here.........." >
 					<option value="" >Where</option>
 						<?php if(!empty($where)){ ?>
@@ -40,8 +40,8 @@
         </script>
 			  
 <div class="form-group">
-<label class="col-md-5 col-sm-5 col-xs-12 white">Check In</label>
-<div class="col-md-12 col-sm-12 col-xs-12">
+<label class="col-md-2 col-sm-2 col-xs-12 white">Check In</label>
+<div class="col-md-10 col-sm-10 col-xs-12">
 <div class="input-group">
 											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" " value="<?=isset($checkin)?$checkin:''?>">
 											
@@ -53,8 +53,8 @@
 </div>
 </div>
 <div class="form-group">
-<label class="col-md-5 col-sm-5 col-xs-12 white">Check Out</label>
-<div class="col-md-12 col-sm-12 col-xs-12">
+<label class="col-md-2 col-sm-2 col-xs-12 white">Check Out</label>
+<div class="col-md-10 col-sm-10 col-xs-12">
 <div class="input-group">
 											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" " value="<?=isset($checkout)?$checkout:''?>">
 											
@@ -65,9 +65,9 @@
 </div>
 </div>
               <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 white">Guests</label>
+                <label class="col-md-2 col-sm-2 col-xs-12 white">Guests</label>
              
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-10 col-sm-10 col-xs-12">
                  <select class="form-control" name="noOfGuests">
 <option value="1" <?php if(!empty($guests)){ if($guests==1){ echo"selected";} } ?>>1</option>
  <option value="2" <?php if(!empty($guests)){ if($guests==2){ echo"selected";} } ?>>2</option>
@@ -83,9 +83,9 @@
                 </div>
               </div>
 			     <div class="form-group">
-                <label class="col-md-3 col-sm-3 col-xs-12 white">Rooms</label>
+                <label class="col-md-2 col-sm-2 col-xs-12 white">Rooms</label>
              
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-10 col-sm-10 col-xs-12">
                  <select class="form-control" name="noOfRoom">
 <option value="1" <?php if(!empty($rooms)){ if($rooms==1){ echo"selected";} } ?>>1</option>
  <option value="2" <?php if(!empty($rooms)){ if($rooms==2){ echo"selected";} } ?>>2</option>
@@ -189,8 +189,8 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
              
 					</div>
 					<div class="form-group">
-						<label class="col-md-3 col-sm-3 col-xs-12 white">Where</label>
-                             <div class="col-md-12 col-sm-12 col-xs-12">
+						<label class="col-md-2 col-sm-2 col-xs-12 white">Where</label>
+                             <div class="col-md-10 col-sm-10 col-xs-12">
 
 								<select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="Enter Search Where" >
 								<option value="" >Where</option>
