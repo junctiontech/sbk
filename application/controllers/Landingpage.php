@@ -573,7 +573,7 @@ class Landingpage extends CI_Controller {
 							$datetime1 = date_create($arrive[1]);
 							$datetime2 = date_create($depar[1]);
 							$interval = date_diff($datetime1, $datetime2);
-							$Duration=$interval->format('%h Hours %i Minute %s Seconds');
+							$Duration=$interval->format('%h H %i M %s S');
 							
 						}
 						

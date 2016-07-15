@@ -6,23 +6,16 @@
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					
-					<?php if(!empty($deals)){ foreach($deals as $deal){ ?>
-						<li>
-							<div class="listview_1_of_2 images_1_of_2" style="width: 606px;float: left;display: block;">
-								<a href="<?=$deal->link?>" target="_blank">
-								<div class="listimg listimg_2_of_1">
-									<img src="<?=$deal->url?>" alt="" />
-								</div>
-								<div class="text list_2_of_1">
-									<h2><?=$deal->offer_name?></h2>
-									<span><h2><?=$deal->coupon_code?></h2><br>
-									<?=$deal->coupon_title?></span>
-								</div>
-								</a>
-							</div>
+					<?php //if(!empty($deals)){ foreach($deals as $deal){ 
+					$i=''; for($start=0;$start<=15;$start++){ ?>
+						<li >
+							<div id="vcm1950NUgewd<?=$i?>"></div>
+							<script src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=js&divid=vcm1950NUgewd<?=$i?>" type="text/javascript"></script>
+							<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
 						</li>
-					<?php } } ?>	
-				    </ul>
+					<?php // } } 
+					$i++; } ?>	
+				   
 				  </div>
 	      </section> 
 <!-- FlexSlider -->
@@ -418,6 +411,11 @@
  
 </div>
 </div><div class="clear"></div>
+<!-- Javascript Ad Tag: 1920 -->
+<div id="vcm1920kJZq6l"></div>
+<script src="http://track.vcmc.in/aff_ad?campaign_id=1920&aff_id=48478&format=javascript&hostNameId=9177&format=js&divid=vcm1920kJZq6l" type="text/javascript"></script>
+<noscript><iframe src="http://track.vcmc.in/aff_ad?campaign_id=1920&aff_id=48478&format=javascript&hostNameId=9177&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="200" height="1190"></iframe></noscript>
+<!-- // End Ad Tag -->
 <!-- Javascript Ad Tag: 1862 -->
 <div id="vcm1862d7dBsn"></div>
 <script src="http://tracking.vcommission.com/aff_ad?campaign_id=1862&aff_id=48478&format=javascript&format=js&divid=vcm1862d7dBsn" type="text/javascript"></script>

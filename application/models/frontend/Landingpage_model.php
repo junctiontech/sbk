@@ -117,7 +117,7 @@ class Landingpage_model extends CI_Model {
 		}
 		$this->db->from('s4k_products_map t1');
 		//$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
-		//$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
+		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
 		//$this->db->join('s4k_product_attribute_details t4','t3.productAttributeID=t4.productAttributeID','left');
 		$this->db->join('s4k_product_images_map t5','t1.productsID=t5.productsID','left');
 		//$this->db->join('s4k_product_image_details t6','t5.productImageID=t6.productImageID','left');
@@ -140,7 +140,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('productsSortOrder','ASC');
 		$this->db->order_by('productsUrlKey','ASC');
 		$this->db->order_by('productPrice','ASC');
-		$this->db->group_by('productsUrlKey');
+		$this->db->group_by('t1.sb4kProductID');
 		}
 		if($limit){
 		$this->db->limit($limit,$page);
