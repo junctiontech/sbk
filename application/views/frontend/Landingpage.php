@@ -2,7 +2,7 @@
 	<div class="main-content">
 		<div class="row">
 								 <!-- FlexSlider -->
-			<div class="col-md-6 col-sm-6 col-xs-12">		  
+			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">		  
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					
@@ -309,13 +309,13 @@
 	 
  
    
-	<div class="content_top">
+	<div class="content_top hidden-xs">
     		<div class="heading">
     		<h3>Top Products</h3>
     		</div>    	
     		<div class="clear"></div>
     	</div>
-		<div class="section group">
+		<div class="section group hidden-xs">
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 				
@@ -341,14 +341,14 @@
 		<div class="clear"></div>
 		
 		
-    	<div class="content_top">
+    	<div class="content_top hidden-xs">
     		<div class="heading">
     		<h3>Feature Products</h3>
     		</div>
     	
     		<div class="clear"></div>
     	</div>
-	      <div class="section group">
+	      <div class="section group hidden-xs">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 				
@@ -370,15 +370,16 @@
 				
 		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
+		<div class="hidden-xs">
 			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
-	
-			<div class="content_top">
+	</div>
+			<div class="content_top hidden-xs">
     		<div class="heading">
     		<h3>New Products</h3>
     		</div>    	
     		<div class="clear"></div>
     	</div>
-			<div class="section group">
+			<div class="section group hidden-xs">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4 ">
 					
@@ -406,18 +407,9 @@
  
 </div>
 </div><div class="clear"></div>
-<!-- Javascript Ad Tag: 1920 -->
-<div id="vcm1920kJZq6l"></div>
-<script src="http://track.vcmc.in/aff_ad?campaign_id=1920&aff_id=48478&format=javascript&hostNameId=9177&format=js&divid=vcm1920kJZq6l" type="text/javascript"></script>
-<noscript><iframe src="http://track.vcmc.in/aff_ad?campaign_id=1920&aff_id=48478&format=javascript&hostNameId=9177&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="200" height="1190"></iframe></noscript>
-<!-- // End Ad Tag -->
-<!-- Javascript Ad Tag: 1862 -->
-<div id="vcm1862d7dBsn"></div>
-<script src="http://tracking.vcommission.com/aff_ad?campaign_id=1862&aff_id=48478&format=javascript&format=js&divid=vcm1862d7dBsn" type="text/javascript"></script>
-<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1862&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="1000" height="90"></iframe></noscript>
-<!-- // End Ad Tag -->
-<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
-
+<div class="hidden-xs">
+			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
+	</div>
  <script>
             $(document).ready(function () {
                 $(".select2_single").select2({
