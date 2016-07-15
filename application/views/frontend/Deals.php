@@ -33,26 +33,15 @@
 				  <div class="flexslider">
 					<ul class="slides">
 					
-					<?php if(!empty($deals)){ foreach($deals as $deal){ ?>
-						<li>
-						<div class="listview_1_of_2 images_1_of_2" style="
-    width: 765px;
-    float: right;
-    display: block;
-">
-						 <a href="<?=$deal->link?>" target="_blank">
-					<div class="listimg listimg_2_of_1">
-						 <img src="<?=$deal->url?>" alt="" />
-					</div>
-					<div class="text list_2_of_1">
-						  <h2><?=$deal->offer_name?></h2>
-						  <p><h2><?=$deal->coupon_code?></h2></br>
-						  <?=$deal->coupon_title?></p>
-					</div>
-					</a>
-					</div>
-				</li>
-					<?php } } ?>	
+					<?php //if(!empty($deals)){ foreach($deals as $deal){ 
+					$i=''; for($start=0;$start<=15;$start++){ ?>
+						<li >
+							<div id="vcm1950NUgewd<?=$i?>"></div>
+							<script src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=js&divid=vcm1950NUgewd<?=$i?>" type="text/javascript"></script>
+							<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
+						</li>
+					<?php // } } 
+					$i++; } ?>
 				    </ul>
 				  </div>
 	      </section>
