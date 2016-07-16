@@ -115,12 +115,12 @@
 			 <div class="clear"></div>
 		 
 <div class="row">
-	  <div class="col-md-3 col-sm-4">
+	  <div class="col-md-3 col-sm-4 col-xs-12">
 			<div class=" ">
 				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/pngtransparent (2).png" alt="" /></a>
 			</div>
 			</div>
-			<div class="col-md-9 col-sm-8">
+			<div class="col-md-9 col-sm-8 col-xs-12">
 			  <div class="header_top_right">
 			    <div class="search_box ">
 				    <form action="<?=base_url();?>Landingpage/Product/search" method="get">

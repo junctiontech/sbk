@@ -7,7 +7,8 @@
 						<div class="panel-body">	
 							
 								<form role="form" class="form-horizontal"  method="post" action="<?=base_url();?>Landingpage/compare">
-									<div class="col-sm-2">
+                  <div class="col-md-2 col-sm-2 col-xs-0"></div>
+                  <div class="col-sm-2">
 										<div class="form-group">
 											<label class="col-sm-5 control-label ">Product 1</label>									
 											<div class="col-sm-10" id="productName1">
@@ -41,7 +42,7 @@
 									</div>	
 									<div class="col-md-2">
 										<div class="form-group">									 
-											<button type="submit" class="btn btn-secondary btn-single" style="margin-top: 20px;">Compare</button>
+											<button type="submit" class="btn btn-success btn-single" style="margin-top: 20px;">Compare</button>
 										</div>
 									</div>
 									<div class="form-group-separator"></div>

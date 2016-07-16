@@ -1158,7 +1158,7 @@ body {
   top: 0px;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container {
-  margin-top: 200px;
+margin-top:12.4%;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
   top: 85px;
@@ -3094,7 +3094,7 @@ body.chat-open #chat {
 }
 .panel {
   position: relative;
-  background: #ffffff;
+ background: rgba(132, 126, 135, 0.19);
   padding: 0px 30px;
   border: 0;
   margin-bottom: -15px;
@@ -5845,7 +5845,7 @@ form.form-inline .form-group + .form-group {
   margin-left: 5px;
 }
 form .form-group-separator {
-  height: 1px;
+  height: 1%;
   background: #eeeeee;
   margin-bottom: 15px;
 }
