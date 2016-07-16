@@ -162,7 +162,7 @@ class Landingpage_model extends CI_Model {
 	
 	public function get_shopprices($productID=false,$shopID=false){
 		
-		$this->db->select('t2.productPrice,t2.productShopUrl,t3.shop_image');
+		$this->db->select('t2.productPrice,t2.productShopUrl,t3.shop_image,t3.shopID');
 		$this->db->from('s4k_product_mapping t1');
 		$this->db->join('s4k_product_price t2','t1.childProductID=t2.shopProductID and t1.childShopID=t2.shopID');
 		$this->db->join('s4k_shops t3','t3.shopID=t2.shopID');

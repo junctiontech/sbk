@@ -28,9 +28,10 @@
 						</div>
 					<?php if(!empty($othershopprices)){ ?>
 					
-					<?php foreach($othershopprices as $othershopprice){ ?>
+					<?php foreach($othershopprices as $othershopprice){ 
+					if($othershopprice->shopID==3){ $pricemore=(int)$othershopprice->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($othershopprice->productPrice)?$othershopprice->productPrice:'';}?>
 							<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span>
+					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=$pricemore?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span>
 								</div>
 					</div>
 					<?php } ?>
