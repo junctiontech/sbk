@@ -108,6 +108,7 @@ class Hotel extends CI_Controller {
 	
 	public function getplaceID()
 	{
+		$app=$this->input->get('app');
 		if($this->input->post())
 		{
 			$placekey=$this->input->post('placekey');
@@ -115,12 +116,20 @@ class Hotel extends CI_Controller {
 			$jsonData = json_decode(file_get_contents("http://partners.api.skyscanner.net/apiservices/hotels/autosuggest/v2/IN/INR/en-GB/$placekey?apiKey=se891278314094529612719886766340"),true);
 
 			if(!empty($jsonData['results'])){
-				echo "<option  value=\"\">where</option> ";
-				foreach($jsonData['results'] as $place)
-				{ 
-					$placeID='';$placeName='';
-					$placeID=$place['individual_id'];$placeName=$place['display_name'];
-					echo "<option  value=\"$placeID\">$placeName</option> ";
+				if($app==true){
+					echo json_encode($jsonData['results']);exit;
+				}else{
+					echo "<option  value=\"\">where</option> ";
+					foreach($jsonData['results'] as $place)
+					{ 
+						$placeID='';$placeName='';
+						$placeID=$place['individual_id'];$placeName=$place['display_name'];
+						echo "<option  value=\"$placeID\">$placeName</option> ";
+					}
+				}
+			}else{
+				if($app==true){
+				echo "No result found";exit;
 				}
 			}
 		}
