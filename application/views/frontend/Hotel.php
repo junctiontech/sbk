@@ -353,8 +353,8 @@ function getplaceID(placekey)
 		data:{placekey:placekey},
 		cache: false,
 		success: function(html)
-		{ // alert(html);
-		$("#placeID").html(html);
+		{ 
+		$("#placeID").empty().append(html);
 		}
 		});
 	}

@@ -27,8 +27,8 @@ function search_product(productval)
 
     cache: false,
     success: function(html)
-    {// alert(html);
-    $("#productName").html(html);
+    {
+	$("#productName").empty().append(html);
     }
     });
 }return false;  	  

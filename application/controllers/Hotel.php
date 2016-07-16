@@ -119,7 +119,7 @@ class Hotel extends CI_Controller {
 				if($app==true){
 					echo json_encode($jsonData['results']);exit;
 				}else{
-					echo "<option  value=\"\">where</option> ";
+					//echo "<option  value=\"\">where</option> ";
 					foreach($jsonData['results'] as $place)
 					{ 
 						$placeID='';$placeName='';

@@ -8,8 +8,8 @@
 					<ul class="slides">					
 					<?php //if(!empty($deals)){ foreach($deals as $deal){ 
 					$i=''; for($start=0;$start<=15;$start++){ ?>
-						<li >
-							<div id="vcm1950NUgewd<?=$i?>"></div>
+						<li id="vcm1950NUgewd<?=$i?>">
+							
 							<script src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=js&divid=vcm1950NUgewd<?=$i?>" type="text/javascript"></script>
 							<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
 						</li>
@@ -437,8 +437,9 @@ function getplaceID(placekey)
 		data:{placekey:placekey},
 		cache: false,
 		success: function(html)
-		{ // alert(html);
-		$("#placeID").html(html);
+		{ 
+		$("#placeID").empty().append(html);
+		
 		}
 		});
 	}

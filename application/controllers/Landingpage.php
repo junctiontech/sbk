@@ -509,7 +509,7 @@ class Landingpage extends CI_Controller {
 			$adults=$this->data['adult']=$this->input->get('adults');
 			
 			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se388177191712562214854946236057';
-			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class );
+			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class,'groupPricing'=>true );
 			
 			$options = array(
 				'http' => array(
@@ -532,7 +532,7 @@ class Landingpage extends CI_Controller {
 			if(!empty($flightsDetailUrl)){
 				
 				$getFlightsDetail = json_decode(file_get_contents("$flightsDetailUrl?apiKey=se388177191712562214854946236057"),true);
-			//	print_r($getFlightsDetail['Legs']);die;
+				print_r($getFlightsDetail);die;
 				if(!empty($getFlightsDetail['Legs'])){
 					foreach($getFlightsDetail['Legs'] as $leg){
 						
