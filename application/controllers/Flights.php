@@ -40,7 +40,8 @@ class Flights extends CI_Controller {
 				}
 			}else{
 				if($app==true){
-					echo json_encode($jsonData);exit;
+					$arrblank=array();
+					echo json_encode($arrblank);exit;
 				}
 			}
 		}
