@@ -1509,3 +1509,6 @@ top: -5px;
     display: inline-block;
     transition: all 700ms ease-out 0s;
 }
+.comepare_bgc{
+ background: rgba(132, 126, 135, 0.19);
+}

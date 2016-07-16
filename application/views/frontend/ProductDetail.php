@@ -23,14 +23,15 @@
 					</div><!--style="height:250px;width:75%"-->
 				<div class="desc span_3_of_2">
 					<div class="col-md-10 col-sm-10 col-xs-10">
-						<div class="col-md-5 col-sm-5 col-xs-12">
+						<div class="col-md-4 col-sm-4 col-xs-12">
 						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <br><span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
 						</div>
 					<?php if(!empty($othershopprices)){ ?>
 					
 					<?php foreach($othershopprices as $othershopprice){ ?>
-							<div class="col-md-5 col-sm-5 col-xs-5">
-					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span></div>
+							<div class="col-md-4 col-sm-4 col-xs-12">
+					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=isset($othershopprice->productPrice)?$othershopprice->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span>
+								</div>
 					</div>
 					<?php } ?>
 					

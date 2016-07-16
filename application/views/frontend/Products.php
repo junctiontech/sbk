@@ -3,7 +3,7 @@
     <div class="compare_product" id="compare">
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="panel panel-default">					 
+				<div class="panel panel-default comepare_bgc">					 
 						<div class="panel-body">	
 							
 								<form role="form" class="form-horizontal"  method="post" action="<?=base_url();?>Landingpage/compare">

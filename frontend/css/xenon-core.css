@@ -3094,7 +3094,6 @@ body.chat-open #chat {
 }
 .panel {
   position: relative;
- background: rgba(132, 126, 135, 0.19);
   padding: 0px 30px;
   border: 0;
   margin-bottom: -15px;
