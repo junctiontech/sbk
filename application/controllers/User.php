@@ -50,28 +50,58 @@ class User extends CI_Controller {
 	
 	public function AddToWishList($productID=false)
 	{	
-		if(!empty($productID) && !empty($this->userinfos['userID'])){
-			$data=array('userID'=>$this->userinfos['userID'],'productID'=>$productID,'Status'=>'Active');
+		$app=$this->input->get('app');
+		$user_id=$this->input->post('user_id');
+		if(!empty($user_id)){
+			$userID=$user_id;	
+		}else{
+			$userID=$this->userinfos['userID'];	
+		}	
+		if((!empty($productID) && !empty($userID)) || ($app==true && !empty($userID))){
+			$data=array('userID'=>$userID,'productID'=>$productID,'Status'=>'Active');
 			$this->User_model->addwishlist('s4k_user_wishlist',$data);
+			$message='success';
+		}else{
+			$message='error';
 		}
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		if($app ==true){
+			echo json_encode(array('message'=>$message));exit;
+		}else{
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
 	}
 	public function Mywishlist ()
 	{
-		$userID=$this->userinfos['userID'];		
-		$this->data['userwishlist'] = $this->User_model->getuserwishlist($userID);		
-		$this->parser->parse('frontend/Header',$this->data);		
-		$this->parser->parse('frontend/Leftheader',$this->data);
-		$this->parser->parse('frontend/Mywishlist', $this->data);
-		$this->parser->parse('frontend/Footer',$this->data);		
+		$user_id=$this->input->post('user_id');
+		if(!empty($user_id)){
+			$userID=$user_id;	
+		}else{
+			$userID=$this->userinfos['userID'];	
+		}		
+		$this->data['userwishlist'] =$userwishlist= $this->User_model->getuserwishlist($userID);
+		if(!empty($user_id)){
+				echo json_encode($userwishlist);
+			}else{
+				if($this->input->get('app')!=true){
+				$this->parser->parse('frontend/Header',$this->data);		
+				$this->parser->parse('frontend/Leftheader',$this->data);
+				$this->parser->parse('frontend/Mywishlist', $this->data);
+				$this->parser->parse('frontend/Footer',$this->data);
+				}
+			}
 	}
 	public function delete_wishlist($userWishListID=false)
 	{
+		$app=$this->input->get('app');
 		$table = 's4k_user_wishlist';
 		$this->User_model->delete_wishlist($table, $userWishListID);
+		if($app==true){
+			echo json_encode(array('message'=>'success'));
+		}else{
 		$this->session->set_flashdata('message_type', 'success');
 		$this->session->set_flashdata('message', $this->config->item("User") . " You Have Successfully Delete Wishlist this Record!!");
 		redirect ('User/Mywishlist');
+		}
 	}	
 	public function PersonalInformation()
 	{
