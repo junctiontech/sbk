@@ -249,7 +249,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 .col_1_of_4{
 	display: block;
 	float:left;
-	margin: 0% 0 1% 1.6%;
+	margin: 0% 0 0% 1.6%;
 	border-right: 2px groove #555;
 }
 .col_1_of_4:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
@@ -258,7 +258,8 @@ ol,ul{list-style:none;margin:0;padding:0;}
 }
 .span_1_of_4 {
 	width: 20.5%;
-	padding:1.5%; 
+	padding-top: 1.5%;
+    padding-left: 1.5%;
 }
 .span_1_of_4  h4 {
 	color:#ccc;
@@ -291,7 +292,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	cursor:pointer;
 }
 .social-icons{
-	padding-top:8%;
+	\* padding-top:8%;*\
 }
 .social-icons li {
 	width:30px;

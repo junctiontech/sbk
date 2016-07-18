@@ -477,11 +477,11 @@ class Landingpage extends CI_Controller {
 		if (!empty($filterprodect))
 		{
 			foreach ($filterprodect as $filter)
-			{				
+			{		
 				echo"<div class=\"grid_1_of_4 images_1_of_4\">
-					 <a href=\"".$filter->categoriesUrlKey."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
+					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."\/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
 					 <h2>".$filter->productName."</h2>
-					 <p><span class=\"price\">".$filter->productPrice."</span></p>					 
+					 <p><span class=\"price\">Rs. ".$filter->productPrice."</span></p>					 
 					 <div class=\"checkbox\">
 					<label>
 						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare

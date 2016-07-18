@@ -2,36 +2,36 @@
    	  <div class="wrapper">	
 	     <div class="section group">
 				<div class="col_1_of_4 span_1_of_4">
-						<h4>Information</h4>
+						<!--<h4>Information</h4>-->
 						<ul class="marker_none">
-						<li><a href="javascript:;">About Us</a></li>
-						<li><a href="javascript:;"><span>Services (coming soon)</span></a></li>
+							<li><a href="javascript:;"><span>About Us</span></a></li>
+						<!--<li><a href="javascript:;"><span>Services (coming soon)</span></a></li>
 						<li><a href="javascript:;"><span>Advanced Search</span></a></li>						
-						<li><a href="javascript:;"><span>Contact Us</span></a></li>
+						<li><a href="javascript:;"><span>Contact Us</span></a></li>-->
 						</ul>
 					</div>
 				
 				<div class="col_1_of_4 span_1_of_4">
-					<h4>My account</h4>
-						<ul class="marker_none">
-							<?php if(!empty($userinfos)){ ?>
+					<!--<h4>My account</h4>-->
+						<ul class="marker_none"><li><a href="javascript:;"><span>Contact Us</span></a></li>
+						<!--	<?php if(!empty($userinfos)){ ?>
 							<li><a href="<?=base_url();?>User/Dashboard.html">Dashboard</a></li>
 							<li><a href="<?=base_url();?>User/Mywishlist.html">My Wishlist</a></li>
 							<?php }else{ ?>
 							<li><a href="<?=base_url();?>Login.html">Sign In</a></li>
 							<li><a href="<?=base_url();?>Login.html">My Wishlist</a></li>
 								<?php } ?>
-							<li><a href="javascript:;">Help</a></li>
+							<li><a href="javascript:;">Help</a></li>-->
 						</ul> 
 				</div>
-				<div class="col_1_of_4 span_1_of_4">
-					<h4>Contact</h4>
+				<div class="col_1_of_4 span_1_of_4 social-icons">
+					<!--<h4>Contact</h4>
 						<ul class="marker_none">
 							<li><span>8817507639</span></li>
 							<li><span>9644201541</span></li>
-						</ul>
-						<div class="social-icons">
-							<h4>Follow Us</h4>
+						</ul>-->
+					<!--	<div class="social-icons">
+				 			<h4>Follow Us</h4>-->
 					   		  <ul>
 							      <li class="facebook"><a href="javascript:;" target="_blank"> </a></li>
 							      <li class="twitter"><a href="javascript:;" target="_blank"> </a></li>
@@ -39,12 +39,12 @@
 							      <li class="contact"><a href="javascript:;" target="_blank"> </a></li>
 							      <div class="clear"></div>
 						     </ul>
-   	 					</div>
+   	 					<!--</div>-->
 						
 				</div>
 				
 				<div class="col_1_of_4 span_1_of_4">
-					<h4>Language</h4>
+					<!--<h4>Language</h4>-->
 						<ul>
 							<div id="google_translate_element"></div><script type="text/javascript">
 function googleTranslateElementInit() {
