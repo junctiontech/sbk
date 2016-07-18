@@ -100,7 +100,7 @@
             <?=$product->productName?>
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
-          <p><span class="price">
+          <p><span class="price">Rs. 
             <?=$product->productPrice?>
             </span></p>           
           <div class="checkbox">

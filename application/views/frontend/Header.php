@@ -154,9 +154,9 @@
   
 
   
-  <li><a href="<?=base_url();?>Landingpage/Flights.html">Flights</a></li>
+  <!--<li><a href="<?=base_url();?>Landingpage/Flights.html">Flights</a></li>
    
- <li><a href="<?=base_url();?>Hotel.html" >Hotels</a></li>
+ <li><a href="<?=base_url();?>Hotel.html" >Hotels</a></li>-->
  
   <div class="clear"></div>
 			 
