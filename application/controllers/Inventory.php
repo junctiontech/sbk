@@ -36,7 +36,7 @@ class Inventory extends CI_Controller {
 			
 		$this->data['inventory']=$inventory=$this->Inventory_model->get_data($select,'s4k_inventory_consumption t1',$where,$extraqry);
 		if(!empty($inventory)){
-		$this->data['products']=$this->Inventory_model->get_product_by_cat(array('categoriesID'=>$inventory[0]->categoriesID));
+		$this->data['products']=$this->Inventory_model->get_product_by_cat(array('t1.productsID'=>$inventory[0]->productID));
 		}
 		}
 		$this->data['inventorytypes']=$this->Inventory_model->get_inventoryname();
