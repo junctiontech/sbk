@@ -43,7 +43,7 @@
           
           <!--pop up start-->
           
-          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal fade bs-example-modal-lg"  role="dialog" aria-hidden="true">
 		  
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content ">
@@ -132,11 +132,15 @@
     });
 	
 	$(document).ajaxSend(function(event, request, settings) {
+		 
    $("#loader").fadeIn();
+  
 });
 
 $(document).ajaxComplete(function(event, request, settings) {
     $("#loader").fadeOut();
+	 
+	 $(".select2_group").select2({});
 });
 
 
@@ -228,3 +232,23 @@ function fill(){
 
 
     </script> 
+
+	<script>
+            $(document).ready(function () {
+				
+                $(".select2_single").select2({
+                    placeholder: "Select a state",
+                    allowClear: true
+                });
+				
+                $(".select2_group").select2({});
+				
+                $(".select2_multiple").select2({
+                    maximumSelectionLength: 4,
+                    placeholder: "With Max Selection limit 4",
+                    allowClear: true
+                });
+				
+				//fill();
+            });
+        </script> 

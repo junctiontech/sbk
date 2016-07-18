@@ -22,7 +22,7 @@ function search_product(productval)
 	{
     $.ajax({
     type: "POST",
-    url: "search_product",
+    url: base_url+"Product/search_product",
   	data:{productName:product, categoryName:category},
 
     cache: false,
@@ -233,6 +233,7 @@ function inactiveproduct(productID)
 $(document).ready(function(){
 	  
 				$(document).on('keyup', '.select2-search__field', function() { 
+				
 				search_product(this.value);
 				});
 				
