@@ -341,7 +341,7 @@ class Product extends CI_Controller {
 		$product=$this->input->post('productName');
 		$check_product=$this->Product_model->search_product($category,$product);
 		
-		echo "<option value=\"\" >Select</option>";
+		//echo "<option value=\"\" >Select</option>";
 		$i=1;
 			foreach($check_product as $check_product)
 			{ $id=($check_product->productsID);
