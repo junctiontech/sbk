@@ -479,6 +479,16 @@ class Api extends CI_Controller {
 				if($categoryID->categoryName=='Mobiles'){
 					$searchindex='Electronics';$brosweNode='1389432031';
 				}elseif($categoryID->categoryName=='Laptops'){
+					$threewordsproductnames=explode(" ",$productName);
+					$r=0;
+					foreach($threewordsproductnames as $threewordsproductname){
+						$r++;
+						$productName[]=$threewordsproductname;
+						if($r==3){
+							$productName=implode(" ",$productName);
+							break;
+						}
+					}
 					$searchindex='Electronics';$brosweNode='1375424031';
 				}elseif($categoryID->categoryName=='TVs'){
 					$searchindex='Electronics';$brosweNode='1389396031';
