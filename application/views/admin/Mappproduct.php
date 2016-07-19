@@ -17,7 +17,7 @@
 			<div class="row"  style="margin-top:20px">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Select Category </label>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<select class="select2_group form-control" id="select" class="required" name="categoriesID" onchange="search_product()">
+				<select class="select2_group form-control" id="select" class="required" name="categoriesID" ><!--onchange="search_product()"-->
 				  <option value="">Category</option>
 			
 				<?php foreach($category as $categoryshow){?>
