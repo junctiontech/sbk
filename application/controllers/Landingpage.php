@@ -233,10 +233,10 @@ class Landingpage extends CI_Controller {
 				}
 				}
 				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productPrice,'productShopUrl'=>$product->productShopUrl);
+				$whislistproduct=array();
 				if($this->input->post('user_id')){
 				$this->load->model('frontend/User_model');
 				$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->input->post('user_id'),'Status'=>'Active'));
-				$whislistproduct=array();
 				foreach($wishlist as $wishlists){
 				$whislistproduct[]=$wishlists->productID;
 				}
