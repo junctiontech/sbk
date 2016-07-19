@@ -320,7 +320,7 @@ class Landingpage extends CI_Controller {
 				$pro_id=($productname->productsID);
 				$pro_name=($productname->productName);
 	
-				echo "<input name=\"$pro_id\" value=\"$pro_name\">";
+				echo "<input class=\"form-control\" name=\"$pro_id\" value=\"$pro_name\">";
 			}
 		}
 	
@@ -477,9 +477,9 @@ class Landingpage extends CI_Controller {
 		if (!empty($filterprodect))
 		{
 			foreach ($filterprodect as $filter)
-			{		
+			{				 
 				echo"<div class=\"grid_1_of_4 images_1_of_4\">
-					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."\/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
+					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
 					 <h2>".$filter->productName."</h2>
 					 <p><span class=\"price\">Rs. ".$filter->productPrice."</span></p>					 
 					 <div class=\"checkbox\">

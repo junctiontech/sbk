@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12 col-sm-12- col-xs-12">
+			
 		<div class="col-md-2 col-sm-2 col-xs-12" style="font-size:13px;">
 				<div class="x_content">
 							<?php 
@@ -46,7 +46,7 @@
                                     
                               <tbody>
                                   <tr>
-									<td style="background-color:#ededed"><P  class="heddine" ><?php 
+									<td style="background-color:#ededed"><P  class=" " ><?php 
 									
 									if(!empty($compareinfo->productAttributeLable)){
 									echo isset($compareinfo->productAttributeLable)?$compareinfo->productAttributeLable:'';	
@@ -83,7 +83,7 @@
 					$product_attributeinfo=$this->Landingpage_model->product_attribute($compareproduct);					
 					?>
 							
-					<table class="table table-bordered" style="width:246px; font-size:13px;">
+					<table class="table table-bordered" style="font-size:13px;">
                                     
 							<tbody>
                             <?php foreach($compareproduct_info as $data1){ //print_r($compareproduct_info); ?>
@@ -120,7 +120,7 @@
 			
 			
 			
-		</div>		
+		
 		</div>
 		
 				 

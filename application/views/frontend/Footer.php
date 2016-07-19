@@ -43,8 +43,8 @@
 						
 				</div>
 				
-				<div class="col_1_of_4 span_1_of_4">
-					<!--<h4>Language</h4>-->
+				<!-- <div class="col_1_of_4 span_1_of_4">
+					<h4>Language</h4>- 
 						<ul>
 							<div id="google_translate_element"></div><script type="text/javascript">
 function googleTranslateElementInit() {
@@ -55,8 +55,8 @@ function googleTranslateElementInit() {
 						</ul>
 						
 						
-				</div>
-			</div>
+				</div>-->
+			
 			<div class="copy_right">
 				<p>Searchb4kharch © All rights Reseverd | Design by  <a target="_blank" href="http://junctiontech.in">Junctiontech</a> </p>
 				
@@ -65,7 +65,7 @@ function googleTranslateElementInit() {
 		   </div>
      </div>
     </div>
-  
+  </div>
  <a href="javascript:;" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
     <link href="<?=base_url();?>frontend/css/flexslider.css" rel='stylesheet' type='text/css' />
 							  <script defer src="<?=base_url();?>frontend/js/jquery.flexslider.js"></script>
