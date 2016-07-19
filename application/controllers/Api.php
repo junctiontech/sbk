@@ -487,17 +487,17 @@ class Api extends CI_Controller {
 				}elseif($categoryID->categoryName=='Air conditioners'){
 					$searchindex='Electronics';$brosweNode='3474656031';
 				}elseif($categoryID->categoryName=='Apparels'){
-					$searchindex='Clothing & Accessories';$brosweNode='';
+					$searchindex='Apparel';$brosweNode='';
 				}elseif($categoryID->categoryName=='Health & Fitness'){
-					$searchindex='Health & Personal Care';$brosweNode='';
+					$searchindex='HealthPersonalCare';$brosweNode='';
 				}elseif($categoryID->categoryName=='Small Appliances'){
-					$searchindex='All Categories';$brosweNode='';
+					$searchindex='All';$brosweNode='';$searchtype='Keywords';
 				}elseif($categoryID->categoryName=='Audio Video'){
 					$searchindex='Electronics';$brosweNode='1389375031';
-				}elseif($categoryID->categoryName=='Baby Care Products'){
+				}elseif($categoryID->categoryName=='Baby Care'){
 					$searchindex='Baby';$brosweNode='1953111031';
 				}elseif($categoryID->categoryName=='Accessories'){
-					$searchindex='All Categories';$brosweNode='';
+					$searchindex='All';$brosweNode='';$searchtype='Keywords';
 				}
 				$result = $obj->searchProducts("$productBrand $productName","$searchindex","$searchtype",'',"$brosweNode",$ItemPage);
 			//}
