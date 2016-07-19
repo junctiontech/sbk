@@ -46,7 +46,7 @@
                                     
                               <tbody>
                                   <tr>
-									<td style="background-color:#ededed"><P  class=" " ><?php 
+									<td style="background-color:#ededed"><P  class="heddine1" ><?php 
 									
 									if(!empty($compareinfo->productAttributeLable)){
 									echo isset($compareinfo->productAttributeLable)?$compareinfo->productAttributeLable:'';	

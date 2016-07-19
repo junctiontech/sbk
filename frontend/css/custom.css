@@ -1221,6 +1221,13 @@ p.heddine{
 	text-overflow: clip;
 	
 }
+p.heddine1{
+	white-space: nowrap; 
+	width: 130px;
+	overflow: hidden; 
+	text-overflow: clip;
+	
+}
 .flight {
     position: relative;
     width: 100%;
