@@ -206,6 +206,15 @@ class Landingpage extends CI_Controller {
 		if($app=='true'){
 			if(!empty($products)){
 				 
+				 $whislistproduct=array();
+				if($this->input->post('user_id')){
+				$this->load->model('frontend/User_model');
+				$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->input->post('user_id'),'Status'=>'Active'));
+				foreach($wishlist as $wishlists){
+				$whislistproduct[]=$wishlists->productID;
+				}
+				}
+				 
 			foreach($products as $product){
 				
 				$attributegroups=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
@@ -233,13 +242,9 @@ class Landingpage extends CI_Controller {
 				}
 				}
 				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productPrice,'productShopUrl'=>$product->productShopUrl);
-				$whislistproduct=array();
-				if($this->input->post('user_id')){
-				$this->load->model('frontend/User_model');
-				$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->input->post('user_id'),'Status'=>'Active'));
-				foreach($wishlist as $wishlists){
-				$whislistproduct[]=$wishlists->productID;
-				}
+				$whislistproductvalue='No';
+				if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==True){
+					$whislistproductvalue='yes';
 				}
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
@@ -255,7 +260,7 @@ class Landingpage extends CI_Controller {
 				  'shop_image'=>isset($product->shop_image)?$product->shop_image:'',
 				  'productFeatures'=>$productFeatures,
 				  'morePrices'=>$moreprice,
-				  'wishlist'=>$whislistproduct
+				  'wishlist'=>$whislistproductvalue
 				  );
 			}
 			
