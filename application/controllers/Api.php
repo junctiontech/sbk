@@ -442,10 +442,10 @@ class Api extends CI_Controller {
 	
 	public function amazone()
 	{
+		echo"<br>";echo"script start";echo"<br>";
+			
 		$categoryIDs=$this->Api_model->get_categoryID();
 		foreach($categoryIDs as $categoryID){
-			//$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
-			//$apiLogID=$this->Api_model->insert_api_log($logData);
 			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
 				
 				if(empty($check_entry)){ 
@@ -468,7 +468,6 @@ class Api extends CI_Controller {
 			$productBrand=$productnameforsearch->productBrand;
 			$categoryid=$categoryID->categoriesID;
 			
-			echo"<br>";echo $j;echo"outer";echo"<br>";
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
 		
@@ -517,11 +516,9 @@ class Api extends CI_Controller {
 			} */
 			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
-			echo"<br>";print_r($home);echo"<br>";
+			print_r($home);
 			if(!empty($home)){
 			
-			
-			//echo"<br>";print_r($home['Items']);echo"<br>";die;
 			$lists = $home['Items'];
 			
 			$ItemPage=$i+1;
@@ -529,18 +526,15 @@ class Api extends CI_Controller {
 			$nextUrl = $home['Items']['TotalPages'];
 			}else{ $nextUrl='';}
 			if($i==$nextUrl){ $nextUrl=''; }
-			echo"<br>";echo $i;echo"<br>";
+			
 			
 					if(!empty($lists['Item'])){
 							foreach($lists['Item'] as $list)
-							{		echo"<br>";echo $list['ASIN'];echo"<br>";	
-									echo"<br>";echo $list['ItemAttributes']['Title'];echo"<br>";
-									echo"<br>";print_r($list);echo"<br>";									
+							{										
 								if(!empty($list['ASIN'])){
 										$ASIN=$list['ASIN'];
 										$productdata = $obj->getItemByAsin("$ASIN");
 										$productdata=json_decode(json_encode($productdata),true);
-										//echo"<br>";print_r($productdata['Items']);echo"<br>";
 										
 										if(!empty($productdata['Items'])){
 											
@@ -604,6 +598,7 @@ $j++;	}
 			}
 ///,,,,,,,,,,,,
 	}
+	echo"<br>";echo"script end";echo"<br>";
 	}
 	
 			

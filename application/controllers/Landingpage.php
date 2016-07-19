@@ -233,6 +233,14 @@ class Landingpage extends CI_Controller {
 				}
 				}
 				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productPrice,'productShopUrl'=>$product->productShopUrl);
+				if($this->input->post('user_id')){
+				$this->load->model('frontend/User_model');
+				$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->input->post('user_id'),'Status'=>'Active'));
+				$whislistproduct=array();
+				foreach($wishlist as $wishlists){
+				$whislistproduct[]=$wishlists->productID;
+				}
+				}
 				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
@@ -246,7 +254,8 @@ class Landingpage extends CI_Controller {
 				  'productShopUrl'=>$product->productShopUrl,
 				  'shop_image'=>isset($product->shop_image)?$product->shop_image:'',
 				  'productFeatures'=>$productFeatures,
-				  'morePrices'=>$moreprice
+				  'morePrices'=>$moreprice,
+				  'wishlist'=>$whislistproduct
 				  );
 			}
 			
