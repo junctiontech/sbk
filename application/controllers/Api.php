@@ -475,7 +475,7 @@ class Api extends CI_Controller {
 		do{
 			//try
 			//{
-				$searchindex='';$brosweNode='';
+				$searchindex='';$brosweNode='';$searchtype='TITLE';
 				if($categoryID->categoryName=='Mobiles'){
 					$searchindex='Electronics';$brosweNode='1389432031';
 				}elseif($categoryID->categoryName=='Laptops'){
@@ -483,9 +483,9 @@ class Api extends CI_Controller {
 				}elseif($categoryID->categoryName=='TVs'){
 					$searchindex='Electronics';$brosweNode='1389396031';
 				}elseif($categoryID->categoryName=='Appliances'){
-					$searchindex='Home & Kitchen';$brosweNode='';
+					$searchindex='All';$brosweNode='';$searchtype='Keywords';
 				}elseif($categoryID->categoryName=='Air conditioners'){
-					$searchindex='Home & Kitchen';$brosweNode='3474656031';
+					$searchindex='Electronics';$brosweNode='3474656031';
 				}elseif($categoryID->categoryName=='Apparels'){
 					$searchindex='Clothing & Accessories';$brosweNode='';
 				}elseif($categoryID->categoryName=='Health & Fitness'){
@@ -499,7 +499,7 @@ class Api extends CI_Controller {
 				}elseif($categoryID->categoryName=='Accessories'){
 					$searchindex='All Categories';$brosweNode='';
 				}
-				$result = $obj->searchProducts("$productBrand $productName","$searchindex","TITLE",'',"$brosweNode",$ItemPage);
+				$result = $obj->searchProducts("$productBrand $productName","$searchindex","$searchtype",'',"$brosweNode",$ItemPage);
 			//}
 			/* catch(Exception $e)
 			{
