@@ -480,6 +480,7 @@ class Api extends CI_Controller {
 				if('Laptops'=='Laptops'){
 					$threewordsproductnames=explode(" ",$productName);
 					$r=0;
+					$productName=array('');
 					foreach($threewordsproductnames as $threewordsproductname){
 						$r++;
 						$productName[]=$threewordsproductname;
