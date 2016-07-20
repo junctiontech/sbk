@@ -159,9 +159,18 @@ class Api extends CI_Controller {
 				$i=1;
 				
 				do{
-					
+				$retry=false;
+				do{
+				try
+				{	
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
+				}
+				 catch(Exception $e)
+				{
+					$retry=true;
+				} 
+				}while($retry==true);
 				if(!empty($details))
 				{
 					$products = $details['productInfoList'];
@@ -281,11 +290,21 @@ class Api extends CI_Controller {
 					{ 
 						$shopproductfamily=array();
 						$specificationLists=array();
+						$subcategoryVal='';$go=false;
+						if($categoryID==1){
+							$subcategoryVal='Mobile Phones';
+						}elseif($categoryID==2){
+							$subcategoryVal='Laptops';
+						}elseif($categoryID==3){
+							$subcategoryVal='Televisions';
+						}else{
+							$go=true;
+						}
+						
+						//if($product['subCategoryName']==$subcategoryVal || $go==true){
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 					
-						//if($product['subCategoryName']=='Mobile Phones'){
-						
 						$productdata=array();
 						$productdata=array('categoriesID'=>$categoryID,
 						'subCategoriesID'=>0,
