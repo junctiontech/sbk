@@ -301,7 +301,7 @@ class Api extends CI_Controller {
 							$go=true;
 						}
 						
-						//if($product['subCategoryName']==$subcategoryVal || $go==true){
+						if($product['subCategoryName']==$subcategoryVal || $go==true){
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 					
@@ -335,7 +335,7 @@ class Api extends CI_Controller {
 							{
 						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
-					//}
+					}
 					}
 					
 					$nextUrl = $details['nextUrl'];
