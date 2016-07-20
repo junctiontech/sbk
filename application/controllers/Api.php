@@ -445,8 +445,8 @@ class Api extends CI_Controller {
 		echo"<br>";echo"script start";echo"<br>";
 			
 		//$categoryIDs=$this->Api_model->get_categoryID();
-		$categoryIDs[0]=(object)array('categoriesID'=>2,'categoryName'=>'Laptops');
-		
+		$categoryIDs=(object)array('categoriesID'=>2,'categoryName'=>'Laptops');
+		$categoryIDs=array($categoryIDs);
 		foreach($categoryIDs as $categoryID){
 			
 			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
