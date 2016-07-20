@@ -140,7 +140,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	padding:1.5%;
 	text-align:center;
 	position:relative; 
-	height:400px;
+	height:350px;
 	margin-right: 10px;
 }
 
@@ -154,7 +154,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	font-weight : normal;
 	margin-top:20px;
 	line-height: 20px;
-	height: 7%;
+	height: 6%;
 	overflow: hidden;
 }
 .images_1_of_4  p {
@@ -1522,4 +1522,7 @@ top: -5px;
 }
 .comepare_bgc{
  background: rgba(132, 126, 135, 0.19);
+}
+.imageheightfix{
+	height:200px;
 }

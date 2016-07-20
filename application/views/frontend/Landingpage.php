@@ -318,9 +318,9 @@
 		<div class="section group hidden-xs">
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4" style="height:300px">
-				
+				<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
-				
+				</div>
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
@@ -351,9 +351,9 @@
 	      <div class="section group hidden-xs">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4" style="height:300px">
-				
+					<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
-				
+					</div>
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
@@ -382,9 +382,9 @@
 			<div class="section group hidden-xs">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
 				<div class="grid_1_of_4 images_1_of_4" style="height:300px">
-					
+						<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
-				
+					</div>
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
 					 <p><span class="">Rs. <?=$product->productPrice?></span></p>

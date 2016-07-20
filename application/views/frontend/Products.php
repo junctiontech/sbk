@@ -95,9 +95,12 @@
       <div class="col-md-8 col-sm-8 col-xs-12" id="mySelect">
          <div class="row"> <?php if(!empty($products)){ foreach($products as $product){?>
 		
+			 
         <div class="grid_1_of_4 images_1_of_4">
+				<div class="imageheightfix">
 		<a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
-          <h2>
+			</div>
+					<h2>
             <?=$product->productName?>
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
