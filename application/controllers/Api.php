@@ -508,7 +508,7 @@ class Api extends CI_Controller {
 					$searchindex='All';$brosweNode='';$searchtype='Keywords';
 				}
 				$retry=false;
-				//do{
+				do{
 			try
 			{	
 				$result = $obj->searchProducts("$productBrand $productName","$searchindex","$searchtype",'',"$brosweNode",$ItemPage);
@@ -517,7 +517,7 @@ class Api extends CI_Controller {
 			{
 				$retry=true;
 			} 
-				//}while($retry==true);
+				}while($retry==true);
 			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
 			
