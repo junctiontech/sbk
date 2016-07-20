@@ -205,7 +205,6 @@ class Landingpage extends CI_Controller {
 		
 		if($app=='true'){
 			if(!empty($products)){
-				 
 				 $whislistproduct=array();
 				if($this->input->post('user_id')){
 				$this->load->model('frontend/User_model');

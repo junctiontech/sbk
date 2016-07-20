@@ -444,8 +444,11 @@ class Api extends CI_Controller {
 	{
 		echo"<br>";echo"script start";echo"<br>";
 			
-		$categoryIDs=$this->Api_model->get_categoryID();
+		//$categoryIDs=$this->Api_model->get_categoryID();
+		$categoryIDs[]=(object)array('categoriesID'=>2);
+		
 		foreach($categoryIDs as $categoryID){
+			
 			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
 				
 				if(empty($check_entry)){ 
@@ -485,6 +488,7 @@ class Api extends CI_Controller {
 						$productName[]=$threewordsproductname;
 						if($r==3){
 							$productName=implode(" ",$productName);
+							echo"<br>";print_r($productName);echo"<br>";
 							break;
 						}
 					}
