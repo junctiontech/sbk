@@ -472,8 +472,6 @@ class Api extends CI_Controller {
 		$ItemPage='';$i=1;
 		
 		do{
-			//try
-			//{
 				$searchindex='';$brosweNode='';$searchtype='TITLE';
 				if($categoryID->categoryName=='Mobiles'){
 					$searchindex='Electronics';$brosweNode='1389432031';
@@ -509,16 +507,21 @@ class Api extends CI_Controller {
 				}elseif($categoryID->categoryName=='Accessories'){
 					$searchindex='All';$brosweNode='';$searchtype='Keywords';
 				}
+				$retry=false;
+				//do{
+			try
+			{	
 				$result = $obj->searchProducts("$productBrand $productName","$searchindex","$searchtype",'',"$brosweNode",$ItemPage);
-			//}
-			/* catch(Exception $e)
+			}
+			 catch(Exception $e)
 			{
-				echo $e->getMessage();
-			} */
+				$retry=true;
+			} 
+				//}while($retry==true);
 			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
 			
-			if(!empty($home)){
+			if(!empty($home['Items'])){
 			
 			$lists = $home['Items'];
 			
@@ -534,9 +537,18 @@ class Api extends CI_Controller {
 							{										
 								if(!empty($list['ASIN'])){
 										$ASIN=$list['ASIN'];
+										$retry1=false;
+										do{
+											try
+											{	
 										$productdata = $obj->getItemByAsin("$ASIN");
 										$productdata=json_decode(json_encode($productdata),true);
-										
+											}
+											 catch(Exception $e)
+											{
+												$retry1=true;
+											} 
+										}while($retry1==true);
 										if(!empty($productdata['Items'])){
 											
 										$productdata1=array();
