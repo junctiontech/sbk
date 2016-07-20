@@ -445,7 +445,7 @@ class Api extends CI_Controller {
 		echo"<br>";echo"script start";echo"<br>";
 			
 		//$categoryIDs=$this->Api_model->get_categoryID();
-		$categoryIDs[]=(object)array('categoriesID'=>2,'categoryName'=>'Laptops');
+		$categoryIDs[0]=(object)array('categoriesID'=>2,'categoryName'=>'Laptops');
 		
 		foreach($categoryIDs as $categoryID){
 			
