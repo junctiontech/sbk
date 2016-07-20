@@ -444,18 +444,16 @@ class Api extends CI_Controller {
 	{
 		echo"<br>";echo"script start";echo"<br>";
 			
-		//$categoryIDs=$this->Api_model->get_categoryID();
-		
-		//foreach($categoryIDs as $categoryID){
-			
-			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>2,'shopID'=>3));
+		$categoryIDs=$this->Api_model->get_categoryID();
+		foreach($categoryIDs as $categoryID){
+			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
 				
 				if(empty($check_entry)){ 
-										$logData=array('categoryID'=>2,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+										$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
 										$apiLogID=$this->Api_model->insert_api_log($logData); 
 										}
 										
-				$apiLogData=$this->Api_model->get_api_log_data(2,3);
+				$apiLogData=$this->Api_model->get_api_log_data($categoryID->categoriesID,3);
 				if(!empty($apiLogData)){
 				if(!empty($check_entry)){
 											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
@@ -463,12 +461,12 @@ class Api extends CI_Controller {
 											$apiLogID=$check_entry[0]->apiLogID;
 										}
 		$obj = new AmazonProductAPI();
-		$productnameforsearchs=$this->Api_model->get_productname(2);
+		$productnameforsearchs=$this->Api_model->get_productname($categoryID->categoriesID);
 		$j=1;
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
-			$categoryid=2;
+			$categoryid=$categoryID->categoriesID;
 			
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
@@ -477,7 +475,9 @@ class Api extends CI_Controller {
 			//try
 			//{
 				$searchindex='';$brosweNode='';$searchtype='TITLE';
-				if('Laptops'=='Laptops'){
+				if($categoryID->categoryName=='Mobiles'){
+					$searchindex='Electronics';$brosweNode='1389432031';
+				}elseif($categoryID->categoryName=='Laptops'){
 					$threewordsproductnames=explode(" ",$productName);
 					$r=0;
 					$productName=array('');
@@ -486,7 +486,6 @@ class Api extends CI_Controller {
 						$productName[]=$threewordsproductname;
 						if($r==3){
 							$productName=implode(" ",$productName);
-							echo"<br>";print_r($productName);echo"<br>";
 							break;
 						}
 					}
@@ -518,7 +517,7 @@ class Api extends CI_Controller {
 			} */
 			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
-			print_r($home);
+			
 			if(!empty($home)){
 			
 			$lists = $home['Items'];
@@ -599,7 +598,7 @@ $j++;	}
 			//	exit();
 			}
 ///,,,,,,,,,,,,
-	//}
+	}
 	echo"<br>";echo"script end";echo"<br>";
 	}
 	
