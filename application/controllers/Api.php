@@ -445,19 +445,17 @@ class Api extends CI_Controller {
 		echo"<br>";echo"script start";echo"<br>";
 			
 		//$categoryIDs=$this->Api_model->get_categoryID();
-		$categoryIDs=array();
-		$categoryIDs=[(object)array('categoriesID'=>2,'categoryName'=>'Laptops')];
 		
-		foreach($categoryIDs as $categoryID){
+		//foreach($categoryIDs as $categoryID){
 			
-			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID->categoriesID,'shopID'=>3));
+			$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>2,'shopID'=>3));
 				
 				if(empty($check_entry)){ 
-										$logData=array('categoryID'=>$categoryID->categoriesID,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
+										$logData=array('categoryID'=>2,'productCount'=>0,'totalNoOfProduct'=>0,'shopID'=>3);
 										$apiLogID=$this->Api_model->insert_api_log($logData); 
 										}
 										
-				$apiLogData=$this->Api_model->get_api_log_data($categoryID->categoriesID,3);
+				$apiLogData=$this->Api_model->get_api_log_data(2,3);
 				if(!empty($apiLogData)){
 				if(!empty($check_entry)){
 											$logDataUpdate=0;$where=array('apiLogID'=>$check_entry[0]->apiLogID);
@@ -465,12 +463,12 @@ class Api extends CI_Controller {
 											$apiLogID=$check_entry[0]->apiLogID;
 										}
 		$obj = new AmazonProductAPI();
-		$productnameforsearchs=$this->Api_model->get_productname($categoryID->categoriesID);
+		$productnameforsearchs=$this->Api_model->get_productname(2);
 		$j=1;
 		foreach($productnameforsearchs as $productnameforsearch){
 			$productName=$productnameforsearch->productName;
 			$productBrand=$productnameforsearch->productBrand;
-			$categoryid=$categoryID->categoriesID;
+			$categoryid=2;
 			
 			if(!empty($productName)){
 		$ItemPage='';$i=1;
@@ -479,9 +477,7 @@ class Api extends CI_Controller {
 			//try
 			//{
 				$searchindex='';$brosweNode='';$searchtype='TITLE';
-				if($categoryID->categoryName=='Mobiles'){
-					$searchindex='Electronics';$brosweNode='1389432031';
-				}elseif($categoryID->categoryName=='Laptops'){
+				if('Laptops'=='Laptops'){
 					$threewordsproductnames=explode(" ",$productName);
 					$r=0;
 					foreach($threewordsproductnames as $threewordsproductname){
@@ -602,7 +598,7 @@ $j++;	}
 			//	exit();
 			}
 ///,,,,,,,,,,,,
-	}
+	//}
 	echo"<br>";echo"script end";echo"<br>";
 	}
 	
