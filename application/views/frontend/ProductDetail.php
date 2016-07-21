@@ -58,7 +58,7 @@
 					
 					<div class="clear"></div>
 				</div>
-				<div style="padding-top:45px" class="button"><span><?php if(!empty($userinfos)){ if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
+				<div style="padding-top:45px" class="button"><span><?php if(!empty($userinfos)) { if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($products[0]->productsID)?$products[0]->productsID:''?>.html" class="cart-button">Add to wishlists</a>
 				<?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="cart-button">Add to wishlists</a>

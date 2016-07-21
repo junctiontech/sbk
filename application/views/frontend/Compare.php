@@ -24,7 +24,7 @@
 									<p><?=$product->productName?> </p>
 								</div>
 								<div class="compare_product_price">
-									<p><?=$product->productPrice?></p>
+									<p><span class="price"><?=$product->productPrice?></span></p>
 								</div>
 							</div>
 				</div><?php } } ?>

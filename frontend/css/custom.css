@@ -384,7 +384,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	font-family:times new roman;
 }
 
-.compare_product_price {
+.compare_product_price p{
 	color:red;
 	font-size:20px;
 	font-family:times new roman;
