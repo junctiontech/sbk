@@ -1158,7 +1158,7 @@ body {
   top: 0px;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container {
-margin-top:12.9%;
+	margin-top:12.9%;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
   top: 85px;
