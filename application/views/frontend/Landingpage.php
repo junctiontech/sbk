@@ -1,5 +1,57 @@
 <div class="page-container">
 	<div class="main-content">
+		 <div class="compare_product" id="compare">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default comepare_bgc">					 
+						<div class="panel-body">	
+							
+								<form role="form" class="form-horizontal"  method="post" action="<?=base_url();?>Landingpage/compare">
+                  <div class="col-md-2 col-sm-2 col-xs-0"></div>
+                  <div class="col-sm-2">
+										<div class="form-group">
+											<label class="control-label ">Product 1</label>									
+											<div class="col-sm-12" id="productName1">
+												<!--<input type="text" class="form-control" id="productName1" name="productName1" value=" " placeholder="Placeholder">-->
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Product 2</label>									
+											<div class="col-sm-12" id="productName2">
+												<!--<input type="text" class="form-control" id="productName2" placeholder="Placeholder">-->
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Product 3</label>									
+											<div class="col-sm-12" id="productName3">
+												<!--<input type="text" class="form-control" id="productName3" placeholder="Placeholder">-->
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Product 4</label>									
+											<div class="col-sm-12" id="productName4">
+												<!--<input type="text" class="form-control" id="productName4" placeholder="Placeholder">-->
+											</div>
+										</div>	
+									</div>	
+									<div class="col-md-2">
+										<div class="form-group">									 
+											<button type="submit" class="btn btn-success btn-single" style="margin-top: 20px;">Compare</button>
+										</div>
+									</div>
+									<div class="form-group-separator"></div>
+								</form>	
+							</div>
+						</div>
+			</div>
+		</div>
+	</div>
 		<div class="row">
 								 <!-- FlexSlider -->
 			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">		  
@@ -29,7 +81,7 @@
 
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Search Hotel</a> </li>
+          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Hotel</a> </li>
           <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab"  aria-expanded="false">Flights</a> </li>
 
         </ul>
@@ -155,7 +207,7 @@
 
 				
 				 
-              <button type="submit" style="width:100%;margin-top:20px;" class="btn btn-success">Search</button>
+              <button type="submit" style="width:100%;" class="btn btn-success">Search</button>
             	 
  
               
@@ -287,7 +339,7 @@
 
 				
 				 
-              <button type="submit" style="width:100%;margin-top:20px;" class="btn btn-success">Search</button>
+              <button type="submit" style="width:100%;" class="btn btn-success">Search</button>
             	
 					</form>
           </div>         
@@ -317,14 +369,14 @@
     	</div>
 		<div class="section group hidden-xs">
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4" style="height:300px">
+				<div class="grid_1_of_4 images_1_of_4">
 				<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				</div>
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -333,7 +385,19 @@
 					  <?php }*/ ?>
 					  </span> </div>-->
 				   <!--  <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" >Details</a></span></div>-->
-				</div>
+			<div class="checkbox">
+            <label>
+              <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
+              Compare </label>
+          
+								  <lable class="wishlist"> 
+					<?php if(!empty($userinfos)){ if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($products[0]->productsID)?$products[0]->productsID:''?>.html" class="fa fa-shopping-cart"></a>
+				<?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
+					  <?php } ?></lable>
+					</div>
+			</div>
 				
 		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
@@ -343,21 +407,21 @@
 		
     	<div class="content_top hidden-xs">
     		<div class="heading">
-    		<h3>Feature Products</h3>
+    		<h3>Featured Products</h3>
     		</div>
     	
     		<div class="clear"></div>
     	</div>
 	      <div class="section group hidden-xs">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4" style="height:300px">
+				<div class="grid_1_of_4 images_1_of_4">
 					<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 					</div>
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -366,7 +430,18 @@
 					  <?php }*/ ?>
 					  </span> </div>-->
 				   <!--  <div class="button" ><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>" >Details</a></span></div>-->
-				</div>
+				<div class="checkbox">
+            <label>
+              <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
+              Compare </label>
+								  <lable class="wishlist"> 
+					<?php if(!empty($userinfos)){ if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($products[0]->productsID)?$products[0]->productsID:''?>.html" class="fa fa-shopping-cart"></a>
+				<?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
+					  <?php } ?></lable>
+          </div>
+			  </div>
 				
 		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
@@ -381,13 +456,13 @@
     	</div>
 			<div class="section group hidden-xs">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4" style="height:300px">
+				<div class="grid_1_of_4 images_1_of_4">
 						<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
 					</div>
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
 					 
 					 <!-- <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /* if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
@@ -397,7 +472,18 @@
 					  <?php } */?>
 					  </span> </div>
 				   <!--  <div class="button" style="width:100%"><span><a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->productsUrlKey?>">Details</a></span></div>-->
-				
+				<div class="checkbox">
+            <label>
+              <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
+              Compare</label>
+       
+								  <lable class="wishlist"> 
+					<?php if(!empty($userinfos)){ if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($products[0]->productsID)?$products[0]->productsID:''?>.html" class="fa fa-shopping-cart"></a>
+				<?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
+					  <?php } ?></lable>
+				    </div>
 				</div>
 				
 		  <?php } }else{ echo"No product Found!!";}?>

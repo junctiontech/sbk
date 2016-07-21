@@ -1158,7 +1158,7 @@ body {
   top: 0px;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container {
-margin-top:14.9%;
+margin-top:12.9%;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
   top: 85px;
@@ -1294,7 +1294,7 @@ margin-top:14.9%;
     border-left-color: transparent;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0 9px;
+    padding: 0 11.5px;
     line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > ul {

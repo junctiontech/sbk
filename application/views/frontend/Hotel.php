@@ -11,7 +11,8 @@
               <div class="white"style="padding-bottom: 25px;">
                 <h2>Search Hotel</h2>
               </div>
-              <div class="form-group">
+              <div class="hotel_panal1">
+	 <div class="form-group">
                 <label class="col-md-2 col-sm-2 col-xs-12 white">Where</label>
              
                 <div class="col-md-10 col-sm-10 col-xs-12">
@@ -38,10 +39,10 @@
                 });
             });
         </script>
-			  
+ <div class="col-md-6 col-sm-6 colxs-12">		  
 <div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 white">Check In</label>
-<div class="col-md-10 col-sm-10 col-xs-12">
+<label class="col-md-4 col-sm-4 col-xs-12 white">Check In</label>
+<div class="col-md-8 col-sm-8 col-xs-12">
 <div class="input-group">
 											<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" " value="<?=isset($checkin)?$checkin:''?>">
 											
@@ -52,9 +53,11 @@
 
 </div>
 </div>
+	 </div>
+	  <div class="col-md-6 col-sm-6 colxs-12">
 <div class="form-group">
-<label class="col-md-2 col-sm-2 col-xs-12 white">Check Out</label>
-<div class="col-md-10 col-sm-10 col-xs-12">
+<label class="col-md-4 col-sm-4 col-xs-12 white">Check Out</label>
+<div class="col-md-8 col-sm-8 col-xs-12">
 <div class="input-group">
 											<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" " value="<?=isset($checkout)?$checkout:''?>">
 											
@@ -64,10 +67,12 @@
 										</div>
 </div>
 </div>
+	 </div>
+	 <div class="col-md-6 col-sm-6 colxs-12">
               <div class="form-group">
-                <label class="col-md-2 col-sm-2 col-xs-12 white">Guests</label>
+                <label class="col-md-4 col-sm-4 col-xs-12 white">Guests</label>
              
-                <div class="col-md-10 col-sm-10 col-xs-12">
+                <div class="col-md-8 col-sm-8 col-xs-12">
                  <select class="form-control" name="noOfGuests">
 <option value="1" <?php if(!empty($guests)){ if($guests==1){ echo"selected";} } ?>>1</option>
  <option value="2" <?php if(!empty($guests)){ if($guests==2){ echo"selected";} } ?>>2</option>
@@ -81,11 +86,13 @@
 <option value="10" <?php if(!empty($guests)){ if($guests==10){ echo"selected";} } ?>>10</option>
 </select>
                 </div>
-              </div>
-			     <div class="form-group">
-                <label class="col-md-2 col-sm-2 col-xs-12 white">Rooms</label>
+		 </div></div>
+			     
+	  <div class="col-md-6 col-sm-6 colxs-12">
+	 <div class="form-group">
+                <label class="col-md-4 col-sm-4 col-xs-12 white">Rooms</label>
              
-                <div class="col-md-10 col-sm-10 col-xs-12">
+                <div class="col-md-8 col-sm-8 col-xs-12">
                  <select class="form-control" name="noOfRoom">
 <option value="1" <?php if(!empty($rooms)){ if($rooms==1){ echo"selected";} } ?>>1</option>
  <option value="2" <?php if(!empty($rooms)){ if($rooms==2){ echo"selected";} } ?>>2</option>
@@ -100,11 +107,11 @@
 </select>
                 </div>
               </div>
-
+	 </div>
 				
 				 
               <button type="submit" style="width:100%;margin-top: 15px;" class="btn btn-success">Search</button>
-            	 
+	 </div>	 
 </form>
 </div>
 </div>

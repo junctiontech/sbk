@@ -18,7 +18,7 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
-<p> Welcome to Search Before Kharch</p>
+<p> Welcome to SearchB4Kharch</p>
 </div>
  
  

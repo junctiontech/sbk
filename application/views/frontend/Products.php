@@ -110,7 +110,13 @@
           <div class="checkbox">
             <label>
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
-              Add to Compare </label>
+              Compare </label>
+			  <lable class="wishlist"> 
+					<?php if(!empty($userinfos)){ if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==false){?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=isset($products[0]->productsID)?$products[0]->productsID:''?>.html" class="fa fa-shopping-cart"></a>
+				<?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
+					  <?php } ?></lable>
           </div>
         </div>
 	

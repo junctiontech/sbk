@@ -1877,7 +1877,10 @@ html body .slider .ui-slider-range {
   background-clip: padding-box;
 }
 html body .slider.ui-slider-horizontal .ui-slider-handle .ui-label {
-  margin-top: 0px;
+  margin-top: 0px;	
+}
+.ui-label{
+	display:none;
 }
 html body .slider.ui-slider-vertical {
   height: 250px;

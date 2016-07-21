@@ -15,7 +15,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	border: 1px solid #DBDBDB;
 	position:relative;
 	width:85%;
-	height:82px;
+	height:59px;
 	border-radius: 10px;
 	margin:7px;
 	background-color:#fff;
@@ -26,12 +26,12 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	outline:none;
 	border:none;
 	background:none;
-	font-size:50px;
+	font-size:45px;
 	color:#a5a5a5;
 	font-family:Arial;
 	outline:none;
 	margin:0;
-	height: 82px;
+	height: 54px;
 	text-align: left;
 }
 .search_box input[type="submit"]{
@@ -39,8 +39,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	cursor:pointer;
 	color:#FFF;
 	font-size:12px;
-	padding:10px 15px;
-	height: 73px;
+	padding:10px 15px; 
 	margin:0;
 	background: -webkit-gradient(linear,left top,left bottom,from(#670099),to(#670099));
 	background: -moz-linear-gradient(top,#670099,#670099);
@@ -54,7 +53,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	position:absolute;
 	right:0;
 	top:0;	
-	height: 82px;
+	height: 58px;
 	border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
 }
@@ -132,8 +131,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	box-shadow: 0px 0px 3px rgb(150, 150, 150);
 }
 .grid_1_of_4:first-child { 
-	margin-left: 0; 
-	    
+	margin-left: 0; 	    
 } 
 .images_1_of_4 {
 	width: 23%;
@@ -255,7 +253,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	margin: 0% 0 0% 1.6%;
 	border-right: 2px groove #555;
 }
-.col_1_of_4:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
+.col_1_of_4:first-child { margin-left: -15px; } /* all browsers except IE6 and lower */
 .col_1_of_4:last-child {
 	border:none;
 }
@@ -335,7 +333,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	padding: 1.5%;
 	text-align: center;
 	position: relative;
-	height:450px;
+	height:400px;
 	margin-right:10px;	
 	margin-left: 0%;
 }
@@ -803,7 +801,9 @@ margin-top:60px;
      .span_3_of_1 li a:hover {
 		background: url(../images/drop_arrow-hover.png) no-repeat 5px 15px;
 	 }
-	
+	.wishlist{
+	margin-left:12% !important;
+}
 	
 }
 @media only screen and (max-width: 640px) {	
@@ -941,6 +941,11 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+	.logo1{
+   		 height:60px !important;
+		margin-left:2% !important;
+		width: 100%;
+}
 	.control-label{
 		text-align:left !important;
 	}
@@ -968,9 +973,12 @@ margin-top:60px;
     }
 	.list_2_of_1 {
 		width: 100%;
-	}	
+	}
+	.grid_1_of_4:first-child { 
+		margin-left:4%; 	    
+	} 
 	.grid_1_of_4{ 
-		margin:2% 0 5% 0%;
+		margin:2% 0 5% 4%;
 	}
 	.images_1_of_4 .button{
     	width:100%;
@@ -1009,8 +1017,8 @@ margin-top:60px;
 		margin: 1% 0 1% 0%;
 	}
 	.span_1_of_4 {
-		width:95%;
-		padding:0 2.5%;
+		width:25%;
+		padding:0% 0%;
 		border:none; 
 	}
     .span_1_of_4 h4 {
@@ -1175,7 +1183,7 @@ font-size:19px;
     position: relative;
     width: 100%;	
     margin-bottom: 10px;
-	padding:15px 20px;
+	padding:0px 20px;
     display: inline-block;
     background:url(../images/hotel_panal.jpg) no-repeat;
     border: 1px solid #E6E9ED;
@@ -1525,4 +1533,13 @@ top: -5px;
 }
 .imageheightfix{
 	height:200px;
+}
+.wishlist{
+	margin-left:20%;
+}
+.logo1{
+    height: 71px;
+    margin-left: 22%;
+}
+
 }

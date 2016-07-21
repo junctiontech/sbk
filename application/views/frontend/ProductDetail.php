@@ -45,10 +45,10 @@
 					<div class="share">
 						<p>Share Product :</p>
 						<ul>
-					    	<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>
+					    	<!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 					    	<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
-					    	<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/twitter.png" alt=""></a></li>
-					    	<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/linkedin.png" alt=""></a></li>
+					    	<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/gplus.png" alt=""></a></li>
+					    	<!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/linkedin.png" alt=""></a></li>-->
 			    		</ul>
 					</div>
 				<div class="add-cart">

@@ -58,7 +58,7 @@
 				<li>
 					<a href=" ">
  
-						<span class="title">Searcheela#<span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
+						<span class="title">You Are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
 					</a>
 					</li>
 			 
@@ -117,7 +117,7 @@
 <div class="row">
 	  <div class="col-md-3 col-sm-4 col-xs-12">
 			<div class=" ">
-				<a href="<?=base_url();?>"><img src="<?=base_url();?>frontend/images/pngtransparent (2).png" alt="" /></a>
+				<a href="<?=base_url();?>"><img class="logo1" src="<?=base_url();?>frontend/images/pngtransparent (2).png" alt="" /></a>
 			</div>
 			</div>
 			<div class="col-md-9 col-sm-8 col-xs-12">
