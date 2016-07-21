@@ -1224,6 +1224,18 @@ body {
 .navbar.horizontal-menu .navbar-inner .navbar-brand a[data-toggle="settings-pane"]:hover i {
   color: #2c2e2f;
 }
+
+@media screen and (min-width:1224px){
+	.navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
+    padding: 0 19px !important;
+    line-height: 40px;
+  }
+	.navbar.horizontal-menu.navbar-fixed-top + .page-container {
+		margin-top:10% !important;
+	}
+
+}
+
 @media screen and (min-width: 768px) {
   .navbar.horizontal-menu .navbar-inner .navbar-nav {
     list-style: none;
@@ -1572,8 +1584,8 @@ body {
     line-height: 40px;
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
-    padding: 0 5px;
-    font-size: 11px;
+    padding: 0 9px;
+    
   }
   .navbar.horizontal-menu .navbar-inner .navbar-nav > li > a > .badge {
     display: none;
@@ -6074,7 +6086,7 @@ div.text-overflow {
 }
 .chart-item-bg-2 .chart-item-num.num-sm {
   font-size: 70px;
-}
+}max
 .chart-item-bg-2 .chart-item-env > div {
   margin: 10px 0;
 }

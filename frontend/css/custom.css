@@ -719,6 +719,11 @@ margin-top:60px;
 	.listview_1_of_2{
     	margin: 2.4% 0 0% 1.6%;
     }
+	.logo1{		 
+    	height: 59px !important;
+    	width: 100% !important;
+    	margin: 8px !important;	
+	}
 	.list_2_of_1 .button a {
     	padding:5px 10px;
     }
