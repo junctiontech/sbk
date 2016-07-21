@@ -376,7 +376,7 @@
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -421,7 +421,7 @@
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -462,7 +462,7 @@
 					</div>
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 					 
 					 <!-- <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /* if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
