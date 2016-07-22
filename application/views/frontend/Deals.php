@@ -2,7 +2,7 @@
 <div class="page-container">
 	<div class="main-content">
 	<div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy.gif" style="width:260px;height:260px"></div>
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy1.gif" style="width:200px;height:200px"></div>
 			</div>
 	<div class="page-no">
     		<?php if(!empty($totalresult)){ ?>	<p>Total Result:<?php echo isset($totalresult)?$totalresult:''; ?> </p><?php } if(!empty($pagination)){ ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
