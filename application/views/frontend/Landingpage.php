@@ -52,9 +52,13 @@
 			</div>
 		</div>
 	</div>
+	
 		<div class="row">
 								 <!-- FlexSlider -->
-			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">		  
+			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">	
+<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy.gif" style="width:300px;height:300px"></div>
+			</div>			
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					

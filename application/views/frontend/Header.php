@@ -21,7 +21,6 @@
 </head>
 <body id="body" onload="bodyload(this.id);" class="page-body">
 
-	
 	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->
 		
 		<div class="navbar-inner">
