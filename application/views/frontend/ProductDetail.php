@@ -1,5 +1,8 @@
  <div class="page-container">
 	<div class="main-content">
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy.gif" style="width:260px;height:260px"></div>
+			</div>
 	 <div class="row">
 	 <div class="col-md-12">
 		<div class="content_top">

@@ -1,5 +1,8 @@
 <div class="page-container">
 	<div class="main-content">
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy.gif" style="width:260px;height:260px"></div>
+			</div>
 		 <div class="compare_product" id="compare">
 		<div class="row">
 			<div class="col-sm-12">
@@ -56,9 +59,7 @@
 		<div class="row">
 								 <!-- FlexSlider -->
 			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">	
-<div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy.gif" style="width:300px;height:300px"></div>
-			</div>			
+			
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					
