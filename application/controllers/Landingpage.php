@@ -159,7 +159,7 @@ class Landingpage extends CI_Controller {
 		if($categorykey=='search'){
 			$searchquery=$searchq;
 			$index = Zend_Search_Lucene::open($this->search_index);
-			if($app=true){
+			if($app==true){
 				Zend_Search_Lucene::setResultSetLimit(50);
 			}
 			//$totalrecord = count($index->find($searchquery));
