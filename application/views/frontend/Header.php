@@ -20,7 +20,9 @@
 
 </head>
 <body id="body" onload="bodyload(this.id);" class="page-body">
-
+<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy.gif" style="width:300px;height:300px"></div>
+			</div>
 	
 	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->
 		
