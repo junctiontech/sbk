@@ -186,29 +186,7 @@
 
  
 			 
-        <div class="grid_1_of_4 images_1_of_4">
-				<div class="imageheightfix">
-		<a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
-			</div>
-					<h2>
-            <?=$product->productName?>
-            <?=isset($product->attr)?$product->attr:''?>
-          </h2>
-          <p><span class="price">Rs. 
-            <?=number_format($product->productPrice,2)?>
-            </span></p>           
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
-              Compare </label>
-			  <lable class="wishlist"> 
-				<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
-					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
-					  <?php } }else{ ?>
-					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
-					  <?php }?></lable>
-          </div>
-        </div>
+    
 
 	
 </div>
