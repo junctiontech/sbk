@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<div class="page-container">
+<div class="page-container">	
 	<div class="sidebar-menu toggle-others fixed">
 		<div class="sidebar-menu-inner">
         
@@ -64,7 +63,9 @@
 		 
 	</div>
 	<div class="main-content"> 
-	
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+				</div>
 		<div class="row">
 			<div class="col-md-10 col-sm-10 col-xs-12 pageno-fixed">
 			<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
@@ -129,14 +130,6 @@
       
 		</div>
 		<div class="compare_product comp_btn_fixed" id="compare">
-=======
-<div class="page-container">	
-  <div class="main-content"> 
-<div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
-			</div> 
-    <div class="compare_product" id="compare">
->>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel-default comepare_bgc">					 
@@ -190,9 +183,8 @@
 		</div>
 	</div>
 		
-<<<<<<< HEAD
-	</div>
-=======
+
+ 
 			 
         <div class="grid_1_of_4 images_1_of_4">
 				<div class="imageheightfix">
@@ -217,8 +209,8 @@
 					  <?php }?></lable>
           </div>
         </div>
->>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
+
 	
 </div>
-	  
+</div>
 <div class="clear"></div>
