@@ -1,8 +1,8 @@
 <div class="page-container">	
   <div class="main-content"> 
 <div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/giphy1.gif" style="width:200px;height:200px"></div>
-			</div>  
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div> 
     <div class="compare_product" id="compare">
 		<div class="row">
 			<div class="col-sm-12">
