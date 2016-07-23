@@ -6,7 +6,7 @@
 			<div class="breadcrumb-env">					
 				<ol class="breadcrumb " >
 					<li><a href="<?=base_url();?>"><i class="fa-home"></i>Home</a></li>
-					<li class="<?=base_url();?>User/Dashboard.html"><a href="">My Account</a></li>
+					<li class=""><a href="<?=base_url();?>User/Dashboard.html">My Account</a></li>
 				</ol>								
 			</div>	
 				
