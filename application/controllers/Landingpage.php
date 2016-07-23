@@ -248,7 +248,8 @@ class Landingpage extends CI_Controller {
 				if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==True){
 					$whislistproductvalue='yes';
 				}
-				  $apparray[]=array ('categoriesUrlKey'=>$product->categoriesUrlKey,
+				  $apparray[]=array ('productsID'=>$product->productsID,
+				  		'categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
 				  'productName'=>$product->productName,
