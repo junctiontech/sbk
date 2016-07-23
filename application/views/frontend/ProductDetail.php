@@ -1,5 +1,8 @@
  <div class="page-container">
 	<div class="main-content">
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div>
 	 <div class="row">
 	 <div class="col-md-12">
 		<div class="content_top">
@@ -24,14 +27,14 @@
 				<div class="desc span_3_of_2">
 					<div class="col-md-10 col-sm-10 col-xs-10">
 						<div class="col-md-4 col-sm-4 col-xs-12">
-						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <br><span><?=isset($products[0]->productPrice)?$products[0]->productPrice:''?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
+						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <br><span><?=number_format(isset($products[0]->productPrice)?$products[0]->productPrice:'',2)?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
 						</div>
 					<?php if(!empty($othershopprices)){ ?>
 					
 					<?php foreach($othershopprices as $othershopprice){ 
 					if($othershopprice->shopID==3){ $pricemore=(int)$othershopprice->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($othershopprice->productPrice)?$othershopprice->productPrice:'';}?>
 							<div class="col-md-4 col-sm-4 col-xs-12">
-					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=$pricemore?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span>
+					<img src="<?=base_url();?>frontend/images/<?=isset($othershopprice->shop_image)?$othershopprice->shop_image:''?>"><p>Price: <br><span><?=number_format($pricemore,2)?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($othershopprice->productShopUrl)?$othershopprice->productShopUrl:''?>">Buy now</a></span>
 								</div>
 					</div>
 					<?php } ?>
@@ -158,7 +161,7 @@
 				<div class="grid_1_of_4 similar_images_1_of_4">
 					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
 					 <h2><?=$similarproducted->productName?> </h2>					
-					 <p><span class="price"><?=$similarproducted->productPrice?></span></p>					     
+					 <p><span class="price"><?=number_format($similarproducted->productPrice,2)?></span></p>					     
 				</div>
 			
 		  <?php } }else{ echo"No product Found!!";}?> 

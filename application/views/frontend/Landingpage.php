@@ -1,6 +1,11 @@
 <div class="page-container">
 	<div class="main-content">
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+				</div>
+			
 		<div class="compare_product comp_btn_fixed" id="compare">
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel-default comepare_bgc">					 
@@ -53,9 +58,11 @@
 			</div>
 		</div>
 	</div>
+	
 		<div class="row">
 								 <!-- FlexSlider -->
-			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">		  
+			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">	
+			
               <section class="slider">
 				  <div class="flexslider">
 					<ul class="slides">					
@@ -377,7 +384,7 @@
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -422,7 +429,7 @@
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -463,7 +470,7 @@
 					</div>
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=$product->productPrice?></span></p>
+					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 					 
 					 <!-- <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /* if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>

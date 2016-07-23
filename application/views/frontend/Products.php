@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="page-container">
 	<div class="sidebar-menu toggle-others fixed">
 		<div class="sidebar-menu-inner">
@@ -128,6 +129,14 @@
       
 		</div>
 		<div class="compare_product comp_btn_fixed" id="compare">
+=======
+<div class="page-container">	
+  <div class="main-content"> 
+<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div> 
+    <div class="compare_product" id="compare">
+>>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel-default comepare_bgc">					 
@@ -181,7 +190,34 @@
 		</div>
 	</div>
 		
+<<<<<<< HEAD
 	</div>
+=======
+			 
+        <div class="grid_1_of_4 images_1_of_4">
+				<div class="imageheightfix">
+		<a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+			</div>
+					<h2>
+            <?=$product->productName?>
+            <?=isset($product->attr)?$product->attr:''?>
+          </h2>
+          <p><span class="price">Rs. 
+            <?=number_format($product->productPrice,2)?>
+            </span></p>           
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
+              Compare </label>
+			  <lable class="wishlist"> 
+				<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
+					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
+					  <?php } }else{ ?>
+					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
+					  <?php }?></lable>
+          </div>
+        </div>
+>>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
 	
 </div>
 	  

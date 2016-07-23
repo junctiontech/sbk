@@ -1,6 +1,8 @@
 <div class="page-container">
 	<div class="main-content">
-		
+		<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div>
 		<?php if (!empty($getHotelsDetail)) { ?>
  		<div class="row">
 		

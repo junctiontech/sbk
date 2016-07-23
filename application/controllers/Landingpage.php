@@ -159,14 +159,17 @@ class Landingpage extends CI_Controller {
 		if($categorykey=='search'){
 			$searchquery=$searchq;
 			$index = Zend_Search_Lucene::open($this->search_index);
-			$totalrecord = count($index->find($searchquery));
+			if($app==true){
+				Zend_Search_Lucene::setResultSetLimit(50);
+			}
+			//$totalrecord = count($index->find($searchquery));
 			$products = $index->find($searchquery);
 			//$paginator = Zend_Paginator::factory($products);
 			//$paginator->setCurrentPageNumber($page);
 			//$products=$paginator->setItemCountPerPage($limit);
 			//Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
 			//echo $this->PaginationControl->paginationControl($this->paginator,'sliding','controls.phtml',array('route' => 'album'));
-			$config['total_rows'] =$totalrecord;
+			//$config['total_rows'] =$totalrecord;
 			$this->pagination->initialize($config);
 			$this->data['pagination']=$this->pagination->create_links();
 			
