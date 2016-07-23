@@ -22,7 +22,7 @@ class Landingpage extends CI_Controller {
 		$this->data['whislist']=count($wishlist);
 		$this->data['whislistproduct']=array();
 		foreach($wishlist as $wishlists){
-		$this->data['whislistproduct'][]=$wishlists->productID;
+		$this->whislistproduct[]=$this->data['whislistproduct'][]=$wishlists->productID;
 
 		}
 
@@ -490,20 +490,31 @@ class Landingpage extends CI_Controller {
 		} 
 		//print_r($where); die;
 		$filterprodect = $this->Landingpage_model->get_products($query, $searchqry, $where, $where1);
-		}
+		}	 
+		//print_r($this->userinfos); die;
 		if (!empty($filterprodect))
 		{
+			$baseurl=base_url();
 			foreach ($filterprodect as $filter)
-			{				 
+			{			
 				echo"<div class=\"grid_1_of_4 images_1_of_4\">
+				<div class=\"imageheightfix\">
 					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
-					 <h2>".$filter->productName."</h2>
+					</div>
+					<h2>".$filter->productName."</h2>
 					 <p><span class=\"price\">Rs. ".$filter->productPrice."</span></p>					 
 					 <div class=\"checkbox\">
 					<label>
-						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\"> Add to Compare
+						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\">Compare
 					</label>
-					</div>
+					<lable class=\"wishlist\">"; 
+				 if(!empty($this->userinfos)){ if(in_array($filter->productsID,$this->whislistproduct)==false){ 
+					 echo" <a href=\"$baseurl/User/AddToWishList/$filter->productsID.html\" class=\"fa fa-shopping-cart\"></a>";
+					   } }else{ 
+					  echo"<a href=\"$baseurl/Login.html?return=true\" class=\"fa fa-shopping-cart\"></a>";
+					   }
+				echo"</lable>					
+					</div>					
 				</div>"; 				
 			}
 		} 

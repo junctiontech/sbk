@@ -127,7 +127,7 @@
 						<?php
 								if(!empty($facebookauthUrl))
 								{
-									echo '<a href="'.$facebookauthUrl.'"><img src="'.base_url().'frontend/images/loginfb.png" alt=""/></a>';
+									echo '<a href="'.$facebookauthUrl.'"><img src="'.base_url().'frontend/images/facebook-login-button.png" alt=""/></a>';
 								} 
 						?>
 					</div>
@@ -137,7 +137,7 @@
 								<?php
 										if(!empty($googleauthUrl)) 
 										{
-											echo '<a href="'.$googleauthUrl.'"><img src="'.base_url().'frontend/images/logingoogle.png" alt=""/></a>';
+											echo '<a href="'.$googleauthUrl.'"><img src="'.base_url().'frontend/images/goo_login.png" alt=""/></a>';
 										}
 						?>
 										

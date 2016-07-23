@@ -1,3 +1,4 @@
+
 <div class="footer">
    	  <div class="wrapper">	
 	     <div class="section group">
@@ -33,10 +34,12 @@
 					<!--	<div class="social-icons">
 				 			<h4>Follow Us</h4>-->
 					   		  <ul>
-							      <li class="facebook"><a href="javascript:;" target="_blank"> </a></li>
+							    <a href="https://www.facebook.com/SEARCHB4KHARCH/" target="_blank"><li class="facebook"></li></a>
 							      <li class="twitter"><a href="javascript:;" target="_blank"> </a></li>
-							      <li class="googleplus"><a href="javascript:;" target="_blank"> </a></li>
-							      <li class="contact"><a href="javascript:;" target="_blank"> </a></li>
+							      <a href="google.com/+Searchb4kharch" target="_blank"><li class="googleplus"> </li></a>
+							      <a href="javascript:;" target="_blank">
+									  <li class="contact tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="info@searchb4kharch.com" ></li>
+								  </a>
 							      <div class="clear"></div>
 						     </ul>
    	 					<!--</div>-->
