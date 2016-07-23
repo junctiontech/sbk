@@ -1,13 +1,8 @@
 
 <div class="page-container">
-	<div class="main-content">
-	<div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
-			</div>
-	<div class="page-no">
-    		<?php if(!empty($totalresult)){ ?>	<p>Total Result:<?php echo isset($totalresult)?$totalresult:''; ?> </p><?php } if(!empty($pagination)){ ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
-    		</div>
-		<div class="col-md-3 col-sm-3">
+	<div class="sidebar-menu toggle-others fixed">
+		<div class="sidebar-menu-inner">
+        
 			<div class="col-xs-0">
 		    <div class="to_do black">		
 					<div style="font-weight: bold; padding: 10px;">Top Deals</div>
@@ -18,14 +13,18 @@
 						<?php } } ?>                                        
 			</div>
 			</div>
-			<div class="delas_hedden">
+		 
+		</div>
+		 
+	</div>
+	<div class="delas_hedden">
 		<div class="panel panel-default collapsed"><!-- Add class "collapsed" to minimize the panel -->							
 							<div class="panel-options">								
 								<a href="#" data-toggle="panel">
 									<span class="btn btn-success collapse-icon">Top Deals</span>						 
 								</a>								
 							</div>												
-						<div class="panel-body row1">
+						<div class="panel-body colspandeal row1">
 									<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
 						<div class="deal_htr">
                             <a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
@@ -34,9 +33,25 @@
 						</div>
 					</div>	<div class="clear"></div>	
 			</div>
-		</div>	
-		<div class="col-md-9 col-sm-9 col-xs-12">
-		 <?php if(!empty($dealsdata)){ foreach($dealsdata as $deal){?>
+	<div class="main-content">
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div>
+	<div class="col-md-10 col-sm-10 col-xs-12 pageno-fixed">
+			 
+				<div class="page-no" style="margin-top:0%">
+    			
+					<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p>
+    		
+				</div>
+      
+			</div>		
+		
+			
+		<div class="col-md-12 col-sm-12 col-xs-12" style=margin-top:2%;>
+		 <?php if(!empty($dealsdata))
+					
+				{ foreach($dealsdata as $deal){?>
 				<div class="grid_1_of_4 deal_1_of_3">
 					<div><img src="<?=$deal->url;?>" alt="" /> </div>
 					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
@@ -44,7 +59,8 @@
 					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
 					<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small><Small>added : <?=$deal->added;?></small></div>
 					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
-				</div>			
+				</div>	
+			
 		  <?php } } else { ?>
 		  <div class="clear"></div>
 			<div class="row">
