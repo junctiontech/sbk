@@ -23,8 +23,7 @@ class Landingpage extends CI_Controller {
 		$this->data['whislistproduct']=array();
 		foreach($wishlist as $wishlists){
 		$this->whislistproduct[]=$this->data['whislistproduct'][]=$wishlists->productID;
-
-		}
+}
 
 		}
 	}
