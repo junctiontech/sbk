@@ -1,13 +1,13 @@
 <div class="page-container">
 	<div class="main-content">
-		 <div class="compare_product" id="compare">
+		<div class="compare_product comp_btn_fixed" id="compare">
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="panel panel-default comepare_bgc">					 
+				<div class="panel-default comepare_bgc">					 
 						<div class="panel-body">	
 							
 								<form role="form" class="form-horizontal"  method="post" action="<?=base_url();?>Landingpage/compare">
-                  <div class="col-md-2 col-sm-2 col-xs-0"></div>
+                <div class="compeyarhidden">  <div class="col-md-2 col-sm-2 col-xs-0"></div>
                   <div class="col-sm-2">
 										<div class="form-group">
 											<label class="control-label ">Product 1</label>									
@@ -40,9 +40,10 @@
 											</div>
 										</div>	
 									</div>	
+									</div>
 									<div class="col-md-2">
 										<div class="form-group">									 
-											<button type="submit" class="btn btn-success btn-single" style="margin-top: 20px;">Compare</button>
+											<button type="submit" class="btn btn-success btn-single" style="margin-top: 170px;">Compare</button>
 										</div>
 									</div>
 									<div class="form-group-separator"></div>

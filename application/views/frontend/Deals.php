@@ -4,7 +4,8 @@
 	<div class="page-no">
     		<?php if(!empty($totalresult)){ ?>	<p>Total Result:<?php echo isset($totalresult)?$totalresult:''; ?> </p><?php } if(!empty($pagination)){ ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
     		</div>
-		<div class="col-md-3 col-sm-3 col-xs-12">
+		<div class="col-md-3 col-sm-3">
+			<div class="col-xs-0">
 		    <div class="to_do black">		
 					<div style="font-weight: bold; padding: 10px;">Top Deals</div>
                         <?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
@@ -12,8 +13,24 @@
                             <a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
                     </div>
 						<?php } } ?>                                        
-			</div> 
-		
+			</div>
+			</div>
+			<div class="delas_hedden">
+		<div class="panel panel-default collapsed"><!-- Add class "collapsed" to minimize the panel -->							
+							<div class="panel-options">								
+								<a href="#" data-toggle="panel">
+									<span class="btn btn-success collapse-icon">Top Deals</span>						 
+								</a>								
+							</div>												
+						<div class="panel-body row1">
+									<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
+						<div class="deal_htr">
+                            <a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
+                    </div>
+						<?php } } ?>  		
+						</div>
+					</div>	<div class="clear"></div>	
+			</div>
 		</div>	
 		<div class="col-md-9 col-sm-9 col-xs-12">
 		 <?php if(!empty($dealsdata)){ foreach($dealsdata as $deal){?>
@@ -89,8 +106,9 @@
 				</div>				
 		  <?php } }else{ echo"No Deals Found!!";}?>
 			</div>
+		<div class="col-md-12 col-sm-12 col-xs-0">
 			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
-	
+		</div>
 			<div class="content_bottom">
     		<div class="heading">
     		<h3>New Deals</h3>

@@ -790,10 +790,9 @@ body {
   }
 }
 .sidebar-menu {
-  display: table-cell;
-  position: relative;
-  width: 340px;
-  background: #2c2e2f;
+  display: table-cell; 
+  width: 16.666667%;
+  background:transparent;
   z-index: 1;
 }
 .sidebar-menu .logo-env {
@@ -1022,7 +1021,7 @@ body {
 }
 .sidebar-menu.fixed .sidebar-menu-inner {
   position: fixed;
-  left: 0;
+  left:15px;
   top: 0;
   bottom: 0;
   width: inherit;
@@ -1161,7 +1160,7 @@ body {
 	margin-top:12.9%;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
-  top: 85px;
+  top: 190px;
 }
 .settings-pane-open .navbar.horizontal-menu.navbar-fixed-top {
   position: relative;
@@ -1173,7 +1172,7 @@ body {
   top: 0;
 }
 .navbar.horizontal-menu + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
-  top: 85px;
+  top: 190px;
 }
 .navbar.horizontal-menu .navbar-inner .navbar-brand {
   padding: 0 30px;
@@ -1645,7 +1644,7 @@ body {
     position: relative;
   }
   .navbar.horizontal-menu.navbar-fixed-top + .page-container {
-    margin-top: 0;
+    margin-top: 0 !important;
   }
   .navbar.horizontal-menu.navbar-fixed-top + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
     top: 0;
