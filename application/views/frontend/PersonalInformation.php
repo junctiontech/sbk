@@ -21,7 +21,7 @@
 </div>
 <?php }?>
 <!-- Alert section End-->
-<div class="col-sm-6 col-md-6 col-xs-12 form_content">             
+<div class="col-sm-9 col-md-9 col-xs-12 form_content">             
 	<div class="panel-body">
 			 <p align="center">Personal Information</p>
               <!-- page content -->
@@ -102,7 +102,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                               <div class="col-md-6 col-md-offset-5">                                
-                                <button type="submit" class="btn btn-success" >Seve</button>
+                                <button type="submit" class="btn btn-success" >Save</button>
                               </div>
                             </div>
                           </form>

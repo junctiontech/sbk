@@ -40,9 +40,9 @@
 	<div class="col-md-10 col-sm-10 col-xs-12 pageno-fixed">
 			 
 				<div class="page-no" style="margin-top:0%">
-    			
+    			<?php if (!empty($totalresult)) { ?>
 					<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p>
-    		
+    			<?php } ?>
 				</div>
       
 			</div>		
