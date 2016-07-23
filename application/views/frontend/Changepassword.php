@@ -1,3 +1,6 @@
+<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div>
 <!-- Alert section For Message-->
 <?php  if($this->session->flashdata('message_type')=='success') { ?>
 

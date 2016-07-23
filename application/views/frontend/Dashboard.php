@@ -1,4 +1,6 @@
- 
+<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div> 
 
 <div class="col-sm-6 col-md-6 col-xs-12 form_content ">
  <!-- Alert section For Message-->

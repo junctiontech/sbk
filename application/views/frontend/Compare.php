@@ -1,5 +1,8 @@
 <div class="page-container">
 	<div class="main-content">
+	<div class="page-loading-overlay">
+				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+			</div>
  <div class="content_top">
 			<div class="back-links">
 				<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
