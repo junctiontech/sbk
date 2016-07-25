@@ -87,7 +87,7 @@
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
           <p><span class="price">Rs. 
-            <?=$product->productPrice?>
+            <?=number_format($product->productPrice,2)?>
             </span></p>           
           <div class="checkbox">
             <label>
