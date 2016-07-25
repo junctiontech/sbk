@@ -82,6 +82,13 @@ function googleTranslateElementInit() {
 									}
 								  });
 								});
+
+								$(document).ready(function () {
+								$('.datepicker').datepicker({
+									format: "yyyy-mm-dd",
+									autoclose: true
+								});
+								});
 							  </script>
 							   <script src="<?=base_url();?>frontend/js/sb4k.js"></script>
 								<script src="<?=base_url();?>frontend/js/Filter_product.js"></script>
