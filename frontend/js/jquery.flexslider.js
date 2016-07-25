@@ -595,14 +595,16 @@
             return (posCalc * -1) + "px";
           }());
 
-      if (slider.transitions) {
-        target = (vertical) ? "translate3d(0," + target + ",0)" : "translate3d(" + target + ",0,0)";
-        dur = (dur !== undefined) ? (dur/1000) + "s" : "0s";
-        slider.container.css("-" + slider.pfx + "-transition-duration", dur);
-      }
-      
-      slider.args[slider.prop] = target;
-      if (slider.transitions || dur === undefined) slider.container.css(slider.args);
+     if (slider.transitions) {
+ 		target = (vertical) ? "translate3d(0," + target + ",0)" : "translate3d(" + target + ",0,0)";
+		 dur = (dur !== undefined) ? (dur/1000) + "s" : "0s";
+		 slider.container.css("-" + slider.pfx + "-transition-duration", dur);
+ 		slider.container.css("transition-duration", dur); //added
+	 }
+
+	 slider.args[slider.prop] = target;
+ 		if (slider.transitions || dur === undefined) slider.container.css(slider.args);
+ 		slider.container.css('transform',target); //added
     }
     
     slider.setup = function(type) {

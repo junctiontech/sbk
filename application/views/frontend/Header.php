@@ -41,7 +41,7 @@
 			
 			<!-- main menu -->
 					
-			<ul class="navbar-nav  hidden-xs">
+			<ul class="navbar-nav nav nav-userinfo  hidden-xs">
 				<li>
 					<a href="<?=base_url();?>">
 						<i class="fa fa-home"></i>
@@ -60,19 +60,6 @@
 						<span class="title">You are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
 					</a>
 					</li>
-			 
-			</ul>
-					
-			
-			
-			<ul class="nav nav-userinfo white navbar-right">
-				
-				<li>					
-					<a href="#">
-						<i class="android"></i>
-					<!--	<span class="badge badge-green">15</span>-->
-					</a>					
-				</li>			
 				<li>
 					<?php if(!empty($userinfos)){ ?>
 						<a class="notification-icon notification-icon-messages" href="<?=base_url();?>User/Mywishlist.html" title="View my shopping cart" rel="nofollow"><i class="fa-shopping-cart"></i>
@@ -85,7 +72,30 @@
 							</a>
 					<?php } ?>	
 				</li>
-		
+			 
+			</ul>
+					
+			
+			
+			<ul class="nav nav-userinfo white navbar-right">
+				
+				<li>					
+					<a href="#">
+						<i class="android"></i>
+					<!--	<span class="badge badge-green">15</span>-->
+					</a>					
+				</li>
+				<?php if(!empty($userinfos)) { ?>
+					<li class=" user-profile">
+					
+						<a href="#">
+							<?php if (!empty($userinfos['userProfileImage'])) { ?>
+							<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+							<?php } else { ?>
+							<img src="<?=base_url();?>frontend/images/user-1.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+							<?php } ?>
+					</a>
+				 <?php } ?>
 				<li>					
 						<?php if(!empty($userinfos)){ ?>
 							<a href="<?=base_url();?>User/Dashboard.html">

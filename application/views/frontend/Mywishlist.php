@@ -18,7 +18,7 @@
 </div>
 <?php }?>
 	 <!-- Alert section End-->
-<div class="col-md-6 col-sm-6 col-xs-12 form_content">
+<div class="col-md-9 col-sm-9 col-xs-12 form_content">
 <div class="" role="main">
                               
                 
@@ -42,7 +42,7 @@
 			 <tbody>
 			<?php foreach ($userwishlist as $wishlist) {?>
 				<tr class="even pointer">
-				   <td><img src="<?=$wishlist->imageName;?>" style="height:26%;width:100%" alt=""></td>
+					<td><div class="similar_images_1_of_4 grid_1_of_4"><img src="<?=$wishlist->imageName;?>" alt=""></div></td>
 				   <td><?php echo $wishlist->productName ; ?></td>
 				   <td><?php echo $wishlist->productPrice ; ?></td>
 				   <td><?php echo $wishlist->shopName ; ?></td>	

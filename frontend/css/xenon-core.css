@@ -107,7 +107,7 @@
 }
 .ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y,
 .ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y {
-  background-color: #FAFAFA;
+  background-color:rgba(73,74,78,0.72);
 }
 .ps-container.ie .ps-scrollbar-x,
 .ps-container.ie .ps-scrollbar-y {
@@ -822,9 +822,9 @@ body {
   color: #ffffff;
 }
 .sidebar-menu .main-menu {
-  padding-left: 40px;
+  padding-left: 15px;
   padding-right: 40px;
-  margin-top: 20px;
+  margin-top:0px;
   margin-bottom: 20px;
   list-style: none;
 }
@@ -835,7 +835,7 @@ body {
   }
 }
 .sidebar-menu .main-menu a {
-  color: #979898;
+  color: #000000;
   text-decoration: none;
   display: block;
   padding: 13px 5px;
@@ -859,7 +859,7 @@ body {
   line-height: 1.2;
 }
 .sidebar-menu .main-menu a:hover {
-  color: #ffffff;
+  color: #Fa0000;
 }
 .sidebar-menu .main-menu li.active > a {
   color: #ffffff;
@@ -1014,14 +1014,14 @@ body {
 }
 .sidebar-menu .ps-scrollbar-x-rail .ps-scrollbar-x,
 .sidebar-menu .ps-scrollbar-y-rail .ps-scrollbar-y {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(73,74,78,0.72);
 }
 .sidebar-menu.fixed {
   height: 100%;
 }
 .sidebar-menu.fixed .sidebar-menu-inner {
   position: fixed;
-  left:15px;
+  left:0px;
   top: 0;
   bottom: 0;
   width: inherit;
@@ -1160,7 +1160,7 @@ body {
 	margin-top:12.9%;
 }
 .navbar.horizontal-menu.navbar-fixed-top + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
-  top: 190px;
+  top: 160px;
 }
 .settings-pane-open .navbar.horizontal-menu.navbar-fixed-top {
   position: relative;
@@ -1172,7 +1172,7 @@ body {
   top: 0;
 }
 .navbar.horizontal-menu + .page-container > .sidebar-menu.fixed .sidebar-menu-inner {
-  top: 190px;
+  top: 160px;
 }
 .navbar.horizontal-menu .navbar-inner .navbar-brand {
   padding: 0 30px;
@@ -2534,7 +2534,7 @@ body.chat-open .user-info-navbar a[data-toggle="chat"] {
   background-color: #68b828;
 }
 .badge.badge-purple {
-  background-color: #7c38bc;
+  background-color: #fa0000;
 }
 .badge.badge-pink {
   background-color: #ff6264;

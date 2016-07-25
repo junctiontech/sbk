@@ -1,7 +1,6 @@
 <div class="page-container">
 	<div class="main-content"> 
- 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="col-md-2 col-sm-2 col-xs-12"></div>
+ 		<div class="col-md-12 col-sm-12 col-xs-12">		
 			<div class="col-md-3 col-sm-3 col-xs-12 form_content">
 			<div class="breadcrumb-env">					
 				<ol class="breadcrumb " >

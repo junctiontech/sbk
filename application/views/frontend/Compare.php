@@ -27,7 +27,7 @@
 									<p><?=$product->productName?> </p>
 								</div>
 								<div class="compare_product_price">
-									<p><span class="price"><?=$product->productPrice?></span></p>
+									<p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 								</div>
 							</div>
 				</div><?php } } ?>
