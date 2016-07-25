@@ -61,7 +61,7 @@ function googleTranslateElementInit() {
 				</div>-->
 			
 			<div class="copy_right">
-				<p>Searchb4kharch © All rights Reseverd | Design by  <a target="_blank" href="http://junctiontech.in">Junctiontech</a> </p>
+				<p>Searchb4kharch © All rights Reseved | Design by  <a target="_blank" href="http://junctiontech.in">Junctiontech</a> </p>
 				
 				
 		 	
@@ -91,11 +91,11 @@ function googleTranslateElementInit() {
 								<link rel="stylesheet" href="<?=base_url();?>frontend/js/select2/select2.css">
 								<link rel="stylesheet" href="<?=base_url();?>frontend/js/select2/select2-bootstrap.css">
 								<link rel="stylesheet" href="<?=base_url();?>frontend/js/multiselect/css/multi-select.css">
-							<!-- Imported scripts on this page -->
+							<!-- Imported scripts on this page daterangepicker-->
 								<script src="<?=base_url();?>frontend/js/daterangepicker/daterangepicker.js"></script>
 								<script src="<?=base_url();?>frontend/js/datepicker/bootstrap-datepicker.js"></script>
-								<script src="<?=base_url();?>frontend/js/timepicker/bootstrap-timepicker.min.js"></script>
-								<script src="<?=base_url();?>frontend/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+								<!--<script src="<?=base_url();?>frontend/js/timepicker/bootstrap-timepicker.min.js"></script>
+								<script src="<?=base_url();?>frontend/js/colorpicker/bootstrap-colorpicker.min.js"></script>-->
 								<script src="<?=base_url();?>frontend/js/select2/select2.min.js"></script>
 								<script src="<?=base_url();?>frontend/js/jquery-ui/jquery-ui.min.js"></script>
 								<script src="<?=base_url();?>frontend/js/selectboxit/jquery.selectBoxIt.min.js"></script>

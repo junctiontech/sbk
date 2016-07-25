@@ -39,7 +39,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	cursor:pointer;
 	color:#FFF;
 	font-size:12px;
-	padding:10px 15px; 
+	padding:10px 6px; 
 	margin:0;
 	background: -webkit-gradient(linear,left top,left bottom,from(#670099),to(#670099));
 	background: -moz-linear-gradient(top,#670099,#670099);
@@ -747,6 +747,7 @@ margin-top:60px;
 	
 	.search_box form input[type="text"] {
 		width: 340px;
+		font-size: 35px;
     }
 	 .listview_1_of_2{
     	margin: 1.4% 0 0% 1.6%;
@@ -835,6 +836,14 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+	.delas_hedden {
+    margin-bottom: 30px;
+    display: inline-block !important;
+    margin-left: 0px !important;
+    position: fixed;
+    top: 33%;
+    z-index: 101;
+}
 	.search_box form input[type="text"] {
 		width:78.5%;
     }
@@ -979,7 +988,8 @@ margin-top:60px;
 		text-align:left !important;
 	}
 	.search_box form input[type="text"] {
-		width:77.5%;
+		width:81.5%;
+		font-size: 27px;
     }
     .search_box form input[type="submit"] {
     	width:18.5%;
@@ -1150,7 +1160,7 @@ margin-top:60px;
 		display:inline-block !important;
 		margin-left:0px !important; 
 		position: fixed;
-		top: 30%;
+		top: 33%;
 		z-index: 101;
 	}
 	.navbar.horizontal-menu .navbar-inner .navbar-nav > li > a {
@@ -1442,7 +1452,7 @@ ul .Stop_line{
 	height: 2px;
 	width: 93%;
 	background-color: #a2a4ac;
-	margin: 5px auto;
+	margin: 5px auto;bottom
 	position: relative;
 	padding: 0;
 }
@@ -1620,3 +1630,4 @@ top: -5px;
 .colspandeal{
 	background: #FFF;
 }
+.leftmargin{margin-left: 15px;}

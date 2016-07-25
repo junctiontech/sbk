@@ -6,11 +6,15 @@
 			<div class="col-xs-0">
 		    <div class="to_do black">		
 					<div style="font-weight: bold; padding: 10px;">Top Deals</div>
-                        <?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
-						<div class="deal_htr">
+                        <?php if(!empty($dealsgategorys)){ ?>
+							<ul id="main-menu" class="main-menu">
+<?php	foreach($dealsgategorys as $dealsgategory){?>
+						<li>
                             <a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
-                    </div>
-						<?php } } ?>                                        
+                   <li>
+						<?php } ?>
+</ul>
+<?php } ?>                                        
 			</div>
 			</div>
 		 
@@ -25,12 +29,14 @@
 								</a>								
 							</div>												
 						<div class="panel-body colspandeal row1">
+							<div class="scrollable ps-container ps-active-y">
 									<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
 						<div class="deal_htr">
                             <a href="<?=base_url();?>Landingpage/Deals/<?=str_replace(' ','_',$dealsgategory->category)?>.html"><?=ucwords($dealsgategory->category)?></a>
                     </div>
 						<?php } } ?>  		
 						</div>
+			</div>
 					</div>	<div class="clear"></div>	
 			</div>
 	<div class="main-content">
@@ -63,8 +69,7 @@
 			
 		  <?php } } else { ?>
 		  <div class="clear"></div>
-			<div class="row">
- <div class="col-md-6 col-sm-6 col-xs-12">
+			 <div class="col-md-6 col-sm-6 col-xs-12">
 		   <!-- FlexSlider -->
               <section class="slider">
 				  <div class="flexslider">
@@ -103,53 +108,8 @@
 				  </div>
 	      </section>
 <!-- FlexSlider -->
-	    </div>
-			</div>
- <div class="main">
-    <div class="content">
-    	<div class="content_top">
-    		<div class="heading">
-    		<h3>Featured Deals</h3>
-    		</div>    		
-    		<div class="clear"></div>
-    	</div>
-	      <div class="section group">
-		    <?php if(!empty($feature_deal)){ foreach($feature_deal as $deal){?>
-				<div class="grid_1_of_4 deal_1_of_3">
-					<div><img src="<?=$deal->url;?>" alt="" /> </div>
-					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
-					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>							 
-					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
-					<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small>    <Small>added : <?=$deal->added;?></small></div>
-					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
-				</div>				
-		  <?php } }else{ echo"No Deals Found!!";}?>
-			</div>
-		<div class="col-md-12 col-sm-12 col-xs-0">
-			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
-		</div>
-			<div class="content_bottom">
-    		<div class="heading">
-    		<h3>New Deals</h3>
-    		</div>
-    		
-    		<div class="clear"></div>
-    	</div>
-			<div class="section group">
-		   <?php if(!empty($new_deal)){ foreach($new_deal as $deal){?>
-				<div class="grid_1_of_4 deal_1_of_3">
-					<div><img src="<?=$deal->url;?>" alt="" /> </div>
-					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
-					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>							 
-					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
-					<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small>    <Small>added : <?=$deal->added;?></small></div>
-					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
-				</div>	
-				
-		  <?php } }else{ echo"No Deals Found!!";}?>
-			</div>
-    </div>
- </div>
+	    </div>		
+
  
 		  <?php }?>
 		
