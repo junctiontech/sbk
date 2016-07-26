@@ -61,7 +61,7 @@ function googleTranslateElementInit() {
 				</div>-->
 			
 			<div class="copy_right">
-				<p>Searchb4kharch © All rights Reseved | Design by  <a target="_blank" href="http://junctiontech.in">Junctiontech</a> </p>
+				<p>Searchb4kharch © All rights Reserved | Design by  <a target="_blank" href="http://junctiontech.in">Junctiontech</a> </p>
 				
 				
 		 	
