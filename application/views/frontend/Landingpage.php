@@ -89,17 +89,11 @@
 
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Hotel</a> </li>
-          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab"  aria-expanded="false">Flights</a> </li>
-
-        </ul>
+		  <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab"  aria-expanded="true">Flights</a> </li>
+          <li role="presentation" class=""><a href="<?=base_url();?>Hotel.html" id="home-tab" role="tab"  aria-expanded="false">Hotel</a> </li>
+         </ul>
         <div id="myTabContent" class="tab-content">
-          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-				 <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
-			
-		
-          </div>
-          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">	<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
+          <div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">	<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white">
 							<h2>Search Flights</h2>
 						</div>
@@ -223,7 +217,13 @@
               <button type="submit" style="width:100%;" class="btn btn-success">Search</button>
             	
 					</form>
-          </div>         
+          </div>  
+		  
+		  <div role="tabpanel" class="tab-pane fade " id="tab_content1" aria-labelledby="home-tab">
+				 <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
+			
+		
+          </div>
         </div>
       </div>
    
