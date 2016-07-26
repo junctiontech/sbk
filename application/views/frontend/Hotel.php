@@ -191,11 +191,11 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
 </iframe>
 <div class="clear"></div>
 		</div>
-	
+	<div class="clear"></div>
 		<?php } ?>
 
 	</div>
-
+<div class="clear"></div>
 </div>
 
 <div class="clear"></div>
