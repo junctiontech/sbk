@@ -90,9 +90,9 @@
 					
 						<a href="#">
 							<?php if (!empty($userinfos['userProfileImage'])) { ?>
-							<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+							<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
 							<?php } else { ?>
-							<img src="<?=base_url();?>frontend/images/user-1.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+							<img src="<?=base_url();?>frontend/images/user-1.png" alt=" " class="img-circle img-inline userpic-32" width="28" />
 							<?php } ?>
 					</a>
 				 <?php } ?>

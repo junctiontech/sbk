@@ -124,12 +124,13 @@
       
 		</div>
 		<div class="compare_product comp_btn_fixed" id="compare">
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel-default comepare_bgc">					 
 						<div class="panel-body">	
 							
-								<form role="form" class="form-horizontal"  method="post" action="<?=base_url();?>Landingpage/compare">
+													<form role="form" class="form-horizontal" onsubmit="return submit_compare()" method="post" action="<?=base_url();?>Landingpage/compare">
                 <div class="compeyarhidden">  <div class="col-md-2 col-sm-2 col-xs-0"></div>
                   <div class="col-sm-2">
 										<div class="form-group">
@@ -166,7 +167,7 @@
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">									 
-											<button type="submit" class="btn btn-success btn-single" style="margin-top: 20px;">Compare</button>
+											<button type="submit" class="btn btn-success btn-single" style="margin-top: 170px;">Compare</button>
 										</div>
 									</div>
 									<div class="form-group-separator"></div>

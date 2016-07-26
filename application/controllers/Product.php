@@ -176,9 +176,11 @@ class Product extends CI_Controller {
 	}
 	
 	public function moveToLive($productID=false){
-			
+			$productID =$this->input->post('productsID');		
 			$categoriesID=$this->input->get('categoriesID');
 			if(!empty($productID)){
+				foreach($productID as $productid){
+					$productID=$productid;				
 				$productdata=$this->Product_model->get_product_full_data(array('t1.productsID'=>$productID));
 				if(!empty($productdata)){
 					$productdata1=array('categoriesID'=>$productdata[0]->categoriesID,
@@ -205,8 +207,10 @@ class Product extends CI_Controller {
 								$this->Product_model->insert_mapp_it($productdata1,'',$productattribute);
 								$this->Product_model->update('s4k_product_status',array('liveStatus'=>'Yes'),array('shopProductID'=>$productdata[0]->shopProductID,'shopID'=>$productdata[0]->shopID));
 				}
+			} 
+			
 			}
-			if(!empty($categoriesID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }
+			if(!empty($productID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }
 	}
 	
 	

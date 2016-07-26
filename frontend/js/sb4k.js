@@ -18,9 +18,9 @@ function compare_product(productid)
 var count=0;
 	$(".chkcount").each(function() {				
            if($(this).prop('checked') == true){				
-                count=count+1;				
+                count=count+1;				  
             }
- });
+ });	
 	var pro_id=productid;	
 	if ( pro_id !=='')
 	{ 
@@ -31,12 +31,43 @@ var count=0;
     cache: false,
     success: function(s)
     {
-	document.getElementById("compare").style.display = "block";	
-    $("#productName"+count).html(s);
+	if(count>=1)
+	{
+		document.getElementById("compare").style.display = "block";	
+		$("#productName"+count).html(s);
+	}
+	else
+	{
+		document.getElementById("compare").style.display = "none";		 
+	}
     }
     });
 	}return false; 	
+
 }
 function bodyload (){
 	$("#body").attr("style", ""); 
+}
+
+
+function submit_compare(productid)
+{	
+var count=0;
+	$(".chkcount").each(function() {				
+           if($(this).prop('checked') == true){				
+                count=count+1;				  
+            }
+ });
+	if(count>=5){
+		alert('checked product should not more than 4');
+		return false;
+	}
+	else if(count>=2)
+	{	
+		return true;	 
+	}
+	else if(count==1){
+				alert('please checked atleast two product');
+				return false;		
+	}	 
 }

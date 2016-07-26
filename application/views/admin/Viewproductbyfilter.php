@@ -106,9 +106,10 @@
 
 
                 <div class="">
-                    <div class="page-title">
+                    <form class="form-horizontal"  method="post" action="<?=base_url();?>Product/moveToLive">
+					<div class="page-title">
                         <div class="title_left">
-                            <h3>Product List </h3>
+                            <h3>Product List </h3> <button type="submit" class="btn btn-success">Move To Live</button>
                         </div>
 						<div class="title_right">
                            <div class="dypagination">
@@ -128,7 +129,7 @@
                         
                     </div>
                     <div class="clearfix"></div>
-
+					
                     <div class="row">
                         <div class="col-md-12">
                             <div class="x_panel">
@@ -138,6 +139,8 @@
                                     <div class="row">
 
                                    <?php if(!empty($products)){?>
+										
+											
 										<?php foreach($products as $products){?>	
                                         <div class="col-md-55">
 										
@@ -169,12 +172,16 @@
 												
                                             </div>
 											<?php if($products->mapp=='Unmapped' && $products->liveStatus=='No'){ ?>
-													<div class="col-md-3 col-sm-3 col-xs-12">
-													<a class="btn btn-small btn-primary show-tooltip"  value="move to live" href="<?php echo base_url();?>Product/moveToLive/<?=isset($products->productsID)?$products->productsID:''?>?categoriesID=<?=isset($products->categoriesID)?$products->categoriesID:''?>">Move to live</a>
-													</div>
+													<div class="col-md-9 col-sm-9 col-xs-12 checkbox">
+														<label class="btn btn-primary "><input type="checkbox" class="checkbox " name="productsID[]" value="<?=isset($products->productsID)?$products->productsID:''?>">Move to live</label>
+											
+											</div>
+													
+          
 											<?php } ?>
                                         </div>
 										<?php }?>
+										</form>
 										<div class="dypagination">
                
 										<?php echo isset($pagination)?$pagination:'';?>

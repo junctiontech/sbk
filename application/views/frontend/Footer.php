@@ -97,8 +97,8 @@ function googleTranslateElementInit() {
 								<!--<script src="<?=base_url();?>frontend/js/timepicker/bootstrap-timepicker.min.js"></script>
 								<script src="<?=base_url();?>frontend/js/colorpicker/bootstrap-colorpicker.min.js"></script>-->
 								<script src="<?=base_url();?>frontend/js/select2/select2.min.js"></script>
-								<script src="<?=base_url();?>frontend/js/jquery-ui/jquery-ui.min.js"></script>
-								<script src="<?=base_url();?>frontend/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+								<!--<script src="<?=base_url();?>frontend/js/jquery-ui/jquery-ui.min.js"></script>
+								<script src="<?=base_url();?>frontend/js/selectboxit/jquery.selectBoxIt.min.js"></script>-->
  								<script src="<?=base_url();?>frontend/js/tagsinput/bootstrap-tagsinput.min.js"></script>
  								<script src="<?=base_url();?>frontend/js/typeahead.bundle.js"></script>
 								<script src="<?=base_url();?>frontend/js/handlebars.min.js"></script>
