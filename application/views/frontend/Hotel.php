@@ -182,166 +182,32 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
 		<?php } ?>
 	</div>
 		<?php } else { ?>
-		<div class="main_panal">
+		<style>#preview-frame {width: 100%;background-color: #fff;margin-top: -80px;}</style>
 		<div class="row">
 		
-		<div class="col-md-2 col-sm-2 col-xs-12"></div>
-		
-		<div class="col-md-8 col-sm-8 col-xs-12">
+		<!-- <iframe style="height: auto !important;
+    width: 100%" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" allowfullscreen scrolling="yes" frameborder="0" marginheight="0" marginwidth="0" >
+  <p>Your browser does not support iframes.</p>
+</iframe> -->
 
-			<div class="hotel_panal1">
-
-				<form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
-					<div class="white"style="padding-bottom: 25px;">
-                
-						<h2>Search Hotel</h2>
-             
-					</div>
-					<div class="form-group">
-						<label class="col-md-2 col-sm-2 col-xs-12 white">Where</label>
-                             <div class="col-md-10 col-sm-10 col-xs-12">
-
-								<select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="Enter Search Where" >
-								<option value="" >Where</option>
-										<?php { 
-												if(!empty($Fetch_ProductName))
-													{
-														foreach($Fetch_ProductName as $Fetch_ProductMap) 	
-													{?>
-										<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
-							
-										<?php }}}?>
-								</select>
-							</div>
-					</div>
-					 <script>
-            $(document).ready(function () {
-                $(".select2_single").select2({
-                    placeholder: "Select a state",
-                    allowClear: true
-                });
-                $(".select3_group").select2({});
-                $(".select2_multiple").select2({
-                    maximumSelectionLength: 4,
-                    placeholder: "With Max Selection limit 4",
-                    allowClear: true
-                });
-            });
-        </script>
-					 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-				
-						<lable class="col-md-4 col-sm-4 col-xs-12 white">Check In</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-							<div class="input-group ">
-					
-								<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
-
-								
-						
-								<div class="input-group-addon">
-						
-									<a href="#"><i class="linecons-calendar"></i></a>
-					
-								</div>
-								
-							</div>
-                
-						</div>
-					</div>
-					</div>
-					
-					<div class="col-md-6 col-sm-6 col-xs-12">
-				    <div class="form-group">         
-				 
-					
-                       <lable class="col-md-4 col-sm-4 col-xs-12 white">Check Out</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-							<div class="input-group">
-								
-								<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" ">
-											
-								
-								<div class="input-group-addon">
-									
-									<a href="#"><i class="linecons-calendar"></i></a>
-								
-								</div>
-								
-							</div>
-					
-						</div> 
-					</div>
-					</div>
-				 
-			   
-
- <div class="col-md-6 col-sm-6 col-xs-12">
-	 <div class="form-group">
-              
-					 <lable class="col-md-4 col-sm-4 col-xs-12 white">Guests</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-<select class="form-control" name="noOfGuests">
- <option value="1">1</option>
- <option value="2">2</option>
- <option value="3">3</option>
- <option value="4">4</option>
- <option value="5">5</option>
- <option value="6">6</option>
- <option value="7">7</option>
- <option value="8">8</option>
- <option value="9">9</option>
-<option value="10">10</option>
- </select>
-	 </div> 
-	 </div></div>
-					
- 				 
-                  
-       <div class="col-md-6 col-sm-6 col-xs-12">
-              <div class="form-group">
-					 <lable class="col-md-4 col-sm-4 col-xs-12 white">Rooms</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">            
-                      
-                       
-
-<select class="form-control" name="noOfRoom">
- <option value="1">1</option>
- <option value="2">2</option>
- <option value="3">3</option>
- <option value="4">4</option>
- <option value="5">5</option>
- <option value="6">6</option>
- <option value="7">7</option>
- <option value="8">8</option>
- <option value="9">9</option>
-<option value="10">10</option>
- </select>
-
-                      
-                    
-                   
-                </div>
-		   </div></div>
-
-				
-				 
-              <button type="submit" style="width:100%;margin-top:20px;" class="btn btn-success">Search</button>
-            	 
- 
-              
-					
-               
-					
-				</form>
-			</div>
-
+<iframe id="preview-frame" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" name="preview-frame" scrolling="yes" frameborder="0" noresize="noresize">
+      </iframe>
 		</div>
-		
-		<div class="col-md-2 col-sm-2 col-xs-12"></div>
-		</div>
-	</div>
+	<script>
+         var calcHeight = function() {
+           $('#preview-frame').height($(window).height());
+         }
+
+         $(document).ready(function() {
+           calcHeight();
+         }); 
+
+         $(window).resize(function() {
+           calcHeight();
+         }).load(function() {
+           calcHeight();
+         });
+      </script>
 		<?php } ?>
 
 	</div>

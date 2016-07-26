@@ -1,9 +1,10 @@
 <div class="page-container">
 	<div class="main-content">
+	<center>
 	<div class="page-loading-overlay">
 				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
 				</div>
-			
+			</center>
 		<div class="compare_product comp_btn_fixed" id="compare">
 
 		<div class="row">
@@ -89,144 +90,11 @@
 
       <div class="" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Hotel</a> </li>
-          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab"  aria-expanded="false">Flights</a> </li>
-
-        </ul>
+		  <li role="presentation" class="active"><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab"  aria-expanded="true">Flights</a> </li>
+          <li role="presentation" class=""><a href="<?=base_url();?>Hotel.html" id="home-tab" role="tab"  aria-expanded="false">Hotel</a> </li>
+         </ul>
         <div id="myTabContent" class="tab-content">
-          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-				<form method="get" action="<?=base_url();?>Hotel.html" class="validate form-horizontal form-label-left">
-					<div class="white">                
-						<h2>Search Hotel</h2>             
-					</div>
-					<div class="form-group">
-						<label class="col-md-2 col-sm-2 col-xs-12 white">Where</label>
-                             <div class="col-md-10 col-sm-10 col-xs-12">
-
-								<select id="placeID" class="select3_group form-control" name="where" data-validate="required" data-message-required="Enter Search Where" >
-								<option value="" >Where</option>
-										<?php { 
-												if(!empty($Fetch_ProductName))
-													{
-														foreach($Fetch_ProductName as $Fetch_ProductMap) 	
-													{?>
-										<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> </option>
-							
-										<?php }}}?>
-								</select>
-							</div>
-					</div>			
-					 
-              <div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-				
-						<lable class="col-md-4 col-sm-4 col-xs-12 white">Check In</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-							<div class="input-group ">
-					
-								<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
-
-								
-						
-								<div class="input-group-addon">
-						
-									<a href="#"><i class="linecons-calendar"></i></a>
-					
-								</div>
-								
-							</div>
-                
-						</div>
-					</div>
-					</div>
-					
-					<div class="col-md-6 col-sm-6 col-xs-12">
-				    <div class="form-group">         
-				 
-					
-                       <lable class="col-md-4 col-sm-4 col-xs-12 white">Check Out</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-							<div class="input-group">
-								
-								<input type="text" name="checkOut" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check Out" data-validate="required" data-message-required=" ">
-											
-								
-								<div class="input-group-addon">
-									
-									<a href="#"><i class="linecons-calendar"></i></a>
-								
-								</div>
-								
-							</div>
-					
-						</div> 
-					</div>
-					</div>
-				 
-			   
-
- <div class="col-md-6 col-sm-6 col-xs-12">
-	 <div class="form-group">
-              
-					 <lable class="col-md-4 col-sm-4 col-xs-12 white">Guests</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">
-<select class="form-control" name="noOfGuests">
- <option value="1">1</option>
- <option value="2">2</option>
- <option value="3">3</option>
- <option value="4">4</option>
- <option value="5">5</option>
- <option value="6">6</option>
- <option value="7">7</option>
- <option value="8">8</option>
- <option value="9">9</option>
-<option value="10">10</option>
- </select>
-	 </div> 
-	 </div></div>
-					
- 				 
-                  
-       <div class="col-md-6 col-sm-6 col-xs-12">
-              <div class="form-group">
-					 <lable class="col-md-4 col-sm-4 col-xs-12 white">Rooms</lable>
-					<div class="col-md-8 col-sm-8 col-xs-12">            
-                      
-                       
-
-<select class="form-control" name="noOfRoom">
- <option value="1">1</option>
- <option value="2">2</option>
- <option value="3">3</option>
- <option value="4">4</option>
- <option value="5">5</option>
- <option value="6">6</option>
- <option value="7">7</option>
- <option value="8">8</option>
- <option value="9">9</option>
-<option value="10">10</option>
- </select>
-
-                      
-                    
-                   
-                </div>
-		   </div></div>
-
-				
-				 
-              <button type="submit" style="width:100%;" class="btn btn-success">Search</button>
-            	 
- 
-              
-					
-               
-					
-				</form>
-			
-		
-          </div>
-          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">	<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
+          <div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">	<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white">
 							<h2>Search Flights</h2>
 						</div>
@@ -350,7 +218,13 @@
               <button type="submit" style="width:100%;" class="btn btn-success">Search</button>
             	
 					</form>
-          </div>         
+          </div>  
+		  
+		  <div role="tabpanel" class="tab-pane fade " id="tab_content1" aria-labelledby="home-tab">
+				 <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
+			
+		
+          </div>
         </div>
       </div>
    
@@ -366,8 +240,20 @@
 	 
 	<div class="clear"></div>
 	
-	 
- 
+	
+	<div class="content_top hidden-xs">
+    		<div class="heading">
+    		<h3>Search restaurant</h3>
+    		</div>    	
+    		<div class="clear"></div>
+    	</div>
+		<div class="section group hidden-xs">
+		    <div class="widget_wrap" style="width:100%;height:400px;display:inline-block;"><iframe src="https://www.zomato.com/widgets/res_search_widget.php?city_id=26&theme=red&widgetType=custom&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe></div>
+	
+		</div>
+		<div class="clear"></div>
+	
+	
    
 	<div class="content_top hidden-xs">
     		<div class="heading">

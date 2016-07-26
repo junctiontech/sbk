@@ -78,9 +78,14 @@
 					<?php //if(!empty($deals)){ foreach($deals as $deal){ 
 					$i1=''; for($start1=0;$start1<=15;$start1++){ ?>
 						<li >
-							<div id="vcm1950NUgewdp<?=$i1?>"></div>
-							<script src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=js&divid=vcm1950NUgewdp<?=$i1?>" type="text/javascript"></script>
-							<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aaaff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
+						
+						<!-- Javascript Ad Tag: 1214 -->
+						<div id="icubes1214GHHBFx<?=$i1?>"></div>
+						<script src="http://tracking.icubeswire.com/aff_ad?campaign_id=1214&aff_id=14151&format=javascript&format=js&divid=icubes1214GHHBFx<?=$i1?>" type="text/javascript"></script>
+						<noscript><iframe src="http://tracking.icubeswire.com/aff_ad?campaign_id=1214&aff_id=14151&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
+						<!-- // End Ad Tag -->
+						
+							
 						</li>
 					<?php // } } 
 					$i1++; } ?>
@@ -98,9 +103,12 @@
 					<?php //if(!empty($deals)){ foreach($deals as $deal){ 
 					$i=''; for($start=0;$start<=15;$start++){ ?>
 						<li >
-							<div id="vcm1950NUgewd<?=$i?>"></div>
-							<script src="http://tracking.vcommission.com/aff_ad?campaign_id=01950&aff_id=48478&format=javascript&format=js&divid=vcm1950NUgewd<?=$i?>" type="text/javascript"></script>
-							<noscript><iframe src="http://tracking.vcommission.com/aff_ad?campaign_id=1950&aff_id=48478&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
+						
+						<!-- Javascript Ad Tag: 1212 -->
+						<div id="icubes1212qo9jgw<?=$i?>"></div>
+						<script src="http://tracking.icubeswire.com/aff_ad?campaign_id=1212&aff_id=14151&format=javascript&format=js&divid=icubes1212qo9jgw<?=$i?>" type="text/javascript"></script>
+						<noscript><iframe src="http://tracking.icubeswire.com/aff_ad?campaign_id=1212&aff_id=14151&format=javascript&format=iframe" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" width="300" height="250"></iframe></noscript>
+						<!-- // End Ad Tag -->
 						</li>
 					<?php // } } 
 					$i++; } ?>
