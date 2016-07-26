@@ -1,9 +1,10 @@
 <div class="page-container">
 	<div class="main-content">
+	<center>
 	<div class="page-loading-overlay">
 				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
 				</div>
-			
+			</center>
 		<div class="compare_product comp_btn_fixed" id="compare">
 
 		<div class="row">
