@@ -182,7 +182,7 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
 		<?php } ?>
 	</div>
 		<?php } else { ?>
-		<style>#preview-frame {width: 100%;background-color: #fff;}</style>
+		<style>#preview-frame {width: 100%;background-color: #fff;margin-top: -108px;}</style>
 		<div class="row">
 		
 		<!-- <iframe style="height: auto !important;
