@@ -185,7 +185,7 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
 		
 		<div class="row">
 		
-		<iframe style="height: 1467px;
+		<iframe style="height: auto;
     width: 100%" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" >
   <p>Your browser does not support iframes.</p>
 </iframe>
