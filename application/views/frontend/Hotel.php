@@ -182,20 +182,36 @@ foreach($getHotelsDetail['hotels_prices'][$keys]['agent_prices'] as $agents){
 		<?php } ?>
 	</div>
 		<?php } else { ?>
-		
+		<style>#preview-frame {width: 100%;background-color: #fff;}</style>
 		<div class="row">
 		
-		<iframe style="height: auto;
-    width: 100%" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" >
+		<!-- <iframe style="height: auto !important;
+    width: 100%" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" allowfullscreen scrolling="yes" frameborder="0" marginheight="0" marginwidth="0" >
   <p>Your browser does not support iframes.</p>
-</iframe>
-<div class="clear"></div>
+</iframe> -->
+
+<iframe id="preview-frame" src="https://brands.datahc.com/?a_aid=160284&brandid=482894&languageCode=EN" name="preview-frame" scrolling="yes" frameborder="0" noresize="noresize">
+      </iframe>
 		</div>
-	<div class="clear"></div>
+	<script>
+         var calcHeight = function() {
+           $('#preview-frame').height($(window).height());
+         }
+
+         $(document).ready(function() {
+           calcHeight();
+         }); 
+
+         $(window).resize(function() {
+           calcHeight();
+         }).load(function() {
+           calcHeight();
+         });
+      </script>
 		<?php } ?>
 
 	</div>
-<div class="clear"></div>
+
 </div>
 
 <div class="clear"></div>
