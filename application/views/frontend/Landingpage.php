@@ -14,7 +14,7 @@
 							
 				<form role="form" class="form-horizontal" onsubmit="return submit_compare()" method="post" action="<?=base_url();?>Landingpage/compare">
                 <div class="compeyarhidden">  <div class="col-md-2 col-sm-2 col-xs-0"></div>
-                  <div class="col-sm-2">
+                  <div class="col-sm-2"  id="productName" >
 										<div class="form-group">
 											<label class="control-label ">Product 1</label>									
 											<div class="col-sm-12" id="productName1">

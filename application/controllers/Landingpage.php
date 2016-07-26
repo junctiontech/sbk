@@ -324,10 +324,13 @@ class Landingpage extends CI_Controller {
 	
 	public function fetchdata_compare_product($productid=false)
 	{
-	
+	 
 		$productid=$this->input->post('productid');
+		foreach($productid as $productID )
+		{
+		$productid=$productID;
 		$product=$this->Landingpage_model->fetchdata_compare_product($productid);
-	
+		
 		if(!empty($product))
 		{
 			foreach($product as $productname)
@@ -339,6 +342,7 @@ class Landingpage extends CI_Controller {
 				echo "<input class=\"form-control\" name=\"$pro_id\" value=\"$pro_name\">";
 			}
 		}
+	}
 	
 	}
 	

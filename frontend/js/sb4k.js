@@ -16,11 +16,13 @@ if(window.location.hostname=="192.168.1.151"){
 function compare_product(productid)
 {	
 var count=0;
+	var productid=[];
 	$(".chkcount").each(function() {				
            if($(this).prop('checked') == true){				
-                count=count+1;				  
+                count=count+1;			   		
+					productid.push(this.value);			   			 
             }
- });	
+ });	 
 	var pro_id=productid;	
 	if ( pro_id !=='')
 	{ 
@@ -31,10 +33,11 @@ var count=0;
     cache: false,
     success: function(s)
     {
+		
 	if(count>=1)
 	{
 		document.getElementById("compare").style.display = "block";	
-		$("#productName"+count).html(s);
+		$("#productName").html(s);
 	}
 	else
 	{
