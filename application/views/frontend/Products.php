@@ -133,43 +133,15 @@
                
 								<div class="compeyarhidden">
 					
-									<div class="col-md-2 col-sm-2 col-xs-0"></div>                  
+									<div class="col-md-2 col-sm-2 col-xs-2"></div>                  
 									<div class="col-sm-2" id="productName">
-										<div class="form-group">
-											<label class="control-label ">Product 1</label>									
-											<div class="col-sm-12" id="productName1">
-												<!--<input type="text" class="form-control" id="productName1" name="productName1" value=" " placeholder="Placeholder">-->
-											</div>
-										</div>
+									
 									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Product 2</label>									
-											<div class="col-sm-12" id="productName2">
-												<!--<input type="text" class="form-control" id="productName2" placeholder="Placeholder">-->
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Product 3</label>									
-											<div class="col-sm-12" id="productName3">
-												<!--<input type="text" class="form-control" id="productName3" placeholder="Placeholder">-->
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Product 4</label>									
-											<div class="col-sm-12" id="productName4">
-												<!--<input type="text" class="form-control" id="productName4" placeholder="Placeholder">-->
-											</div>
-										</div>	
-									</div>	
+										
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">									 
-											<button type="submit" class="btn btn-success btn-single" style="margin-top: 170px;">Compare</button>
+											<button type="submit" class="btn btn-success btn-single fixedright" style=" ">Compare</button>
 										</div>
 									</div>
 									<div class="form-group-separator"></div>

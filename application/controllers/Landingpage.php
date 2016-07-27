@@ -305,16 +305,18 @@ class Landingpage extends CI_Controller {
 			$this->data['products']=$products;
 			if(!empty($sbkProductID) && empty($b)){
 				$this->data['backurl']=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
-				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
-				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
+				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;				
+				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);				
 				$searchquery1="categoriesUrlKey: $categorykey";
 				$searchquery1.="AND productsUrlKey: $productkey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
 				$this->data['attributegroups']=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
+				$this->data['shopimages']=$this->Landingpage_model->shop_image();
 				}
 				
+				//print_r($this->data['shopimages']); die;
 				$this->display ('frontend/ProductDetail');
 			}else{
 			$this->display ('frontend/Products');
