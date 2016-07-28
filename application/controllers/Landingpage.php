@@ -367,7 +367,7 @@ class Landingpage extends CI_Controller {
 	$compareproductinfo=$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
 	
 	//$categoryinfo=($compareproductinfo[0]->categoriesID);
-	//print_r($compareproduct); //die;
+	//print_r($compareproductinfo); die;
 	$getattribute=$data=$this->data['compareproduct_info']=$this->Landingpage_model->compare_pro_attribute($compareproduct);
 	
 	
