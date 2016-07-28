@@ -104,7 +104,7 @@
 		 
 			
 			<div class="product-desc">
-			<h2>Product Feature</h2>
+			<h2>Product Features</h2>
 			<div class="row">
 			
 			<?php foreach($attributegroups as $attributegroup){ 
