@@ -171,7 +171,7 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('shopSortOrder','ASC');
 		$query=$this->db->get();
 		//echo $this->db->last_query();die;
-		return $query->result();
+		return $query->result_array();
 	}
 	public function shop_image()
 	{
