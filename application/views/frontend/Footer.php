@@ -1,4 +1,137 @@
-
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Notify</h4>
+				</div>				
+				<div class="modal-body">					
+					<div class="panel-body">							
+							<form role="form" class="form-horizontal">							
+								<div class="form-group">							 
+										<strong>When a new deal arrives for the following CATEGORY:-</strong>
+										
+										<p>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Electronics">
+												Electronics
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Apparels">
+												Apparels
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Mobiles">
+												Mobiles
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Air Conditioners">
+												Air Conditioners 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Flights">
+												Flights
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Hotels">
+												Hotels
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Health&Fitness">
+												 Health & Fitness
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Accessories">
+												Accessories
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Laptops">
+												Laptops
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Appliances">
+												Appliances
+											</label>
+										</p>
+										
+									</div>								 
+								<div class="form-group-separator"></div>
+								<div class="form-group">							 
+										<strong>When a new deal arrives for the following STORE:-</strong>
+										
+										<p>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Amazon">
+												Amazon
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Flipkart">
+												Flipkart
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Snapdeal">
+												Snapdeal
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Makemytrip">
+												Makemytrip 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Homeshop18">
+												Homeshop18
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="ShopCJ">
+												ShopCJ
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="Limeroad">
+												 Limeroad
+											</label>											
+										</p>										
+									</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">							 
+										<strong>When a new deal arrives of the following %:-</strong>										
+										<p>
+											<label class="checkbox-inline">
+												<input type="checkbox" name=" ">
+												10% OFF 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name=" ">
+												25% OFF
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name=" ">
+												40% OFF 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name=" ">
+												50% OFF
+											</label>											
+										</p>										
+									</div>
+								<div class="form-group-separator"></div>
+								 
+								<div class="form-group">
+									<label class="col-md-2">Enter your email:</label>
+									
+									<div class="col-md-4">							
+										<input type="email" class="form-control" placeholder="Enter your email" />									
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-info">Notify</button>
+								</div>							
+							</form>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 <div class="footer">
    	  <div class="wrapper">	
 	     <div class="section group">

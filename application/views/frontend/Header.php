@@ -48,11 +48,15 @@
 						 
 					</a>
 					</li>
-				<li>
-					<a href=" ">
+				<li class="middle-align">
+									 
+										<a href="javascript:;" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});" class="fa fa-bell-o"></a>
+									 
+					
+					<!--<a href=" ">
 						<i class=" fa fa-bell-o"></i>
 						 
-					</a>
+					</a>-->
 					</li>
 				<li>
 					<a href=" ">
@@ -177,4 +181,5 @@
 		</div>
 	</nav>
 	
+
 	

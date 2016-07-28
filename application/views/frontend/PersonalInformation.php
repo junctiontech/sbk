@@ -95,7 +95,11 @@
                            <div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Profile Image</label>
 									<div class="col-md-6 col-sm-6 col-xs-12" align="center" >
-										<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img id="userProfile_Image" src="<?=base_url();?>./uploads/images/userProfileImage/<?=($personal[0]->userProfileImage)?$personal[0]->userProfileImage:'';?>"></div>
+										<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><?php if (!empty($personal[0]->userProfileImage)) { ?>
+											<img id="userProfile_Image" src="<?=base_url();?>./uploads/images/userProfileImage/<?=($personal[0]->userProfileImage)?$personal[0]->userProfileImage:'';?>">
+											<?php } else { ?>
+											<img id="userProfile_Image" src="<?=base_url();?>./uploads/images/userProfileImage/user-2.png">
+											<?php } ?></div>
 											<input type="file" name="userProfileImage" onchange="readURL(this);" class="form-control col-md-6 col-xs-12" >
 									</div>
 							</div>

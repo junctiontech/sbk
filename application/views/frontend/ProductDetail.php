@@ -43,7 +43,7 @@
 								 								
 							<p>Price: <br><span><?=number_format($pricemore,2)?></span></p>								
 							<div class="btn btn-black">							
-								<span ><a target="_blank" style="color:white;" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span>								
+								<span ><a target="_blank" style="color:white;" href="<?=isset($othershopprices[$keys]['productShopUrl'])?$othershopprices[$keys]['productShopUrl']:''?>">Buy now</a></span>								
 							</div>								
 							<?php } else { if($shopimage->shopID==$products[0]->shopID) { 
 							if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($products[0]->productPrice)?$products[0]->productPrice:'';}	
@@ -196,7 +196,7 @@
 				<div class="grid_1_of_4 similar_images_1_of_4">
 					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
 					 <h2><?=$similarproducted->productName?> </h2>					
-					 <p><span class="price"><?=number_format($similarproducted->productPrice,2)?></span></p>					     
+					 <p><span class="price">Rs. <?=number_format($similarproducted->productPrice,2)?></span></p>					     
 				</div>
 			
 		  <?php } }else{ echo"No product Found!!";}?> 
