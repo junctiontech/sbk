@@ -342,7 +342,25 @@ class Landingpage extends CI_Controller {
 	
 	}
 	
-
+	public function getautosuggestproduct()
+	{
+		if($this->input->post())
+		{
+			$productkey=$this->input->post('placekey');
+			$productName=$this->Landingpage_model->getProductName($productkey);
+			if(!empty($productName)){
+	
+				foreach($productName as $place)
+				{
+					$placeID='';$placeName='';
+					$placeID=$place->productName;$placeName=$place->productName;
+					echo "<option  value=\"$placeID\">$placeName</option> ";
+				}
+	
+			}
+		}
+	
+	}
 	
 	public function compare()
 

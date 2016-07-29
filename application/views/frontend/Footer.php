@@ -90,6 +90,33 @@ function googleTranslateElementInit() {
 								});
 								});
 							  </script>
+							   <script>
+	
+		$(document).ready(function(){
+	  
+				$(document).on('keyup', '#search', function() {
+					
+				var placekey =this.value;
+				
+				if(placekey !=='')
+				{
+					$.ajax({
+					type: "POST",
+					url: base_url+"Landingpage/getautosuggestproduct",
+					data:{placekey:placekey},
+					cache: false,
+					success: function(html)
+					{ 
+						$("#searchdata").html('');
+						 $("#searchdata").html(html);
+					}
+					});
+				}
+				return false; 
+				
+				});
+		});
+    </script>
 							   <script src="<?=base_url();?>frontend/js/sb4k.js"></script>
 								<script src="<?=base_url();?>frontend/js/Filter_product.js"></script>
 							<!--	<script  src="<?=base_url();?>admin/js/moment.min2.js"></script>-->

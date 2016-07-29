@@ -19,6 +19,20 @@ class Landingpage_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function getProductName($productKey=false)
+	{
+		$this->db->distinct();
+		$this->db->select('t1.productName');
+		$this->db->from('s4k_products_map t1');
+		$this->db->like(array('t1.productName'=>$productKey));
+		$this->db->limit(15);
+		$query=$this->db->get();
+		return $query->result();
+			
+	}
+	
+	
+	
 	public function get_categories(){
 		$this->db->select('t1.categoriesID,categoriesUrlKey,categoryName,categoryImage');
 		$this->db->from('s4k_categories t1');

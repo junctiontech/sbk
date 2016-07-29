@@ -221,7 +221,7 @@
           </div>  
 		  
 		  <div role="tabpanel" class="tab-pane fade " id="tab_content1" aria-labelledby="home-tab">
-				 <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
+				<!-- <script src="https://www.hotelscombined.com/SearchBox/343862"></script>-->
 			
 		
           </div>
@@ -249,7 +249,7 @@
     	</div>
 		<div class="section group hidden-xs">
 		    <div class="widget_wrap" style="width:100%;height:400px;display:inline-block;"><iframe src="https://www.zomato.com/widgets/res_search_widget.php?city_id=26&theme=red&widgetType=custom&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe></div>
-	
+			
 		</div>
 		<div class="clear"></div>
 	
