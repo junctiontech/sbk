@@ -99,7 +99,7 @@
 
 							<div class="sign">
 
-								<p style="margin-bottom:10px;font-size:15px">New to Search before Kharch?</p>
+								<p style="margin-bottom:10px;font-size:15px">New to SearchB4kharch.com</p>
 
 								<div class="col-md-6 col-sm-6 col-xs-12">
 

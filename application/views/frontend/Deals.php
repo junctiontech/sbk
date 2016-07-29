@@ -28,7 +28,7 @@
 									<span class="btn btn-success collapse-icon">Top Deals</span>						 
 								</a>								
 							</div>												
-						<div class="panel-body colspandeal row1">
+						<div class="panel-body colspandeal">
 							<div class="scrollable ps-container ps-active-y">
 									<?php if(!empty($dealsgategorys)){foreach($dealsgategorys as $dealsgategory){?>
 						<div class="deal_htr">
@@ -60,11 +60,11 @@
 				{ foreach($dealsdata as $deal){?>
 				<div class="grid_1_of_4 deal_1_of_3">
 					<div><img src="<?=$deal->url;?>" alt="" /> </div>
-					 <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
-					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>							 
+					<!-- <p class="deal"><?=$deal->offer_name;?>+<?=$deal->coupon_description;?>+<?=$deal->coupon_title;?></p>
+					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>-->							 
 					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
-					<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small><Small>added : <?=$deal->added;?></small></div>
-					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');"  href="javascript:;" class="">Get Deal</a></span></div>
+					<!--<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small><Small>added : <?=$deal->added;?></small></div>-->
+					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');" style="color:white;" href="javascript:;" class="">Get Deal</a></span></div>
 				</div>	
 			
 		  <?php } } else { ?>

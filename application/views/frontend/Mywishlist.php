@@ -46,7 +46,7 @@
 				   <td><?php echo $wishlist->productName ; ?></td>
 				   <td><?php echo $wishlist->productPrice ; ?></td>
 				   <td><?php echo $wishlist->shopName ; ?></td>	
-				   <td><span><a target="_blank" href="<?=$wishlist->productShopUrl;?>">Buy NOw</a></span></td>
+				   <td><span><a target="_blank" href="<?=$wishlist->productShopUrl;?>">Buy Now</a></span></td>
 				   <td><a href="<?=base_url();?>User/delete_wishlist/<?php echo $wishlist->userWishListID ;?>">Delete</a></td>										   
 				</tr>
 			<?php } ?>

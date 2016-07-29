@@ -257,19 +257,19 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('searchb4kharch', $sbk);
 				
 				$this->session->set_flashdata('message_type', 'success');
-				$this->session->set_flashdata('message', $this->config->item("index") . " Login Successfully!!");
+				$this->session->set_flashdata('message', $this->config->item("index") . "You've Logged in successfully. ");
 				redirect('User/Dashboard');
 				
 				}else{
 					
-					$this->session->set_flashdata('category_error_login', " Invalid Username Or Password!! Please Try Again. ");
+					$this->session->set_flashdata('category_error_login', "Username Or Password is invalid, please try again.");
 				}
 		
 		}else{
-				$this->session->set_flashdata('category_error_login', " Invalid Username Or Password!! Please Try Again. ");
+				$this->session->set_flashdata('category_error_login', "Username Or Password is invalid, please try again.");
 			}
 		}else{
-				$this->session->set_flashdata('category_error_login', " Invalid Username Or Password!! Please Try Again. ");
+				$this->session->set_flashdata('category_error_login', "Username Or Password is invalid, please try again.");
 		}
 				redirect("Login");
 	}
@@ -319,7 +319,7 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('searchb4kharch', $sbk);
 				
 				$this->session->set_flashdata('message_type', 'success');
-				$this->session->set_flashdata('message', $this->config->item("index") . " Signup Successfully!!");
+				$this->session->set_flashdata('message', $this->config->item("index") . " Congratulations!! now you've become Searcheela.");
 				redirect('User/Dashboard');
 				
 			}else{

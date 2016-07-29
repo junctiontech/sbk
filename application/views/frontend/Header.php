@@ -48,13 +48,16 @@
 						 
 					</a>
 					</li>
-				<li>
-					<a href="javascript:;" title="Get deals and offers notification">
-						<i class=" fa fa-bell-o"></i>
-						 
-					</a>
+
+				
+				<li class="middle-align">
+									 
+										<a href="javascript:;" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});" class="fa fa-bell-o"></a>
+									 
+				
 					</li>
-				<li>
+					<li>
+				
 					<a href="javascript:;" title="You are searcheela no">
  
 						<span class="title">You are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
@@ -179,5 +182,9 @@
 		</div>
 	</nav>
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
 	

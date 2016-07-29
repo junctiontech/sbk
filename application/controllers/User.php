@@ -99,7 +99,7 @@ class User extends CI_Controller {
 			echo json_encode(array('message'=>'success'));
 		}else{
 		$this->session->set_flashdata('message_type', 'success');
-		$this->session->set_flashdata('message', $this->config->item("User") . " You Have Successfully Delete Wishlist this Record!!");
+		$this->session->set_flashdata('message', $this->config->item("User") . "You've successfully deleted product from your wishlist.");
 		redirect ('User/Mywishlist');
 		}
 	}	
@@ -209,13 +209,13 @@ class User extends CI_Controller {
 					$table='s4k_user';
 					$this->User_model->updatepssword($table,$data,$userID);
 					$this->session->set_flashdata('message_type', 'success');
-					$this->session->set_flashdata('message', $this->config->item("User") . "Successfully Change Password!!");
+					$this->session->set_flashdata('message', $this->config->item("User") . "Congratulations!! Your password is changed successfully.");
 					redirect ('User/Changepassword');
 				}
 				else
 				{
 					$this->session->set_flashdata('message_type', 'error');
-					$this->session->set_flashdata('message', $this->config->item("User") . " Invalid Old Password!! Please Try Again.!!");
+					$this->session->set_flashdata('message', $this->config->item("User") . "You've enter an invalid password, please try again.");
 					redirect ('User/Changepassword');
 				}
 		}
@@ -229,10 +229,9 @@ class User extends CI_Controller {
         $this->session->sess_destroy();
 		$this->session->set_flashdata('message_type', 'error');
 		$this->session->set_flashdata('message_type', 'success');
-		$this->session->set_flashdata('message', $this->config->item("index") . " Logout Successfully!! Thank You.. ");
+		$this->session->set_flashdata('message', $this->config->item("index") . "Logout Successfully!! Thank You..");
 		redirect("Login");
 
-	}
-	
+	}	
 	
 }

@@ -14,48 +14,22 @@
 							
 				<form role="form" class="form-horizontal" onsubmit="return submit_compare()" method="post" action="<?=base_url();?>Landingpage/compare">
                 <div class="compeyarhidden">  <div class="col-md-2 col-sm-2 col-xs-0"></div>
-                  <div class="col-sm-2">
-										<div class="form-group">
-											<label class="control-label ">Product 1</label>									
-											<div class="col-sm-12" id="productName1">
-												<!--<input type="text" class="form-control" id="productName1" name="productName1" value=" " placeholder="Placeholder">-->
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Product 2</label>									
-											<div class="col-sm-12" id="productName2">
-												<!--<input type="text" class="form-control" id="productName2" placeholder="Placeholder">-->
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Product 3</label>									
-											<div class="col-sm-12" id="productName3">
-												<!--<input type="text" class="form-control" id="productName3" placeholder="Placeholder">-->
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Product 4</label>									
-											<div class="col-sm-12" id="productName4">
-												<!--<input type="text" class="form-control" id="productName4" placeholder="Placeholder">-->
-											</div>
-										</div>	
-									</div>	
-									</div>
-									<div class="col-md-2">
+                  <div class="col-sm-2"  id="productName" >										
+				</div>
+					</div>
+					<div class="col-md-2">
 										<div class="form-group">									 
 											<button type="submit" class="btn btn-success btn-single" style="margin-top: 170px;">Compare</button>
 										</div>
 									</div>
-									<div class="form-group-separator"></div>
-								</form>	
-							</div>
-						</div>
+									
+					<div class="form-group-separator"></div>
+								
+							</form>	
+							
+					</div>
+						
+				</div>
 			</div>
 		</div>
 	</div>
@@ -98,13 +72,30 @@
 						<div class="white">
 							<h2>Search Flights</h2>
 						</div>
+			  				  <div class="col-md-6 col-sm-6 col-xs-12">
+					  <div class="form-group white">								
+						  <div class="col-md-12">									
+							  <input type="radio" onclick="myFunction()" checked id="oneway" class="flat" name="radio"/>								
+							  One Way 								
+						  </div>								
+				  
+					  </div>
+				  </div>
+				  <div class="col-md-6 col-sm-6 col-xs-12">
+					  <div class="form-group white">					  
+						  <div class="col-md-12">						  
+							  <input type="radio" onclick="myFunction()" id="Returntrip"class="flat" name="radio"/>						 
+							  Return Trip					  						 
+						  </div>
+					  </div>
+				  </div>
 							  
 						<div class="col-md-6 col-sm-6 col-xs-12">
               <div class="form-group">
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -115,7 +106,7 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="todata"></datalist>
                 </div>
 							</div>
@@ -159,7 +150,7 @@
                 
 									<div class="input-group">
 											
-										<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
+										<input type="text" name="return" disabled id="return"class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
 											
 											
 										<div class="input-group-addon">
@@ -391,6 +382,7 @@
 <div class="hidden-xs">
 			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
 	</div>
+
  <script>
             $(document).ready(function () {
                 $(".select2_single").select2({
@@ -484,5 +476,13 @@ function fromID(placekey)
 				toID(this.value);
 				});
 		 })
+		function myFunction() {
+		if(document.getElementById('Returntrip').checked) {
+     document.getElementById("return").disabled = false;
+    }else if(document.getElementById('oneway').checked) {
+      document.getElementById("return").disabled = true;
+    }
+		}
+		
     </script>
 	

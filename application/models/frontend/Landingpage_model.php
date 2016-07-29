@@ -176,6 +176,19 @@ class Landingpage_model extends CI_Model {
 	
 	public function get_shopprices($productID=false,$shopID=false){
 		
+		$this->db->select('t2.productPrice,t2.productShopUrl,t3.shopID');
+		$this->db->from('s4k_product_mapping t1');
+		$this->db->join('s4k_product_price t2','t1.childProductID=t2.shopProductID and t1.childShopID=t2.shopID');
+		$this->db->join('s4k_shops t3','t3.shopID=t2.shopID');
+		$this->db->join('s4k_product_price_map t4','t4.shopID=t1.parentShopID and t4.shopProductID=t1.parentProductID');
+		$this->db->where(array('t4.productsID'=>$productID,'t4.shopID'=>$shopID));
+		$this->db->order_by('shopSortOrder','ASC');
+		$query=$this->db->get();
+		//echo $this->db->last_query();die;
+		return $query->result_array();
+	}
+	public function get_shoppricesApp($productID=false,$shopID=false)
+	{
 		$this->db->select('t2.productPrice,t2.productShopUrl,t3.shop_image,t3.shopID');
 		$this->db->from('s4k_product_mapping t1');
 		$this->db->join('s4k_product_price t2','t1.childProductID=t2.shopProductID and t1.childShopID=t2.shopID');
@@ -185,6 +198,13 @@ class Landingpage_model extends CI_Model {
 		$this->db->order_by('shopSortOrder','ASC');
 		$query=$this->db->get();
 		//echo $this->db->last_query();die;
+		return $query->result();
+	}
+	public function shop_image()
+	{
+		$this->db->select('t1.shop_image,t1.shopID');
+		$this->db->from('s4k_shops t1');
+		$query=$this->db->get();
 		return $query->result();
 	}
 	
@@ -202,7 +222,7 @@ class Landingpage_model extends CI_Model {
 
 	function comparepro($compareproduct=false)
 	{	
- $qry=$this->db->query("SELECT `t1`.`productsID`, `t1`.`categoriesID`,`t1`.`productName`,  `t3`.`imageName`, `t4`.`productPrice` FROM 	`s4k_products_map` `t1` JOIN `s4k_product_images_map` `t3` ON `t3`.`productsID`=`t1`.`productsID` JOIN `s4k_product_price_map` `t4` ON `t4`.`productsID`=`t1`.`productsID` WHERE `t1`.`productsID` IN($compareproduct)");
+ $qry=$this->db->query("SELECT `t1`.`productsID`, `t1`.`categoriesID`,`t1`.`productName`, `t1`.`productsUrlKey`,`t1`.`sb4kProductID`,  `t3`.`imageName`, `t4`.`productPrice`, `t5`.`categoriesUrlKey` FROM 	`s4k_products_map` `t1` JOIN `s4k_product_images_map` `t3` ON `t3`.`productsID`=`t1`.`productsID` JOIN `s4k_product_price_map` `t4` ON `t4`.`productsID`=`t1`.`productsID` JOIN `s4k_categories` `t5` ON `t5`.`categoriesID`=`t1`.`categoriesID` WHERE `t1`.`productsID` IN($compareproduct)");
 		return $qry->result(); 
 
 	}
@@ -310,6 +330,31 @@ class Landingpage_model extends CI_Model {
 		//print_r($this->db->last_query()); die;
 		return $query->result();
 	}
+	public function notify_insert($table=false,$data=false)
+	{
+		$this->db->insert($table,$data);
+	}
+	public function match_emailid($email){
+		$this->db->select('t1.notifyID');
+		$this->db->from('s4k_notify t1');
+		$this->db->where(array('email'=>$email));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	public function update_notify($table, $data, $notifyID)
+	{
+		$this->db->where(array('notifyID'=>$notifyID));
+		$this->db->update($table, $data);
+	}
+	public function get_email($userID=false)
+	{
+		$this->db->select('t1.userEmail');
+		$this->db->from('s4k_user t1');
+		$this->db->where(array('userID'=>$userID));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 	
 }
 

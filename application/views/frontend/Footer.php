@@ -1,4 +1,139 @@
-
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Notify</h4>
+				</div>				
+				<div class="modal-body">					
+					<div class="panel-body">							
+							<form role="form" class="validate form-horizontal" method="post" action="<?=base_url();?>Landingpage/notify">							
+								<div class="form-group">							 
+										<strong>When a new deal arrives for the following CATEGORY:-</strong>
+										
+										<p>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Electronics" >
+												Electronics
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Apparels">
+												Apparels
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Mobiles">
+												Mobiles
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="AirConditioners ">
+												Air Conditioners 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Flights">
+												Flights
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Hotels">
+												Hotels
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Health&Fitness">
+												 Health & Fitness
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Accessories">
+												Accessories
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Laptops">
+												Laptops
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="category[]" value="Appliances">
+												Appliances
+											</label>
+										</p>
+										
+									</div>								 
+								<div class="form-group-separator"></div>
+								<div class="form-group">							 
+										<strong>When a new deal arrives for the following STORE:-</strong>
+										
+										<p>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="Amazon">
+												Amazon
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="Flipkart">
+												Flipkart
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="Snapdeal">
+												Snapdeal
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="Makemytrip">
+												Makemytrip 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="Homeshop18">
+												Homeshop18
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="ShopCJ">
+												ShopCJ
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="store[]" value="Limeroad">
+												 Limeroad
+											</label>											
+										</p>										
+									</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">							 
+										<strong>When a new deal arrives of the following %:-</strong>										
+										<p>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="percent[]" value="10%OFF">
+												10% OFF 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="percent[]" value="25%OFF">
+												25% OFF
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="percent[]" value="40%OFF">
+												40% OFF 
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" name="percent[]" value="50%OFF">
+												50% OFF
+											</label>											
+										</p>										
+									</div>
+								<div class="form-group-separator"></div>
+								 <?php if (empty($userinfos)) { ?>
+								<div class="form-group">
+									<label class="col-md-2">Enter your email:</label>
+									
+									<div class="col-md-4">							
+										<input type="email" class="form-control" name="email" placeholder="Enter your email" data-validate="required" data-message-required="Please Enter your email" />									
+									</div>
+								</div>
+								
+								<?php } ?>
+								 
+								<div class="modal-footer">
+									<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-info">Notify</button>
+								</div>							
+							</form>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 <div class="footer">
    	  <div class="wrapper">	
 	     <div class="section group">
@@ -35,7 +170,7 @@
 				 			<h4>Follow Us</h4>-->
 					   		  <ul>
 							    <a href="https://www.facebook.com/SEARCHB4KHARCH/" target="_blank"><li class="facebook"></li></a>
-								  <a href="javascript:;" target="_blank"> <li class="twitter"></li></a>
+								<!--  <a href="javascript:;" target="_blank"> <li class="twitter"></li></a>-->
 							      <a href="https://www.google.com/+Searchb4kharch" target="_blank"><li class="googleplus"> </li></a>
 							      <a href="javascript:;" target="_blank">
 									  <li class="contact tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="info@searchb4kharch.com" ></li>
@@ -86,7 +221,8 @@ function googleTranslateElementInit() {
 								$(document).ready(function () {
 								$('.datepicker').datepicker({
 									format: "yyyy-mm-dd",
-									autoclose: true
+									autoclose: true,
+									startDate: new Date()
 								});
 								});
 							  </script>

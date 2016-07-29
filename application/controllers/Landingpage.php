@@ -234,7 +234,7 @@ class Landingpage extends CI_Controller {
 				$moreprice='';
 				
 				if(!empty($products[0]->productsID) && !empty($products[0]->shopID)){
-				$othershopprices=$this->Landingpage_model->get_shopprices($products[0]->productsID,$products[0]->shopID);
+				$othershopprices=$this->Landingpage_model->get_shoppricesApp($products[0]->productsID,$products[0]->shopID);
 				
 				if(!empty($othershopprices)){
 					foreach($othershopprices as $othershopprice){
@@ -305,16 +305,18 @@ class Landingpage extends CI_Controller {
 			$this->data['products']=$products;
 			if(!empty($sbkProductID) && empty($b)){
 				$this->data['backurl']=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
-				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;
-				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);
+				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;				
+				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);				
 				$searchquery1="categoriesUrlKey: $categorykey";
 				$searchquery1.="AND productsUrlKey: $productkey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
 				$this->data['attributegroups']=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
+				$this->data['shopimages']=$this->Landingpage_model->shop_image();
 				}
 				
+				//print_r($this->data['shopimages']); die;
 				$this->display ('frontend/ProductDetail');
 			}else{
 			$this->display ('frontend/Products');
@@ -324,10 +326,13 @@ class Landingpage extends CI_Controller {
 	
 	public function fetchdata_compare_product($productid=false)
 	{
-	
+	 
 		$productid=$this->input->post('productid');
+		foreach($productid as $productID )
+		{
+		$productid=$productID;
 		$product=$this->Landingpage_model->fetchdata_compare_product($productid);
-	
+		
 		if(!empty($product))
 		{
 			foreach($product as $productname)
@@ -339,6 +344,7 @@ class Landingpage extends CI_Controller {
 				echo "<input class=\"form-control\" name=\"$pro_id\" value=\"$pro_name\">";
 			}
 		}
+	}
 	
 	}
 	
@@ -379,7 +385,7 @@ class Landingpage extends CI_Controller {
 	$compareproductinfo=$data=$this->data['compareproduct']=$this->Landingpage_model->comparepro($compareproduct);
 	
 	//$categoryinfo=($compareproductinfo[0]->categoriesID);
-	//print_r($compareproduct); //die;
+	//print_r($compareproductinfo); die;
 	$getattribute=$data=$this->data['compareproduct_info']=$this->Landingpage_model->compare_pro_attribute($compareproduct);
 	
 	
@@ -723,4 +729,47 @@ class Landingpage extends CI_Controller {
 			$this->parser->parse('frontend/Flights',$this->data);
 			$this->parser->parse('frontend/Footer',$this->data);
 	}
+	public function notify()
+	{
+		$category=$this->input->post('category');
+		$story=$this->input->post('store');
+		$percent=$this->input->post('percent');
+		$email=$this->input->post('email');		 
+//print_r($this->userinfos); die;
+		if(!empty($this->userinfos))
+		{
+			$userID=$this->userinfos['userID'];
+			$query = $this->Landingpage_model->get_email($userID);
+			$email=$query[0]->userEmail;
+			//print_r($email); die;
+			 
+		}
+		if(!empty($category)){
+		$categorys = implode(",", $category);
+			($data['categoryName']=$categorys);	 
+		}
+		if(!empty($story)){
+		$storys=implode(",", $story);
+			($data['store']=$storys);		  
+		}
+		if(!empty($percent)){
+		$percents=implode(",",$percent);
+			($data['percent']=$percents);			 
+		}
+		$table='s4k_notify';
+		if(!empty($email)){
+			$notify=$this->Landingpage_model->match_emailid($email);
+			if(!empty($notify)){
+				$notifyID=$notify[0]->notifyID;
+				$this->Landingpage_model->update_notify($table, $data, $notifyID);	
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+			else{
+				($data['email']=$email);
+				$this->Landingpage_model->notify_insert($table,$data);
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+		}			
+	}
+	
 }

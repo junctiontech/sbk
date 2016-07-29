@@ -162,7 +162,7 @@
                                                         </div>
 														</div>
                                                 </div>
-                                                <div class="caption">
+                                                <div class="caption shrink">
                                                     <p><?=isset($products->productName)?$products->productName:''?></p>
 													  <p style="margin-top:10px">Price-<?=isset($products->productPrice)?$products->productPrice:''?></p>
 													  
