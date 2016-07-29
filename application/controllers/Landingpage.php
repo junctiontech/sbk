@@ -234,7 +234,7 @@ class Landingpage extends CI_Controller {
 				$moreprice='';
 				
 				if(!empty($products[0]->productsID) && !empty($products[0]->shopID)){
-				$othershopprices=$this->Landingpage_model->get_shopprices($products[0]->productsID,$products[0]->shopID);
+				$othershopprices=$this->Landingpage_model->get_shoppricesApp($products[0]->productsID,$products[0]->shopID);
 				
 				if(!empty($othershopprices)){
 					foreach($othershopprices as $othershopprice){
@@ -713,6 +713,9 @@ class Landingpage extends CI_Controller {
 	}
 	public function notify()
 	{
-		//print_r($_POST); die;
+		$category=$this->input->post('category');
+		$categorys = implode(",", $category);
+		
+		//print_r($categorys); die;
 	}
 }

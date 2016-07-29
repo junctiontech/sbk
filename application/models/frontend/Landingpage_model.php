@@ -173,6 +173,19 @@ class Landingpage_model extends CI_Model {
 		//echo $this->db->last_query();die;
 		return $query->result_array();
 	}
+	public function get_shoppricesApp($productID=false,$shopID=false)
+	{
+		$this->db->select('t2.productPrice,t2.productShopUrl,t3.shop_image,t3.shopID');
+		$this->db->from('s4k_product_mapping t1');
+		$this->db->join('s4k_product_price t2','t1.childProductID=t2.shopProductID and t1.childShopID=t2.shopID');
+		$this->db->join('s4k_shops t3','t3.shopID=t2.shopID');
+		$this->db->join('s4k_product_price_map t4','t4.shopID=t1.parentShopID and t4.shopProductID=t1.parentProductID');
+		$this->db->where(array('t4.productsID'=>$productID,'t4.shopID'=>$shopID));
+		$this->db->order_by('shopSortOrder','ASC');
+		$query=$this->db->get();
+		//echo $this->db->last_query();die;
+		return $query->result();
+	}
 	public function shop_image()
 	{
 		$this->db->select('t1.shop_image,t1.shopID');

@@ -29,10 +29,10 @@
 								<div class="compare_product_price">
 									<p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
 								</div>
-								<div  class="btn btn-black">
-									<span><a style="color:white" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html">Buy Now</a></span>
+								<a style="color:white" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html"><div  class="btn btn-black">
+									<span>Buy Now</span>
 							
-								</div>
+								</div></a>
 							</div>
 				</div><?php } } ?>
 			

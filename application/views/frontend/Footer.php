@@ -61,31 +61,31 @@
 										
 										<p>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Amazon">
+												<input type="checkbox" name="store[]" value="Amazon">
 												Amazon
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Flipkart">
+												<input type="checkbox" name="store[]" value="Flipkart">
 												Flipkart
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Snapdeal">
+												<input type="checkbox" name="store[]" value="Snapdeal">
 												Snapdeal
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Makemytrip">
+												<input type="checkbox" name="store[]" value="Makemytrip">
 												Makemytrip 
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Homeshop18">
+												<input type="checkbox" name="store[]" value="Homeshop18">
 												Homeshop18
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="ShopCJ">
+												<input type="checkbox" name="store[]" value="ShopCJ">
 												ShopCJ
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Limeroad">
+												<input type="checkbox" name="store[]" value="Limeroad">
 												 Limeroad
 											</label>											
 										</p>										
