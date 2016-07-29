@@ -60,6 +60,7 @@
 							<?php } } ?>							
 							<?php } else { if($shopimage->shopID==$products[0]->shopID) { 
 							if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($products[0]->productPrice)?$products[0]->productPrice:'';}	
+						print_r($pricemore);
 							?>								
 							<p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>								
 							<div class="btn btn-black">							

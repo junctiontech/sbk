@@ -7,49 +7,49 @@
 				</div>				
 				<div class="modal-body">					
 					<div class="panel-body">							
-							<form role="form" class="form-horizontal">							
+							<form role="form" class="form-horizontal" method="post" action="<?=base_url();?>Landingpage/notify">							
 								<div class="form-group">							 
 										<strong>When a new deal arrives for the following CATEGORY:-</strong>
 										
 										<p>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Electronics">
+												<input type="checkbox" name="category[]" value="Electronics" >
 												Electronics
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Apparels">
+												<input type="checkbox" name="category[]" value="Apparels">
 												Apparels
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Mobiles">
+												<input type="checkbox" name="category[]" value="Mobiles">
 												Mobiles
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Air Conditioners">
+												<input type="checkbox" name="category[]" value="AirConditioners ">
 												Air Conditioners 
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Flights">
+												<input type="checkbox" name="category[]" value="Flights">
 												Flights
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Hotels">
+												<input type="checkbox" name="category[]" value="Hotels">
 												Hotels
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Health&Fitness">
+												<input type="checkbox" name="category[]" value="Health&Fitness">
 												 Health & Fitness
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Accessories">
+												<input type="checkbox" name="category[]" value="Accessories">
 												Accessories
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Laptops">
+												<input type="checkbox" name="category[]" value="Laptops">
 												Laptops
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="Appliances">
+												<input type="checkbox" name="category[]" value="Appliances">
 												Appliances
 											</label>
 										</p>
@@ -95,19 +95,19 @@
 										<strong>When a new deal arrives of the following %:-</strong>										
 										<p>
 											<label class="checkbox-inline">
-												<input type="checkbox" name=" ">
+												<input type="checkbox" name="10%OFF">
 												10% OFF 
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name=" ">
+												<input type="checkbox" name="25% OFF">
 												25% OFF
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name=" ">
+												<input type="checkbox" name="40% OFF">
 												40% OFF 
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name=" ">
+												<input type="checkbox" name="50% OFF">
 												50% OFF
 											</label>											
 										</p>										
@@ -124,7 +124,7 @@
 								<div class="form-group-separator"></div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-info">Notify</button>
+									<button type="submit" class="btn btn-info">Notify</button>
 								</div>							
 							</form>							
 						</div>

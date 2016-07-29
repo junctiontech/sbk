@@ -232,7 +232,6 @@ class User extends CI_Controller {
 		$this->session->set_flashdata('message', $this->config->item("index") . " Logout Successfully!! Thank You.. ");
 		redirect("Login");
 
-	}
-	
+	}	
 	
 }

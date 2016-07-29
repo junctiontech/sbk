@@ -711,4 +711,8 @@ class Landingpage extends CI_Controller {
 			$this->parser->parse('frontend/Flights',$this->data);
 			$this->parser->parse('frontend/Footer',$this->data);
 	}
+	public function notify()
+	{
+		//print_r($_POST); die;
+	}
 }
