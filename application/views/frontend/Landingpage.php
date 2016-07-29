@@ -72,13 +72,30 @@
 						<div class="white">
 							<h2>Search Flights</h2>
 						</div>
+			  				  <div class="col-md-6 col-sm-6 col-xs-12">
+					  <div class="form-group white">								
+						  <div class="col-md-12">									
+							  <input type="radio" onclick="myFunction()" checked id="oneway" class="flat" name="radio"/>								
+							  One Way 								
+						  </div>								
+				  
+					  </div>
+				  </div>
+				  <div class="col-md-6 col-sm-6 col-xs-12">
+					  <div class="form-group white">					  
+						  <div class="col-md-12">						  
+							  <input type="radio" onclick="myFunction()" id="Returntrip"class="flat" name="radio"/>						 
+							  Return Trip					  						 
+						  </div>
+					  </div>
+				  </div>
 							  
 						<div class="col-md-6 col-sm-6 col-xs-12">
               <div class="form-group">
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -89,7 +106,7 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="todata"></datalist>
                 </div>
 							</div>
@@ -133,7 +150,7 @@
                 
 									<div class="input-group">
 											
-										<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
+										<input type="text" name="return" disabled id="return"class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
 											
 											
 										<div class="input-group-addon">
@@ -459,5 +476,13 @@ function fromID(placekey)
 				toID(this.value);
 				});
 		 })
+		function myFunction() {
+		if(document.getElementById('Returntrip').checked) {
+     document.getElementById("return").disabled = false;
+    }else if(document.getElementById('oneway').checked) {
+      document.getElementById("return").disabled = true;
+    }
+		}
+		
     </script>
 	

@@ -11,25 +11,31 @@
 						<div class="white"style="padding-bottom: 25px;">
 							<h2>Search Flights</h2>
 						</div>
-					<!--<div class="col-md-12">
-							<div class="form-group white">
-								<div class="col-md-5">
-									<input type="radio" class="flat" name="radio"/>
-									One Way 
-								</div>
-								<div class="col-md-5">
-									<input type="radio" class="flat" name="radio"/>
-									Round Trip
-								</div>
-							</div>
-						</div>-->
+						  <div class="col-md-6 col-sm-6 col-xs-12">
+					  <div class="form-group white">								
+						  <div class="col-md-12">									
+							  <input type="radio" onclick="myFunction()" checked id="oneway" class="flat" name="radio"/>								
+							  One Way 								
+						  </div>								
+				  
+					  </div>
+				  </div>
+				  <div class="col-md-6 col-sm-6 col-xs-12">
+					  <div class="form-group white">					  
+						  <div class="col-md-12">						  
+							  <input type="radio" onclick="myFunction()" id="Returntrip"class="flat" name="radio"/>						 
+							  Return Trip					  						 
+						  </div>
+					  </div>
+				  </div>
+							
 						<div class="hotel_panal1">
 						<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
 							<label class="col-md-4 col-sm-4 col-xs-12 white">From </label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="from" list="fromdata" name="from" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($from)?$from:''?>">
+								<input type="text" id="from" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($from)?$from:''?>">
 
 				  <datalist id="fromdata"></datalist>
 							</div>
@@ -40,7 +46,7 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($to)?$to:''?>">
+								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($to)?$to:''?>">
 						
 				  <datalist id="todata"></datalist>
 
@@ -66,7 +72,7 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">Return</label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 								<div class="input-group">
-											<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
+											<input type="text" name="return" disabled id="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
 											
 											<div class="input-group-addon">
 												<a href="#"><i class="linecons-calendar"></i></a>
@@ -387,5 +393,14 @@ function fromID(placekey)
 				toID(this.value);
 				});
 		 })
+		
+		function myFunction() {
+		if(document.getElementById('Returntrip').checked) {
+     document.getElementById("return").disabled = false;
+    }else if(document.getElementById('oneway').checked) {
+      document.getElementById("return").disabled = true;
+    }
+		}
+	
     </script>
 

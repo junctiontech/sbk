@@ -149,7 +149,7 @@
                                                     <img style="width: 100%; height:150px; display: block;" src="<?=isset($products->imageName)?$products->imageName:''?>" alt="image" />
                                                   
                                                 </div>
-                                                <div class="caption">
+                                                <div class="caption shrink">
                                                     <p><?=isset($products->productName)?$products->productName:''?></p>
 													  <p style="margin-top:10px">Price-<?=isset($products->productPrice)?$products->productPrice:''?></p>
 													    <p style="margin-top:10px">shop-<?=isset($products->shopName)?$products->shopName:''?></p>

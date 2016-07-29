@@ -10,7 +10,7 @@
 .view .mask, .view .content {
 	height:100%;
 }
-
+.shrink p{height:20px;overflow: hidden;};
 .field_wrapper div{ margin-bottom:10px;}
 .add_button{ margin-top:20px; margin-left:10px;vertical-align: text-bottom; }
 .remove_button{ margin-top:20px; margin-left:10px;vertical-align: text-bottom; }
