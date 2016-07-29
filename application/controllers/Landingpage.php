@@ -714,8 +714,44 @@ class Landingpage extends CI_Controller {
 	public function notify()
 	{
 		$category=$this->input->post('category');
+		$story=$this->input->post('store');
+		$percent=$this->input->post('percent');
+		$email=$this->input->post('email');		 
+//print_r($this->userinfos); die;
+		if(!empty($this->userinfos))
+		{
+			$userID=$this->userinfos['userID'];
+			$query = $this->Landingpage_model->get_email($userID);
+			$email=$query[0]->userEmail;
+			//print_r($email); die;
+			 
+		}
+		if(!empty($category)){
 		$categorys = implode(",", $category);
-		
-		//print_r($categorys); die;
+			($data['categoryName']=$categorys);	 
+		}
+		if(!empty($story)){
+		$storys=implode(",", $story);
+			($data['store']=$storys);		  
+		}
+		if(!empty($percent)){
+		$percents=implode(",",$percent);
+			($data['percent']=$percents);			 
+		}
+		$table='s4k_notify';
+		if(!empty($email)){
+			$notify=$this->Landingpage_model->match_emailid($email);
+			if(!empty($notify)){
+				$notifyID=$notify[0]->notifyID;
+				$this->Landingpage_model->update_notify($table, $data, $notifyID);	
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+			else{
+				($data['email']=$email);
+				$this->Landingpage_model->notify_insert($table,$data);
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+		}			
 	}
+	
 }

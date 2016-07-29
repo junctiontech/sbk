@@ -7,7 +7,7 @@
 				</div>				
 				<div class="modal-body">					
 					<div class="panel-body">							
-							<form role="form" class="form-horizontal" method="post" action="<?=base_url();?>Landingpage/notify">							
+							<form role="form" class="validate form-horizontal" method="post" action="<?=base_url();?>Landingpage/notify">							
 								<div class="form-group">							 
 										<strong>When a new deal arrives for the following CATEGORY:-</strong>
 										
@@ -95,33 +95,35 @@
 										<strong>When a new deal arrives of the following %:-</strong>										
 										<p>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="10%OFF">
+												<input type="checkbox" name="percent[]" value="10%OFF">
 												10% OFF 
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="25% OFF">
+												<input type="checkbox" name="percent[]" value="25%OFF">
 												25% OFF
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="40% OFF">
+												<input type="checkbox" name="percent[]" value="40%OFF">
 												40% OFF 
 											</label>
 											<label class="checkbox-inline">
-												<input type="checkbox" name="50% OFF">
+												<input type="checkbox" name="percent[]" value="50%OFF">
 												50% OFF
 											</label>											
 										</p>										
 									</div>
 								<div class="form-group-separator"></div>
-								 
+								 <?php if (empty($userinfos)) { ?>
 								<div class="form-group">
 									<label class="col-md-2">Enter your email:</label>
 									
 									<div class="col-md-4">							
-										<input type="email" class="form-control" placeholder="Enter your email" />									
+										<input type="email" class="form-control" name="email" placeholder="Enter your email" data-validate="required" data-message-required="Please Enter your email" />									
 									</div>
 								</div>
-								<div class="form-group-separator"></div>
+								
+								<?php } ?>
+								 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn-info">Notify</button>

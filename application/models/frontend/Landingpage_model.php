@@ -316,6 +316,31 @@ class Landingpage_model extends CI_Model {
 		//print_r($this->db->last_query()); die;
 		return $query->result();
 	}
+	public function notify_insert($table=false,$data=false)
+	{
+		$this->db->insert($table,$data);
+	}
+	public function match_emailid($email){
+		$this->db->select('t1.notifyID');
+		$this->db->from('s4k_notify t1');
+		$this->db->where(array('email'=>$email));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	public function update_notify($table, $data, $notifyID)
+	{
+		$this->db->where(array('notifyID'=>$notifyID));
+		$this->db->update($table, $data);
+	}
+	public function get_email($userID=false)
+	{
+		$this->db->select('t1.userEmail');
+		$this->db->from('s4k_user t1');
+		$this->db->where(array('userID'=>$userID));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 	
 }
 
