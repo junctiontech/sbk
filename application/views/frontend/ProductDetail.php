@@ -46,8 +46,7 @@
 								<span ><a target="_blank" style="color:white;" href="<?=isset($othershopprices[$keys]['productShopUrl'])?$othershopprices[$keys]['productShopUrl']:''?>">Buy now</a></span>								
 							</div>								
 							<?php } else { if($shopimage->shopID==$products[0]->shopID) { 
-							if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($products[0]->productPrice)?$products[0]->productPrice:'';}	
-						echo"50";	print_r($pricemore);
+							if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}	
 							?>								
 							<p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>								
 							<div class="btn btn-black">							
@@ -60,8 +59,7 @@
 							</div>
 							<?php } } ?>							
 							<?php } else { if($shopimage->shopID==$products[0]->shopID) { 
-							if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}	
-					echo"le64";	print_r($pricemore);
+							if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}						
 							?>								
 							<p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>								
 							<div class="btn btn-black">							
