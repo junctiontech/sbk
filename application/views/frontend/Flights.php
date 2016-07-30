@@ -413,7 +413,7 @@ function fromID(placekey)
 			var obj=$("#fromdata").find("option[value='"+val+"']")
 
 			if(obj !=null && obj.length>0){
-				$("#torequired").html('');
+				$("#fromrequired").html('');
 			return true; 
 			}else{
 			$("#from").val('');
