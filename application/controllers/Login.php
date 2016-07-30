@@ -292,6 +292,23 @@ class Login extends CI_Controller {
 			$userDOB=$this->input->post('userDOB');
 			$userMobileNo=$this->input->post('userMobileNo');
 			if(!empty($userFirstName) && !empty($userLastName) && !empty($userEmail) && !empty($userPassword) && !empty($userGender) && !empty($userMobileNo)){
+				if($app !=true){
+					 if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
+						$secret = '6LfQWiYTAAAAAJ1oMY7rK6fJFu8tP8_bFc7Gezli';
+						$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+						$responseData = json_decode($verifyResponse);
+						if($responseData->success)
+						{
+							
+						}else{
+							$this->session->set_flashdata('category_error_login', " Robot verification failed, please try again!!. ");
+							redirect('Login/signup');
+						}
+					 }else{
+						$this->session->set_flashdata('category_error_login', " Please checked captcha!!. ");
+						redirect('Login/signup');
+					 }
+				}
 				$data=array(
 				'userFirstName'=>$userFirstName,
 				'userLastName'=>$userLastName,
