@@ -181,10 +181,5 @@
 	 
 		</div>
 	</nav>
-	
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git
 	
