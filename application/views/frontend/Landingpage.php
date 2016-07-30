@@ -95,7 +95,8 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+                  <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+				  <span id="fromrequired" style="color:red" ></span>
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -106,7 +107,8 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+                 <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+				 <span id="torequired" style="color:red" ></span>
 				  <datalist id="todata"></datalist>
                 </div>
 							</div>
@@ -483,6 +485,39 @@ function fromID(placekey)
       document.getElementById("return").disabled = true;
     }
 		}
+		
+		
+		function checkfrom(){
+			var val=$("#from").val();
+
+			var obj=$("#fromdata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#fromrequired").html('');
+			return true; 
+			}else{
+			$("#from").val('');
+			  document.getElementById('fromrequired').setAttribute('class',' required') ;
+			   $("#fromrequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
+			
+			function checkto(){
+			var val=$("#to").val();
+
+			var obj=$("#todata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#torequired").html('');
+			return true;
+			}else{
+			$("#to").val('');
+			document.getElementById('torequired').setAttribute('class',' required') ;
+			$("#torequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
 		
     </script>
 	

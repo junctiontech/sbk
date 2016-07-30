@@ -31,12 +31,14 @@ class Flights extends CI_Controller {
 				if($app==true){
 					echo json_encode($jsonData['Places']);exit;
 				}else{
+					//echo"<select class=\"fromID\">";
 					foreach($jsonData['Places'] as $place)
 					{ 
 						$placeID='';$placeName='';
 						$placeID=$place['PlaceId'];$placeName=$place['PlaceName'];
-						echo "<option  value=\"$placeID\">$placeName</option> ";
+						echo "<option   value=\"$placeID\">$placeName</option> ";
 					}
+					//echo"</select>";
 				}
 			}else{
 				if($app==true){

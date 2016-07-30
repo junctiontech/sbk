@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-6 col-xs-12">
 				<div class="flight">
-					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
+					<form method="get" onsubmit="return(checkfrom());return(checkto())"  action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white"style="padding-bottom: 25px;">
 							<h2>Search Flights</h2>
 						</div>
@@ -35,9 +35,9 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">From </label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="from" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($from)?$from:''?>">
-
-				  <datalist id="fromdata"></datalist>
+								<input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Please select a valid code from list" value="<?=isset($from)?$from:''?>">
+								<span id="fromrequired" style="color:red" ></span>
+								<datalist id="fromdata"></datalist>
 							</div>
 						</div>	
 						</div>
@@ -46,8 +46,8 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($to)?$to:''?>">
-						
+								<input type="text" id="to" autocomplete="off" list="todata" onchange="checkto()" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Please select a valid code from list" value="<?=isset($to)?$to:''?>">
+						<span id="torequired" style="color:red" ></span>
 				  <datalist id="todata"></datalist>
 
 							</div>
@@ -206,7 +206,7 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                  <input type="text" id="from" list="fromdata" class="form-control"  name="from" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -219,6 +219,7 @@
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
                  <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="todata"></datalist>
+				 
                 </div>
 							</div>
               </div>
@@ -392,6 +393,10 @@ function fromID(placekey)
 				$(document).on('keyup', '#to', function() {
 				toID(this.value);
 				});
+				
+				$(document).on('click', '.fromID', function() {
+				alert(this.value);
+				});
 		 })
 		
 		function myFunction() {
@@ -401,6 +406,38 @@ function fromID(placekey)
       document.getElementById("return").disabled = true;
     }
 		}
+		
+		function checkfrom(){
+			var val=$("#from").val();
+
+			var obj=$("#fromdata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#torequired").html('');
+			return true; 
+			}else{
+			$("#from").val('');
+			  document.getElementById('fromrequired').setAttribute('class',' required') ;
+			   $("#fromrequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
+			
+			function checkto(){
+			var val=$("#to").val();
+
+			var obj=$("#todata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#torequired").html('');
+			return true;
+			}else{
+			$("#to").val('');
+			document.getElementById('torequired').setAttribute('class',' required') ;
+			$("#torequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
 	
     </script>
 
