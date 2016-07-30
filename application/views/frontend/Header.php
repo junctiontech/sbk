@@ -101,7 +101,7 @@
 				 <?php } ?>
 				<li>					
 						<?php if(!empty($userinfos)){ ?>
-							<a href="<?=base_url();?>User/Dashboard.html" title="Go to dashboard>
+							<a href="<?=base_url();?>User/Dashboard.html" title="Go to dashboard">
 								<span class="white">Hi <?=isset($userinfos['userFirstName'])?$userinfos['userFirstName']:''?></span>
 								<i class="fa-link-ext"></i>
 							</a>
