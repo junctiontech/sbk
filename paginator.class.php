@@ -24,7 +24,7 @@ class Paginator{
 	function Paginator($base_url)
 	{ 	$this->base_url=$base_url;
 		$this->current_page = 1;
-		$this->mid_range = 7;
+		$this->mid_range = 6;
 		$this->ipp_array = array(10,25,50,100,'All');
 		$this->items_per_page = (!empty($_GET['ipp'])) ? $_GET['ipp']:$this->default_ipp;
 	}
