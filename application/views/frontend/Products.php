@@ -76,7 +76,7 @@
 		<div class="clear"></div>
 		
 		<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">
-         <div class="row"> <?php if(!empty($products)){ foreach($products as $product){ print_r($product->shop_image);die;
+         <div class="row"> <?php if(!empty($products)){ foreach($products as $product){ 
 			?>
 		
 		         <div class="grid_1_of_4 images_1_of_4">
