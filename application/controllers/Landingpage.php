@@ -36,7 +36,7 @@ class Landingpage extends CI_Controller {
 		foreach($categories as $category){
 			
 		$query = $this->Landingpage_model->get_products_search('','','','',array('t1.categoriesID'=>$category->categoriesID));
-		
+		          
 		foreach ($query as $article)
 		{
 			
@@ -55,6 +55,7 @@ class Landingpage extends CI_Controller {
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productImageAltTag',$article->productImageAltTag));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productPrice',$article->productPrice));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productShopUrl',$article->productShopUrl));
+			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('shop_image',$article->s));
 			$index->addDocument($doc);
 		echo 'Added ' . $article->productName . ' to index.<br />';
 		}
@@ -348,7 +349,25 @@ class Landingpage extends CI_Controller {
 	
 	}
 	
-
+	public function getautosuggestproduct()
+	{
+		if($this->input->post())
+		{
+			$productkey=$this->input->post('placekey');
+			$productName=$this->Landingpage_model->getProductName($productkey);
+			if(!empty($productName)){
+	
+				foreach($productName as $place)
+				{
+					$placeID='';$placeName='';
+					$placeID=$place->productName;$placeName=$place->productName;
+					echo "<option  value=\"$placeID\">$placeName</option> ";
+				}
+	
+			}
+		}
+	
+	}
 	
 	public function compare()
 

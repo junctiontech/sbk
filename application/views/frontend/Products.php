@@ -76,19 +76,22 @@
 		<div class="clear"></div>
 		<div class="row">
 		<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">
+ 
           <?php if(!empty($products)){ foreach($products as $product){?>
+ 
 		
 		         <div class="grid_1_of_4 images_1_of_4">
+				 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html">
 				<div class="imageheightfix">
-		<a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html"><img src="<?=$product->imageName?>" alt="" /></a>
+		<img src="<?=$product->imageName?>" alt="" />
 			</div>
 					<h2>
             <?=$product->productName?>
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
-          <p><span class="price">Rs. 
+          <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>"><span class="price">Rs. 
             <?=number_format($product->productPrice,2)?>
-            </span></p>           
+            </span></p> </a>          
           <div class="checkbox">
             <label>
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">

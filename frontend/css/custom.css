@@ -21,7 +21,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	background-color:#fff;
 }
 .search_box input[type="text"]{
-	width:85%;
+	width:92%;
 	padding:10px 8px;
 	outline:none;
 	border:none;
@@ -141,7 +141,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	padding:1.5%;
 	text-align:center;
 	position:relative; 
-	height:350px;
+	height:370px;
 	margin-right: 10px;
 }
 .imageswidth{

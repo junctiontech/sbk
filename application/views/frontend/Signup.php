@@ -1,4 +1,5 @@
 <div class="page-container">	
+<script src='https://www.google.com/recaptcha/api.js'></script>
   <div class="main-content"> 
   <div class="page-loading-overlay">
 				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
@@ -26,7 +27,7 @@
 				<div class="panel-body">
 					 <p align="center">Signup Form</p>
 						
-						<form role="form" class="form-horizontal form-label-left sign_up"   method="post" action="<?=base_url();?>Login/insert_user_info">
+						<form role="form" class="form-horizontal form-label-left sign_up" onsubmit="return(get_action())"    method="post" action="<?=base_url();?>Login/insert_user_info">
 						
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">First Name<span class="required">*</span>
@@ -48,7 +49,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Email<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" class="form-control col-md-7 col-xs-12"  name="userEmail" placeholder="Last Name" required="required" type="text">
+									<input id="name" class="form-control col-md-7 col-xs-12"  name="userEmail" placeholder="Email" required="required" type="text">
 								</div>
 							</div>
 							 <div class="item form-group">
@@ -83,7 +84,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="input-group ">
 					
-								<input type="text" name="checkIn" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Check In" data-validate="required" data-message-required=" ">
+								<input type="text" name="userDOB" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Date Of Birth" data-validate="required" data-message-required=" ">
 
 								
 						
@@ -106,11 +107,23 @@
 								</div>
 							</div>
 							
+							<div class="item form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">   <span class="required"></span>
+								</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<div class="g-recaptcha" data-sitekey="6LfQWiYTAAAAAD7__GjeLW7habe9EmslR5tKEWrb" style=" "></div>
+								<span id="captcha" style= "float:left;color:red;margin-top:10px"></span>
+								</div>
+							</div>
+							
 								
 							<div class="ln_solid"></div>
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-3">
-							
+							<div class="col-sm-6 col-md-6 col-lg-6">
+			
+			
+			</div>	
 									<button  id="submit" name="submit" value="submit" type="submit" class="btn btn-success">Signup</button>
 									
 								</div>
@@ -123,3 +136,20 @@
 			</div>
 		</div>
 		 <div class="clear"></div>
+<script>
+function get_action(form) {
+	
+    var v = grecaptcha.getResponse();
+	
+    if(v.length == 0)
+    {	
+        document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
+        return false;
+    }
+    if(v.length != 0)
+    {
+        document.getElementById('captcha').innerHTML="Captcha completed";
+        return true; 
+    }
+}
+</script>

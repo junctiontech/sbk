@@ -114,8 +114,12 @@
               <div class="form-group">
                 <label class="col-md-4 col-sm-4 col-xs-4 white">From</label>
              
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+ 
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                  <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="please enter City or Airport" >
+				  <span class="validate-has-error" id="fromrequired" style="color:red;display: inline;
+}"></span>
+ 
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -124,9 +128,12 @@
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
 				  
-				 <label class="col-md-4 col-sm-4 col-xs-4 white">To</label>
-				                 <div class="col-md-8 col-sm-8 col-xs-8">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+
+				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
+				                 <div class="col-md-8 col-sm-8 col-xs-12">
+                 <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Please enter City or Airport" >
+				 <span id="torequired" style="color:red" ></span>
+ 
 				  <datalist id="todata"></datalist>
                 </div>
 							</div>
@@ -232,7 +239,7 @@
           </div>  
 		  
 		  <div role="tabpanel" class="tab-pane fade " id="tab_content1" aria-labelledby="home-tab">
-				 <script src="https://www.hotelscombined.com/SearchBox/343862"></script>
+				<!-- <script src="https://www.hotelscombined.com/SearchBox/343862"></script>-->
 			
 		
           </div>
@@ -260,7 +267,7 @@
     	</div>
 		<div class="section group hidden-xs">
 		    <div class="widget_wrap" style="width:100%;height:400px;display:inline-block;"><iframe src="https://www.zomato.com/widgets/res_search_widget.php?city_id=26&theme=red&widgetType=custom&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe></div>
-	
+			
 		</div>
 		<div class="clear"></div>
 	
@@ -274,14 +281,19 @@
     	</div>
 		<div class="section group hidden-xs">
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
+ 
 				<div class="grid_1_of_4 images_1_of_4 images_1_of4W">
+ 
+			 
+				 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html">
+ 
 				<div class="imageheightfix">
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+					<img src="<?=$product->imageName?>"  alt=""  />
 				</div>
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
+					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p></a>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -319,14 +331,18 @@
     	</div>
 	      <div class="section group hidden-xs">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
+ 
 				<div class="grid_1_of_4 images_1_of_4 images_1_of4W">
+ 
+				<a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html">
+ 
 					<div class="imageheightfix">
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
+					 <img src="<?=$product->imageName?>"  alt=""  />
 					</div>
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
+					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p></a>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -361,13 +377,16 @@
     	</div>
 			<div class="section group hidden-xs">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
+ 
 				<div class="grid_1_of_4 images_1_of_4 images_1_of4W">
+				<a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html">
+ 
 						<div class="imageheightfix">
-					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
+					 <img src="<?=$product->imageName?>"  alt="" />
 					</div>
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p>
+					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p></a>
 					 
 					 <!-- <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /* if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
@@ -503,6 +522,41 @@ function fromID(placekey)
       document.getElementById("return").disabled = true;
     }
 		}
+		
+		
+		function checkfrom(){
+			var val=$("#from").val();
+
+			var obj=$("#fromdata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#fromrequired").html('');
+			return true; 
+			}else{
+			$("#from").val('');
+			  document.getElementById('fromrequired').setAttribute('class',' required') ;
+			  alert('Please select a valid code from list');
+			   //$("#fromrequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
+			
+			function checkto(){
+			var val=$("#to").val();
+
+			var obj=$("#todata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#torequired").html('');
+			return true;
+			}else{
+			$("#to").val('');
+			document.getElementById('torequired').setAttribute('class',' required') ;
+			alert('Please select a valid code from list');
+			//$("#torequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
 		
     </script>
 	

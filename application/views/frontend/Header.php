@@ -43,23 +43,25 @@
 					
 			<ul class="navbar-nav nav nav-userinfo  hidden-xs">
 				<li>
-					<a href="<?=base_url();?>">
-						<i class="fa fa-home"></i>
+					<a href="<?=base_url();?>" title="Go to home page">
+						<i  class="fa fa-home"></i>
 						 
 					</a>
 					</li>
+
+				
 				<li class="middle-align">
 									 
 										<a href="javascript:;" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});" class="fa fa-bell-o"></a>
 									 
-					
-					<!--<a href=" ">
-						<i class=" fa fa-bell-o"></i>
-						 
-					</a>-->
+				
 					</li>
-				<li>
-					<a href="javascript:;">
+
+ 
+					<li>
+				
+					<a href="javascript:;" title="You are searcheela no">
+ 
  
 						<span class="title">You are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
 					</a>
@@ -84,7 +86,9 @@
 			<ul class="nav nav-userinfo white navbar-right">
 				
 				<li>					
-					<a href="javascript:;">
+ 
+					<a href="javascript:;" title="Download our android app">
+ 
 						<i class="android"></i>
 					<!--	<span class="badge badge-green">15</span>-->
 					</a>					
@@ -92,7 +96,10 @@
 				<?php if(!empty($userinfos)) { ?>
 					<li class=" user-profile">
 					
-						<a href="javascript:;">
+ 
+ 
+						<a href="javascript:;" title="Your profile image">
+ 
 							<?php if (!empty($userinfos['userProfileImage'])) { ?>
 							<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
 							<?php } else { ?>
@@ -102,12 +109,12 @@
 				 <?php } ?>
 				<li>					
 						<?php if(!empty($userinfos)){ ?>
-							<a href="<?=base_url();?>User/Dashboard.html">
+							<a href="<?=base_url();?>User/Dashboard.html" title="Go to dashboard">
 								<span class="white">Hi <?=isset($userinfos['userFirstName'])?$userinfos['userFirstName']:''?></span>
 								<i class="fa-link-ext"></i>
 							</a>
 						<?php }else{ ?>
-							<a href="<?=base_url();?>Login.html">
+							<a href="<?=base_url();?>Login.html" title="Login to your account">
 								<span class="white">Login</span>
 								<i class="fa-link-ext"></i>
 							</a>
@@ -115,7 +122,7 @@
 				</li> 
 						<?php if(!empty($userinfos)){ ?>			
 				<li>
-						<a href="<?=base_url();?>Login/Logout.html">
+						<a href="<?=base_url();?>Login/Logout.html" title="Logout">
 								<span class="white">Logout</span>
 								<i class="fa-link-ext"></i>
 						</a>
@@ -135,10 +142,12 @@
 			</div>
 			<div class="col-md-9 col-sm-8 col-xs-12">
 			  <div class="header_top_right">
-			    <div class="search_box ">
+			    <div class="search_box tooltip-primary" data-toggle="tooltip" data-placement="bottom" title="Hello, search through searchb4kharch android app to earn Rs.10 daily">
 				    <form action="<?=base_url();?>Landingpage/Product/search" method="get">
 					<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->
-				    	<input type="text" placeholder="Search.. Shop.. Earn" Value="<?=isset($searchq)?$searchq:''?>" name="q" ><input type="hidden" name="c" value="all"/><input type="submit" value="SEARCH">
+				    	<input type="text" placeholder="Search.. Shop.. Earn" id="search" list="searchdata" data-validate="required" data-message-required="Please enter more than two characters" autocomplete="off" Value="<?=isset($searchq)?$searchq:''?>" name="q" >
+						<datalist id="searchdata"></datalist>
+						<input type="hidden" name="c" value="all"/><input type="submit" value="SEARCH" >
 				    </form>
 			    </div>
 				</div>
@@ -180,6 +189,5 @@
 	 
 		</div>
 	</nav>
-	
 
 	

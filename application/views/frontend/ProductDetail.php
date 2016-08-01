@@ -206,6 +206,7 @@
 								 <div class="grid_1_of_4 images_1_of_4">
 									 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
 					
+ 
 									 <h2><?=$similarproducted->productName?> </h2>	
 									 <p><span class="price">Rs. <?=number_format($similarproducted->productPrice,2)?></span></p>
 								 </div>
@@ -234,6 +235,7 @@
 			 	 <div class="col-md-2 col-sm-2 col-xs-0">
 				 <div class="fixedright" style="margin-top:-1%;">
 				 <a href="http://tracking.vcommission.com/aff_c?offer_id=480&aff_id=48478&file_id=88882&file_id=79365" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/480/Zovi_CPS_Tees_160x600.jpg" width="160" height="600" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=480&file_id=79365&aff_id=48478&file_id=88882" width="1" height="1" />
+ 
 			</div>
 			 <div class="clear"></div>
 			 </div>

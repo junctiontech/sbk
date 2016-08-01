@@ -8,7 +8,7 @@
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="flightsearchfixd">
 				<div class="flight">
-					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
+					<form method="get" onsubmit="return(checkfrom());return(checkto())"  action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white"style="padding-bottom: 25px;">
 							<h2>Search Flights</h2>
 						</div>
@@ -36,9 +36,9 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">From </label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="from" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($from)?$from:''?>">
-
-				  <datalist id="fromdata"></datalist>
+								<input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="please enter City or Airport" value="<?=isset($from)?$from:''?>">
+								<span id="fromrequired" style="color:red" ></span>
+								<datalist id="fromdata"><option value="<?=isset($from)?$from:''?>"></datalist>
 							</div>
 						</div>	
 						</div>
@@ -47,9 +47,9 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="Type here.." value="<?=isset($to)?$to:''?>">
-						
-				  <datalist id="todata"></datalist>
+								<input type="text" id="to" autocomplete="off" list="todata" onchange="checkto()" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="please enter City or Airport" value="<?=isset($to)?$to:''?>">
+						<span id="torequired" style="color:red" ></span>
+				  <datalist id="todata"><option value="<?=isset($to)?$to:''?>"></datalist>
 
 							</div>
 						</div>
@@ -194,7 +194,7 @@
 		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 		<div class="col-md-8 col-sm-8 col-xs-12">
 				<div class="flight1">
-					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
+					<form method="get" onsubmit="return(checkfrom());return(checkto())" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white"style="padding-bottom: 25px;">
 							<h2>Search Flights</h2>
 						</div>
@@ -204,8 +204,11 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
-				  <datalist id="fromdata"></datalist>
+
+                  <input type="text" id="from" list="fromdata" autocomplete="off" class="form-control" onchange="checkfrom()"  name="from" placeholder="City or Airport" data-validate="required" data-message-required="please enter City or Airport" value="<?=isset($from)?$from:''?>">
+				  <span id="fromrequired" style="color:red" ></span>
+				  <datalist id="fromdata"><option value="<?=isset($from)?$from:''?>"></datalist>
+
                 </div>
 							</div>
 							</div>
@@ -215,8 +218,12 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
-				  <datalist id="todata"></datalist>
+
+                 <input type="text" id="to" list="todata" class="form-control" autocomplete="off" onchange="checkto()" name="to" placeholder="City or Airport" data-validate="required" data-message-required="please enter City or Airport" value="<?=isset($to)?$to:''?>">
+				 <span id="torequired" style="color:red" ></span>
+				  <datalist id="todata"><option value="<?=isset($to)?$to:''?>"></datalist>
+				 
+
                 </div>
 							</div>
               </div>
@@ -232,7 +239,7 @@
                 
 						<div class="input-group">
 											
-							<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" data-message-required=" ">
+							<input type="text" name="departure" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Departure Date" data-validate="required" data-message-required=" " value="<?=isset($departure)?$departure:''?>">
 											
 											
 							<div class="input-group-addon">
@@ -259,7 +266,7 @@
                 
 									<div class="input-group">
 											
-										<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date">
+										<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
 											
 											
 										<div class="input-group-addon">
@@ -283,12 +290,12 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">Class</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <select class="form-control" name="class">
-									<option value="Economy">Economy</option>
-									<option value="premiumEconomy">Premium Economy</option>
-									<option value="Business">Business</option>
-									<option value="First">First</option>
-						</select>
+                <select class="form-control" name="class">
+									<option value="Economy" <?php if(!empty($class)){ if($class=='Economy'){ echo"selected";} } ?>>Economy</option>
+									<option value="premiumEconomy" <?php if(!empty($class)){ if($class=='premiumEconomy'){ echo"selected";} } ?>>Premium Economy</option>
+									<option value="Business" <?php if(!empty($class)){ if($class=='Business'){ echo"selected";} } ?>>Business</option>
+									<option value="First" <?php if(!empty($class)){ if($class=='First'){ echo"selected";} } ?>>First</option>
+								</select>
                 </div>
 							</div></div>
 						
@@ -297,14 +304,14 @@
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">Adults</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
                  <select class="form-control" name="adults">
-<option  value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
+<option value="1" <?php if(!empty($adult)){ if($adult==1){ echo"selected";} } ?>>1</option>
+<option value="2" <?php if(!empty($adult)){ if($adult==2){ echo"selected";} } ?>>2</option>
+<option value="3" <?php if(!empty($adult)){ if($adult==3){ echo"selected";} } ?>>3</option>
+<option value="4" <?php if(!empty($adult)){ if($adult==4){ echo"selected";} } ?>>4</option>
+<option value="5" <?php if(!empty($adult)){ if($adult==5){ echo"selected";} } ?>>5</option>
+<option value="6" <?php if(!empty($adult)){ if($adult==6){ echo"selected";} } ?>>6</option>
+<option value="7" <?php if(!empty($adult)){ if($adult==7){ echo"selected";} } ?>>7</option>
+<option value="8" <?php if(!empty($adult)){ if($adult==8){ echo"selected";} } ?>>8</option>
 
 </select>
                 </div>
@@ -390,6 +397,10 @@ function fromID(placekey)
 				$(document).on('keyup', '#to', function() {
 				toID(this.value);
 				});
+				
+				$(document).on('click', '.fromID', function() {
+				alert(this.value);
+				});
 		 })
 		
 		function myFunction() {
@@ -399,6 +410,40 @@ function fromID(placekey)
       document.getElementById("return").disabled = true;
     }
 		}
+		
+		function checkfrom(){
+			var val=$("#from").val();
+
+			var obj=$("#fromdata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#fromrequired").html('');
+			return true; 
+			}else{
+			$("#from").val('');
+			  document.getElementById('fromrequired').setAttribute('class',' required') ;
+			  alert('Please select a valid code from list');
+			  // $("#fromrequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
+			
+			function checkto(){
+			var val=$("#to").val();
+
+			var obj=$("#todata").find("option[value='"+val+"']")
+
+			if(obj !=null && obj.length>0){
+				$("#torequired").html('');
+			return true;
+			}else{
+			$("#to").val('');
+			document.getElementById('torequired').setAttribute('class',' required') ;
+			alert('Please select a valid code from list');
+			//$("#torequired").html('Please select a valid code from list');
+			return false;
+			}
+			}
 	
     </script>
 

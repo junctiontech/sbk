@@ -1,11 +1,38 @@
+<style>#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+    border: none;
+    text-indent: 100%;
+    background: url(../frontend/images/arrow_up.png) no-repeat right top;
+}
+
+#toTopHover {
+    width: 48px;
+    height: 48px;
+    display: block;
+    overflow: hidden;
+    float: right;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+}
+</style>
 <!-- footer content -->
                 <footer>
                     <div class="">
                         <p class="pull-right">Developed and maintain by <a>junctiotech.in</a>. |
                             <span class="lead"> <i class="fa fa-paw"></i> Searchb4kharch</span>
                         </p>
+						<a href="#top" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+                    
                     </div>
-                    <div class="clearfix"></div>
+					<div class="clearfix"></div>
                 </footer>
                 <!-- /footer content -->
 

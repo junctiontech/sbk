@@ -111,10 +111,12 @@
                         <div class="title_left">
                             <h3>Product List </h3> <button type="submit" class="btn btn-success">Move To Live</button>
                         </div>
-						<div class="title_right">
-                           <div class="dypagination">
+						
+                           
+							
+							<div class="dypagination">
                
-										<?php echo isset($pagination)?$pagination:'';?>
+										<?php echo isset($pagination)?$pagination:'';?> <?php echo isset($paginationPagedrop)?$paginationPagedrop:'';?>
 										<style>
 										.dypagination{margin:10px;text-align:right}
 										.dypagination ul{}
@@ -125,9 +127,80 @@
 										
 										</style>
 									   </div>
-                        </div>
+							 
+						
                         
                     </div>
+<style type="text/css">
+ .paginate {
+ 	font-family: Arial, Helvetica, sans-serif;
+ 	font-size: .9em;
+ }
+ 
+ a.paginate {
+ 	border: 1px solid #000080;
+ 	padding: 2px 6px 2px 6px;
+ 	text-decoration: none;
+ 	color: #000080;
+ }
+ 
+ 
+ a.paginate:hover {
+ 	background-color: #000080;
+ 	color: #FFF;
+ 	text-decoration: underline;
+ }
+ 
+ a.current {
+ 	border: 1px solid #000080;
+ 	font: bold .9em Arial,Helvetica,sans-serif;
+ 	padding: 2px 6px 2px 6px;
+ 	cursor: default;
+ 	background:#000080;
+ 	color: #FFF;
+ 	text-decoration: none;
+ }
+ 
+ span.inactive {
+ 	border: 1px solid #999;
+ 	font-family: Arial, Helvetica, sans-serif;
+ 	font-size: .9em;
+ 	padding: 2px 6px 2px 6px;
+ 	color: #999;
+ 	cursor: default;
+ }
+ 
+ table {
+ 	margin: 8px;
+ }
+ 
+ th {
+ 	font-family: Arial, Helvetica, sans-serif;
+ 	font-size: .9em;
+ 	background: #666;
+ 	color: #FFF;
+ 	padding: 2px 6px;
+ 	border-collapse: separate;
+ 	border: 1px solid #000;
+ }
+ 
+ td {
+ 	font-family: Arial, Helvetica, sans-serif;
+ 	font-size: .9em;
+ 	border: 1px solid #DDD;
+ }
+ </style>
+ <script>
+ function hilite(elem)
+ {
+ 	elem.style.background = '#FFC';
+ }
+ 
+ function lowlite(elem)
+ {
+ 	elem.style.background = '';
+ }
+ </script>
                     <div class="clearfix"></div>
 					
                     <div class="row">
@@ -184,7 +257,7 @@
 										</form>
 										<div class="dypagination">
                
-										<?php echo isset($pagination)?$pagination:'';?>
+										<?php echo isset($pagination)?$pagination:'';?> <?php echo isset($paginationPagedrop)?$paginationPagedrop:'';?>
 										<style>
 										.dypagination{margin:10px;text-align:right}
 										.dypagination ul{}
