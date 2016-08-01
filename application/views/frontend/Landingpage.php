@@ -95,8 +95,9 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
-				  <span id="fromrequired" style="color:red" ></span>
+                  <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="." >
+				  <span class="validate-has-error" id="fromrequired" style="color:red;display: inline;
+}"></span>
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -107,7 +108,7 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
+                 <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="." >
 				 <span id="torequired" style="color:red" ></span>
 				  <datalist id="todata"></datalist>
                 </div>
