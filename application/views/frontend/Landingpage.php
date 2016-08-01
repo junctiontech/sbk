@@ -95,7 +95,7 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="." >
+                  <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="please enter City or Airport" >
 				  <span class="validate-has-error" id="fromrequired" style="color:red;display: inline;
 }"></span>
 				  <datalist id="fromdata"></datalist>
@@ -108,7 +108,7 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="." >
+                 <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Please enter City or Airport" >
 				 <span id="torequired" style="color:red" ></span>
 				  <datalist id="todata"></datalist>
                 </div>
@@ -499,7 +499,8 @@ function fromID(placekey)
 			}else{
 			$("#from").val('');
 			  document.getElementById('fromrequired').setAttribute('class',' required') ;
-			   $("#fromrequired").html('Please select a valid code from list');
+			  alert('Please select a valid code from list');
+			   //$("#fromrequired").html('Please select a valid code from list');
 			return false;
 			}
 			}
@@ -515,7 +516,8 @@ function fromID(placekey)
 			}else{
 			$("#to").val('');
 			document.getElementById('torequired').setAttribute('class',' required') ;
-			$("#torequired").html('Please select a valid code from list');
+			alert('Please select a valid code from list');
+			//$("#torequired").html('Please select a valid code from list');
 			return false;
 			}
 			}

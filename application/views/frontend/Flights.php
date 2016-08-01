@@ -35,7 +35,7 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">From </label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="." value="<?=isset($from)?$from:''?>">
+								<input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" name="from" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="please enter City or Airport" value="<?=isset($from)?$from:''?>">
 								<span id="fromrequired" style="color:red" ></span>
 								<datalist id="fromdata"><option value="<?=isset($from)?$from:''?>"></datalist>
 							</div>
@@ -46,7 +46,7 @@
 							<label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 							<div class="col-md-8 col-sm-8 col-xs-12">
 
-								<input type="text" id="to" autocomplete="off" list="todata" onchange="checkto()" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="." value="<?=isset($to)?$to:''?>">
+								<input type="text" id="to" autocomplete="off" list="todata" onchange="checkto()" class="form-control" name="to" placeholder="City or Airport" data-validate="required" class="form-control" data-message-required="please enter City or Airport" value="<?=isset($to)?$to:''?>">
 						<span id="torequired" style="color:red" ></span>
 				  <datalist id="todata"><option value="<?=isset($to)?$to:''?>"></datalist>
 
@@ -206,7 +206,7 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" autocomplete="off" class="form-control" onchange="checkfrom()"  name="from" placeholder="Type here.." data-validate="required" data-message-required="." value="<?=isset($from)?$from:''?>">
+                  <input type="text" id="from" list="fromdata" autocomplete="off" class="form-control" onchange="checkfrom()"  name="from" placeholder="Type here.." data-validate="required" data-message-required="please enter City or Airport" value="<?=isset($from)?$from:''?>">
 				  <span id="fromrequired" style="color:red" ></span>
 				  <datalist id="fromdata"><option value="<?=isset($from)?$from:''?>"></datalist>
                 </div>
@@ -218,7 +218,7 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" autocomplete="off" onchange="checkto()" name="to" placeholder="Type here.." data-validate="required" data-message-required="." value="<?=isset($to)?$to:''?>">
+                 <input type="text" id="to" list="todata" class="form-control" autocomplete="off" onchange="checkto()" name="to" placeholder="Type here.." data-validate="required" data-message-required="please enter City or Airport" value="<?=isset($to)?$to:''?>">
 				 <span id="torequired" style="color:red" ></span>
 				  <datalist id="todata"><option value="<?=isset($to)?$to:''?>"></datalist>
 				 
@@ -420,7 +420,8 @@ function fromID(placekey)
 			}else{
 			$("#from").val('');
 			  document.getElementById('fromrequired').setAttribute('class',' required') ;
-			   $("#fromrequired").html('Please select a valid code from list');
+			  alert('Please select a valid code from list');
+			  // $("#fromrequired").html('Please select a valid code from list');
 			return false;
 			}
 			}
@@ -436,7 +437,8 @@ function fromID(placekey)
 			}else{
 			$("#to").val('');
 			document.getElementById('torequired').setAttribute('class',' required') ;
-			$("#torequired").html('Please select a valid code from list');
+			alert('Please select a valid code from list');
+			//$("#torequired").html('Please select a valid code from list');
 			return false;
 			}
 			}
