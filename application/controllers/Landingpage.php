@@ -21,11 +21,13 @@ class Landingpage extends CI_Controller {
 		$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->userinfos['userID'],'Status'=>'Active'));
 		$this->data['whislist']=count($wishlist);
 		$this->data['whislistproduct']=array();
+		$this->whislistproduct[]='';
 		foreach($wishlist as $wishlists){
 		$this->whislistproduct[]=$this->data['whislistproduct'][]=$wishlists->productID;
 }
 
-		}
+		}//print_r($this->whislistproduct);// die;
+	
 	}
 	
 	function reindex()
@@ -520,7 +522,7 @@ class Landingpage extends CI_Controller {
 		{
 			$baseurl=base_url();
 			foreach ($filterprodect as $filter)
-			{			
+			{		//	print_r($this->whislistproduct); die;
 				echo"<div class=\"grid_1_of_4 images_1_of_4\">
 				<div class=\"imageheightfix\">
 					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
