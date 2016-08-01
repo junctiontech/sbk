@@ -168,20 +168,20 @@
 								 <div class="panel panel-default">
 									 <div class="panel-body">
 										 <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-											 <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+											 <table cellspacing="0" class="table table-small-font  ">
 												 <tbody>
 													 
 														 <tr>
 														  <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
 														 <td>  <div class="section group">
-								
+								 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html">
 								 <div class="grid_1_of_4 images_1_of_4 imageswidth">
-									 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
+									<img src="<?=$similarproducted->imageName?>" alt="" />
 					
 									 <h2><?=$similarproducted->productName?> </h2>	
-									 <p><span class="price">Rs. <?=number_format($similarproducted->productPrice,2)?></span></p>
+									 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$similarproducted->shop_image?>"><span class="price">Rs. <?=number_format($similarproducted->productPrice,2)?></span></p>
 								 </div>
-								 
+								 </a>
 							 </div> </td><?php } }else{ ?> 
 														 <td>No product Found!!</td>
 														 <?php }?>
