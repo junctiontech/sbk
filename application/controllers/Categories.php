@@ -205,7 +205,7 @@ class Categories extends CI_Controller
 			$this->data['filtergroupdata']=$this->Categories_model->get_catfilter($categoriesID);
 		}
 		$this->data['categories']=$this->Categories_model->get_categorydata();
-		$this->load->view('admin/createfiltermodel', $this->data);
+		$this->load->view('admin/Createfiltermodel', $this->data);
 	}
 	
 	public function insertfilter()
