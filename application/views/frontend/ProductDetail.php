@@ -193,12 +193,13 @@
 					
 					<div class="section group">
 		   <?php if(!empty($similarproduct)){ foreach($similarproduct as $similarproducted){?>
+				 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html">
 				<div class="grid_1_of_4 similar_images_1_of_4">
-					 <a href="<?=base_url();?>Landingpage/Product/<?=$similarproducted->categoriesUrlKey?>/<?=$similarproducted->sb4kProductID?>/<?=$similarproducted->productsUrlKey?>.html"><img src="<?=$similarproducted->imageName?>" alt="" /></a>
+					<img src="<?=$similarproducted->imageName?>" alt="" />
 					 <h2><?=$similarproducted->productName?> </h2>					
-					 <p><span class="price">Rs. <?=number_format($similarproducted->productPrice,2)?></span></p>					     
+					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$similarproducted->shop_image?>"><span class="price">Rs. <?=number_format($similarproducted->productPrice,2)?></span></p>					     
 				</div>
-			
+			</a>
 		  <?php } }else{ echo"No product Found!!";}?> 
 						</div> 
 	 <div class="clear"></div>
