@@ -55,7 +55,7 @@ class Landingpage extends CI_Controller {
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productImageAltTag',$article->productImageAltTag));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productPrice',$article->productPrice));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productShopUrl',$article->productShopUrl));
-			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('shop_image',$article->s));
+			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('shop_image',$article->shop_image));
 			$index->addDocument($doc);
 		echo 'Added ' . $article->productName . ' to index.<br />';
 		}
