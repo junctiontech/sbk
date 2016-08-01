@@ -1,8 +1,7 @@
 <div class="page-loading-overlay">
 				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
 			</div> 
-
-<div class="col-sm-6 col-md-6 col-xs-12 form_content ">
+<div class="col-sm-9 col-md-9 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
 		  <div class="alert alert-success alert-dismissible fade in" role="alert">
@@ -21,9 +20,7 @@
 <?php }?>
 		 <!-- Alert section End-->
 <p> Welcome to SearchB4Kharch</p>
-</div>
- 
- 
+</div> 
 </div>
 </div>
 </div><div class="clear"></div>

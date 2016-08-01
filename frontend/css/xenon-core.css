@@ -839,6 +839,7 @@ body {
   text-decoration: none;
   display: block;
   padding: 13px 5px;
+	width:117%;
   border-bottom: 1px solid #313437;
 }
 .sidebar-menu .main-menu a > i {
@@ -4685,10 +4686,10 @@ label.cbr-inline + .cbr-inline {
 }
 .nav.nav-tabs + .tab-content {
 
-  padding: 10px;
+  padding: 8px;
   margin-bottom:0px;
 	border-radius:20px;
-	margin-top:10px;
+	margin-top:0px;
   background:rgba(73,74,78,0.72);
 }
 .nav.nav-tabs + .tab-content > p:last-child,

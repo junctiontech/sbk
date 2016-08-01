@@ -713,6 +713,8 @@ class Landingpage extends CI_Controller {
 	}
 	public function notify()
 	{
+		if(!empty($_POST))
+		{
 		$category=$this->input->post('category');
 		$story=$this->input->post('store');
 		$percent=$this->input->post('percent');
@@ -744,14 +746,24 @@ class Landingpage extends CI_Controller {
 			if(!empty($notify)){
 				$notifyID=$notify[0]->notifyID;
 				$this->Landingpage_model->update_notify($table, $data, $notifyID);	
-				redirect($_SERVER['HTTP_REFERER']);
+				$this->session->set_flashdata('message_type', 'success');
+				$this->session->set_flashdata('message', $this->config->item("Landingpage") . "You Have Subscribe Successfully!!");
+				redirect($_SERVER['HTTP_REFERER']);				
 			}
 			else{
 				($data['email']=$email);
 				$this->Landingpage_model->notify_insert($table,$data);
+				$this->session->set_flashdata('message_type', 'success');
+				$this->session->set_flashdata('message', $this->config->item("Landingpage") . "You Have Subscribe Successfully!!");
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 		}			
 	}
-	
+
+	else{ 
+		$this->session->set_flashdata('message_type', 'error');
+		$this->session->set_flashdata('message', $this->config->item("Landingpage") . "please checked atleast one checkbox");
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+		}
 }

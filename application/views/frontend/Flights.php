@@ -5,13 +5,14 @@
 			</div> 
 		<?php if (!empty($flightFinalArray)) { ?>
 		<div class="row">
-			<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<div class="flightsearchfixd">
 				<div class="flight">
 					<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white"style="padding-bottom: 25px;">
 							<h2>Search Flights</h2>
 						</div>
-						  <div class="col-md-6 col-sm-6 col-xs-12">
+						  <div class="col-md-6 col-sm-6 col-xs-6">
 					  <div class="form-group white">								
 						  <div class="col-md-12">									
 							  <input type="radio" onclick="myFunction()" checked id="oneway" class="flat" name="radio"/>								
@@ -20,7 +21,7 @@
 				  
 					  </div>
 				  </div>
-				  <div class="col-md-6 col-sm-6 col-xs-12">
+				  <div class="col-md-6 col-sm-6 col-xs-6">
 					  <div class="form-group white">					  
 						  <div class="col-md-12">						  
 							  <input type="radio" onclick="myFunction()" id="Returntrip"class="flat" name="radio"/>						 
@@ -116,12 +117,9 @@
 							</div>
 					</form>
 				</div>
-			</div>
-			
-			
-			
-		 
-			<div class="col-md-8 col-sm-6 col-xs-12 ">
+				</div>
+			</div>	 
+			<div class="col-md-8 col-sm-8 col-xs-12 ">
 				
 				<?php foreach ($flightFinalArray as $flightFinalArrays) { ?>
 				
@@ -144,7 +142,7 @@
 							<span><?php if (is_array($flightFinalArrays['Stops'])) { echo $flightFinalArrays['Stops']['stopNo']; echo" "; 
 																				 foreach ($flightFinalArrays['Stops']['stopName']
 						as $stopName) {echo $stopName ['Name']; echo" "; echo $stopName['Code'];
-									   echo" ";} } else{echo $flightFinalArrays['Stops'];}
+									   echo" ";} } else{echo "Non Sotp";}
 						?></span>
 						</div>
 					</div>					
@@ -206,7 +204,7 @@
                 <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
              
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                  <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="fromdata"></datalist>
                 </div>
 							</div>
@@ -217,7 +215,7 @@
 				  
 				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
 				                 <div class="col-md-8 col-sm-8 col-xs-12">
-                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="Type here.." data-validate="required" data-message-required="Enter Search Where" >
+                 <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="todata"></datalist>
                 </div>
 							</div>

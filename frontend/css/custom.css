@@ -133,6 +133,9 @@ ol,ul{list-style:none;margin:0;padding:0;}
 .grid_1_of_4:first-child { 
 	margin-left: 0; 	    
 } 
+.images_1_of4W{
+	width:23.89004006% !important;
+}
 .images_1_of_4 {
 	width: 23%;
 	padding:1.5%;
@@ -140,6 +143,9 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	position:relative; 
 	height:350px;
 	margin-right: 10px;
+}
+.imageswidth{
+	width:300px !important;
 }
 
 .images_1_of_4  img{
@@ -746,6 +752,7 @@ margin-top:60px;
 	.span_3_of_2 .button {
     	margin-top:5%;
     }
+	
 }
 @media only screen and (max-width:800px) {
 	
@@ -756,6 +763,7 @@ margin-top:60px;
 	 .listview_1_of_2{
     	margin: 1.4% 0 0% 1.6%;
     }
+	.flightsearchfixd{position:relative !important;width:100% !important; left:-5px !important;}
 	.list_2_of_1 .button a {
     	padding:5px 10px;
     }
@@ -983,6 +991,7 @@ margin-top:60px;
 		.navbar.horizontal-menu.navbar-fixed-top + .page-container {
 		margin-top:0%;
 	}
+	.flightsearchfixd{position:relative !important;width:100% !important;}
 	.logo1{
    		 height:60px !important;
 		margin-left:2% !important;
@@ -1075,6 +1084,7 @@ margin-top:60px;
 	.social-icons{
     	padding-top:3%;
     }
+	.fixed{position:relative !important;}
 	.social-icons li {
     	padding:0 0 0 8px;
     }
@@ -1457,7 +1467,7 @@ ul .Stop_line{
 	height: 2px;
 	width: 93%;
 	background-color: #a2a4ac;
-	margin: 5px auto;bottom
+	margin: 10px 0px 0px 0px;
 	position: relative;
 	padding: 0;
 }
@@ -1617,7 +1627,7 @@ top: -5px;
 }
 .pageno-fixed{
 	position: fixed;
-	left: 17.6667%;
+	left: 18.6667%;
 	background: rgb(255, 255, 255) none repeat scroll 0% 0%;
 	z-index: 101;
 	overflow: hidden;
@@ -1637,3 +1647,8 @@ top: -5px;
 	background: #FFF;
 }
 .leftmargin{margin-left: 15px;}
+.flightsearchfixd{position: fixed;
+width: 31.3%;
+left: 5px;}
+
+.fixed1{position:fixed;}

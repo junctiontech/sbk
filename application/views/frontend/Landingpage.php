@@ -1,5 +1,25 @@
 <div class="page-container">
 	<div class="main-content">
+		<div class="col-sm-12 col-md-12 col-xs-12 form_content ">
+ <!-- Alert section For Message-->
+		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
+		  <div class="alert alert-success alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <strong><?=$this->session->flashdata('message')?></strong>  </div>
+		 <?php } if($this->session->flashdata('message_type')=='error') { ?>
+		 <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <strong><?=$this->session->flashdata('message')?></strong>  </div>
+		 <?php } if($this->session->flashdata('category_error_login')) { ?>
+<div class="row" >
+<div class="alert alert-danger" >
+<strong><?=$this->session->flashdata('category_error_login')?></strong> <?php echo"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";?>
+</div>
+</div>
+<?php }?>
+		 <!-- Alert section End-->
+ 
+</div>
 	<center>
 	<div class="page-loading-overlay">
 				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
@@ -36,9 +56,9 @@
 	
 		<div class="row">
 								 <!-- FlexSlider -->
-			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">	
+			<div class="col-md-6 col-sm-6 col-xs-12  hidden-xs">	
 			
-              <section class="slider">
+              <section class="slider leftmargin">
 				  <div class="flexslider">
 					<ul class="slides">					
 					<?php //if(!empty($deals)){ foreach($deals as $deal){ 
@@ -70,9 +90,9 @@
         <div id="myTabContent" class="tab-content">
           <div role="tabpanel" class="tab-pane fade active in" id="tab_content2" aria-labelledby="profile-tab">	<form method="get" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 						<div class="white">
-							<h2>Search Flights</h2>
+							<strong>Search Flights</strong>
 						</div>
-			  				  <div class="col-md-6 col-sm-6 col-xs-12">
+			  				  <div class="col-md-6 col-sm-6 col-xs-6">
 					  <div class="form-group white">								
 						  <div class="col-md-12">									
 							  <input type="radio" onclick="myFunction()" checked id="oneway" class="flat" name="radio"/>								
@@ -81,7 +101,7 @@
 				  
 					  </div>
 				  </div>
-				  <div class="col-md-6 col-sm-6 col-xs-12">
+				  <div class="col-md-6 col-sm-6 col-xs-6">
 					  <div class="form-group white">					  
 						  <div class="col-md-12">						  
 							  <input type="radio" onclick="myFunction()" id="Returntrip"class="flat" name="radio"/>						 
@@ -92,9 +112,9 @@
 							  
 						<div class="col-md-6 col-sm-6 col-xs-12">
               <div class="form-group">
-                <label class="col-md-4 col-sm-4 col-xs-12 white">From</label>
+                <label class="col-md-4 col-sm-4 col-xs-4 white">From</label>
              
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-8 col-sm-8 col-xs-8">
                   <input type="text" id="from" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="fromdata"></datalist>
                 </div>
@@ -104,8 +124,8 @@
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
 				  
-				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
-				                 <div class="col-md-8 col-sm-8 col-xs-12">
+				 <label class="col-md-4 col-sm-4 col-xs-4 white">To</label>
+				                 <div class="col-md-8 col-sm-8 col-xs-8">
                  <input type="text" id="to" list="todata" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Enter Search Where" >
 				  <datalist id="todata"></datalist>
                 </div>
@@ -116,10 +136,10 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="form-group">
                 
-					<label class="col-md-4 col-sm-4 col-xs-12 white">Departure</label>
+					<label class="col-md-4 col-sm-4 col-xs-4 white">Departure</label>
              
                 
-					<div class="col-md-8 col-sm-8 col-xs-12">
+					<div class="col-md-8 col-sm-8 col-xs-8">
                 
 						<div class="input-group">
 											
@@ -144,9 +164,9 @@
 							<div class="form-group">
 								
 				 
-								<label class="col-md-4 col-sm-4 col-xs-12 white">Return</label>
+								<label class="col-md-4 col-sm-4 col-xs-4 white">Return</label>
 				                 
-								<div class="col-md-8 col-sm-8 col-xs-12">
+								<div class="col-md-8 col-sm-8 col-xs-8">
                 
 									<div class="input-group">
 											
@@ -171,9 +191,9 @@
 						<div class="col-md-6 col-sm-6 col-xs-12">
 						
               <div class="form-group">
-                <label class="col-md-4 col-sm-4 col-xs-12 white">Class</label>
+                <label class="col-md-4 col-sm-4 col-xs-4 white">Class</label>
              
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-8 col-sm-8 col-xs-8">
                  <select class="form-control" name="class">
 									<option value="Economy">Economy</option>
 									<option value="premiumEconomy">Premium Economy</option>
@@ -185,8 +205,8 @@
 						
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
-				 <label class="col-md-4 col-sm-4 col-xs-12 white">Adults</label>
-				                 <div class="col-md-8 col-sm-8 col-xs-12">
+				 <label class="col-md-4 col-sm-4 col-xs-4 white">Adults</label>
+				                 <div class="col-md-8 col-sm-8 col-xs-8">
                  <select class="form-control" name="adults">
 <option  value="1">1</option>
 <option value="2">2</option>
@@ -254,7 +274,7 @@
     	</div>
 		<div class="section group hidden-xs">
 		   <?php if(!empty($lshproduct)){ foreach($lshproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4">
+				<div class="grid_1_of_4 images_1_of_4 images_1_of4W">
 				<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 				</div>
@@ -299,7 +319,7 @@
     	</div>
 	      <div class="section group hidden-xs">
 		   <?php if(!empty($featureproduct)){ foreach($featureproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4">
+				<div class="grid_1_of_4 images_1_of_4 images_1_of4W">
 					<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt=""  /></a>
 					</div>
@@ -341,7 +361,7 @@
     	</div>
 			<div class="section group hidden-xs">
 		   <?php if(!empty($newproduct)){ foreach($newproduct as $product){?>
-				<div class="grid_1_of_4 images_1_of_4">
+				<div class="grid_1_of_4 images_1_of_4 images_1_of4W">
 						<div class="imageheightfix">
 					 <a target="_blank" href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=$product->productsUrlKey?>.html"><img src="<?=$product->imageName?>"  alt="" /></a>
 					</div>
@@ -374,15 +394,15 @@
 				
 		  <?php } }else{ echo"No product Found!!";}?>
 			</div>
-		 
+		 <div class="hidden-xs">
+			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
+	</div>
     
  
 </div>
-</div><div class="clear"></div>
-<div class="hidden-xs">
-			<a href="http://tracking.vcommission.com/aff_c?offer_id=126&aff_id=48478&url_id=2442&file_id=83075" target="_blank"><img src="http://media.vcommission.com/brand/files/vcm/126/Jabong_AnniversarySale_Minimum40OFF_468x60.jpg" width="1500" height="90" border="0" /></a><img src="http://tracking.vcommission.com/aff_i?offer_id=126&file_id=83075&aff_id=48478&url_id=2442" width="1" height="1" />
-	</div>
+</div>
 
+<div class="clear"></div>
  <script>
             $(document).ready(function () {
                 $(".select2_single").select2({

@@ -1,27 +1,24 @@
-
-<!-- Alert section For Message-->
-<?php  if($this->session->flashdata('message_type')=='success') { ?>
-
-<div class="alert alert-success alert-dismissible fade in" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
-  <strong>
-  <?=$this->session->flashdata('message')?>
-  </strong> </div>
-<?php } if($this->session->flashdata('message_type')=='error') { ?>
-<div class="alert alert-danger alert-dismissible fade in" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
-  <strong>
-  <?=$this->session->flashdata('message')?>
-  </strong> </div>
-<?php } if($this->session->flashdata('category_error')) { ?>
+<div class="col-sm-9 col-md-9 col-xs-12 form_content ">
+ <!-- Alert section For Message-->
+		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
+		  <div class="alert alert-success alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <strong><?=$this->session->flashdata('message')?></strong>  </div>
+		 <?php } if($this->session->flashdata('message_type')=='error') { ?>
+		 <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <strong><?=$this->session->flashdata('message')?></strong>  </div>
+		 <?php } if($this->session->flashdata('category_error_login')) { ?>
 <div class="row" >
-  <div class="alert alert-danger" > <strong>
-    <?=$this->session->flashdata('category_error')?>
-    </strong> <?php echo"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";?> </div>
+<div class="alert alert-danger" >
+<strong><?=$this->session->flashdata('category_error_login')?></strong> <?php echo"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";?>
+</div>
 </div>
 <?php }?>
-<!-- Alert section End-->
-<div class="col-sm-9 col-md-9 col-xs-12 form_content">             
+		 <!-- Alert section End-->
+ 
+
+<div class="col-sm-12 col-md-12 col-xs-12 form_content">             
 	<div class="panel-body">
 			 <p align="center">Personal Information</p>
               <!-- page content -->
@@ -113,13 +110,8 @@
                          
                      
                     </div>
-                  </div>
-                
-   
- 
- 		  
-              <!-- /page content -->
-           
+	</div></div>
+<!-- /page content -->           
  <script>
         $(document).ready(function () {
             $(":input").inputmask();

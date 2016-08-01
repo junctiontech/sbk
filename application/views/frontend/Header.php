@@ -59,7 +59,7 @@
 					</a>-->
 					</li>
 				<li>
-					<a href=" ">
+					<a href="javascript:;">
  
 						<span class="title">You are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
 					</a>
@@ -84,7 +84,7 @@
 			<ul class="nav nav-userinfo white navbar-right">
 				
 				<li>					
-					<a href="#">
+					<a href="javascript:;">
 						<i class="android"></i>
 					<!--	<span class="badge badge-green">15</span>-->
 					</a>					
@@ -92,7 +92,7 @@
 				<?php if(!empty($userinfos)) { ?>
 					<li class=" user-profile">
 					
-						<a href="#">
+						<a href="javascript:;">
 							<?php if (!empty($userinfos['userProfileImage'])) { ?>
 							<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
 							<?php } else { ?>

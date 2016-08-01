@@ -74,9 +74,9 @@
 		</div>
 		
 		<div class="clear"></div>
-		
+		<div class="row">
 		<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">
-         <div class="row"> <?php if(!empty($products)){ foreach($products as $product){?>
+          <?php if(!empty($products)){ foreach($products as $product){?>
 		
 		         <div class="grid_1_of_4 images_1_of_4">
 				<div class="imageheightfix">
@@ -103,7 +103,7 @@
         </div>
 	
         <?php } }else{ echo"No product Found!!";}?>
-		</div>	  </div>
+		</div>	 
 	
 		<div class="col-md-2 col-sm-2 col-xs-0" >
 			<div class="fixedright">
@@ -123,6 +123,7 @@
         		<!-- // End Ad Tag -->
       
 		</div>
+			 </div>
 		<div class="compare_product comp_btn_fixed" id="compare">
 
 		<div class="row">

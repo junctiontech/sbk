@@ -200,12 +200,12 @@ class Landingpage_model extends CI_Model {
 		$this->db->from('s4k_products_map t1');
 		$this->db->where(array('t1.productsID'=>$productid));
 		$query=$this->db->get();
-		return $query->result();
-			
+		return $query->result();	
+		
 	}
 	
-
-
+	
+	
 	function comparepro($compareproduct=false)
 	{	
  $qry=$this->db->query("SELECT `t1`.`productsID`, `t1`.`categoriesID`,`t1`.`productName`, `t1`.`productsUrlKey`,`t1`.`sb4kProductID`,  `t3`.`imageName`, `t4`.`productPrice`, `t5`.`categoriesUrlKey` FROM 	`s4k_products_map` `t1` JOIN `s4k_product_images_map` `t3` ON `t3`.`productsID`=`t1`.`productsID` JOIN `s4k_product_price_map` `t4` ON `t4`.`productsID`=`t1`.`productsID` JOIN `s4k_categories` `t5` ON `t5`.`categoriesID`=`t1`.`categoriesID` WHERE `t1`.`productsID` IN($compareproduct)");

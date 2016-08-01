@@ -1,11 +1,31 @@
 <div class="page-container">
 	<div class="main-content">
+		<div class="col-sm-12 col-md-12 col-xs-12 form_content ">
+ <!-- Alert section For Message-->
+		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
+		  <div class="alert alert-success alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <strong><?=$this->session->flashdata('message')?></strong>  </div>
+		 <?php } if($this->session->flashdata('message_type')=='error') { ?>
+		 <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <strong><?=$this->session->flashdata('message')?></strong>  </div>
+		 <?php } if($this->session->flashdata('category_error_login')) { ?>
+<div class="row" >
+<div class="alert alert-danger" >
+<strong><?=$this->session->flashdata('category_error_login')?></strong> <?php echo"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";?>
+</div>
+</div>
+<?php }?>
+		 <!-- Alert section End-->
+ 
+</div>
 	<div class="page-loading-overlay">
 				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
 			</div>
  <div class="content_top">
 			<div class="back-links">
-				<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
+				<p><a href="<?=base_url();?>">Home</a> >><a href="<?=$_SERVER['HTTP_REFERER']?>"> Back</a> </p>
     	    </div>
     		<div class="heading">
 				<h3> Compare </h3>
@@ -132,5 +152,3 @@
 </div>
 </div>
 <div class="clear"></div>
-
-
