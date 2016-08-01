@@ -125,10 +125,12 @@ class Landingpage_model extends CI_Model {
 	}
 	
 	public function get_products($extraquery=false,$searchqry=false,$where=false,$where1=false,$limit=false,$page=false){
-		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl,t9.shop_image');//productAttributeLable,productAttributeValue,
+		$this->db->select('t1.productsID,t1.sb4kProductID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,productName,productDescription,	t5.imageName,productImageTitle,productImageAltTag,t7.productPrice,t7.productShopUrl');//productAttributeLable,productAttributeValue,
 		if($extraquery){
 			$this->db->select('t9.shop_image,t9.shopID');
 			
+		}else{
+			$this->db->select('t9.shop_image');
 		}
 		$this->db->from('s4k_products_map t1');
 		//$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID','left');
@@ -138,7 +140,7 @@ class Landingpage_model extends CI_Model {
 		//$this->db->join('s4k_product_image_details t6','t5.productImageID=t6.productImageID','left');
 		$this->db->join('s4k_product_price_map t7','t1.productsID=t7.productsID','left');
 		$this->db->join('s4k_categories t8','t1.categoriesID=t8.categoriesID','left');
-		$this->db->join('s4k_shops t9','t7.shopID=t9.shopID','left');
+		
 		if($extraquery){
 			$this->db->join('s4k_shops t9','t7.shopID=t9.shopID','left');
 			$this->db->where($extraquery);
@@ -146,6 +148,8 @@ class Landingpage_model extends CI_Model {
 		}elseif($searchqry){
 			//.$this->db->like($searchqry);
 			$this->db->like("productBrand",$searchqry);
+		}else{
+			$this->db->join('s4k_shops t9','t7.shopID=t9.shopID','left');
 		}
 		if($where){
 			$this->db->where($where);
