@@ -34,8 +34,8 @@
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div class="col-md-4 grid images_3_of_2 pro_img">	
-<div id="content">				 
-					 <img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  /></div>
+			 
+					 <img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -108,13 +108,29 @@
       {"parsetags": "explicit"}
     </script>
 	
-    <li>
+    <li><div id="content">
       <div class="g-plusone"></div>
-    
+    </div>
     <script>
       gapi.plusone.go("content");
     </script> </li>
-						 </ul>
+	<button
+  class="g-interactivepost"
+  data-contenturl="https://plus.google.com/pages/"
+  data-contentdeeplinkid="/pages"
+  data-clientid="xxxxx.apps.googleusercontent.com"
+  data-cookiepolicy="single_host_origin"
+  data-prefilltext="Engage your users today, create a Google+ page for your business."
+  data-calltoactionlabel="CREATE"
+  data-calltoactionurl="http://plus.google.com/pages/create"
+  data-calltoactiondeeplinkid="/pages/create">
+  Tell your friends
+</button>
+						<div class="a2a_kit a2a_default_style">
+    <a class="a2a_button_google_plus_share"></a>
+</div>
+
+<script async src="//static.addtoany.com/menu/page.js"></script> </ul>
 					 </div>
 					 <div class="add-cart">
 						 <div class="rating">
