@@ -30,7 +30,7 @@
 						 <p><a href="<?=base_url();?>">Home</a> >> <a href="<?=isset($backurl)?$backurl:''?>"><?=isset($categorykey)?$categorykey:''?> </a></p>    	   
 					 </div>					
 					 <div class="clear"></div>					
-					 <h2 style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
+					 <h2 id="rohit" style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div class="col-md-4 grid images_3_of_2 pro_img">	
@@ -105,13 +105,13 @@
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
 							 <li><a href="javascript:;"
 								  class="g-interactivepost"
-								  data-contenturl="<?= $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
+								  data-contenturl="<?=$_SERVER['HTTP_HOST']?>"
 								  data-contentdeeplinkid="rohit"
 								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
 								  data-cookiepolicy="single_host_origin"
 								  data-prefilltext="Hey i found this great deal by searchb4kharch."
-								  data-calltoactionlabel="CREATE"
-								  data-calltoactionurl="<?= $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
+								  data-calltoactionlabel="BUY"
+								  data-calltoactionurl="<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
 								  data-calltoactiondeeplinkid="<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>">
 								 <img
 								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
