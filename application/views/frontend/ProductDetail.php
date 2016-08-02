@@ -114,23 +114,25 @@
     <script>
       gapi.plusone.go("content");
     </script> </li>
-	<button
+	
+						<div class="a2a_kit a2a_default_style">
+    <a class="a2a_button_google_plus_share"></a>
+</div>
+
+<script async src="//static.addtoany.com/menu/page.js"></script>
+
+<button
   class="g-interactivepost"
   data-contenturl="https://plus.google.com/pages/"
   data-contentdeeplinkid="/pages"
-  data-clientid="xxxxx.apps.googleusercontent.com"
+  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
   data-cookiepolicy="single_host_origin"
   data-prefilltext="Engage your users today, create a Google+ page for your business."
   data-calltoactionlabel="CREATE"
   data-calltoactionurl="http://plus.google.com/pages/create"
   data-calltoactiondeeplinkid="/pages/create">
   Tell your friends
-</button>
-						<div class="a2a_kit a2a_default_style">
-    <a class="a2a_button_google_plus_share"></a>
-</div>
-
-<script async src="//static.addtoany.com/menu/page.js"></script> </ul>
+</button> </ul>
 					 </div>
 					 <div class="add-cart">
 						 <div class="rating">
