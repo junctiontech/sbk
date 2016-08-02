@@ -23,7 +23,7 @@
 		 <!-- Alert section End-->
  
 </div>
-		 <div class="row" id="rohit">	 
+		 <div class="row" >	 
 			 <div class="col-md-10">		
 				 <div class="content_top">    	
 					 <div class="back-links">    	
@@ -33,7 +33,7 @@
 					 <h2  style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
-				 <div class="col-md-4 grid images_3_of_2 pro_img">	
+				 <div id="rohit" class="col-md-4 grid images_3_of_2 pro_img">	
 			 
 					 <img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
@@ -105,12 +105,11 @@
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
 							 <li><a href="javascript:;"
 								  class="g-interactivepost"
-								  data-contenturl="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
-								  data-contentdeeplinkid="/rohit"
+								  data-contenturl="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>#rohit"
+								  data-contentdeeplinkid="#rohit"
 								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
 								  data-cookiepolicy="single_host_origin"
 								  data-prefilltext="Hey i found this great deal by searchb4kharch."
-								  data-calltoactionlabel="BUY"
 								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
 								  data-calltoactiondeeplinkid="<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>">
 								 <img
