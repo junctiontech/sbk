@@ -105,13 +105,13 @@
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
 							 <li><a href="javascript:;"
 								  class="g-interactivepost"
-								  data-contenturl="<?=$_SERVER['HTTP_HOST']?>"
+								  data-contenturl="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
 								  data-contentdeeplinkid="rohit"
 								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
 								  data-cookiepolicy="single_host_origin"
 								  data-prefilltext="Hey i found this great deal by searchb4kharch."
 								  data-calltoactionlabel="BUY"
-								  data-calltoactionurl="<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
+								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
 								  data-calltoactiondeeplinkid="<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>">
 								 <img
 								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
