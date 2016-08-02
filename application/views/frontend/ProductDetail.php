@@ -99,22 +99,39 @@
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/gplus.png" alt=""></a></li>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/linkedin.png" alt=""></a></li>-->
-							 <script >
-								  window.___gcfg = {
-									parsetags: 'onload',
-									
-								  };
-							</script>
-							<script src="https://apis.google.com/js/platform.js" async defer> </script>
-	
-							<li><div class="g-plus" data-action="share" data-contenturl="http://www.searchb4kharch.com/Landingpage/Product/Air_conditioners/C29D74CA/voltas_1.5_ton_5_star_window_ac.html"
-  data-contentdeeplinkid="/pages"
-  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
-  data-cookiepolicy="single_host_origin"
-  data-prefilltext="Engage your users today, create a Google+ page for your business."
-  data-calltoactionlabel="CREATE"
-  data-calltoactionurl="http://plus.google.com/pages/create"
-  data-calltoactiondeeplinkid="/pages/create" ></div> </li>
+							<script >
+  window.___gcfg = {
+    lang: 'zh-CN',
+    parsetags: 'onload'
+  };
+</script>
+							<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+  <span id="myBtn" class="demo g-interactivepost"
+    data-clientid="841077041629.apps.googleusercontent.com"
+    data-contenturl="https://developers.google.com/+/web/share/interactive"
+    data-calltoactionlabel="INVITE"
+    data-calltoactionurl="https://developers.google.com/+/web/share/interactive?invite=true"
+    data-cookiepolicy="single_host_origin"
+    data-prefilltext="Come learn about interactive posts with me!">
+  <span class="icon">&nbsp;</span>
+  <span class="label">Invite your friends!</span>
+</span>
+  <div id="sharePost"></div>
+<script>
+  var options = {
+    contenturl: 'https://plus.google.com/pages/',
+    contentdeeplinkid: '/pages',
+    clientid: '1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com',
+    cookiepolicy: 'single_host_origin',
+    prefilltext: 'Create your Google+ Page too!',
+    calltoactionlabel: 'CREATE',
+    calltoactionurl: 'http://plus.google.com/pages/create',
+    calltoactiondeeplinkid: '/pages/create'
+  };
+  // Call the render method when appropriate within your app to display
+  // the button.
+  gapi.interactivepost.render('sharePost', options);
+</script>
 						</ul>
 					 </div>
 					 <div class="add-cart">
