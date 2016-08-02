@@ -98,6 +98,21 @@
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/gplus.png" alt=""></a></li>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/linkedin.png" alt=""></a></li>-->
+							 <!--<a href="https://plus.google.com/share?url=http://www.searchb4kharch.com/Landingpage/Product/Air_conditioners/C29D74CA/voltas_1.5_ton_5_star_window_ac.html" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img
+  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/></a> -->
+ <script src="https://apis.google.com/js/platform.js" async defer>
+    </script>
+	<script>
+      {"parsetags": "explicit"}
+    </script>
+	
+    <li><div id="content">
+      <div class="g-plusone"></div>
+    </div>
+    <script>
+      gapi.plusone.go("content");
+    </script> </li>
 						 </ul>
 					 </div>
 					 <div class="add-cart">
