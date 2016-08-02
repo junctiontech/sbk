@@ -35,7 +35,7 @@
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div class="col-md-4 grid images_3_of_2 pro_img">	
 			 
-					 <img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+					 <img id="rohit" src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -92,58 +92,31 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
+					 <script >
+  window.___gcfg = {
+    parsetags: 'onload'
+  };
+</script>
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
-							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/gplus.png" alt=""></a></li>
-							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/linkedin.png" alt=""></a></li>-->
-							<script >
-  window.___gcfg = {
-    lang: 'zh-CN',
-    parsetags: 'onload'
-  };
-</script>
-							<script src="https://apis.google.com/js/client:platform.js" async defer></script>
-  <span id="myBtn" class="demo g-interactivepost"
-    data-clientid="841077041629.apps.googleusercontent.com"
-    data-contenturl="https://developers.google.com/+/web/share/interactive"
-    data-calltoactionlabel="INVITE"
-    data-calltoactionurl="https://developers.google.com/+/web/share/interactive?invite=true"
-    data-cookiepolicy="single_host_origin"
-    data-prefilltext="Come learn about interactive posts with me!">
-  <span class="icon">&nbsp;</span>
-  <span class="label">Invite your friends!</span>
-</span>
-  <div id="sharePost"></div>
-<script>
-  var options = {
-    contenturl: 'https://plus.google.com/pages/',
-    contentdeeplinkid: '/pages',
-    clientid: '1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com',
-    cookiepolicy: 'single_host_origin',
-    prefilltext: 'Create your Google+ Page too!',
-    calltoactionlabel: 'CREATE',
-    calltoactionurl: 'http://plus.google.com/pages/create',
-    calltoactiondeeplinkid: '/pages/create'
-  };
-  // Call the render method when appropriate within your app to display
-  // the button.
-  gapi.interactivepost.render('myBtn', options);
-</script>
-<button
-  class="g-interactivepost"
-  data-contenturl="https://plus.google.com/pages/"
-  data-contentdeeplinkid="/pages"
-  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
-  data-cookiepolicy="single_host_origin"
-  data-prefilltext="Engage your users today, create a Google+ page for your business."
-  data-calltoactionlabel="CREATE"
-  data-calltoactionurl="http://plus.google.com/pages/create"
-  data-calltoactiondeeplinkid="/pages/create">
-  Tell your friends
-</button>
+							 <li><a href="javascript:;"
+								  class="g-interactivepost"
+								  data-contenturl="<?=$_SERVER['REQUEST_URI']?>"
+								  data-contentdeeplinkid="rohit"
+								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
+								  data-cookiepolicy="single_host_origin"
+								  data-prefilltext="Hey i found this great deal by searchb4kharch."
+								  data-calltoactionlabel="CREATE"
+								  data-calltoactionurl="<?=$_SERVER['REQUEST_URI']?>"
+								  data-calltoactiondeeplinkid="<?=$_SERVER['REQUEST_URI']?>">
+								 <img
+								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
+								</a></li>
+						
 						</ul>
 					 </div>
 					 <div class="add-cart">
