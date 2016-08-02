@@ -130,8 +130,20 @@
   };
   // Call the render method when appropriate within your app to display
   // the button.
-  gapi.interactivepost.render('sharePost', options);
+  gapi.interactivepost.render('myBtn', options);
 </script>
+<button
+  class="g-interactivepost"
+  data-contenturl="https://plus.google.com/pages/"
+  data-contentdeeplinkid="/pages"
+  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
+  data-cookiepolicy="single_host_origin"
+  data-prefilltext="Engage your users today, create a Google+ page for your business."
+  data-calltoactionlabel="CREATE"
+  data-calltoactionurl="http://plus.google.com/pages/create"
+  data-calltoactiondeeplinkid="/pages/create">
+  Tell your friends
+</button>
 						</ul>
 					 </div>
 					 <div class="add-cart">
