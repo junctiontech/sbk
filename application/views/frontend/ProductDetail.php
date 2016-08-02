@@ -23,19 +23,19 @@
 		 <!-- Alert section End-->
  
 </div>
-		 <div class="row">	 
+		 <div class="row" id="rohit">	 
 			 <div class="col-md-10">		
 				 <div class="content_top">    	
 					 <div class="back-links">    	
 						 <p><a href="<?=base_url();?>">Home</a> >> <a href="<?=isset($backurl)?$backurl:''?>"><?=isset($categorykey)?$categorykey:''?> </a></p>    	   
 					 </div>					
 					 <div class="clear"></div>					
-					 <h2 id="rohit" style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
+					 <h2  style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div class="col-md-4 grid images_3_of_2 pro_img">	
 			 
-					 <img id="rohit" src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+					 <img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -106,7 +106,7 @@
 							 <li><a href="javascript:;"
 								  class="g-interactivepost"
 								  data-contenturl="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"
-								  data-contentdeeplinkid="rohit"
+								  data-contentdeeplinkid="/rohit"
 								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
 								  data-cookiepolicy="single_host_origin"
 								  data-prefilltext="Hey i found this great deal by searchb4kharch."
