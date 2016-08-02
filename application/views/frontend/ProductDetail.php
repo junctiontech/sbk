@@ -105,10 +105,25 @@
  <script src="https://apis.google.com/js/platform.js" async defer>
     </script>
 	<script>
-      {"parsetags": "explicit"}
+      {"parsetags": "explicit"
+	  data-contenturl="http://www.searchb4kharch.com/Landingpage/Product/Air_conditioners/C29D74CA/voltas_1.5_ton_5_star_window_ac.html"
+  data-contentdeeplinkid="/pages"
+  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
+  data-cookiepolicy="single_host_origin"
+  data-prefilltext="Engage your users today, create a Google+ page for your business."
+  data-calltoactionlabel="CREATE"
+  data-calltoactionurl="http://plus.google.com/pages/create"
+  data-calltoactiondeeplinkid="/pages/create"}
     </script>
-	
-    <li><div id="content">rohit thakur
+	<g:plus action="share" data-contenturl="http://www.searchb4kharch.com/Landingpage/Product/Air_conditioners/C29D74CA/voltas_1.5_ton_5_star_window_ac.html"
+  data-contentdeeplinkid="/pages"
+  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
+  data-cookiepolicy="single_host_origin"
+  data-prefilltext="Engage your users today, create a Google+ page for your business."
+  data-calltoactionlabel="CREATE"
+  data-calltoactionurl="http://plus.google.com/pages/create"
+  data-calltoactiondeeplinkid="/pages/create">rohit</g:plus>
+    <li><div id="content">
       <div class="g-plusone" data-contenturl="http://www.searchb4kharch.com/Landingpage/Product/Air_conditioners/C29D74CA/voltas_1.5_ton_5_star_window_ac.html"
   data-contentdeeplinkid="/pages"
   data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
