@@ -33,8 +33,9 @@
 					 <h2 style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
-				 <div class="col-md-4 grid images_3_of_2 pro_img">					
-					 <img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+				 <div class="col-md-4 grid images_3_of_2 pro_img">	
+<div id="content">				 
+					 <img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  /></div>
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -107,9 +108,9 @@
       {"parsetags": "explicit"}
     </script>
 	
-    <li><div id="content">
+    <li>
       <div class="g-plusone"></div>
-    </div>
+    
     <script>
       gapi.plusone.go("content");
     </script> </li>
