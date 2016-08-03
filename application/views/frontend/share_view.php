@@ -1,17 +1,15 @@
- <div class="page-container">	
-	 <div class="main-content">	
+<div class="page-container">	
+	<div class="main-content">	
 		<div class="row" >	 
-			 <div class="col-md-10">		
-				 <div class="content_top">    	
-					 				
-					 <div class="clear"></div>					
+			<div class="col-md-10">		
+				<div class="content_top">    	
+					<div class="clear"></div>					
 					 <h2  style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
-				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
-				 <div  class="col-md-4 grid images_3_of_2 pro_img">	
-			 
-					 <img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
-				 </div><!--style="height:250px;width:75%"-->				
+				 <div class="col-md-12 col-sm-12 col-xs-12">		
+					<div  class="col-md-4 grid images_3_of_2 pro_img">	
+						<img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+					</div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						<!--<div class="col-md-4 col-sm-4 col-xs-12">
@@ -67,26 +65,10 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-					 				
-					 <div class="add-cart">
-						 <div class="rating">
-							 <p>Rating:<img src="<?=base_url();?>frontend/images/rating.png"><span>[3 of 5 Stars]</span></p>
-						 </div>
-						 <div class="clear"></div>
-					 </div>
-					 
-				 </div>
-									
-						 
-				
-				 
-					
+				</div>
+			</div>
 			 </div>
-			 </div>
-			 	 
-			 
-		 </div>		   
-		
-	 </div>
+		</div>		   
+	</div>
 </div>
 <div class="clear"></div>
