@@ -102,7 +102,7 @@
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
-							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
+							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
 							 <li><a href="javascript:;"
 								  class="g-interactivepost"
 								  data-contenturl="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
@@ -264,3 +264,12 @@
 	 </div>
 </div>
 <div class="clear"></div>
+<script>
+document.getElementById('shareBtn').onclick = function() {
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: 'https://developers.facebook.com/docs/',
+  }, function(response){});
+}
+</script>
