@@ -20,8 +20,17 @@
 										}
 									}
 										$price1=number_format($products[0]->productPrice, 2, '.','');
+										if($price1 !=0 && $price !=0){
+										$finalprice=min($price1,$price);
+										}else{
+											if($price !=0){
+												$finalprice=$price;
+											}else{
+												$finalprice=$price1;
+											}
+										}
 									?>
-						<p>Lowest Price: <br><span><?=min($price1,$price)?></span></p>
+						<p>Lowest Price: <br><span><?=isset($finalprice)?$finalprice:''?></span></p>
 						</div>					
 					 </div>
 					 <div class="clear"></div>
