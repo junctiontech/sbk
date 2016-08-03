@@ -5,61 +5,19 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">		
 					<div  class="col-md-4 grid images_3_of_2 pro_img">	
 						<img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
-					</div><!--style="height:250px;width:75%"-->				
+					</div>			
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
-						<!--<div class="col-md-4 col-sm-4 col-xs-12">
-						<img src="<?=base_url();?>frontend/images/<?=isset($products[0]->shop_image)?$products[0]->shop_image:''?>"><p>Lowest Price: <br><span><?=number_format(isset($products[0]->productPrice)?$products[0]->productPrice:'',2)?></span></p><div class="button" ><span ><a target="_blank" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>">Buy now</a></span></div>
-						</div>-->					
-						 <?php if(!empty($shopimages)){ ?>					
-						 <?php foreach($shopimages as $shopimage){ ?>					
-						 <div class="col-md-4 col-sm-4 col-xs-4">	
-							 <img src="<?=base_url();?>frontend/images/<?=isset($shopimage->shop_image)?$shopimage->shop_image:''?>">
-							 <?php //print_r($products[0]->shopID); die;							
-	if (!empty($othershopprices)){	
-	$keys=(array_keys(array_column($othershopprices, 'shopID'), $shopimage->shopID));
-	if($keys || $keys==0 ){
-		$keys = array_search($shopimage->shopID, array_column($othershopprices , 'shopID'));
-		if($othershopprices[$keys]['shopID']==3){ $pricemore=(int)$othershopprices[$keys]['productPrice']; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($othershopprices[$keys]['productPrice'])?$othershopprices[$keys]['productPrice']:'';}?>
-							 <p>Price: <br><span><?=number_format($pricemore,2)?></span></p>
-							 <a target="_blank" style="color:white;" href="<?=isset($othershopprices[$keys]['productShopUrl'])?$othershopprices[$keys]['productShopUrl']:''?>"><div class="btn btn-black">	
-								 <span >Buy now</span>
-								 </div>
-							 </a>
-							 <?php } else { if($shopimage->shopID==$products[0]->shopID) { 
-		if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}	
-							
-							 ?>	
-							 <p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>	
-							 <a target="_blank" style="color:white;" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>"><div class="btn btn-black">
-								 <span >Buy now</span>								
-							</div>
-							 </a>
-							 <?php } else{ ?>
-							 <p>Price: <br><span>Not Available</span></p>
-							 <div>
-								 <span ><a  class="btn btn-gray">Buy now</a></span>
-							 </div>
-							 <?php } } ?>
-							 <?php } else { if($shopimage->shopID==$products[0]->shopID) { 
-	if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}						
-							
-							 ?>		
-							 <p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>
-							 <a target="_blank" style="color:white;" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>"><div class="btn btn-black">
-								 <span >Buy now</span>
-								 </div>
-							 </a> 
-							 <?php } else{ ?>
-							 <p>Price: <br><span>Not Available</span></p>
-							 <div>	
-								 <span ><a  class="btn btn-gray">Buy now</a></span>	
-							 </div>
-							 <?php } } ?>
-						 </div>	
-						 <?php }  } ?>
+						<div class="col-md-4 col-sm-4 col-xs-12">
+						 <?php if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
+									$price= min($othershopprices); 
+									if($othershopprices[$keys]['shopID']==3){ $price=(int)$othershopprices[$keys]['productPrice']; $price=substr("$price",0,-2); $price=number_format($pricemore, 2, '.',''); }else{ $price=number_format($pricemore, 2, '.','');}
+									}else{
+										$price=number_format($products[0]->productPrice, 2, '.','');
+									}?>
+						<p>Lowest Price: <br><span><?=isset($price)?$price:''?></span></p>
+						</div>					
 					 </div>
-					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
 				</div>
 			</div>
