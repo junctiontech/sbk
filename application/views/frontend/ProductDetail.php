@@ -109,7 +109,7 @@
 								  data-contentdeeplinkid="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
 								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
 								  data-cookiepolicy="single_host_origin"
-								  data-prefilltext="Hey i found this great deal by searchb4kharch."
+								  data-prefilltext="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com"
 								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
 								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html">
 								 <img
