@@ -95,7 +95,7 @@
 					 
 					 <?php
                     $title=urlencode(isset($products[0]->productName)?$products[0]->productName:'');
-                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].'/Landingpage/shareproduct/'.$categoryval.'/'.$sbkProductID.'/'.$productkey.'.html');
                     $image=urlencode(isset($products[0]->imageName)?$products[0]->imageName:'');
                 ?>
 					 <script >
