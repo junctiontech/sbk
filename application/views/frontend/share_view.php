@@ -21,14 +21,11 @@
 									}
 										$price1=number_format($products[0]->productPrice, 2, '.','');
 										if($price1 !=0 && $price !=0){
-											echo $price1;echo"<br>";echo $price;echo"<br>";echo "final";echo"<br>";
-										$finalprice=min($price1,$price);
+											$finalprice=min($price1,$price);
 										}else{
 											if($price !=0){
-												echo"price";echo $price;echo"<br>";
 												$finalprice=$price;
 											}else{
-												echo"price1";echo $price1;echo"<br>";
 												$finalprice=$price1;
 											}
 										}
