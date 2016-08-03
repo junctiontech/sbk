@@ -3,9 +3,7 @@
 		<div class="row" >	 
 			 <div class="col-md-10">		
 				 <div class="content_top">    	
-					 <div class="back-links">    	
-						 <p><a href="<?=base_url();?>">Home</a> >> <a href="<?=isset($backurl)?$backurl:''?>"><?=isset($categorykey)?$categorykey:''?> </a></p>    	   
-					 </div>					
+					 				
 					 <div class="clear"></div>					
 					 <h2  style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
@@ -69,16 +67,7 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-					 <script >
-  window.___gcfg = {
-    parsetags: 'onload'
-  };
-</script>
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>
-					 <div class="share">
-						 <p>Share Product :</p>
-						
-					 </div>
+					 				
 					 <div class="add-cart">
 						 <div class="rating">
 							 <p>Rating:<img src="<?=base_url();?>frontend/images/rating.png"><span>[3 of 5 Stars]</span></p>
