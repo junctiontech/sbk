@@ -10,12 +10,18 @@
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="col-md-4 col-sm-4 col-xs-12">
 						 <?php if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
-									$price= min($othershopprices); 
-									if($othershopprices[$keys]['shopID']==3){ $price=(int)$othershopprices[$keys]['productPrice']; $price=substr("$price",0,-2); $price=number_format($pricemore, 2, '.',''); }else{ $price=number_format($pricemore, 2, '.','');}
-									}else{
-										$price=number_format($products[0]->productPrice, 2, '.','');
-									}?>
-						<p>Lowest Price: <br><span><?=isset($price)?$price:''?></span></p>
+										$price= $othershopprices[$keys[0]]['productPrice']; 
+									if($othershopprices[$keys[0]]['shopID']==3){
+										$price=(int)$price;
+										$price=substr("$price",0,-2); 
+										$price=number_format($price, 2, '.',''); 
+										}else{ 
+										$price=number_format($price, 2, '.',''); 
+										}
+									}
+										$price1=number_format($products[0]->productPrice, 2, '.','');
+									?>
+						<p>Lowest Price: <br><span><?=min(isset($price1)?$price1:'',isset($price)?$price:'')?></span></p>
 						</div>					
 					 </div>
 					 <div class="clear"></div>
