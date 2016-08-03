@@ -95,7 +95,7 @@
 					 
 					 <?php
                     $title=urlencode($products[0]->productName);
-                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
                     $image=urlencode($products[0]->imageName);
                 ?>
 					 <script >
