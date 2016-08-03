@@ -94,9 +94,9 @@
 					 <div class="clear"></div>
 					 
 					 <?php
-                    $title=urlencode(isset($products[0]->productName)?$products[0]->productName:'');
+                    $title=urlencode($products[0]->productName);
                     $url=urlencode("http://".$_SERVER['HTTP_HOST'].'/Landingpage/shareproduct/'.$categoryval.'/'.$sbkProductID.'/'.$productkey.'.html');
-                    $image=urlencode(isset($products[0]->imageName)?$products[0]->imageName:'');
+                    $image=urlencode($products[0]->imageName);
                 ?>
 					 <script >
   window.___gcfg = {
@@ -276,12 +276,30 @@
 	 </div>
 </div>
 <div class="clear"></div>
+
+<script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
 <script>
+
 document.getElementById('shareBtn').onclick = function() {
-  FB.ui({
-    method: 'share',
-    display: 'popup',
-    href: 'https://developers.facebook.com/docs/',
-  }, function(response){});
+  
+  
+  FB.api('/me/feed', 'post',
+        {
+            message     : "I love thinkdiff.net for facebook app development tutorials",
+            link        : 'http://ithinkdiff.net',
+            picture     : 'http://thinkdiff.net/iphone/lucky7_ios.jpg',
+            name        : 'iOS Apps & Games',
+            description : 'Checkout iOS apps and games from iThinkdiff.net. I found some of them are just awesome!'
+ 
+        },
+        function(response) {
+           
+ 
+            if (!response || response.error) {
+                alert('Error occured');
+            } else {
+                alert('Post ID: ' + response.id);
+            }
+        });
 }
 </script>
