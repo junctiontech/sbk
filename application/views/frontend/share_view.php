@@ -2,11 +2,7 @@
 	<div class="main-content">	
 		<div class="row" >	 
 			<div class="col-md-10">		
-				<div class="content_top">    	
-					<div class="clear"></div>					
-					 <h2  style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
-				 </div>
-				 <div class="col-md-12 col-sm-12 col-xs-12">		
+				<div class="col-md-12 col-sm-12 col-xs-12">		
 					<div  class="col-md-4 grid images_3_of_2 pro_img">	
 						<img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 					</div><!--style="height:250px;width:75%"-->				
