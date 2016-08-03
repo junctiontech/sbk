@@ -110,8 +110,9 @@
 								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
 								  data-cookiepolicy="single_host_origin"
 								  data-prefilltext="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com"
-								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
-								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html">
+								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST']?>.<?=$_SERVER['REQUEST_URI']?>"
+								  data-calltoactionlabel="BUY"
+								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?>.<?=$_SERVER['REQUEST_URI']?>">
 								 <img
 								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
 								</a></li>
