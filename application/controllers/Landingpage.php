@@ -539,7 +539,7 @@ class Landingpage extends CI_Controller {
 				}
 				
 				//print_r($this->data['shopimages']); die;
-				$this->display ('frontend/ProductDetail');
+				$this->display ('frontend/share_view');
 			}else{
 			$this->display ('frontend/share_view');
 			}
