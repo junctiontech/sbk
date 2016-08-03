@@ -92,6 +92,12 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
+					 
+					 <?php
+                    $title=urlencode(isset($products[0]->productName)?$products[0]->productName:'');
+                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+                    $image=urlencode(isset($products[0]->imageName)?$products[0]->imageName:'');
+                ?>
 					 <script >
   window.___gcfg = {
     parsetags: 'onload'
@@ -248,6 +254,12 @@
 						 <input type="text" value="" />
 					 </div>
 					 <div class="button"><span><a href="javascript:;">Add Tags</a></span></div>
+					
+
+
+                <a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[url]=<?php echo $url; ?>&amp;&p[images][0]=<?php echo $image;?>', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_parent" href="javascript: void(0)">
+                    Share our Facebook page!
+                </a>
 				 </div>	
 			 </div>
 			 </div>
