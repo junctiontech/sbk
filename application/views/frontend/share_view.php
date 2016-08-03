@@ -1,3 +1,22 @@
+<head>
+<title>Searchb4kharch</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/fonts/linecons/css/linecons.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/fonts/fontawesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/xenon-core.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/xenon-forms.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/xenon-components.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/xenon-skins.css">
+<link rel="stylesheet" href="<?=base_url();?>frontend/css/custom.css">
+<link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
+<script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
+
+
+
+</head>
 <div class="page-container">	
 	<div class="main-content">	
 		<div class="row" >	 
