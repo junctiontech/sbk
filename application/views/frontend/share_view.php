@@ -9,7 +9,7 @@
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="col-md-4 col-sm-4 col-xs-12">
-						 <?php if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
+						 <?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
 										$price= $othershopprices[$keys[0]]['productPrice']; 
 									if($othershopprices[$keys[0]]['shopID']==3){
 										$price=(int)$price;
@@ -21,7 +21,7 @@
 									}
 										$price1=number_format($products[0]->productPrice, 2, '.','');
 									?>
-						<p>Lowest Price: <br><span><?=min(isset($price1)?$price1:'',isset($price)?$price:'')?></span></p>
+						<p>Lowest Price: <br><span><?=min($price1,$price)?></span></p>
 						</div>					
 					 </div>
 					 <div class="clear"></div>
