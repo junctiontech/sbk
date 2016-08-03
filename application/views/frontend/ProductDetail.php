@@ -97,6 +97,9 @@
                     $title=urlencode($products[0]->productName);
                     $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
                     $image=urlencode($products[0]->imageName);
+					$description=urlencode("hjkjasdkjaksjdk");
+					$caption=urlencode("dasd");
+					$name=urlencode('ads');
                 ?>
 					 <script >
   window.___gcfg = {
@@ -122,7 +125,9 @@
 								 <img
 								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
 								</a></li>
-						
+						<a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[url]=<?php echo $url; ?>&amp;&p[images][0]=<?php echo $image;?>&amp;&p[description]=<?php echo $description;?>&amp;&p[caption]=<?php echo $caption;?>', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_parent" href="javascript: void(0)">
+                    Share our Facebook page!
+                </a>
 						</ul>
 					 </div>
 					 <div class="add-cart">
@@ -257,9 +262,7 @@
 					
 
 
-                <a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[url]=<?php echo $url; ?>&amp;&p[images][0]=<?php echo $image;?>', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_parent" href="javascript: void(0)">
-                    Share our Facebook page!
-                </a>
+                
 				 </div>	
 			 </div>
 			 </div>
