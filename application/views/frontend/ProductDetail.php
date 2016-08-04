@@ -93,19 +93,16 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-					 
+					 <meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
+<meta property="og:image" content="<?=$products[0]->imageName?>" />
+<meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <script >
 					  window.___gcfg = {
 						parsetags: 'onload'
 					  };
 					</script>
-					<meta itemscope itemtype="http://schema.org/Article" />
-<meta itemprop="headline" content="Top 10 Most Challenging Hikes in North America" />
-<meta itemprop="description" content="Looking for a challenging hike? We spent the
-past year spanning the continent for the most grueling trails. Check out the entire
-ranked list, and learn about our methodology..." />
-<meta itemprop="image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" />
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+					
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
