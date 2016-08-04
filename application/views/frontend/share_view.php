@@ -120,7 +120,7 @@
                 showLoader(true);
                 var share = {
                     method: 'stream.share',
-                    u: 'http://thinkdiff.net/'
+                    u: 'http://www.searchb4kharch.com/Landingpage/Product/Mobiles/9D79A928/moto_g_(3rd_generation).html'
                 };
  
                 FB.ui(share, function(response) {
@@ -203,7 +203,7 @@
  
         <h3>New JavaScript SDK & OAuth 2.0 based FBConnect Tutorial | Thinkdiff.net</h3>
         <button id="fb-auth">Login</button>
-        <div id="loader" style="display:none">
+        <div id="loader" style="display:block">
             <img src="ajax-loader.gif" alt="loading" />
         </div>
         <br />
