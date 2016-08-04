@@ -296,19 +296,25 @@
                 
                 FB.ui(
 					  {
-					   method: 'stream.share',
+										redirect_uri:'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
+										display: 'popup',
+										method: 'stream.share',
 										u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
 										picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
 										description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com'
 					  },function(response) {
 						if (response && !response.error_message) {
-						  alert(response);
+							console.log(response);
+						 
 						} else {
-						  alert(response);
+							console.log(response);
+						  
 						}
 					  }
 					);
+					
             }
+			
 			
 			
   </script>
