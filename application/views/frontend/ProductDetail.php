@@ -97,30 +97,14 @@
 <meta property="og:image" content="<?=$products[0]->imageName?>" />
 <meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
-					 <script >
-					  window.___gcfg = {
-						parsetags: 'onload'
-					  };
-					</script>
+					 
 					
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
-							 <li><a href="javascript:;"
-								  class="g-interactivepost"
-								  data-contenturl="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
-								  data-contentdeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>"
-								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
-								  data-cookiepolicy="single_host_origin"
-								  data-prefilltext="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com"
-								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>"
-								  data-calltoactionlabel="BUY"
-								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>">
-								 <img
-								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
-								</a>
+							 <li>
 							</li>
 							<g:plus action="share"></g:plus>
 						</ul>
