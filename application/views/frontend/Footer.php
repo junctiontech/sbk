@@ -140,7 +140,7 @@
 				<div class="col_1_of_4 span_1_of_4">
 						<!--<h4>Information</h4>-->
 						<ul class="marker_none">
-							<li><a href="javascript:;"><span>About Us</span></a></li>
+							<li><a href="<?=base_url();?>Landingpage/Aboutus.html"><span>About Us</span></a></li>
 						<!--<li><a href="javascript:;"><span>Services (coming soon)</span></a></li>
 						<li><a href="javascript:;"><span>Advanced Search</span></a></li>						
 						<li><a href="javascript:;"><span>Contact Us</span></a></li>-->

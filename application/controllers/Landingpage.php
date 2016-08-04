@@ -517,7 +517,7 @@ class Landingpage extends CI_Controller {
 		//print_r($where); die;
 		$filterprodect = $this->Landingpage_model->get_products($query, $searchqry, $where, $where1);
 		}	 
-		//print_r($this->userinfos); die;
+		//print_r($filterprodect); die;
 		if (!empty($filterprodect))
 		{
 			$baseurl=base_url();
@@ -528,7 +528,7 @@ class Landingpage extends CI_Controller {
 					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
 					</div>
 					<h2>".$filter->productName."</h2>
-					 <p><span class=\"price\">Rs. ".$filter->productPrice."</span></p>					 
+					 <p><img style=\"height:30px\" src=\"$baseurl/frontend/images/$filter->shop_image\"><span class=\"price\">Rs. ".$filter->productPrice."</span></p>					 
 					 <div class=\"checkbox\">
 					<label>
 						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\">Compare
@@ -744,7 +744,7 @@ class Landingpage extends CI_Controller {
 		if(!empty($this->userinfos))
 		{
 			$userID=$this->userinfos['userID'];
-			$query = $this->Landingpage_model->get_email($userID);
+			$query = $this->Landingpage_model->get_email(array('userID'=>$userID));
 			$email=$query[0]->userEmail;
 			//print_r($email); die;
 			 
@@ -763,6 +763,7 @@ class Landingpage extends CI_Controller {
 		}
 		$table='s4k_notify';
 		if(!empty($email)){
+			
 			$notify=$this->Landingpage_model->match_emailid($email);
 			if(!empty($notify)){
 				$notifyID=$notify[0]->notifyID;
@@ -787,4 +788,120 @@ class Landingpage extends CI_Controller {
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 		}
+	public function Match_emails()
+	{
+		$email = $this->input->post('data');
+		if(!empty($email))
+		{
+			$query=$this->Landingpage_model->get_email(array('userEmail'=>$email));			
+			if(!empty($query)){ foreach ($query as $data){
+				echo "<input type=\"hidden\" class=\"form-control\" name=\"username\" value=\"$data->userFirstName\"/>"; //die;
+			}			 }
+			}			
+	}
+	public function match_otp()
+	{
+		$otp = $this->input->post('data');
+		if(!empty($otp))
+		{
+			$query=$this->Landingpage_model->get_email(array('userPassword'=>$otp));			
+			if(!empty($query)){ foreach ($query as $data){
+				echo "<input type=\"hidden\" class=\"form-control\" name=\"username\" value=\"$data->userFirstName\"/>"; //die;
+			}			 }
+			}			
+	}
+	public function forgetpassword()
+	{
+		//print_r($_POST); die;
+		$base=base_url ();
+		$email=$this->input->post('email');
+		$username=$this->input->post('username');
+		$tempCode=substr(md5(microtime()),rand(0,26),5);
+		$data=array('userPassword'=>$tempCode);	 
+		$this->Landingpage_model->forgetpassword($data,$email);
+		$subject="searchb4kharch:- Rest Password ";
+		$message= "<html><body><h3>Hello: $username </h3><p>Please click in below link and reset your password....<br> Your OTP Code is:- <b>$tempCode</b> <br> Your reset password link is $base/Login/forgetpassword.html/ <br><br> if any query so please contact to info@junctiontech.in!!  :(  </h3></p><br> </p></body></html>";
+		$name='Searchb4kharch.com';
+		date_default_timezone_set('Etc/UTC');
+		require 'PHPMailer/PHPMailerAutoload.php';
+		//Create a new PHPMailer instance
+			$mail = new PHPMailer;			
+			//Tell PHPMailer to use SMTP
+			$mail->isSMTP();			
+			//Enable SMTP debugging
+			// 0 = off (for production use)
+			// 1 = client messages
+			// 2 = client and server messages
+			$mail->SMTPDebug = 0;			
+			//Ask for HTML-friendly debug output
+			$mail->Debugoutput = 'html';
+			
+			//Set the hostname of the mail server
+			$mail->Host = 'smtp.gmail.com';
+			
+			//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+			$mail->Port = 587;
+			
+			//Set the encryption system to use - ssl (deprecated) or tls
+			$mail->SMTPSecure = 'tls';
+			
+			//Whether to use SMTP authentication
+			$mail->SMTPAuth = true;
+			
+			//Username to use for SMTP authentication - use full email address for gmail
+			$mail->Username = 'searchkharch@gmail.com';
+			
+			//Password to use for SMTP authentication
+			$mail->Password = 'navrang99';
+			
+			//Set who the message is to be sent from
+			$mail->setFrom($email,$name);
+			
+			//Set an alternative reply-to address
+			$mail->addReplyTo('searchkharch@gmail.com', $name);
+			
+			//Set who the message is to be sent to
+			$mail->addAddress($email);
+			
+			//Set the subject line
+			$mail->Subject = $subject;
+			
+			//Read an HTML message body from an external file, convert referenced images to embedded,
+			//convert HTML into a basic plain-text alternative body
+			$mail->msgHTML($message);
+			
+			//Replace the plain text body with one created manually
+			$mail->AltBody = 'This is a plain-text message body';
+			
+			//Attach an image file
+			//$mail->addAttachment($uploadfile,$filename);
+			
+			//send the message, check for errors
+			
+			
+			if (!$mail->send())
+			{
+				print "We encountered an error sending your mail";
+					
+			}
+			else
+			{
+					?><script> alert('Kindly check your email for your OTP code !!!!');</script><?php
+					redirect($_SERVER['HTTP_REFERER'],"refresh");
+			}	
+	}
+	public function Aboutus()
+	{
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->parser->parse('frontend/Header',$this->data);
+		$this->parser->parse('frontend/Aboutus',$this->data);
+		$this->parser->parse('frontend/Footer',$this->data);
+	}
 }
+
+
+
+
+
+
+

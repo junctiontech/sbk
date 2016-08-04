@@ -193,7 +193,7 @@ class Categories extends CI_Controller
 	{
 		$categoriesID=$this->data['categoriesID']=$this->input->post('categoriesID');
 		if(!empty($categoriesID)){
-			$this->data['catfilters']=$this->Categories_model->get_catfilter($categoriesID);
+			$this->data['catfilters']=$this->Categories_model->get_catfilter(array('t1.categoryID'=>$categoriesID));
 		}
 		$this->data['category']=$this->Categories_model->get_categorydata();
 		$this->display ('admin/Createfilter');
@@ -202,7 +202,10 @@ class Categories extends CI_Controller
 	public function createfiltermodel($filtergroupID=false)
 	{
 		if(!empty($filtergroupID)){ 
-			$this->data['filtergroupdata']=$this->Categories_model->get_catfilter($filtergroupID); 
+			$query = $this->data['filtergroupdata']=$this->Categories_model->get_catfilter(array('t1.filterGroupID'=>$filtergroupID));
+			if(!empty($query)){ foreach ($query as $data) {$filterGroupID=$data->filterGroupID ; }}
+			$this->data['filtergroupvalue'] = $this->Categories_model->get_catfilterlable(array('filterGroupID'=>$filtergroupID));
+			//print_r($this->data['filtergroupvalue']); die;
 		}
 		$this->data['categories']=$this->Categories_model->get_categorydata();
 		$this->load->view('admin/Createfiltermodel', $this->data);
@@ -223,9 +226,9 @@ class Categories extends CI_Controller
 			
 			if(!empty($categoryID) && !empty($groupname) && !empty($filterType) && !empty($lable) && !empty($name) && !empty($value)){
 				if(!empty($filterGroupID)){
-					$where=array('filterGroupID'=>$filterGroupID);
+					//$where=array('filterGroupID'=>$filterGroupID);
 					$data1=array('categoryID'=>$categoryID,'groupName'=>$groupname,'sortOrder'=>$sortoder,'filterStatus'=>$filterStatus,'filterType'=>$filterType);
-					$this->Categories_model->insert_catfilter($data1,$name,$lable,$value,$where);
+					$this->Categories_model->insert_catfilter($data1,$name,$lable,$value,$filterGroupID);
 					$this->session->set_flashdata('message_type', 'success');
 					$this->session->set_flashdata('message', $this->config->item("index") . " Filter Updated Successfully!!");
 				}else{

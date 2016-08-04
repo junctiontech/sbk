@@ -56,4 +56,11 @@ class Login_model extends CI_Model
 		$query=$this->db->get();
 		return $query->result();
 	}
+	public function reset_pass($table=false, $data=false, $email=false)
+	{
+		//print_r($data); die;
+		$this->db->where(array('userEmail'=>$email));
+		$this->db->update($table, $data);
+	}
+	
 }

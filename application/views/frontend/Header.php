@@ -15,99 +15,65 @@
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/custom.css">
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
-
-
-
 </head>
 <body id="body" onload="bodyload(this.id);" class="page-body">
-
-	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->
-		
+	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->		
 		<div class="navbar-inner">
-			<div class="nav navbar-mobile">
-			
-			
+			<div class="nav navbar-mobile">		
 				<div class="mobile-menu-toggle">					 					
 					<a href="#" data-toggle="mobile-menu-horizontal">
 						<i class="fa-bars"></i>
 					</a>
-				</div>
-				
-			</div>
-			
-			<div class="navbar-mobile-clear"></div>
-			
-			
-			
-			<!-- main menu -->
-					
+				</div>				
+			</div>			
+			<div class="navbar-mobile-clear"></div>			
+			<!-- main menu -->					
 			<ul class="navbar-nav nav nav-userinfo  hidden-xs">
 				<li>
 					<a href="<?=base_url();?>" title="Go to home page">
-						<i  class="fa fa-home"></i>
-						 
-					</a>
-					</li>
-
-				
+						<i  class="fa fa-home"></i>						 
+					</a>					
+				</li>				
 				<li class="middle-align">
-									 
-										<a href="javascript:;" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});" class="fa fa-bell-o"></a>
-									 
-				
-					</li>
-
- 
-					<li>
-				
+					<a href="javascript:;" onclick="jQuery('#modal-6').modal('show', {backdrop: 'static'});" class="fa fa-bell-o"></a>
+				</li>
+				<li>
 					<a href="javascript:;" title="You are searcheela no">
- 
- 
 						<span class="title">You are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
-					</a>
-					</li>
+					</a>					
+				</li>
 				<li>
 					<?php if(!empty($userinfos)){ ?>
-						<a class="notification-icon notification-icon-messages" href="<?=base_url();?>User/Mywishlist.html" title="View my shopping cart" rel="nofollow"><i class="fa-shopping-cart"></i>
-							
-							<span class="badge badge-purple"><?=isset($whislist)?$whislist:'0'?></span>
-							</a>
+					<a class="notification-icon notification-icon-messages" href="<?=base_url();?>User/Mywishlist.html" title="View my shopping cart" rel="nofollow">
+						<i class="fa-shopping-cart"></i>
+						<span class="badge badge-purple"><?=isset($whislist)?$whislist:'0'?></span>						
+					</a>
 					<?php }else{ ?>
-					<a href="<?=base_url();?>Login.html" title="View my shopping cart" rel="nofollow">							 
-								<span class="fa fa-shopping-cart white"></span>
-							</a>
+					<a href="<?=base_url();?>Login.html" title="View my shopping cart" rel="nofollow">
+						<span class="fa fa-shopping-cart white"></span>						
+					</a>
 					<?php } ?>	
-				</li>
-			 
-			</ul>
-					
-			
-			
+				</li>			 
+			</ul>			
 			<ul class="nav nav-userinfo white navbar-right">
-				
-				<li>					
- 
+				<li>
 					<a href="javascript:;" title="Download our android app">
- 
 						<i class="android"></i>
 					<!--	<span class="badge badge-green">15</span>-->
 					</a>					
 				</li>
-				<?php if(!empty($userinfos)) { ?>
-					<li class=" user-profile">
-					
- 
- 
-						<a href="javascript:;" title="Your profile image">
- 
-							<?php if (!empty($userinfos['userProfileImage'])) { ?>
-							<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
-							<?php } else { ?>
-							<img src="<?=base_url();?>frontend/images/user-1.png" alt=" " class="img-circle img-inline userpic-32" width="28" />
-							<?php } ?>
+				<?php if(!empty($userinfos)) { ?>					
+				<li class=" user-profile">
+					<a href="javascript:;" title="Your profile image">
+						<?php if (!empty($userinfos['userProfileImage'])) { ?>
+						<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
+						<?php } else { ?>
+						<img src="<?=base_url();?>frontend/images/user-1.png" alt=" " class="img-circle img-inline userpic-32" width="28" />
+						<?php } ?>
 					</a>
 				 <?php } ?>
-				<li>					
+				<li>
+					
 						<?php if(!empty($userinfos)){ ?>
 							<a href="<?=base_url();?>User/Dashboard.html" title="Go to dashboard">
 								<span class="white">Hi <?=isset($userinfos['userFirstName'])?$userinfos['userFirstName']:''?></span>

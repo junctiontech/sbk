@@ -435,5 +435,53 @@ class Login extends CI_Controller {
 				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
 		}
 	}
+		public function forgetpassword()
+	{
+		$this->parser->parse('frontend/Header',$this->data);
+		$this->parser->parse('frontend/Forgotpassword',$this->data);
+		$this->parser->parse('frontend/Footer',$this->data);
+	}
+	public function reset_password ()
+	{ 
+		$useremail = $this->input->post('email');
+		$pass = $this->input->post('password');
+		$password = $this->input->post('password2');
+		$pass2 = md5($password);
+		if($pass2)
+		{
+			$data=array('userPassword'=>$pass2);
+			$table='s4k_user';
+			$this->Login_model->reset_pass($table,$data,$useremail); 
+			if(!empty($useremail) && !empty($pass2)){
+			//	print_r($_POST); die;
+				$where=array('userEmail'=>$useremail,'userPassword'=>$pass2,'Status'=>'Active');
+				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				if(!empty($userinfo)){
+					$sbk = array(
+					'userID' => $userinfo[0]->userID,
+					'userTypeID' => $userinfo[0]->userTypeID,
+					'userFirstName' => $userinfo[0]->userFirstName,
+					'userProfileImage' => $userinfo[0]->userProfileImage
+				);
+
+				$this->session->set_userdata('searchb4kharch', $sbk);
+				
+				$this->session->set_flashdata('message_type', 'success');
+				$this->session->set_flashdata('message', $this->config->item("index") . "Congratulations!! Your password is reset successfully");
+				redirect('User/Dashboard');
+				
+				}else{
+					
+					$this->session->set_flashdata('category_error_login', "Username Or Password is invalid, please try again.");
+				}
+		
+		}else{
+				$this->session->set_flashdata('category_error_login', "Username Or Password is invalid, please try again.");
+			}
+		 
+				redirect("Login");
+		}
+		 	
+	}
 	
 }

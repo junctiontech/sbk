@@ -354,13 +354,17 @@ class Landingpage_model extends CI_Model {
 	}
 	public function get_email($userID=false)
 	{
-		$this->db->select('t1.userEmail');
+		$this->db->select('t1.userEmail,userID,userFirstName');
 		$this->db->from('s4k_user t1');
-		$this->db->where(array('userID'=>$userID));
+		$this->db->where($userID);
 		$query=$this->db->get();
 		return $query->result();
+	}	
+	function forgetpassword ($data=false, $email=false)
+	{	
+		$this->db->where(array('userEmail'=>$email));
+		$this->db->update('s4k_user',$data);		
 	}
-	
 	
 }
 

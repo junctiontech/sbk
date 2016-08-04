@@ -72,5 +72,50 @@ var count=0;
 	else if(count==1){
 				alert('please checked atleast two product');
 				return false;		
-	}	 
+	}	
+}
+
+
+function Match_email(){ 
+			var email = document.getElementById("Email").value; 
+			var big=false;			 
+	$.ajax({
+				type: "POST",
+				data: {data:email },
+				async: false,
+			 	url : base_url+'Landingpage/Match_emails',				
+			})	
+				 .done(function(msg){
+		//alert(msg);
+					if(msg !=null && msg.length>0){	
+						$("#Username").html(msg);
+						$("#lekhpal").html('');
+						big = true;
+					}else{	
+						$("#lekhpal").html('Please Enter Valid Email');			 		 			
+					big= false;
+					}
+	}); 
+	return big;
+}
+function match_otp(){ 
+			var otp = document.getElementById("otp").value; 
+			var big=false;			 
+	$.ajax({
+				type: "POST",
+				data: {data:otp },
+				async: false,
+			 	url : base_url+'Landingpage/match_otp',				
+			})	
+				 .done(function(msg){
+		//alert(msg);
+					if(msg !=null && msg.length>0){							 
+						$("#otperror").html('');
+						big = true;
+					}else{	
+						$("#otperror").html('Please Enter Valid Otp');			 		 			
+					big= false;
+					}
+	}); 
+	return big;
 }

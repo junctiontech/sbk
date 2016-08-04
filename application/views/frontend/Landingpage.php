@@ -115,10 +115,9 @@
                 <label class="col-md-4 col-sm-4 col-xs-4 white">From</label>
              
  
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-8 col-sm-8 col-xs-8">
                   <input type="text" id="from" autocomplete="off" onchange="checkfrom()" list="fromdata" class="form-control" name="from" placeholder="City or Airport" data-validate="required" data-message-required="please enter City or Airport" >
-				  <span class="validate-has-error" id="fromrequired" style="color:red;display: inline;
-}"></span>
+				  <span class="validate-has-error" id="fromrequired" style="color:red;display: inline;"></span>
  
 				  <datalist id="fromdata"></datalist>
                 </div>
@@ -129,8 +128,8 @@
 							<div class="form-group">
 				  
 
-				 <label class="col-md-4 col-sm-4 col-xs-12 white">To</label>
-				                 <div class="col-md-8 col-sm-8 col-xs-12">
+				 <label class="col-md-4 col-sm-4 col-xs-4 white">To</label>
+				                 <div class="col-md-8 col-sm-8 col-xs-8">
                  <input type="text" id="to" list="todata" onchange="checkto()" autocomplete="off" class="form-control" name="to" placeholder="City or Airport" data-validate="required" data-message-required="Please enter City or Airport" >
 				 <span id="torequired" style="color:red" ></span>
  
@@ -559,4 +558,3 @@ function fromID(placekey)
 			}
 		
     </script>
-	
