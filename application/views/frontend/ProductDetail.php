@@ -99,12 +99,12 @@
 						parsetags: 'onload'
 					  };
 					</script>
-					<meta property="og:type" content="article" />
-<meta itemprop="og:headline" content="Top 10 Most Challenging Hikes in North America" />
-<meta itemprop="og:description" content="Looking for a challenging hike? We spent the
+					<meta itemscope itemtype="http://schema.org/Article" />
+<meta itemprop="headline" content="Top 10 Most Challenging Hikes in North America" />
+<meta itemprop="description" content="Looking for a challenging hike? We spent the
 past year spanning the continent for the most grueling trails. Check out the entire
 ranked list, and learn about our methodology..." />
-<meta property="og:image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" />
+<meta itemprop="image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" />
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <div class="share">
 						 <p>Share Product :</p>
