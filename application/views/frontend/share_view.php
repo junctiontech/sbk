@@ -120,7 +120,9 @@
                 showLoader(true);
                 var share = {
                     method: 'stream.share',
-                    u: 'http://www.searchb4kharch.com/Landingpage/Product/Mobiles/9D79A928/moto_g_(3rd_generation).html'
+                    u: 'http://www.searchb4kharch.com/Landingpage/Product/Mobiles/9D79A928/moto_g_(3rd_generation).html',
+					picture     : 'http://thinkdiff.net/iphone/lucky7_ios.jpg',
+                    description : 'Checkout iOS apps and games from iThinkdiff.net. I found some of them are just awesome!'
                 };
  
                 FB.ui(share, function(response) {
