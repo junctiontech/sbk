@@ -118,7 +118,9 @@ class Landingpage extends CI_Controller {
 		$b=$this->input->Get('b');
 		$jsonarray=array();
 		$query='';$searchqry='';
-		
+		$this->data['sbkProductID']=$sbkProductID;
+		$this->data['productkey']=$productkey;
+		$this->data['categoryval']=$categorykey;
 		$get_data=$this->input->get();
 		$filters='';$page=$this->input->get('page');
 		if($page){
@@ -323,6 +325,223 @@ class Landingpage extends CI_Controller {
 				$this->display ('frontend/ProductDetail');
 			}else{
 			$this->display ('frontend/Products');
+			}
+		}
+	}
+	
+	
+	public function shareproduct($categorykey=false,$sbkProductID=false,$productkey=false)
+	{
+		$app=$this->input->get('app');
+		$this->data['searchq']=$searchq=$this->input->Get('q');
+		$b=$this->input->Get('b');
+		$jsonarray=array();
+		$query='';$searchqry='';
+		
+		$get_data=$this->input->get();
+		$filters='';$page=$this->input->get('page');
+		if($page){
+			$filters="";
+		}
+		/* if(!empty($get_data)){
+			foreach($get_data as $key=>$value){
+				if($key !='page'){
+				$filters.="$key=$value";
+				$filters.="&";
+				}
+			}
+		} */
+		
+			$limit = 82;
+			$config['per_page'] = $limit;
+			$config['page_query_string'] = TRUE;
+			$config['query_string_segment'] = 'page';
+			$config['full_tag_open'] = '<ul class="tsc_pagination tsc_paginationA tsc_paginationA01">';
+			$config['full_tag_close'] = '</ul>';
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = '<li>';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li ><a class="active" >';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['base_url'] = base_url() . "Landingpage/product/".$categorykey.'.html';
+			
+		
+		if($categorykey=='search'){
+			$searchquery=$searchq;
+			$index = Zend_Search_Lucene::open($this->search_index);
+			if($app==true){
+				Zend_Search_Lucene::setResultSetLimit(2000);
+			}
+			//$totalrecord = count($index->find($searchquery));
+			$products = $index->find($searchquery);
+			//$paginator = Zend_Paginator::factory($products);
+			//$paginator->setCurrentPageNumber($page);
+			//$products=$paginator->setItemCountPerPage($limit);
+			//Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
+			//echo $this->PaginationControl->paginationControl($this->paginator,'sliding','controls.phtml',array('route' => 'album'));
+			//$config['total_rows'] =$totalrecord;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
+			
+		}elseif(!empty($b)){
+			$productName=array();
+			if($sbkProductID){
+			$productName=explode("_",$sbkProductID);
+			}
+			$where=array('categoriesUrlKey like'=>$categorykey);
+			$searchqry=isset($productName[0])?$productName[0]:'';
+			$products=$this->Landingpage_model->get_products($query,$searchqry,$where);
+			
+		}else{
+		if(!empty($categorykey)){
+			$searchquery="categoriesUrlKey: $categorykey";
+			$query['categoriesUrlKey']=$categorykey;
+			$this->data['categorykey']=ucwords(implode(" ",explode("_",$categorykey)));
+		}
+		if(!empty($sbkProductID)){
+			$searchquery.="and productsUrlKey: $productkey";
+			$query['sb4kProductID']=$sbkProductID;
+			$products=$this->Landingpage_model->get_products($query,$searchqry);
+		}else{
+			//$index = Zend_Search_Lucene::open($this->search_index);
+			//$products = $index->find($searchquery);
+			$where=array('categoriesUrlKey like'=>$categorykey);
+			$products=$this->Landingpage_model->get_products('','',$where,'',$limit,$page);
+			$total=$this->Landingpage_model->getcountproduct($where);
+			$this->data['totalresult']=$total[0]->total;
+			$config['total_rows'] =$total[0]->total;
+			$this->pagination->initialize($config);
+			$this->data['pagination']=$this->pagination->create_links();
+		}
+	}
+		
+		
+		if($app=='true'){
+			if(!empty($products)){
+				 $whislistproduct=array();
+				if($this->input->post('user_id')){
+				$this->load->model('frontend/User_model');
+				$wishlist=$this->User_model->get_wishlistcount('s4k_user_wishlist',array('userID'=>$this->input->post('user_id'),'Status'=>'Active'));
+				foreach($wishlist as $wishlists){
+				$whislistproduct[]=$wishlists->productID;
+				}
+				}
+				 
+			foreach($products as $product){
+				
+				$attributegroups=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
+				$productFeatures='';
+				foreach($attributegroups as $attributegroup){ 
+				$attributebyproducts=$this->Landingpage_model->get_attribute_by_product($attributegroup->AttributeID,$products[0]->productsID); 
+					if(!empty($attributebyproducts)){
+						$valuearray='';
+						foreach($attributebyproducts as $attributebyproduct){
+							$valuearray[]=array('lable'=>$attributebyproduct->productAttributeLable,'value'=>$attributebyproduct->productAttributeValue);
+						}
+							$productFeatures[]=array('lable'=>$attributegroup->productAttributeLable,'value'=>$valuearray);		
+					}
+				}
+				
+				$moreprice='';
+				
+				if(!empty($products[0]->productsID) && !empty($products[0]->shopID)){
+				$othershopprices=$this->Landingpage_model->get_shoppricesApp($products[0]->productsID,$products[0]->shopID);
+				
+				if(!empty($othershopprices)){
+					foreach($othershopprices as $othershopprice){
+						$moreprice[]=array('shop_image'=>$othershopprice->shop_image,'productPrice'=>$othershopprice->productPrice,'productShopUrl'=>$othershopprice->productShopUrl);
+					}
+				}
+				}
+				$moreprice[]=array('shop_image'=>isset($product->shop_image)?$product->shop_image:'','productPrice'=>$product->productPrice,'productShopUrl'=>$product->productShopUrl);
+				$whislistproductvalue='No';
+				if(in_array(isset($products[0]->productsID)?$products[0]->productsID:'',$whislistproduct)==True){
+					$whislistproductvalue='yes';
+				}
+				  $apparray[]=array ('productsID'=>$product->productsID,
+				  		'categoriesUrlKey'=>$product->categoriesUrlKey,
+				  'productsUrlKey'=>$product->productsUrlKey,
+				  'sb4kProductID'=>$product->sb4kProductID,
+				  'productName'=>$product->productName,
+				  //'productAttributeLable'=>$product->productAttributeLable,
+				 // 'productAttributeValue'=>$product->productAttributeValue,
+				  'imageName'=>$product->imageName,
+				  'productImageTitle'=>$product->productImageTitle,
+				  'productImageAltTag'=>$product->productImageAltTag,
+				  'productPrice'=>$product->productPrice,
+				  'productShopUrl'=>$product->productShopUrl,
+				  'shop_image'=>isset($product->shop_image)?$product->shop_image:'',
+				  'productFeatures'=>$productFeatures,
+				  'morePrices'=>$moreprice,
+				  'wishlist'=>$whislistproductvalue
+				  );
+			}
+			
+				$searchquery1="categoriesUrlKey: $categorykey";
+				$searchquery1.="AND productsUrlKey: $productkey";
+				$index = Zend_Search_Lucene::open($this->search_index);
+				Zend_Search_Lucene::setResultSetLimit(5);
+				$similarproductDatas= $index->find($searchquery1,'score',SORT_DESC);
+				$similarproduct='';
+				foreach($similarproductDatas as $similarproductData){
+					$similarproduct[]=array ('categoriesUrlKey'=>$similarproductData->categoriesUrlKey,
+				  'productsUrlKey'=>$similarproductData->productsUrlKey,
+				  'sb4kProductID'=>$similarproductData->sb4kProductID,
+				  'productName'=>$similarproductData->productName,
+				  //'productAttributeLable'=>$product->productAttributeLable,
+				 // 'productAttributeValue'=>$product->productAttributeValue,
+				  'imageName'=>$similarproductData->imageName,
+				  'productImageTitle'=>$similarproductData->productImageTitle,
+				  'productImageAltTag'=>$similarproductData->productImageAltTag,
+				  'productPrice'=>$similarproductData->productPrice,
+				  'productShopUrl'=>$similarproductData->productShopUrl,
+				  
+				  );
+				}
+			$jsonarray['products']=$apparray;
+			$jsonarray['similarproduct']=$similarproduct;
+				
+				echo json_encode($jsonarray);
+			}else{
+				echo "No product found";
+			}
+				
+		}else{
+			$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+			$this->data['topbrands']=$topbrand=$this->Landingpage_model->get_topbrand();
+			$this->data['dealsgategorys']=$dealsgategorys=$this->Landingpage_model->get_dealsgategory();
+			if($categorykey !='' && $categorykey !='search'){
+				$this->data['filters']=$this->Landingpage_model->get_filters($categorykey);
+			}
+			$this->data['products']=$products;
+			if(!empty($sbkProductID) && empty($b)){
+				$this->data['backurl']=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
+				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;				
+				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);				
+				$searchquery1="categoriesUrlKey: $categorykey";
+				$searchquery1.="AND productsUrlKey: $productkey";
+				$index = Zend_Search_Lucene::open($this->search_index);
+				Zend_Search_Lucene::setResultSetLimit(5);
+				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
+				$this->data['attributegroups']=$this->Landingpage_model->get_attribute_by_category($products[0]->categoriesID);
+				$this->data['shopimages']=$this->Landingpage_model->shop_image();
+				}
+				
+				//print_r($this->data['shopimages']); die;
+				$this->load->view('frontend/share_view',$this->data);
+			}else{
+			$this->display ('frontend/share_view');
 			}
 		}
 	}
@@ -562,7 +781,7 @@ class Landingpage extends CI_Controller {
 			$class=$this->data['class']=$this->input->get('class');
 			$adults=$this->data['adult']=$this->input->get('adults');
 			
-			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se388177191712562214854946236057';
+			$url = 'http://partners.api.skyscanner.net/apiservices/pricing/v1.0?apiKey=se768816655086949164281628418167';
 			$data = array('country'=>'IN', 'currency'=>'INR', 'locale'=>'en-GB','originplace'=>$from,'destinationplace'=>$to,'outbounddate'=>$departure,'adults'=>$adults,'inbounddate'=>$return,'cabinclass'=>$class,'groupPricing'=>true );
 			
 			$options = array(

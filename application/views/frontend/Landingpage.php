@@ -557,4 +557,10 @@ function fromID(placekey)
 			}
 			}
 		
+<<<<<<< HEAD
     </script>
+=======
+	
+    </script>
+	
+>>>>>>> branch 'master' of https://github.com/junctiontech/sbk.git

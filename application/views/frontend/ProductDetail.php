@@ -22,19 +22,21 @@
 <?php }?>
 		 <!-- Alert section End-->
  
+    
 </div>
-		 <div class="row">	 
+		 <div class="row" >	 
 			 <div class="col-md-10">		
 				 <div class="content_top">    	
 					 <div class="back-links">    	
 						 <p><a href="<?=base_url();?>">Home</a> >> <a href="<?=isset($backurl)?$backurl:''?>"><?=isset($categorykey)?$categorykey:''?> </a></p>    	   
 					 </div>					
 					 <div class="clear"></div>					
-					 <h2 style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
+					 <h2  style="font-size:18px;color:red"><?=isset($products[0]->productName)?$products[0]->productName:''?></h2>    	
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
-				 <div class="col-md-4 grid images_3_of_2 pro_img">					
-					 <img src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+				 <div  class="col-md-4 grid images_3_of_2 pro_img">	
+			 
+					 <img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -91,14 +93,33 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
+					 
+					 <script >
+					  window.___gcfg = {
+						parsetags: 'onload'
+					  };
+					</script>
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
-							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt=""></a></li>
-							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/gplus.png" alt=""></a></li>
-							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/linkedin.png" alt=""></a></li>-->
-						 </ul>
+							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
+							 <li><a href="javascript:;"
+								  class="g-interactivepost"
+								  data-contenturl="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
+								  data-contentdeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>"
+								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
+								  data-cookiepolicy="single_host_origin"
+								  data-prefilltext="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com"
+								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>"
+								  data-calltoactionlabel="BUY"
+								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>">
+								 <img
+								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
+								</a>
+							</li>
+						</ul>
 					 </div>
 					 <div class="add-cart">
 						 <div class="rating">
@@ -222,14 +243,7 @@
 					 <h2>Product Details</h2>
 					 <p><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?>.</p>
 				 </div>
-				 <div class="product-tags">
-					 <h2>Product Tags</h2>
-					 <h4>Add Your Tags:</h4>
-					 <div class="input-box">
-						 <input type="text" value="" />
-					 </div>
-					 <div class="button"><span><a href="javascript:;">Add Tags</a></span></div>
-				 </div>	
+				
 			 </div>
 			 </div>
 			 	 <div class="col-md-2 col-sm-2 col-xs-0">
@@ -245,3 +259,62 @@
 	 </div>
 </div>
 <div class="clear"></div>
+<?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
+										$price= $othershopprices[$keys[0]]['productPrice']; 
+									if($othershopprices[$keys[0]]['shopID']==3){
+										$price=(int)$price;
+										$price=substr("$price",0,-2); 
+										$price=number_format($price, 2, '.',''); 
+										}else{ 
+										$price=number_format($price, 2, '.',''); 
+										}
+									}
+										$price1=number_format($products[0]->productPrice, 2, '.','');
+										if($price1 !=0 && $price !=0){
+											$finalprice=min($price1,$price);
+										}else{
+											if($price !=0){
+												$finalprice=$price;
+											}else{
+												$finalprice=$price1;
+											}
+										}
+									?>
+<script src="https://connect.facebook.net/en_US/all.js" async defer></script>
+<script type="text/javascript">
+            var button;
+            var userInfo;
+ 
+            window.fbAsyncInit = function() {
+                FB.init({ appId: '987149988019793',
+                    status: true,
+                    cookie: true,
+                    xfbml: true,
+                    oauth: true});
+			};
+            function share(){
+                
+                FB.ui(
+					  {
+										redirect_uri:'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
+										display: 'popup',
+										method: 'stream.share',
+										u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
+										picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
+										description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com'
+					  },function(response) {
+						if (response && !response.error_message) {
+							console.log(response);
+						 
+						} else {
+							console.log(response);
+						  
+						}
+					  }
+					);
+					
+            }
+			
+			
+			
+  </script>
