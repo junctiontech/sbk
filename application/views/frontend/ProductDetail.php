@@ -100,7 +100,7 @@
 					  };
 					</script>
 					<meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
-<meta property="og:image" content="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" />
+<meta property="og:image" content="<?=$products[0]->imageName?>" />
 <meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <div class="share">
