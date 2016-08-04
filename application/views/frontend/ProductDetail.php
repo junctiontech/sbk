@@ -294,16 +294,21 @@
 			};
             function share(){
                 
-                var share = {
-                    method: 'stream.share',
-                    u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
-					picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
-                    description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com'
-                };
- 
-                FB.ui(share, function(response) {
-                    alert(response);
-                    console.log(response);
-                });
+                FB.ui(
+					  {
+					   method: 'stream.share',
+										u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
+										picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
+										description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com'
+					  },function(response) {
+						if (response && !response.error_message) {
+						  alert(response);
+						} else {
+						  alert(response);
+						}
+					  }
+					);
             }
+			
+			
   </script>
