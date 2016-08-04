@@ -99,9 +99,12 @@
 						parsetags: 'onload'
 					  };
 					</script>
-					<meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
-<meta property="og:image" content="<?=$products[0]->imageName?>" />
-<meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
+					<meta property="og:type" content="article" />
+<meta itemprop="og:headline" content="Top 10 Most Challenging Hikes in North America" />
+<meta itemprop="og:description" content="Looking for a challenging hike? We spent the
+past year spanning the continent for the most grueling trails. Check out the entire
+ranked list, and learn about our methodology..." />
+<meta property="og:image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" />
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <div class="share">
 						 <p>Share Product :</p>
