@@ -259,19 +259,51 @@
 	 </div>
 </div>
 <div class="clear"></div>
-<script>
-function share(){
-               // showLoader(true);
+<?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
+										$price= $othershopprices[$keys[0]]['productPrice']; 
+									if($othershopprices[$keys[0]]['shopID']==3){
+										$price=(int)$price;
+										$price=substr("$price",0,-2); 
+										$price=number_format($price, 2, '.',''); 
+										}else{ 
+										$price=number_format($price, 2, '.',''); 
+										}
+									}
+										$price1=number_format($products[0]->productPrice, 2, '.','');
+										if($price1 !=0 && $price !=0){
+											$finalprice=min($price1,$price);
+										}else{
+											if($price !=0){
+												$finalprice=$price;
+											}else{
+												$finalprice=$price1;
+											}
+										}
+									?>
+<script src="https://connect.facebook.net/en_US/all.js" async defer></script>
+<script type="text/javascript">
+            var button;
+            var userInfo;
+ 
+            window.fbAsyncInit = function() {
+                FB.init({ appId: '987149988019793',
+                    status: true,
+                    cookie: true,
+                    xfbml: true,
+                    oauth: true});
+			};
+            function share(){
+                
                 var share = {
                     method: 'stream.share',
-                    u: 'http://www.searchb4kharch.com/Landingpage/Product/Mobiles/9D79A928/moto_g_(3rd_generation).html',
-					picture     : 'http://thinkdiff.net/iphone/lucky7_ios.jpg',
-                    description : 'Checkout iOS apps and games from iThinkdiff.net. I found some of them are just awesome!'
+                    u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
+					picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
+                    description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com'
                 };
  
                 FB.ui(share, function(response) {
-                   // showLoader(false);
+                    
                     console.log(response);
                 });
             }
-</script>
+  </script>

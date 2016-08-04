@@ -49,7 +49,7 @@
 											}
 										}
 									?>
-						<p>Lowest Price: <br><span><?=isset($finalprice)?$finalprice:''?></span></p>
+						<p>Lowest Price: <br><span>Rs <?=isset($finalprice)?$finalprice:''?></span></p>
 						</div>					
 					 </div>
 					 <div class="clear"></div>
