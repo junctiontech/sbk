@@ -95,7 +95,7 @@
 					 
 					 <?php
                     $title=urlencode($products[0]->productName);
-                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].'/Landingpage/shareproduct/'.$categoryval.'/'.$sbkProductID.'/'.$productkey.'.html');
+                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
                     $image=urlencode($products[0]->imageName);
 					$description=urlencode("hjkjasdkjaksjdk");
 					$caption=urlencode("dasd");
@@ -281,10 +281,10 @@
 <div class="clear"></div>
 
 <script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
 <script>
 
 document.getElementById('shareBtn').onclick = function() {
-  
   
   FB.api('/me/feed', 'post',
         {
@@ -296,7 +296,7 @@ document.getElementById('shareBtn').onclick = function() {
  
         },
         function(response) {
-           
+            showLoader(false);
  
             if (!response || response.error) {
                 alert('Error occured');
@@ -304,5 +304,5 @@ document.getElementById('shareBtn').onclick = function() {
                 alert('Post ID: ' + response.id);
             }
         });
-}
+};
 </script>
