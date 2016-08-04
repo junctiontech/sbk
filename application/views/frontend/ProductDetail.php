@@ -21,7 +21,7 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
- <html xmlns:fb="https://www.facebook.com/2008/fbml">
+ 
     
 </div>
 		 <div class="row" >	 
