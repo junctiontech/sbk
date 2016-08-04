@@ -21,7 +21,8 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
- 
+ <html xmlns:fb="https://www.facebook.com/2008/fbml">
+    
 </div>
 		 <div class="row" >	 
 			 <div class="col-md-10">		
@@ -93,25 +94,17 @@
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
 					 
-					 <?php
-                    $title=urlencode($products[0]->productName);
-                    $url=urlencode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-                    $image=urlencode($products[0]->imageName);
-					$description=urlencode("hjkjasdkjaksjdk");
-					$caption=urlencode("dasd");
-					$name=urlencode('ads');
-                ?>
 					 <script >
-  window.___gcfg = {
-    parsetags: 'onload'
-  };
-</script>
+					  window.___gcfg = {
+						parsetags: 'onload'
+					  };
+					</script>
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
-							 <li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
+							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
 							 <li><a href="javascript:;"
 								  class="g-interactivepost"
 								  data-contenturl="http://<?=$_SERVER['HTTP_HOST']?>/Landingpage/shareproduct/<?=$categoryval?>/<?=$sbkProductID?>/<?=$productkey?>.html"
@@ -124,10 +117,8 @@
 								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>">
 								 <img
 								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
-								</a></li>
-						<a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[url]=<?php echo $url; ?>&amp;&p[images][0]=<?php echo $image;?>&amp;&p[description]=<?php echo $description;?>&amp;&p[caption]=<?php echo $caption;?>', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_parent" href="javascript: void(0)">
-                    Share our Facebook page!
-                </a>
+								</a>
+							</li>
 						</ul>
 					 </div>
 					 <div class="add-cart">
@@ -252,18 +243,7 @@
 					 <h2>Product Details</h2>
 					 <p><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?>.</p>
 				 </div>
-				 <div class="product-tags">
-					 <h2>Product Tags</h2>
-					 <h4>Add Your Tags:</h4>
-					 <div class="input-box">
-						 <input type="text" value="" />
-					 </div>
-					 <div class="button"><span><a href="javascript:;">Add Tags</a></span></div>
-					
-
-
-                
-				 </div>	
+				
 			 </div>
 			 </div>
 			 	 <div class="col-md-2 col-sm-2 col-xs-0">
@@ -279,30 +259,19 @@
 	 </div>
 </div>
 <div class="clear"></div>
-
-<script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
-<html xmlns:fb="https://www.facebook.com/2008/fbml">
 <script>
-
-document.getElementById('shareBtn').onclick = function() {
-  
-  FB.api('/me/feed', 'post',
-        {
-            message     : "I love thinkdiff.net for facebook app development tutorials",
-            link        : 'http://ithinkdiff.net',
-            picture     : 'http://thinkdiff.net/iphone/lucky7_ios.jpg',
-            name        : 'iOS Apps & Games',
-            description : 'Checkout iOS apps and games from iThinkdiff.net. I found some of them are just awesome!'
+function share(){
+               // showLoader(true);
+                var share = {
+                    method: 'stream.share',
+                    u: 'http://www.searchb4kharch.com/Landingpage/Product/Mobiles/9D79A928/moto_g_(3rd_generation).html',
+					picture     : 'http://thinkdiff.net/iphone/lucky7_ios.jpg',
+                    description : 'Checkout iOS apps and games from iThinkdiff.net. I found some of them are just awesome!'
+                };
  
-        },
-        function(response) {
-            showLoader(false);
- 
-            if (!response || response.error) {
-                alert('Error occured');
-            } else {
-                alert('Post ID: ' + response.id);
+                FB.ui(share, function(response) {
+                   // showLoader(false);
+                    console.log(response);
+                });
             }
-        });
-};
 </script>
