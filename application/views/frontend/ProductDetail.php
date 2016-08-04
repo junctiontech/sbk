@@ -302,7 +302,7 @@
                 };
  
                 FB.ui(share, function(response) {
-                    
+                    alert(response);
                     console.log(response);
                 });
             }
