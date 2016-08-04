@@ -203,7 +203,7 @@
  
         <h3>New JavaScript SDK & OAuth 2.0 based FBConnect Tutorial | Thinkdiff.net</h3>
         <button id="fb-auth">Login</button>
-        <div id="loader" style="display:block">
+        <div id="loader" style="display:none">
             <img src="ajax-loader.gif" alt="loading" />
         </div>
         <br />
@@ -211,7 +211,7 @@
         <br />
         <div id="debug"></div>
  
-        <div id="other" style="display:none">
+        <div id="other" style="display:block">
             <a href="#" onclick="showStream(); return false;">Publish Wall Post</a> |
             <a href="#" onclick="share(); return false;">Share With Your Friends</a> |
             <a href="#" onclick="graphStreamPublish(); return false;">Publish Stream Using Graph API</a> |
