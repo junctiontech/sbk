@@ -104,6 +104,8 @@
 							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
 							
 							<g:plus action="share"></g:plus>
+							
+							<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 						</ul>
 					 </div>
 					 <div class="add-cart">
