@@ -1,6 +1,8 @@
  <div class="page-container">	
 	 <div class="main-content">	
-		 
+		 <div class="page-loading-overlay">			
+			 <div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>			
+		 </div>	 
 		 <div class="col-sm-12 col-md-12 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -33,11 +35,8 @@
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div  class="col-md-4 grid images_3_of_2 pro_img">	
-			  <span style="display:none" itemprop="name">hjj</span>
-<span itemprop="description">dsahsdj</span>
-
-					 <img itemprop="image"  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
-					 <link rel="image_src" href="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>">
+			 
+					 <img itemprop="image" src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -94,16 +93,24 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
+<meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
+<meta property="og:image" content="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" />
+<meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>					 
+<script >
+  window.___gcfg = {
+	parsetags: 'onload'
+  };
+</script>
+
 
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
+							 <div class="g-plusone"  ></div>
 							
-							<g:plus action="share"></g:plus>
-							
-							<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 						</ul>
 					 </div>
 					 <div class="add-cart">

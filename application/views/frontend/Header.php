@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/custom.css">
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body id="body" onload="bodyload(this.id);" class="page-body" itemscope itemtype="http://schema.org/Product">
 	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->		
