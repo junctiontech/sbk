@@ -96,7 +96,7 @@
 <span itemprop="name">hjj</span>
 <span itemprop="description">dsahsdj</span>
 <img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
-
+<link rel="image_src" href="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
