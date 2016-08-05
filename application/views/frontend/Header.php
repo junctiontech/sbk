@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/Product">
 <head>
 <title>Searchb4kharch</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

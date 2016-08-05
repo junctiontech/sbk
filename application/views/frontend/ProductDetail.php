@@ -93,13 +93,10 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-					 
-					 <script >
-					  window.___gcfg = {
-						parsetags: 'onload'
-					  };
-					</script>
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+<span itemprop="name">hjj</span>
+<span itemprop="description">dsahsdj</span>
+<img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
+
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
@@ -119,7 +116,7 @@
 								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
 								</a>
 							</li>
-							
+							<g:plus action="share"></g:plus>
 						</ul>
 					 </div>
 					 <div class="add-cart">
