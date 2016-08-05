@@ -316,14 +316,95 @@ class Login extends CI_Controller {
 				'userPassword'=>md5($userPassword),
 				'userGender'=>$userGender,
 				'userDOB'=>$userDOB,
+				'Status'=>'Inactive',
 				'userMobileNo'=>$userMobileNo
 				);
-			$id=$this->Login_model->insert('s4k_user',$data);
-			if(!empty($id)){
+				$id=$this->Login_model->insert('s4k_user',$data);
+				$encry = base64_encode($id);
+				$name = md5($userMobileNo);
+				$name1 = md5($userFirstName);
+				$base=base_url ();				
+				$subject="searchb4kharch:- Rest Password ";
+				$message= "<html><body><h3>Hello: $userFirstName </h3><p>Please click in below link and activated your Account....<br>  Your activated Account link is $base/Login/Activetedaccount/$name1/$encry/&&$name.html/ <br><br> if any query so please contact to info@junctiontech.in!!  :(  </h3></p><br> </p></body></html>";
+				$name='Searchb4kharch.com';
+				date_default_timezone_set('Etc/UTC');
+				require 'PHPMailer/PHPMailerAutoload.php';
+				//Create a new PHPMailer instance
+				$mail = new PHPMailer;			
+				//Tell PHPMailer to use SMTP
+				$mail->isSMTP();			
+				//Enable SMTP debugging
+				// 0 = off (for production use)
+				// 1 = client messages
+				// 2 = client and server messages
+				$mail->SMTPDebug = 0;			
+				//Ask for HTML-friendly debug output
+				$mail->Debugoutput = 'html';
+			
+				//Set the hostname of the mail server
+				$mail->Host = 'smtp.gmail.com';
+			
+				//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+				$mail->Port = 587;
+			
+				//Set the encryption system to use - ssl (deprecated) or tls
+				$mail->SMTPSecure = 'tls';
+			
+				//Whether to use SMTP authentication
+				$mail->SMTPAuth = true;
+			
+				//Username to use for SMTP authentication - use full email address for gmail
+				$mail->Username = 'searchkharch@gmail.com';
+			
+				//Password to use for SMTP authentication
+				$mail->Password = 'navrang99';
+			
+				//Set who the message is to be sent from
+				$mail->setFrom($userEmail,$name);
+			
+				//Set an alternative reply-to address
+				$mail->addReplyTo('searchkharch@gmail.com', $name);
+			
+				//Set who the message is to be sent to
+				$mail->addAddress($userEmail);
+			
+				//Set the subject line
+				$mail->Subject = $subject;
+			
+				//Read an HTML message body from an external file, convert referenced images to embedded,
+				//convert HTML into a basic plain-text alternative body
+				$mail->msgHTML($message);
+			
+				//Replace the plain text body with one created manually
+				$mail->AltBody = 'This is a plain-text message body';
+			
+				//Attach an image file
+				//$mail->addAttachment($uploadfile,$filename);
+			
+				//send the message, check for errors
+			
+			
+				if (!$mail->send())
+				{
+					print "We encountered an error sending your mail";
+					
+				}
+				else
+				{
+					if($app==true){
+					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!! Kindly check your email for activated your account !!!! '));
+						exit;
+				}
+					else{
+						?><script> alert('Signup Successfully!! Kindly check your email for activated your account !!!! ');</script><?php
+						redirect($_SERVER['HTTP_REFERER'],"refresh");
+					}
+				}
+			/*if(!empty($id)){
 				if($app==true){
 					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!!','user_id'=>$id));
 				}else{
-				$where=array('userID'=>$id);
+				$where=array('userID'=>$id,'Status'=>'Active');
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
 				if(!empty($userinfo)){
 					$sbk = array(
@@ -348,25 +429,29 @@ class Login extends CI_Controller {
 				}
 			} 
 				}
-		}else{
+		}* 
+				else{
 				if($app==true){
 					echo json_encode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
-				}else{
+				}
+				else{
 				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
 				redirect('Login/signup');
 				}
-			} 
-		}else{
+			} */
+		}
+			else{
 				if($app==true){
 					echo json_encode(array('code'=>500,'message'=>'All fields are mandatory!! Please Try Again.'));
 				}else{
 				$this->session->set_flashdata('category_error_login', " All fields are mandatory!! Please Try Again. ");
 				redirect('Login/signup');}
-			}
+			} 
 		}else{
 			if($app==true){
 					echo json_encode(array('code'=>500,'message'=>'Invalid request!! Please Try Again.'));
-				}else{
+				}
+			else{
 			$this->session->set_flashdata('category_error_login', " Invalid request!! Please Try Again. ");
 			redirect('Login/signup');
 				}
@@ -482,6 +567,51 @@ class Login extends CI_Controller {
 				redirect("Login");
 		}
 		 	
+	}
+	public function Activetedaccount($name1=false,$data=false)
+	{
+		$id=base64_decode($data);	 
+		if(!empty($id)){
+			$data=array('Status'=>'Active');
+			$this->Login_model->updateStatus($data, $id);
+		
+		}
+		if(!empty($id)){
+				if($app==true){
+					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!!','user_id'=>$id));
+				}else{
+				$where=array('userID'=>$id,'Status'=>'Active');
+				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				if(!empty($userinfo)){
+					$sbk = array(
+					'userID' => $userinfo[0]->userID,
+					'userTypeID' => $userinfo[0]->userTypeID,
+					'userFirstName' => $userinfo[0]->userFirstName,
+					'userProfileImage' => $userinfo[0]->userProfileImage
+				);
+				$this->session->set_userdata('searchb4kharch', $sbk);				
+				$this->session->set_flashdata('message_type', 'success');
+				$this->session->set_flashdata('message', $this->config->item("index") . " Congratulations!! now you've become Searcheela.");
+				redirect('User/Dashboard');				
+			}else{
+				if($app==true){
+					echo json_encode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
+				}else{
+				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
+				redirect('Login/signup');
+				}
+			} 
+				}
+		} 
+				else{
+				if($app==true){
+					echo json_encode(array('code'=>500,'message'=>'Technical error!! Please Try After Some Time.'));
+				}
+				else{
+				$this->session->set_flashdata('category_error_login', " Technical error!! Please Try After Some Time. ");
+				redirect('Login/signup');
+				}
+			}
 	}
 	
 }

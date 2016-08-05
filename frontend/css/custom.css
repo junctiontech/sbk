@@ -988,6 +988,7 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+	.contact{text-align:center !important;}
 		.navbar.horizontal-menu.navbar-fixed-top + .page-container {
 		margin-top:0%;
 	}
@@ -1653,3 +1654,6 @@ left: 5px;}
 
 .fixed1{position:fixed;}
 .lineheight{text-align: center; line-height: 40px;margin-bottom: 15px;}
+.textjustify {text-align: justify;line-height: 30px;margin-bottom: 15px;}
+.decoration{height: 3px;background-color: rgb(236, 37, 22);	margin-top: 10px;}
+.contact{text-align: center; padding: 0; color: rgb(236, 37, 22); margin-bottom: 25px;}
