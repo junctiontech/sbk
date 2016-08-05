@@ -44,26 +44,30 @@
 					 				
 					<div class="panel-body">
 					
-				<div id="googleMap" style="width:85%;height:350px;  left:40px"></div>
+				<div id="googleMap" style="width:85%;height:350px;border-radius: 50%;left:40px"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFsE-tTxY9qgQfwQz_kvuGRn6F3Z1Q94U&callback=initMap"
-  type="text/javascript"></script>
+  <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFsE-tTxY9qgQfwQz_kvuGRn6F3Z1Q94U&callback=initMap"
+  type="text/javascript"></script>-->
+
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDFsE-tTxY9qgQfwQz_kvuGRn6F3Z1Q94U&callback=initMap">
+</script>
 
 <script>
 function initialize() {
   var mapProp = {
-    center:new google.maps.LatLng(51.508742,-0.120850),
+    center:new google.maps.LatLng(23.1828376,77.4540313),
     zoom:5,
     mapTypeId:google.maps.MapTypeId.ROADMAP
-	 
   };
   var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 </script>
  
