@@ -1,6 +1,6 @@
  <div class="page-container">	
 	 <div class="main-content">	
-		  
+		 
 		 <div class="col-sm-12 col-md-12 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -34,7 +34,7 @@
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div  class="col-md-4 grid images_3_of_2 pro_img">	
 			 
-					 <img property="og:image" src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+					 <img itemprop="image" src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -91,34 +91,14 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-<meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
-<meta property="og:image" content="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" />
-<meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com" />
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>					 
-<script >
-  window.___gcfg = {
-	parsetags: 'onload'
-  };
-</script>
-
-					 <div class="share">
+				 
+				<div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
-							 <li><a href="javascript:;"
-								  class="g-interactivepost"
-								  data-contentdeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>"
-								  data-clientid="1099405938736-82mgohcv3vc4cn0p8i1028vti6k0mpni.apps.googleusercontent.com"
-								  data-cookiepolicy="single_host_origin"
-								  data-prefilltext="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> on www.searchb4kharch.com"
-								  data-calltoactionurl="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>"
-								  data-calltoactionlabel="BUY"
-								  data-calltoactiondeeplinkid="http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>">
-								 <img
-								  src="<?=base_url();?>frontend/images/gplus.png" alt="Share on Google+"/>
-								</a>
-							</li>
+							<li> <a href="javascript:;" class="g-plusone"   ></a></li>
+							
 							
 						</ul>
 					 </div>
@@ -281,6 +261,10 @@
 											}
 										}
 									?>
+									
+<h1 style="display:none" itemprop="name"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</h1>
+<p style="display:none" itemprop="description"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</p>
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>	
 <script src="https://connect.facebook.net/en_US/all.js" async defer></script>
 <script type="text/javascript">
             var button;
@@ -298,7 +282,7 @@
                 FB.ui(
 					  {
 										redirect_uri:'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
-										display: 'popup',
+										//display: 'popup',
 										method: 'stream.share',
 										u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
 										picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
