@@ -2,7 +2,7 @@
 	 <div class="main-content">	
 		 <span itemprop="name">hjj</span>
 <span itemprop="description">dsahsdj</span>
-<img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg" style="width:200px;height:300px">
+<img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg" style="width:346px;height:346px">
 <link rel="image_src" href="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
 		 <div class="col-sm-12 col-md-12 col-xs-12 form_content ">
  <!-- Alert section For Message-->
