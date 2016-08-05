@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/Product">
+<html lang="en" >
 <head>
 <title>Searchb4kharch</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,7 +17,7 @@
 <script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
-<body id="body" onload="bodyload(this.id);" class="page-body">
+<body id="body" onload="bodyload(this.id);" class="page-body" itemscope itemtype="http://schema.org/Product">
 	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->		
 		<div class="navbar-inner">
 			<div class="nav navbar-mobile">		
