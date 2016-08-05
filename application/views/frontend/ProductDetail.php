@@ -5,11 +5,11 @@
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
 		  <div class="alert alert-success alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">ï¿½</span> </button>
                 <strong><?=$this->session->flashdata('message')?></strong>  </div>
 		 <?php } if($this->session->flashdata('message_type')=='error') { ?>
 		 <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">ï¿½</span> </button>
                 <strong><?=$this->session->flashdata('message')?></strong>  </div>
 		 <?php } if($this->session->flashdata('category_error_login')) { ?>
 <div class="row" >
@@ -19,7 +19,27 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
- 
+ <?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
+										$price= $othershopprices[$keys[0]]['productPrice']; 
+									if($othershopprices[$keys[0]]['shopID']==3){
+										$price=(int)$price;
+										$price=substr("$price",0,-2); 
+										$price=number_format($price, 2, '.',''); 
+										}else{ 
+										$price=number_format($price, 2, '.',''); 
+										}
+									}
+										$price1=number_format($products[0]->productPrice, 2, '.','');
+										if($price1 !=0 && $price !=0){
+											$finalprice=min($price1,$price);
+										}else{
+											if($price !=0){
+												$finalprice=$price;
+											}else{
+												$finalprice=$price1;
+											}
+										}
+									?>
     
 </div>
 		 <div class="row" >	 
@@ -51,7 +71,7 @@
 	if($keys || $keys==0 ){
 		$keys = array_search($shopimage->shopID, array_column($othershopprices , 'shopID'));
 		if($othershopprices[$keys]['shopID']==3){ $pricemore=(int)$othershopprices[$keys]['productPrice']; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=isset($othershopprices[$keys]['productPrice'])?$othershopprices[$keys]['productPrice']:'';}?>
-							 <p>Price: <br><span><?=number_format($pricemore,2)?></span></p>
+							 <p><?php if($finalprice==number_format($pricemore,2)){echo"Lowest ";}?>Price: <br><span><?=number_format($pricemore,2)?></span></p>
 							 <a target="_blank" style="color:white;" href="<?=isset($othershopprices[$keys]['productShopUrl'])?$othershopprices[$keys]['productShopUrl']:''?>"><div class="btn btn-black">	
 								 <span >Buy now</span>
 								 </div>
@@ -60,7 +80,7 @@
 		if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}	
 							
 							 ?>	
-							 <p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>	
+							 <p><?php if($finalprice==number_format($pricemore,2)){echo"Lowest ";}?>Price: <br><span><?=number_format($pricemore,2)?></span></p>	
 							 <a target="_blank" style="color:white;" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>"><div class="btn btn-black">
 								 <span >Buy now</span>								
 							</div>
@@ -75,7 +95,7 @@
 	if($products[0]->shopID==3){ $pricemore=(int)$products[0]->productPrice; $pricemore=substr("$pricemore",0,-2); $pricemore=number_format($pricemore, 2, '.',''); }else{ $pricemore=$products[0]->productPrice;}						
 							
 							 ?>		
-							 <p>Lowest Price: <br><span><?=number_format($pricemore,2)?></span></p>
+							 <p><?php if($finalprice==number_format($pricemore,2)){echo"Lowest ";}?>Price: <br><span><?=number_format($pricemore,2)?></span></p>
 							 <a target="_blank" style="color:white;" href="<?=isset($products[0]->productShopUrl)?$products[0]->productShopUrl:''?>"><div class="btn btn-black">
 								 <span >Buy now</span>
 								 </div>
@@ -309,11 +329,11 @@
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
 		  <div class="alert alert-success alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">ï¿½</span> </button>
                 <strong><?=$this->session->flashdata('message')?></strong>  </div>
 		 <?php } if($this->session->flashdata('message_type')=='error') { ?>
 		 <div class="alert alert-danger alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">ï¿½</span> </button>
                 <strong><?=$this->session->flashdata('message')?></strong>  </div>
 		 <?php } if($this->session->flashdata('category_error_login')) { ?>
 <div class="row" >
@@ -401,7 +421,7 @@
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
-							<li> <a href="javascript:;" class="g-plusone"   ></a></li>
+							<li> <a href="javascript:;" class="g-plusone"  data-recommendations="false" data-onendinteraction="function(jsonParam){alert(jsonParam);}" ></a></li>
 							
 							
 						</ul>
@@ -544,27 +564,7 @@
 	 </div>
 </div>
 <div class="clear"></div>
-<?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
-										$price= $othershopprices[$keys[0]]['productPrice']; 
-									if($othershopprices[$keys[0]]['shopID']==3){
-										$price=(int)$price;
-										$price=substr("$price",0,-2); 
-										$price=number_format($price, 2, '.',''); 
-										}else{ 
-										$price=number_format($price, 2, '.',''); 
-										}
-									}
-										$price1=number_format($products[0]->productPrice, 2, '.','');
-										if($price1 !=0 && $price !=0){
-											$finalprice=min($price1,$price);
-										}else{
-											if($price !=0){
-												$finalprice=$price;
-											}else{
-												$finalprice=$price1;
-											}
-										}
-									?>
+
 									
 <h1 style="display:none" itemprop="name"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</h1>
 <p style="display:none" itemprop="description"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</p>
