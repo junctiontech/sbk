@@ -1,8 +1,9 @@
  <div class="page-container">	
 	 <div class="main-content">	
-		 <div class="page-loading-overlay">			
-			 <div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>			
-		 </div>	 
+		 <span itemprop="name">hjj</span>
+<span itemprop="description">dsahsdj</span>
+<img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg" style="width:200px;height:300px">
+<link rel="image_src" href="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
 		 <div class="col-sm-12 col-md-12 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -93,10 +94,7 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-<span itemprop="name">hjj</span>
-<span itemprop="description">dsahsdj</span>
-<img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg" style="width:200px;height:300px">
-<link rel="image_src" href="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
+
 					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
