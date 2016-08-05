@@ -33,7 +33,7 @@
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div  class="col-md-4 grid images_3_of_2 pro_img">	
-			  <span itemprop="name">hjj</span>
+			  <span style="display:none" itemprop="name">hjj</span>
 <span itemprop="description">dsahsdj</span>
 
 					 <img itemprop="image"  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
