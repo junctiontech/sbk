@@ -93,15 +93,7 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-<meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
-<meta property="og:image" content="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" />
-<meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>					 
-<script >
-  window.___gcfg = {
-	parsetags: 'onload'
-  };
-</script>
+
 
 
 					 <div class="share">
