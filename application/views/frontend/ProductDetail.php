@@ -113,10 +113,6 @@
 					 <div class="clear"></div>
 				 
 				<div class="share">
-						 <p>To earn RuPoints on your shopping, BUY NOW</p>
-						 
-					 </div>
-					 <div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
