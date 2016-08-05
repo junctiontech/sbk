@@ -1,9 +1,8 @@
  <div class="page-container">	
 	 <div class="main-content">	
-		 <span itemprop="name">hjj</span>
-<span itemprop="description">dsahsdj</span>
-<img itemprop="image" src="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg" style="width:346px;height:346px">
-<link rel="image_src" href="http://img.fkcdn.com/image/mobile/n/h/w/microsoft-lumia-950-xl-na-200x200-imaegf89yfs55ps5.jpeg">
+		 <div class="page-loading-overlay">			
+			 <div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>			
+		 </div>	 
 		 <div class="col-sm-12 col-md-12 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -36,8 +35,11 @@
 				 </div>
 				 	 <div class="col-md-12 col-sm-12 col-xs-12">		
 				 <div  class="col-md-4 grid images_3_of_2 pro_img">	
-			 
-					 <img  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+			  <span itemprop="name">hjj</span>
+<span itemprop="description">dsahsdj</span>
+
+					 <img itemprop="image"  src="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>" alt="<?=isset($products[0]->productImageAltTag)?$products[0]->productImageAltTag:''?>"  />
+					 <link rel="image_src" href="<?=isset($products[0]->imageName)?$products[0]->imageName:''?>">
 				 </div><!--style="height:250px;width:75%"-->				
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
