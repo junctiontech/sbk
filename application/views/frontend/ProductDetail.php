@@ -1,8 +1,6 @@
  <div class="page-container">	
 	 <div class="main-content">	
-		 <div class="page-loading-overlay">			
-			 <div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>			
-		 </div>	 
+		 
 		 <div class="col-sm-12 col-md-12 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -93,15 +91,13 @@
 					 </div>
 					 <!--<p style="margin-top:70px"><?=isset($products[0]->productDescription)?$products[0]->productDescription:''?></p>	-->
 					 <div class="clear"></div>
-
-
-
-					 <div class="share">
+				 
+				<div class="share">
 						 <p>Share Product :</p>
 						 <ul>
 							 <!--<li><a href="javascript:;"><img src="<?=base_url();?>frontend/images/youtube.png" alt=""></a></li>-->
 							 <li><a href="javascript:;" onclick="share(); return false;"><img  src="<?=base_url();?>frontend/images/facebook.png" alt="" id="shareBtn"></a></li>
-							 <div class="g-plusone"  ></div>
+							<li> <div class="g-plusone"  ></div></li>
 							
 						</ul>
 					 </div>
@@ -264,6 +260,10 @@
 											}
 										}
 									?>
+									
+<h1 style="display:none" itemprop="name"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</h1>
+<p style="display:none" itemprop="description"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</p>
+<script src="https://apis.google.com/js/client:platform.js" async defer></script>	
 <script src="https://connect.facebook.net/en_US/all.js" async defer></script>
 <script type="text/javascript">
             var button;

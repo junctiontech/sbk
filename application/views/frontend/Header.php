@@ -4,16 +4,6 @@
 <title>Searchb4kharch</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta property="og:title" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
-<meta property="og:image" content="http://img.fkcdn.com/image/computer/h/z/z/acer-aspire-notebook-200x200-imae4bdqndvhzfby.jpeg" />
-<meta property="og:description" content="Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com" />
-<script src="https://apis.google.com/js/client:platform.js" async defer></script>					 
-<script >
-  window.___gcfg = {
-	parsetags: 'onload'
-  };
-</script>
-<link rel="image_src" href="http://img.fkcdn.com/image/computer/h/z/z/acer-aspire-notebook-200x200-imae4bdqndvhzfby.jpeg">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/fonts/linecons/css/linecons.css">
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/fonts/fontawesome/css/font-awesome.min.css">
@@ -25,7 +15,6 @@
 <link rel="stylesheet" href="<?=base_url();?>frontend/css/custom.css">
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
-
 </head>
 <body id="body" onload="bodyload(this.id);" class="page-body" itemscope itemtype="http://schema.org/Product">
 	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->		
