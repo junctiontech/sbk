@@ -19,9 +19,11 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
- <?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
-										$price= $othershopprices[$keys[0]]['productPrice']; 
-									if($othershopprices[$keys[0]]['shopID']==3){
+ <?php $price1=$price=0;if(!empty($othershopprices)){  $keys=array_search(min(array_column($othershopprices,'productPrice')), array_column($othershopprices,'productPrice'));
+						
+										$price= $othershopprices[$keys]['productPrice']; 
+										//$price=min(array_column($othershopprices,'productPrice'));
+									if($othershopprices[$keys]['shopID']==3){
 										$price=(int)$price;
 										$price=substr("$price",0,-2); 
 										$price=number_format($price, 2, '.',''); 
