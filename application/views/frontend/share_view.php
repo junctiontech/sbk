@@ -28,20 +28,18 @@
 				 <div class="desc span_3_of_2">					
 					 <div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="col-md-4 col-sm-4 col-xs-12">
-						 <?php $price1=$price=0;if(!empty($othershopprices)){  $keys=array_search(min(array_column($othershopprices,'productPrice')), array_column($othershopprices,'productPrice'));
-						
-										$price= $othershopprices[$keys]['productPrice']; 
-										print_r($othershopprices);
-										print_r($price); print_r(min(array_column($othershopprices,'productPrice')));die;die;
-										//$price=min(array_column($othershopprices,'productPrice'));
-									if($othershopprices[$keys]['shopID']==3){
-										$price=(int)$price;
-										$price=substr("$price",0,-2); 
-										$price=number_format($price, 2, '.',''); 
-										}else{ 
-										$price=number_format($price, 2, '.',''); 
-										}
-									}
+						 <?php $price1=$price=0;if(!empty($othershopprices)){
+
+							foreach($othershopprices as $othershopprice){
+								if($othershopprice['shopID']==3){
+								$priceval[]=substr("{$othershopprice['productPrice']}",0,-2); 
+								}else{
+								$priceval[]=$othershopprice['productPrice'];
+								}
+							}
+							$price=number_format(min($priceval), 2, '.',''); 
+						 
+						}
 										$price1=number_format($products[0]->productPrice, 2, '.','');
 										if($price1 !=0 && $price !=0){
 											$finalprice=min($price1,$price);
