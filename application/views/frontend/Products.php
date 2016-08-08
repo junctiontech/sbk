@@ -89,7 +89,7 @@
             <?=$product->productName?> 
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
-          <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>"><span class="price"><?php if(!empty($product->productPrice) && $product->productPrice !=0){?>Rs. 
+          <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>"><span class="price"><?php if($product->productPrice && $product->productPrice !=0){?>Rs. 
             <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?>
             </span></p> </a>          
           <div class="checkbox">
