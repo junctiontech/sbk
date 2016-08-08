@@ -467,7 +467,7 @@ class Landingpage extends CI_Controller {
 					$whislistproductvalue='yes';
 				}
 				  $apparray[]=array ('productsID'=>$product->productsID,
-				  		'categoriesUrlKey'=>$product->categoriesUrlKey,
+				  'categoriesUrlKey'=>$product->categoriesUrlKey,
 				  'productsUrlKey'=>$product->productsUrlKey,
 				  'sb4kProductID'=>$product->sb4kProductID,
 				  'productName'=>$product->productName,
@@ -1113,11 +1113,11 @@ class Landingpage extends CI_Controller {
 		$this->parser->parse('frontend/Aboutus',$this->data);
 		$this->parser->parse('frontend/Footer',$this->data);
 	}
+	public function Contactus()
+	{
+		$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+		$this->parser->parse('frontend/Header',$this->data);
+		$this->parser->parse('frontend/Contactus',$this->data);
+		$this->parser->parse('frontend/Footer',$this->data);
+	}
 }
-
-
-
-
-
-
-

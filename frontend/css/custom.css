@@ -988,6 +988,7 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+	.contact{text-align:center !important;}
 		.navbar.horizontal-menu.navbar-fixed-top + .page-container {
 		margin-top:0%;
 	}
@@ -1000,6 +1001,7 @@ margin-top:60px;
 	.control-label{
 		text-align:left !important;
 	}
+	.map{width:100% !important;height:280px !important;border-radius: 50%;left:0px !important;}
 	.search_box form input[type="text"] {
 		width:81.5%;
 		font-size: 27px;
@@ -1653,3 +1655,8 @@ left: 5px;}
 
 .fixed1{position:fixed;}
 .lineheight{text-align: center; line-height: 40px;margin-bottom: 15px;}
+.textjustify {text-align: justify;line-height: 30px;margin-bottom: 15px;}
+.decoration{height: 3px;background-color: rgb(236, 37, 22);	margin-top: 10px;}
+.contact{text-align: center; padding: 0; color: rgb(236, 37, 22); margin-bottom: 25px;}
+.contactadd{margin-left: 32px; margin-bottom: 10px;}
+.map{width:85%;height:350px;border-radius: 50%;left:40px}

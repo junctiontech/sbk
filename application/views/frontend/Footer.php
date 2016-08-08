@@ -149,7 +149,7 @@
 				
 				<div class="col_1_of_4 span_1_of_4">
 					<!--<h4>My account</h4>-->
-						<ul class="marker_none"><li><a href="javascript:;"><span>Contact Us</span></a></li>
+						<ul class="marker_none"><li><a href="<?=base_url();?>Landingpage/Contactus.html"><span>Contact Us</span></a></li>
 						<!--	<?php if(!empty($userinfos)){ ?>
 							<li><a href="<?=base_url();?>User/Dashboard.html">Dashboard</a></li>
 							<li><a href="<?=base_url();?>User/Mywishlist.html">My Wishlist</a></li>

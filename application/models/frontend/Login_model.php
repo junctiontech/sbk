@@ -62,5 +62,10 @@ class Login_model extends CI_Model
 		$this->db->where(array('userEmail'=>$email));
 		$this->db->update($table, $data);
 	}
-	
+	public function updateStatus ($data=false, $id=false)
+	{
+		$this->db->where(array('userID'=>$id));
+		$this->db->update('s4k_user',$data);
+		
+	}	
 }
