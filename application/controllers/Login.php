@@ -244,22 +244,27 @@ class Login extends CI_Controller {
 			$useremail=$this->input->post('useremail');
 			$password=$this->input->post('password');
 			if(!empty($useremail) && !empty($password)){
-				$where=array('userEmail'=>$useremail,'userPassword'=>md5($password),'Status'=>'Active');
+				$where=array('userEmail'=>$useremail,'userPassword'=>md5($password));
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
 				if(!empty($userinfo)){
+					$userstatus=$this->Login_model->check_status('s4k_user',$where);
+				
+					if(!empty($userstatus[0]->Status =='Active'))
+					{	//print_r($userstatus[0]->Status);die;
 					$sbk = array(
 					'userID' => $userinfo[0]->userID,
 					'userTypeID' => $userinfo[0]->userTypeID,
 					'userFirstName' => $userinfo[0]->userFirstName,
 					'userProfileImage' => $userinfo[0]->userProfileImage
 				);
-
-				$this->session->set_userdata('searchb4kharch', $sbk);
-				
+				$this->session->set_userdata('searchb4kharch', $sbk);				
 				$this->session->set_flashdata('message_type', 'success');
 				$this->session->set_flashdata('message', $this->config->item("index") . "You've Logged in successfully. ");
 				redirect('User/Dashboard');
-				
+					}
+					else{					
+						$this->session->set_flashdata('category_error_login', "Your email is not verified, please verify your email.");
+					}
 				}else{
 					
 					$this->session->set_flashdata('category_error_login', "Username Or Password is invalid, please try again.");
@@ -325,7 +330,7 @@ class Login extends CI_Controller {
 				$name1 = md5($userFirstName);
 				$base=base_url ();				
 				$subject="searchb4kharch:- Rest Password ";
-				$message= "<html><body><h3>Hello: $userFirstName </h3><p>Please click in below link and activated your Account....<br>  Your activated Account link is $base/Login/Activetedaccount/$name1/$encry/&&$name.html/ <br><br> if any query so please contact to info@junctiontech.in!!  :(  </h3></p><br> </p></body></html>";
+				$message= "<html><body><h3>Hello: $userFirstName </h3><p>Please click in below link and activated your Account....<br>  Your activated Account link is $base/Login/Activetedaccount/$name1/$encry/&&$name.html/ <br><br> if any query so please contact to info@searchb4kharch.com!!</h3></p><br> </p></body></html>";
 				$name='Searchb4kharch.com';
 				date_default_timezone_set('Etc/UTC');
 				require 'PHPMailer/PHPMailerAutoload.php';
@@ -392,7 +397,7 @@ class Login extends CI_Controller {
 				else
 				{
 					if($app==true){
-					echo json_encode(array('code'=>200,'message'=>'Signup Successfully!! Kindly check your email for activated your account !!!! '));
+					echo json_encode(array('code'=>300,'message'=>'Signup Successfully!! Kindly check your email for activated your account !!!! '));
 						exit;
 				}
 					else{
@@ -477,16 +482,24 @@ class Login extends CI_Controller {
 			$useremail=$sb4k_login_info['emailId'];
 			$password=$sb4k_login_info['password'];
 			if(!empty($useremail) && !empty($password)){
-				$where=array('userEmail'=>$useremail,'userPassword'=>md5($password),'Status'=>'Active');
+				$where=array('userEmail'=>$useremail,'userPassword'=>md5($password));
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
 				if(!empty($userinfo)){
-					$sbk = array(
-					'userID' => $userinfo[0]->userID,
-					'userTypeID' => $userinfo[0]->userTypeID,
-					'userFirstName' => $userinfo[0]->userFirstName,
-					'userProfileImage' => $userinfo[0]->userProfileImage
-				);
-					echo json_encode(array('code'=>200,'message'=>'Successfully login','user_id'=>$userinfo[0]->userID));
+					$userstatus=$this->Login_model->check_status('s4k_user',$where);				
+					if(!empty($userstatus[0]->Status =='Active'))
+					{
+						$sbk = array(					
+							'userID' => $userinfo[0]->userID,					
+							'userTypeID' => $userinfo[0]->userTypeID,					
+							'userFirstName' => $userinfo[0]->userFirstName,					
+							'userProfileImage' => $userinfo[0]->userProfileImage
+						);					
+						echo json_encode(array('code'=>200,'message'=>'Successfully login','user_id'=>$userinfo[0]->userID));					
+					}
+					else
+					{					
+						echo json_encode(array('code'=>300,'message'=>'Your email is not verified, please verify your email'));
+					}
 				}else{
 					echo json_encode(array('code'=>500,'message'=>'Invalid username or password!!'));
 				}
@@ -496,8 +509,7 @@ class Login extends CI_Controller {
 		}else{
 				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
 		}
-	}
-	
+	}	
 	public function app_forgetpassword()
 	{ 
 		$sb4k_forgot_info=$this->input->post('sb4k_forgot_info');

@@ -1,5 +1,8 @@
 <div class="page-container">
 	<div class="main-content">
+		<div class="page-loading-overlay">	
+			<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+		</div>
 		<div class="row">
 			<div class="col-md-12">		
 				<center>			
@@ -29,8 +32,8 @@
 									<table cellspacing="0" class="table table-small-font table-bordered table-striped">
 										<tbody>		
 											<tr>										
-												<td>											
-													<img src="<?=base_url();?>frontend/images/user-2.png"/><br>	
+												<td style="text-align:center;">											
+													<img class="aboutusimags" src="<?=base_url();?>frontend/images/Dhiraj.Jaiswani.jpg"/><br>	
 													<p><b> Executive Producer											
 														“Screwvala” of SBK</b><br>											
 														Mr. Dhiraj Jaiswani 
@@ -48,8 +51,8 @@
 												</td>
 											</tr>
 											<tr>
-												<td>
-													<img src="<?=base_url();?>frontend/images/user-2.png"/><br>
+												<td style="text-align:center;">
+													<img class="aboutusimags" src="<?=base_url();?>frontend/images/Mohit.sharma.jpg"/><br>
 													<p><b>The Producer 
 														SBK’s own “Nadiadwala”</b><br>													
 														Mr.Mohit Sharma 
@@ -68,8 +71,8 @@
 												</td>
 											</tr>
 											<tr>
-												<td>
-													<img src="<?=base_url();?>frontend/images/user-2.png"/><br>	
+												<td style="text-align:center;">
+													<img class="aboutusimags" src="<?=base_url();?>frontend/images/Prashant.Persai.jpg"/><br>	
 													<p><b> Marketing & Promotion  
 														“SBK’s Prahalad” </b><br>														
 														Mr.Prashant Persai </p>														
@@ -85,8 +88,8 @@
 												</td>													
 											</tr>												
 											<tr>												
-												<td>
-													<img src="<?=base_url();?>frontend/images/junction_ring_12.png"/><br>													
+												<td style="text-align:center;">
+													<img class="aboutusimags" src="<?=base_url();?>frontend/images/junction_ring_12.png"/><br>													
 													<p><b> Art Designer & visual effects
 														“Primefocus” of SBK </b><br>													
 														Junctiontech.in team  </p>													
@@ -104,8 +107,8 @@
 												</td>												
 											</tr>												
 											<tr>												
-												<td>													
-													<img src="<?=base_url();?>frontend/images/user-2.png"/><br>	
+												<td style="text-align:center;">													
+													<img class="aboutusimags" src="<?=base_url();?>frontend/images/vineet.Kumar (1).jpg"/><br>	
 													<p><b> Direction & Screenplay 
 														“Salim­Javed” of SBK </b><br>													
 														Mr.Vineet Kumar 

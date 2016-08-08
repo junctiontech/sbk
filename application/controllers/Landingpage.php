@@ -1039,7 +1039,7 @@ class Landingpage extends CI_Controller {
 		$data=array('userPassword'=>$tempCode);	 
 		$this->Landingpage_model->forgetpassword($data,$email);
 		$subject="searchb4kharch:- Rest Password ";
-		$message= "<html><body><h3>Hello: $username </h3><p>Please click in below link and reset your password....<br> Your OTP Code is:- <b>$tempCode</b> <br> Your reset password link is $base/Login/forgetpassword.html/ <br><br> if any query so please contact to info@junctiontech.in!!  :(  </h3></p><br> </p></body></html>";
+		$message= "<html><body><h3>Hello: $username </h3><p>Please click in below link and reset your password....<br> Your OTP Code is:- <b>$tempCode</b> <br> Your reset password link is $base/Login/forgetpassword.html/ <br><br> if any query so please contact to info@searchb4kharch.com!!  </h3></p><br> </p></body></html>";
 		$name='Searchb4kharch.com';
 		date_default_timezone_set('Etc/UTC');
 		require 'PHPMailer/PHPMailerAutoload.php';
@@ -1122,5 +1122,83 @@ class Landingpage extends CI_Controller {
 		$this->parser->parse('frontend/Header',$this->data);
 		$this->parser->parse('frontend/Contactus',$this->data);
 		$this->parser->parse('frontend/Footer',$this->data);
+	}
+	public function contactus_mail()
+	{
+	//	print_r($_POST); die;
+		$name1=$this->input->post('name');
+		$email=$this->input->post('email');
+		$sharetext=$this->input->post('sharetaxt');
+		$subject="searchb4kharch:-Contact us";
+		$message= "<html><body><h3>Name:- $name1 </h3><p>Email:- $email<br> Share massages:- $sharetext  <br> </p></body></html>";
+		$name='Searchb4kharch.com';
+		date_default_timezone_set('Etc/UTC');
+		require 'PHPMailer/PHPMailerAutoload.php';
+		//Create a new PHPMailer instance
+			$mail = new PHPMailer;			
+			//Tell PHPMailer to use SMTP
+			$mail->isSMTP();			
+			//Enable SMTP debugging
+			// 0 = off (for production use)
+			// 1 = client messages
+			// 2 = client and server messages
+			$mail->SMTPDebug = 0;			
+			//Ask for HTML-friendly debug output
+			$mail->Debugoutput = 'html';
+			
+			//Set the hostname of the mail server
+			$mail->Host = 'smtp.gmail.com';
+			
+			//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+			$mail->Port = 587;
+			
+			//Set the encryption system to use - ssl (deprecated) or tls
+			$mail->SMTPSecure = 'tls';
+			
+			//Whether to use SMTP authentication
+			$mail->SMTPAuth = true;
+			
+			//Username to use for SMTP authentication - use full email address for gmail
+			$mail->Username = 'searchkharch@gmail.com';
+			
+			//Password to use for SMTP authentication
+			$mail->Password = 'navrang99';
+			
+			//Set who the message is to be sent from
+			$mail->setFrom('searchkharch@gmail.com',$name);
+			
+			//Set an alternative reply-to address
+			$mail->addReplyTo('searchkharch@gmail.com', $name);
+			
+			//Set who the message is to be sent to
+			$mail->addAddress('searchkharch@gmail.com');
+			
+			//Set the subject line
+			$mail->Subject = $subject;
+			
+			//Read an HTML message body from an external file, convert referenced images to embedded,
+			//convert HTML into a basic plain-text alternative body
+			$mail->msgHTML($message);
+			
+			//Replace the plain text body with one created manually
+			$mail->AltBody = 'This is a plain-text message body';
+			
+			//Attach an image file
+			//$mail->addAttachment($uploadfile,$filename);
+			
+			//send the message, check for errors
+			
+			
+			if (!$mail->send())
+			{
+				print "We encountered an error sending your mail";
+					
+			}
+			else
+			{
+				$this->session->set_flashdata('message_type', 'success');		
+				$this->session->set_flashdata('message', $this->config->item("Landingpage") . "Your mail sent successfully!!!!");		
+				redirect($_SERVER['HTTP_REFERER']);					 
+			}	
 	}
 }

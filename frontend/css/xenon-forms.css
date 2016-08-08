@@ -30,6 +30,7 @@ div.datepicker {
   border-radius: 0px;
   background-clip: padding-box;
   direction: ltr;
+	z-index:101 !important;
   /*.dow {
 		border-top: 1px solid #ddd !important;
 	}*/

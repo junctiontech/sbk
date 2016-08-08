@@ -9,6 +9,14 @@ class Login_model extends CI_Model
 		$query=$this->db->get();
 		return $query->result();
 	}
+	public function check_status($table,$where)
+	{
+		$this->db->select('Status');
+		$this->db->from($table);
+		$this->db->where($where);
+		$query=$this->db->get();
+		return $query->result();		
+	}
 	
 	function insert($table=false,$data=false)
 	{

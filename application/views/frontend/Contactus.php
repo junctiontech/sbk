@@ -1,17 +1,41 @@
-<div class="page-container">
+<div class="page-container">	
 	<div class="main-content">
+		<div class="page-loading-overlay">	
+			<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+		</div>
 		<div class="row">
-			<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="col-sm-6 col-md-6 col-xs-12 form_content ">
+				<!-- Alert section For Message-->
+				<?php  if($this->session->flashdata('message_type')=='success') {  ?>
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>               
+					<strong><?=$this->session->flashdata('message')?></strong>  </div>		
+				<?php } if($this->session->flashdata('message_type')=='error') { ?>		
+				<div class="alert alert-danger alert-dismissible fade in" role="alert">               
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>               
+					<strong><?=$this->session->flashdata('message')?></strong>  </div>
+				<?php } if($this->session->flashdata('category_error_login')) { ?>
+				<div class="row" >
+					<div class="alert alert-danger" >
+						<strong><?=$this->session->flashdata('category_error_login')?></strong> <?php echo"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>";?>
+					</div>
+				</div>
+				<?php }?>
+				<!-- Alert section End-->
+			</div>
+		</div>
+		<div class="row">			
+			<div class="col-md-6 col-sm-6 col-xs-12">				
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form role="form" id="form1" method="post" class="form-horizontal form-label-left">						
+						<form role="form" id="form1" method="post" action="<?=base_url();?>/Landingpage/contactus_mail" class="validate form-horizontal form-label-left">						
 							<div class="form-group">
 								<div class="col-md-3 col-sm-3 col-xs-2 decoration"></div>
 								<div class="col-md-6 col-sm-6 col-xs-8 contact">
 									<label>HOW SHALL WE CALL YOU </label>
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-2 decoration"></div>								
-								<input type="text" class="form-control" name="name" placeholder="Type your name here." />						
+								<input type="text" class="form-control" name="name" data-validate="required" data-message-required="Please Type your name" placeholder="Type your name here." />						
 							</div>						
 							<div class="form-group">							
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>						
@@ -19,7 +43,7 @@
 									<label>SHARE YOUR EMAIL</label>						
 								</div>							
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>							
-								<input type="text" class="form-control" name="email" placeholder="We will keep if Safe. We promise!" />						
+								<input type="text" class="form-control" name="email" data-validate="required" data-message-required="Please Type your name" placeholder="We will keep if Safe. We promise!" />						
 							</div>
 							<div class="form-group">
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
@@ -27,7 +51,7 @@
 									<label>WE'RE ALL EARS!</label>
 								</div>
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
-								<textarea class="form-control" style="height: 230px;" placeholder="Share with us any information that might help us to respond to your request."></textarea>
+								<textarea class="form-control" style="height: 230px;" data-validate="required" data-message-required="Please Type your name" name="sharetaxt" placeholder="Share with us any information that might help us to respond to your request."></textarea>
 							</div>
 							<div class="form-group">
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
