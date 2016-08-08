@@ -264,29 +264,7 @@
 	 </div>
 </div>
 <div class="clear"></div>
-<?php $price1=$price=0;if(!empty($othershopprices)){ $keys=array_keys($othershopprices, min($othershopprices));
-										$price= $othershopprices[$keys[0]]['productPrice']; 
-									if($othershopprices[$keys[0]]['shopID']==3){
-										$price=(int)$price;
-										$price=substr("$price",0,-2); 
-										$price=number_format($price, 2, '.',''); 
-										}else{ 
-										$price=number_format($price, 2, '.',''); 
-										}
-									}
-										$price1=number_format($products[0]->productPrice, 2, '.','');
-										if($price1 !=0 && $price !=0){
-											$finalprice=min($price1,$price);
-										}else{
-											if($price !=0){
-												$finalprice=$price;
-											}else{
-												$finalprice=$price1;
-											}
-										}
-									?>
-									
-<h1 style="display:none" itemprop="name"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</h1>
+<h1 style="display:none" itemprop="name"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> <?php if($finalprice !=0){?>at lowest price Rs <?=isset($finalprice)?$finalprice:''?><?php }else{ echo"coming soon"; }?> on www.searchb4kharch.com</h1>
 <p style="display:none" itemprop="description"  >Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com</p>
 <script src="https://apis.google.com/js/client:platform.js" async defer></script>	
 <script src="https://connect.facebook.net/en_US/all.js" async defer></script>
@@ -310,7 +288,7 @@
 										method: 'stream.share',
 										u: 'http://<?=$_SERVER['HTTP_HOST']?><?=$_SERVER['REQUEST_URI']?>',
 										picture     : '<?=isset($products[0]->imageName)?$products[0]->imageName:''?>',
-										description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> at lowest price Rs <?=isset($finalprice)?$finalprice:''?> on www.searchb4kharch.com'
+										description : 'Hi, I have just found my <?=isset($products[0]->productName)?$products[0]->productName:''?> <?php if($finalprice !=0){?>at lowest price Rs <?=isset($finalprice)?$finalprice:''?><?php }else{ echo"coming soon"; }?> on www.searchb4kharch.com'
 					  },function(response) {
 						if (response && !response.error_message) {
 							console.log(response);
