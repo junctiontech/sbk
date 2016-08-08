@@ -16,7 +16,7 @@
 <link rel="shortcut icon" href="<?=base_url();?>frontend/images/SEARCHB4KHARCH(2).png">
 <script src="<?=base_url();?>frontend/js/jquery-1.11.1.min.js"></script>
 </head>
-<body id="body" onload="bodyload(this.id);" class="page-body">
+<body id="body" onload="bodyload(this.id);" class="page-body" itemscope itemtype="http://schema.org/Offers">
 	<nav class="navbar horizontal-menu navbar-fixed-top"><!-- set fixed position by adding class "navbar-fixed-top" -->		
 		<div class="navbar-inner">
 			<div class="nav navbar-mobile">		

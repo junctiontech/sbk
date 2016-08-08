@@ -292,7 +292,7 @@
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p></a>
+					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price"><?php if(!empty($product->productPrice) && $product->productPrice !=0){?>Rs. <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?></span></p></a>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -306,12 +306,12 @@
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
               Compare </label>
           
-								  <lable class="wishlist"> 
+								  <label class="wishlist"> 
 					<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
 					  <?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
-					  <?php }?> </lable>
+					  <?php }?> </label>
 					</div>
 			</div>
 				
@@ -341,7 +341,7 @@
 
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p></a>
+		   <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price"><?php if(!empty($product->productPrice) && $product->productPrice !=0){?>Rs. <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?></span></p></a>
 					 <!-- <div class="button" ><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /*if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="cart-button">Add to wishlists</a>
@@ -354,12 +354,12 @@
             <label>
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
               Compare </label>
-								  <lable class="wishlist"> 
+								  <label class="wishlist"> 
 					<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
 					  <?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
-					  <?php }?></lable>
+					  <?php }?></label>
           </div>
 			  </div>
 				
@@ -385,7 +385,7 @@
 					</div>
 					 <h2><?=$product->productName?> <?=isset($product->attr)?$product->attr:''?></h2>
 					
-					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price">Rs. <?=number_format($product->productPrice,2)?></span></p></a>
+					 <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=isset($product->shop_image)?$product->shop_image:''?>"><span class="price"><?php if(!empty($product->productPrice) && $product->productPrice !=0){?>Rs. <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?></span></p></a>
 					 
 					 <!-- <div class="button"><span><img src="<?=base_url();?>frontend/images/cart.jpg" alt="" />
 					  <?php /* if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
@@ -400,13 +400,13 @@
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
               Compare</label>
        
-				<lable class="wishlist"> 					
+				<label class="wishlist"> 					
 					<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
 					  <?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
 					  <?php }?>
-					</lable>
+					</label>
 				    </div>
 				</div>
 				

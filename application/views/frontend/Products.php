@@ -77,31 +77,31 @@
 		<div class="row">
 		<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">
  
-          <?php if(!empty($products)){ foreach($products as $product){?>
+          <?php if(!empty($products)){ foreach($products as $product){ ?>
  
 		
 		         <div class="grid_1_of_4 images_1_of_4">
-				 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?=isset($product->productsUrlKey)?$product->productsUrlKey:'new'?>.html">
+				 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?php if($product->productsUrlKey){ echo$product->productsUrlKey; }else{ echo'new'; } ?>.html">
 				<div class="imageheightfix">
 		<img src="<?=$product->imageName?>" alt="" />
 			</div>
 					<h2>
-            <?=$product->productName?>
+            <?=$product->productName?> 
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
-          <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>"><span class="price">Rs. 
-            <?=number_format($product->productPrice,2)?>
+          <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>"><span class="price"><?php if($product->productPrice && $product->productPrice !=0){?>Rs. 
+            <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?>
             </span></p> </a>          
           <div class="checkbox">
             <label>
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
               Compare </label>
-			  <lable class="wishlist"> 
+			  <label class="wishlist"> 
 				<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
 					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
 					  <?php } }else{ ?>
 					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
-					  <?php }?></lable>
+					  <?php }?></label>
           </div>
         </div>
 	

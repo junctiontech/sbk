@@ -38,7 +38,7 @@ class Landingpage extends CI_Controller {
 		foreach($categories as $category){
 			
 		$query = $this->Landingpage_model->get_products_search('','','','',array('t1.categoriesID'=>$category->categoriesID));
-		          
+		        
 		foreach ($query as $article)
 		{
 			
@@ -115,6 +115,7 @@ class Landingpage extends CI_Controller {
 	{
 		$app=$this->input->get('app');
 		$this->data['searchq']=$searchq=$this->input->Get('q');
+		$this->data['searchc']=$searchc=$this->input->Get('c');
 		$b=$this->input->Get('b');
 		$jsonarray=array();
 		$query='';$searchqry='';
@@ -126,14 +127,6 @@ class Landingpage extends CI_Controller {
 		if($page){
 			$filters="";
 		}
-		/* if(!empty($get_data)){
-			foreach($get_data as $key=>$value){
-				if($key !='page'){
-				$filters.="$key=$value";
-				$filters.="&";
-				}
-			}
-		} */
 		
 			$limit = 82;
 			$config['per_page'] = $limit;
@@ -159,9 +152,13 @@ class Landingpage extends CI_Controller {
 			$config['last_link'] = 'Last';
 			$config['base_url'] = base_url() . "Landingpage/product/".$categorykey.'.html';
 			
-		
 		if($categorykey=='search'){
-			$searchquery=$searchq;
+			//$searchquery=$searchq;
+			$searchquery="productsUrlKey: $searchq";
+			if($searchc !='all' && $searchc !=''){
+			$searchquery.=" AND categoriesUrlKey: $searchc";
+			}
+			
 			$index = Zend_Search_Lucene::open($this->search_index);
 			if($app==true){
 				Zend_Search_Lucene::setResultSetLimit(2000);
@@ -313,7 +310,7 @@ class Landingpage extends CI_Controller {
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;				
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);				
 				$searchquery1="categoriesUrlKey: $categorykey";
-				$searchquery1.="AND productsUrlKey: $productkey";
+				$searchquery1.=" AND productsUrlKey: $productkey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);
@@ -489,7 +486,7 @@ class Landingpage extends CI_Controller {
 			}
 			
 				$searchquery1="categoriesUrlKey: $categorykey";
-				$searchquery1.="AND productsUrlKey: $productkey";
+				$searchquery1.=" AND productsUrlKey: $productkey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$similarproductDatas= $index->find($searchquery1,'score',SORT_DESC);
