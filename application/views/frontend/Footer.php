@@ -137,7 +137,7 @@
 <div class="footer">
    	  <div class="wrapper">	
 	     <div class="section group">
-				<div class="col_1_of_4 span_1_of_4">
+				<div class="col_1_of_4 span_1_of_4 span_1_of_4w">
 						<!--<h4>Information</h4>-->
 						<ul class="marker_none">
 							<li><a href="<?=base_url();?>Landingpage/Aboutus.html"><span>About Us</span></a></li>
@@ -147,7 +147,7 @@
 						</ul>
 					</div>
 				
-				<div class="col_1_of_4 span_1_of_4">
+				<div class="col_1_of_4 span_1_of_4 span_1_of_4w">
 					<!--<h4>My account</h4>-->
 						<ul class="marker_none"><li><a href="<?=base_url();?>Landingpage/Contactus.html"><span>Contact Us</span></a></li>
 						<!--	<?php if(!empty($userinfos)){ ?>
@@ -268,10 +268,10 @@ function googleTranslateElementInit() {
 								<script src="<?=base_url();?>frontend/js/colorpicker/bootstrap-colorpicker.min.js"></script>-->
 								<script src="<?=base_url();?>frontend/js/select2/select2.min.js"></script>
 								<!--<script src="<?=base_url();?>frontend/js/jquery-ui/jquery-ui.min.js"></script>
-								<script src="<?=base_url();?>frontend/js/selectboxit/jquery.selectBoxIt.min.js"></script>-->
+								<script src="<?=base_url();?>frontend/js/selectboxit/jquery.selectBoxIt.min.js"></script> 
  								<script src="<?=base_url();?>frontend/js/tagsinput/bootstrap-tagsinput.min.js"></script>
  								<script src="<?=base_url();?>frontend/js/typeahead.bundle.js"></script>
-								<script src="<?=base_url();?>frontend/js/handlebars.min.js"></script>
+								<script src="<?=base_url();?>frontend/js/handlebars.min.js"></script>-->
 
 								<script src="<?=base_url();?>frontend/js/multiselect/js/jquery.multi-select.js"></script>								 
 								<script src="<?=base_url();?>frontend/js/jquery-validate/jquery.validate.min.js"></script>

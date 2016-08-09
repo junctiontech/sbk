@@ -32,11 +32,12 @@
 									<table cellspacing="0" class="table table-small-font table-bordered table-striped">
 										<tbody>		
 											<tr>										
-												<td style="text-align:center;">											
+												<td class="tdw" style="text-align:center;">											
 													<img class="aboutusimags" src="<?=base_url();?>frontend/images/Dhiraj.Jaiswani.jpg"/><br>	
 													<p><b> Executive Producer											
 														“Screwvala” of SBK</b><br>											
 														Mr. Dhiraj Jaiswani 
+														
 													</p>
 												</td>
 												<td>

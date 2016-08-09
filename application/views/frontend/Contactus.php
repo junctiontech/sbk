@@ -56,7 +56,7 @@
 							<div class="form-group">
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
 								<div class="col-md-4 col-sm-4 col-xs-6 contact">
-									<button type="submit" class="btn btn-success">Send massage</button>	
+									<button type="submit" class="btn btn-success">Send Message</button>	
 								</div>
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div></div>
 						</form>
