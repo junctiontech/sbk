@@ -37,6 +37,7 @@
 								$priceval[]=$othershopprice['productPrice'];
 								}
 							}
+							print_r($priceval);
 							$price=number_format(min($priceval), 2, '.',''); 
 						 
 						}
