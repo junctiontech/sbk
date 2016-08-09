@@ -23,7 +23,8 @@
 
 							foreach($othershopprices as $othershopprice){
 								if($othershopprice['shopID']==3){
-								$priceval[]=substr("{$othershopprice['productPrice']}",0,-2); 
+								$priceint=(int)$othershopprice['productPrice'];
+								$priceval[]=substr("$priceint",0,-2);
 								}else{
 								$priceval[]=$othershopprice['productPrice'];
 								}
