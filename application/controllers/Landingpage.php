@@ -46,11 +46,11 @@ class Landingpage extends CI_Controller {
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productsID', $article->productsID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productName', $article->productName));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('sb4kProductID', $article->sb4kProductID));
-			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesID',$article->categoriesID));
+			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('categoriesID',$article->categoriesID));
 			$doc->addField(Zend_Search_Lucene_Field::Text('categoriesUrlKey',$article->categoriesUrlKey));
 			$doc->addField(Zend_Search_Lucene_Field::UnStored('productDescription',$article->productDescription));
 			$doc->addField(Zend_Search_Lucene_Field::Text('productsUrlKey',$article->productsUrlKey));
-			 $doc->addField(Zend_Search_Lucene_Field::Text('attr',''));//$article->attr
+			 $doc->addField(Zend_Search_Lucene_Field::UnIndexed('attr',''));//$article->attr
 			/*$doc->addField(Zend_Search_Lucene_Field::Text('productAttributeValue',$article->productAttributeValue)); */
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('imageName',$article->imageName));
 			$doc->addField(Zend_Search_Lucene_Field::UnIndexed('productImageTitle',$article->productImageTitle));
@@ -164,6 +164,7 @@ class Landingpage extends CI_Controller {
 				Zend_Search_Lucene::setResultSetLimit(2000);
 			}
 			//$totalrecord = count($index->find($searchquery));
+			
 			$products = $index->find($searchquery);
 			//$paginator = Zend_Paginator::factory($products);
 			//$paginator->setCurrentPageNumber($page);
@@ -268,8 +269,8 @@ class Landingpage extends CI_Controller {
 				  );
 			}
 			
-				$searchquery1="categoriesUrlKey: $categorykey";
-				$searchquery1.="AND productsUrlKey: $productkey";
+				$searchquery1="productsUrlKey: $productkey";
+				$searchquery1.=" AND categoriesUrlKey: $categorykey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$similarproductDatas= $index->find($searchquery1,'score',SORT_DESC);
@@ -309,8 +310,8 @@ class Landingpage extends CI_Controller {
 				$this->data['backurl']=isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 				if(!empty($products)){ $productID=$products[0]->productsID;$productName=$products[0]->productName;$shopID=$products[0]->shopID;				
 				$this->data['othershopprices']=$this->Landingpage_model->get_shopprices($productID,$shopID);				
-				$searchquery1="categoriesUrlKey: $categorykey";
-				$searchquery1.=" AND productsUrlKey: $productkey";
+				$searchquery1="productsUrlKey: $productkey";
+				$searchquery1.=" AND categoriesUrlKey: $categorykey";
 				$index = Zend_Search_Lucene::open($this->search_index);
 				Zend_Search_Lucene::setResultSetLimit(5);
 				$this->data['similarproduct'] = $index->find($searchquery1,'score',SORT_DESC);

@@ -14,14 +14,17 @@ if(window.location.hostname=="192.168.1.151"){
 function search_product(productval)
 { 
 	var category = document.getElementById('select').value;
-	var product =productval;
+	var product =productval;var unmapped='';
+	if($('#unmapped').prop('checked') == true) { 
+		unmapped = document.getElementById('unmapped').value;
+	}
 	
 	if(product !==''  && category !=='')
 	{
     $.ajax({
     type: "POST",
     url: base_url+"Product/search_product",
-  	data:{productName:product, categoryName:category},
+  	data:{productName:product, categoryName:category, unmapped:unmapped},
 
     cache: false,
     success: function(html)
@@ -84,6 +87,27 @@ function getProductToMapp(productID)
 			$("#loader").fadeOut();
 		}
 	return false;  	  
+}
+
+function addkeywords(){
+	
+	$('.searchhidden').empty();
+	$('.searchhidden').html('<label for="tagsinput-1" class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Filter search</label><div class="col-md-6 col-sm-6 col-xs-12 content"><input id="tags_1" data-role="tagsinput" name="filtersearch" type="text" class="tags form-control" value="" placeholder="add or remove"/></div>');
+	
+	var productName= $("#productName option:selected").text();
+	var productName= productName.replace(",","");
+	var productsplitname=productName.split(' ');
+	
+	document.getElementById('tags_1').value='';
+	document.getElementById('tags_1').value=productsplitname;
+	
+	$('#tags_1').tagsInput({
+        width: 'auto',
+		'defaultText':'add key',
+		'onAddTag':onAddTag,
+		'onRemoveTag':onRemoveTag
+					
+    });
 }
 
 function getProductToMappSnapdeal(productID)
@@ -155,10 +179,11 @@ function mappit(childproductID)
 					if(html=='success'){
 						getProductToMapp();
 						getMappedProduct();
+						getProductToMappSnapdeal();
 					}else{
 						alert(html);
 					}
-				$("#loader").fadeOut();
+				//$("#loader").fadeOut();
 				}
 			});
 		}else{

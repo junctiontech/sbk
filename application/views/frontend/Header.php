@@ -113,7 +113,7 @@
 					<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->
 				    	<select style="    width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size: 20px;color: #a5a5a5;font-family: Arial;
 						outline: none;margin: 0;height: 54px;" name="c" >
-						<option>All</option>
+						<option value="all">All</option>
 						<?php foreach($categories as $category){?>
 						<option value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>
 						<?php } ?>

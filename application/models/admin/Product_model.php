@@ -20,8 +20,6 @@ class Product_model extends CI_Model {
 		return $query->result();
 	}
 	
-	
-	
 	public function fetch_product($category=false,$limit=false,$page=false)
 	{
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,t9.categoryName,productsUrlKey,t1.productsStatus,t1.productName,t1.productDescription,t3.	productAttributeLable,t3.productAttributeValue,t5.imageName,t5.productImageTitle,t5.productImageAltTag,t7.productPrice,t7.productShopUrl');
@@ -349,15 +347,21 @@ class Product_model extends CI_Model {
 		$this->db->update($table,$data);
 	}
 	
-	public function search_product($category=false,$product=false )
+	public function search_product($category=false,$product=false,$unmapped=false )
 	{	
 		$attr='';
 		if($category==1){ $attr=',GROUP_CONCAT(t2.productAttributeValue SEPARATOR ",") as attr';}
 		$this->db->select("t1.productsID,t1.productName$attr");//,GROUP_CONCAT(t2.productAttributeValue SEPARATOR ",") as attr
 		$this->db->from('s4k_products_map t1');
+		if(!empty($unmapped)){
+		$this->db->join('s4k_product_price_map t3','t1.productsID=t3.productsID','left');
+		}
 		if($category==1){
 		$this->db->join('s4k_product_attribute_map t2','t1.productsID=t2.productsID','left');
 		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
+		}
+		if(!empty($unmapped)){
+		$this->db->where('t3.shopProductID NOT IN(select parentProductID from s4k_product_mapping)');
 		}
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->like(array('productName'=>$product));

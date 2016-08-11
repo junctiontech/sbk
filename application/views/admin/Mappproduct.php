@@ -1,4 +1,3 @@
-
 <div class="message" style="margin-top:90px">
 <?php  if($this->session->flashdata('message_type')) { ?>
 <div class="row">
@@ -32,10 +31,22 @@
 				</select>
 			</div>
 			</div>
+			<div class="row"  style="margin-top:20px">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label"></label>
+					<div class="col-md-6 col-sm-6 col-xs-12 content">
+						<div class="form-block">
+							<label>
+								<input type="checkbox" name="unmapped" id="unmapped" checked value="unmapped" class="cbr">
+								Unmapped only
+							</label>
+							<br />
+						</div>
+					</div>
+			</div>
 			<div class="row" style="margin-top:20px">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Product name </label>
 			<div class="col-md-6 col-sm-6 col-xs-12 content">
-			<select id="productName" class="select2_group form-control" onchange="getproductimage(this.value);getProductToMapp(this.value);getMappedProduct(this.value);getProductToMappSnapdeal(this.value)" name="productName" >
+			<select id="productName" class="select2_group form-control" onchange="getproductimage(this.value);getMappedProduct(this.value);addkeywords();getProductToMapp(this.value);getProductToMappSnapdeal(this.value);" name="productName" ><!--getProductToMapp(this.value);getProductToMappSnapdeal(this.value)-->
 				<option value="" >Select</option>
 				<?php { 
 				if(!empty($Fetch_ProductName))
@@ -50,6 +61,9 @@
 			</select>
 
 			</div>
+			</div>
+			<div class="row searchhidden"  style="margin-top:20px">
+					
 			</div>
 			
            <?php if(!empty($mappedproduct)){?>
@@ -236,3 +250,20 @@
                    
                 </div>
 				</form>
+				<script>
+            function onAddTag(tag) {
+                alert("Added a tag: " + tag);
+            }
+
+            function onRemoveTag(tag) {
+                alert("Removed a tag: " + tag);
+            }
+
+            function onChangeTag(input, tag) {
+                alert("Changed a tag: " + tag);
+            }
+
+            
+			
+        </script>
+				<script src="<?=base_url()?>admin/js/tags/jquery.tagsinput.min.js"></script>

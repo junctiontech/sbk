@@ -305,14 +305,12 @@ class Product extends CI_Controller {
 		if($_POST)
 		{
 			
-		$id='';
-		$name='';
-		$final_product_name='';
+		$id=$name='';
 		$category=$this->input->post('categoryName');
 		$product=$this->input->post('productName');
-		$check_product=$this->Product_model->search_product($category,$product);
+		$unmapped=$this->input->post('unmapped');
+		$check_product=$this->Product_model->search_product($category,$product,$unmapped);
 		
-		//echo "<option value=\"\" >Select</option>";
 		$i=1;
 			foreach($check_product as $check_product)
 			{ $id=($check_product->productsID);
