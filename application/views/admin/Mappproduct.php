@@ -188,7 +188,7 @@
 												
 												<div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" value="<?=isset($products->productsID)?$products->productsID:''?>" name="mapped_value[]"> Select to Mapp Product </input>
+                                                        <input type="checkbox" value="<?=isset($products->productsID)?$products->productsID:''?>" name="mapped_value[]"> Select to Mapp Product  
                                                     </label>
                                                 </div> 
 													

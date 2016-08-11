@@ -111,15 +111,15 @@
 			    <div class="search_box tooltip-primary" data-toggle="tooltip" data-placement="bottom" title="Hello, search through searchb4kharch android app to earn Rs.10 daily">
 				    <form action="<?=base_url();?>Landingpage/Product/search" method="get">
 					<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->
-				    	<select style="    width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size: 20px;color: #a5a5a5;font-family: Arial;
+				    	<select style="    width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size: 34px;color: #a5a5a5;font-family: Arial;
 						outline: none;margin: 0;height: 54px;" name="c" >
 						<option value="all">All</option>
 						<?php foreach($categories as $category){?>
-						<option value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>
+						<option style="font-size: 15px" value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>
 						<?php } ?>
-						</select><input style="width: 85%" type="text" placeholder="Search.. Shop.. Earn" id="search" list="searchdata" data-validate="required" data-message-required="Please enter more than two characters" autocomplete="off" Value="<?=isset($searchq)?$searchq:''?>" name="q" >
+						</select><input style="" type="text" placeholder="Search.. Shop.. Earn" id="search" list="searchdata" data-validate="required" data-message-required="Please enter more than two characters" autocomplete="off" Value="<?=isset($searchq)?$searchq:''?>" name="q" >
 						<datalist id="searchdata"></datalist>
-						<input type="submit" value="SEARCH" >
+						<input type="submit" style=" "value="SEARCH" >
 				    </form>
 			    </div>
 				</div>
