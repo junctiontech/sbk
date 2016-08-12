@@ -93,6 +93,13 @@ class Inventory_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function updatestatus ($table=false,$data=false,$where)
+	{
+		$this->db->where_in('inventoryConsumptionID',$where);
+		$this->db->update($table,$data);
+	//	echo $this->db->last_query(); die;
+	}
+	
 }
 
 ?>

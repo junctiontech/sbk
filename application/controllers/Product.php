@@ -93,21 +93,20 @@ class Product extends CI_Controller {
 			$pages->mid_range = 6; // Number of pages to display. Must be odd and > 3
 			$pages->paginate();
 			$this->data['pagination']=$pages->display_pages($base_url);
-			$this->data['paginationPagedrop']=$pages->display_jump_menu($base_url);
-			
-			$product=$this->data['products']=$this->Product_model->get_product_by_filter($where,$limit,$page);
+			$this->data['paginationPagedrop']=$pages->display_jump_menu($base_url);			
+			$product=$this->data['products']=$this->Product_model->get_product_by_filter($where,$limit,$page);		 
 			$this->data['category']=$this->Product_model->get_categories();
 			$this->data['shops']=$this->Product_model->get_shop();
 			$this->display ('admin/Viewproductbyfilter');
 		}
 		else{
 			$this->data['category']=$this->Product_model->get_categories();
+			$this->data['shops']=$this->Product_model->get_shop();
 			$this->session->set_flashdata('message_type', 'success');        
 			$this->session->set_flashdata('message', $this->config->item("fetch_product").' Select category');
 			$this->display ('admin/Viewproductbyfilter');
 		}
-	}
-	
+	}	
 	public function delete($categoryid=false,$id=false){
 		$this->data['category']=$this->Product_model->get_categories();
 		$filter=array('productsID'=>$id);
@@ -128,8 +127,8 @@ class Product extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER']);
 	}
 	
-	public function inactiveproduct($status=false,$id=false){
-			
+	/*public function inactiveproduct($status=false,$id=false){
+			//print_r($status); die;
 			$categoriesID=$this->input->get('categoriesID');
 			$data=array('productsStatus'=>$status);
 			$filter=array('ProductsID'=>$id);
@@ -141,14 +140,21 @@ class Product extends CI_Controller {
 			//$this->Product_model->update('s4k_products',$data,$filter);	
 			if(!empty($categoriesID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
 	}
-	
-	public function moveToLive($productID=false){
-			$productID =$this->input->post('productsID');		
-			$categoriesID=$this->input->get('categoriesID');
-			if(!empty($productID)){
-				foreach($productID as $productid){
-					$productID=$productid;				
-				$productdata=$this->Product_model->get_product_full_data(array('t1.productsID'=>$productID));
+	*/
+	public function moveToLive($status=false, $productID=false ){	 
+	//	print_r($_POST);die;
+		$movetolive=$this->input->post('moveTolive');
+		$shopProductID=$this->input->post('shopProductID');
+		$status =$this->input->post('status');
+		$changecategory=$this->input->post('changecategory');
+		$categoriesID=$this->input->post('categoriesID');
+		if(!empty($shopProductID)){			
+		if(!empty($movetolive))
+		{		
+			if(!empty($shopProductID)){
+				foreach($shopProductID as $shopProductid){
+					$shopProductids=$shopProductid;				
+				$productdata=$this->Product_model->get_product_full_data(array('t4.shopProductID'=>$shopProductids));				
 				if(!empty($productdata)){
 					$productdata1=array('categoriesID'=>$productdata[0]->categoriesID,
 								'subCategoriesID'=>$productdata[0]->subCategoriesID,
@@ -170,14 +176,39 @@ class Product extends CI_Controller {
 								'shopID'=>$productdata[0]->shopID,
 								'productShopUrl'=>$productdata[0]->productShopUrl
 								);
-								$productattribute=$this->Product_model->get_product_attribute(array('productsID'=>$productID));
+								$productattribute=$this->Product_model->get_product_attribute(array('productsID'=>$productdata[0]->productsID,)); 				 
 								$this->Product_model->insert_mapp_it($productdata1,'',$productattribute);
 								$this->Product_model->update('s4k_product_status',array('liveStatus'=>'Yes'),array('shopProductID'=>$productdata[0]->shopProductID,'shopID'=>$productdata[0]->shopID));
 				}
-			} 
-			
+			} 			
 			}
-			if(!empty($productID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }
+			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }
+		}
+		elseif(!empty($status)){				 
+			 $shopProductID;			
+				$data=array('productsStatus'=>$status);				 
+				$filter=array('shopProductID'=>$shopProductID);			 		
+					$this->Product_model->updateSatus('s4k_product_status',$data,$shopProductID);			 
+			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }		 
+		}
+		elseif(!empty($changecategory))
+		{
+			if(!empty($shopProductID))
+			{
+				$data=$categoriesID;			
+				$d = implode("','",$shopProductID);			 
+				$this->Product_model->changecategory($data,$d);
+			}
+			else{
+				if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
+			}
+		}	 
+		}
+		else{
+			$this->session->set_flashdata('message_type', 'error');        
+			$this->session->set_flashdata('message', $this->config->item("fetch_product").'Please checked atleast one checkbox');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
 	}
 	
 	
@@ -186,16 +217,12 @@ class Product extends CI_Controller {
 		$this->data['updatedata']=$this->Product_model->get_product_update($productid);
 		//print_r($this->data['updatedata']);die;
 		$this->display ('admin/Addproduct');
-	}
-	
+	}	
 	public function insert_product()
 	{
-	
-	
 		$query=$this->db->get_where('s4k_products_map',array('productsUrlKey'=>$this->input->post('productsUrlKey')));
 		$result=$query->result();
-		if(empty($result)){
-			
+		if(empty($result)){			
 		$productMapData=array('categoriesID'=>$this->input->post('categoriesID'),
 								 'productsUrlKey'=>$this->input->post('productsUrlKey'),
 								 'productsSortOrder'=>$this->input->post('productsSortOrder'),

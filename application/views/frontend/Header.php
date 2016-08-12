@@ -73,93 +73,65 @@
 					</a>
 				 <?php } ?>
 				<li>
-					
-						<?php if(!empty($userinfos)){ ?>
-							<a href="<?=base_url();?>User/Dashboard.html" title="Go to dashboard">
-								<span class="white">Hi <?=isset($userinfos['userFirstName'])?$userinfos['userFirstName']:''?></span>
-								<i class="fa-link-ext"></i>
-							</a>
-						<?php }else{ ?>
-							<a href="<?=base_url();?>Login.html" title="Login to your account">
-								<span class="white">Login</span>
-								<i class="fa-link-ext"></i>
-							</a>
-						<?php } ?>
+					<?php if(!empty($userinfos)){ ?>
+					<a href="<?=base_url();?>User/Dashboard.html" title="Go to dashboard">
+						<span class="white">Hi <?=isset($userinfos['userFirstName'])?$userinfos['userFirstName']:''?></span>
+						<i class="fa-link-ext"></i>
+					</a>
+					<?php }else{ ?>
+					<a href="<?=base_url();?>Login.html" title="Login to your account">
+						<span class="white">Login</span>
+						<i class="fa-link-ext"></i>
+					</a>
+					<?php } ?>
 				</li> 
-						<?php if(!empty($userinfos)){ ?>			
+				<?php if(!empty($userinfos)){ ?>	
 				<li>
-						<a href="<?=base_url();?>Login/Logout.html" title="Logout">
-								<span class="white">Logout</span>
-								<i class="fa-link-ext"></i>
-						</a>
+					<a href="<?=base_url();?>Login/Logout.html" title="Logout">
+						<span class="white">Logout</span>
+						<i class="fa-link-ext"></i>
+					</a>
 				</li>
-					<?php } ?> 
-				
+				<?php } ?> 
 			</ul>
-	
-		 
-			 <div class="clear"></div>
-		 
-<div class="row">
-	  <div class="col-md-3 col-sm-4 col-xs-12">
-			<div class=" ">
-				<a href="<?=base_url();?>"><img class="logo1" src="<?=base_url();?>frontend/images/pngtransparent (2).png" alt="" /></a>
-			</div>
-			</div>
-			<div class="col-md-9 col-sm-8 col-xs-12">
-			  <div class="header_top_right">
-			    <div class="search_box tooltip-primary" data-toggle="tooltip" data-placement="bottom" title="Hello, search through searchb4kharch android app to earn Rs.10 daily">
-				    <form action="<?=base_url();?>Landingpage/Product/search" method="get">
-					<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->
-				    	<select style="    width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size: 34px;color: #a5a5a5;font-family: Arial;
-						outline: none;margin: 0;height: 54px;" name="c" >
-						<option>All</option>
-						<?php foreach($categories as $category){?>
-						<option style="font-size: 15px" value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>
-						<?php } ?>
-						</select><input style="" type="text" placeholder="Search.. Shop.. Earn" id="search" list="searchdata" data-validate="required" data-message-required="Please enter more than two characters" autocomplete="off" Value="<?=isset($searchq)?$searchq:''?>" name="q" >
-						<datalist id="searchdata"></datalist>
-						<input type="submit" style=" "value="SEARCH" >
-				    </form>
-			    </div>
+			<div class="clear"></div>
+			<div class="row">
+				<div class="col-md-3 col-sm-4 col-xs-12">
+					<div class=" ">
+						<a href="<?=base_url();?>"><img class="logo1" src="<?=base_url();?>frontend/images/pngtransparent (2).png" alt="" /></a>
+					</div>
 				</div>
- 
-		 <div class="clear"></div>
-	 </div>
-	 <div class="clear"></div>
- 
-		
-		</div>
-		
-		 
- 
-			<ul class="navbar-nav">
-	<li><a href="<?=base_url();?>Landingpage/Deals">Deals</a>
-   
-  </li>
-  
-<?php foreach($categories as $category){?>  
-    <li>   
-	
-      <a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a>        
-  
-  </li>
-  	<?php } ?>
-  
-
-  
-  <!--<li><a href="<?=base_url();?>Landingpage/Flights.html">Flights</a></li>
-   
- <li><a href="<?=base_url();?>Hotel.html" >Hotels</a></li>-->
- 
-  <div class="clear"></div>
-			 
+				<div class="col-md-9 col-sm-8 col-xs-12">			
+					<div class="header_top_right">			  
+						<div class="search_box tooltip-primary" data-toggle="tooltip" data-placement="bottom" title="Hello, search through searchb4kharch android app to earn Rs.10 daily">				 
+							<form action="<?=base_url();?>Landingpage/Product/search" method="get">				
+								<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->				   
+								<select class="hederselect" style="" name="c" >					
+									<option>All</option>					
+									<?php foreach($categories as $category){?>					
+									<option style="font-size: 15px" value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>					
+									<?php } ?>						
+								</select><input style="" type="text" placeholder="Search.. Shop.. Earn" id="search" list="searchdata" data-validate="required" data-message-required="Please enter more than two characters" autocomplete="off" Value="<?=isset($searchq)?$searchq:''?>" name="q" >					
+								<datalist id="searchdata"></datalist>					
+								<input type="submit" style=" "value="SEARCH" >				   
+							</form>			   
+						</div>
+					</div>		
+					<div class="clear"></div>	
+				</div>	
+				<div class="clear"></div>		
+			</div>
+			<ul class="navbar-nav">	
+				<li><a href="<?=base_url();?>Landingpage/Deals">Deals</a>
+				</li>
+				<?php foreach($categories as $category){?>   
+				<li>
+					<a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a>  
+				</li>
+				<?php } ?>
+				<!--<li><a href="<?=base_url();?>Landingpage/Flights.html">Flights</a></li>
+					<li><a href="<?=base_url();?>Hotel.html" >Hotels</a></li>-->
+				<div class="clear"></div>
 			</ul>
-		
-		
-		
-	 
 		</div>
 	</nav>
-
-	
