@@ -903,7 +903,7 @@ margin-top:60px;
     	font-size:2em;
     }
 	.images_1_of_4{
-		width:94%;
+		width:94% !important;
 		padding:3%;
 	}
 	.deal_1_of_3{
@@ -1069,7 +1069,7 @@ margin-top:60px;
 		padding:3%;
 	}
 	.images_1_of_4{
-		width:95%;
+		width:95% !important;
 		height:450px;
 		padding:2.5%;
 	}
