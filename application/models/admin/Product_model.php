@@ -335,8 +335,8 @@ class Product_model extends CI_Model {
 	}	
 	public function changecategory($data=false,$where=false)
 	{
-		$this->db->query("UPDATE `s4k_products` JOIN `s4k_product_price` ON `s4k_products`.`productsID`=`s4k_product_price`.`productsID` SET `categoriesID`=$data WHERE `s4k_product_price`.`shopProductID` IN ('$where')");		
-	//	echo $this->db->last_query();die;
+		$this->db->query("UPDATE `s4k_products` JOIN `s4k_product_price` ON `s4k_products`.`productsID`=`s4k_product_price`.`productsID` SET `categoriesID`=$data WHERE `s4k_product_price`.`shopProductID` IN ('$where')");	
+		//echo $this->db->last_query();die;
 	}
 	public function search_product($category=false,$product=false )
 	{	
