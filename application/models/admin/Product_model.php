@@ -16,7 +16,7 @@ class Product_model extends CI_Model {
 		$this->db->order_by('categoriesUrlKey','ASC');
 		$query=$this->db->get();
 		return $query->result();
-	}
+	}	
 	public function fetch_product($category=false,$limit=false,$page=false)
 	{
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,t9.categoryName,productsUrlKey,t1.productsStatus,t1.productName,t1.productDescription,t3.	productAttributeLable,t3.productAttributeValue,t5.imageName,t5.productImageTitle,t5.productImageAltTag,t7.productPrice,t7.productShopUrl');
@@ -58,7 +58,7 @@ class Product_model extends CI_Model {
 	public function delete_data($table=false,$where=false){
 		$this->db->delete($table,$where);
 	}	
-	/*
+	/* 
 	public function get_products($extraquery=false,$searchqry=false){
 		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,productsUrlKey,t2.productName,t2.productDescription,t4.	productAttributeLable,t4.productAttributeValue,t5.imageName,t6.productImageTitle,t6.productImageAltTag,t7.productPrice,t7.productShopUrl');
 		if($extraquery){
@@ -91,8 +91,8 @@ class Product_model extends CI_Model {
 		$this->db->group_by('productsUrlKey');
 		}
 		$this->db->limit(20);
-		 
-		 $query=$this->db->get();
+ */
+		/* $query=$this->db->get();
 		//echo $this->db->last_query();die;
 		return $query->result();
 	} */	
@@ -191,14 +191,16 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category,'t1.productBrand'=>$productBrand));
 		$this->db->where(array('t5.shopID'=>$shopID));
 		$this->db->where('t6.productsStatus','Active');
+		if($shopID !=1){
 		$this->db->where('t6.liveStatus','No');
+		}
 		$this->db->where('t6.mapp','Unmapped');
 		$query=$this->db->get();	
 		return $query->result();
 	} 	
 	function get_product_by_filter($where=false,$limit=false,$page=false )
 	{	
-		$this->db->select('t1.productsID,t1.categoriesID,t2.productName,t3.imageName,t4.productPrice,shopName,productsStatus,mapp,liveStatus,t4.shopProductID');
+		$this->db->select('t1.productsID,t1.categoriesID,t2.productName,t3.imageName,t4.productPrice,shopName,productsStatus,mapp,liveStatus');
 		$this->db->from('s4k_products t1');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
@@ -247,7 +249,7 @@ class Product_model extends CI_Model {
 		return $query->result();
 	}	
 	public function insert_mapp_it($productdata=false,$shopproductfamily=false,$specificationLists=false)
-	{	
+{	
 		if(!empty($productdata) && !empty($specificationLists)){
 		$sb4kProductID= strtoupper ( bin2hex ( mcrypt_create_iv ( 4, MCRYPT_DEV_RANDOM ) ) );;
 		$productMapData=array('categoriesID'=>$productdata['categoriesID'],
@@ -305,7 +307,7 @@ class Product_model extends CI_Model {
 		}
 		}
 		
-	}	
+	}		
 	public function get_shop()
 	{
 		$this->db->select('shopName, shopID');
@@ -325,7 +327,7 @@ class Product_model extends CI_Model {
 	public function update($table=false,$data=false,$filter=false)
 	{
 		$this->db->where($filter);
-		$this->db->update($table,$data);		 
+		$this->db->update($table,$data);
 	}
 	public function updateSatus($table=false,$data=false,$where=false)
 	{	 
@@ -338,15 +340,21 @@ class Product_model extends CI_Model {
 		$this->db->query("UPDATE `s4k_products` JOIN `s4k_product_price` ON `s4k_products`.`productsID`=`s4k_product_price`.`productsID` SET `categoriesID`=$data WHERE `s4k_product_price`.`shopProductID` IN ('$where')");	
 		//echo $this->db->last_query();die;
 	}
-	public function search_product($category=false,$product=false )
+	public function search_product($category=false,$product=false,$unmapped=false )
 	{	
 		$attr='';
 		if($category==1){ $attr=',GROUP_CONCAT(t2.productAttributeValue SEPARATOR ",") as attr';}
 		$this->db->select("t1.productsID,t1.productName$attr");//,GROUP_CONCAT(t2.productAttributeValue SEPARATOR ",") as attr
 		$this->db->from('s4k_products_map t1');
+		if(!empty($unmapped)){
+		$this->db->join('s4k_product_price_map t3','t1.productsID=t3.productsID','left');
+		}
 		if($category==1){
 		$this->db->join('s4k_product_attribute_map t2','t1.productsID=t2.productsID','left');
 		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
+		}
+		if(!empty($unmapped)){
+		$this->db->where('t3.shopProductID NOT IN(select parentProductID from s4k_product_mapping)');
 		}
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->like(array('productName'=>$product));
@@ -354,7 +362,8 @@ class Product_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result();
 		
-	}	
+	}
+	
 	public function selected_categories($category){
 		$this->db->select('t1.categoriesID,t2.categoryName');
 		$this->db->from('s4k_categories t1');
@@ -362,7 +371,8 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$query=$this->db->get();
 		return $query->result();
-	}	
+	}
+	
 	public function fetch_productname($product,$categoryID=false)
 	{
 		$attr='';
@@ -380,7 +390,18 @@ class Product_model extends CI_Model {
 		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();
 		return $query->result();
-	}	
+	}
+	
+	public function fetch_download_productname($product,$categoryID=false)
+	{
+		$this->db->select("t1.productsID,t2.productName,t1.categoriesID,t1.productBrand");
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->where(array('t1.productsID'=>$product));
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 	/* public function fetch_productname($product)
 	{
 		$this->db->select('t1.productsID,t1.productName,t2.categoriesID,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr  , t4.imageName,t5.productPrice,shopName');
@@ -395,14 +416,16 @@ class Product_model extends CI_Model {
 		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();
 		return $query->result();
-	} */	
+	} */
+	
 	function delete($table1=false,$table2=false,$table3=false,$table4=false,$filter=false)
 	{
 		$this->db->delete($table1,$filter);	
 		$this->db->delete($table2,$filter);	
 		$this->db->delete($table3,$filter);	
 		$this->db->delete($table4,$filter);	
-	}	
+	}
+	
 	function get_product_update($productid=false)
 	{
 		$this->db->select('t1.productsID,t1.productName,t1.productsUrlKey,t1.productsSortOrder,t1.productsStatus,t1.productDescription,t2.categoriesID,t3.categoryName,t4.productAttributeLable,t4.productAttributeValue,t5.imageName,t5.imageStatus,t5.productImageTitle,t5.productImageAltTag,t6.productPrice,t6.productShopUrl,t6.shopID,t7.shopName');
