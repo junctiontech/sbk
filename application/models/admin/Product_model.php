@@ -19,7 +19,7 @@ class Product_model extends CI_Model {
 	}	
 	public function fetch_product($category=false,$limit=false,$page=false)
 	{
-		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,t9.categoryName,productsUrlKey,t1.productsStatus,t1.productName,t1.productDescription,t3.	productAttributeLable,t3.productAttributeValue,t5.imageName,t5.productImageTitle,t5.productImageAltTag,t7.productPrice,t7.productShopUrl');
+		$this->db->select('t1.productsID,t8.categoriesID,t8.categoriesUrlKey,t9.categoryName,productsUrlKey,t1.productsStatus,t1.productName,t1.productDescription,t3.	productAttributeLable,t3.productAttributeValue,t5.imageName,t5.productImageTitle,t5.productImageAltTag,t7.productPrice,t7.productShopUrl,t7.shopProductID');
 		$this->db->from('s4k_products_map t1');
 		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID');
 		$this->db->join('s4k_product_images_map t5','t1.productsID=t5.productsID');
@@ -341,6 +341,11 @@ class Product_model extends CI_Model {
 		$this->db->query("UPDATE `s4k_products_map` JOIN `s4k_product_price_map` ON `s4k_products_map`.`productsID`=`s4k_product_price_map`.`productsID` SET `categoriesID`=$data WHERE `s4k_product_price_map`.`shopProductID` IN ('$where')");
 		//echo $this->db->last_query();die;
 	}
+	public function updateSatus2 ($data=false,$where=false)
+	{
+		$this->db->query("UPDATE `s4k_products_map` JOIN `s4k_product_price_map` ON `s4k_products_map`.`productsID`=`s4k_product_price_map`.`productsID` SET `productsStatus`='$data' WHERE `s4k_product_price_map`.`shopProductID` IN ('$where')");
+		//echo $this->db->last_query();die;
+	}
 	public function search_product($category=false,$product=false,$unmapped=false )
 	{	
 		$attr='';
@@ -401,8 +406,7 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.productsID'=>$product));
 		$query=$this->db->get();
 		return $query->result();
-	}
-	
+	}	
 	/* public function fetch_productname($product)
 	{
 		$this->db->select('t1.productsID,t1.productName,t2.categoriesID,GROUP_CONCAT(t3.productAttributeValue SEPARATOR ",") as attr  , t4.imageName,t5.productPrice,shopName');
@@ -417,8 +421,7 @@ class Product_model extends CI_Model {
 		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();
 		return $query->result();
-	} */
-	
+	} */	
 	function delete($table1=false,$table2=false,$table3=false,$table4=false,$filter=false)
 	{
 		$this->db->delete($table1,$filter);	

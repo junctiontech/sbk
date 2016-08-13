@@ -148,4 +148,12 @@ function get_action(form) {
         return true; 
     }
 }
+	
+		$(document).ready(function () {
+								$('.datepicker').datepicker({
+									format: "yyyy-mm-dd",
+									autoclose: true,
+								//	startDate: new Date()
+								});
+								});
 </script>

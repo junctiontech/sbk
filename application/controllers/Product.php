@@ -141,6 +141,25 @@ class Product extends CI_Controller {
 			if(!empty($categoriesID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
 	}
 	*/
+	public function updateSatusInactiveproduct()
+	{
+		//$this->data['category']=$this->Product_model->get_categories();
+		$shopProductID=$this->input->post('shopProductID');
+		$status =$this->input->post('status');
+		if(!empty($shopProductID)){
+		if(!empty($status)){	
+			$d = implode("','",$shopProductID);								 		
+			$this->Product_model->updateSatus2($status,$d);	
+			$this->session->set_flashdata('message_type', 'success');
+			$this->session->set_flashdata('message', $this->config->item("delete")." Data status updated Successfully!!");
+			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }		 
+		}
+		}else{			
+			$this->session->set_flashdata('message_type', 'error');        
+			$this->session->set_flashdata('message', $this->config->item("fetch_product").'Please checked atleast one checkbox');
+			redirect($_SERVER['HTTP_REFERER']);		
+		}
+	}
 	public function moveToLive($status=false, $productID=false ){	 
 	//	print_r($_POST);die;
 		$movetolive=$this->input->post('moveTolive');

@@ -19,7 +19,7 @@ class Subcategories extends CI_Controller
 		public function index()
 		{
 			$this->data['sub'] = $this->Subcategories_model->get_subcategory();
-			$this->display('admin/subcategory', $this->data);
+			$this->display('admin/Subcategory', $this->data);
 		}
 		
 		public function Addsubcategory ($subCategoriesID = false)
