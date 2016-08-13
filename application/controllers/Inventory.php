@@ -179,6 +179,26 @@ class Inventory extends CI_Controller {
 
 		redirect('Inventory/Createinventory');
 	}
+	public function updatestatus()
+	{
+		//print_r($_POST); die;
+		$status=$this->input->post('status');
+		$inventoryConsumptionID=$this->input->post('inventoryConsumptionID');
+		if(!empty($inventoryConsumptionID))
+		{
+			if(!empty($status))
+			{
+				$data=array('Status'=>$status);
+				$this->Inventory_model->updatestatus('s4k_inventory_consumption',$data,$inventoryConsumptionID);
+			}
+				redirect($_SERVER['HTTP_REFERER']);
+		}
+		else{
+			$this->session->set_flashdata('message_type', 'error');        
+			$this->session->set_flashdata('message', $this->config->item("fetch_product").'Please checked atleast one checkbox');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
 	
 	
 }

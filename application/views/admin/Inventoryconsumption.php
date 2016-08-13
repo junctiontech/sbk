@@ -77,18 +77,22 @@
 		 <!-- Alert section End-->
         
         <div class="clearfix"></div>
-        <div class="row">
+      <form class="form-horizontal" method="post" action="<?=base_url();?>Inventory/updatestatus">
+		  <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
               <div class="x_title">
-                <h2>Inventory </h2>
-                
+                <h2>Inventory </h2> 
+				  <input type="submit" style="margin: 4px; background-color: transparent; border-color: transparent;" name="status" value="Active" class=" ">/
+				  <input type="submit" style="background-color: transparent; border-color: transparent;" name="status" value="Inactive" class=" "/>         
                 <div class="clearfix"></div>
+				  
               </div>
               <div class="x_content">
                 <table id="example" class="table table-striped responsive-utilities jambo_table">
                   <thead>
                     <tr>
+					  <th><input id="checkall" type="checkbox" class="tableflat"></th>
                       <th>Inventory Name</th>
                       <th>Product Name</th>
                       <th>Sort order</th>
@@ -101,6 +105,7 @@
                   <tbody>
 				  <?php foreach($inventoryconsumptions as $inventorycnsumption){?>
                     <tr>
+					<td class="a-center "><input type="checkbox" name="inventoryConsumptionID[]" value="<?=isset($inventorycnsumption->inventoryConsumptionID)?$inventorycnsumption->inventoryConsumptionID:''?>" class="tableflat"></td>
                       <td><?=isset($inventorycnsumption->inventoryName)?$inventorycnsumption->inventoryName:''?></td>
                       <td><?=isset($inventorycnsumption->productName)?$inventorycnsumption->productName:''?></td>
                       <td><?=isset($inventorycnsumption->sortOrder)?$inventorycnsumption->sortOrder:''?></td>
@@ -120,6 +125,7 @@
           
     
         </div>
+		  </form>
       </div>
       <!-- /page content --> 
       
@@ -251,4 +257,9 @@ function fill(){
 				
 				//fill();
             });
+		
+		
+			$('#checkall').click(function () {    
+    $(':checkbox.tableflat').prop('checked', this.checked);    
+ });
         </script> 

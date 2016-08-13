@@ -728,7 +728,7 @@ margin-top:60px;
 }
 .signup_button{
 	color:white; background-color:black;border-color:black;}
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:768px) {
 	.listview_1_of_2{
     	margin: 2.4% 0 0% 1.6%;
     }
@@ -753,7 +753,12 @@ margin-top:60px;
 	.span_3_of_2 .button {
     	margin-top:5%;
     }
-	
+	.pageno-fixed{
+		position:relative !important;
+		left:0% !important;	
+	}
+	.col-xs-0{display:none;}
+	.filter{display:block !important; margin-top:20px;}
 }
 @media only screen and (max-width:800px) {
 	
@@ -764,6 +769,7 @@ margin-top:60px;
 	 .listview_1_of_2{
     	margin: 1.4% 0 0% 1.6%;
     }
+		 
 	.flightsearchfixd{position:relative !important;width:100% !important; left:-5px !important;}
 	.list_2_of_1 .button a {
     	padding:5px 10px;
@@ -772,6 +778,7 @@ margin-top:60px;
     	width:100%;
     	margin-top:0.5em;
     }
+ 
 	.images_1_of_4 h2 {
     	font-size:0.8em;
     	letter-spacing:0;
@@ -788,6 +795,7 @@ margin-top:60px;
 	.wrapper{
     	width:95%;
     }
+	.images_1_of_4{width:22% !important}
 	.span_1_of_4 h4 {
     	font-size:1em;
     	letter-spacing:0;
@@ -849,6 +857,8 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+		.col-xs-0{display:none;}
+	.filter{display:block !important; margin-top:20px;}
 	.delas_hedden {
     margin-bottom: 30px;
     display: inline-block !important;
@@ -860,6 +870,10 @@ margin-top:60px;
 	.search_box form input[type="text"] {
 		width:78.5%;
     }
+	.pageno-fixed{
+		position:relative !important;
+		left:0% !important;	
+	}
     .search_box form input[type="submit"] {
     	width:18.5%;
     }
@@ -889,7 +903,7 @@ margin-top:60px;
     	font-size:2em;
     }
 	.images_1_of_4{
-		width:94%;
+		width:94% !important;
 		padding:3%;
 	}
 	.deal_1_of_3{
@@ -993,6 +1007,8 @@ margin-top:60px;
 		.navbar.horizontal-menu.navbar-fixed-top + .page-container {
 		margin-top:0%;
 	}
+	.filter{display:block !important; margin-top:20px;}
+	.hederselect{width:18% !important;}
 	.textjustify {text-align: justify;line-height: inherit !important;margin-bottom: 15px;}
 	.flightsearchfixd{position:relative !important;width:100% !important;}
 	.logo1{
@@ -1053,7 +1069,7 @@ margin-top:60px;
 		padding:3%;
 	}
 	.images_1_of_4{
-		width:95%;
+		width:95% !important;
 		height:450px;
 		padding:2.5%;
 	}
@@ -1181,7 +1197,7 @@ margin-top:60px;
 		display:inline-block !important;
 		margin-left:0px !important; 
 		position: fixed;
-		top: 35%;
+		top: 36%;
 		z-index: 101;
 		left:-30px;
 	}
@@ -1667,3 +1683,4 @@ left: 5px;}
 .map{width:85%;height:350px;border-radius: 50%;left:40px}
 .aboutusimags{height: 157px;width:100%;}
 .tdw{width: 180px;}
+.hederselect{width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size: 34px;color: #a5a5a5;font-family: Arial;outline: none;margin: 0;height: 54px;}

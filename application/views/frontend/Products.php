@@ -1,65 +1,42 @@
 <div class="page-container">	
 	<div class="sidebar-menu toggle-others fixed">
-		<div class="sidebar-menu-inner">
-        <div class="leftmargin">
-			<p>Refine Your Search</p>
-        
-			 <hr>
-        
-			<?php if(!empty($filters)){  foreach($filters as $filter){ ?>
-        
-			<div class="Price">
-         
-				<p><?=isset($filter->groupName)?$filter->groupName:''?></p>
-        
-			</div>
-       
-			<?php if($filter->filterGroupID){
-	
+		<div class="sidebar-menu-inner">       
+			<div class="leftmargin col-xs-0">			
+				<p>Refine Your Search</p> 
+				<hr>
+				<?php if(!empty($filters)){  foreach($filters as $filter){ ?>
+				<div class="Price">
+					<p><?=isset($filter->groupName)?$filter->groupName:''?></p>
+				</div>
+				<?php if($filter->filterGroupID){
 	$filteratt=$this->Landingpage_model->get_grpatt($filter->filterGroupID);
 	if($filteratt){ 
-			?>
-       
-			<div class="checkbox chk">
-         
-				<?php foreach($filteratt as $filteratts){ ?>
-         
-				<label>
-            
-					<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">
-            
-					<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>">
-           
-					<?=isset($filteratts->lable)?$filteratts->lable:''?>
-         
-				</label>
-         
+				?>
+				<div class="checkbox chk">
+					<?php foreach($filteratt as $filteratts){ ?>
+					<label>
+						<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">
+						<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>">
+						<?=isset($filteratts->lable)?$filteratts->lable:''?>
+					</label>
+					<?php } ?>
+				</div>
+				<?php }}else{ ?>
+				<p>No Attribute Define For This Filter</p>
 				<?php } ?>
-        
-			</div>
-        
-			<?php }}else{ ?>
-        
-			<p>No Attribute Define For This Filter</p>
-       
-			<?php } ?>
-       
-			<hr>
-        
-			<?php } }else{ ?>
-       
-			<p>No Filter Found For This Category</p>
-       
-			<?php } ?>
+				<hr>
+				<?php } }else{ ?>
+				<p>No Filter Found For This Category</p>
+				<?php } ?>
+				
+			</div>	
 			
-			</div>		 
 		</div>
-		 
 	</div>
 	<div class="main-content"> 
-	<div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
-				</div>
+		<div class="page-loading-overlay">
+			<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
+		</div>
 		<div class="row">
 			<div class="col-md-10 col-sm-10 col-xs-12 pageno-fixed">
 			<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
@@ -74,9 +51,49 @@
 		</div>
 		
 		<div class="clear"></div>
+	 	
 		<div class="row">
+			
+		<div style="display:none;" class="col-xs-12 filter">						
+						<div class="panel panel-default collapsed"><!-- Add class "collapsed" to minimize the panel -->							
+							<div class="panel-options">								
+								<a href="#" data-toggle="panel">
+									<span class="btn btn-success collapse-icon">Refine Your Search</span>						 
+								</a>								
+							</div>												
+						<div class="panel-body">
+							 			<p>Refine Your Search</p> 
+				<hr>
+				<?php if(!empty($filters)){  foreach($filters as $filter){ ?>
+				<div class="Price">
+					<p><?=isset($filter->groupName)?$filter->groupName:''?></p>
+				</div>
+				<?php if($filter->filterGroupID){
+	$filteratt=$this->Landingpage_model->get_grpatt($filter->filterGroupID);
+	if($filteratt){ 
+				?>
+				<div class="checkbox chk">
+					<?php foreach($filteratt as $filteratts){ ?>
+					<label>
+						<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">
+						<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>">
+						<?=isset($filteratts->lable)?$filteratts->lable:''?>
+					</label>
+					<?php } ?>
+				</div>
+				<?php }}else{ ?>
+				<p>No Attribute Define For This Filter</p>
+				<?php } ?>
+				<hr>
+				<?php } }else{ ?>
+				<p>No Filter Found For This Category</p>
+				<?php } ?>			
+						</div>
+					</div>	<div class="clear"></div>				
+				</div>
+	
 		<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">
- 
+
           <?php if(!empty($products)){ foreach($products as $product){ ?>
  
 		
@@ -89,9 +106,13 @@
             <?=$product->productName?> 
             <?=isset($product->attr)?$product->attr:''?>
           </h2>
-          <p><img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>"><span class="price"><?php if($product->productPrice && $product->productPrice !=0){?>Rs. 
+          <p><span class="price">
+			  <?php if($product->productPrice && $product->productPrice !=0){?>Rs. 
             <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?>
-            </span></p> </a>          
+            </span><br>
+			  <img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>">
+			</p> 
+					 </a>          
           <div class="checkbox">
             <label>
               <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">

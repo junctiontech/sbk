@@ -190,7 +190,7 @@
 					 </div>
 				 </div>					
 						  <div class="product-desc">
-								 <h2>Similar Product</h2>
+								 <h2>Recommended  Product</h2>
 							 </div>
 						  <div class="row">
 							 <div class="col-md-12">

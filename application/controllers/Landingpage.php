@@ -745,7 +745,7 @@ class Landingpage extends CI_Controller {
 					 <a href=\"".$filter->categoriesUrlKey."/".$filter->sb4kProductID."/".$filter->productsUrlKey.".html\"><img src=".$filter->imageName." alt=\"\" /></a>
 					</div>
 					<h2>".$filter->productName."</h2>
-					 <p><img style=\"height:30px\" src=\"$baseurl/frontend/images/$filter->shop_image\"><span class=\"price\">Rs. ".$filter->productPrice."</span></p>					 
+					 <p><span class=\"price\">Rs. ".$filter->productPrice."</span><br><img style=\"height:30px\" src=\"$baseurl/frontend/images/$filter->shop_image\"></p>					 
 					 <div class=\"checkbox\">
 					<label>
 						<input type=\"checkbox\" value=\"$filter->productsID\" class=\"chkcount\" name=\"productid\" onchange=\"compare_product(this.value)\">Compare
