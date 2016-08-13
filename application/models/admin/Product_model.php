@@ -202,11 +202,33 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category,'t1.productBrand'=>$productBrand));
 		$this->db->where(array('t5.shopID'=>$shopID));
 		$this->db->where('t6.productsStatus','Active');
+		if($shopID !=1){
 		$this->db->where('t6.liveStatus','No');
+		}
 		$this->db->where('t6.mapp','Unmapped');
 		$query=$this->db->get();	
 		return $query->result();
 	} 
+	
+	function map_product4($filter=false,$productName=false,$shopID=false)
+	{
+		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
+		$this->db->join('s4k_product_price t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_shops t5','t4.shopID=t5.shopID');
+		$this->db->join('s4k_product_status t6','t4.shopID=t6.shopID and t6.shopProductID=t4.shopProductID');
+		$this->db->where("MATCH (`productName`) AGAINST ('{$productName}')");
+		$this->db->where($filter);
+		$this->db->where('t6.productsStatus','Active');
+		if($shopID !=1){
+		$this->db->where('t6.liveStatus','No');
+		}
+		$this->db->where('t6.mapp','Unmapped');
+		$query=$this->db->get();	
+		return $query->result();
+	}
 	
 	function get_product_by_filter($where=false,$limit=false,$page=false )
 	{	
@@ -341,6 +363,15 @@ class Product_model extends CI_Model {
 		return $query->result();
 	}
 	
+	public function get_data_parent($table=false,$filter=false)
+	{
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->where_in('ProductsID',$filter);
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
 	public function update($table=false,$data=false,$filter=false)
 	{
 		$this->db->where($filter);
@@ -395,6 +426,16 @@ class Product_model extends CI_Model {
 		}
 		$this->db->where(array('t1.productsID'=>$product));
 		$this->db->group_by('t1.productsID');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function fetch_download_productname($product,$categoryID=false)
+	{
+		$this->db->select("t1.productsID,t2.productName,t1.categoriesID,t1.productBrand");
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->where(array('t1.productsID'=>$product));
 		$query=$this->db->get();
 		return $query->result();
 	}

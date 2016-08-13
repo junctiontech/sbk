@@ -7,6 +7,29 @@
 </div>
 <?php }?>
 </div>
+<style>#toTop1 {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 100px;
+    right: 0px;
+    overflow: hidden;
+   
+    border: none;
+    
+   
+}
+
+#toTopHover1 {
+   
+    display: block;
+    overflow: hidden;
+    float: right;
+    opacity: 0;
+    -moz-opacity: 0;
+    
+}
+</style>
  <div class="row">
 <form role="form" class="form-horizontal form-label-left" novalidate  method="post" action="<?=base_url();?>product/map_product">
 	  <div class="col-md-8" style="overflow: auto">
@@ -127,7 +150,7 @@
                         <div class="col-md-4">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Mapped product</h2>
+                                    <h2 id="dynamicheading">Mapped product</h2>
                                  	
                                     <div class="clearfix"></div>
                                 </div>
@@ -249,18 +272,29 @@
                         </div>
                    
                 </div>
+				
+				<a href="javasccript:;" id="toTop1" class="btn btn-success btn-single" style="margin-top: 170px;">Mapp it</a>
 				</form>
 				<script>
             function onAddTag(tag) {
-                alert("Added a tag: " + tag);
+						var keyword=document.getElementById('tags_1').value;
+						getProductToMapp(keyword,'keyword');
+						search_flipkart(keyword,'keyword');
+						getProductToMappSnapdeal(keyword,'keyword'); 
             }
 
             function onRemoveTag(tag) {
-                alert("Removed a tag: " + tag);
+						var keyword=document.getElementById('tags_1').value;
+						getProductToMapp(keyword,'keyword');
+						search_flipkart(keyword,'keyword');
+						getProductToMappSnapdeal(keyword,'keyword'); 
             }
 
             function onChangeTag(input, tag) {
-                alert("Changed a tag: " + tag);
+						var keyword=document.getElementById('tags_1').value;
+						getProductToMapp(keyword,'keyword');
+						search_flipkart(keyword,'keyword');
+						getProductToMappSnapdeal(keyword,'keyword'); 
             }
 
             

@@ -383,25 +383,30 @@ class Product extends CI_Controller {
 		
 		$productName=$this->input->post('productID');
 		$categoryID=$this->input->post('categoriesID');
+		$keyword=$this->input->post('keyword');
 		if(!empty($productName))
 		{
-			$FetchNames=$this->Product_model->fetch_productname($productName);
-			if(!empty($FetchNames)){
+			if($keyword =='keyword'){}else{
+			$FetchNames=$this->Product_model->fetch_productname($productName);}
+			if(!empty($FetchNames) || $keyword =='keyword'){
 				
-				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);
+				if($keyword =='keyword'){}else{
+				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);}
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
-				echo"<div class=\"col-md-12\">";	
+				echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
 					echo'<div class="thumbnail">';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
+						echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+						echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 						echo'<div class="caption">';
 							echo"<p>$map_product->productName</p>";
 							echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
 							echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
 							echo'<div class="col-md-3 col-sm-3 col-xs-12">';
-							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+							echo"<a class=\"btn btn-small btn-danger show-tooltip map\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
 							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
 							echo'</div>';
 						echo'</div>';	
@@ -409,20 +414,26 @@ class Product extends CI_Controller {
 				echo'</div>';
 				}
 				}else{
-					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);
+					if($keyword =='keyword'){
+						$productName=str_replace(","," ",$productName);
+			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>3),$productName,3);
+					}else{
+					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);}
 					if(!empty($map_products1)){
 					foreach($map_products1 as $map_product){
-					echo"<div class=\"col-md-12\">";	
+					echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
 						echo'<div class="thumbnail">';
 							echo'<div class="image view view-first">';
 								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 							echo'</div>';
+							echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+							echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 							echo'<div class="caption">';
 								echo"<p>$map_product->productName</p>";
 								echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
 								echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
 								echo'<div class="col-md-3 col-sm-3 col-xs-12">';
-								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+								echo"<a class=\"btn btn-small btn-danger show-tooltip map\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
 								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
 								echo'</div>';
 							echo'</div>';	
@@ -446,25 +457,30 @@ class Product extends CI_Controller {
 		
 		$productName=$this->input->post('productID');
 		$categoryID=$this->input->post('categoriesID');
+		$keyword=$this->input->post('keyword');
 		if(!empty($productName))
 		{
-			$FetchNames=$this->Product_model->fetch_productname($productName);
-			if(!empty($FetchNames)){
+			if($keyword =='keyword'){}else{
+			$FetchNames=$this->Product_model->fetch_productname($productName);}
+			if(!empty($FetchNames) || $keyword =='keyword'){
 				
-				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);
+				if($keyword =='keyword'){}else{
+				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);}
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
-				echo"<div class=\"col-md-12\">";	
+				echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
 					echo'<div class="thumbnail">';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
+						echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+						echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 						echo'<div class="caption">';
 							echo"<p>$map_product->productName</p>";
 							echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
 							echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
 							echo'<div class="col-md-3 col-sm-3 col-xs-12">';
-							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+							echo"<a class=\"btn btn-small btn-danger show-tooltip map\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
 							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
 							echo'</div>';
 						echo'</div>';	
@@ -472,20 +488,101 @@ class Product extends CI_Controller {
 				echo'</div>';
 				}
 				}else{
-					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);
+					if($keyword =='keyword'){
+						$productName=str_replace(","," ",$productName);
+			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>2),$productName,2);
+					}else{
+					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);}
 					if(!empty($map_products1)){
 					foreach($map_products1 as $map_product){
-					echo"<div class=\"col-md-12\">";	
+					echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
 						echo'<div class="thumbnail">';
 							echo'<div class="image view view-first">';
 								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 							echo'</div>';
+							echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+							echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 							echo'<div class="caption">';
 								echo"<p>$map_product->productName</p>";
 								echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
 								echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
 								echo'<div class="col-md-3 col-sm-3 col-xs-12">';
-								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+								echo"<a class=\"btn btn-small btn-danger show-tooltip map\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>";
+								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
+								echo'</div>';
+							echo'</div>';	
+						echo'</div>';
+					echo'</div>';
+					}
+					}else{
+						echo"No product found!!";
+					}
+				}
+			}else{
+				echo"No product found!!";
+			}
+		}else{
+			echo"Invalid request!!";
+		}
+	}
+	
+	public function getProductToMappFlipkart()
+	{
+		
+		$productName=$this->input->post('productID');
+		$categoryID=$this->input->post('categoriesID');
+		$keyword=$this->input->post('keyword');
+		if(!empty($productName))
+		{
+			if($keyword =='keyword'){}else{
+			$FetchNames=$this->Product_model->fetch_download_productname($productName);
+			}
+			if(!empty($FetchNames) || $keyword =='keyword'){
+				
+				if($keyword =='keyword'){}else{
+				$map_products=$this->Product_model->map_product1($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,1);}
+				if(!empty($map_products)){
+				foreach($map_products as $map_product){
+				echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
+					echo'<div class="thumbnail">';
+						echo'<div class="image view view-first">';
+							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
+						echo'</div>';
+						echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent1 $map_product->productsID\">Parent</label>";
+						echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
+						echo'<div class="caption">';
+							echo"<p>$map_product->productName</p>";
+							echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
+							echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
+							echo'<div class="col-md-3 col-sm-3 col-xs-12">';
+							/* echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>"; */
+							echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
+							echo'</div>';
+						echo'</div>';	
+					echo'</div>';
+				echo'</div>';
+				}
+				}else{
+					if($keyword =='keyword'){
+						$productName=str_replace(","," ",$productName);
+			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>1),$productName,1);
+					}else{
+					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,1);}
+					if(!empty($map_products1)){
+					foreach($map_products1 as $map_product){
+					echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
+						echo'<div class="thumbnail">';
+							echo'<div class="image view view-first">';
+								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
+							echo'</div>';
+							echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent1 $map_product->productsID\">Parent</label>";
+							echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
+							echo'<div class="caption">';
+								echo"<p>$map_product->productName</p>";
+								echo"<p style=\"margin-top:10px\">Price-$map_product->productPrice</p>";
+								echo"<p style=\"margin-top:10px\">Shop-$map_product->shopName</p>";
+								echo'<div class="col-md-3 col-sm-3 col-xs-12">';
+								/* echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"mappit($map_product->productsID)\">Mapp it</a>"; */
 								echo"<a class=\"btn btn-small btn-danger show-tooltip\" style=\"display: initial  !important;\" onclick=\"inactiveproduct($map_product->productsID)\">Inactive</a>";
 								echo'</div>';
 							echo'</div>';	
@@ -560,7 +657,67 @@ class Product extends CI_Controller {
 				$this->Product_model->update('s4k_product_status',array('mapp'=>'Mapped'),$updatefilter);	
 			}
 			
-			//$this->Product_model->update('s4k_products',array('mapp'=>'Mapped'),array('productsID'=>$childproductID));
+			echo"success";
+		}else{
+			echo"error Parent product or child product is missing. please try again!!";
+		}
+		
+	}
+	
+	public function mapp_parent_to_child()
+	{
+		$parentProductID=$this->input->post('productID');
+		$childproductID=$this->input->post('childproductID');
+		if(!empty($parentProductID && $childproductID )){ 
+				
+			$productshopdata=$this->Product_model->get_data_parent('s4k_product_price',$childproductID);
+			
+			$parentproductshopdata=$this->Product_model->get_data_parent('s4k_product_price',$parentProductID);
+			
+			if(!empty($productshopdata) && !empty($parentproductshopdata)){	
+			
+				foreach($productshopdata as $productshopdatas){
+				$data=array('parentProductID'=>$parentproductshopdata[0]->shopProductID,'childProductID'=>$productshopdatas->shopProductID,'parentShopID'=>$parentproductshopdata[0]->shopID,'childShopID'=>$productshopdatas->shopID);
+				$this->db->insert('s4k_product_mapping',$data);	
+				$updatefilter=array('shopProductID'=>$productshopdatas->shopProductID,'shopID'=>$productshopdatas->shopID);
+				if($productshopdatas->shopID==1){ $up=array('mapp'=>'Mapped','liveStatus'=>'No');}else{$up=array('mapp'=>'Mapped');}
+				$this->Product_model->update('s4k_product_status',$up,$updatefilter);
+				}
+
+				if(!empty($parentProductID)){
+				
+					$productID=$parentProductID;				
+				$productdata=$this->Product_model->get_product_full_data(array('t1.productsID'=>$productID));
+				if(!empty($productdata)){
+					if($productdata[0]->shopID !=1){
+					$productdata1=array('categoriesID'=>$productdata[0]->categoriesID,
+								'subCategoriesID'=>$productdata[0]->subCategoriesID,
+								'productBrand'=>$productdata[0]->productBrand,
+								'productsUrlKey'=>$productdata[0]->productsUrlKey,
+								'productsSortOrder'=>$productdata[0]->productsSortOrder,
+								'productsStatus'=>$productdata[0]->productsStatus,
+								'productName'=>$productdata[0]->productName,
+								'productDescription'=>$productdata[0]->productDescription,
+								'imageSortOrder'=>$productdata[0]->imageSortOrder,
+								'isDefault'=>$productdata[0]->isDefault,
+								'imageName'=>$productdata[0]->imageName,
+								'imageStatus'=>$productdata[0]->imageStatus,
+								'productImageTitle'=>$productdata[0]->productImageTitle,
+								'productImageAltTag'=>$productdata[0]->productImageAltTag,
+								'currencyID'=>$productdata[0]->currencyID,
+								'productPrice'=>$productdata[0]->productPrice,
+								'shopProductID'=>$productdata[0]->shopProductID,
+								'shopID'=>$productdata[0]->shopID,
+								'productShopUrl'=>$productdata[0]->productShopUrl
+								);
+								$productattribute=$this->Product_model->get_product_attribute(array('productsID'=>$productID));
+								$this->Product_model->insert_mapp_it($productdata1,'',$productattribute);
+								$this->Product_model->update('s4k_product_status',array('liveStatus'=>'Yes'),array('shopProductID'=>$productdata[0]->shopProductID,'shopID'=>$productdata[0]->shopID));
+					}
+				}
+			}
+			}
+			
 			echo"success";
 		}else{
 			echo"error Parent product or child product is missing. please try again!!";

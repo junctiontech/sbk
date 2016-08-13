@@ -63,17 +63,21 @@ function getproductimage(productID)
 	return false;  	  
 }
 
-function getProductToMapp(productID)
+function getProductToMapp(productID,keyword)
 { 
 		$("#loader").fadeIn();
-		var productID =document.getElementById('productName').value;
+		if(keyword=='keyword'){
+			var productID =productID;
+		}else{
+			var productID =document.getElementById('productName').value;
+		}
 		var categoriesID=document.getElementById('select').value;
 		if(productID !=='' && categoriesID !='')
 		{
 			$.ajax({
 				type: "POST",
 				url: base_url+"Product/getProductToMapp",
-				data:{productID:productID,categoriesID:categoriesID},
+				data:{productID:productID,categoriesID:categoriesID,keyword:keyword},
 
 				cache: false,
 				success: function(html)
@@ -110,22 +114,53 @@ function addkeywords(){
     });
 }
 
-function getProductToMappSnapdeal(productID)
+function getProductToMappSnapdeal(productID,keyword)
 { 
 		$("#loader").fadeIn();
-		var productID =document.getElementById('productName').value;
+		if(keyword=='keyword'){
+			var productID =productID;
+		}else{
+			var productID =document.getElementById('productName').value;
+		}
 		var categoriesID=document.getElementById('select').value;
 		if(productID !=='' && categoriesID !='')
 		{
 			$.ajax({
 				type: "POST",
 				url: base_url+"Product/getProductToMappSnapdeal",
-				data:{productID:productID,categoriesID:categoriesID},
+				data:{productID:productID,categoriesID:categoriesID,keyword:keyword},
 
 				cache: false,
 				success: function(html)
 				{
 				$("#unmappedproductsnapdeal").html(html);
+				$("#loader").fadeOut();
+				}
+			});
+		}else{
+			alert("Invalid request!!");
+			$("#loader").fadeOut();
+		}
+	return false;  	  
+}
+
+function search_flipkart(productID,keyword)
+{ 
+		$("#loader").fadeIn();
+		$("#dynamicheading").html("Flipkart product");
+		var productID =productID;
+		var categoriesID=document.getElementById('select').value;
+		if(productID !=='' && categoriesID !='')
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/getProductToMappFlipkart",
+				data:{productID:productID,categoriesID:categoriesID,keyword:keyword},
+
+				cache: false,
+				success: function(html)
+				{
+				$("#mappedproduct").html(html);
 				$("#loader").fadeOut();
 				}
 			});
@@ -193,6 +228,66 @@ function mappit(childproductID)
 	return false;  	  
 }
 
+function mapp_parent_to_child()
+{ 
+		$("#loader").fadeIn();
+		
+		var productID='';var childproductID =[];
+		
+		 $(".parent1").each(function() {
+			
+			if($(this).prop('checked') == true){
+				
+				productID=this.value;
+			}
+			
+         });
+		 
+		 $(".child").each(function() {
+			
+			if($(this).prop('checked') == true){
+				
+				childproductID.push(this.value);
+			}
+			
+         });
+		 
+		if(productID !==''  && childproductID !='')
+		{
+			$.ajax({
+				type: "POST",
+				url: base_url+"Product/mapp_parent_to_child",
+				data:{productID:productID,childproductID:childproductID},
+
+				cache: false,
+				success: function(html)
+				{
+					if(html=='success'){
+						
+						$('#'+productID).css('display','none');
+						$('.'+productID).attr('checked',false);
+						$.each(childproductID,function(i){
+						  $('#'+childproductID[i]).css('display','none');
+						  $('.'+childproductID[i]).attr('checked',false);
+						});
+						
+						$("#loader").fadeOut();
+					}else{
+						$("#loader").fadeOut();
+						alert(html);
+					}
+				//$("#loader").fadeOut();
+				}
+			});
+		}else{
+			$("#loader").fadeOut();
+			alert("Invalid request!!");
+			
+		}
+		$('#toTop1').css('display','none');
+	return false;  	  
+}
+
 function unmappit(mappedproductID,productID)
 { 
 		$("#loader").fadeIn();
@@ -253,11 +348,40 @@ function inactiveproduct(productID)
 	return false;  	  
 }
 
+
+
 $(document).ready(function(){
 	  
 				$(document).on('keyup', '.select2-search__field', function() { 
 				
 				search_product(this.value);
+				});
+				
+				$(document).on('click', '.parent', function() { 
+				
+					if($(this).prop('checked') == true) { 
+					
+						//$('.parent').removeAttr('checked');
+						//$('.parent').attr('checked',false);
+						//$('.parent').attr('checked',true);
+						//$(this).attr('checked','checked');
+						search_flipkart(this.value);
+						$('#toTop1').css('display','block');
+						$('.map').css('display','none');
+					}
+				
+				});
+				
+				$(document).on('click', '.parent1', function() { 
+				
+					if($(this).prop('checked') == true) { 
+					
+						$('#toTop1').css('display','block');
+					}
+				});
+				
+				$(document).on('click', '#toTop1', function() { 
+					mapp_parent_to_child();
 				});
 				
 			});
