@@ -27,13 +27,13 @@
 				<div class="panel-body">
 					 <p align="center">Signup Form</p>
 						
-						<form role="form" class="form-horizontal form-label-left sign_up" onsubmit="return(get_action())"    method="post" action="<?=base_url();?>Login/insert_user_info">
+						<form role="form" class="validate form-horizontal form-label-left sign_up" onsubmit="return(get_action())"    method="post" action="<?=base_url();?>Login/insert_user_info">
 						
 							<div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">First Name<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" class="form-control col-md-7 col-xs-12"  name="userFirstName" placeholder="First name" required="required" type="text">
+									<input id="name" class="form-control col-md-7 col-xs-12"  name="userFirstName" placeholder="First name" data-message-required="Please Enter Your First Name" data-validate="required" type="text">
 								</div>
 							</div>
 							
@@ -41,7 +41,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Last Name<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" class="form-control col-md-7 col-xs-12"  name="userLastName" placeholder="Last Name" required="required" type="text">
+									<input id="name" class="form-control col-md-7 col-xs-12"  name="userLastName" placeholder="Last Name" data-message-required="Please Enter Your Last Name" data-validate="required" type="text">
 								</div>
 							</div>
 						  
@@ -49,14 +49,14 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Email<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" class="form-control col-md-7 col-xs-12"  name="userEmail" placeholder="Email" required="required" type="text">
+									<input id="name" class="form-control col-md-7 col-xs-12"  name="userEmail" data-message-required="Please Enter Your Email" placeholder="Email" data-validate="required" type="text">
 								</div>
 							</div>
 							 <div class="item form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Password<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" type="password" name="userPassword" required="required" placeholder="Password" class=" form-control col-md-7 col-xs-12">
+									<input id="name" type="password" name="userPassword" data-validate="required" placeholder="Password" data-message-required="Please Enter Your Password" class=" form-control col-md-7 col-xs-12">
 								</div>
 							</div>
 							<div class="item form-group">
@@ -83,11 +83,7 @@
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 							<div class="input-group ">
-					
-								<input type="text" name="userDOB" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Date Of Birth" data-validate="required" data-message-required=" ">
-
-								
-						
+								<input type="text" name="userDOB" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Date Of Birth" data-validate="required" data-message-required=" ">							
 								<div class="input-group-addon">
 						
 									<a href="#"><i class="linecons-calendar"></i></a>
@@ -103,7 +99,7 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label" for="name">Mobile No<span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="name" type="number" name="userMobileNo" required="required" placeholder="Mobile No" class=" form-control col-md-7 col-xs-12">
+									<input id="name" type="number" name="userMobileNo" data-validate="required" data-message-required="Please Enter Your Mobile Number" placeholder="Mobile No" class=" form-control col-md-7 col-xs-12">
 								</div>
 							</div>
 							

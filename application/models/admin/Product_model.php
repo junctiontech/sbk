@@ -75,7 +75,7 @@ class Product_model extends CI_Model {
 		$this->db->join('s4k_categories t8','t1.categoriesID=t8.categoriesID','left');
 		$this->db->limit(2);
 		
-		
+		*/
 		/* if($extraquery){
 			$this->db->join('s4k_shops t9','t7.shopID=t9.shopID','left');
 			$this->db->where($extraquery);
@@ -200,7 +200,7 @@ class Product_model extends CI_Model {
 	} 	
 	function get_product_by_filter($where=false,$limit=false,$page=false )
 	{	
-		$this->db->select('t1.productsID,t1.categoriesID,t2.productName,t3.imageName,t4.productPrice,shopName,productsStatus,mapp,liveStatus');
+		$this->db->select('t1.productsID,t1.categoriesID,t2.productName,t3.imageName,t4.productPrice,shopName,productsStatus,mapp,liveStatus,t4.shopProductID');
 		$this->db->from('s4k_products t1');
 		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
 		$this->db->join('s4k_product_images t3','t1.productsID=t3.productsID');
@@ -249,7 +249,7 @@ class Product_model extends CI_Model {
 		return $query->result();
 	}	
 	public function insert_mapp_it($productdata=false,$shopproductfamily=false,$specificationLists=false)
-{	
+	{	
 		if(!empty($productdata) && !empty($specificationLists)){
 		$sb4kProductID= strtoupper ( bin2hex ( mcrypt_create_iv ( 4, MCRYPT_DEV_RANDOM ) ) );;
 		$productMapData=array('categoriesID'=>$productdata['categoriesID'],
@@ -338,6 +338,7 @@ class Product_model extends CI_Model {
 	public function changecategory($data=false,$where=false)
 	{
 		$this->db->query("UPDATE `s4k_products` JOIN `s4k_product_price` ON `s4k_products`.`productsID`=`s4k_product_price`.`productsID` SET `categoriesID`=$data WHERE `s4k_product_price`.`shopProductID` IN ('$where')");	
+		$this->db->query("UPDATE `s4k_products_map` JOIN `s4k_product_price_map` ON `s4k_products_map`.`productsID`=`s4k_product_price_map`.`productsID` SET `categoriesID`=$data WHERE `s4k_product_price_map`.`shopProductID` IN ('$where')");
 		//echo $this->db->last_query();die;
 	}
 	public function search_product($category=false,$product=false,$unmapped=false )
