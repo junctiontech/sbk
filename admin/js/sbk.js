@@ -380,9 +380,9 @@ $(document).ready(function(){
 					}
 				});
 				
-				$(document).on('click', '#toTop1', function() { 
+				/* $(document).on('click', '#toTop1', function() { 
 					mapp_parent_to_child();
-				});
+				}); */
 				
 			});
 
