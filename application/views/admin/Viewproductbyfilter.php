@@ -128,11 +128,12 @@
 		<div class="page-title">                       
 			<div class="title_left">                         
 				    <h3>Product List </h3>  
-				 
+				 <?php if(!empty($products)){?>
 			<label style="display: inline-flex;" class="">
 				<input type="checkbox" id="checkall"class="checkbox"/>
 				Check All
 			</label>
+				<?php } ?>
 			</div>			
 			</div>	
 			<div class="dypagination">				
@@ -256,6 +257,7 @@
 							</div>
 							<?php }?>
 							</form>
+						<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="dypagination">
 							<?php echo isset($pagination)?$pagination:'';?> <?php echo isset($paginationPagedrop)?$paginationPagedrop:'';?>									
 							<style>
@@ -267,6 +269,7 @@
 								.dypagination ul li:last-child{margin-right:0} 
 							</style>
 						</div>	
+						</div>
 						<?php }else{ ?>
 						<div class="col-sm-12 col-md-6 col-lg-6">
 							<p>No products available</p>

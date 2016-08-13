@@ -111,13 +111,14 @@
 	<div class="">
 		<div class="page-title">                      
 			<div class="title_left">                          
-				<h3>Product List </h3>							
+				<h3>Product List </h3>	
+				<?php if(!empty($products)){?>
 				<label style="display: inline-flex; vertical-align: middle;" class="">				
 					<input type="checkbox" id="checkall"class="checkbox"/>				
 					Check All			
 				</label>							
 				<button type="submit" name="status" value="Active" class="btn btn-success">Active</button> 							
-				<button type="submit" name="status" value="Inactive" class="btn btn-success">Inactive</button>                       
+				<button type="submit" name="status" value="Inactive" class="btn btn-success">Inactive</button>  <?php } ?>                     
 			</div>		
 			<div class="title_right">                         
 				<div class="dypagination"> 
@@ -178,17 +179,19 @@
 								</div>
 							</div>
 							<?php }?>
-							<div class="dypagination">
-								<?php echo isset($pagination)?$pagination:'';?> <?php echo isset($paginationPagedrop)?$paginationPagedrop:'';?>
-								<style>
-									.dypagination{margin:10px;text-align:right}
-									.dypagination ul{}
-									.dypagination ul li{text-align:center;list-style:none;list-style-image:none;margin-right:4px;display:inline-block}
-									.dypagination ul li a{display:inline-block;background:#DDDDDD;padding:6px 9px;color:#666;font-size:13px;text-decoration:none}
-									.dypagination ul li a.active{background:#670099;color:#FFF}	
-									.dypagination ul li:last-child{margin-right:0} 
-								</style>
-							</div>	
+							<div class="col-md-12 col-sm-12 colxs-12">							
+								<div class="dypagination">								
+									<?php echo isset($pagination)?$pagination:'';?> <?php echo isset($paginationPagedrop)?$paginationPagedrop:'';?>								
+									<style>									
+										.dypagination{margin:10px;text-align:right}									
+										.dypagination ul{}									
+										.dypagination ul li{text-align:center;list-style:none;list-style-image:none;margin-right:4px;display:inline-block}									
+										.dypagination ul li a{display:inline-block;background:#DDDDDD;padding:6px 9px;color:#666;font-size:13px;text-decoration:none}									
+										.dypagination ul li a.active{background:#670099;color:#FFF}										
+										.dypagination ul li:last-child{margin-right:0} 								
+									</style>							
+								</div>	
+							</div>
 							<?php }else{ ?>
 							<div class="col-sm-12 col-md-6 col-lg-6">											
 								<p>No products available</p>										
