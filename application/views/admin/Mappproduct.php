@@ -224,7 +224,7 @@
 			</div>                       
 		</div>     
 	</div>
-</div>				
+</div>				  
 <a href="javasccript:;" id="toTop1" class="btn btn-success btn-single" onclick="mapp_parent_to_child();" style="margin-top: 170px;">Mapp it</a>			
 </form>			
 <script>
