@@ -6343,3 +6343,4 @@ ul.notifications {
     float: right;
     opacity: 1;
 }
+.fixedmapprodu{position: fixed; right: 0px; top: 60px; overflow: hidden; z-index: 101;}

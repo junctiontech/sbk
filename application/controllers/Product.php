@@ -169,7 +169,7 @@ class Product extends CI_Controller {
 		$categoriesID=$this->input->post('categoriesID');
 		if(!empty($shopProductID)){			
 		if(!empty($movetolive))
-		{		
+		{	//	print_r($_POST); die;
 			if(!empty($shopProductID)){
 				foreach($shopProductID as $shopProductid){
 					$shopProductids=$shopProductid;				
@@ -217,6 +217,7 @@ class Product extends CI_Controller {
 				$data=$categoriesID;			
 				$d = implode("','",$shopProductID);			 
 				$this->Product_model->changecategory($data,$d);
+				if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
 			}
 			else{
 				if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }

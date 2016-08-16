@@ -110,9 +110,9 @@
 			
 	  </div>
 	  	
-							<div class="col-md-2" style="float:left" id="showimage">
+							<div class="col-md-2 fixedmapprodu" style="float:left" id="showimage">
 							<?php if(!empty($Fetch_ProductName)){ foreach($Fetch_ProductName as $Fetch_ProductMap) { ?>
-								<div class="thumbnail">
+								<div class="thumbnail ">
                                     <div class="image view view-first">
                                         <img style="width: 100%; height:150px; display: block;" src="<?=isset($Fetch_ProductMap->imageName)?$Fetch_ProductMap->imageName:''?>" alt="image" />
 									</div>
@@ -160,7 +160,7 @@
                                    <?php if(!empty($fetch_productmapped)){?>
 										<?php foreach($fetch_productmapped as $fetch_product){?>	
                                         <div class="col-md-12">
-											<div class="thumbnail">
+											<div class="thumbnail" style="height: auto !important;">
                                                 <div class="image view view-first">
                                                     <img style="width: 100%; height:150px; display: block;" src="<?=isset($fetch_product->imageName)?$fetch_product->imageName:''?>" alt="image" />
 												</div>
@@ -199,7 +199,7 @@
 										<?php foreach($mappedproduct as $products){?>	
                                         <div class="col-md-12">
 										
-                                            <div class="thumbnail">
+                                            <div class="thumbnail" style="height: auto !important;">
                                                 <div class="image view view-first">
                                                     <img style="width: 100%; height:150px; display: block;" src="<?=isset($products->imageName)?$products->imageName:''?>" alt="image" />
 
@@ -243,7 +243,7 @@
 										<?php foreach($mappedproduct as $products){?>	
                                         <div class="col-md-12">
 										
-                                            <div class="thumbnail">
+                                            <div class="thumbnail" style="height: auto !important;">
                                                 <div class="image view view-first">
                                                     <img style="width: 100%; height:150px; display: block;" src="<?=isset($products->imageName)?$products->imageName:''?>" alt="image" />
 
