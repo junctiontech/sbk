@@ -417,7 +417,7 @@ class Product extends CI_Controller {
 			if(!empty($FetchNames)){
 				foreach($FetchNames as $FetchName){
 					$attr=isset($FetchName->attr)?$FetchName->attr:'';
-				echo'<div class=\"thumbnail\" style=\"height: auto !important;\">';
+				echo'<div class="thumbnail" id="sticky">';
                     echo'<div class="image view view-first">';
                         echo"<img style=\"width: 100%; height:150px; display: block;\" src=$FetchName->imageName alt=\"image\" />";
 					echo'</div>';

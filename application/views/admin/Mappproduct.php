@@ -95,10 +95,11 @@
 				</div>		
 				<?php }?>		
 			</div>
-		</div>			
-		<div class="col-md-2 fixedmapprodu" style="float:left" id="showimage">					
+		</div>		
+		<div id="content-anchor"></div>
+		<div class="col-md-2" style="float:left" id="showimage">					
 			<?php if(!empty($Fetch_ProductName)){ foreach($Fetch_ProductName as $Fetch_ProductMap) { ?>						
-			<div class="thumbnail ">                         
+			<div class="thumbnail">                         
 				<div class="image view view-first">                            
 					<img style="width: 100%; height:150px; display: block;" src="<?=isset($Fetch_ProductMap->imageName)?$Fetch_ProductMap->imageName:''?>" alt="image" />								
 				</div>                                 
@@ -249,7 +250,19 @@
 						getProductToMappSnapdeal(keyword,'keyword'); 
             }
 
-            
+            function sticky_relocate() {    
+				var window_top = $(window).scrollTop();    
+				var div_top = $('#content-anchor').offset().top;    
+				if (window_top > div_top) {        
+					$('#sticky').addClass('fixedmapprodu');    
+				} else {       
+					$('#sticky').removeClass('fixedmapprodu');   
+				}  
+			}  
+	$(function () {    
+		$(window).scroll(sticky_relocate);    
+		sticky_relocate();  
+	});
 			
         </script>				
 <script src="<?=base_url()?>admin/js/tags/jquery.tagsinput.min.js"></script>
