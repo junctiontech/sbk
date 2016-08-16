@@ -453,7 +453,7 @@ class Product extends CI_Controller {
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
 				echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
-					echo'<div class="thumbnail">';
+					echo'<div class="thumbnail" style="height: auto !important;">';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
@@ -527,7 +527,7 @@ class Product extends CI_Controller {
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
 				echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
-					echo'<div class="thumbnail">';
+					echo'<div class="thumbnail"style="height: auto !important;" >';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
@@ -602,7 +602,7 @@ class Product extends CI_Controller {
 				if(!empty($map_products)){
 				foreach($map_products as $map_product){
 				echo"<div class=\"col-md-12\" id=\"$map_product->productsID\">";	
-					echo'<div class="thumbnail">';
+					echo'<div class="thumbnail" style="height: auto !important;">';
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
