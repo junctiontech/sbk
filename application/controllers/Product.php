@@ -151,7 +151,7 @@ class Product extends CI_Controller {
 			$d = implode("','",$shopProductID);								 		
 			$this->Product_model->updateSatus2($status,$d);	
 			$this->session->set_flashdata('message_type', 'success');
-			$this->session->set_flashdata('message', $this->config->item("delete")." Data status updated Successfully!!");
+			$this->session->set_flashdata('message', $this->config->item("delete")."Data status updated Successfully!!");
 			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }		 
 		}
 		}else{			
@@ -167,65 +167,76 @@ class Product extends CI_Controller {
 		$status =$this->input->post('status');
 		$changecategory=$this->input->post('changecategory');
 		$categoriesID=$this->input->post('categoriesID');
-		if(!empty($shopProductID)){			
-		if(!empty($movetolive))
-		{	//	print_r($_POST); die;
-			if(!empty($shopProductID)){
-				foreach($shopProductID as $shopProductid){
-					$shopProductids=$shopProductid;				
-				$productdata=$this->Product_model->get_product_full_data(array('t4.shopProductID'=>$shopProductids));				
-				if(!empty($productdata)){
-					$productdata1=array('categoriesID'=>$productdata[0]->categoriesID,
-								'subCategoriesID'=>$productdata[0]->subCategoriesID,
-								'productBrand'=>$productdata[0]->productBrand,
-								'productsUrlKey'=>$productdata[0]->productsUrlKey,
-								'productsSortOrder'=>$productdata[0]->productsSortOrder,
-								'productsStatus'=>$productdata[0]->productsStatus,
-								'productName'=>$productdata[0]->productName,
-								'productDescription'=>$productdata[0]->productDescription,
-								'imageSortOrder'=>$productdata[0]->imageSortOrder,
-								'isDefault'=>$productdata[0]->isDefault,
-								'imageName'=>$productdata[0]->imageName,
-								'imageStatus'=>$productdata[0]->imageStatus,
-								'productImageTitle'=>$productdata[0]->productImageTitle,
-								'productImageAltTag'=>$productdata[0]->productImageAltTag,
-								'currencyID'=>$productdata[0]->currencyID,
-								'productPrice'=>$productdata[0]->productPrice,
-								'shopProductID'=>$productdata[0]->shopProductID,
-								'shopID'=>$productdata[0]->shopID,
-								'productShopUrl'=>$productdata[0]->productShopUrl
-								);
-								$productattribute=$this->Product_model->get_product_attribute(array('productsID'=>$productdata[0]->productsID,)); 				 
-								$this->Product_model->insert_mapp_it($productdata1,'',$productattribute);
-								$this->Product_model->update('s4k_product_status',array('liveStatus'=>'Yes'),array('shopProductID'=>$productdata[0]->shopProductID,'shopID'=>$productdata[0]->shopID));
-				}
-			} 			
+		$removetolive=$this->input->post('removetolive');
+		if(!empty($shopProductID)){					
+			if(!empty($movetolive))		
+			{	//	print_r($_POST); die;		
+				if(!empty($shopProductID)){				
+					foreach($shopProductID as $shopProductid){				
+						$shopProductids=$shopProductid;					
+						$productdata=$this->Product_model->get_product_full_data(array('t4.shopProductID'=>$shopProductids));				
+						if(!empty($productdata)){						
+							$productdata1=array('categoriesID'=>$productdata[0]->categoriesID,								
+												'subCategoriesID'=>$productdata[0]->subCategoriesID,								
+												'productBrand'=>$productdata[0]->productBrand,								
+												'productsUrlKey'=>$productdata[0]->productsUrlKey,							
+												'productsSortOrder'=>$productdata[0]->productsSortOrder,								
+												'productsStatus'=>$productdata[0]->productsStatus,								
+												'productName'=>$productdata[0]->productName,							
+												'productDescription'=>$productdata[0]->productDescription,							
+												'imageSortOrder'=>$productdata[0]->imageSortOrder,								
+												'isDefault'=>$productdata[0]->isDefault,							
+												'imageName'=>$productdata[0]->imageName,							
+												'imageStatus'=>$productdata[0]->imageStatus,							
+												'productImageTitle'=>$productdata[0]->productImageTitle,							
+												'productImageAltTag'=>$productdata[0]->productImageAltTag,							
+												'currencyID'=>$productdata[0]->currencyID,							
+												'productPrice'=>$productdata[0]->productPrice,							
+												'shopProductID'=>$productdata[0]->shopProductID,							
+												'shopID'=>$productdata[0]->shopID,							
+												'productShopUrl'=>$productdata[0]->productShopUrl							
+											   );							
+							$productattribute=$this->Product_model->get_product_attribute(array('productsID'=>$productdata[0]->productsID,)); 
+							$this->Product_model->insert_mapp_it($productdata1,'',$productattribute);							
+							$this->Product_model->update('s4k_product_status',array('liveStatus'=>'Yes'),array('shopProductID'=>$productdata[0]->shopProductID,'shopID'=>$productdata[0]->shopID));				
+						}		
+					} 				
+				}			
+				$this->session->set_flashdata('message_type', 'success');   			
+				$this->session->set_flashdata('message', $this->config->item("movetolive").'successfully move to live!!');			
+				if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }		
+			}		
+			elseif(!empty($removetolive)){				
+				//print_r($_POST); die;		
+				$this->Product_model->updateSatus('s4k_product_status',array('liveStatus'=>'No'),$shopProductID);		
+				$this->session->set_flashdata('message_type', 'success'); 
+				$this->session->set_flashdata('message', $this->config->item("fetch_product").'successfully Remove from live!!');
+			}				
+			elseif(!empty($status)){			
+				$shopProductID;	
+				$data=array('productsStatus'=>$status);
+				$filter=array('shopProductID'=>$shopProductID);
+				$this->Product_model->updateSatus('s4k_product_status',$data,$shopProductID);
+				$massage="Product Status $status successfully!!";				
+				$this->session->set_flashdata('message_type', 'success'); 
+				$this->session->set_flashdata('message', $this->config->item("fetch_product").$massage);
+			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }	
 			}
-			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ redirect(base_url().'Dashboard.html'); }
-		}
-		elseif(!empty($status)){				 
-			 $shopProductID;			
-				$data=array('productsStatus'=>$status);				 
-				$filter=array('shopProductID'=>$shopProductID);			 		
-					$this->Product_model->updateSatus('s4k_product_status',$data,$shopProductID);			 
-			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }		 
-		}
-		elseif(!empty($changecategory))
-		{
-			if(!empty($shopProductID))
-			{
-				$data=$categoriesID;			
-				$d = implode("','",$shopProductID);			 
-				$this->Product_model->changecategory($data,$d);
-				if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
-			}
-			else{
-				if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
-			}
-		}	 
-		}
-		else{
-			$this->session->set_flashdata('message_type', 'error');        
+			elseif(!empty($changecategory)){		
+				if(!empty($categoriesID))
+					$data=$categoriesID;	
+					$d = implode("','",$shopProductID);	
+					$this->Product_model->changecategory($data,$d);				
+					$this->session->set_flashdata('message_type', 'success'); 
+					$this->session->set_flashdata('message', $this->config->item("fetch_product").'Category Change successfully!!');				
+					if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }			
+				}			
+				else{				
+					if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }		
+				}		
+			} 
+		else{		
+			$this->session->set_flashdata('message_type', 'error'); 
 			$this->session->set_flashdata('message', $this->config->item("fetch_product").'Please checked atleast one checkbox');
 			redirect($_SERVER['HTTP_REFERER']);
 		}

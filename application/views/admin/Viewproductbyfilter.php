@@ -17,7 +17,6 @@
 <?php }?>
 		 <!-- Alert section End-->
 </div>
-
 <!-- start accordion -->
                                     <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                         <div class="panel">
@@ -98,6 +97,9 @@
 													
 														<div class="col-sm-2">
 															<button type="submit" name="moveTolive" value="moveTolive" class="btn btn-success">Move To Live</button>   
+														</div>													
+													<div class="col-sm-2">
+															<button type="submit" name="removetolive" value="removetolive" class="btn btn-success">Remove To Live</button>   
 														</div>
 														<div class="col-sm-2">
 															<button type="submit" name="status" value="Active" class="btn btn-success">Active</button>  
