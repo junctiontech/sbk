@@ -37,7 +37,7 @@ function search_product(productval)
 
 }
 
-function getproductimage(productID)
+function getproductimage(productID,parentname)
 { 
 		$("#loader").fadeIn();
 		var productID =productID;
@@ -47,13 +47,13 @@ function getproductimage(productID)
 			$.ajax({
 				type: "POST",
 				url: base_url+"Product/getproductimage",
-				data:{productID:productID,categoryID:categoryID},
+				data:{productID:productID,categoryID:categoryID,parentname:parentname},
 
 				cache: false,
 				success: function(html)
 				{
 				$("#showimage").html(html);
-				//$("#loader").fadeOut();
+				$("#loader").fadeOut();
 				}
 			});
 		}else{
@@ -333,8 +333,8 @@ function inactiveproduct(productID)
 				success: function(html)
 				{
 					if(html=='success'){
-						getProductToMapp();
-						getMappedProduct();
+						$('#'+productID).css('display','none');
+						
 					}else{
 						alert(html);
 					}
@@ -350,41 +350,7 @@ function inactiveproduct(productID)
 
 
 
-$(document).ready(function(){
-	  
-				$(document).on('keyup', '.select2-search__field', function() { 
-				
-				search_product(this.value);
-				});
-				
-				$(document).on('click', '.parent', function() { 
-				
-					if($(this).prop('checked') == true) { 
-					
-						//$('.parent').removeAttr('checked');
-						//$('.parent').attr('checked',false);
-						//$('.parent').attr('checked',true);
-						//$(this).attr('checked','checked');
-						search_flipkart(this.value);
-						$('#toTop1').css('display','block');
-						$('.map').css('display','none');
-					}
-				
-				});
-				
-				$(document).on('click', '.parent1', function() { 
-				
-					if($(this).prop('checked') == true) { 
-					
-						$('#toTop1').css('display','block');
-					}
-				});
-				
-				/* $(document).on('click', '#toTop1', function() { 
-					mapp_parent_to_child();
-				}); */
-				
-			});
+
 
 function chooseattribute(x){
 	

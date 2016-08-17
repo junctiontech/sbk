@@ -263,6 +263,43 @@
 		$(window).scroll(sticky_relocate);    
 		sticky_relocate();  
 	});
+	
+	
 			
+			$(document).ready(function(){
+	  
+				$(document).on('keyup', '.select2-search__field', function() { 
+				
+				search_product(this.value);
+				});
+				
+				$(document).on('click', '.parent', function() { 
+				
+					if($(this).prop('checked') == true) { 
+					
+						//$('.parent').removeAttr('checked');
+						//$('.parent').attr('checked',false);
+						//$('.parent').attr('checked',true);
+						//$(this).attr('checked','checked');
+						search_flipkart(this.value);
+						$('#toTop1').css('display','block');
+						$('.map').css('display','none');
+					}
+				
+				});
+				
+				$(document).on('change', '.parent1', function() { 
+			
+					if($(this).prop('checked') == true) { 
+						getproductimage(this.value,'parent');
+						$('#toTop1').css('display','block');
+					}
+				});
+				
+				/* $(document).on('click', '#toTop1', function() { 
+					mapp_parent_to_child();
+				}); */
+				
+			});
         </script>				
 <script src="<?=base_url()?>admin/js/tags/jquery.tagsinput.min.js"></script>
