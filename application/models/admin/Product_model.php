@@ -206,6 +206,7 @@ class Product_model extends CI_Model {
 		$this->db->where('t6.liveStatus','No');
 		}
 		$this->db->where('t6.mapp','Unmapped');
+		$this->db->limit(70);
 		$query=$this->db->get();	
 		return $query->result();
 	} 
@@ -226,9 +227,10 @@ class Product_model extends CI_Model {
 		$this->db->where('t6.liveStatus','No');
 		}
 		$this->db->where('t6.mapp','Unmapped');
-		if($limit){
+		/* if($limit){
 			$this->db->limit(20);
-		}
+		} */
+		$this->db->limit(70);
 		$query=$this->db->get();	
 		return $query->result();
 	}
@@ -416,6 +418,7 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->like(array('productName'=>$product));
 		$this->db->group_by('t1.productsID');
+		$this->db->limit(100);
 		$query=$this->db->get();
 		return $query->result();
 		
