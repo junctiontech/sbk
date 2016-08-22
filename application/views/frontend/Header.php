@@ -39,7 +39,7 @@
 				</li>
 				<li>
 					<a href="javascript:;" title="You are searcheela no">
-						<span class="title">You are Searcheela# <span><img style="max-width: 37%;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
+						<span class="title">You are Searcheela# <span><img style="max-width: 37%;line-height: 20px;vertical-align: middle;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span></span>
 					</a>					
 				</li>
 				<li>
@@ -65,11 +65,14 @@
 				<?php if(!empty($userinfos)) { ?>					
 				<li class=" user-profile">
 					<a href="javascript:;" title="Your profile image">
-						<?php if (!empty($userinfos['userProfileImage'])) { ?>
-						<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($userinfos['userProfileImage'])?$userinfos['userProfileImage']:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
-						<?php } else { ?>
+						<?php if (!empty($userinfos)) {  		
+						$result=$this->Landingpage_model->userinfo($userinfos['userID']);
+						if (!empty($result[0]->userProfileImage)) { ?>
+						
+						<img src="<?=base_url();?>./uploads/images/userProfileImage/<?=isset($result[0]->userProfileImage)?$result[0]->userProfileImage:''?>" alt=" " class="img-circle img-inline userpic-32" width="28" />
+						<?php  } else { ?>
 						<img src="<?=base_url();?>frontend/images/user-1.png" alt=" " class="img-circle img-inline userpic-32" width="28" />
-						<?php } ?>
+						<?php } } ?>
 					</a>
 				 <?php } ?>
 				<li>
@@ -106,10 +109,10 @@
 						<div class="search_box tooltip-primary" data-toggle="tooltip" data-placement="bottom" title="Hello, search through searchb4kharch android app to earn Rs.10 daily">				 
 							<form action="<?=base_url();?>Landingpage/Product/search" method="get">				
 								<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->				   
-								<select class="hederselect" style="" name="c" >					
+								<select class="hederselect" name="c" >					
 									<option>All</option>					
 									<?php foreach($categories as $category){?>					
-									<option style="font-size: 15px" value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>					
+									<option value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>					
 									<?php } ?>						
 								</select><input style="" type="text" placeholder="Search.. Shop.. Earn" id="search" list="searchdata" data-validate="required" data-message-required="Please enter more than two characters" autocomplete="off" Value="<?=isset($searchq)?$searchq:''?>" name="q" >					
 								<datalist id="searchdata"></datalist>					

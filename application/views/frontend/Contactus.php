@@ -43,7 +43,7 @@
 									<label>SHARE YOUR EMAIL</label>						
 								</div>							
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>							
-								<input type="text" class="form-control" name="email" data-validate="required" data-message-required="Please Type your name" placeholder="We will keep if Safe. We promise!" />						
+								<input type="text" class="form-control" name="email" data-validate="required" data-message-required="Please Type your email" placeholder="We will keep if Safe. We promise!" />						
 							</div>
 							<div class="form-group">
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
@@ -51,7 +51,7 @@
 									<label>WE'RE ALL EARS!</label>
 								</div>
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
-								<textarea class="form-control" style="height: 230px;" data-validate="required" data-message-required="Please Type your name" name="sharetaxt" placeholder="Share with us any information that might help us to respond to your request."></textarea>
+								<textarea class="form-control" style="height: 230px;" data-validate="required" data-message-required="Please Type your information" name="sharetaxt" placeholder="Share with us any information that might help us to respond to your request."></textarea>
 							</div>
 							<div class="form-group">
 								<div class="col-md-4 col-sm-4 col-xs-3 decoration"></div>
@@ -87,7 +87,7 @@
 								<img src="<?=base_url();?>frontend/images/tellyphone.png"/><span>9753573686</span>
 							</div>							
 							<div class=" ">
-								<img style="margin-left: 6px;" src="<?=base_url();?>frontend/images/massege.png"/><span style="margin-left: 6px;">info@searchb4kharch.com</span>
+								<img style="margin-left: 5px;" src="<?=base_url();?>frontend/images/massege.png"/><span style="margin-left: 6px;">info@searchb4kharch.com</span>
 							</div>
 						</div>	
 					</div>
@@ -95,29 +95,23 @@
 			</div>
 		</div><div class="clear"></div>
 	</div>	
-</div><div class="clear"></div>  
+</div>
+<div class="clear"></div>  
 <script
 		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDFsE-tTxY9qgQfwQz_kvuGRn6F3Z1Q94U&callback=initMap">
 </script>
-
 <script>
-function initialize() {
-	
+function initialize() {	
 	 var myLatLng = {lat:23.2197853, lng:77.3883894};
-
         var map = new google.maps.Map(document.getElementById('googleMap'), {
           zoom: 15,
           center: myLatLng
         });
-
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           title: 'Hello World!'
-        });
-
-
-	
+        });	
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>

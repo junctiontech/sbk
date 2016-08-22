@@ -249,6 +249,16 @@ class Landingpage_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result();
 	}
+	public function get_filters2 ($searchq=false)
+	{	 
+		$this->db->select('categoriesUrlKey');
+		$this->db->from('s4k_category_details t1');
+		$this->db->join('s4k_categories t2','t2.categoriesID=t1.categoriesID','left');
+		$this->db->where($searchq);	
+		$query=$this->db->get();	
+		//echo $this->db->last_query(); die;
+		return $query->result();
+	}
 	public function get_grpatt($filterGroupID)
 	{
 		$this->db->select('*');
@@ -364,6 +374,14 @@ class Landingpage_model extends CI_Model {
 	{	
 		$this->db->where(array('userEmail'=>$email));
 		$this->db->update('s4k_user',$data);		
+	}
+	function userinfo($where=false)
+	{
+		$this->db->select('userProfileImage');
+		$this->db->from('s4k_user');
+		$this->db->where(array('userID'=>$where));
+		$query=$this->db->get();	
+		return $query->result();
 	}
 	
 }

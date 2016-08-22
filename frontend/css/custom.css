@@ -291,7 +291,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 	display:block;	 	 
 }
 .span_1_of_4  li a:hover,.span_1_of_4  li span:hover{
-	color:#BBB7B7;
+	color:#FFF;
 }
 .span_1_of_4  li span{
 	font-size:1.2em;
@@ -410,6 +410,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
     float: right;
     padding-top:0px;
 	margin-top:-2%;
+	margin-right:10px;
 }
 .page-no ul{
 	display:inline;
@@ -1635,6 +1636,9 @@ top: -5px;
 .wishlist{
 	margin-left:20%;
 }
+.wishlist a{
+	color:#337ab7;
+}
 .logo1{
     height: 71px;
     margin-left: 22%;
@@ -1666,14 +1670,9 @@ top: -5px;
 	right:0%;
 	z-index:101;
 }
-.colspandeal{
-	background: #FFF;
-}
+.colspandeal{background: #FFF;}
 .leftmargin{margin-left: 15px;}
-.flightsearchfixd{position: fixed;
-width: 31.3%;
-left: 5px;}
-
+.flightsearchfixd{position: fixed;width: 31.3%;left: 5px;}
 .fixed1{position:fixed;}
 .lineheight{text-align: center; line-height: 40px;margin-bottom: 15px;}
 .textjustify {text-align: justify;line-height: 30px;margin-bottom: 15px;}
@@ -1683,4 +1682,4 @@ left: 5px;}
 .map{width:85%;height:350px;border-radius: 50%;left:40px}
 .aboutusimags{height: 157px;width:100%;}
 .tdw{width: 180px;}
-.hederselect{width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size: 34px;color: #a5a5a5;font-family: Arial;outline: none;margin: 0;height: 54px;}
+.hederselect{width: 15%;padding: 10px 8px;outline: none;border: none;background: none;font-size:10px;color: #a5a5a5;font-family: Arial;outline: none;margin: 0;height: 54px;vertical-align: bottom;}

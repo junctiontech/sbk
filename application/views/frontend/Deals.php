@@ -47,7 +47,7 @@
 			 
 				<div class="page-no" style="margin-top:0%">
     			<?php if (!empty($totalresult)) { ?>
-					<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p>
+					<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><?php if(!empty($pagination)) { ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>
     			<?php } ?>
 				</div>
       
@@ -64,7 +64,7 @@
 					 <p class="deal_coupon"><a onclick="window.open('<?=$deal->link;?>','_blank');" href="javascript:;">View More</a></p>-->							 
 					 <p class="deal_coupon">Coupn Code : <?=$deal->coupon_code;?></p>
 					<!--<div class="deal_coupon"><small>Coupon Expiry : <?=$deal->coupon_expiry;?></small><Small>added : <?=$deal->added;?></small></div>-->
-					<div class="btn btn-round btn-success deal"><span><a onclick="window.open('<?=$deal->link;?>','_blank');" style="color:white;" href="javascript:;" class="">Get Deal</a></span></div>
+					<a onclick="window.open('<?=$deal->link;?>','_blank');" style="color:white;" href="javascript:;" class=""><div class="btn btn-round btn-success deal"><span>Get Deal</span></div></a>
 				</div>	
 			
 		  <?php } } else { ?>

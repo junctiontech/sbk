@@ -2,6 +2,7 @@
 	<div class="sidebar-menu toggle-others fixed">
 		<div class="sidebar-menu-inner">       
 			<div class="leftmargin col-xs-0">			
+				<?php if(!empty($filters)) { ?>
 				<p>Refine Your Search</p> 
 				<hr>
 				<?php if(!empty($filters)){  foreach($filters as $filter){ ?>
@@ -28,9 +29,16 @@
 				<?php } }else{ ?>
 				<p>No Filter Found For This Category</p>
 				<?php } ?>
-				
-			</div>	
-			
+				<?php } else { ?>
+				<div style="font-weight: bold; padding: 10px;">Refine Your Search</div>			
+				<ul id="main-menu" class="main-menu">
+				 <?php foreach($categories as $category){?>  					
+					<li>
+						<a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a> 						
+					<li>
+				<?php } } ?>
+				 </ul>
+			</div>				
 		</div>
 	</div>
 	<div class="main-content"> 
@@ -40,92 +48,86 @@
 		<div class="row">
 			<div class="col-md-10 col-sm-10 col-xs-12 pageno-fixed">
 			<p><a href="<?=base_url();?>">Home</a> >> <?=isset($categorykey)?$categorykey:''?> </p>
-				<div class="page-no">
-    			
-					<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p>
-    		
-				</div>
-      
-			</div>
-			
-		</div>
-		
+				<div class="page-no">    			
+					<p>Total Result:<?php echo isset($totalresult)?$totalresult:'';?> </p><?php if(!empty($pagination)) { ?><p>Result Pages:<?php echo isset($pagination)?$pagination:'';?></p><?php } ?>    		
+				</div>      
+			</div>			
+		</div>		
 		<div class="clear"></div>
-	 	
 		<div class="row">
-			
-		<div style="display:none;" class="col-xs-12 filter">						
-						<div class="panel panel-default collapsed"><!-- Add class "collapsed" to minimize the panel -->							
-							<div class="panel-options">								
-								<a href="#" data-toggle="panel">
-									<span class="btn btn-success collapse-icon">Refine Your Search</span>						 
-								</a>								
-							</div>												
-						<div class="panel-body">
-							 			<p>Refine Your Search</p> 
-				<hr>
-				<?php if(!empty($filters)){  foreach($filters as $filter){ ?>
-				<div class="Price">
-					<p><?=isset($filter->groupName)?$filter->groupName:''?></p>
-				</div>
-				<?php if($filter->filterGroupID){
-	$filteratt=$this->Landingpage_model->get_grpatt($filter->filterGroupID);
-	if($filteratt){ 
-				?>
-				<div class="checkbox chk">
-					<?php foreach($filteratt as $filteratts){ ?>
-					<label>
-						<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">
-						<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>">
-						<?=isset($filteratts->lable)?$filteratts->lable:''?>
-					</label>
-					<?php } ?>
-				</div>
-				<?php }}else{ ?>
-				<p>No Attribute Define For This Filter</p>
-				<?php } ?>
-				<hr>
-				<?php } }else{ ?>
-				<p>No Filter Found For This Category</p>
-				<?php } ?>			
+			<div style="display:none;" class="col-xs-12 filter">
+				<div class="panel panel-default collapsed"><!-- Add class "collapsed" to minimize the panel -->	
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="btn btn-success collapse-icon">Refine Your Search</span>
+						</a>
+					</div>	
+					<div class="panel-body">	
+					<?php if(!empty($filters)){ ?>
+						<p>Refine Your Search</p> 				
+						<hr>				
+						<?php if(!empty($filters)){  foreach($filters as $filter){ ?>
+						<div class="Price">					
+							<p><?=isset($filter->groupName)?$filter->groupName:''?></p>
+						</div>				
+						<?php if($filter->filterGroupID){
+	$filteratt=$this->Landingpage_model->get_grpatt($filter->filterGroupID);if($filteratt){ ?>
+						<div class="checkbox chk">					
+							<?php foreach($filteratt as $filteratts){ ?>					
+							<label>						
+								<input type="hidden" onchange="Filter_product(this.value)" id="categoriesID" value="<?=isset($filter->categoriesID)?$filter->categoriesID:''?>">						
+								<input onchange="Filter_product(this.value)" class="count" type="checkbox" value="<?=isset($filteratts->name)?$filteratts->name:''?>-<?=isset($filteratts->value)?$filteratts->value:''?>">						
+								<?=isset($filteratts->lable)?$filteratts->lable:''?>				
+							</label>				
+							<?php } ?>				
+						</div>				
+						<?php }}else{ ?>				
+						<p>No Attribute Define For This Filter</p>				
+						<?php } ?>				
+						<hr>				
+						<?php } }else{ ?>				
+						<p>No Filter Found For This Category</p>				
+						<?php } ?>	
+				<?php } else { ?>						 		
+				<ul id="main-menu" class="main-menu" style="margin-top:-7%;">
+				 <?php foreach($categories as $category){?>  					
+					<li>
+						<a href="<?=base_url();?>Landingpage/Product/<?=$category->categoriesUrlKey?>.html"><?=ucwords($category->categoryName)?></a> 						
+					<li>
+				<?php } } ?>
+				 </ul>
+						
 						</div>
 					</div>	<div class="clear"></div>				
-				</div>
-	
-		<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">
-
-          <?php if(!empty($products)){ foreach($products as $product){ ?>
- 
-		
+				</div>	
+			<div class="col-md-10 col-sm-10 col-xs-12" style="margin-top: 2%;" id="mySelect">        
+				<?php if(!empty($products)){ foreach($products as $product){ ?>
 		         <div class="grid_1_of_4 images_1_of_4">
 				 <a href="<?=base_url();?>Landingpage/Product/<?=$product->categoriesUrlKey?>/<?=$product->sb4kProductID?>/<?php if($product->productsUrlKey){ echo$product->productsUrlKey; }else{ echo'new'; } ?>.html">
-				<div class="imageheightfix">
-		<img src="<?=$product->imageName?>" alt="" />
-			</div>
-					<h2>
-            <?=$product->productName?> 
-            <?=isset($product->attr)?$product->attr:''?>
-          </h2>
-          <p><span class="price">
-			  <?php if($product->productPrice && $product->productPrice !=0){?>Rs. 
-            <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?>
-            </span><br>
-			  <img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>">
-			</p> 
-					 </a>          
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">
-              Compare </label>
-			  <label class="wishlist"> 
-				<?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>
-					  <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>
-					  <?php } }else{ ?>
-					  <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>
-					  <?php }?></label>
-          </div>
-        </div>
-	
+				<div class="imageheightfix">	
+					<img src="<?=$product->imageName?>" alt="" />		
+					 </div>				
+					 <h2><?=$product->productName?><?=isset($product->attr)?$product->attr:''?></h2>        
+					 <p><span class="price">			
+						 <?php if($product->productPrice && $product->productPrice !=0){?>Rs.            
+						 <?=number_format($product->productPrice,2)?><?php }else{ echo"coming soon"; }?>           
+						 </span><br>			
+						 <img style="height:30px" src="<?=base_url();?>frontend/images/<?=$product->shop_image?>">			
+					 </p> 					
+					 </a>
+					 <div class="checkbox">         
+						 <label>            
+							 <input type="checkbox" value="<?=$product->productsID?>" class="chkcount" name="productid" onchange="compare_product(this.value)">            
+							 Compare </label>			
+						 <label class="wishlist"> 			
+							 <?php if(!empty($userinfos)){ if(in_array($product->productsID,$whislistproduct)==false){ ?>					
+							 <a href="<?=base_url();?>User/AddToWishList/<?=$product->productsID?>.html" class="fa fa-shopping-cart"></a>					
+							 <?php } }else{ ?>					
+							 <a href="<?=base_url();?>Login.html?return=true" class="fa fa-shopping-cart"></a>					
+							 <?php }?>
+						 </label>        
+					 </div>       
+				</div>	
         <?php } }else{ echo"No product Found!!";}?>
 		</div>	 
 	

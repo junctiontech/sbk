@@ -77,9 +77,9 @@ class Setting extends CI_Controller
 							if (!empty($shop_image))								
 							{ 
 								($data['shop_image'] = $shop_image);
-									 $originalPath=base_url().'uploads/images/shopimages/'.$oldvalue;							 	
-										if (file_exists ($originalPath )) 
-										{ 	
+									 $originalPath='uploads/images/shopimages/'.$oldvalue;							 	
+										if (file_exists($originalPath )) 
+										{ 
 											unlink ($originalPath );				
 										}	
 							}

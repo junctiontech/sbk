@@ -155,7 +155,7 @@ class Landingpage extends CI_Controller {
 		if($categorykey=='search'){
 			//$searchquery=$searchq;
 			$searchquery="productsUrlKey: $searchq";
-			if($searchc !='all' && $searchc !=''){
+			if($searchc !='All' && $searchc !=''){
 			$searchquery.=" AND categoriesUrlKey: $searchc";
 			}
 			
@@ -174,7 +174,23 @@ class Landingpage extends CI_Controller {
 			//$config['total_rows'] =$totalrecord;
 			$this->pagination->initialize($config);
 			$this->data['pagination']=$this->pagination->create_links();
-			
+			if($searchc !='All' && $searchc !='')			
+			{ 				
+				$this->data['filters']=$this->Landingpage_model->get_filters($searchc);
+			}
+			elseif($searchc =='All'){	 
+				$arr = explode(' ', $searchq);		
+				foreach ($arr as $data){			
+				$where = ("categoryName LIKE '%$data%' ");			
+				$categoryID=$this->Landingpage_model->get_filters2($where);					
+			}
+				if(!empty($categoryID)){
+					$this->data['filters']=$this->Landingpage_model->get_filters($categoryID[0]->categoriesUrlKey);					
+				}
+				else{
+					$this->data['categories']=$categories=$this->Landingpage_model->get_categories();
+				}				
+			} 
 		}elseif(!empty($b)){
 			$productName=array();
 			if($sbkProductID){
@@ -1033,11 +1049,13 @@ class Landingpage extends CI_Controller {
 		$base=base_url ();
 		$email=$this->input->post('email');
 		$username=$this->input->post('username');
+		$link = md5($email);
+		$link1=	md5($username);
 		$tempCode=substr(md5(microtime()),rand(0,26),5);
 		$data=array('userPassword'=>$tempCode);	 
 		$this->Landingpage_model->forgetpassword($data,$email);
 		$subject="searchb4kharch:- Rest Password ";
-		$message= "<html><body><h3>Hello: $username </h3><p>Please click in below link and reset your password....<br> Your OTP Code is:- <b>$tempCode</b> <br> Your reset password link is $base/Login/forgetpassword.html/ <br><br> if any query so please contact to info@searchb4kharch.com!!  </h3></p><br> </p></body></html>";
+		$message= "<html><body><h3>Hello: $username </h3><p>Please click in below link and reset your password....<br> Your OTP Code is:- <b>$tempCode</b> <br> Your reset password link is {$base}Login/forgetpassword/$link/$link1.html/ <br><br> if any query so please contact to info@searchb4kharch.com!!  </h3></p><br> </p></body></html>";
 		$name='Searchb4kharch.com';
 		date_default_timezone_set('Etc/UTC');
 		require 'PHPMailer/PHPMailerAutoload.php';
@@ -1122,8 +1140,7 @@ class Landingpage extends CI_Controller {
 		$this->parser->parse('frontend/Footer',$this->data);
 	}
 	public function contactus_mail()
-	{
-	//	print_r($_POST); die;
+	{	
 		$name1=$this->input->post('name');
 		$email=$this->input->post('email');
 		$sharetext=$this->input->post('sharetaxt');

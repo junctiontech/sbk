@@ -102,12 +102,10 @@ class Login extends CI_Controller {
         $gClient->setClientId($clientId);
         $gClient->setClientSecret($clientSecret);
         $gClient->setRedirectUri($redirectUrl);
-        $google_oauthV2 = new Google_Oauth2Service($gClient);
-		
-		
+        $google_oauthV2 = new Google_Oauth2Service($gClient);		
 		 if (isset($_REQUEST['code'])) {
             $gClient->authenticate();
-            
+			 
         if ($gClient->getAccessToken()) {
             $userProfile = $google_oauthV2->userinfo->get();
 			$data=array(
@@ -119,15 +117,26 @@ class Login extends CI_Controller {
 				'userGender'=>isset($userProfile['gender'])?$userProfile['gender']:'',
 				'userDOB'=>'',
 				'userMobileNo'=>'',
-				'userProfileImage'=>$userProfile['picture']
-				);
+				//'userProfileImage'=>$userProfile['picture']
+				);	
+			
+			if(!empty($userProfile['picture']))
+			{
+				$url = $userProfile['picture'];
+				$name = basename($url);
+				$userProfileImage=sha1($name).time().rand(0, 9);			
+				file_put_contents("uploads/images/userProfileImage/$userProfileImage", file_get_contents($url));
+				$data['userProfileImage'] = $userProfileImage;
+			}			
 			$email=$userProfile['email'];	
 			$where1=array('userEmail'=>$email,'userGoogle'=>$userProfile['id']);
 			$update=array('userGoogle'=>$userProfile['id']);			
 			$userID=$this->Login_model->insert_login('s4k_user',$data,$where1,$email,$update);
+			
 			if(!empty($userID)){
 				$where=array('userID'=>$userID);
 				$userinfo=$this->Login_model->get_login('s4k_user',$where);
+				
 				if(!empty($userinfo)){
 					$sbk = array(
 					'userID' => $userinfo[0]->userID,
@@ -157,12 +166,14 @@ class Login extends CI_Controller {
 			$this->session->set_flashdata('message_type', 'error');
 			$this->session->set_flashdata('message', $this->config->item("index") . " Technical error. please try again!! ");
 			redirect('Login');
-		}	
+		}
+			 
         }else{
 			$this->session->set_flashdata('message_type', 'error');
 			$this->session->set_flashdata('message', $this->config->item("index") . " User Deny Login.. ");
 			redirect('Login');
 		}
+			
 		}
 	}
 	
@@ -195,8 +206,16 @@ class Login extends CI_Controller {
 				'userGender'=>$userProfile['gender'],
 				'userDOB'=>'',
 				'userMobileNo'=>'',
-				'userProfileImage'=>$userProfile['picture']['data']['url']
-				);
+				//'userProfileImage'=>$userProfile['picture']['data']['url']
+				);			
+			if(!empty($userProfile['picture']['data']['url']))			
+			{
+				$url = $userProfile['picture']['data']['url'];
+				$name = basename($url);
+				$userProfileImage=sha1($name).time().rand(0, 9);			
+				file_put_contents("uploads/images/userProfileImage/$userProfileImage", file_get_contents($url));
+				$data['userProfileImage'] = $userProfileImage;
+			}				 
 			$email=$userProfile['email'];	
 			$where1=array('userEmail'=>$email,'userGoogle'=>$userProfile['id']);
 			$update=array('userFacebook'=>$userProfile['id']);
@@ -330,7 +349,7 @@ class Login extends CI_Controller {
 				$name1 = md5($userFirstName);
 				$base=base_url ();				
 				$subject="searchb4kharch:- Rest Password ";
-				$message= "<html><body><h3>Hello: $userFirstName </h3><p>Please click in below link and activated your Account....<br>  Your activated Account link is $base/Login/Activetedaccount/$name1/$encry/&&$name.html/ <br><br> if any query so please contact to info@searchb4kharch.com!!</h3></p><br> </p></body></html>";
+				$message= "<html><body><h3>Hello: $userFirstName </h3><p>Please click in below link and activated your Account....<br>  Your activated Account link is {$base}Login/Activetedaccount/$name1/$encry/&&$name.html/ <br><br> if any query so please contact to info@searchb4kharch.com!!</h3></p><br> </p></body></html>";
 				$name='Searchb4kharch.com';
 				date_default_timezone_set('Etc/UTC');
 				require 'PHPMailer/PHPMailerAutoload.php';
@@ -532,7 +551,7 @@ class Login extends CI_Controller {
 				echo json_encode(array('code'=>500,'message'=>'Invalid request!!'));
 		}
 	}
-		public function forgetpassword()
+	public function forgetpassword()
 	{
 		$this->parser->parse('frontend/Header',$this->data);
 		$this->parser->parse('frontend/Forgotpassword',$this->data);

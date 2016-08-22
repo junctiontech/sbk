@@ -173,10 +173,10 @@ class User extends CI_Controller {
 				if (!empty($userProfileImage))								
 							{ 
 								($data['userProfileImage'] = $userProfileImage);
-									 $originalPath=base_url().'uploads/images/userProfileImage/'.$oldvalue;	 	
-										if (file_exists ($originalPath )) 
-										{ 	
-											unlink ($originalPath );				
+									 $originalPath='uploads/images/userProfileImage/'.$oldvalue;								
+										if(file_exists($originalPath)) 
+										{ 
+											unlink($originalPath);				
 										}	
 							}
 				

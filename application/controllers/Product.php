@@ -150,8 +150,9 @@ class Product extends CI_Controller {
 		if(!empty($status)){	
 			$d = implode("','",$shopProductID);								 		
 			$this->Product_model->updateSatus2($status,$d);	
+			$massage="Product Status $status successfully!!";
 			$this->session->set_flashdata('message_type', 'success');
-			$this->session->set_flashdata('message', $this->config->item("delete")."Data status updated Successfully!!");
+			$this->session->set_flashdata('message', $this->config->item("delete")."$massage");
 			if(!empty($shopProductID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }		 
 		}
 		}else{			
