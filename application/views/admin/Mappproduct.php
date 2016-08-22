@@ -81,19 +81,11 @@
 				</div>			
 				<div class="row searchhidden"  style="margin-top:20px">			
 				</div>          
-				<?php if(!empty($mappedproduct)){?>
-				<div class="col-md-8 col-sm-8 col-xs-12">
-					<button  id="submit" name="submit" type="submit" class="btn btn-success" formaction="<?=base_url();?>product/mapped_product" style="margin-top:20px;float:right">Map Product</button>
-				</div>	
-				<div class="col-md-1 col-sm-1 col-xs-12">
-					<button  id="submit" name="submit" type="submit" class="btn btn-success"  style="margin-top:20px;float:right">Search</button>
-				</div>		  
-				<?php }?>
-				<?php if(!empty($mappedproduct)){?>
-				<div class="col-md-9 col-sm-9 col-xs-12">
-					<button  id="submit" name="submit" type="submit" class="btn btn-success" style="margin-top:20px;float:right">Search</button>			
+				
+				<div class="col-md-9 col-sm-9 col-xs-12 searchbykeywords" style="display:none">
+					<button  id="searchbykeywords" name="searchbykeywords" type="button" class="btn btn-success" style="margin-top:20px;float:right;">Search by keywords</button> 
 				</div>		
-				<?php }?>		
+						
 			</div>
 		</div>		
 		<div id="content-anchor"></div>
@@ -271,6 +263,13 @@
 				$(document).on('keyup', '.select2-search__field', function() { 
 				
 				search_product(this.value);
+				});
+				$(document).on('click', '#searchbykeywords', function() { 
+				
+						var keyword=$("input[name=filtersearch]").val();
+						getProductToMapp(keyword,'keyword');
+						search_flipkart(keyword,'keyword');
+						getProductToMappSnapdeal(keyword,'keyword'); 
 				});
 				
 				$(document).on('click', '.parent', function() { 

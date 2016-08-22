@@ -191,7 +191,7 @@ class Landingpage extends CI_Controller {
 			$this->data['categorykey']=ucwords(implode(" ",explode("_",$categorykey)));
 		}
 		if(!empty($sbkProductID)){
-			$searchquery.="and productsUrlKey: $productkey";
+			$searchquery.=" and productsUrlKey: $productkey";
 			$query['sb4kProductID']=$sbkProductID;
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{

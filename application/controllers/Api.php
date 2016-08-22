@@ -159,24 +159,16 @@ class Api extends CI_Controller {
 				$i=1;
 				
 				do{
-				$retry=false;
-				do{
-				try
-				{	
+				
 				$details = $flipkart->call_url($url);
 				$details = json_decode($details, TRUE);
-				}
-				 catch(Exception $e)
-				{
-					$retry=true;
-				} 
-				}while($retry==true);
+				
 				if(!empty($details))
 				{
 					$products = $details['productInfoList'];
 					
 					foreach($products as $product)
-					{
+					{ 
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 						$productdata=array();
@@ -199,7 +191,7 @@ class Api extends CI_Controller {
 						'productImageTitle'=>$product['productBaseInfoV1']['title'],
 						'productImageAltTag'=>$product['productBaseInfoV1']['title'],
 						'currencyID'=>1,
-						'productPrice'=>$product['productBaseInfoV1']['flipkartSellingPrice']['amount'],
+						'productPrice'=>isset($product['productBaseInfoV1']['flipkartSpecialPrice']['amount'])?$product['productBaseInfoV1']['flipkartSpecialPrice']['amount']:$product['productBaseInfoV1']['flipkartSellingPrice']['amount'],
 						'shopProductID'=>$product['productBaseInfoV1']['productId'],
 						'shopID'=>1,
 						'productShopUrl'=>$product['productBaseInfoV1']['productUrl']
@@ -526,17 +518,9 @@ class Api extends CI_Controller {
 				}elseif($categoryID->categoryName=='Accessories'){
 					$searchindex='All';$brosweNode='';$searchtype='Keywords';
 				}
-				$retry=false;
-				do{
-			try
-			{	
+				
 				$result = $obj->searchProducts("$productBrand $productName","$searchindex","$searchtype",'',"$brosweNode",$ItemPage);
-			}
-			 catch(Exception $e)
-			{
-				$retry=true;
-			} 
-				}while($retry==true);
+			
 			$nextUrl='';
 			$home = json_decode(json_encode($result),true);
 			
@@ -556,22 +540,13 @@ class Api extends CI_Controller {
 							{										
 								if(!empty($list['ASIN'])){
 										$ASIN=$list['ASIN'];
-										$retry1=false;
-										do{
-											try
-											{	
+										
 										$productdata = $obj->getItemByAsin("$ASIN");
 										$productdata=json_decode(json_encode($productdata),true);
-											}
-											 catch(Exception $e)
-											{
-												$retry1=true;
-											} 
-										}while($retry1==true);
+											
 										if(!empty($productdata['Items'])){
 											
 										$productdata1=array();
-								
 								$shopproductfamily=array();//$product['productBaseInfoV1']['productFamily'];
 								$specificationLists=$productdata['Items']['Item']['ItemAttributes'];
 								
@@ -588,7 +563,7 @@ class Api extends CI_Controller {
 								'productDescription'=>'',
 								'imageSortOrder'=>1,
 								'isDefault'=>'Yes',
-								'imageName'=>array_key_exists('LargeImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['LargeImage']['URL']:'',
+								'imageName'=>array_key_exists('MediumImage', $productdata['Items']['Item'])?$productdata['Items']['Item']['MediumImage']['URL']:'',
 								'imageStatus'=>'Active',
 								'productImageTitle'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',
 								'productImageAltTag'=>array_key_exists('Title', $productdata['Items']['Item']['ItemAttributes'])?$productdata['Items']['Item']['ItemAttributes']['Title']:'',

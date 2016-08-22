@@ -107,7 +107,7 @@
 							<form action="<?=base_url();?>Landingpage/Product/search" method="get">				
 								<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->				   
 								<select class="hederselect" style="" name="c" >					
-									<option>All</option>					
+									<option value="all">All</option>					
 									<?php foreach($categories as $category){?>					
 									<option style="font-size: 15px" value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>					
 									<?php } ?>						

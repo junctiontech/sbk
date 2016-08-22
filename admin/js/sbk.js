@@ -108,10 +108,11 @@ function addkeywords(){
 	$('#tags_1').tagsInput({
         width: 'auto',
 		'defaultText':'add key',
-		'onAddTag':onAddTag,
-		'onRemoveTag':onRemoveTag
+		//'onAddTag':onAddTag,
+		//'onRemoveTag':onRemoveTag
 					
     });
+	$('.searchbykeywords').css("display","block");
 }
 
 function refresh_data(){
@@ -122,6 +123,7 @@ function refresh_data(){
 	$('#mappedproduct').empty();
 	$('#unmappedproduct').empty();
 	$('#unmappedproductsnapdeal').empty();
+	$('.searchbykeywords').css("display","none");
 	
 }
 
