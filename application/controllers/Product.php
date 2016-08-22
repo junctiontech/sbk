@@ -127,7 +127,7 @@ class Product extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER']);
 	}
 	
-	/*public function inactiveproduct($status=false,$id=false){
+	public function inactiveproduct($status=false,$id=false){
 			//print_r($status); die;
 			$categoriesID=$this->input->get('categoriesID');
 			$data=array('productsStatus'=>$status);
@@ -140,7 +140,7 @@ class Product extends CI_Controller {
 			//$this->Product_model->update('s4k_products',$data,$filter);	
 			if(!empty($categoriesID)){ redirect($_SERVER['HTTP_REFERER']); }else{ echo"success"; }
 	}
-	*/
+	
 	public function updateSatusInactiveproduct()
 	{
 		//$this->data['category']=$this->Product_model->get_categories();
@@ -411,9 +411,14 @@ class Product extends CI_Controller {
 		
 		$productName=$this->input->post('productID');
 		$categoryID=$this->input->post('categoryID');
+		$parentname=$this->input->post('parentname');
 		if(!empty($productName))
 		{
+			if($parentname=='parent'){
+				$FetchNames=$this->Product_model->fetch_parent_productname($productName);
+			}else{
 			$FetchNames=$this->Product_model->fetch_productname($productName,$categoryID);
+			}
 			
 			if(!empty($FetchNames)){
 				foreach($FetchNames as $FetchName){
@@ -458,7 +463,7 @@ class Product extends CI_Controller {
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
-						echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+						echo"<label><input type=\"radio\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
 						echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 						echo'<div class="caption">';
 							echo"<p>$map_product->productName</p>";
@@ -475,7 +480,8 @@ class Product extends CI_Controller {
 				}else{
 					if($keyword =='keyword'){
 						$productName=str_replace(","," ",$productName);
-			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>3),$productName,3);
+						$limit=true;
+			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>3),$productName,3,$limit);
 					}else{
 					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,3);}
 					if(!empty($map_products1)){
@@ -485,7 +491,7 @@ class Product extends CI_Controller {
 							echo'<div class="image view view-first">';
 								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 							echo'</div>';
-							echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+							echo"<label><input type=\"radio\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
 							echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 							echo'<div class="caption">';
 								echo"<p>$map_product->productName</p>";
@@ -532,7 +538,7 @@ class Product extends CI_Controller {
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
-						echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+						echo"<label><input type=\"radio\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
 						echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 						echo'<div class="caption">';
 							echo"<p>$map_product->productName</p>";
@@ -549,7 +555,8 @@ class Product extends CI_Controller {
 				}else{
 					if($keyword =='keyword'){
 						$productName=str_replace(","," ",$productName);
-			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>2),$productName,2);
+						$limit=true;
+			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>2),$productName,2,$limit);
 					}else{
 					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,2);}
 					if(!empty($map_products1)){
@@ -559,7 +566,7 @@ class Product extends CI_Controller {
 							echo'<div class="image view view-first">';
 								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 							echo'</div>';
-							echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
+							echo"<label><input type=\"radio\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent parent1 $map_product->productsID\">Parent</label>";
 							echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 							echo'<div class="caption">';
 								echo"<p>$map_product->productName</p>";
@@ -607,7 +614,7 @@ class Product extends CI_Controller {
 						echo'<div class="image view view-first">';
 							echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 						echo'</div>';
-						echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent1 $map_product->productsID\">Parent</label>";
+						echo"<label><input type=\"radio\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent1 $map_product->productsID\">Parent</label>";
 						echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 						echo'<div class="caption">';
 							echo"<p>$map_product->productName</p>";
@@ -624,7 +631,8 @@ class Product extends CI_Controller {
 				}else{
 					if($keyword =='keyword'){
 						$productName=str_replace(","," ",$productName);
-			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>1),$productName,1);
+						$limit=true;
+			$map_products1=$this->Product_model->map_product4(array('t1.categoriesID'=>$categoryID,'t5.shopID'=>1),$productName,1,$limit);
 					}else{
 					$map_products1=$this->Product_model->map_product3($categoryID,$productName,$FetchNames[0]->productName,$FetchNames[0]->productBrand,1);}
 					if(!empty($map_products1)){
@@ -634,7 +642,7 @@ class Product extends CI_Controller {
 							echo'<div class="image view view-first">';
 								echo"<img style=\"width: 100%; height:150px; display: block;\" src=$map_product->imageName alt=\"image\" />";
 							echo'</div>';
-							echo"<label><input type=\"checkbox\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent1 $map_product->productsID\">Parent</label>";
+							echo"<label><input type=\"radio\" name=\"parent\" id=\"parent\" value=\"$map_product->productsID\" class=\"cbr parent1 $map_product->productsID\">Parent</label>";
 							echo"<label><input type=\"checkbox\" name=\"child\" id=\"child\" value=\"$map_product->productsID\" class=\"cbr child $map_product->productsID\">Child</label>";
 							echo'<div class="caption">';
 								echo"<p>$map_product->productName</p>";

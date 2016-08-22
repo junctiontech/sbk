@@ -319,6 +319,8 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 			}else{
 				$this->db->where(array('productsID'=>$productID,'shopID'=>$productdata['shopID']));
 				$this->db->update('s4k_product_price',array('productShopUrl'=>$productdata['productShopUrl'],'productPrice'=>$productdata['productPrice']));
+				$this->db->where(array('productsID'=>$productID));
+				$this->db->update('s4k_product_images',array('imageName'=>$productdata['imageName'])); 
 			}
 		}
 		
@@ -376,6 +378,16 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 		return $result;
 	}
 	
+	public function get_shop_category($shopID)
+	{
+			$this->db->select('t1.categoriesID,t1.categoryShopUrl');
+			$this->db->from('s4k_category_to_shop t1');
+			$this->db->where(array('shopID'=>$shopID));
+			$query=$this->db->get();
+			$result=$query->result();
+		return $result;
+	}
+	
 	public function check_api_log_entry($where=false)
 	{
 			$this->db->select('t1.apiLogID');
@@ -391,7 +403,7 @@ public function insert_new_product($productdata=false,$shopproductfamily=false,$
 			$query=$this->db->query(" SELECT *
 								   FROM s4k_api_log
 								   WHERE `lastUpdate` < DATE_SUB(NOW() , INTERVAL 15 MINUTE)    
-								   AND `status` = 'uncompleted'
+								   
 								   AND `categoryID` = $categoryID
 								   AND `shopID`= $shopID
 								   LIMIT 1

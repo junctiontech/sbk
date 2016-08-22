@@ -155,7 +155,7 @@ class Landingpage extends CI_Controller {
 		if($categorykey=='search'){
 			//$searchquery=$searchq;
 			$searchquery="productsUrlKey: $searchq";
-			if($searchc !='All' && $searchc !=''){
+			if($searchc !='all' && $searchc !=''){
 			$searchquery.=" AND categoriesUrlKey: $searchc";
 			}
 			
@@ -174,11 +174,11 @@ class Landingpage extends CI_Controller {
 			//$config['total_rows'] =$totalrecord;
 			$this->pagination->initialize($config);
 			$this->data['pagination']=$this->pagination->create_links();
-			if($searchc !='All' && $searchc !='')			
+			if($searchc !='all' && $searchc !='')			
 			{ 				
 				$this->data['filters']=$this->Landingpage_model->get_filters($searchc);
 			}
-			elseif($searchc =='All'){	 
+			elseif($searchc =='all'){	 
 				$arr = explode(' ', $searchq);		
 				foreach ($arr as $data){			
 				$where = ("categoryName LIKE '%$data%' ");			
@@ -207,7 +207,7 @@ class Landingpage extends CI_Controller {
 			$this->data['categorykey']=ucwords(implode(" ",explode("_",$categorykey)));
 		}
 		if(!empty($sbkProductID)){
-			$searchquery.="and productsUrlKey: $productkey";
+			$searchquery.=" and productsUrlKey: $productkey";
 			$query['sb4kProductID']=$sbkProductID;
 			$products=$this->Landingpage_model->get_products($query,$searchqry);
 		}else{

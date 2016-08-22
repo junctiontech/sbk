@@ -108,9 +108,9 @@
 					<div class="header_top_right">			  
 						<div class="search_box tooltip-primary" data-toggle="tooltip" data-placement="bottom" title="Hello, search through searchb4kharch android app to earn Rs.10 daily">				 
 							<form action="<?=base_url();?>Landingpage/Product/search" method="get">				
-								<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->				   
-								<select class="hederselect" name="c" >					
-									<option>All</option>					
+								<!--onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"  -->	
+								<select class="hederselect" style="" name="c" >					
+									<option value="all">All</option>
 									<?php foreach($categories as $category){?>					
 									<option value="<?=$category->categoriesUrlKey?>" <?php if(!empty($searchc)){ if($searchc==$category->categoriesUrlKey){echo"selected";}}?>><?=ucwords($category->categoryName)?></option>					
 									<?php } ?>						

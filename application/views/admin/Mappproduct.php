@@ -47,7 +47,7 @@
 				<div class="row"  style="margin-top:20px">			
 					<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Select Category </label>			
 					<div class="col-md-6 col-sm-6 col-xs-12">				
-						<select class="select2_group form-control" id="select" class="required" name="categoriesID" ><!--onchange="search_product()"-->				
+						<select class="select2_group form-control" id="select" onchange="refresh_data();" class="required" name="categoriesID" ><!--onchange="search_product()"-->				
 							<option value="">Category</option>
 							<?php foreach($category as $categoryshow){?>				
 							<option value="<?=isset($categoryshow->categoriesID) ?$categoryshow->categoriesID:''?>"	
@@ -71,7 +71,7 @@
 				<div class="row" style="margin-top:20px">			
 					<label class="control-label col-md-3 col-sm-3 col-xs-12 form-label">Product name </label>			
 					<div class="col-md-6 col-sm-6 col-xs-12 content">		
-						<select id="productName" class="select2_group form-control" onchange="getproductimage(this.value);getMappedProduct(this.value);addkeywords();getProductToMapp(this.value);getProductToMappSnapdeal(this.value);" name="productName" ><!--getProductToMapp(this.value);getProductToMappSnapdeal(this.value)-->			
+						<select id="productName" class="select2_group form-control" onchange="getProductToMapp(this.value);getproductimage(this.value);addkeywords();getMappedProduct(this.value);getProductToMappSnapdeal(this.value);" name="productName" ><!--getProductToMapp(this.value);getProductToMappSnapdeal(this.value)-->			
 							<option value="" >Select</option>			
 							<?php { if(!empty($Fetch_ProductName)){	foreach($Fetch_ProductName as $Fetch_ProductMap) {?>					
 							<option selected value="<?=isset($Fetch_ProductMap->productsID) ?$Fetch_ProductMap->productsID:''?>"><?=isset($Fetch_ProductMap->productName)?$Fetch_ProductMap->productName:''?> <?=isset($Fetch_ProductMap->attr)?$Fetch_ProductMap->attr:''?></option>
@@ -81,19 +81,11 @@
 				</div>			
 				<div class="row searchhidden"  style="margin-top:20px">			
 				</div>          
-				<?php if(!empty($mappedproduct)){?>
-				<div class="col-md-8 col-sm-8 col-xs-12">
-					<button  id="submit" name="submit" type="submit" class="btn btn-success" formaction="<?=base_url();?>product/mapped_product" style="margin-top:20px;float:right">Map Product</button>
-				</div>	
-				<div class="col-md-1 col-sm-1 col-xs-12">
-					<button  id="submit" name="submit" type="submit" class="btn btn-success"  style="margin-top:20px;float:right">Search</button>
-				</div>		  
-				<?php }?>
-				<?php if(!empty($mappedproduct)){?>
-				<div class="col-md-9 col-sm-9 col-xs-12">
-					<button  id="submit" name="submit" type="submit" class="btn btn-success" style="margin-top:20px;float:right">Search</button>			
+				
+				<div class="col-md-9 col-sm-9 col-xs-12 searchbykeywords" style="display:none">
+					<button  id="searchbykeywords" name="searchbykeywords" type="button" class="btn btn-success" style="margin-top:20px;float:right;">Search by keywords</button> 
 				</div>		
-				<?php }?>		
+						
 			</div>
 		</div>		
 		<div id="content-anchor"></div>
@@ -230,21 +222,21 @@
 </form>			
 <script>
             function onAddTag(tag) {
-						var keyword=document.getElementById('tags_1').value;
+						var keyword=$("input[name=filtersearch]").val();
 						getProductToMapp(keyword,'keyword');
 						search_flipkart(keyword,'keyword');
 						getProductToMappSnapdeal(keyword,'keyword'); 
             }
 
             function onRemoveTag(tag) {
-						var keyword=document.getElementById('tags_1').value;
+						var keyword=$("input[name=filtersearch]").val();
 						getProductToMapp(keyword,'keyword');
 						search_flipkart(keyword,'keyword');
 						getProductToMappSnapdeal(keyword,'keyword'); 
             }
 
             function onChangeTag(input, tag) {
-						var keyword=document.getElementById('tags_1').value;
+						var keyword=$("input[name=filtersearch]").val();
 						getProductToMapp(keyword,'keyword');
 						search_flipkart(keyword,'keyword');
 						getProductToMappSnapdeal(keyword,'keyword'); 
@@ -263,6 +255,50 @@
 		$(window).scroll(sticky_relocate);    
 		sticky_relocate();  
 	});
+	
+	
 			
+			$(document).ready(function(){
+	  
+				$(document).on('keyup', '.select2-search__field', function() { 
+				
+				search_product(this.value);
+				});
+				$(document).on('click', '#searchbykeywords', function() { 
+				
+						var keyword=$("input[name=filtersearch]").val();
+						getProductToMapp(keyword,'keyword');
+						search_flipkart(keyword,'keyword');
+						getProductToMappSnapdeal(keyword,'keyword'); 
+				});
+				
+				$(document).on('click', '.parent', function() { 
+				
+					if($(this).prop('checked') == true) { 
+					
+						//$('.parent').removeAttr('checked');
+						//$('.parent').attr('checked',false);
+						//$('.parent').attr('checked',true);
+						//$(this).attr('checked','checked');
+						search_flipkart(this.value);
+						$('#toTop1').css('display','block');
+						$('.map').css('display','none');
+					}
+				
+				});
+				
+				$(document).on('change', '.parent1', function() { 
+			
+					if($(this).prop('checked') == true) { 
+						getproductimage(this.value,'parent');
+						$('#toTop1').css('display','block');
+					}
+				});
+				
+				/* $(document).on('click', '#toTop1', function() { 
+					mapp_parent_to_child();
+				}); */
+				
+			});
         </script>				
 <script src="<?=base_url()?>admin/js/tags/jquery.tagsinput.min.js"></script>

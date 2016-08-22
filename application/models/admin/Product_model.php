@@ -206,11 +206,12 @@ class Product_model extends CI_Model {
 		$this->db->where('t6.liveStatus','No');
 		}
 		$this->db->where('t6.mapp','Unmapped');
+		$this->db->limit(70);
 		$query=$this->db->get();	
 		return $query->result();
 	} 
 	
-	function map_product4($filter=false,$productName=false,$shopID=false)
+	function map_product4($filter=false,$productName=false,$shopID=false,$limit)
 	{
 		$this->db->select('t1.productsID,t2.productName,t3.imageName,t4.productPrice,shopName');
 		$this->db->from('s4k_products t1');
@@ -226,6 +227,10 @@ class Product_model extends CI_Model {
 		$this->db->where('t6.liveStatus','No');
 		}
 		$this->db->where('t6.mapp','Unmapped');
+		/* if($limit){
+			$this->db->limit(20);
+		} */
+		$this->db->limit(70);
 		$query=$this->db->get();	
 		return $query->result();
 	}
@@ -413,6 +418,7 @@ class Product_model extends CI_Model {
 		$this->db->where(array('t1.categoriesID'=>$category));
 		$this->db->like(array('productName'=>$product));
 		$this->db->group_by('t1.productsID');
+		$this->db->limit(100);
 		$query=$this->db->get();
 		return $query->result();
 		
@@ -440,6 +446,20 @@ class Product_model extends CI_Model {
 		$this->db->join('s4k_product_attribute_map t3','t1.productsID=t3.productsID','left');
 		$this->db->where_in('productAttributeLable',array('Handset Color','Internal'));
 		}
+		$this->db->where(array('t1.productsID'=>$product));
+		$this->db->group_by('t1.productsID');
+		$query=$this->db->get();
+		return $query->result();
+	}
+	
+	public function fetch_parent_productname($product)
+	{
+		$this->db->select("t1.productsID,t2.productName,t1.categoriesID,t1.productBrand,t4.imageName,t5.productPrice,shopName");
+		$this->db->from('s4k_products t1');
+		$this->db->join('s4k_product_details t2','t1.productsID=t2.productsID');
+		$this->db->join('s4k_product_images t4','t1.productsID=t4.productsID');
+		$this->db->join('s4k_product_price t5','t1.productsID=t5.productsID');
+		$this->db->join('s4k_shops t6','t5.shopID=t6.shopID');
 		$this->db->where(array('t1.productsID'=>$product));
 		$this->db->group_by('t1.productsID');
 		$query=$this->db->get();

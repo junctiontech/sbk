@@ -89,17 +89,17 @@
 										<form class="form-horizontal"  method="post" action="<?=base_url();?>Product/moveToLive">	
                                         <div class="panel">
                                             <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                <h4 class="panel-title btn">Change Category And Status</h4>
+                                                <h4 class="panel-title btn">Change category and status</h4>
                                             </a>
                                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                 <div class="panel-body">
                                                  	
 													
 														<div class="col-sm-2">
-															<button type="submit" name="moveTolive" value="moveTolive" class="btn btn-success">Move To Live</button>   
+															<button type="submit" name="moveTolive" value="moveTolive" class="btn btn-success">Move to live</button>   
 														</div>													
 													<div class="col-sm-2">
-															<button type="submit" name="removetolive" value="removetolive" class="btn btn-success">Remove To Live</button>   
+															<button type="submit" name="removetolive" value="removetolive" class="btn btn-success">Remove from live</button>   
 														</div>
 														<div class="col-sm-2">
 															<button type="submit" name="status" value="Active" class="btn btn-success">Active</button>  
