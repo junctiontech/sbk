@@ -248,10 +248,16 @@ class Api extends CI_Controller {
 			$categoryarray['categoriesSortOrder']=1;
 			$categoryarray['categoriesStatus']='Active';
 			
-			$categoryID=$this->Api_model->insert_category($categoryarray,$key,$data['listingVersions']['v1']['get'],2);
-			
-			if(!empty($categoryID))
+			//$categoryID=
+			$this->Api_model->insert_category($categoryarray,$key,$data['listingVersions']['v1']['get'],2);
+		}
+			$category_datas=$this->Api_model->get_shop_category(2);
+			if(!empty($category_datas))
 			{
+				foreach($category_datas as $category_data){//category foreach start
+				
+				$categoryID=$category_data->categoriesID;
+				if(!empty($categoryID)){
 				$check_entry=$this->Api_model->check_api_log_entry(array('categoryID'=>$categoryID,'shopID'=>2));
 				
 				if(empty($check_entry)){ 
@@ -266,7 +272,7 @@ class Api extends CI_Controller {
 											$this->Api_model->insert_api_log($logDataUpdate,$where);
 											$apiLogID=$check_entry[0]->apiLogID;
 										}
-				$url = $data['listingVersions']['v1']['get'];
+				$url = $category_data->categoryShopUrl;//$data['listingVersions']['v1']['get'];
 				$i=1;
 				
 				do{
@@ -282,18 +288,22 @@ class Api extends CI_Controller {
 					{ 
 						$shopproductfamily=array();
 						$specificationLists=array();
-						$subcategoryVal='';$go=false;
+						$subcategoryVal='';$go=false;$checkquery='';
 						if($categoryID==1){
 							$subcategoryVal='Mobile Phones';
 						}elseif($categoryID==2){
 							$subcategoryVal='Laptops';
 						}elseif($categoryID==3){
 							$subcategoryVal='Televisions';
+						}elseif($categoryID==4){
+							$checkquery=" || {$product['subCategoryName']} !='Air Conditioners Split AC' || {$product['subCategoryName']} !='Air Conditioners Window AC' || {$product['subCategoryName']} !='Air Conditioners Tower AC'";
+						}elseif($categoryID==5){
+							$checkquery=" || {$product['subCategoryName']} =='Air Conditioners Split AC' || {$product['subCategoryName']} =='Air Conditioners Window AC' || {$product['subCategoryName']} =='Air Conditioners Tower AC'";
 						}else{
 							$go=true;
 						}
 						
-						if($product['subCategoryName']==$subcategoryVal || $go==true){
+						if($product['subCategoryName']==$subcategoryVal || $go==true || ($checkquery)){
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 					
@@ -346,7 +356,8 @@ class Api extends CI_Controller {
 			}
 				//.................
 			}
-		
+			
+			}//category foreach end
 		}
 		
 	}
