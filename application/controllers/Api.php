@@ -288,7 +288,7 @@ class Api extends CI_Controller {
 					{ 
 						$shopproductfamily=array();
 						$specificationLists=array();
-						$subcategoryVal='';$go=false;$checkquery=' 0==1';
+						$subcategoryVal='';$go=false;$checkquery=false;
 						if($categoryID==1){
 							$subcategoryVal='Mobile Phones';
 						}elseif($categoryID==2){
@@ -296,14 +296,21 @@ class Api extends CI_Controller {
 						}elseif($categoryID==3){
 							$subcategoryVal='Televisions';
 						}elseif($categoryID==4){
-							$checkquery=" {$product['subCategoryName']} !='Air Conditioners Split AC' || {$product['subCategoryName']} !='Air Conditioners Window AC' || {$product['subCategoryName']} !='Air Conditioners Tower AC'";
+							$subcheck=$product['subCategoryName'];
+							if($subcheck !='Air Conditioners Split AC' || $subcheck !='Air Conditioners Window AC' || $subcheck !='Air Conditioners Tower AC'){
+								$checkquery=true;
+							}
 						}elseif($categoryID==5){
-							$checkquery=" {$product['subCategoryName']} =='Air Conditioners Split AC' || {$product['subCategoryName']} =='Air Conditioners Window AC' || {$product['subCategoryName']} =='Air Conditioners Tower AC'";
+							$subcheck=$product['subCategoryName'];
+							if($subcheck =='Air Conditioners Split AC' || $subcheck =='Air Conditioners Window AC' || $subcheck =='Air Conditioners Tower AC'){
+								$checkquery=true;
+							}
 						}else{
 							$go=true;
 						}
 						
-						if($product['subCategoryName']==$subcategoryVal || $go==true || ($checkquery)){
+						if($product['subCategoryName']==$subcategoryVal || $go==true || $checkquery==true){
+							
 						$logDataUpdate='productCount + 1';$where=array('apiLogID'=>$apiLogID);
 						$this->Api_model->insert_api_log($logDataUpdate,$where);
 					
@@ -338,6 +345,7 @@ class Api extends CI_Controller {
 						$this->Api_model->insert_new_product($productdata,$shopproductfamily,$specificationLists);		
 							}
 					}
+					
 					}
 					
 					$nextUrl = $details['nextUrl'];
