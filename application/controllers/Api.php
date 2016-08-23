@@ -288,7 +288,7 @@ class Api extends CI_Controller {
 					{ 
 						$shopproductfamily=array();
 						$specificationLists=array();
-						$subcategoryVal='';$go=false;$checkquery='';
+						$subcategoryVal='';$go=false;$checkquery=' 0==1';
 						if($categoryID==1){
 							$subcategoryVal='Mobile Phones';
 						}elseif($categoryID==2){
@@ -296,9 +296,9 @@ class Api extends CI_Controller {
 						}elseif($categoryID==3){
 							$subcategoryVal='Televisions';
 						}elseif($categoryID==4){
-							$checkquery=" || {$product['subCategoryName']} !='Air Conditioners Split AC' || {$product['subCategoryName']} !='Air Conditioners Window AC' || {$product['subCategoryName']} !='Air Conditioners Tower AC'";
+							$checkquery=" {$product['subCategoryName']} !='Air Conditioners Split AC' || {$product['subCategoryName']} !='Air Conditioners Window AC' || {$product['subCategoryName']} !='Air Conditioners Tower AC'";
 						}elseif($categoryID==5){
-							$checkquery=" || {$product['subCategoryName']} =='Air Conditioners Split AC' || {$product['subCategoryName']} =='Air Conditioners Window AC' || {$product['subCategoryName']} =='Air Conditioners Tower AC'";
+							$checkquery=" {$product['subCategoryName']} =='Air Conditioners Split AC' || {$product['subCategoryName']} =='Air Conditioners Window AC' || {$product['subCategoryName']} =='Air Conditioners Tower AC'";
 						}else{
 							$go=true;
 						}
