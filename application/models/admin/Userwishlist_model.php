@@ -17,4 +17,11 @@ class Userwishlist_model extends CI_Model
 		$user=$this->db->get();
 		return $user->result();
 	}
+	 public function get_usernotify()
+	 {
+		$this->db->order_by('notifyID','DESC');
+		$query=$this->db->get('s4k_notify');
+		// echo $this->db->last_query(); die;
+		 return $query->result();
+	 }
  }

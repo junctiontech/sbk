@@ -601,7 +601,8 @@ class Login extends CI_Controller {
 	}
 	public function Activetedaccount($name1=false,$data=false)
 	{
-		$id=base64_decode($data);	 
+		$id=base64_decode($data);
+		if(!empty($id)){
 		if(!empty($id)){
 			$data=array('Status'=>'Active');
 			$this->Login_model->updateStatus($data, $id);
@@ -643,6 +644,11 @@ class Login extends CI_Controller {
 				redirect('Login/signup');
 				}
 			}
+	}
+	else{
+			$this->session->set_flashdata('category_error_login', "Invalid link!! Please click valid link. ");
+			redirect(base_url());	
+	}
 	}
 	
 }

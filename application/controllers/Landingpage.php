@@ -968,59 +968,59 @@ class Landingpage extends CI_Controller {
 	public function notify()
 	{
 		if(!empty($_POST))
-		{
-		$category=$this->input->post('category');
-		$story=$this->input->post('store');
-		$percent=$this->input->post('percent');
-		$email=$this->input->post('email');		 
-//print_r($this->userinfos); die;
-		if(!empty($this->userinfos))
-		{
-			$userID=$this->userinfos['userID'];
-			$query = $this->Landingpage_model->get_email(array('userID'=>$userID));
-			$email=$query[0]->userEmail;
-			//print_r($email); die;
-			 
-		}
-		if(!empty($category)){
-		$categorys = implode(",", $category);
-			($data['categoryName']=$categorys);	 
-		}
-		if(!empty($story)){
-		$storys=implode(",", $story);
-			($data['store']=$storys);		  
-		}
-		if(!empty($percent)){
-		$percents=implode(",",$percent);
-			($data['percent']=$percents);			 
-		}
-		$table='s4k_notify';
-		if(!empty($email)){
-			
-			$notify=$this->Landingpage_model->match_emailid($email);
-			if(!empty($notify)){
-				$notifyID=$notify[0]->notifyID;
-				$this->Landingpage_model->update_notify($table, $data, $notifyID);	
-				$this->session->set_flashdata('message_type', 'success');
-				$this->session->set_flashdata('message', $this->config->item("Landingpage") . "You Have Subscribe Successfully!!");
-				redirect($_SERVER['HTTP_REFERER']);				
+		{	
+			$category=$this->input->post('category');		
+			$story=$this->input->post('store');		
+			$percent=$this->input->post('percent');		
+			//$email=$this->input->post('email');
+			if(!empty($this->userinfos))
+			{
+				$userID=$this->userinfos['userID'];		
+				$query = $this->Landingpage_model->get_email(array('userID'=>$userID));		
+				$email=$query[0]->userEmail;		
+			}		
+			if(!empty($category)){	
+				$categorys = implode(",", $category);			
+				($data['categoryName']=$categorys);
 			}
-			else{
-				($data['email']=$email);
-				$this->Landingpage_model->notify_insert($table,$data);
-				$this->session->set_flashdata('message_type', 'success');
-				$this->session->set_flashdata('message', $this->config->item("Landingpage") . "You Have Subscribe Successfully!!");
-				redirect($_SERVER['HTTP_REFERER']);
+			else{$data['categoryName']=' ';}		
+			if(!empty($story)){		
+				$storys=implode(",", $story);			
+				($data['store']=$storys);
 			}
-		}			
-	}
-
-	else{ 
-		$this->session->set_flashdata('message_type', 'error');
-		$this->session->set_flashdata('message', $this->config->item("Landingpage") . "please checked atleast one checkbox");
-		redirect($_SERVER['HTTP_REFERER']);
-	}
+			else{$data['store']='';}
+			if(!empty($percent)){
+				$percents=implode(",",$percent);			
+				($data['percent']=$percents);
+			}
+			else{ $data['percent']='';}
+			$table='s4k_notify';		
+			if(!empty($email)){		
+				$notify=$this->Landingpage_model->match_emailid($email);			
+				if(!empty($notify)){			
+					$notifyID=$notify[0]->notifyID;				
+					$data['userID']=$userID;				
+					$this->Landingpage_model->update_notify($table, $data, $notifyID);
+					$this->session->set_flashdata('message_type', 'success');
+					$this->session->set_flashdata('message', $this->config->item("Landingpage") . "You Have Subscribe Successfully!!");
+					redirect($_SERVER['HTTP_REFERER']);	
+				}
+				else{
+					$data['email']=$email;
+					$data['userID']=$userID;
+					$this->Landingpage_model->notify_insert($table,$data);
+					$this->session->set_flashdata('message_type', 'success');
+					$this->session->set_flashdata('message', $this->config->item("Landingpage") . "You Have Subscribe Successfully!!");
+					redirect($_SERVER['HTTP_REFERER']);
+				}
+			}	
 		}
+		else{ 
+			$this->session->set_flashdata('message_type', 'error');		
+			$this->session->set_flashdata('message', $this->config->item("Landingpage") . "please checked atleast one checkbox");		
+			redirect($_SERVER['HTTP_REFERER']);	
+		}		
+	}
 	public function Match_emails()
 	{
 		$email = $this->input->post('data');

@@ -32,15 +32,12 @@
 									<table cellspacing="0" class="table table-small-font table-bordered table-striped">
 										<tbody>		
 											<tr>										
-												<td class="tdw" style="text-align:center;">											
+												<td class=" " style="text-align:center;">											
 													<img class="aboutusimags" src="<?=base_url();?>frontend/images/Dhiraj.Jaiswani.jpg"/><br>	
 													<p><b> Executive Producer											
 														“Screwvala” of SBK</b><br>											
-														Mr. Dhiraj Jaiswani 
-														
-													</p>
-												</td>
-												<td>
+														Mr. Dhiraj Jaiswani														
+													</p>												 
 													<p class="textjustify">
 														He   is   the   one   who   got   everyone   of   us   together
 														for   this   project.   He   is   not   just   a   passionate 
@@ -57,9 +54,7 @@
 													<p><b>The Producer 
 														SBK’s own “Nadiadwala”</b><br>													
 														Mr.Mohit Sharma 
-													</p>														
-												</td>														
-												<td>													
+													</p>											
 													<p class="textjustify">
 														Despite   being   engineer   from   his   profession,  
 														he   is   the   one   who   created   the   conditions   for  
@@ -74,11 +69,8 @@
 											<tr>
 												<td style="text-align:center;">
 													<img class="aboutusimags" src="<?=base_url();?>frontend/images/Prashant.Persai.jpg"/><br>	
-													<p><b> Marketing & Promotion  
-														“SBK’s Prahalad” </b><br>														
-														Mr.Prashant Persai </p>														
-												</td>														
-												<td>															
+													<p><b> Marketing & Promotion “SBK’s Prahalad” </b><br>														
+														Mr.Prashant Persai </p>							
 													<p class="textjustify">
 														He   is   a   researcher   by   profession.   He   invested  
 														his   valuable   inputs   and   experience   into   SBK.  
@@ -91,11 +83,8 @@
 											<tr>												
 												<td style="text-align:center;">
 													<img class="aboutusimags" src="<?=base_url();?>frontend/images/junction_ring_12.png"/><br>													
-													<p><b> Art Designer & visual effects
-														“Primefocus” of SBK </b><br>													
-														Junctiontech.in team  </p>													
-												</td>													
-												<td>												
+													<p><b> Art Designer & visual effects “Primefocus” of SBK </b><br>													
+														Junctiontech.in team  </p>			
 													<p class="textjustify">
 														When   we   first   threw   the   insane   idea   of   having 
 														an   app   for   products,   flights   and   hotels 
@@ -110,12 +99,9 @@
 											<tr>												
 												<td style="text-align:center;">													
 													<img class="aboutusimags" src="<?=base_url();?>frontend/images/vineet.Kumar (1).jpg"/><br>	
-													<p><b> Direction & Screenplay 
-														“Salim­Javed” of SBK </b><br>													
+													<p><b> Direction & Screenplay “Salim­Javed” of SBK </b><br>													
 														Mr.Vineet Kumar 
-													</p>													
-												</td>													
-												<td>												
+													</p>									
 													<p class="textjustify">Responsible   for   researching   the   plot,  
 														developing   the   narrative,   writing   the  
 														screenplay,   and   delivering   it.   He   envisioned  
@@ -133,21 +119,61 @@
 						</div>						
 					</div>						
 				</div>
-				<div class="center"><p class="lineheight"><b>And in the last presenting our</b><br> 
+				<div class=" "><p class="lineheight"><b>And in the last presenting our</b><br> 
 					<b> Actors:</b>  <br></p>
-					<p class="textjustify">
-						Products,   Deals   &   Offers   of   our   esteemed   partners   (in   alphabetical   order)   Amazon,   Flipkart,  
-						Snapdeal, Hotelscombined, Skyscanner,  Vcommission and Zomato (Logos of all the sites) <br>
-						All   of   us   has   put   best   of   our   efforts   to   create   this   website   and   android   app   perfect   and  
-						meaningful  for all.  <br>
-					</p>
-					<p class="center lineheight">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+				
+					<div class="aboutuslogo">
+					
+						<img src="<?=base_url();?>frontend/images/amazon.jpg"/>
+					
+					</div>
+					
+					<div class="aboutuslogo" style=" "> 
+					
+						<img src="<?=base_url();?>frontend/images/cb2852.jpg"/>
+					
+					</div>
+					
+					<div class="aboutuslogo" >
+					
+						<img src="<?=base_url();?>frontend/images/rsz_snapdeal_new.jpg"/>
+					
+					</div>
+					
+					<div class="aboutuslogo" >
+					
+						<img src="<?=base_url();?>frontend/images/Hotelscombined.jpeg"/>
+					
+					</div>
+					
+					<div class="aboutuslogo" >
+					
+						<img src="<?=base_url();?>frontend/images/Skyscanner.png"/>
+					
+					</div>
+					
+					<div class="aboutuslogo">
+					
+						<img src="<?=base_url();?>frontend/images/Vcommission.png"/>
+					
+					</div>
+					
+					<div class="aboutuslogo" >
+					
+						<img src="<?=base_url();?>frontend/images/Zomato.png"/>
+					
+					</div>
+				
+				</div>
+					<p class="  lineheight">
 						Now, it’s your turn to make Search B4 Kharch a blockbuster hit.  <br>
 					</p>
-					<p class="center lineheight">
+					<p class="  lineheight">
 						SBK v2.0 will be followed shortly 
 					</p>
-				</div>			
+				</div>	
+				
 			</div>			
 			<div class="col-md-2 col-sm-2 col-xs-12"></div>
 		</div>

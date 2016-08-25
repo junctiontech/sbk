@@ -133,7 +133,8 @@
                                 </li>
 								<li><a><i class="fa fa-list"></i>User Wishlist<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
-                                        <li><a href ="<?=base_url();?>Userwishlist">User Wishlist</a></li>						
+                                        <li><a href ="<?=base_url();?>Userwishlist">User Wishlist</a></li>
+										 <li><a href ="<?=base_url();?>Userwishlist/Usernotify">User Notify</a></li>	
                                     </ul>
                                 </li>
 								<li><a><i class="fa fa-list"></i>Manage Hotel<span class="fa fa-chevron-down"></span></a>

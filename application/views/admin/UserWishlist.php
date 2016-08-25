@@ -23,7 +23,9 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>User Wishlist</h2>                                  
+                                    <h2>User Wishlist</h2>  
+									<div class="clearfix"></div>
+								</div>
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
@@ -31,7 +33,7 @@
                                                 <th>Email</th>
                                                 <th>Wishlist</th>
                                                 <th class=" "><span class="nobr">Action</span></th>
-                                                </th>
+                                               
                                             </tr>
                                         </thead>
 
@@ -50,7 +52,7 @@
                             </div>
                         </div>
 					</div>
-                </div>
+                 
 			</div><div class="clearfix"></div>
 <script>
 $(document).on('hidden.bs.modal', function (e) {

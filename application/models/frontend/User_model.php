@@ -25,9 +25,9 @@ class User_model extends CI_Model
 		$userwishlist=$this->db->get();
 		return $userwishlist->result();
 	}  
-	public function delete_wishlist ($table, $userWishListID)
+	public function delete ($table, $where)
 	{
-		$this->db->where('userWishListID',$userWishListID);
+		$this->db->where($where);
 		$this->db->delete($table);
 	}
 	public function PersonalInformation($userID)
@@ -54,11 +54,16 @@ class User_model extends CI_Model
 		$this->db->where('userID',$userID);
 		$this->db->update($table, $data);
 	}
-	public function DeactiveteAccount($data, $userID)
+	public function DeactiveteAccount($data=false, $userID=false)
 	{
 		$this->db->where('userID',$userID);
 		$this->db->update('s4k_user', $data);
 	}
-	
+	public function get_notify($where=false)
+	{
+		$this->db->where(array ('userID'=>$where));
+		$query=$this->db->get('s4k_notify');	
+		return $query->result();
+	}
 	
 }

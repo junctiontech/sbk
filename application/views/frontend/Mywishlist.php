@@ -1,6 +1,6 @@
-<div class="page-loading-overlay">
-				<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>
-			</div>
+<div class="page-loading-overlay">				
+	<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>		
+</div>
 <div class="col-sm-9 col-md-9 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -43,7 +43,7 @@
 				</tr>
 			</thead>
 			 <tbody>
-			<?php foreach ($userwishlist as $wishlist) {?>
+			<?php if(!empty($userwishlist)) { foreach ($userwishlist as $wishlist) {?>
 				<tr class="even pointer">
 					<td><div class="similar_images_1_of_4 grid_1_of_4"><img src="<?=$wishlist->imageName;?>" alt=""></div></td>
 				   <td><?php echo $wishlist->productName ; ?></td>
@@ -52,7 +52,7 @@
 				   <td><span><a target="_blank" href="<?=$wishlist->productShopUrl;?>">Buy Now</a></span></td>
 				   <td><a href="<?=base_url();?>User/delete_wishlist/<?php echo $wishlist->userWishListID ;?>">Delete</a></td>										   
 				</tr>
-			<?php } ?>
+			<?php } } ?>
 		   </tbody>
 </table>
 </div><div class="clear"></div>

@@ -94,7 +94,7 @@ class User extends CI_Controller {
 	{
 		$app=$this->input->get('app');
 		$table = 's4k_user_wishlist';
-		$this->User_model->delete_wishlist($table, $userWishListID);
+		$this->User_model->delete($table,array('userWishListID' =>$userWishListID));
 		if($app==true){
 			echo json_encode(array('message'=>'success'));
 		}else{
@@ -173,8 +173,8 @@ class User extends CI_Controller {
 				if (!empty($userProfileImage))								
 							{ 
 								($data['userProfileImage'] = $userProfileImage);
-									 $originalPath='uploads/images/userProfileImage/'.$oldvalue;								
-										if(file_exists($originalPath)) 
+									 $originalPath='uploads/images/userProfileImage/'.$oldvalue;
+								print_r($originalPath);die;
 										{ 
 											unlink($originalPath);				
 										}	
@@ -222,9 +222,9 @@ class User extends CI_Controller {
 	}
 	public function DeactiveteAccount ()
 	{
-		$userID=$this->userinfos['userID'];
-		$data= array ('Status'=>'Inactive');
-		$this->User_model->DeactiveteAccount($data, $userID);
+		$userID=$this->userinfos['userID'];		 
+		$this->User_model->delete('s4k_user',array ('userID' => $userID));
+		$this->User_model->delete('s4k_notify',array ('userID' => $userID));
 		$this->session->unset_userdata('searchb4kharch');
         $this->session->sess_destroy();
 		$this->session->set_flashdata('message_type', 'error');
@@ -233,5 +233,23 @@ class User extends CI_Controller {
 		redirect("Login");
 
 	}	
+	public function Notify()
+	{
+		$userID=$this->userinfos['userID'];
+		//print_r($userID);die;
+		$notify=$this->data['usernotify']=$this->User_model->get_notify($userID);
+		//	print_r($notify);die;
+		$this->parser->parse('frontend/Header',$this->data);		
+		$this->parser->parse('frontend/Leftheader',$this->data);
+		$this->parser->parse('frontend/Notify', $this->data);
+		$this->parser->parse('frontend/Footer',$this->data);		
+	}
+	public function Delect_usernotify($notifyID=false)
+	{
+		$this->User_model->delete('s4k_notify', array ('notifyID' =>$notifyID));	
+		$this->session->set_flashdata('message_type', 'success');
+		$this->session->set_flashdata('message', $this->config->item("User") . "You've successfully deleted Notify from your Notify.");
+		redirect ('User/Mywishlist');
+	}
 	
 }

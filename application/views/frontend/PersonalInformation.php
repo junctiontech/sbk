@@ -1,3 +1,6 @@
+ <div class="page-loading-overlay">			
+	<div class="loader-2"><img src="<?=base_url();?>frontend/images/search-animated-icon.gif" style="width:200px;height:200px"></div>		
+</div>
 <div class="col-sm-9 col-md-9 col-xs-12 form_content ">
  <!-- Alert section For Message-->
 		 <?php  if($this->session->flashdata('message_type')=='success') {  ?>
@@ -16,8 +19,6 @@
 </div>
 <?php }?>
 		 <!-- Alert section End-->
- 
-
 <div class="col-sm-12 col-md-12 col-xs-12 form_content">             
 	<div class="panel-body">
 			 <p align="center">Personal Information</p>
@@ -113,15 +114,7 @@
 	</div></div>
 <!-- /page content -->           
  <script>
-        $(document).ready(function () {
-            $(":input").inputmask();
-        });
-$(document).on('hidden.bs.modal', function (e) {
-		var target = $(e.target);
-        target.removeData('bs.modal')
-              .find(".modal-content").html('');
-    });
-	
+ 
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
