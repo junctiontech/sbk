@@ -43,7 +43,7 @@
 					</li>				
 					<li>					
 						<a href="javascript:;" title="You are searcheela no">					
-							<span class="title">You are Searcheela# <script type="text/javascript" src="http://widget.supercounters.com/hit.js"></script><script type="text/javascript">sc_hit(1297026,8,6);</script><br><noscript><a href="http://www.searchb4kharch.com">searchb4kharch</a></noscript>
+							<span class="title">You are Searcheela# <div class="counter"><script type="text/javascript" src="http://widget.supercounters.com/hit.js"></script><script type="text/javascript">sc_hit(1297026,8,6);</script><br><noscript><a href="http://www.searchb4kharch.com">searchb4kharch</a></noscript></div>
 <!-- <span><img style="max-width: 37%;line-height: 20px;vertical-align: middle;"border="0" src="http://cc.amazingcounters.com/counter.php?i=3204024&c=9612385" alt="searchb4kharch.com"></span>--></span>					
 						</a>
 					</li>
