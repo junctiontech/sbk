@@ -104,7 +104,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                               <div class="col-md-6 col-md-offset-5">                                
-                                <button type="submit" class="btn btn-success" >Save</button>
+                                <button type="submit" class="btn btn-success" >Save Changes</button>
                               </div>
                             </div>
                           </form>

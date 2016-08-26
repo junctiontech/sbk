@@ -17,7 +17,7 @@
 					<li class="marker_none"><a href="<?=base_url();?>User/PersonalInformation.html">Personal Information</a></li>
 					<li class="marker_none"><a href="<?=base_url();?>User/Notify.html">My Notify</a></li>	
 					<li class="marker_none"><a href="<?=base_url();?>User/Changepassword.html">Change Password</a></li>				
-					<li class="marker_none"><a href="<?=base_url();?>User/DeactiveteAccount.html">Deactivate Account</a></li>				
+					<li class="marker_none"><a onclick="return confirm('Are you sure you want to Deactivete Account?')" href="<?=base_url();?>User/DeactiveteAccount.html">Deactivate Account</a></li>				
 					<hr>
 				</div>	
 			</div>
