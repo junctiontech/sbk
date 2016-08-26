@@ -16,7 +16,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-6">					
 								<div class="form-group white">
 									<div class="col-md-12">	
-										<input type="radio" onclick="myFunction()" checked id="oneway" class="flat" name="radio"/>	
+										<input type="radio" onclick="myFunction1()" checked id="oneway1" class="flat" name="radio"/>	
 										One Way 
 									</div>	
 								</div>
@@ -24,7 +24,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-6">					  
 								<div class="form-group white">	
 									<div class="col-md-12">		
-										<input type="radio" onclick="myFunction()" id="Returntrip"class="flat" name="radio"/>
+										<input type="radio" onclick="myFunction1()" id="Returntrip1"class="flat" name="radio"/>
 										Return Trip		
 									</div>					
 								</div>				
@@ -60,7 +60,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="form-group">
 										<div class="input-group">
-											<input type="text" name="return" disabled id="return" class="form-control datepicker" data-message-required=" " data-validate="required"  data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
+											<input type="text" name="return" disabled id="return1" class="form-control datepicker" data-message-required=" " data-validate="required"  data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
 											<div class="input-group-addon">												
 												<a href="#"><i class="linecons-calendar"></i></a>
 											</div>
@@ -275,7 +275,7 @@
 				<div class="col-md-2 col-sm-2 col-xs-12"></div>
 				<div class="col-md-8 col-sm-8 col-xs-12">
 					<div class="flight1">
-						<form method="get" onsubmit="return checkfrom() && checkto() && selectcls() && selectadls()" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
+						<form method="get" onsubmit="return checkfrom() && checkto()" action="<?=base_url();?>Landingpage/Flights.html" class="validate form-horizontal form-label-left">
 					
 							<div class="white"style="padding-bottom: 25px;">					
 								<h2>Search Flights</h2>
@@ -307,7 +307,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="form-group">		
 									<div class="input-group">
-										<input type="text" name="return" class="form-control datepicker" data-message-required=" " data-validate="required" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
+										<input type="text" name="return" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="Return Date" value="<?=isset($return)?$return:''?>">
 										<div class="input-group-addon">
 											<a href="#"><i class="linecons-calendar"></i></a>
 										</div>										
@@ -467,4 +467,11 @@ function fromID(placekey)
 				document.getElementById("return").disabled = true;   
 			}
 	}
+	function myFunction1(){
+		if(document.getElementById('Returntrip1').checked) {    
+				document.getElementById("return1").disabled = false;  
+			}else if(document.getElementById('oneway1').checked) {   
+				document.getElementById("return1").disabled = true;   
+			}
+	}	
 </script>

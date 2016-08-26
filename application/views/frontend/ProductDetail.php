@@ -43,7 +43,7 @@
 		 </div>		
 		 <div class="row" >	 			 
 			 <div class="col-md-10">
-				 <div class="content_top"> 
+				 <div class="content_top" style="background-color:white;"> 
 					 <div class="back-links">
 						 <p><a href="<?=base_url();?>">Home</a> >> <a href="<?=isset($backurl)?$backurl:''?>"><?=isset($categorykey)?$categorykey:''?> </a></p> 					
 					 </div>	
