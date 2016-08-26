@@ -739,6 +739,7 @@ margin-top:60px;
 	.listview_1_of_2{
     	margin: 2.4% 0 0% 1.6%;
     }
+	.fixed1{position:relative !important;}
 	.hotel_p{margin-top:25px !important;}
 	.flighthedden{display:block !important;}
 	.logo1{		 
@@ -775,6 +776,7 @@ margin-top:60px;
 		/*width: 340px;*/
 		font-size: 35px;
     }
+	.fixed1{position:relative !important;}
 	.hotel_p{margin-top:25px !important;}
 	.flighthedden{display:block !important;}	 
 	.listview_1_of_2{margin: 1.4% 0 0% 1.6%;}
@@ -866,6 +868,7 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+	.fixed1{position:relative !important;}
 	.hotel_p{margin-top:25px !important;}
 	.flighthedden{display:block !important;}		
 	.col-xs-0{display:none !important;}
@@ -1014,6 +1017,7 @@ margin-top:60px;
 		float:inherit;
 		width:100%;
 	}
+	.fixed1{position:relative !important;}
 	.hotel_p{margin-top:25px !important;}
 	.flighthedden{display:block !important;}
 	.contact{text-align:center !important;}
