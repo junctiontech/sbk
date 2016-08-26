@@ -173,8 +173,7 @@ class User extends CI_Controller {
 				if (!empty($userProfileImage))								
 							{ 
 								($data['userProfileImage'] = $userProfileImage);
-									 $originalPath='uploads/images/userProfileImage/'.$oldvalue;
-								print_r($originalPath);die;
+									 $originalPath='uploads/images/userProfileImage/'.$oldvalue;							
 										{ 
 											unlink($originalPath);				
 										}	
